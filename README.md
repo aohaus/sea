@@ -1,24 +1,39 @@
 # Malaysia News RSS Monitor
 
-マレーシアの主要ニュースソース10件の RSS フィードを自動でヘルスチェックするツールと、
+マレーシアの主要ニュースソースの RSS フィードを自動でヘルスチェックするツールと、
 GitHub Actions による定期監視パイプラインです。
 
-## 監視対象
+## 監視対象（動作確認済み・6件）
+
+各ソースについて、GitHub Actions のランナーから実際に RSS URL へ接続し、
+HTTP 200 応答かつ RSS/Atom としてパース可能であることを確認済みです。
 
 | ID | ソース | 言語 | RSS URL |
 |----|--------|------|---------|
 | `bernama` | BERNAMA | en | https://www.bernama.com/en/rssfeed.php |
-| `thestar` | The Star | en | https://www.thestar.com.my/rss/editors-picks/news |
-| `malaysiakini` | Malaysiakini | en | https://www.malaysiakini.com/en/news.rss |
-| `theedge` | The Edge Malaysia | en | https://theedgemalaysia.com/rss/latest-news |
-| `astroawani` | Astro AWANI | ms | https://www.astroawani.com/rss/latest.xml |
+| `malaysiakini` | Malaysiakini | en | https://www.malaysiakini.com/rss/en/news.rss |
+| `astroawani` | Astro AWANI | ms | https://www.astroawani.com/rss.xml |
 | `fmt` | Free Malaysia Today | en | https://www.freemalaysiatoday.com/feed/ |
-| `nst` | New Straits Times | en | https://www.nst.com.my/rss/flats/nation |
+| `nst` | New Straits Times | en | https://www.nst.com.my/feed |
 | `malaymail` | Malay Mail | en | https://www.malaymail.com/feed/rss/malaysia |
-| `sinchew` | Sin Chew Daily | zh | https://www.sinchew.com.my/feed/ |
-| `borneopost` | The Borneo Post | en | https://www.theborneopost.com/feed/ |
 
 ソースの追加・変更は `config/sources.json` を編集してください（`id`, `name`, `language`, `rss_url`）。
+
+## 未収録のソース（既知の制限事項）
+
+当初の要件には以下の4件も含まれていましたが、現時点で有効な RSS URL を
+特定できなかったため、監視対象から除外しています。
+
+| ソース | 言語 | 状況 |
+|--------|------|------|
+| The Star | en | 指定 URL・複数の候補 URL とも HTTP 404。現行の RSS URL が不明 |
+| The Edge Malaysia | en | 指定 URL・複数の候補 URL とも HTTP 404。現行の RSS URL が不明 |
+| Sin Chew Daily | zh | 全候補 URL・複数の User-Agent で HTTP 403。WAF が GitHub Actions のIPを拒否している可能性 |
+| The Borneo Post | en | 全候補 URL・複数の User-Agent で HTTP 403。WAF が GitHub Actions のIPを拒否している可能性 |
+
+正しい RSS URL が判明した場合は、`config/sources.json` にエントリを追加してください
+（`scripts/check_rss.py` の変更は不要です）。403 が続くソースについては、
+セルフホストランナーの利用や別経路でのアクセスが必要になる可能性があります。
 
 ## ファイル構成
 
@@ -51,10 +66,10 @@ Malaysia News RSS Health Check
 STATUS  ID            NAME                  LANG  HTTP   ITEMS     TIME  DETAIL
 -------------------------------------------------------------------------------
 OK      bernama       BERNAMA               en    200       20    812ms
-FAIL    thestar       The Star              en    403        0    301ms  HTTP 403
+OK      malaysiakini  Malaysiakini          en    200       10    350ms
 ...
 -------------------------------------------------------------------------------
-Result: 9/10 passed, 1 failed
+Result: 6/6 passed, 0 failed
 ```
 
 ## ローカル実行

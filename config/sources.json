@@ -7,22 +7,10 @@
       "rss_url": "https://www.bernama.com/en/rssfeed.php"
     },
     {
-      "id": "thestar",
-      "name": "The Star",
-      "language": "en",
-      "rss_url": "https://www.thestar.com.my/rss/editors-picks/news"
-    },
-    {
       "id": "malaysiakini",
       "name": "Malaysiakini",
       "language": "en",
       "rss_url": "https://www.malaysiakini.com/rss/en/news.rss"
-    },
-    {
-      "id": "theedge",
-      "name": "The Edge Malaysia",
-      "language": "en",
-      "rss_url": "https://theedgemalaysia.com/rss/latest-news"
     },
     {
       "id": "astroawani",
@@ -47,18 +35,6 @@
       "name": "Malay Mail",
       "language": "en",
       "rss_url": "https://www.malaymail.com/feed/rss/malaysia"
-    },
-    {
-      "id": "sinchew",
-      "name": "Sin Chew Daily",
-      "language": "zh",
-      "rss_url": "https://www.sinchew.com.my/feed/"
-    },
-    {
-      "id": "borneopost",
-      "name": "The Borneo Post",
-      "language": "en",
-      "rss_url": "https://www.theborneopost.com/feed/"
     }
   ]
 }
