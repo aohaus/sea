@@ -33,3 +33,7 @@ jobs:
 
       - name: Run RSS health check
         run: python scripts/check_rss.py
+
+      - name: TEMP probe candidate URLs
+        if: always()
+        run: python scripts/_probe_candidates.py
