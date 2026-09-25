@@ -5,6 +5,9 @@ on:
     # Every day at 00:00 UTC (09:00 JST)
     - cron: "0 0 * * *"
   workflow_dispatch:
+  push:
+    branches:
+      - claude/malaysia-rss-monitor-ob13zm
 
 permissions:
   contents: read
@@ -29,3 +32,7 @@ jobs:
 
       - name: Run RSS health check
         run: python scripts/check_rss.py
+
+      - name: TEMP probe non-RSS alternatives
+        if: always()
+        run: python scripts/_probe_alternatives.py
