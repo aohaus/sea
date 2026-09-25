@@ -4,37 +4,71 @@
       "id": "bernama",
       "name": "BERNAMA",
       "language": "en",
-      "rss_url": "https://www.bernama.com/en/rssfeed.php"
+      "rss_url": "https://www.bernama.com/en/rssfeed.php",
+      "via": "direct"
     },
     {
       "id": "malaysiakini",
       "name": "Malaysiakini",
       "language": "en",
-      "rss_url": "https://www.malaysiakini.com/rss/en/news.rss"
+      "rss_url": "https://www.malaysiakini.com/rss/en/news.rss",
+      "via": "direct"
     },
     {
       "id": "astroawani",
       "name": "Astro AWANI",
       "language": "ms",
-      "rss_url": "https://www.astroawani.com/rss.xml"
+      "rss_url": "https://www.astroawani.com/rss.xml",
+      "via": "direct"
     },
     {
       "id": "fmt",
       "name": "Free Malaysia Today",
       "language": "en",
-      "rss_url": "https://www.freemalaysiatoday.com/feed/"
+      "rss_url": "https://www.freemalaysiatoday.com/feed/",
+      "via": "direct"
     },
     {
       "id": "nst",
       "name": "New Straits Times",
       "language": "en",
-      "rss_url": "https://www.nst.com.my/feed"
+      "rss_url": "https://www.nst.com.my/feed",
+      "via": "direct"
     },
     {
       "id": "malaymail",
       "name": "Malay Mail",
       "language": "en",
-      "rss_url": "https://www.malaymail.com/feed/rss/malaysia"
+      "rss_url": "https://www.malaymail.com/feed/rss/malaysia",
+      "via": "direct"
+    },
+    {
+      "id": "thestar",
+      "name": "The Star",
+      "language": "en",
+      "rss_url": "https://news.google.com/rss/search?q=site%3Athestar.com.my%20when%3A1d&hl=en-MY&gl=MY&ceid=MY:en",
+      "via": "google_news"
+    },
+    {
+      "id": "theedge",
+      "name": "The Edge Malaysia",
+      "language": "en",
+      "rss_url": "https://news.google.com/rss/search?q=site%3Atheedgemalaysia.com%20when%3A1d&hl=en-MY&gl=MY&ceid=MY:en",
+      "via": "google_news"
+    },
+    {
+      "id": "sinchew",
+      "name": "Sin Chew Daily",
+      "language": "zh",
+      "rss_url": "https://news.google.com/rss/search?q=site%3Asinchew.com.my%20when%3A1d&hl=zh-CN&gl=MY&ceid=MY:zh-Hans",
+      "via": "google_news"
+    },
+    {
+      "id": "borneopost",
+      "name": "The Borneo Post",
+      "language": "en",
+      "rss_url": "https://news.google.com/rss/search?q=site%3Atheborneopost.com%20when%3A1d&hl=en-MY&gl=MY&ceid=MY:en",
+      "via": "google_news"
     }
   ]
 }

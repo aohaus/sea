@@ -3,10 +3,14 @@
 マレーシアの主要ニュースソースの RSS フィードを自動でヘルスチェックするツールと、
 GitHub Actions による定期監視パイプラインです。
 
-## 監視対象（動作確認済み・6件）
+## 監視対象（10件）
 
-各ソースについて、GitHub Actions のランナーから実際に RSS URL へ接続し、
-HTTP 200 応答かつ RSS/Atom としてパース可能であることを確認済みです。
+すべて GitHub Actions のランナーから実際に接続し、HTTP 200 応答かつ RSS/Atom として
+パース可能であることを確認済みです。取得経路（`via`）は2種類あります。
+
+### 直接取得（`via: direct`・6件）
+
+各サイトが配信している RSS を直接取得します。
 
 | ID | ソース | 言語 | RSS URL |
 |----|--------|------|---------|
@@ -17,23 +21,27 @@ HTTP 200 応答かつ RSS/Atom としてパース可能であることを確認�
 | `nst` | New Straits Times | en | https://www.nst.com.my/feed |
 | `malaymail` | Malay Mail | en | https://www.malaymail.com/feed/rss/malaysia |
 
-ソースの追加・変更は `config/sources.json` を編集してください（`id`, `name`, `language`, `rss_url`）。
+### Google News 経由（`via: google_news`・4件）
 
-## 未収録のソース（既知の制限事項）
+以下の4件はサイトから直接 RSS を取得できないため、Google News の検索 RSS
+（`site:<ドメイン> when:1d` = 直近24時間の同サイト記事）で代替しています。
 
-当初の要件には以下の4件も含まれていましたが、現時点で有効な RSS URL を
-特定できなかったため、監視対象から除外しています。
+| ID | ソース | 言語 | 直接取得できない理由 |
+|----|--------|------|------|
+| `thestar` | The Star | en | 指定 URL・候補 URL とも HTTP 404（公開 RSS が見つからない） |
+| `theedge` | The Edge Malaysia | en | 指定 URL・候補 URL とも HTTP 404（公開 RSS・サイトマップとも見つからない） |
+| `sinchew` | Sin Chew Daily | zh | 全 URL で HTTP 403（WAF が GitHub Actions の IP を拒否していると推定） |
+| `borneopost` | The Borneo Post | en | 全 URL で HTTP 403（同上） |
 
-| ソース | 言語 | 状況 |
-|--------|------|------|
-| The Star | en | 指定 URL・複数の候補 URL とも HTTP 404。現行の RSS URL が不明 |
-| The Edge Malaysia | en | 指定 URL・複数の候補 URL とも HTTP 404。現行の RSS URL が不明 |
-| Sin Chew Daily | zh | 全候補 URL・複数の User-Agent で HTTP 403。WAF が GitHub Actions のIPを拒否している可能性 |
-| The Borneo Post | en | 全候補 URL・複数の User-Agent で HTTP 403。WAF が GitHub Actions のIPを拒否している可能性 |
+Google News 経由のソースには次の違いがあります。
 
-正しい RSS URL が判明した場合は、`config/sources.json` にエントリを追加してください
-（`scripts/check_rss.py` の変更は不要です）。403 が続くソースについては、
-セルフホストランナーの利用や別経路でのアクセスが必要になる可能性があります。
+- **監視の意味が異なる**: 確認しているのは「Google News がそのサイトの記事を直近24時間に収録しているか」であり、サイト自身の配信状態ではありません。
+- **遅延・取りこぼし**: Google 側の収録タイミングに依存し、数十分程度の遅れや一部記事の欠落があり得ます。
+- **リンク先**: 各記事のリンクは `news.google.com` 経由のリダイレクト URL になります。
+- 各サイトが公開 RSS を再開した場合や、セルフホストランナーなどで 403 が解消できる場合は、`rss_url` を直接の URL に差し替え、`via` を `direct` に変更してください。
+
+ソースの追加・変更は `config/sources.json` を編集してください
+（`id`, `name`, `language`, `rss_url`, `via`）。`scripts/check_rss.py` の変更は不要です。
 
 ## ファイル構成
 
@@ -60,16 +68,16 @@ HTTP 200 応答かつ RSS/Atom としてパース可能であることを確認�
 出力例:
 
 ```
-===============================================================================
+============================================================================================
 Malaysia News RSS Health Check
-===============================================================================
-STATUS  ID            NAME                  LANG  HTTP   ITEMS     TIME  DETAIL
--------------------------------------------------------------------------------
-OK      bernama       BERNAMA               en    200       20    812ms
-OK      malaysiakini  Malaysiakini          en    200       10    350ms
+============================================================================================
+STATUS  ID            NAME                  LANG  VIA          HTTP   ITEMS     TIME  DETAIL
+--------------------------------------------------------------------------------------------
+OK      bernama       BERNAMA               en    direct       200       10   1506ms
+OK      thestar       The Star              en    google_news  200      100    300ms
 ...
--------------------------------------------------------------------------------
-Result: 6/6 passed, 0 failed
+--------------------------------------------------------------------------------------------
+Result: 10/10 passed, 0 failed
 ```
 
 ## ローカル実行
@@ -95,5 +103,5 @@ echo $?                          # 0 = 全件成功, 1 = 失敗あり
 - **判定**: スクリプトが終了コード `1` を返すとジョブが失敗となり、GitHub の通知設定に従って失敗通知が届きます。
 - 詳細な結果はジョブログの「Run RSS health check」ステップで確認できます。
 
-> 注意: 一部のニュースサイトは GitHub Actions ランナーのデータセンター IP を WAF でブロックする場合があります。
+> 注意: 一部のニュースサイト（Sin Chew Daily、The Borneo Post など）は GitHub Actions ランナーのデータセンター IP を WAF でブロックする場合があります。
 > 特定ソースのみ継続的に `403` となる場合は、URL の変更やセルフホストランナーの利用を検討してください。

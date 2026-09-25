@@ -32,7 +32,3 @@ jobs:
 
       - name: Run RSS health check
         run: python scripts/check_rss.py
-
-      - name: TEMP probe non-RSS alternatives
-        if: always()
-        run: python scripts/_probe_alternatives.py

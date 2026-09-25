@@ -52,6 +52,7 @@ class CheckResult:
     entries: int = 0
     elapsed_ms: int = 0
     error: str = ""
+    via: str = "direct"
 
 
 def load_sources(path: Path = CONFIG_PATH) -> list[dict]:
@@ -66,6 +67,7 @@ def check_source(session: requests.Session, source: dict) -> CheckResult:
         language=source["language"],
         url=source["rss_url"],
         ok=False,
+        via=source.get("via", "direct"),
     )
     start = time.monotonic()
     try:
@@ -104,7 +106,7 @@ def _truncate(text: str, limit: int = 60) -> str:
 
 
 def print_summary(results: list[CheckResult]) -> None:
-    header = f"{'STATUS':<8}{'ID':<14}{'NAME':<22}{'LANG':<6}{'HTTP':<6}{'ITEMS':>6}{'TIME':>9}  DETAIL"
+    header = f"{'STATUS':<8}{'ID':<14}{'NAME':<22}{'LANG':<6}{'VIA':<13}{'HTTP':<6}{'ITEMS':>6}{'TIME':>9}  DETAIL"
     line = "=" * len(header)
     print(line)
     print("Malaysia News RSS Health Check")
@@ -115,7 +117,7 @@ def print_summary(results: list[CheckResult]) -> None:
         status = "OK" if r.ok else "FAIL"
         http = str(r.status_code) if r.status_code is not None else "-"
         print(
-            f"{status:<8}{r.id:<14}{r.name:<22}{r.language:<6}{http:<6}"
+            f"{status:<8}{r.id:<14}{r.name:<22}{r.language:<6}{r.via:<13}{http:<6}"
             f"{r.entries:>6}{r.elapsed_ms:>7}ms  {_truncate(r.error)}"
         )
     print("-" * len(header))
