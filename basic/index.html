@@ -209,7 +209,7 @@
     const a = Math.abs(v);
     if (unit === 'persons') return a >= 1e8 ? num(v / 1e8, 1) + '億' : a >= 1e4 ? num(v / 1e4, 0) + '万' : num(v, 0);
     if (unit === 'USD') return a >= 1e12 ? num(v / 1e12, 1) + '兆' : a >= 1e8 ? num(v / 1e8, 0) + '億' : a >= 1e4 ? num(v / 1e4, 1) + '万' : num(v, 0);
-    if (unit === '%') return num(v, 0) + '%';
+    if (unit === '%') return num(v, 2) + '%';  // small ranges need decimals (e.g. -0.05%)
     return num(v, 1);
   }
   // Text width at 12px: full-width characters ~12px, others ~7px.
@@ -296,8 +296,9 @@
     // summary
     let agg = null, aggLabel = '選択国の合計', aggNote = '';
     if (ADDITIVE.has(ind)) {
-      agg = missing.length ? null : d3.sum(current, (r) => r.value);
-      aggNote = missing.length ? 'データのない国があるため合計を出していません（' + missing.join('、') + '）' : current.length + 'か国の単純合計';
+      agg = !selected.length || missing.length ? null : d3.sum(current, (r) => r.value);
+      aggNote = !selected.length ? '国を選んでください'
+        : missing.length ? 'データのない国があるため合計を出していません（' + missing.join('、') + '）' : current.length + 'か国の単純合計';
     } else if (ind === 'gdp_per_capita') {
       aggLabel = '選択国全体の一人当たりGDP';
       const pick = (id) => rows.filter((r) => r.indicator_id === id && r.source_id === src && r.year === year && selected.includes(r.country_code));
@@ -358,7 +359,10 @@
     const labelW = d3.max(sorted, (d) => textW(d.country_ja)) + 4;
     const valueW = d3.max(sorted, (d) => textW(fmt(d.value, unit))) + 10;
     const lo = Math.min(0, d3.min(sorted, (d) => d.value));
-    const x = d3.scaleLinear([lo, d3.max(sorted, (d) => d.value) || 1], [labelW + 8, width - valueW]);
+    // Bars start at 0, so the domain always includes 0 at both ends.
+    let hi = Math.max(0, d3.max(sorted, (d) => d.value));
+    if (hi === lo) hi = lo + 1;
+    const x = d3.scaleLinear([lo, hi], [labelW + 8, width - valueW]);
     const y = d3.scaleBand(sorted.map((d) => d.country_code), [10, height - 20]).paddingInner(0.25);
     const svg = d3.create('svg').attr('width', '100%').attr('viewBox', `0 0 ${width} ${height}`).attr('role', 'img');
     const ticks = x.ticks(4);
