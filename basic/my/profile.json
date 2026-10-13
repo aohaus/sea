@@ -1,0 +1,183 @@
+{
+  "code": "my",
+  "iso3": "MYS",
+  "name_ja": "マレーシア",
+  "name_en": "Malaysia",
+  "fields": {
+    "official_name": {
+      "label_ja": "正式国名",
+      "label_en": "Official name",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "マレーシア Malaysia",
+          "value_text": "マレーシア Malaysia",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "国・地域名",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/my/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:31+00:00",
+          "page_last_updated": "2026-08-19",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "area": {
+      "label_ja": "面積",
+      "label_en": "Area",
+      "unit": "km2",
+      "phase": 1,
+      "values": [
+        {
+          "value": 330855,
+          "value_text": "33万855平方キロメートル(日本の0.87倍)",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "面積",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/my/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:31+00:00",
+          "page_last_updated": "2026-08-19",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "capital": {
+      "label_ja": "首都",
+      "label_en": "Capital",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "クアラルンプール",
+          "value_text": "クアラルンプール 人口207万人(2025年、出所:マレーシア統計局)",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "首都",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/my/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:31+00:00",
+          "page_last_updated": "2026-08-19",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "language": {
+      "label_ja": "言語",
+      "label_en": "Languages",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "マレー語、英語、中国語、タミル語",
+          "value_text": "マレー語、英語、中国語、タミル語",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "言語",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/my/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:31+00:00",
+          "page_last_updated": "2026-08-19",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "official_language": {
+      "label_ja": "公用語",
+      "label_en": "Official language",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "マレー語",
+          "value_text": "マレー語",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "公用語",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/my/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:31+00:00",
+          "page_last_updated": "2026-08-19",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "religion": {
+      "label_ja": "宗教",
+      "label_en": "Religion",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "イスラム教63.5%、仏教18.7%、キリスト教9.1%、ヒンドゥー教6.1%など 注:割合は2020年の推計 出所:マレーシア統計局",
+          "value_text": "イスラム教63.5%、仏教18.7%、キリスト教9.1%、ヒンドゥー教6.1%など 注:割合は2020年の推計 出所:マレーシア統計局",
+          "as_of": null,
+          "original_source": "マレーシア統計局",
+          "source_label": "宗教",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/my/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:31+00:00",
+          "page_last_updated": "2026-08-19",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "ethnic_groups": {
+      "label_ja": "民族",
+      "label_en": "Ethnic groups",
+      "unit": null,
+      "phase": 1,
+      "values": []
+    },
+    "political_system": {
+      "label_ja": "政体",
+      "label_en": "Political system",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "立憲君主制",
+          "value_text": "立憲君主制",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "政体",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/my/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:31+00:00",
+          "page_last_updated": "2026-08-19",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "head_of_state": {
+      "label_ja": "元首",
+      "label_en": "Head of state",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "イブラヒム第17代国王 (2024年1月就任、任期5年、統治者会議で互選。ジョホール州スルタン)",
+          "value_text": "イブラヒム第17代国王 (2024年1月就任、任期5年、統治者会議で互選。ジョホール州スルタン)",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "元首",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/my/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:31+00:00",
+          "page_last_updated": "2026-08-19",
+          "retrieval_method": "auto"
+        }
+      ]
+    }
+  }
+}

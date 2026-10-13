@@ -1,0 +1,183 @@
+{
+  "code": "ph",
+  "iso3": "PHL",
+  "name_ja": "フィリピン",
+  "name_en": "Philippines",
+  "fields": {
+    "official_name": {
+      "label_ja": "正式国名",
+      "label_en": "Official name",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "フィリピン共和国 Republic of the Philippines",
+          "value_text": "フィリピン共和国 Republic of the Philippines",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "国・地域名",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/ph/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:37+00:00",
+          "page_last_updated": "2026-07-02",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "area": {
+      "label_ja": "面積",
+      "label_en": "Area",
+      "unit": "km2",
+      "phase": 1,
+      "values": [
+        {
+          "value": 300000,
+          "value_text": "30万平方キロメートル",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "面積",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/ph/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:37+00:00",
+          "page_last_updated": "2026-07-02",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "capital": {
+      "label_ja": "首都",
+      "label_en": "Capital",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "マニラ首都圏",
+          "value_text": "マニラ首都圏(NCR) 人口1,400万人(2024年、出所:PSA)",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "首都",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/ph/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:37+00:00",
+          "page_last_updated": "2026-07-02",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "language": {
+      "label_ja": "言語",
+      "label_en": "Languages",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "フィリピノ語、英語、セブアノ語など",
+          "value_text": "フィリピノ語、英語、セブアノ語など",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "言語",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/ph/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:37+00:00",
+          "page_last_updated": "2026-07-02",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "official_language": {
+      "label_ja": "公用語",
+      "label_en": "Official language",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "フィリピノ語、英語",
+          "value_text": "フィリピノ語、英語",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "公用語",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/ph/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:37+00:00",
+          "page_last_updated": "2026-07-02",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "religion": {
+      "label_ja": "宗教",
+      "label_en": "Religion",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "カトリック教(83%)、その他キリスト教(10%)、イスラム教(5%)など",
+          "value_text": "カトリック教(83%)、その他キリスト教(10%)、イスラム教(5%)など",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "宗教",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/ph/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:37+00:00",
+          "page_last_updated": "2026-07-02",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "ethnic_groups": {
+      "label_ja": "民族",
+      "label_en": "Ethnic groups",
+      "unit": null,
+      "phase": 1,
+      "values": []
+    },
+    "political_system": {
+      "label_ja": "政体",
+      "label_en": "Political system",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "立憲共和制",
+          "value_text": "立憲共和制",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "政体",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/ph/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:37+00:00",
+          "page_last_updated": "2026-07-02",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "head_of_state": {
+      "label_ja": "元首",
+      "label_en": "Head of state",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "フェルディナンド・マルコス大統領 (Ferdinand R. MARCOS, Jr.)(2022年5月9日の大統領選で当選、1957年9月13日生まれ)",
+          "value_text": "フェルディナンド・マルコス大統領 (Ferdinand R. MARCOS, Jr.)(2022年5月9日の大統領選で当選、1957年9月13日生まれ)",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "元首",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/ph/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:37+00:00",
+          "page_last_updated": "2026-07-02",
+          "retrieval_method": "auto"
+        }
+      ]
+    }
+  }
+}

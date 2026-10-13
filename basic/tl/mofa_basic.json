@@ -1,0 +1,84 @@
+{
+  "source_id": "mofa_basic",
+  "url": "https://www.mofa.go.jp/mofaj/area/easttimor/data.html",
+  "retrieved_at": "2026-10-13T01:19:29+00:00",
+  "retrieval_method": "manual_pdf",
+  "retrieval_note": "自動取得が HTTP 403 のため、ブラウザで保存した PDF（2026-10-13T01:19:29+00:00 作成）のテキストから抽出 / Extracted from a browser-saved PDF of the page, because automatic fetching returned HTTP 403",
+  "status": "ok",
+  "page_title": "東ティモール基礎データ",
+  "page_last_updated": "2025-11-10",
+  "tables": [
+    {
+      "section": "東ティモール民主共和国",
+      "header": [],
+      "rows": [
+        {
+          "label": "国・地域名",
+          "cells": [
+            "東ティモール民主共和国(The Democratic Republic of Timor-Leste)"
+          ]
+        }
+      ]
+    },
+    {
+      "section": "一般事情",
+      "header": [],
+      "rows": [
+        {
+          "label": "面積",
+          "cells": [
+            "約1万4,900平方キロメートル(首都4都県(東京、千葉、埼玉、神奈川)の合計面積とほぼ同じ大きさ)"
+          ]
+        },
+        {
+          "label": "人口",
+          "cells": [
+            "約139万人(出典:東ティモール政府統計(2023年))"
+          ]
+        },
+        {
+          "label": "首都",
+          "cells": [
+            "ディリ"
+          ]
+        },
+        {
+          "label": "民族",
+          "cells": [
+            "メラネシア系とパプア系が大部分を占める。その他マレー系、中華系等、ポルトガル系を主体とする欧州系及びその混血等。"
+          ]
+        },
+        {
+          "label": "言語",
+          "cells": [
+            "公用語は、テトゥン語及びポルトガル語。実用語に、インドネシア語及び英語。その他30以上の地方言語が使用されている。"
+          ]
+        },
+        {
+          "label": "宗教",
+          "cells": [
+            "キリスト教99.1%(大半がカトリック)、イスラム教0.79%"
+          ]
+        }
+      ]
+    },
+    {
+      "section": "政治体制・内政",
+      "header": [],
+      "rows": [
+        {
+          "label": "政体",
+          "cells": [
+            "共和制"
+          ]
+        },
+        {
+          "label": "元首",
+          "cells": [
+            "ジョゼ・ラモス=ホルタ大統領(任期5年:2022年5月20日~2027年5月19日)"
+          ]
+        }
+      ]
+    }
+  ]
+}

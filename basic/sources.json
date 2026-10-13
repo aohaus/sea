@@ -1,0 +1,79 @@
+{
+  "_comment": "出所台帳 / Source registry. 各データは source_id でここを参照する。url_template の {…} は countries.json の country_key の値で置き換える。parser のない出所は登録のみ（自動取得しない）。",
+  "sources": [
+    {
+      "id": "jetro_basic",
+      "publisher_ja": "日本貿易振興機構（ジェトロ）",
+      "publisher_en": "Japan External Trade Organization (JETRO)",
+      "title_ja": "国・地域別に見る「概況・基本統計」",
+      "title_en": "Country overview and basic statistics",
+      "url_template": "https://www.jetro.go.jp/world/asia/{jetro_code}/basic_01.html",
+      "type": "web_page",
+      "language": "ja",
+      "terms_url": "https://www.jetro.go.jp/legal.html",
+      "storage_policy": "抽出した値・URL・取得日のみ保存し、ページ本文の写しは保存しない / Extracted values, URL and retrieval date only; no copy of the page.",
+      "country_key": "jetro_code",
+      "parser": "tables"
+    },
+    {
+      "id": "mofa_basic",
+      "publisher_ja": "外務省",
+      "publisher_en": "Ministry of Foreign Affairs of Japan (MOFA)",
+      "title_ja": "国・地域「基礎データ」",
+      "title_en": "Countries & regions: basic data",
+      "url_template": "https://www.mofa.go.jp/mofaj/area/{mofa_code}/data.html",
+      "country_key": "mofa_code",
+      "parser": "headings",
+      "type": "web_page",
+      "language": "ja",
+      "terms_url": "https://www.mofa.go.jp/mofaj/annai/legalmatters/index.html",
+      "license": "公共データ利用規約（第1.0版）(PDL1.0)",
+      "citation_format": "出典：外務省ウェブサイト（{url}）。本データは同ページから抽出・加工したものです。",
+      "storage_policy": "抽出した値・URL・取得日のみ保存し、ページ本文の写しは保存しない / Extracted values, URL and retrieval date only; no copy of the page.",
+      "headers": "browser"
+    },
+    {
+      "id": "jetro_asean_gtir",
+      "publisher_ja": "日本貿易振興機構（ジェトロ）",
+      "publisher_en": "Japan External Trade Organization (JETRO)",
+      "title_ja": "ASEANの貿易投資年報",
+      "title_en": "ASEAN trade and investment annual report",
+      "url_template": "https://www.jetro.go.jp/world/asia/asean/gtir/",
+      "type": "web_page",
+      "language": "ja",
+      "terms_url": "https://www.jetro.go.jp/legal.html",
+      "storage_policy": "抽出した値・URL・取得日のみ保存し、ページ本文の写しは保存しない / Extracted values, URL and retrieval date only; no copy of the page."
+    },
+    {
+      "id": "worldbank_wdi",
+      "publisher_ja": "世界銀行",
+      "publisher_en": "World Bank",
+      "title_ja": "世界開発指標（WDI）",
+      "title_en": "World Development Indicators",
+      "url_template": "https://api.worldbank.org/v2/country/{iso3}/indicator/{indicator}?format=json",
+      "type": "api",
+      "language": "en",
+      "terms_url": "https://www.worldbank.org/en/about/legal/terms-of-use-for-datasets",
+      "license": "CC BY 4.0",
+      "citation_format": "出典：World Bank, World Development Indicators（{indicator}）, {url}（{retrieved_at} 取得）",
+      "storage_policy": "API の観測値（年・値）と URL・取得日を保存 / Observations (year, value) with URL and retrieval date.",
+      "auto_fetch": true
+    },
+    {
+      "id": "imf_weo",
+      "publisher_ja": "国際通貨基金（IMF）",
+      "publisher_en": "International Monetary Fund (IMF)",
+      "title_ja": "世界経済見通し（WEO）データベース（DataMapper API）",
+      "title_en": "World Economic Outlook database (DataMapper API)",
+      "url_template": "https://www.imf.org/external/datamapper/api/v1/{indicator}/{iso3}",
+      "type": "api",
+      "language": "en",
+      "terms_url": "https://www.imf.org/en/about/copyright-and-terms",
+      "citation_format": "出典：IMF, World Economic Outlook database（{indicator}）, {url}（{retrieved_at} 取得）。取得年以降の値は IMF の予測値。",
+      "storage_policy": "API の観測値（年・値）と URL・取得日を保存 / Observations (year, value) with URL and retrieval date.",
+      "license": "All Rights Reserved（データは出典明記で利用可。商用再利用・自動技術による一括取得は IMF の許可が必要）",
+      "auto_fetch": false,
+      "auto_fetch_note": "IMF の利用条件が自動技術による一括ダウンロードと商用再利用に許可を求めているため、許可を得るまで自動取得しない / Disabled until permission: IMF terms require permission for automated bulk download and commercial reuse."
+    }
+  ]
+}

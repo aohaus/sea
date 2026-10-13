@@ -1,0 +1,63 @@
+name: Fetch basic country data
+
+on:
+  # Monthly refresh: 1st of each month at 01:00 UTC (10:00 JST)
+  schedule:
+    - cron: "0 1 1 * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/fetch_basic.py"
+      - "scripts/fetch_indicators.py"
+      - "scripts/build_dataset.py"
+      - "basic/reference/ajc_*.json"
+      - "basic/countries.json"
+      - "basic/sources.json"
+      - "basic/schema/**"
+      - ".github/workflows/fetch-basic.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-basic-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    name: Fetch basic statistics and indicators
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch and build profiles
+        run: python scripts/fetch_basic.py
+
+      - name: Fetch and build economic indicators
+        run: python scripts/fetch_indicators.py
+
+      - name: Build dataset and validate against references
+        run: python scripts/build_dataset.py
+
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add basic/
+          if git diff --cached --quiet; then
+            echo "No data changes."
+          else
+            git commit -m "data(basic): update basic statistics"
+            git push
+          fi

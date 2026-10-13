@@ -1,0 +1,312 @@
+{
+  "_comment": "検証用の参照値 / Reference figures for validation only. 日本アセアンセンター「ひと目で分かる日ASEAN基本情報」（ASEAN-Japan at a Glance）から、照合に使う数値だけを転記。ページ自体は All Rights Reserved のため本文は保存しない。",
+  "reference_id": "ajc_at_a_glance",
+  "publisher_ja": "日本アセアンセンター（国際機関 日本アセアンセンター / ASEAN Promotion Centre on Trade, Investment and Tourism）",
+  "publisher_en": "ASEAN-Japan Centre (ASEAN Promotion Centre on Trade, Investment and Tourism)",
+  "title_ja": "ひと目で分かる日ASEAN基本情報",
+  "title_en": "ASEAN-Japan at a Glance",
+  "url": null,
+  "url_note": "ユーザーが PDF（日本語版・英語版）で提供。ページ URL は未記録 / Provided by the user as PDFs (JA/EN); page URL not recorded.",
+  "retrieved_at": "2026-10-13T01:24:42+00:00",
+  "retrieval_method": "manual_pdf",
+  "note": "人口・GDP は 2024年推計。名目GDP は2024年時点のため東ティモールを含まない。一人当たりGDP は IMF の GDP と世界銀行の人口から日本アセアンセンターが算出。",
+  "figures": [
+    {
+      "id": "asean_area",
+      "field": "area",
+      "year": null,
+      "scope": [
+        "bn",
+        "kh",
+        "id",
+        "la",
+        "my",
+        "mm",
+        "ph",
+        "sg",
+        "th",
+        "vn"
+      ],
+      "value": 4450000.0,
+      "value_text": "約445万km2",
+      "approx": true,
+      "cited_source": "ASEAN事務局、総務省"
+    },
+    {
+      "id": "japan_area",
+      "field": "area",
+      "year": null,
+      "scope": [
+        "jp"
+      ],
+      "value": 380000.0,
+      "value_text": "約38万km2",
+      "approx": true,
+      "cited_source": "ASEAN事務局、総務省"
+    },
+    {
+      "id": "asean_population",
+      "field": "population",
+      "year": 2024,
+      "scope": [
+        "bn",
+        "kh",
+        "id",
+        "la",
+        "my",
+        "mm",
+        "ph",
+        "sg",
+        "th",
+        "vn"
+      ],
+      "value": 694000000.0,
+      "value_text": "約6億9400万人",
+      "approx": true,
+      "cited_source": "世界銀行"
+    },
+    {
+      "id": "japan_population",
+      "field": "population",
+      "year": 2024,
+      "scope": [
+        "jp"
+      ],
+      "value": 124000000.0,
+      "value_text": "約1億2400万人",
+      "approx": true,
+      "cited_source": "世界銀行"
+    },
+    {
+      "id": "asean_gdp",
+      "field": "gdp_nominal",
+      "year": 2024,
+      "scope": [
+        "bn",
+        "kh",
+        "id",
+        "la",
+        "my",
+        "mm",
+        "ph",
+        "sg",
+        "th",
+        "vn"
+      ],
+      "value": 3952600000000.0,
+      "value_text": "約3兆9526億USドル",
+      "approx": true,
+      "cited_source": "IMF"
+    },
+    {
+      "id": "japan_gdp",
+      "field": "gdp_nominal",
+      "year": 2024,
+      "scope": [
+        "jp"
+      ],
+      "value": 4019400000000.0,
+      "value_text": "約4兆0194億USドル",
+      "approx": true,
+      "cited_source": "IMF"
+    },
+    {
+      "id": "asean_gdp_per_capita",
+      "field": "gdp_per_capita",
+      "year": 2024,
+      "scope": [
+        "bn",
+        "kh",
+        "id",
+        "la",
+        "my",
+        "mm",
+        "ph",
+        "sg",
+        "th",
+        "vn"
+      ],
+      "aggregate": "ratio:gdp_nominal/population",
+      "value": 5696,
+      "value_text": "約5,696 USドル",
+      "approx": true,
+      "cited_source": "IMF（GDP）、世界銀行（人口）を基に日本アセアンセンター作成"
+    },
+    {
+      "id": "japan_gdp_per_capita",
+      "field": "gdp_per_capita",
+      "year": 2024,
+      "scope": [
+        "jp"
+      ],
+      "value": 32421,
+      "value_text": "約32,421 USドル",
+      "approx": true,
+      "cited_source": "IMF（GDP）、世界銀行（人口）"
+    },
+    {
+      "id": "asean_gdp_per_capita_2004",
+      "field": "gdp_per_capita",
+      "year": 2004,
+      "scope": [
+        "bn",
+        "kh",
+        "id",
+        "la",
+        "my",
+        "mm",
+        "ph",
+        "sg",
+        "th",
+        "vn"
+      ],
+      "aggregate": "ratio:gdp_nominal/population",
+      "value": 1599,
+      "value_text": "約1,599 USドル（2004年）",
+      "approx": true,
+      "cited_source": "IMF（GDP）、世界銀行（人口）を基に日本アセアンセンター作成"
+    },
+    {
+      "id": "asean_gdp_per_capita_2014",
+      "field": "gdp_per_capita",
+      "year": 2014,
+      "scope": [
+        "bn",
+        "kh",
+        "id",
+        "la",
+        "my",
+        "mm",
+        "ph",
+        "sg",
+        "th",
+        "vn"
+      ],
+      "aggregate": "ratio:gdp_nominal/population",
+      "value": 4108,
+      "value_text": "約4,108 USドル（2014年）",
+      "approx": true,
+      "cited_source": "IMF（GDP）、世界銀行（人口）を基に日本アセアンセンター作成"
+    },
+    {
+      "id": "bn_gdp_per_capita",
+      "field": "gdp_per_capita",
+      "year": 2024,
+      "scope": [
+        "bn"
+      ],
+      "value": 33418,
+      "value_text": "約33,418 USドル",
+      "approx": true,
+      "cited_source": "IMF（GDP）、世界銀行（人口）を基に日本アセアンセンター作成"
+    },
+    {
+      "id": "kh_gdp_per_capita",
+      "field": "gdp_per_capita",
+      "year": 2024,
+      "scope": [
+        "kh"
+      ],
+      "value": 2613,
+      "value_text": "約2,613 USドル",
+      "approx": true,
+      "cited_source": "IMF（GDP）、世界銀行（人口）を基に日本アセアンセンター作成"
+    },
+    {
+      "id": "id_gdp_per_capita",
+      "field": "gdp_per_capita",
+      "year": 2024,
+      "scope": [
+        "id"
+      ],
+      "value": 4925,
+      "value_text": "約4,925 USドル",
+      "approx": true,
+      "cited_source": "IMF（GDP）、世界銀行（人口）を基に日本アセアンセンター作成"
+    },
+    {
+      "id": "la_gdp_per_capita",
+      "field": "gdp_per_capita",
+      "year": 2024,
+      "scope": [
+        "la"
+      ],
+      "value": 2047,
+      "value_text": "約2,047 USドル",
+      "approx": true,
+      "cited_source": "IMF（GDP）、世界銀行（人口）を基に日本アセアンセンター作成"
+    },
+    {
+      "id": "my_gdp_per_capita",
+      "field": "gdp_per_capita",
+      "year": 2024,
+      "scope": [
+        "my"
+      ],
+      "value": 11874,
+      "value_text": "約11,874 USドル",
+      "approx": true,
+      "cited_source": "IMF（GDP）、世界銀行（人口）を基に日本アセアンセンター作成"
+    },
+    {
+      "id": "mm_gdp_per_capita",
+      "field": "gdp_per_capita",
+      "year": 2024,
+      "scope": [
+        "mm"
+      ],
+      "value": 1131,
+      "value_text": "約1,131 USドル",
+      "approx": true,
+      "cited_source": "IMF（GDP）、世界銀行（人口）を基に日本アセアンセンター作成"
+    },
+    {
+      "id": "ph_gdp_per_capita",
+      "field": "gdp_per_capita",
+      "year": 2024,
+      "scope": [
+        "ph"
+      ],
+      "value": 3985,
+      "value_text": "約3,985 USドル",
+      "approx": true,
+      "cited_source": "IMF（GDP）、世界銀行（人口）を基に日本アセアンセンター作成"
+    },
+    {
+      "id": "sg_gdp_per_capita",
+      "field": "gdp_per_capita",
+      "year": 2024,
+      "scope": [
+        "sg"
+      ],
+      "value": 90674,
+      "value_text": "約90,674 USドル",
+      "approx": true,
+      "cited_source": "IMF（GDP）、世界銀行（人口）を基に日本アセアンセンター作成"
+    },
+    {
+      "id": "th_gdp_per_capita",
+      "field": "gdp_per_capita",
+      "year": 2024,
+      "scope": [
+        "th"
+      ],
+      "value": 7347,
+      "value_text": "約7,347 USドル",
+      "approx": true,
+      "cited_source": "IMF（GDP）、世界銀行（人口）を基に日本アセアンセンター作成"
+    },
+    {
+      "id": "vn_gdp_per_capita",
+      "field": "gdp_per_capita",
+      "year": 2024,
+      "scope": [
+        "vn"
+      ],
+      "value": 4550,
+      "value_text": "約4,550 USドル",
+      "approx": true,
+      "cited_source": "IMF（GDP）、世界銀行（人口）を基に日本アセアンセンター作成"
+    }
+  ]
+}

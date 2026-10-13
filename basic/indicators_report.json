@@ -1,0 +1,364 @@
+{
+  "errors": {
+    "worldbank_wdi": []
+  },
+  "countries": [
+    {
+      "code": "bn",
+      "coverage": {
+        "population": [
+          "worldbank_wdi",
+          "mofa_basic"
+        ],
+        "gdp_nominal": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita": [
+          "worldbank_wdi"
+        ],
+        "gdp_growth_real": [
+          "worldbank_wdi"
+        ],
+        "inflation_cpi": [
+          "worldbank_wdi"
+        ],
+        "unemployment": [
+          "worldbank_wdi"
+        ],
+        "fdi_inflow": [
+          "worldbank_wdi"
+        ]
+      }
+    },
+    {
+      "code": "kh",
+      "coverage": {
+        "population": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "gdp_nominal": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "gdp_growth_real": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "inflation_cpi": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "unemployment": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "fdi_inflow": [
+          "worldbank_wdi"
+        ]
+      }
+    },
+    {
+      "code": "id",
+      "coverage": {
+        "population": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "gdp_nominal": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "gdp_growth_real": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "inflation_cpi": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "unemployment": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "fdi_inflow": [
+          "worldbank_wdi"
+        ]
+      }
+    },
+    {
+      "code": "la",
+      "coverage": {
+        "population": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "gdp_nominal": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "gdp_growth_real": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "inflation_cpi": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "unemployment": [
+          "worldbank_wdi"
+        ],
+        "fdi_inflow": [
+          "worldbank_wdi"
+        ]
+      }
+    },
+    {
+      "code": "my",
+      "coverage": {
+        "population": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "gdp_nominal": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "gdp_growth_real": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "inflation_cpi": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "unemployment": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "fdi_inflow": [
+          "worldbank_wdi"
+        ]
+      }
+    },
+    {
+      "code": "mm",
+      "coverage": {
+        "population": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "gdp_nominal": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "gdp_growth_real": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "inflation_cpi": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "unemployment": [
+          "worldbank_wdi"
+        ],
+        "fdi_inflow": [
+          "worldbank_wdi"
+        ]
+      }
+    },
+    {
+      "code": "ph",
+      "coverage": {
+        "population": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "gdp_nominal": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "gdp_growth_real": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "inflation_cpi": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "unemployment": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "fdi_inflow": [
+          "worldbank_wdi"
+        ]
+      }
+    },
+    {
+      "code": "sg",
+      "coverage": {
+        "population": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "gdp_nominal": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "gdp_growth_real": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "inflation_cpi": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "unemployment": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "fdi_inflow": [
+          "worldbank_wdi"
+        ]
+      }
+    },
+    {
+      "code": "th",
+      "coverage": {
+        "population": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "gdp_nominal": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "gdp_growth_real": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "inflation_cpi": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "unemployment": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "fdi_inflow": [
+          "worldbank_wdi"
+        ]
+      }
+    },
+    {
+      "code": "tl",
+      "coverage": {
+        "population": [
+          "worldbank_wdi",
+          "mofa_basic"
+        ],
+        "gdp_nominal": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita": [
+          "worldbank_wdi"
+        ],
+        "gdp_growth_real": [
+          "worldbank_wdi"
+        ],
+        "inflation_cpi": [
+          "worldbank_wdi"
+        ],
+        "unemployment": [
+          "worldbank_wdi"
+        ],
+        "fdi_inflow": [
+          "worldbank_wdi"
+        ]
+      }
+    },
+    {
+      "code": "vn",
+      "coverage": {
+        "population": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "gdp_nominal": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "gdp_growth_real": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "inflation_cpi": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "unemployment": [
+          "worldbank_wdi",
+          "jetro_basic"
+        ],
+        "fdi_inflow": [
+          "worldbank_wdi"
+        ]
+      }
+    },
+    {
+      "code": "jp",
+      "coverage": {
+        "population": [
+          "worldbank_wdi"
+        ],
+        "gdp_nominal": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita": [
+          "worldbank_wdi"
+        ],
+        "gdp_growth_real": [
+          "worldbank_wdi"
+        ],
+        "inflation_cpi": [
+          "worldbank_wdi"
+        ],
+        "unemployment": [
+          "worldbank_wdi"
+        ],
+        "fdi_inflow": [
+          "worldbank_wdi"
+        ]
+      }
+    }
+  ]
+}

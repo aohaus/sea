@@ -1,0 +1,663 @@
+{
+  "source_id": "jetro_basic",
+  "url": "https://www.jetro.go.jp/world/asia/la/basic_01.html",
+  "retrieved_at": "2026-10-13T01:06:27+00:00",
+  "http_status": 200,
+  "final_url": "https://www.jetro.go.jp/world/asia/la/basic_01.html",
+  "status": "ok",
+  "page_title": "概況・基本統計 | ラオス - アジア - 国・地域別に見る - ジェトロ",
+  "page_last_updated": "2026-06-19",
+  "tables": [
+    {
+      "section": "一般的事項",
+      "header": [],
+      "rows": [
+        {
+          "label": "国・地域名",
+          "cells": [
+            "ラオス人民民主共和国 Lao People’s Democratic Republic"
+          ]
+        },
+        {
+          "label": "面積",
+          "cells": [
+            "23万6,800平方キロメートル(ほぼ本州の面積、出所:ラオス統計局)"
+          ]
+        },
+        {
+          "label": "人口",
+          "cells": [
+            "775万人(2025年、出所:ラオス統計センター)"
+          ]
+        },
+        {
+          "label": "首都",
+          "cells": [
+            "ビエンチャン 人口:105万人(2025年、出所:ラオス統計センター)"
+          ]
+        },
+        {
+          "label": "言語",
+          "cells": [
+            "ラオス語(公用語)"
+          ]
+        },
+        {
+          "label": "宗教",
+          "cells": [
+            "上座部仏教、精霊信仰など"
+          ]
+        },
+        {
+          "label": "民族",
+          "cells": [
+            "ラオ族をはじめ計50民族"
+          ]
+        }
+      ]
+    },
+    {
+      "section": "政治体制",
+      "header": [
+        "役職",
+        "名前-日本語表記(名前-英字表記)"
+      ],
+      "rows": [
+        {
+          "label": "政体",
+          "cells": [
+            "人民民主共和制"
+          ]
+        },
+        {
+          "label": "元首",
+          "cells": [
+            "トンルン・シースリット Dr.Thongloun SISOULITH 国家主席(ラオス人民革命党書記長)"
+          ]
+        },
+        {
+          "label": "議会制度",
+          "cells": [
+            "一院制"
+          ]
+        },
+        {
+          "label": "議会概要",
+          "cells": [
+            "定員数:175議席、任期:通常5年、2026年2月に第10期国民議会選挙実施"
+          ]
+        },
+        {
+          "label": "内閣(主要閣僚)",
+          "cells": [
+            "役職 名前-日本語表記(名前-英字表記) 首相 ソーンサイ・シーパンドン(Dr. Sonexay SIPHANDONE) 常任副首相 サルムサイ・コンマシット(Saleumxai KOMMASITH) 副首相 兼 司法相 カムパン・ポムマタット(Khamphan PHOMMATHAD) 副首相 兼 教育スポーツ相 トンサリット・マンモメック(Dr. Thongsalith MANGNOMEK) 副首相 兼 国防相 カムリアン・ウッタカイソーン大将(General Khamlieng OUTHAKAYSONE) 副首相 兼 財務相 サンティパープ・ポムヴィハーン(Santiphap PHOMVIHANE) 副首相 兼 外務相 トンサワン・ポムヴィハーン(Thongsavanh PHOMVIHANE) 中央銀行総裁 ブンカム・ヴォーラチット(Bounkham VORACHIT) 治安維持相 ワントン・コンマニー中将(Lieutenant General Vangthong KONGMANY) 首相府相 兼 首相府長官 ブアコン・ナムマヴォン(Bouakhong NAMMAVONG) 保健相 バイカム・カッティニャ(Baikham KHATTIYA) 文化観光相 スワンサワン・ヴィニャケート(Suansavanh VIYAKET) 労働社会福祉相 ポーサイ・サイニャソーン(Phoxay SAYASONE) 公共事業運輸相 レックライ・シヴィライ(Leklay SIVILAY) 商工相 マライトーン・コンマシット(Malaithong KOMMASITH) 農業環境相 リンカム・ドゥアンサワン(Dr. Linkham DUANGSAVANH) 技術通信相 サンティスック・シムマラーヴォン(Dr.Santisuk SIMMALAVONG) (2026年6月現在。出所:ラオス政府)",
+            "役職",
+            "名前-日本語表記(名前-英字表記)",
+            "首相",
+            "ソーンサイ・シーパンドン(Dr. Sonexay SIPHANDONE)",
+            "常任副首相",
+            "サルムサイ・コンマシット(Saleumxai KOMMASITH)",
+            "副首相 兼 司法相",
+            "カムパン・ポムマタット(Khamphan PHOMMATHAD)",
+            "副首相 兼 教育スポーツ相",
+            "トンサリット・マンモメック(Dr. Thongsalith MANGNOMEK)",
+            "副首相 兼 国防相",
+            "カムリアン・ウッタカイソーン大将(General Khamlieng OUTHAKAYSONE)",
+            "副首相 兼 財務相",
+            "サンティパープ・ポムヴィハーン(Santiphap PHOMVIHANE)",
+            "副首相 兼 外務相",
+            "トンサワン・ポムヴィハーン(Thongsavanh PHOMVIHANE)",
+            "中央銀行総裁",
+            "ブンカム・ヴォーラチット(Bounkham VORACHIT)",
+            "治安維持相",
+            "ワントン・コンマニー中将(Lieutenant General Vangthong KONGMANY)",
+            "首相府相 兼 首相府長官",
+            "ブアコン・ナムマヴォン(Bouakhong NAMMAVONG)",
+            "保健相",
+            "バイカム・カッティニャ(Baikham KHATTIYA)",
+            "文化観光相",
+            "スワンサワン・ヴィニャケート(Suansavanh VIYAKET)",
+            "労働社会福祉相",
+            "ポーサイ・サイニャソーン(Phoxay SAYASONE)",
+            "公共事業運輸相",
+            "レックライ・シヴィライ(Leklay SIVILAY)",
+            "商工相",
+            "マライトーン・コンマシット(Malaithong KOMMASITH)",
+            "農業環境相",
+            "リンカム・ドゥアンサワン(Dr. Linkham DUANGSAVANH)",
+            "技術通信相",
+            "サンティスック・シムマラーヴォン(Dr.Santisuk SIMMALAVONG)"
+          ]
+        },
+        {
+          "label": "首相",
+          "cells": [
+            "ソーンサイ・シーパンドン(Dr. Sonexay SIPHANDONE)"
+          ]
+        },
+        {
+          "label": "常任副首相",
+          "cells": [
+            "サルムサイ・コンマシット(Saleumxai KOMMASITH)"
+          ]
+        },
+        {
+          "label": "副首相 兼 司法相",
+          "cells": [
+            "カムパン・ポムマタット(Khamphan PHOMMATHAD)"
+          ]
+        },
+        {
+          "label": "副首相 兼 教育スポーツ相",
+          "cells": [
+            "トンサリット・マンモメック(Dr. Thongsalith MANGNOMEK)"
+          ]
+        },
+        {
+          "label": "副首相 兼 国防相",
+          "cells": [
+            "カムリアン・ウッタカイソーン大将(General Khamlieng OUTHAKAYSONE)"
+          ]
+        },
+        {
+          "label": "副首相 兼 財務相",
+          "cells": [
+            "サンティパープ・ポムヴィハーン(Santiphap PHOMVIHANE)"
+          ]
+        },
+        {
+          "label": "副首相 兼 外務相",
+          "cells": [
+            "トンサワン・ポムヴィハーン(Thongsavanh PHOMVIHANE)"
+          ]
+        },
+        {
+          "label": "中央銀行総裁",
+          "cells": [
+            "ブンカム・ヴォーラチット(Bounkham VORACHIT)"
+          ]
+        },
+        {
+          "label": "治安維持相",
+          "cells": [
+            "ワントン・コンマニー中将(Lieutenant General Vangthong KONGMANY)"
+          ]
+        },
+        {
+          "label": "首相府相 兼 首相府長官",
+          "cells": [
+            "ブアコン・ナムマヴォン(Bouakhong NAMMAVONG)"
+          ]
+        },
+        {
+          "label": "保健相",
+          "cells": [
+            "バイカム・カッティニャ(Baikham KHATTIYA)"
+          ]
+        },
+        {
+          "label": "文化観光相",
+          "cells": [
+            "スワンサワン・ヴィニャケート(Suansavanh VIYAKET)"
+          ]
+        },
+        {
+          "label": "労働社会福祉相",
+          "cells": [
+            "ポーサイ・サイニャソーン(Phoxay SAYASONE)"
+          ]
+        },
+        {
+          "label": "公共事業運輸相",
+          "cells": [
+            "レックライ・シヴィライ(Leklay SIVILAY)"
+          ]
+        },
+        {
+          "label": "商工相",
+          "cells": [
+            "マライトーン・コンマシット(Malaithong KOMMASITH)"
+          ]
+        },
+        {
+          "label": "農業環境相",
+          "cells": [
+            "リンカム・ドゥアンサワン(Dr. Linkham DUANGSAVANH)"
+          ]
+        },
+        {
+          "label": "技術通信相",
+          "cells": [
+            "サンティスック・シムマラーヴォン(Dr.Santisuk SIMMALAVONG)"
+          ]
+        }
+      ]
+    },
+    {
+      "section": "政治体制",
+      "header": [
+        "役職",
+        "名前-日本語表記(名前-英字表記)"
+      ],
+      "rows": [
+        {
+          "label": "首相",
+          "cells": [
+            "ソーンサイ・シーパンドン(Dr. Sonexay SIPHANDONE)"
+          ]
+        },
+        {
+          "label": "常任副首相",
+          "cells": [
+            "サルムサイ・コンマシット(Saleumxai KOMMASITH)"
+          ]
+        },
+        {
+          "label": "副首相 兼 司法相",
+          "cells": [
+            "カムパン・ポムマタット(Khamphan PHOMMATHAD)"
+          ]
+        },
+        {
+          "label": "副首相 兼 教育スポーツ相",
+          "cells": [
+            "トンサリット・マンモメック(Dr. Thongsalith MANGNOMEK)"
+          ]
+        },
+        {
+          "label": "副首相 兼 国防相",
+          "cells": [
+            "カムリアン・ウッタカイソーン大将(General Khamlieng OUTHAKAYSONE)"
+          ]
+        },
+        {
+          "label": "副首相 兼 財務相",
+          "cells": [
+            "サンティパープ・ポムヴィハーン(Santiphap PHOMVIHANE)"
+          ]
+        },
+        {
+          "label": "副首相 兼 外務相",
+          "cells": [
+            "トンサワン・ポムヴィハーン(Thongsavanh PHOMVIHANE)"
+          ]
+        },
+        {
+          "label": "中央銀行総裁",
+          "cells": [
+            "ブンカム・ヴォーラチット(Bounkham VORACHIT)"
+          ]
+        },
+        {
+          "label": "治安維持相",
+          "cells": [
+            "ワントン・コンマニー中将(Lieutenant General Vangthong KONGMANY)"
+          ]
+        },
+        {
+          "label": "首相府相 兼 首相府長官",
+          "cells": [
+            "ブアコン・ナムマヴォン(Bouakhong NAMMAVONG)"
+          ]
+        },
+        {
+          "label": "保健相",
+          "cells": [
+            "バイカム・カッティニャ(Baikham KHATTIYA)"
+          ]
+        },
+        {
+          "label": "文化観光相",
+          "cells": [
+            "スワンサワン・ヴィニャケート(Suansavanh VIYAKET)"
+          ]
+        },
+        {
+          "label": "労働社会福祉相",
+          "cells": [
+            "ポーサイ・サイニャソーン(Phoxay SAYASONE)"
+          ]
+        },
+        {
+          "label": "公共事業運輸相",
+          "cells": [
+            "レックライ・シヴィライ(Leklay SIVILAY)"
+          ]
+        },
+        {
+          "label": "商工相",
+          "cells": [
+            "マライトーン・コンマシット(Malaithong KOMMASITH)"
+          ]
+        },
+        {
+          "label": "農業環境相",
+          "cells": [
+            "リンカム・ドゥアンサワン(Dr. Linkham DUANGSAVANH)"
+          ]
+        },
+        {
+          "label": "技術通信相",
+          "cells": [
+            "サンティスック・シムマラーヴォン(Dr.Santisuk SIMMALAVONG)"
+          ]
+        }
+      ]
+    },
+    {
+      "section": "基礎的経済指標",
+      "header": [
+        "項目",
+        "単位",
+        "2023年",
+        "2024年",
+        "2025年"
+      ],
+      "rows": [
+        {
+          "label": "実質GDP成長率",
+          "cells": [
+            "(%)",
+            "3.7",
+            "4.0",
+            "4.4"
+          ]
+        },
+        {
+          "label": "1人当たりGDP",
+          "cells": [
+            "(米ドル)",
+            "1,977",
+            "2,055",
+            "2,288"
+          ]
+        },
+        {
+          "label": "消費者物価上昇率",
+          "cells": [
+            "(%)",
+            "31.2",
+            "23.1",
+            "7.7"
+          ]
+        },
+        {
+          "label": "失業率",
+          "cells": [
+            "(%)",
+            "n.a.",
+            "n.a.",
+            "n.a."
+          ]
+        },
+        {
+          "label": "貿易収支",
+          "cells": [
+            "(100万米ドル)",
+            "1,180",
+            "1,538",
+            "2,584"
+          ]
+        },
+        {
+          "label": "経常収支",
+          "cells": [
+            "(GDP比、%)",
+            "2.7",
+            "4.3",
+            "11.4"
+          ]
+        },
+        {
+          "label": "外貨準備高(グロス)",
+          "cells": [
+            "(100万米ドル)",
+            "1,770",
+            "2,213",
+            "n.a."
+          ]
+        },
+        {
+          "label": "公共・公的保証債務残高(グロス)",
+          "cells": [
+            "(GDP比、%)",
+            "116",
+            "94",
+            "92"
+          ]
+        },
+        {
+          "label": "為替レート",
+          "cells": [
+            "(1米ドルにつき、ラオス・キープ、期中平均)",
+            "17,689",
+            "20,167",
+            "n.a."
+          ]
+        }
+      ]
+    },
+    {
+      "section": "日本との関係",
+      "header": [
+        "年",
+        "日本の輸出(A)",
+        "日本の輸入(B)",
+        "収支(A-B)"
+      ],
+      "rows": [
+        {
+          "label": "日本との貿易(通関ベース)(百万ドル)",
+          "cells": [
+            "年 日本の輸出(A) 日本の輸入(B) 収支(A-B) 2021 129 130 △1 2022 102 189 △87 2023 115 165 △50 2024 97 159 △62 2025 117 172 △55 出所:Global Trade Atlas(GTA)からジェトロ作成",
+            "年",
+            "日本の輸出(A)",
+            "日本の輸入(B)",
+            "収支(A-B)",
+            "2021",
+            "129",
+            "130",
+            "△1",
+            "2022",
+            "102",
+            "189",
+            "△87",
+            "2023",
+            "115",
+            "165",
+            "△50",
+            "2024",
+            "97",
+            "159",
+            "△62",
+            "2025",
+            "117",
+            "172",
+            "△55"
+          ]
+        },
+        {
+          "label": "2021",
+          "cells": [
+            "129",
+            "130",
+            "△1"
+          ]
+        },
+        {
+          "label": "2022",
+          "cells": [
+            "102",
+            "189",
+            "△87"
+          ]
+        },
+        {
+          "label": "2023",
+          "cells": [
+            "115",
+            "165",
+            "△50"
+          ]
+        },
+        {
+          "label": "2024",
+          "cells": [
+            "97",
+            "159",
+            "△62"
+          ]
+        },
+        {
+          "label": "2025",
+          "cells": [
+            "117",
+            "172",
+            "△55"
+          ]
+        },
+        {
+          "label": "日本の主要輸出品目",
+          "cells": [
+            "輸送用機器(49.5%) 一般機械(10.3%) 電気機器(5.3%) 人造繊維の短繊維・織物(4.6%) プラスチック・同製品(3.8%) 備考:2025年、カッコ内は構成比 出所:同上"
+          ]
+        },
+        {
+          "label": "日本の主要輸入品目",
+          "cells": [
+            "電気機器(12.4%) 衣類・同付属品(布帛類)(12.2%) 木材・同製品(12.0%) 履物類(11.5%) 果実(9.1%) 備考:2025年、カッコ内は構成比 出所:同上"
+          ]
+        },
+        {
+          "label": "日系企業進出状況",
+          "cells": [
+            "計110社(2025年6月現在) 備考:ラオス日本人商工会議所会員数(正会員 81社 準会員 27社) 出所:ラオス日本人商工会議所"
+          ]
+        },
+        {
+          "label": "在留邦人",
+          "cells": [
+            "621人(2025年10月1日現在) 出所:外務省「海外在留邦人数調査統計」"
+          ]
+        },
+        {
+          "label": "二国間協定",
+          "cells": [
+            "日・ラオス投資協定(2008年1月署名、2008年8月発効)"
+          ]
+        }
+      ]
+    },
+    {
+      "section": "日本との関係",
+      "header": [
+        "年",
+        "日本の輸出(A)",
+        "日本の輸入(B)",
+        "収支(A-B)"
+      ],
+      "rows": [
+        {
+          "label": "2021",
+          "cells": [
+            "129",
+            "130",
+            "△1"
+          ]
+        },
+        {
+          "label": "2022",
+          "cells": [
+            "102",
+            "189",
+            "△87"
+          ]
+        },
+        {
+          "label": "2023",
+          "cells": [
+            "115",
+            "165",
+            "△50"
+          ]
+        },
+        {
+          "label": "2024",
+          "cells": [
+            "97",
+            "159",
+            "△62"
+          ]
+        },
+        {
+          "label": "2025",
+          "cells": [
+            "117",
+            "172",
+            "△55"
+          ]
+        }
+      ]
+    },
+    {
+      "section": "海外ビジネス情報",
+      "header": [],
+      "rows": [
+        {
+          "label": "ビジネスニュース・レポート",
+          "cells": [
+            "ビジネス短信"
+          ]
+        }
+      ]
+    },
+    {
+      "section": "海外ビジネス情報",
+      "header": [],
+      "rows": [
+        {
+          "label": "各国の制度・手続き",
+          "cells": [
+            "輸出入に関する基本的な制度"
+          ]
+        },
+        {
+          "label": "統計",
+          "cells": [
+            "統計ナビ"
+          ]
+        }
+      ]
+    },
+    {
+      "section": "海外ビジネス情報",
+      "header": [],
+      "rows": [
+        {
+          "label": "イベント情報",
+          "cells": [
+            "イベント一覧"
+          ]
+        },
+        {
+          "label": "引き合い案件情報",
+          "cells": [
+            "e-Venue(国際ビジネスマッチングサイト)"
+          ]
+        }
+      ]
+    },
+    {
+      "section": "海外ビジネス情報",
+      "header": [],
+      "rows": [
+        {
+          "label": "特集",
+          "cells": [
+            "米国関税措置への対応"
+          ]
+        }
+      ]
+    }
+  ]
+}

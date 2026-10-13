@@ -1,0 +1,952 @@
+{
+  "code": "sg",
+  "iso3": "SGP",
+  "name_ja": "シンガポール",
+  "name_en": "Singapore",
+  "indicators": {
+    "population": {
+      "label_ja": "人口",
+      "label_en": "Population",
+      "unit": "persons",
+      "series": [
+        {
+          "source_id": "worldbank_wdi",
+          "indicator_code": "SP.POP.TOTL",
+          "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/SP.POP.TOTL?format=json&per_page=20000&date=2000:2031",
+          "retrieved_at": "2026-10-13T01:29:23+00:00",
+          "source_last_updated": "2026-10-08",
+          "observations": [
+            {
+              "year": 2000,
+              "value": 4027887
+            },
+            {
+              "year": 2001,
+              "value": 4138012
+            },
+            {
+              "year": 2002,
+              "value": 4175950
+            },
+            {
+              "year": 2003,
+              "value": 4114826
+            },
+            {
+              "year": 2004,
+              "value": 4166664
+            },
+            {
+              "year": 2005,
+              "value": 4265762
+            },
+            {
+              "year": 2006,
+              "value": 4401365
+            },
+            {
+              "year": 2007,
+              "value": 4588599
+            },
+            {
+              "year": 2008,
+              "value": 4839396
+            },
+            {
+              "year": 2009,
+              "value": 4987573
+            },
+            {
+              "year": 2010,
+              "value": 5076732
+            },
+            {
+              "year": 2011,
+              "value": 5183688
+            },
+            {
+              "year": 2012,
+              "value": 5312437
+            },
+            {
+              "year": 2013,
+              "value": 5399162
+            },
+            {
+              "year": 2014,
+              "value": 5469724
+            },
+            {
+              "year": 2015,
+              "value": 5535002
+            },
+            {
+              "year": 2016,
+              "value": 5607283
+            },
+            {
+              "year": 2017,
+              "value": 5612253
+            },
+            {
+              "year": 2018,
+              "value": 5638676
+            },
+            {
+              "year": 2019,
+              "value": 5703569
+            },
+            {
+              "year": 2020,
+              "value": 5685807
+            },
+            {
+              "year": 2021,
+              "value": 5453566
+            },
+            {
+              "year": 2022,
+              "value": 5637022
+            },
+            {
+              "year": 2023,
+              "value": 5917648
+            },
+            {
+              "year": 2024,
+              "value": 6036860
+            },
+            {
+              "year": 2025,
+              "value": 6111175
+            }
+          ]
+        },
+        {
+          "source_id": "jetro_basic",
+          "source_label": "人口",
+          "url": "https://www.jetro.go.jp/world/asia/sg/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:43+00:00",
+          "page_last_updated": "2026-06-18",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2025,
+              "value": 6111000,
+              "value_text": "611.1万人(2025年。人口には、国民、永住者、および長期滞在 (1年超)の外国人が含まれる。出所:シンガポール統計局)",
+              "original_source": "シンガポール統計局"
+            }
+          ]
+        }
+      ]
+    },
+    "gdp_nominal": {
+      "label_ja": "名目GDP",
+      "label_en": "Nominal GDP",
+      "unit": "USD",
+      "series": [
+        {
+          "source_id": "worldbank_wdi",
+          "indicator_code": "NY.GDP.MKTP.CD",
+          "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/NY.GDP.MKTP.CD?format=json&per_page=20000&date=2000:2031",
+          "retrieved_at": "2026-10-13T01:29:23+00:00",
+          "source_last_updated": "2026-10-08",
+          "observations": [
+            {
+              "year": 2000,
+              "value": 96076539925.7409
+            },
+            {
+              "year": 2001,
+              "value": 89793790669.6515
+            },
+            {
+              "year": 2002,
+              "value": 92538372869.6942
+            },
+            {
+              "year": 2003,
+              "value": 97646401095.6369
+            },
+            {
+              "year": 2004,
+              "value": 115033593101.049
+            },
+            {
+              "year": 2005,
+              "value": 127807848728.398
+            },
+            {
+              "year": 2006,
+              "value": 148627286361.351
+            },
+            {
+              "year": 2007,
+              "value": 180941701357.97
+            },
+            {
+              "year": 2008,
+              "value": 193617323539.203
+            },
+            {
+              "year": 2009,
+              "value": 194150283771.566
+            },
+            {
+              "year": 2010,
+              "value": 239807980591.24
+            },
+            {
+              "year": 2011,
+              "value": 279356499090.458
+            },
+            {
+              "year": 2012,
+              "value": 295092888076.589
+            },
+            {
+              "year": 2013,
+              "value": 307576360584.992
+            },
+            {
+              "year": 2014,
+              "value": 314863580758.455
+            },
+            {
+              "year": 2015,
+              "value": 307998545269.398
+            },
+            {
+              "year": 2016,
+              "value": 320759207438.623
+            },
+            {
+              "year": 2017,
+              "value": 344795119213.571
+            },
+            {
+              "year": 2018,
+              "value": 377976367877.038
+            },
+            {
+              "year": 2019,
+              "value": 376827390962.044
+            },
+            {
+              "year": 2020,
+              "value": 351226533656.292
+            },
+            {
+              "year": 2021,
+              "value": 441110903524.645
+            },
+            {
+              "year": 2022,
+              "value": 514252535238.749
+            },
+            {
+              "year": 2023,
+              "value": 511181761243.76
+            },
+            {
+              "year": 2024,
+              "value": 572877260178.427
+            },
+            {
+              "year": 2025,
+              "value": 603869516998.738
+            }
+          ]
+        }
+      ]
+    },
+    "gdp_per_capita": {
+      "label_ja": "一人当たり名目GDP",
+      "label_en": "GDP per capita",
+      "unit": "USD",
+      "series": [
+        {
+          "source_id": "worldbank_wdi",
+          "indicator_code": "NY.GDP.PCAP.CD",
+          "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/NY.GDP.PCAP.CD?format=json&per_page=20000&date=2000:2031",
+          "retrieved_at": "2026-10-13T01:29:23+00:00",
+          "source_last_updated": "2026-10-08",
+          "observations": [
+            {
+              "year": 2000,
+              "value": 23852.8389514753
+            },
+            {
+              "year": 2001,
+              "value": 21699.7414868907
+            },
+            {
+              "year": 2002,
+              "value": 22159.8373710639
+            },
+            {
+              "year": 2003,
+              "value": 23730.3840054566
+            },
+            {
+              "year": 2004,
+              "value": 27608.080013423
+            },
+            {
+              "year": 2005,
+              "value": 29961.3172812732
+            },
+            {
+              "year": 2006,
+              "value": 33768.4528234651
+            },
+            {
+              "year": 2007,
+              "value": 39432.8860198877
+            },
+            {
+              "year": 2008,
+              "value": 40008.5720489092
+            },
+            {
+              "year": 2009,
+              "value": 38926.8054365453
+            },
+            {
+              "year": 2010,
+              "value": 47236.683084953
+            },
+            {
+              "year": 2011,
+              "value": 53891.4570264372
+            },
+            {
+              "year": 2012,
+              "value": 55547.5553077786
+            },
+            {
+              "year": 2013,
+              "value": 56967.4257940383
+            },
+            {
+              "year": 2014,
+              "value": 57564.8023114977
+            },
+            {
+              "year": 2015,
+              "value": 55645.6068614606
+            },
+            {
+              "year": 2016,
+              "value": 57204.0340105222
+            },
+            {
+              "year": 2017,
+              "value": 61436.1325502558
+            },
+            {
+              "year": 2018,
+              "value": 67032.8225769734
+            },
+            {
+              "year": 2019,
+              "value": 66068.7003106378
+            },
+            {
+              "year": 2020,
+              "value": 61772.5036492256
+            },
+            {
+              "year": 2021,
+              "value": 80884.8565369236
+            },
+            {
+              "year": 2022,
+              "value": 91227.6970426492
+            },
+            {
+              "year": 2023,
+              "value": 86382.5900499252
+            },
+            {
+              "year": 2024,
+              "value": 94896.5621495988
+            },
+            {
+              "year": 2025,
+              "value": 98813.9788172877
+            }
+          ]
+        },
+        {
+          "source_id": "jetro_basic",
+          "source_label": "1人当たりGDP",
+          "url": "https://www.jetro.go.jp/world/asia/sg/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:43+00:00",
+          "page_last_updated": "2026-06-18",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 86383
+            },
+            {
+              "year": 2024,
+              "value": 94897
+            },
+            {
+              "year": 2025,
+              "value": 99365
+            }
+          ]
+        }
+      ]
+    },
+    "gdp_growth_real": {
+      "label_ja": "実質GDP成長率",
+      "label_en": "Real GDP growth",
+      "unit": "%",
+      "series": [
+        {
+          "source_id": "worldbank_wdi",
+          "indicator_code": "NY.GDP.MKTP.KD.ZG",
+          "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=20000&date=2000:2031",
+          "retrieved_at": "2026-10-13T01:29:23+00:00",
+          "source_last_updated": "2026-10-08",
+          "observations": [
+            {
+              "year": 2000,
+              "value": 9.03831632555163
+            },
+            {
+              "year": 2001,
+              "value": -1.07086275100448
+            },
+            {
+              "year": 2002,
+              "value": 3.92336076702013
+            },
+            {
+              "year": 2003,
+              "value": 4.54825542643229
+            },
+            {
+              "year": 2004,
+              "value": 9.93998268434957
+            },
+            {
+              "year": 2005,
+              "value": 7.36632239250758
+            },
+            {
+              "year": 2006,
+              "value": 9.00676607871758
+            },
+            {
+              "year": 2007,
+              "value": 9.02151951268893
+            },
+            {
+              "year": 2008,
+              "value": 1.86348345462035
+            },
+            {
+              "year": 2009,
+              "value": 0.127953382778088
+            },
+            {
+              "year": 2010,
+              "value": 14.5197497108994
+            },
+            {
+              "year": 2011,
+              "value": 6.21493416858989
+            },
+            {
+              "year": 2012,
+              "value": 4.43549759378537
+            },
+            {
+              "year": 2013,
+              "value": 4.81763099120676
+            },
+            {
+              "year": 2014,
+              "value": 3.93554027709007
+            },
+            {
+              "year": 2015,
+              "value": 2.97679931634806
+            },
+            {
+              "year": 2016,
+              "value": 3.91095306322606
+            },
+            {
+              "year": 2017,
+              "value": 4.32679370770501
+            },
+            {
+              "year": 2018,
+              "value": 3.18660848474074
+            },
+            {
+              "year": 2019,
+              "value": 1.15877947300108
+            },
+            {
+              "year": 2020,
+              "value": -3.61084281729929
+            },
+            {
+              "year": 2021,
+              "value": 10.1410845197192
+            },
+            {
+              "year": 2022,
+              "value": 4.01027884472296
+            },
+            {
+              "year": 2023,
+              "value": 1.45026775889565
+            },
+            {
+              "year": 2024,
+              "value": 5.3435120192366
+            },
+            {
+              "year": 2025,
+              "value": 5.02588199508003
+            }
+          ]
+        },
+        {
+          "source_id": "jetro_basic",
+          "source_label": "実質GDP成長率",
+          "url": "https://www.jetro.go.jp/world/asia/sg/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:43+00:00",
+          "page_last_updated": "2026-06-18",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 1.5
+            },
+            {
+              "year": 2024,
+              "value": 5.3
+            },
+            {
+              "year": 2025,
+              "value": 5
+            }
+          ]
+        }
+      ]
+    },
+    "inflation_cpi": {
+      "label_ja": "消費者物価上昇率",
+      "label_en": "Inflation (CPI)",
+      "unit": "%",
+      "series": [
+        {
+          "source_id": "worldbank_wdi",
+          "indicator_code": "FP.CPI.TOTL.ZG",
+          "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/FP.CPI.TOTL.ZG?format=json&per_page=20000&date=2000:2031",
+          "retrieved_at": "2026-10-13T01:29:23+00:00",
+          "source_last_updated": "2026-10-08",
+          "observations": [
+            {
+              "year": 2000,
+              "value": 1.36162392448456
+            },
+            {
+              "year": 2001,
+              "value": 0.997197956155943
+            },
+            {
+              "year": 2002,
+              "value": -0.391676866585049
+            },
+            {
+              "year": 2003,
+              "value": 0.50790530023755
+            },
+            {
+              "year": 2004,
+              "value": 1.66272719863071
+            },
+            {
+              "year": 2005,
+              "value": 0.425106276569106
+            },
+            {
+              "year": 2006,
+              "value": 0.965657519018511
+            },
+            {
+              "year": 2007,
+              "value": 2.10980166714573
+            },
+            {
+              "year": 2008,
+              "value": 6.63544058395309
+            },
+            {
+              "year": 2009,
+              "value": 0.589142019610515
+            },
+            {
+              "year": 2010,
+              "value": 2.82884527612958
+            },
+            {
+              "year": 2011,
+              "value": 5.25115624639373
+            },
+            {
+              "year": 2012,
+              "value": 4.58084479423094
+            },
+            {
+              "year": 2013,
+              "value": 2.36439793742725
+            },
+            {
+              "year": 2014,
+              "value": 1.03316955857629
+            },
+            {
+              "year": 2015,
+              "value": -0.521975611895762
+            },
+            {
+              "year": 2016,
+              "value": -0.529809760375464
+            },
+            {
+              "year": 2017,
+              "value": 0.576763191179995
+            },
+            {
+              "year": 2018,
+              "value": 0.438784215129622
+            },
+            {
+              "year": 2019,
+              "value": 0.567829988405447
+            },
+            {
+              "year": 2020,
+              "value": -0.172111865925382
+            },
+            {
+              "year": 2021,
+              "value": 2.31610315765145
+            },
+            {
+              "year": 2022,
+              "value": 6.13095418919732
+            },
+            {
+              "year": 2023,
+              "value": 4.83372362825797
+            },
+            {
+              "year": 2024,
+              "value": 2.38951123595017
+            },
+            {
+              "year": 2025,
+              "value": 0.902998495002676
+            }
+          ]
+        },
+        {
+          "source_id": "jetro_basic",
+          "source_label": "消費者物価上昇率",
+          "url": "https://www.jetro.go.jp/world/asia/sg/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:43+00:00",
+          "page_last_updated": "2026-06-18",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 4.8
+            },
+            {
+              "year": 2024,
+              "value": 2.4
+            },
+            {
+              "year": 2025,
+              "value": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    "unemployment": {
+      "label_ja": "失業率",
+      "label_en": "Unemployment rate",
+      "unit": "%",
+      "series": [
+        {
+          "source_id": "worldbank_wdi",
+          "indicator_code": "SL.UEM.TOTL.ZS",
+          "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/SL.UEM.TOTL.ZS?format=json&per_page=20000&date=2000:2031",
+          "retrieved_at": "2026-10-13T01:29:23+00:00",
+          "source_last_updated": "2026-10-08",
+          "observations": [
+            {
+              "year": 2000,
+              "value": 3.7
+            },
+            {
+              "year": 2001,
+              "value": 3.76
+            },
+            {
+              "year": 2002,
+              "value": 5.65
+            },
+            {
+              "year": 2003,
+              "value": 5.93
+            },
+            {
+              "year": 2004,
+              "value": 5.84
+            },
+            {
+              "year": 2005,
+              "value": 5.59
+            },
+            {
+              "year": 2006,
+              "value": 4.48
+            },
+            {
+              "year": 2007,
+              "value": 3.9
+            },
+            {
+              "year": 2008,
+              "value": 3.96
+            },
+            {
+              "year": 2009,
+              "value": 5.86
+            },
+            {
+              "year": 2010,
+              "value": 4.12
+            },
+            {
+              "year": 2011,
+              "value": 3.89
+            },
+            {
+              "year": 2012,
+              "value": 3.72
+            },
+            {
+              "year": 2013,
+              "value": 3.86
+            },
+            {
+              "year": 2014,
+              "value": 3.74
+            },
+            {
+              "year": 2015,
+              "value": 3.79
+            },
+            {
+              "year": 2016,
+              "value": 4.08
+            },
+            {
+              "year": 2017,
+              "value": 4.2
+            },
+            {
+              "year": 2018,
+              "value": 3.613
+            },
+            {
+              "year": 2019,
+              "value": 3.1
+            },
+            {
+              "year": 2020,
+              "value": 4.1
+            },
+            {
+              "year": 2021,
+              "value": 4.64
+            },
+            {
+              "year": 2022,
+              "value": 3.591
+            },
+            {
+              "year": 2023,
+              "value": 3.444
+            },
+            {
+              "year": 2024,
+              "value": 2.737
+            },
+            {
+              "year": 2025,
+              "value": 2.818
+            }
+          ]
+        },
+        {
+          "source_id": "jetro_basic",
+          "source_label": "失業率",
+          "url": "https://www.jetro.go.jp/world/asia/sg/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:43+00:00",
+          "page_last_updated": "2026-06-18",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 1.9
+            },
+            {
+              "year": 2024,
+              "value": 2
+            },
+            {
+              "year": 2025,
+              "value": 2
+            }
+          ]
+        }
+      ]
+    },
+    "fdi_inflow": {
+      "label_ja": "対内直接投資（純流入）",
+      "label_en": "FDI, net inflows",
+      "unit": "USD",
+      "series": [
+        {
+          "source_id": "worldbank_wdi",
+          "indicator_code": "BX.KLT.DINV.CD.WD",
+          "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/BX.KLT.DINV.CD.WD?format=json&per_page=20000&date=2000:2031",
+          "retrieved_at": "2026-10-13T01:29:23+00:00",
+          "source_last_updated": "2026-10-08",
+          "observations": [
+            {
+              "year": 2000,
+              "value": 15515295182.2254
+            },
+            {
+              "year": 2001,
+              "value": 17006818857.2728
+            },
+            {
+              "year": 2002,
+              "value": 6157194143.82423
+            },
+            {
+              "year": 2003,
+              "value": 17051420152.8733
+            },
+            {
+              "year": 2004,
+              "value": 24390254965.552
+            },
+            {
+              "year": 2005,
+              "value": 19316058814.0753
+            },
+            {
+              "year": 2006,
+              "value": 39129332046.656
+            },
+            {
+              "year": 2007,
+              "value": 47337947782.7751
+            },
+            {
+              "year": 2008,
+              "value": 13598298537.0174
+            },
+            {
+              "year": 2009,
+              "value": 23436064059.7506
+            },
+            {
+              "year": 2010,
+              "value": 55322434161.874
+            },
+            {
+              "year": 2011,
+              "value": 49155657316.2945
+            },
+            {
+              "year": 2012,
+              "value": 55310807547.7033
+            },
+            {
+              "year": 2013,
+              "value": 64389514904.4993
+            },
+            {
+              "year": 2014,
+              "value": 68698472830.5907
+            },
+            {
+              "year": 2015,
+              "value": 69774553124.9431
+            },
+            {
+              "year": 2016,
+              "value": 65133174223.0873
+            },
+            {
+              "year": 2017,
+              "value": 101970056302.84
+            },
+            {
+              "year": 2018,
+              "value": 86126491248.6639
+            },
+            {
+              "year": 2019,
+              "value": 106174185547.865
+            },
+            {
+              "year": 2020,
+              "value": 79322385229.1189
+            },
+            {
+              "year": 2021,
+              "value": 142313339701.522
+            },
+            {
+              "year": 2022,
+              "value": 144147823984.526
+            },
+            {
+              "year": 2023,
+              "value": 125786783506.69
+            },
+            {
+              "year": 2024,
+              "value": 135077157183.126
+            },
+            {
+              "year": 2025,
+              "value": 159087766262.572
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

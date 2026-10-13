@@ -1,0 +1,183 @@
+{
+  "code": "kh",
+  "iso3": "KHM",
+  "name_ja": "カンボジア",
+  "name_en": "Cambodia",
+  "fields": {
+    "official_name": {
+      "label_ja": "正式国名",
+      "label_en": "Official name",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "カンボジア王国 Kingdom of Cambodia",
+          "value_text": "カンボジア王国 Kingdom of Cambodia",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "国・地域名",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/kh/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:18+00:00",
+          "page_last_updated": "2026-07-07",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "area": {
+      "label_ja": "面積",
+      "label_en": "Area",
+      "unit": "km2",
+      "phase": 1,
+      "values": [
+        {
+          "value": 181035,
+          "value_text": "18万1,035平方キロメートル(日本の約2分の1弱)",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "面積",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/kh/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:18+00:00",
+          "page_last_updated": "2026-07-07",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "capital": {
+      "label_ja": "首都",
+      "label_en": "Capital",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "プノンペン",
+          "value_text": "プノンペン〔人口:245万人(2025年、出所:カンボジア統計省統計局)〕",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "首都",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/kh/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:18+00:00",
+          "page_last_updated": "2026-07-07",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "language": {
+      "label_ja": "言語",
+      "label_en": "Languages",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "クメール語(96.4%) ほかに少数民族言語(3.1%)、ベトナム語(0.3%)、中国語(0.1%)等 (2024年、出所:同上)",
+          "value_text": "クメール語(96.4%) ほかに少数民族言語(3.1%)、ベトナム語(0.3%)、中国語(0.1%)等 (2024年、出所:同上)",
+          "as_of": "2024",
+          "original_source": "カンボジア統計省統計局",
+          "source_label": "言語",
+          "note": "出所「同上」を直前の行の出所に置き換え / 'ditto' resolved to the previous row's source",
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/kh/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:18+00:00",
+          "page_last_updated": "2026-07-07",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "official_language": {
+      "label_ja": "公用語",
+      "label_en": "Official language",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "クメール語",
+          "value_text": "クメール語",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "公用語",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/kh/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:18+00:00",
+          "page_last_updated": "2026-07-07",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "religion": {
+      "label_ja": "宗教",
+      "label_en": "Religion",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "仏教(96.5%) ほかにイスラム教(2.6%)、キリスト教(0.3%)等 (2024年、出所:同上)",
+          "value_text": "仏教(96.5%) ほかにイスラム教(2.6%)、キリスト教(0.3%)等 (2024年、出所:同上)",
+          "as_of": "2024",
+          "original_source": "カンボジア統計省統計局",
+          "source_label": "宗教",
+          "note": "出所「同上」を直前の行の出所に置き換え / 'ditto' resolved to the previous row's source",
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/kh/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:18+00:00",
+          "page_last_updated": "2026-07-07",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "ethnic_groups": {
+      "label_ja": "民族",
+      "label_en": "Ethnic groups",
+      "unit": null,
+      "phase": 1,
+      "values": []
+    },
+    "political_system": {
+      "label_ja": "政体",
+      "label_en": "Political system",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "立憲君主制",
+          "value_text": "立憲君主制",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "政体",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/kh/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:18+00:00",
+          "page_last_updated": "2026-07-07",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "head_of_state": {
+      "label_ja": "元首",
+      "label_en": "Head of state",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "ノロドム・シハモニ国王(2004年10月即位)",
+          "value_text": "ノロドム・シハモニ国王(2004年10月即位)",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "元首",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/kh/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:18+00:00",
+          "page_last_updated": "2026-07-07",
+          "retrieval_method": "auto"
+        }
+      ]
+    }
+  }
+}

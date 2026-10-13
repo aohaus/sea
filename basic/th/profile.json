@@ -1,0 +1,169 @@
+{
+  "code": "th",
+  "iso3": "THA",
+  "name_ja": "タイ",
+  "name_en": "Thailand",
+  "fields": {
+    "official_name": {
+      "label_ja": "正式国名",
+      "label_en": "Official name",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "タイ王国 Kingdom of Thailand",
+          "value_text": "タイ王国 Kingdom of Thailand",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "国・地域名",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/th/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:46+00:00",
+          "page_last_updated": "2026-06-30",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "area": {
+      "label_ja": "面積",
+      "label_en": "Area",
+      "unit": "km2",
+      "phase": 1,
+      "values": [
+        {
+          "value": 513115,
+          "value_text": "51万3,115平方キロメートル(日本の約1.4倍)",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "面積",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/th/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:46+00:00",
+          "page_last_updated": "2026-06-30",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "capital": {
+      "label_ja": "首都",
+      "label_en": "Capital",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "バンコク",
+          "value_text": "バンコク(タイ語名:クルンテープ・マハナコーン) 人口542万人(2025年、出所:内務省)",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "首都",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/th/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:46+00:00",
+          "page_last_updated": "2026-06-30",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "language": {
+      "label_ja": "言語",
+      "label_en": "Languages",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "タイ語",
+          "value_text": "タイ語",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "言語",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/th/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:46+00:00",
+          "page_last_updated": "2026-06-30",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "official_language": {
+      "label_ja": "公用語",
+      "label_en": "Official language",
+      "unit": null,
+      "phase": 1,
+      "values": []
+    },
+    "religion": {
+      "label_ja": "宗教",
+      "label_en": "Religion",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "人口の約95%が上座部仏教、その他イスラム教(4%)、キリスト教(0.6%)など",
+          "value_text": "人口の約95%が上座部仏教、その他イスラム教(4%)、キリスト教(0.6%)など",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "宗教",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/th/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:46+00:00",
+          "page_last_updated": "2026-06-30",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "ethnic_groups": {
+      "label_ja": "民族",
+      "label_en": "Ethnic groups",
+      "unit": null,
+      "phase": 1,
+      "values": []
+    },
+    "political_system": {
+      "label_ja": "政体",
+      "label_en": "Political system",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "立憲君主国",
+          "value_text": "立憲君主国",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "政体",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/th/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:46+00:00",
+          "page_last_updated": "2026-06-30",
+          "retrieval_method": "auto"
+        }
+      ]
+    },
+    "head_of_state": {
+      "label_ja": "元首",
+      "label_en": "Head of state",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "マハー・ワチラロンコン・プラ・ワチラクラチャオユーフア国王 King Maha Vajiralongkorn Phra Vajiraklaochaoyuhua(2016年12月1日即位、1952年7月28日生まれ)",
+          "value_text": "マハー・ワチラロンコン・プラ・ワチラクラチャオユーフア国王 King Maha Vajiralongkorn Phra Vajiraklaochaoyuhua(2016年12月1日即位、1952年7月28日生まれ)",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "元首",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/th/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:46+00:00",
+          "page_last_updated": "2026-06-30",
+          "retrieval_method": "auto"
+        }
+      ]
+    }
+  }
+}
