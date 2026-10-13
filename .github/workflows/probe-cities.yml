@@ -1,0 +1,29 @@
+name: Probe city data sources (temporary)
+
+on:
+  push:
+    branches: [claude/sea-basic-data]
+    paths:
+      - "scripts/probe_cities.py"
+      - ".github/workflows/probe-cities.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt pypdf
+      - run: python scripts/probe_cities.py
+      - name: Commit probe report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add basic/cities/_probe/
+          git diff --cached --quiet || (git commit -m "probe: city data sources report" && git push)
