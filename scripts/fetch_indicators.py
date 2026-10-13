@@ -259,7 +259,9 @@ def main() -> int:
     parser.add_argument("--build", action="store_true", help="rebuild indicators.json only (no network)")
     args = parser.parse_args()
 
-    countries = load_json(BASIC_DIR / "countries.json")["countries"]
+    master = load_json(BASIC_DIR / "countries.json")
+    # Benchmarks (e.g. Japan) get the API indicators too, for comparison.
+    countries = master["countries"] + master.get("benchmarks", [])
     fields = [f for f in load_json(BASIC_DIR / "schema" / "fields.json")["fields"] if f["phase"] == 2]
     last_year = datetime.now(timezone.utc).year + 5  # include IMF projections
 

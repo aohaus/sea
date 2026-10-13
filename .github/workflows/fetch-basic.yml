@@ -9,6 +9,8 @@ on:
     paths:
       - "scripts/fetch_basic.py"
       - "scripts/fetch_indicators.py"
+      - "scripts/build_dataset.py"
+      - "basic/reference/ajc_*.json"
       - "basic/countries.json"
       - "basic/sources.json"
       - "basic/schema/**"
@@ -44,6 +46,9 @@ jobs:
 
       - name: Fetch and build economic indicators
         run: python scripts/fetch_indicators.py
+
+      - name: Build dataset and validate against references
+        run: python scripts/build_dataset.py
 
       - name: Commit updated data
         run: |

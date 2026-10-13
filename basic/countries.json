@@ -1,5 +1,5 @@
 {
-  "_comment": "対象国・地域のマスタ / Master list of target countries. code はフォルダ名（ISO 3166-1 alpha-2 小文字）。jetro_code / mofa_code は各出所の URL 上のコード（インドネシアの JETRO は idn）。null の出所は取得しない（ブルネイ・東ティモールは JETRO に「概況・基本統計」がないため外務省で補完）。",
+  "_comment": "対象国・地域のマスタ / Master list of target countries. benchmarks は比較用（ASEAN 非加盟、経済指標のみ取得）。 code はフォルダ名（ISO 3166-1 alpha-2 小文字）。jetro_code / mofa_code は各出所の URL 上のコード（インドネシアの JETRO は idn）。null の出所は取得しない（ブルネイ・東ティモールは JETRO に「概況・基本統計」がないため外務省で補完）。",
   "countries": [
     {"code": "bn", "iso3": "BRN", "name_ja": "ブルネイ", "name_en": "Brunei Darussalam", "jetro_code": null, "mofa_code": "brunei"},
     {"code": "kh", "iso3": "KHM", "name_ja": "カンボジア", "name_en": "Cambodia", "jetro_code": "kh"},
@@ -12,6 +12,9 @@
     {"code": "th", "iso3": "THA", "name_ja": "タイ", "name_en": "Thailand", "jetro_code": "th"},
     {"code": "tl", "iso3": "TLS", "name_ja": "東ティモール", "name_en": "Timor-Leste", "jetro_code": null, "mofa_code": "easttimor"},
     {"code": "vn", "iso3": "VNM", "name_ja": "ベトナム", "name_en": "Viet Nam", "jetro_code": "vn"}
+  ],
+  "benchmarks": [
+    {"code": "jp", "iso3": "JPN", "name_ja": "日本", "name_en": "Japan"}
   ],
   "regions": [
     {"code": "asean", "name_ja": "ASEAN（東南アジア諸国連合）", "name_en": "ASEAN (Association of Southeast Asian Nations)", "jetro_code": "asean"}
