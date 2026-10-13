@@ -1,0 +1,227 @@
+{
+  "errors": {},
+  "countries": [
+    {
+      "code": "bn",
+      "coverage": {
+        "population": [
+          "mofa_basic"
+        ],
+        "gdp_nominal": [],
+        "gdp_per_capita": [],
+        "gdp_growth_real": [],
+        "inflation_cpi": [],
+        "unemployment": [],
+        "fdi_inflow": []
+      }
+    },
+    {
+      "code": "kh",
+      "coverage": {
+        "population": [
+          "jetro_basic"
+        ],
+        "gdp_nominal": [],
+        "gdp_per_capita": [
+          "jetro_basic"
+        ],
+        "gdp_growth_real": [
+          "jetro_basic"
+        ],
+        "inflation_cpi": [
+          "jetro_basic"
+        ],
+        "unemployment": [
+          "jetro_basic"
+        ],
+        "fdi_inflow": []
+      }
+    },
+    {
+      "code": "id",
+      "coverage": {
+        "population": [
+          "jetro_basic"
+        ],
+        "gdp_nominal": [],
+        "gdp_per_capita": [
+          "jetro_basic"
+        ],
+        "gdp_growth_real": [
+          "jetro_basic"
+        ],
+        "inflation_cpi": [
+          "jetro_basic"
+        ],
+        "unemployment": [
+          "jetro_basic"
+        ],
+        "fdi_inflow": []
+      }
+    },
+    {
+      "code": "la",
+      "coverage": {
+        "population": [
+          "jetro_basic"
+        ],
+        "gdp_nominal": [],
+        "gdp_per_capita": [
+          "jetro_basic"
+        ],
+        "gdp_growth_real": [
+          "jetro_basic"
+        ],
+        "inflation_cpi": [
+          "jetro_basic"
+        ],
+        "unemployment": [],
+        "fdi_inflow": []
+      }
+    },
+    {
+      "code": "my",
+      "coverage": {
+        "population": [
+          "jetro_basic"
+        ],
+        "gdp_nominal": [],
+        "gdp_per_capita": [
+          "jetro_basic"
+        ],
+        "gdp_growth_real": [
+          "jetro_basic"
+        ],
+        "inflation_cpi": [
+          "jetro_basic"
+        ],
+        "unemployment": [
+          "jetro_basic"
+        ],
+        "fdi_inflow": []
+      }
+    },
+    {
+      "code": "mm",
+      "coverage": {
+        "population": [
+          "jetro_basic"
+        ],
+        "gdp_nominal": [],
+        "gdp_per_capita": [
+          "jetro_basic"
+        ],
+        "gdp_growth_real": [
+          "jetro_basic"
+        ],
+        "inflation_cpi": [
+          "jetro_basic"
+        ],
+        "unemployment": [],
+        "fdi_inflow": []
+      }
+    },
+    {
+      "code": "ph",
+      "coverage": {
+        "population": [
+          "jetro_basic"
+        ],
+        "gdp_nominal": [],
+        "gdp_per_capita": [
+          "jetro_basic"
+        ],
+        "gdp_growth_real": [
+          "jetro_basic"
+        ],
+        "inflation_cpi": [
+          "jetro_basic"
+        ],
+        "unemployment": [
+          "jetro_basic"
+        ],
+        "fdi_inflow": []
+      }
+    },
+    {
+      "code": "sg",
+      "coverage": {
+        "population": [
+          "jetro_basic"
+        ],
+        "gdp_nominal": [],
+        "gdp_per_capita": [
+          "jetro_basic"
+        ],
+        "gdp_growth_real": [
+          "jetro_basic"
+        ],
+        "inflation_cpi": [
+          "jetro_basic"
+        ],
+        "unemployment": [
+          "jetro_basic"
+        ],
+        "fdi_inflow": []
+      }
+    },
+    {
+      "code": "th",
+      "coverage": {
+        "population": [
+          "jetro_basic"
+        ],
+        "gdp_nominal": [],
+        "gdp_per_capita": [
+          "jetro_basic"
+        ],
+        "gdp_growth_real": [
+          "jetro_basic"
+        ],
+        "inflation_cpi": [
+          "jetro_basic"
+        ],
+        "unemployment": [
+          "jetro_basic"
+        ],
+        "fdi_inflow": []
+      }
+    },
+    {
+      "code": "tl",
+      "coverage": {
+        "population": [
+          "mofa_basic"
+        ],
+        "gdp_nominal": [],
+        "gdp_per_capita": [],
+        "gdp_growth_real": [],
+        "inflation_cpi": [],
+        "unemployment": [],
+        "fdi_inflow": []
+      }
+    },
+    {
+      "code": "vn",
+      "coverage": {
+        "population": [
+          "jetro_basic"
+        ],
+        "gdp_nominal": [],
+        "gdp_per_capita": [
+          "jetro_basic"
+        ],
+        "gdp_growth_real": [
+          "jetro_basic"
+        ],
+        "inflation_cpi": [
+          "jetro_basic"
+        ],
+        "unemployment": [
+          "jetro_basic"
+        ],
+        "fdi_inflow": []
+      }
+    }
+  ]
+}

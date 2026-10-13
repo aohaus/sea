@@ -1,0 +1,159 @@
+{
+  "code": "sg",
+  "iso3": "SGP",
+  "name_ja": "シンガポール",
+  "name_en": "Singapore",
+  "indicators": {
+    "population": {
+      "label_ja": "人口",
+      "label_en": "Population",
+      "unit": "persons",
+      "series": [
+        {
+          "source_id": "jetro_basic",
+          "source_label": "人口",
+          "url": "https://www.jetro.go.jp/world/asia/sg/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:43+00:00",
+          "page_last_updated": "2026-06-18",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2025,
+              "value": 6111000,
+              "value_text": "611.1万人(2025年。人口には、国民、永住者、および長期滞在 (1年超)の外国人が含まれる。出所:シンガポール統計局)",
+              "original_source": "シンガポール統計局"
+            }
+          ]
+        }
+      ]
+    },
+    "gdp_nominal": {
+      "label_ja": "名目GDP",
+      "label_en": "Nominal GDP",
+      "unit": "USD",
+      "series": []
+    },
+    "gdp_per_capita": {
+      "label_ja": "一人当たり名目GDP",
+      "label_en": "GDP per capita",
+      "unit": "USD",
+      "series": [
+        {
+          "source_id": "jetro_basic",
+          "source_label": "1人当たりGDP",
+          "url": "https://www.jetro.go.jp/world/asia/sg/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:43+00:00",
+          "page_last_updated": "2026-06-18",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 86383
+            },
+            {
+              "year": 2024,
+              "value": 94897
+            },
+            {
+              "year": 2025,
+              "value": 99365
+            }
+          ]
+        }
+      ]
+    },
+    "gdp_growth_real": {
+      "label_ja": "実質GDP成長率",
+      "label_en": "Real GDP growth",
+      "unit": "%",
+      "series": [
+        {
+          "source_id": "jetro_basic",
+          "source_label": "実質GDP成長率",
+          "url": "https://www.jetro.go.jp/world/asia/sg/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:43+00:00",
+          "page_last_updated": "2026-06-18",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 1.5
+            },
+            {
+              "year": 2024,
+              "value": 5.3
+            },
+            {
+              "year": 2025,
+              "value": 5
+            }
+          ]
+        }
+      ]
+    },
+    "inflation_cpi": {
+      "label_ja": "消費者物価上昇率",
+      "label_en": "Inflation (CPI)",
+      "unit": "%",
+      "series": [
+        {
+          "source_id": "jetro_basic",
+          "source_label": "消費者物価上昇率",
+          "url": "https://www.jetro.go.jp/world/asia/sg/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:43+00:00",
+          "page_last_updated": "2026-06-18",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 4.8
+            },
+            {
+              "year": 2024,
+              "value": 2.4
+            },
+            {
+              "year": 2025,
+              "value": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    "unemployment": {
+      "label_ja": "失業率",
+      "label_en": "Unemployment rate",
+      "unit": "%",
+      "series": [
+        {
+          "source_id": "jetro_basic",
+          "source_label": "失業率",
+          "url": "https://www.jetro.go.jp/world/asia/sg/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:43+00:00",
+          "page_last_updated": "2026-06-18",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 1.9
+            },
+            {
+              "year": 2024,
+              "value": 2
+            },
+            {
+              "year": 2025,
+              "value": 2
+            }
+          ]
+        }
+      ]
+    },
+    "fdi_inflow": {
+      "label_ja": "対内直接投資（純流入）",
+      "label_en": "FDI, net inflows",
+      "unit": "USD",
+      "series": []
+    }
+  }
+}

@@ -192,55 +192,6 @@
           "retrieval_method": "manual_pdf"
         }
       ]
-    },
-    "population": {
-      "label_ja": "人口",
-      "label_en": "Population",
-      "unit": "persons",
-      "phase": 2,
-      "values": [
-        {
-          "value": 455500,
-          "value_text": "45万5,500人(2024年) (外国人在留者含む。出典:ブルネイ財務経済省経済計画統計局)",
-          "as_of": "2024",
-          "original_source": "ブルネイ財務経済省経済計画統計局",
-          "source_label": "人口",
-          "note": null,
-          "source_id": "mofa_basic",
-          "url": "https://www.mofa.go.jp/mofaj/area/brunei/data.html",
-          "retrieved_at": "2026-10-13T01:17:00+00:00",
-          "page_last_updated": "2026-06-23",
-          "retrieval_method": "manual_pdf"
-        }
-      ]
-    },
-    "gdp_nominal": {
-      "label_ja": "名目GDP",
-      "label_en": "Nominal GDP",
-      "unit": "USD",
-      "phase": 2,
-      "values": []
-    },
-    "gdp_per_capita": {
-      "label_ja": "一人当たりGDP",
-      "label_en": "GDP per capita",
-      "unit": "USD",
-      "phase": 2,
-      "values": []
-    },
-    "gdp_growth_real": {
-      "label_ja": "実質GDP成長率",
-      "label_en": "Real GDP growth",
-      "unit": "%",
-      "phase": 2,
-      "values": []
-    },
-    "fdi_inflow": {
-      "label_ja": "対内直接投資",
-      "label_en": "FDI inflow",
-      "unit": "USD",
-      "phase": 2,
-      "values": []
     }
   }
 }

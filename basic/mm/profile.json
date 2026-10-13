@@ -136,55 +136,6 @@
       "unit": null,
       "phase": 1,
       "values": []
-    },
-    "population": {
-      "label_ja": "人口",
-      "label_en": "Population",
-      "unit": "persons",
-      "phase": 2,
-      "values": [
-        {
-          "value": 57530000,
-          "value_text": "5,753万人(2024年推計値、出所:米国中央情報局)",
-          "as_of": "2024",
-          "original_source": "米国中央情報局",
-          "source_label": "人口",
-          "note": null,
-          "source_id": "jetro_basic",
-          "url": "https://www.jetro.go.jp/world/asia/mm/basic_01.html",
-          "retrieved_at": "2026-10-13T01:06:34+00:00",
-          "page_last_updated": "2026-07-08",
-          "retrieval_method": "auto"
-        }
-      ]
-    },
-    "gdp_nominal": {
-      "label_ja": "名目GDP",
-      "label_en": "Nominal GDP",
-      "unit": "USD",
-      "phase": 2,
-      "values": []
-    },
-    "gdp_per_capita": {
-      "label_ja": "一人当たりGDP",
-      "label_en": "GDP per capita",
-      "unit": "USD",
-      "phase": 2,
-      "values": []
-    },
-    "gdp_growth_real": {
-      "label_ja": "実質GDP成長率",
-      "label_en": "Real GDP growth",
-      "unit": "%",
-      "phase": 2,
-      "values": []
-    },
-    "fdi_inflow": {
-      "label_ja": "対内直接投資",
-      "label_en": "FDI inflow",
-      "unit": "USD",
-      "phase": 2,
-      "values": []
     }
   }
 }

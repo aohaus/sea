@@ -17,7 +17,6 @@
         "official_language",
         "official_name",
         "political_system",
-        "population",
         "religion"
       ]
     },
@@ -37,7 +36,6 @@
         "official_language",
         "official_name",
         "political_system",
-        "population",
         "religion"
       ]
     },
@@ -56,7 +54,6 @@
         "language",
         "official_name",
         "political_system",
-        "population",
         "religion"
       ]
     },
@@ -77,7 +74,6 @@
         "official_language",
         "official_name",
         "political_system",
-        "population",
         "religion"
       ]
     },
@@ -97,7 +93,6 @@
         "official_language",
         "official_name",
         "political_system",
-        "population",
         "religion"
       ]
     },
@@ -114,7 +109,6 @@
         "capital",
         "language",
         "official_name",
-        "population",
         "religion"
       ]
     },
@@ -134,7 +128,6 @@
         "official_language",
         "official_name",
         "political_system",
-        "population",
         "religion"
       ]
     },
@@ -153,7 +146,6 @@
         "official_language",
         "official_name",
         "political_system",
-        "population",
         "religion"
       ]
     },
@@ -172,7 +164,6 @@
         "language",
         "official_name",
         "political_system",
-        "population",
         "religion"
       ]
     },
@@ -193,7 +184,6 @@
         "official_language",
         "official_name",
         "political_system",
-        "population",
         "religion"
       ]
     },
@@ -213,7 +203,6 @@
         "official_language",
         "official_name",
         "political_system",
-        "population",
         "religion"
       ]
     }

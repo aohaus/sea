@@ -8,6 +8,7 @@ on:
   push:
     paths:
       - "scripts/fetch_basic.py"
+      - "scripts/fetch_indicators.py"
       - "basic/countries.json"
       - "basic/sources.json"
       - "basic/schema/**"
@@ -22,7 +23,7 @@ concurrency:
 
 jobs:
   fetch:
-    name: Fetch basic statistics (JETRO, MOFA)
+    name: Fetch basic statistics and indicators
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -40,6 +41,9 @@ jobs:
 
       - name: Fetch and build profiles
         run: python scripts/fetch_basic.py
+
+      - name: Fetch and build economic indicators
+        run: python scripts/fetch_indicators.py
 
       - name: Commit updated data
         run: |

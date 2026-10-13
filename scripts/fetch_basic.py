@@ -372,7 +372,8 @@ def main() -> int:
     args = parser.parse_args()
 
     countries = load_json(BASIC_DIR / "countries.json")["countries"]
-    fields = load_json(BASIC_DIR / "schema" / "fields.json")["fields"]
+    # Static (phase 1) fields only; time series are built by fetch_indicators.py.
+    fields = [f for f in load_json(BASIC_DIR / "schema" / "fields.json")["fields"] if f["phase"] == 1]
     sources = [s for s in load_json(BASIC_DIR / "sources.json")["sources"] if s.get("parser")]
 
     report = []

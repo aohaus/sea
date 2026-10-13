@@ -1,0 +1,159 @@
+{
+  "code": "ph",
+  "iso3": "PHL",
+  "name_ja": "フィリピン",
+  "name_en": "Philippines",
+  "indicators": {
+    "population": {
+      "label_ja": "人口",
+      "label_en": "Population",
+      "unit": "persons",
+      "series": [
+        {
+          "source_id": "jetro_basic",
+          "source_label": "人口",
+          "url": "https://www.jetro.go.jp/world/asia/ph/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:37+00:00",
+          "page_last_updated": "2026-07-02",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2024,
+              "value": 112720000,
+              "value_text": "1億1,272万人(2024年、出所:フィリピン統計庁(PSA))",
+              "original_source": "フィリピン統計庁(PSA)"
+            }
+          ]
+        }
+      ]
+    },
+    "gdp_nominal": {
+      "label_ja": "名目GDP",
+      "label_en": "Nominal GDP",
+      "unit": "USD",
+      "series": []
+    },
+    "gdp_per_capita": {
+      "label_ja": "一人当たり名目GDP",
+      "label_en": "GDP per capita",
+      "unit": "USD",
+      "series": [
+        {
+          "source_id": "jetro_basic",
+          "source_label": "1人当たりGDP",
+          "url": "https://www.jetro.go.jp/world/asia/ph/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:37+00:00",
+          "page_last_updated": "2026-07-02",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 3905
+            },
+            {
+              "year": 2024,
+              "value": 4089
+            },
+            {
+              "year": 2025,
+              "value": 4270
+            }
+          ]
+        }
+      ]
+    },
+    "gdp_growth_real": {
+      "label_ja": "実質GDP成長率",
+      "label_en": "Real GDP growth",
+      "unit": "%",
+      "series": [
+        {
+          "source_id": "jetro_basic",
+          "source_label": "実質GDP成長率",
+          "url": "https://www.jetro.go.jp/world/asia/ph/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:37+00:00",
+          "page_last_updated": "2026-07-02",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 5.5
+            },
+            {
+              "year": 2024,
+              "value": 5.7
+            },
+            {
+              "year": 2025,
+              "value": 4.4
+            }
+          ]
+        }
+      ]
+    },
+    "inflation_cpi": {
+      "label_ja": "消費者物価上昇率",
+      "label_en": "Inflation (CPI)",
+      "unit": "%",
+      "series": [
+        {
+          "source_id": "jetro_basic",
+          "source_label": "消費者物価上昇率",
+          "url": "https://www.jetro.go.jp/world/asia/ph/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:37+00:00",
+          "page_last_updated": "2026-07-02",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 6
+            },
+            {
+              "year": 2024,
+              "value": 3.2
+            },
+            {
+              "year": 2025,
+              "value": 1.7
+            }
+          ]
+        }
+      ]
+    },
+    "unemployment": {
+      "label_ja": "失業率",
+      "label_en": "Unemployment rate",
+      "unit": "%",
+      "series": [
+        {
+          "source_id": "jetro_basic",
+          "source_label": "失業率",
+          "url": "https://www.jetro.go.jp/world/asia/ph/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:37+00:00",
+          "page_last_updated": "2026-07-02",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 4.4
+            },
+            {
+              "year": 2024,
+              "value": 3.8
+            },
+            {
+              "year": 2025,
+              "value": 4.2
+            }
+          ]
+        }
+      ]
+    },
+    "fdi_inflow": {
+      "label_ja": "対内直接投資（純流入）",
+      "label_en": "FDI, net inflows",
+      "unit": "USD",
+      "series": []
+    }
+  }
+}

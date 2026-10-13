@@ -1,19 +1,219 @@
 {
-  "_comment": "データ項目の定義 / Field definitions. phase 1 = 静的情報, phase 2 = 動態情報（経済指標）。labels は出所ページ（JETRO「概況・基本統計」、外務省「基礎データ」）の見出しとの対応（表記ゆれを除いた完全一致）。value_rule: leading_name = 先頭の名称のみを value にする（例：「クアラルンプール 人口207万人…」→「クアラルンプール」）。derive_provenance: false = 原文中の年・出所は値そのものを指さない（首都人口・就任日など）ため as_of / original_source を付けない。",
+  "_comment": "データ項目の定義 / Field definitions. phase 1 = 静的情報, phase 2 = 動態情報（経済指標）。labels は出所ページ（JETRO「概況・基本統計」、外務省「基礎データ」）の見出しとの対応（表記ゆれを除いた完全一致）。value_rule: leading_name = 先頭の名称のみを value にする（例：「クアラルンプール 人口207万人…」→「クアラルンプール」）。derive_provenance: false = 原文中の年・出所は値そのものを指さない（首都人口・就任日など）ため as_of / original_source を付けない。 phase 2: worldbank = 世界銀行 WDI の指標コード、imf = IMF DataMapper の指標コードと単位倍率（scale、例：NGDPD は10億米ドル単位なので 1e9）。値は unit（基本単位）に換算して保存する。",
   "fields": [
-    {"id": "official_name",     "phase": 1, "type": "text",   "unit": null,  "label_ja": "正式国名",   "label_en": "Official name",      "labels": ["国・地域名"]},
-    {"id": "area",              "phase": 1, "type": "number", "unit": "km2", "label_ja": "面積",       "label_en": "Area",               "labels": ["面積"]},
-    {"id": "capital",           "phase": 1, "type": "text",   "unit": null,  "label_ja": "首都",       "label_en": "Capital",            "labels": ["首都"], "value_rule": "leading_name", "derive_provenance": false},
-    {"id": "language",          "phase": 1, "type": "text",   "unit": null,  "label_ja": "言語",       "label_en": "Languages",          "labels": ["言語"]},
-    {"id": "official_language", "phase": 1, "type": "text",   "unit": null,  "label_ja": "公用語",     "label_en": "Official language",  "labels": ["公用語"]},
-    {"id": "religion",          "phase": 1, "type": "text",   "unit": null,  "label_ja": "宗教",       "label_en": "Religion",           "labels": ["宗教"]},
-    {"id": "ethnic_groups",     "phase": 1, "type": "text",   "unit": null,  "label_ja": "民族",       "label_en": "Ethnic groups",      "labels": ["民族", "民族構成"]},
-    {"id": "political_system",  "phase": 1, "type": "text",   "unit": null,  "label_ja": "政体",       "label_en": "Political system",   "labels": ["政体"]},
-    {"id": "head_of_state",     "phase": 1, "type": "text",   "unit": null,  "label_ja": "元首",       "label_en": "Head of state",      "labels": ["元首"], "derive_provenance": false},
-    {"id": "population",        "phase": 2, "type": "number", "unit": "persons", "label_ja": "人口",   "label_en": "Population",         "labels": ["人口"]},
-    {"id": "gdp_nominal",       "phase": 2, "type": "number", "unit": "USD", "label_ja": "名目GDP",    "label_en": "Nominal GDP",        "labels": ["名目GDP総額"]},
-    {"id": "gdp_per_capita",    "phase": 2, "type": "number", "unit": "USD", "label_ja": "一人当たりGDP", "label_en": "GDP per capita",  "labels": ["1人当たりのGDP", "1人当たりGDP"]},
-    {"id": "gdp_growth_real",   "phase": 2, "type": "number", "unit": "%",   "label_ja": "実質GDP成長率", "label_en": "Real GDP growth",  "labels": ["実質GDP成長率"]},
-    {"id": "fdi_inflow",        "phase": 2, "type": "number", "unit": "USD", "label_ja": "対内直接投資", "label_en": "FDI inflow",       "labels": ["直接投資受入額", "対内直接投資"]}
+    {
+      "id": "official_name",
+      "phase": 1,
+      "type": "text",
+      "unit": null,
+      "label_ja": "正式国名",
+      "label_en": "Official name",
+      "labels": [
+        "国・地域名"
+      ]
+    },
+    {
+      "id": "area",
+      "phase": 1,
+      "type": "number",
+      "unit": "km2",
+      "label_ja": "面積",
+      "label_en": "Area",
+      "labels": [
+        "面積"
+      ]
+    },
+    {
+      "id": "capital",
+      "phase": 1,
+      "type": "text",
+      "unit": null,
+      "label_ja": "首都",
+      "label_en": "Capital",
+      "labels": [
+        "首都"
+      ],
+      "value_rule": "leading_name",
+      "derive_provenance": false
+    },
+    {
+      "id": "language",
+      "phase": 1,
+      "type": "text",
+      "unit": null,
+      "label_ja": "言語",
+      "label_en": "Languages",
+      "labels": [
+        "言語"
+      ]
+    },
+    {
+      "id": "official_language",
+      "phase": 1,
+      "type": "text",
+      "unit": null,
+      "label_ja": "公用語",
+      "label_en": "Official language",
+      "labels": [
+        "公用語"
+      ]
+    },
+    {
+      "id": "religion",
+      "phase": 1,
+      "type": "text",
+      "unit": null,
+      "label_ja": "宗教",
+      "label_en": "Religion",
+      "labels": [
+        "宗教"
+      ]
+    },
+    {
+      "id": "ethnic_groups",
+      "phase": 1,
+      "type": "text",
+      "unit": null,
+      "label_ja": "民族",
+      "label_en": "Ethnic groups",
+      "labels": [
+        "民族",
+        "民族構成"
+      ]
+    },
+    {
+      "id": "political_system",
+      "phase": 1,
+      "type": "text",
+      "unit": null,
+      "label_ja": "政体",
+      "label_en": "Political system",
+      "labels": [
+        "政体"
+      ]
+    },
+    {
+      "id": "head_of_state",
+      "phase": 1,
+      "type": "text",
+      "unit": null,
+      "label_ja": "元首",
+      "label_en": "Head of state",
+      "labels": [
+        "元首"
+      ],
+      "derive_provenance": false
+    },
+    {
+      "id": "population",
+      "phase": 2,
+      "type": "number",
+      "unit": "persons",
+      "label_ja": "人口",
+      "label_en": "Population",
+      "labels": [
+        "人口"
+      ],
+      "worldbank": "SP.POP.TOTL",
+      "imf": {
+        "code": "LP",
+        "scale": 1000000.0
+      }
+    },
+    {
+      "id": "gdp_nominal",
+      "phase": 2,
+      "type": "number",
+      "unit": "USD",
+      "label_ja": "名目GDP",
+      "label_en": "Nominal GDP",
+      "labels": [
+        "名目GDP総額",
+        "名目GDP"
+      ],
+      "worldbank": "NY.GDP.MKTP.CD",
+      "imf": {
+        "code": "NGDPD",
+        "scale": 1000000000.0
+      }
+    },
+    {
+      "id": "gdp_per_capita",
+      "phase": 2,
+      "type": "number",
+      "unit": "USD",
+      "label_ja": "一人当たり名目GDP",
+      "label_en": "GDP per capita",
+      "labels": [
+        "1人当たりGDP",
+        "1人当たりのGDP"
+      ],
+      "worldbank": "NY.GDP.PCAP.CD",
+      "imf": {
+        "code": "NGDPDPC",
+        "scale": 1
+      }
+    },
+    {
+      "id": "gdp_growth_real",
+      "phase": 2,
+      "type": "number",
+      "unit": "%",
+      "label_ja": "実質GDP成長率",
+      "label_en": "Real GDP growth",
+      "labels": [
+        "実質GDP成長率"
+      ],
+      "worldbank": "NY.GDP.MKTP.KD.ZG",
+      "imf": {
+        "code": "NGDP_RPCH",
+        "scale": 1
+      }
+    },
+    {
+      "id": "inflation_cpi",
+      "phase": 2,
+      "type": "number",
+      "unit": "%",
+      "label_ja": "消費者物価上昇率",
+      "label_en": "Inflation (CPI)",
+      "labels": [
+        "消費者物価上昇率"
+      ],
+      "worldbank": "FP.CPI.TOTL.ZG",
+      "imf": {
+        "code": "PCPIPCH",
+        "scale": 1
+      }
+    },
+    {
+      "id": "unemployment",
+      "phase": 2,
+      "type": "number",
+      "unit": "%",
+      "label_ja": "失業率",
+      "label_en": "Unemployment rate",
+      "labels": [
+        "失業率"
+      ],
+      "worldbank": "SL.UEM.TOTL.ZS",
+      "imf": {
+        "code": "LUR",
+        "scale": 1
+      }
+    },
+    {
+      "id": "fdi_inflow",
+      "phase": 2,
+      "type": "number",
+      "unit": "USD",
+      "label_ja": "対内直接投資（純流入）",
+      "label_en": "FDI, net inflows",
+      "labels": [
+        "直接投資受入額",
+        "対内直接投資"
+      ],
+      "worldbank": "BX.KLT.DINV.CD.WD"
+    }
   ]
 }

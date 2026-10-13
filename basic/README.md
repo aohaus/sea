@@ -11,7 +11,9 @@ Basic data on the 11 ASEAN members (including Timor-Leste) and ASEAN as a whole,
 | `sources.json` | 出所台帳（発行元・資料名・URL・利用条件・保存方針） / Source registry |
 | `schema/fields.json` | データ項目の定義（日英ラベル・単位・段階） / Field definitions |
 | `<code>/<source_id>.json` | 出所ページから抽出した表・見出し（テキストのみ）と取得日。`jetro_basic`＝JETRO「概況・基本統計」、`mofa_basic`＝外務省「基礎データ」 / Extracted rows + retrieval date |
-| `<code>/profile.json` | 項目ごとに整理した値。各値に出所を付与 / Values per field, each with its source |
+| `<code>/profile.json` | 第1段階（静的情報）の値。項目ごとに整理し、各値に出所を付与 / Static values per field, each with its source |
+| `<code>/indicators.json` | 第2段階（経済指標）の時系列。出所ごとに別系列で保存 / Economic time series, one series per source |
+| `<code>/worldbank_wdi.json` | 世界銀行 API から取得した観測値と URL・取得日 / Raw World Bank observations |
 | `asean/` | ASEAN 全体のデータ（JETRO「ASEANの貿易投資年報」など） / ASEAN-wide data |
 | `fetch_report.json` | 直近の取得結果（国ごとの成否・埋まった項目） / Last fetch summary |
 
@@ -69,7 +71,24 @@ GitHub Actions の `Fetch basic country data` が各出所から取得し、結�
 
 ```bash
 python scripts/fetch_basic.py --build
+python scripts/fetch_indicators.py --build
 ```
+
+## 第2段階：経済指標 / Phase 2: economic indicators
+
+| 項目 | 単位 | 世界銀行 WDI | IMF WEO | JETRO 表 |
+|---|---|---|---|---|
+| 人口 | 人 | SP.POP.TOTL | LP | 「人口」欄（単年） |
+| 名目GDP | USD | NY.GDP.MKTP.CD | NGDPD | ― |
+| 一人当たり名目GDP | USD | NY.GDP.PCAP.CD | NGDPDPC | 1人当たりGDP |
+| 実質GDP成長率 | % | NY.GDP.MKTP.KD.ZG | NGDP_RPCH | 実質GDP成長率 |
+| 消費者物価上昇率 | % | FP.CPI.TOTL.ZG | PCPIPCH | 消費者物価上昇率 |
+| 失業率 | % | SL.UEM.TOTL.ZS | LUR | 失業率 |
+| 対内直接投資（純流入） | USD | BX.KLT.DINV.CD.WD | ― | ― |
+
+- 値は基本単位（USD・人・%）に換算します。出所ごとに別の系列として保存し、1つの値にまとめません（出所間の差がそのまま見えるようにするため）。
+- ミャンマーの JETRO 値は年度（例：2024/25年度）です。`year` は開始年とし、`note` に年度である旨を記録します。
+- **IMF は自動取得を止めています**（`sources.json` の `auto_fetch: false`）。IMF の利用条件が、自動技術による一括ダウンロードと商用再利用に IMF の許可を求めているためです。許可を得たら有効にできます。
 
 ## 今後 / Next
 

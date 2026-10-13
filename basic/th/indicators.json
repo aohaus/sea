@@ -1,0 +1,159 @@
+{
+  "code": "th",
+  "iso3": "THA",
+  "name_ja": "タイ",
+  "name_en": "Thailand",
+  "indicators": {
+    "population": {
+      "label_ja": "人口",
+      "label_en": "Population",
+      "unit": "persons",
+      "series": [
+        {
+          "source_id": "jetro_basic",
+          "source_label": "人口",
+          "url": "https://www.jetro.go.jp/world/asia/th/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:46+00:00",
+          "page_last_updated": "2026-06-30",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2025,
+              "value": 65810000,
+              "value_text": "6,581万人(2025年、出所:内務省)",
+              "original_source": "内務省"
+            }
+          ]
+        }
+      ]
+    },
+    "gdp_nominal": {
+      "label_ja": "名目GDP",
+      "label_en": "Nominal GDP",
+      "unit": "USD",
+      "series": []
+    },
+    "gdp_per_capita": {
+      "label_ja": "一人当たり名目GDP",
+      "label_en": "GDP per capita",
+      "unit": "USD",
+      "series": [
+        {
+          "source_id": "jetro_basic",
+          "source_label": "1人当たりGDP",
+          "url": "https://www.jetro.go.jp/world/asia/th/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:46+00:00",
+          "page_last_updated": "2026-06-30",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2022,
+              "value": 7073
+            },
+            {
+              "year": 2023,
+              "value": 7351
+            },
+            {
+              "year": 2024,
+              "value": 7492
+            }
+          ]
+        }
+      ]
+    },
+    "gdp_growth_real": {
+      "label_ja": "実質GDP成長率",
+      "label_en": "Real GDP growth",
+      "unit": "%",
+      "series": [
+        {
+          "source_id": "jetro_basic",
+          "source_label": "実質GDP成長率",
+          "url": "https://www.jetro.go.jp/world/asia/th/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:46+00:00",
+          "page_last_updated": "2026-06-30",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2022,
+              "value": 2.6
+            },
+            {
+              "year": 2023,
+              "value": 2
+            },
+            {
+              "year": 2024,
+              "value": 2.5
+            }
+          ]
+        }
+      ]
+    },
+    "inflation_cpi": {
+      "label_ja": "消費者物価上昇率",
+      "label_en": "Inflation (CPI)",
+      "unit": "%",
+      "series": [
+        {
+          "source_id": "jetro_basic",
+          "source_label": "消費者物価上昇率",
+          "url": "https://www.jetro.go.jp/world/asia/th/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:46+00:00",
+          "page_last_updated": "2026-06-30",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2022,
+              "value": 6.1
+            },
+            {
+              "year": 2023,
+              "value": 1.2
+            },
+            {
+              "year": 2024,
+              "value": 0.4
+            }
+          ]
+        }
+      ]
+    },
+    "unemployment": {
+      "label_ja": "失業率",
+      "label_en": "Unemployment rate",
+      "unit": "%",
+      "series": [
+        {
+          "source_id": "jetro_basic",
+          "source_label": "失業率",
+          "url": "https://www.jetro.go.jp/world/asia/th/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:46+00:00",
+          "page_last_updated": "2026-06-30",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2022,
+              "value": 1.3
+            },
+            {
+              "year": 2023,
+              "value": 1
+            },
+            {
+              "year": 2024,
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    "fdi_inflow": {
+      "label_ja": "対内直接投資（純流入）",
+      "label_en": "FDI, net inflows",
+      "unit": "USD",
+      "series": []
+    }
+  }
+}

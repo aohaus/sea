@@ -1,0 +1,159 @@
+{
+  "code": "kh",
+  "iso3": "KHM",
+  "name_ja": "カンボジア",
+  "name_en": "Cambodia",
+  "indicators": {
+    "population": {
+      "label_ja": "人口",
+      "label_en": "Population",
+      "unit": "persons",
+      "series": [
+        {
+          "source_id": "jetro_basic",
+          "source_label": "人口",
+          "url": "https://www.jetro.go.jp/world/asia/kh/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:18+00:00",
+          "page_last_updated": "2026-07-07",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2025,
+              "value": 17900000,
+              "value_text": "1,790万人(2025年、出所:国際連合人口基金)",
+              "original_source": "国際連合人口基金"
+            }
+          ]
+        }
+      ]
+    },
+    "gdp_nominal": {
+      "label_ja": "名目GDP",
+      "label_en": "Nominal GDP",
+      "unit": "USD",
+      "series": []
+    },
+    "gdp_per_capita": {
+      "label_ja": "一人当たり名目GDP",
+      "label_en": "GDP per capita",
+      "unit": "USD",
+      "series": [
+        {
+          "source_id": "jetro_basic",
+          "source_label": "1人当たりGDP",
+          "url": "https://www.jetro.go.jp/world/asia/kh/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:18+00:00",
+          "page_last_updated": "2026-07-07",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 2546
+            },
+            {
+              "year": 2024,
+              "value": 2613
+            },
+            {
+              "year": 2025,
+              "value": 2762
+            }
+          ]
+        }
+      ]
+    },
+    "gdp_growth_real": {
+      "label_ja": "実質GDP成長率",
+      "label_en": "Real GDP growth",
+      "unit": "%",
+      "series": [
+        {
+          "source_id": "jetro_basic",
+          "source_label": "実質GDP成長率",
+          "url": "https://www.jetro.go.jp/world/asia/kh/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:18+00:00",
+          "page_last_updated": "2026-07-07",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 5
+            },
+            {
+              "year": 2024,
+              "value": 6
+            },
+            {
+              "year": 2025,
+              "value": 5
+            }
+          ]
+        }
+      ]
+    },
+    "inflation_cpi": {
+      "label_ja": "消費者物価上昇率",
+      "label_en": "Inflation (CPI)",
+      "unit": "%",
+      "series": [
+        {
+          "source_id": "jetro_basic",
+          "source_label": "消費者物価上昇率",
+          "url": "https://www.jetro.go.jp/world/asia/kh/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:18+00:00",
+          "page_last_updated": "2026-07-07",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 2.1
+            },
+            {
+              "year": 2024,
+              "value": 0.8
+            },
+            {
+              "year": 2025,
+              "value": 2.5
+            }
+          ]
+        }
+      ]
+    },
+    "unemployment": {
+      "label_ja": "失業率",
+      "label_en": "Unemployment rate",
+      "unit": "%",
+      "series": [
+        {
+          "source_id": "jetro_basic",
+          "source_label": "失業率",
+          "url": "https://www.jetro.go.jp/world/asia/kh/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:18+00:00",
+          "page_last_updated": "2026-07-07",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 0.2
+            },
+            {
+              "year": 2024,
+              "value": 0.3
+            },
+            {
+              "year": 2025,
+              "value": 0.3
+            }
+          ]
+        }
+      ]
+    },
+    "fdi_inflow": {
+      "label_ja": "対内直接投資（純流入）",
+      "label_en": "FDI, net inflows",
+      "unit": "USD",
+      "series": []
+    }
+  }
+}

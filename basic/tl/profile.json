@@ -192,55 +192,6 @@
           "retrieval_method": "manual_pdf"
         }
       ]
-    },
-    "population": {
-      "label_ja": "人口",
-      "label_en": "Population",
-      "unit": "persons",
-      "phase": 2,
-      "values": [
-        {
-          "value": 1390000,
-          "value_text": "約139万人(出典:東ティモール政府統計(2023年))",
-          "as_of": "2023",
-          "original_source": "東ティモール政府統計(2023年)",
-          "source_label": "人口",
-          "note": null,
-          "source_id": "mofa_basic",
-          "url": "https://www.mofa.go.jp/mofaj/area/easttimor/data.html",
-          "retrieved_at": "2026-10-13T01:19:29+00:00",
-          "page_last_updated": "2025-11-10",
-          "retrieval_method": "manual_pdf"
-        }
-      ]
-    },
-    "gdp_nominal": {
-      "label_ja": "名目GDP",
-      "label_en": "Nominal GDP",
-      "unit": "USD",
-      "phase": 2,
-      "values": []
-    },
-    "gdp_per_capita": {
-      "label_ja": "一人当たりGDP",
-      "label_en": "GDP per capita",
-      "unit": "USD",
-      "phase": 2,
-      "values": []
-    },
-    "gdp_growth_real": {
-      "label_ja": "実質GDP成長率",
-      "label_en": "Real GDP growth",
-      "unit": "%",
-      "phase": 2,
-      "values": []
-    },
-    "fdi_inflow": {
-      "label_ja": "対内直接投資",
-      "label_en": "FDI inflow",
-      "unit": "USD",
-      "phase": 2,
-      "values": []
     }
   }
 }
