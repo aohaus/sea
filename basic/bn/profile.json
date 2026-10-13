@@ -9,70 +9,210 @@
       "label_en": "Official name",
       "unit": null,
       "phase": 1,
-      "values": []
+      "values": [
+        {
+          "value": "ブルネイ・ダルサラーム国(Brunei Darussalam)",
+          "value_text": "ブルネイ・ダルサラーム国(Brunei Darussalam)",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "国・地域名",
+          "note": null,
+          "source_id": "mofa_basic",
+          "url": "https://www.mofa.go.jp/mofaj/area/brunei/data.html",
+          "retrieved_at": "2026-10-13T01:17:00+00:00",
+          "page_last_updated": "2026-06-23",
+          "retrieval_method": "manual_pdf"
+        }
+      ]
     },
     "area": {
       "label_ja": "面積",
       "label_en": "Area",
       "unit": "km2",
       "phase": 1,
-      "values": []
+      "values": [
+        {
+          "value": 5765,
+          "value_text": "5,765平方キロメートル(三重県とほぼ同じ) (注)三重県は5,777平方キロメートル。愛知県(5,163平方キロメートル)より大きく、茨城県(6,096平方キロメートル)より小さい。",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "面積",
+          "note": null,
+          "source_id": "mofa_basic",
+          "url": "https://www.mofa.go.jp/mofaj/area/brunei/data.html",
+          "retrieved_at": "2026-10-13T01:17:00+00:00",
+          "page_last_updated": "2026-06-23",
+          "retrieval_method": "manual_pdf"
+        }
+      ]
     },
     "capital": {
       "label_ja": "首都",
       "label_en": "Capital",
       "unit": null,
       "phase": 1,
-      "values": []
+      "values": [
+        {
+          "value": "バンダル・スリ・ブガワン",
+          "value_text": "バンダル・スリ・ブガワン",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "首都",
+          "note": null,
+          "source_id": "mofa_basic",
+          "url": "https://www.mofa.go.jp/mofaj/area/brunei/data.html",
+          "retrieved_at": "2026-10-13T01:17:00+00:00",
+          "page_last_updated": "2026-06-23",
+          "retrieval_method": "manual_pdf"
+        }
+      ]
     },
     "language": {
       "label_ja": "言語",
       "label_en": "Languages",
       "unit": null,
       "phase": 1,
-      "values": []
+      "values": [
+        {
+          "value": "憲法で公用語はマレー語と定められている。 英語は広く通用し、華人の間では中国語もある程度用いられている。",
+          "value_text": "憲法で公用語はマレー語と定められている。 英語は広く通用し、華人の間では中国語もある程度用いられている。",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "言語",
+          "note": null,
+          "source_id": "mofa_basic",
+          "url": "https://www.mofa.go.jp/mofaj/area/brunei/data.html",
+          "retrieved_at": "2026-10-13T01:17:00+00:00",
+          "page_last_updated": "2026-06-23",
+          "retrieval_method": "manual_pdf"
+        }
+      ]
     },
     "official_language": {
       "label_ja": "公用語",
       "label_en": "Official language",
       "unit": null,
       "phase": 1,
-      "values": []
+      "values": [
+        {
+          "value": "マレー語",
+          "value_text": "憲法で公用語はマレー語と定められている。 英語は広く通用し、華人の間では中国語もある程度用いられている。",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "言語",
+          "note": "「言語」欄の記述から抽出 / extracted from the Languages row",
+          "source_id": "mofa_basic",
+          "url": "https://www.mofa.go.jp/mofaj/area/brunei/data.html",
+          "retrieved_at": "2026-10-13T01:17:00+00:00",
+          "page_last_updated": "2026-06-23",
+          "retrieval_method": "manual_pdf"
+        }
+      ]
     },
     "religion": {
       "label_ja": "宗教",
       "label_en": "Religion",
       "unit": null,
       "phase": 1,
-      "values": []
+      "values": [
+        {
+          "value": "イスラム教(国教、82.1%)、仏教(6.3%)、キリスト教(6.7%)、その他および無宗教(4.9%)(2021年、出典:ブルネイ財務経済省経済計画統計局)",
+          "value_text": "イスラム教(国教、82.1%)、仏教(6.3%)、キリスト教(6.7%)、その他および無宗教(4.9%)(2021年、出典:ブルネイ財務経済省経済計画統計局)",
+          "as_of": "2021",
+          "original_source": "ブルネイ財務経済省経済計画統計局",
+          "source_label": "宗教",
+          "note": null,
+          "source_id": "mofa_basic",
+          "url": "https://www.mofa.go.jp/mofaj/area/brunei/data.html",
+          "retrieved_at": "2026-10-13T01:17:00+00:00",
+          "page_last_updated": "2026-06-23",
+          "retrieval_method": "manual_pdf"
+        }
+      ]
     },
     "ethnic_groups": {
       "label_ja": "民族",
       "label_en": "Ethnic groups",
       "unit": null,
       "phase": 1,
-      "values": []
+      "values": [
+        {
+          "value": "マレー系73.7%、中華系9.6%、その他16.7%(2024年、出典:ブルネイ財務経済省経済計画統計局)",
+          "value_text": "マレー系73.7%、中華系9.6%、その他16.7%(2024年、出典:ブルネイ財務経済省経済計画統計局)",
+          "as_of": "2024",
+          "original_source": "ブルネイ財務経済省経済計画統計局",
+          "source_label": "民族",
+          "note": null,
+          "source_id": "mofa_basic",
+          "url": "https://www.mofa.go.jp/mofaj/area/brunei/data.html",
+          "retrieved_at": "2026-10-13T01:17:00+00:00",
+          "page_last_updated": "2026-06-23",
+          "retrieval_method": "manual_pdf"
+        }
+      ]
     },
     "political_system": {
       "label_ja": "政体",
       "label_en": "Political system",
       "unit": null,
       "phase": 1,
-      "values": []
+      "values": [
+        {
+          "value": "立憲君主制",
+          "value_text": "立憲君主制",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "政体",
+          "note": null,
+          "source_id": "mofa_basic",
+          "url": "https://www.mofa.go.jp/mofaj/area/brunei/data.html",
+          "retrieved_at": "2026-10-13T01:17:00+00:00",
+          "page_last_updated": "2026-06-23",
+          "retrieval_method": "manual_pdf"
+        }
+      ]
     },
     "head_of_state": {
       "label_ja": "元首",
       "label_en": "Head of state",
       "unit": null,
       "phase": 1,
-      "values": []
+      "values": [
+        {
+          "value": "ハサナル・ボルキア国王(第29代スルタン)",
+          "value_text": "ハサナル・ボルキア国王(第29代スルタン)",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "元首",
+          "note": null,
+          "source_id": "mofa_basic",
+          "url": "https://www.mofa.go.jp/mofaj/area/brunei/data.html",
+          "retrieved_at": "2026-10-13T01:17:00+00:00",
+          "page_last_updated": "2026-06-23",
+          "retrieval_method": "manual_pdf"
+        }
+      ]
     },
     "population": {
       "label_ja": "人口",
       "label_en": "Population",
       "unit": "persons",
       "phase": 2,
-      "values": []
+      "values": [
+        {
+          "value": 455500,
+          "value_text": "45万5,500人(2024年) (外国人在留者含む。出典:ブルネイ財務経済省経済計画統計局)",
+          "as_of": "2024",
+          "original_source": "ブルネイ財務経済省経済計画統計局",
+          "source_label": "人口",
+          "note": null,
+          "source_id": "mofa_basic",
+          "url": "https://www.mofa.go.jp/mofaj/area/brunei/data.html",
+          "retrieved_at": "2026-10-13T01:17:00+00:00",
+          "page_last_updated": "2026-06-23",
+          "retrieval_method": "manual_pdf"
+        }
+      ]
     },
     "gdp_nominal": {
       "label_ja": "名目GDP",

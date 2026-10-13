@@ -297,6 +297,7 @@ def build_profile(country: dict, fields: list[dict], extracts: list[dict]) -> di
             "url": extract.get("final_url") or extract["url"],
             "retrieved_at": extract["retrieved_at"],
             "page_last_updated": extract.get("page_last_updated"),
+            "retrieval_method": extract.get("retrieval_method", "auto"),
         }
 
         def add(field: dict, value, text: str, label: str, original_source: str | None,
@@ -348,7 +349,8 @@ def build_profile(country: dict, fields: list[dict], extracts: list[dict]) -> di
                     names = re.findall(r"公用語(?:は|:|：)\s*([^、。,，()（）]+)", text)
                     names += re.findall(r"([^、。,，()（）\s]+)\s*[(（]公用語[)）]", text)
                     for name in names:
-                        add(official, name.strip(), text, row["label"], source,
+                        name = re.sub(r"と(?:定め|され|する).*$", "", name.strip())
+                        add(official, name, text, row["label"], source,
                             note="「言語」欄の記述から抽出 / extracted from the Languages row")
     return profile
 
@@ -404,6 +406,7 @@ def main() -> int:
                     "status": extract["status"],
                     "error": extract.get("error"),
                     "page_last_updated": extract.get("page_last_updated"),
+                    "retrieval_method": extract.get("retrieval_method", "auto"),
                 })
         profile = build_profile(country, fields, extracts)
         write_json(BASIC_DIR / country["code"] / "profile.json", profile)

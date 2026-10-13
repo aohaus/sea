@@ -32,7 +32,8 @@ JETRO の URL ではインドネシアのみ `idn` です。
     "source_id": "jetro_basic",
     "url": "https://www.jetro.go.jp/world/asia/my/basic_01.html",
     "retrieved_at": "2026-10-13T00:00:00+00:00",
-    "page_last_updated": "2026-08-19"
+    "page_last_updated": "2026-08-19",
+    "retrieval_method": "auto"
   }]
 }
 ```
@@ -40,6 +41,7 @@ JETRO の URL ではインドネシアのみ `idn` です。
 - `value_text` は原文の表記そのまま、`value` は数値化したものです（数値項目のみ）。
 - `original_source` は、セル内に「出所：…」とある場合の元統計です（例：内務省）。
 - 同じ項目で出所が複数ある場合は、上書きせず `values` に並べます。
+- `retrieval_method` は取得方法です：`auto`＝スクリプトによる自動取得、`manual_pdf`＝保存されたページ PDF からの抽出。
 
 ## 方針 / Policy
 
@@ -50,7 +52,11 @@ JETRO の URL ではインドネシアのみ `idn` です。
 ## 取得状況 / Coverage
 
 - JETRO「概況・基本統計」から9か国分を取得しました（kh id la my mm ph sg th vn）。最新の状況は `fetch_report.json` を参照してください。
-- ブルネイ（bn）と東ティモール（tl）は JETRO に該当ページがない（HTTP 404）ため、**外務省「基礎データ」**（`mofa_basic`）で補完しています。外務省のコンテンツは公共データ利用規約（PDL1.0）に従い、出典の記載と加工した旨の明記が必要です（`sources.json` の `citation_format`）。
+- ブルネイ（bn）と東ティモール（tl）は JETRO に該当ページがない（HTTP 404）ため、**外務省「基礎データ」**（`mofa_basic`）で補完します。外務省のコンテンツは公共データ利用規約（PDL1.0）に従い、出典の記載と加工した旨の明記が必要です（`sources.json` の `citation_format`）。
+- 外務省サイトは GitHub Actions からの自動取得を HTTP 403 で拒否するため、手動で取り込んでいます。
+  - **ブルネイ**：ユーザーがブラウザで保存した PDF のテキストから抽出済み（`retrieval_method: manual_pdf`、ページ日付 2026-06-23）。
+  - **東ティモール**：未取得（基礎データページの内容待ち）。
+  - 自動取得が失敗しても、手動で取り込んだ値は上書きされません。
 - ミャンマーのページには「政治体制」欄がないため、政体と元首は空です。
 - シンガポールのページには「首都」欄がありません（都市国家のため）。
 

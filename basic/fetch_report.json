@@ -4,10 +4,22 @@
       "code": "bn",
       "source_id": "mofa_basic",
       "url": "https://www.mofa.go.jp/mofaj/area/brunei/data.html",
-      "status": "error",
-      "error": "HTTP 403",
-      "page_last_updated": null,
-      "fields_filled": []
+      "status": "ok",
+      "error": null,
+      "page_last_updated": "2026-06-23",
+      "retrieval_method": "manual_pdf",
+      "fields_filled": [
+        "area",
+        "capital",
+        "ethnic_groups",
+        "head_of_state",
+        "language",
+        "official_language",
+        "official_name",
+        "political_system",
+        "population",
+        "religion"
+      ]
     },
     {
       "code": "kh",
@@ -16,6 +28,7 @@
       "status": "ok",
       "error": null,
       "page_last_updated": "2026-07-07",
+      "retrieval_method": "auto",
       "fields_filled": [
         "area",
         "capital",
@@ -35,6 +48,7 @@
       "status": "ok",
       "error": null,
       "page_last_updated": "2026-07-01",
+      "retrieval_method": "auto",
       "fields_filled": [
         "area",
         "capital",
@@ -53,6 +67,7 @@
       "status": "ok",
       "error": null,
       "page_last_updated": "2026-06-19",
+      "retrieval_method": "auto",
       "fields_filled": [
         "area",
         "capital",
@@ -73,6 +88,7 @@
       "status": "ok",
       "error": null,
       "page_last_updated": "2026-08-19",
+      "retrieval_method": "auto",
       "fields_filled": [
         "area",
         "capital",
@@ -92,6 +108,7 @@
       "status": "ok",
       "error": null,
       "page_last_updated": "2026-07-08",
+      "retrieval_method": "auto",
       "fields_filled": [
         "area",
         "capital",
@@ -108,6 +125,7 @@
       "status": "ok",
       "error": null,
       "page_last_updated": "2026-07-02",
+      "retrieval_method": "auto",
       "fields_filled": [
         "area",
         "capital",
@@ -127,6 +145,7 @@
       "status": "ok",
       "error": null,
       "page_last_updated": "2026-06-18",
+      "retrieval_method": "auto",
       "fields_filled": [
         "area",
         "ethnic_groups",
@@ -145,6 +164,7 @@
       "status": "ok",
       "error": null,
       "page_last_updated": "2026-06-30",
+      "retrieval_method": "auto",
       "fields_filled": [
         "area",
         "capital",
@@ -163,6 +183,7 @@
       "status": "error",
       "error": "HTTP 403",
       "page_last_updated": null,
+      "retrieval_method": "auto",
       "fields_filled": []
     },
     {
@@ -172,6 +193,7 @@
       "status": "ok",
       "error": null,
       "page_last_updated": "2026-07-01",
+      "retrieval_method": "auto",
       "fields_filled": [
         "area",
         "capital",

@@ -1,9 +1,84 @@
 {
   "source_id": "mofa_basic",
   "url": "https://www.mofa.go.jp/mofaj/area/brunei/data.html",
-  "retrieved_at": "2026-10-13T01:09:09+00:00",
-  "http_status": 403,
-  "final_url": "https://www.mofa.go.jp/mofaj/area/brunei/data.html",
-  "status": "error",
-  "error": "HTTP 403"
+  "retrieved_at": "2026-10-13T01:17:00+00:00",
+  "retrieval_method": "manual_pdf",
+  "retrieval_note": "自動取得が HTTP 403 のため、ユーザーがブラウザで保存した PDF（2026-10-13 01:17 UTC 作成）のテキストから抽出 / Extracted from a PDF of the page saved by the user in a browser, because automatic fetching returned HTTP 403",
+  "status": "ok",
+  "page_title": "ブルネイ基礎データ",
+  "page_last_updated": "2026-06-23",
+  "tables": [
+    {
+      "section": "ブルネイ・ダルサラーム国",
+      "header": [],
+      "rows": [
+        {
+          "label": "国・地域名",
+          "cells": [
+            "ブルネイ・ダルサラーム国(Brunei Darussalam)"
+          ]
+        }
+      ]
+    },
+    {
+      "section": "一般事情",
+      "header": [],
+      "rows": [
+        {
+          "label": "面積",
+          "cells": [
+            "5,765平方キロメートル(三重県とほぼ同じ) (注)三重県は5,777平方キロメートル。愛知県(5,163平方キロメートル)より大きく、茨城県(6,096平方キロメートル)より小さい。"
+          ]
+        },
+        {
+          "label": "人口",
+          "cells": [
+            "45万5,500人(2024年) (外国人在留者含む。出典:ブルネイ財務経済省経済計画統計局)"
+          ]
+        },
+        {
+          "label": "首都",
+          "cells": [
+            "バンダル・スリ・ブガワン"
+          ]
+        },
+        {
+          "label": "民族",
+          "cells": [
+            "マレー系73.7%、中華系9.6%、その他16.7%(2024年、出典:ブルネイ財務経済省経済計画統計局)"
+          ]
+        },
+        {
+          "label": "言語",
+          "cells": [
+            "憲法で公用語はマレー語と定められている。 英語は広く通用し、華人の間では中国語もある程度用いられている。"
+          ]
+        },
+        {
+          "label": "宗教",
+          "cells": [
+            "イスラム教(国教、82.1%)、仏教(6.3%)、キリスト教(6.7%)、その他および無宗教(4.9%)(2021年、出典:ブルネイ財務経済省経済計画統計局)"
+          ]
+        }
+      ]
+    },
+    {
+      "section": "政治体制・内政",
+      "header": [],
+      "rows": [
+        {
+          "label": "政体",
+          "cells": [
+            "立憲君主制"
+          ]
+        },
+        {
+          "label": "元首",
+          "cells": [
+            "ハサナル・ボルキア国王(第29代スルタン)"
+          ]
+        }
+      ]
+    }
+  ]
 }
