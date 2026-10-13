@@ -1,0 +1,29 @@
+{
+  "_comment": "出所台帳 / Source registry. 各データは source_id でここを参照する。{jetro_code} は countries.json の値で置き換える。",
+  "sources": [
+    {
+      "id": "jetro_basic",
+      "publisher_ja": "日本貿易振興機構（ジェトロ）",
+      "publisher_en": "Japan External Trade Organization (JETRO)",
+      "title_ja": "国・地域別に見る「概況・基本統計」",
+      "title_en": "Country overview and basic statistics",
+      "url_template": "https://www.jetro.go.jp/world/asia/{jetro_code}/basic_01.html",
+      "type": "web_page",
+      "language": "ja",
+      "terms_url": "https://www.jetro.go.jp/legal.html",
+      "storage_policy": "抽出した値・URL・取得日のみ保存し、ページ本文の写しは保存しない / Extracted values, URL and retrieval date only; no copy of the page."
+    },
+    {
+      "id": "jetro_asean_gtir",
+      "publisher_ja": "日本貿易振興機構（ジェトロ）",
+      "publisher_en": "Japan External Trade Organization (JETRO)",
+      "title_ja": "ASEANの貿易投資年報",
+      "title_en": "ASEAN trade and investment annual report",
+      "url_template": "https://www.jetro.go.jp/world/asia/asean/gtir/",
+      "type": "web_page",
+      "language": "ja",
+      "terms_url": "https://www.jetro.go.jp/legal.html",
+      "storage_policy": "抽出した値・URL・取得日のみ保存し、ページ本文の写しは保存しない / Extracted values, URL and retrieval date only; no copy of the page."
+    }
+  ]
+}
