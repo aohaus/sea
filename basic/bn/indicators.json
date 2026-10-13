@@ -10,6 +10,119 @@
       "unit": "persons",
       "series": [
         {
+          "source_id": "worldbank_wdi",
+          "indicator_code": "SP.POP.TOTL",
+          "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/SP.POP.TOTL?format=json&per_page=20000&date=2000:2031",
+          "retrieved_at": "2026-10-13T01:24:54+00:00",
+          "source_last_updated": "2026-10-08",
+          "observations": [
+            {
+              "year": 2000,
+              "value": 326424
+            },
+            {
+              "year": 2001,
+              "value": 333345
+            },
+            {
+              "year": 2002,
+              "value": 340099
+            },
+            {
+              "year": 2003,
+              "value": 346637
+            },
+            {
+              "year": 2004,
+              "value": 352911
+            },
+            {
+              "year": 2005,
+              "value": 358916
+            },
+            {
+              "year": 2006,
+              "value": 364663
+            },
+            {
+              "year": 2007,
+              "value": 370873
+            },
+            {
+              "year": 2008,
+              "value": 377793
+            },
+            {
+              "year": 2009,
+              "value": 384952
+            },
+            {
+              "year": 2010,
+              "value": 392332
+            },
+            {
+              "year": 2011,
+              "value": 399389
+            },
+            {
+              "year": 2012,
+              "value": 405557
+            },
+            {
+              "year": 2013,
+              "value": 411202
+            },
+            {
+              "year": 2014,
+              "value": 416750
+            },
+            {
+              "year": 2015,
+              "value": 422212
+            },
+            {
+              "year": 2016,
+              "value": 427564
+            },
+            {
+              "year": 2017,
+              "value": 432772
+            },
+            {
+              "year": 2018,
+              "value": 437810
+            },
+            {
+              "year": 2019,
+              "value": 442680
+            },
+            {
+              "year": 2020,
+              "value": 447404
+            },
+            {
+              "year": 2021,
+              "value": 451721
+            },
+            {
+              "year": 2022,
+              "value": 455370
+            },
+            {
+              "year": 2023,
+              "value": 458949
+            },
+            {
+              "year": 2024,
+              "value": 462721
+            },
+            {
+              "year": 2025,
+              "value": 466330
+            }
+          ]
+        },
+        {
           "source_id": "mofa_basic",
           "source_label": "人口",
           "url": "https://www.mofa.go.jp/mofaj/area/brunei/data.html",
@@ -31,13 +144,241 @@
       "label_ja": "名目GDP",
       "label_en": "Nominal GDP",
       "unit": "USD",
-      "series": []
+      "series": [
+        {
+          "source_id": "worldbank_wdi",
+          "indicator_code": "NY.GDP.MKTP.CD",
+          "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/NY.GDP.MKTP.CD?format=json&per_page=20000&date=2000:2031",
+          "retrieved_at": "2026-10-13T01:24:54+00:00",
+          "source_last_updated": "2026-10-08",
+          "observations": [
+            {
+              "year": 2000,
+              "value": 6570999087.56742
+            },
+            {
+              "year": 2001,
+              "value": 6096155767.38145
+            },
+            {
+              "year": 2002,
+              "value": 6333082875.56937
+            },
+            {
+              "year": 2003,
+              "value": 7167725261.92713
+            },
+            {
+              "year": 2004,
+              "value": 8619178773.51458
+            },
+            {
+              "year": 2005,
+              "value": 10547202620.5286
+            },
+            {
+              "year": 2006,
+              "value": 12644616418.691
+            },
+            {
+              "year": 2007,
+              "value": 13432029484.4012
+            },
+            {
+              "year": 2008,
+              "value": 15926456515.0049
+            },
+            {
+              "year": 2009,
+              "value": 11912904509.8582
+            },
+            {
+              "year": 2010,
+              "value": 13707121038.4383
+            },
+            {
+              "year": 2011,
+              "value": 18524791062.657
+            },
+            {
+              "year": 2012,
+              "value": 19048443340.7732
+            },
+            {
+              "year": 2013,
+              "value": 18094148098.6536
+            },
+            {
+              "year": 2014,
+              "value": 17097797386.0336
+            },
+            {
+              "year": 2015,
+              "value": 12930296870.1247
+            },
+            {
+              "year": 2016,
+              "value": 11400266044.6651
+            },
+            {
+              "year": 2017,
+              "value": 12128168045.1245
+            },
+            {
+              "year": 2018,
+              "value": 13566908391.0895
+            },
+            {
+              "year": 2019,
+              "value": 13469235364.7032
+            },
+            {
+              "year": 2020,
+              "value": 12005799653.9835
+            },
+            {
+              "year": 2021,
+              "value": 14006496617.4458
+            },
+            {
+              "year": 2022,
+              "value": 16681536466.7183
+            },
+            {
+              "year": 2023,
+              "value": 15095084656.1634
+            },
+            {
+              "year": 2024,
+              "value": 15340808592.48
+            },
+            {
+              "year": 2025,
+              "value": 15031980994.1121
+            }
+          ]
+        }
+      ]
     },
     "gdp_per_capita": {
       "label_ja": "一人当たり名目GDP",
       "label_en": "GDP per capita",
       "unit": "USD",
-      "series": []
+      "series": [
+        {
+          "source_id": "worldbank_wdi",
+          "indicator_code": "NY.GDP.PCAP.CD",
+          "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/NY.GDP.PCAP.CD?format=json&per_page=20000&date=2000:2031",
+          "retrieved_at": "2026-10-13T01:24:54+00:00",
+          "source_last_updated": "2026-10-08",
+          "observations": [
+            {
+              "year": 2000,
+              "value": 20130.2572346624
+            },
+            {
+              "year": 2001,
+              "value": 18287.8272281914
+            },
+            {
+              "year": 2002,
+              "value": 18621.2922577525
+            },
+            {
+              "year": 2003,
+              "value": 20677.9001143188
+            },
+            {
+              "year": 2004,
+              "value": 24423.0946995548
+            },
+            {
+              "year": 2005,
+              "value": 29386.2703822862
+            },
+            {
+              "year": 2006,
+              "value": 34674.7995236452
+            },
+            {
+              "year": 2007,
+              "value": 36217.3290706015
+            },
+            {
+              "year": 2008,
+              "value": 42156.5685838672
+            },
+            {
+              "year": 2009,
+              "value": 30946.4673773828
+            },
+            {
+              "year": 2010,
+              "value": 34937.5555357155
+            },
+            {
+              "year": 2011,
+              "value": 46382.8274255349
+            },
+            {
+              "year": 2012,
+              "value": 46968.5971164922
+            },
+            {
+              "year": 2013,
+              "value": 44003.0644273461
+            },
+            {
+              "year": 2014,
+              "value": 41026.5084247957
+            },
+            {
+              "year": 2015,
+              "value": 30625.1287744656
+            },
+            {
+              "year": 2016,
+              "value": 26663.2972950602
+            },
+            {
+              "year": 2017,
+              "value": 28024.3824580252
+            },
+            {
+              "year": 2018,
+              "value": 30988.1190267227
+            },
+            {
+              "year": 2019,
+              "value": 30426.5730656528
+            },
+            {
+              "year": 2020,
+              "value": 26834.3592233943
+            },
+            {
+              "year": 2021,
+              "value": 31006.9636289785
+            },
+            {
+              "year": 2022,
+              "value": 36632.9280952155
+            },
+            {
+              "year": 2023,
+              "value": 32890.5491812019
+            },
+            {
+              "year": 2024,
+              "value": 33153.4738913513
+            },
+            {
+              "year": 2025,
+              "value": 32234.6428368582
+            }
+          ]
+        }
+      ]
     },
     "gdp_growth_real": {
       "label_ja": "実質GDP成長率",
@@ -49,19 +390,361 @@
       "label_ja": "消費者物価上昇率",
       "label_en": "Inflation (CPI)",
       "unit": "%",
-      "series": []
+      "series": [
+        {
+          "source_id": "worldbank_wdi",
+          "indicator_code": "FP.CPI.TOTL.ZG",
+          "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/FP.CPI.TOTL.ZG?format=json&per_page=20000&date=2000:2031",
+          "retrieved_at": "2026-10-13T01:24:54+00:00",
+          "source_last_updated": "2026-10-08",
+          "observations": [
+            {
+              "year": 2000,
+              "value": 1.55815247634945
+            },
+            {
+              "year": 2001,
+              "value": 0.595890410958989
+            },
+            {
+              "year": 2002,
+              "value": -2.3149724245932
+            },
+            {
+              "year": 2003,
+              "value": 0.299999999999967
+            },
+            {
+              "year": 2004,
+              "value": 0.814223994682612
+            },
+            {
+              "year": 2005,
+              "value": 1.24443711883965
+            },
+            {
+              "year": 2006,
+              "value": 0.15988807834512
+            },
+            {
+              "year": 2007,
+              "value": 0.967774119525101
+            },
+            {
+              "year": 2008,
+              "value": 2.08498023715415
+            },
+            {
+              "year": 2009,
+              "value": 1.03571774271613
+            },
+            {
+              "year": 2010,
+              "value": 0.3568691320176
+            },
+            {
+              "year": 2011,
+              "value": 0.1379115631697
+            },
+            {
+              "year": 2012,
+              "value": 0.111766261400206
+            },
+            {
+              "year": 2013,
+              "value": 0.389205053123631
+            },
+            {
+              "year": 2014,
+              "value": -0.207108731719822
+            },
+            {
+              "year": 2015,
+              "value": -0.415121925856354
+            },
+            {
+              "year": 2016,
+              "value": -0.739068722339894
+            },
+            {
+              "year": 2017,
+              "value": -0.171311525411159
+            },
+            {
+              "year": 2018,
+              "value": 0.150523489779373
+            },
+            {
+              "year": 2019,
+              "value": -0.371372135873153
+            },
+            {
+              "year": 2020,
+              "value": 1.94030623416938
+            },
+            {
+              "year": 2021,
+              "value": 1.73341388450595
+            },
+            {
+              "year": 2022,
+              "value": 3.68225030604214
+            },
+            {
+              "year": 2023,
+              "value": 0.357064311536945
+            },
+            {
+              "year": 2024,
+              "value": -0.388674165036514
+            },
+            {
+              "year": 2025,
+              "value": -0.302994414446814
+            }
+          ]
+        }
+      ]
     },
     "unemployment": {
       "label_ja": "失業率",
       "label_en": "Unemployment rate",
       "unit": "%",
-      "series": []
+      "series": [
+        {
+          "source_id": "worldbank_wdi",
+          "indicator_code": "SL.UEM.TOTL.ZS",
+          "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/SL.UEM.TOTL.ZS?format=json&per_page=20000&date=2000:2031",
+          "retrieved_at": "2026-10-13T01:24:54+00:00",
+          "source_last_updated": "2026-10-08",
+          "observations": [
+            {
+              "year": 2000,
+              "value": 5.53
+            },
+            {
+              "year": 2001,
+              "value": 5.558
+            },
+            {
+              "year": 2002,
+              "value": 5.652
+            },
+            {
+              "year": 2003,
+              "value": 5.743
+            },
+            {
+              "year": 2004,
+              "value": 5.847
+            },
+            {
+              "year": 2005,
+              "value": 5.973
+            },
+            {
+              "year": 2006,
+              "value": 6.061
+            },
+            {
+              "year": 2007,
+              "value": 6.187
+            },
+            {
+              "year": 2008,
+              "value": 6.312
+            },
+            {
+              "year": 2009,
+              "value": 6.457
+            },
+            {
+              "year": 2010,
+              "value": 6.487
+            },
+            {
+              "year": 2011,
+              "value": 6.506
+            },
+            {
+              "year": 2012,
+              "value": 6.571
+            },
+            {
+              "year": 2013,
+              "value": 6.709
+            },
+            {
+              "year": 2014,
+              "value": 6.862
+            },
+            {
+              "year": 2015,
+              "value": 7.703
+            },
+            {
+              "year": 2016,
+              "value": 8.537
+            },
+            {
+              "year": 2017,
+              "value": 9.316
+            },
+            {
+              "year": 2018,
+              "value": 8.7
+            },
+            {
+              "year": 2019,
+              "value": 6.6
+            },
+            {
+              "year": 2020,
+              "value": 7.409
+            },
+            {
+              "year": 2021,
+              "value": 4.905
+            },
+            {
+              "year": 2022,
+              "value": 5.191
+            },
+            {
+              "year": 2023,
+              "value": 5.296
+            },
+            {
+              "year": 2024,
+              "value": 5.18
+            },
+            {
+              "year": 2025,
+              "value": 5.277
+            }
+          ]
+        }
+      ]
     },
     "fdi_inflow": {
       "label_ja": "対内直接投資（純流入）",
       "label_en": "FDI, net inflows",
       "unit": "USD",
-      "series": []
+      "series": [
+        {
+          "source_id": "worldbank_wdi",
+          "indicator_code": "BX.KLT.DINV.CD.WD",
+          "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/BX.KLT.DINV.CD.WD?format=json&per_page=20000&date=2000:2031",
+          "retrieved_at": "2026-10-13T01:24:54+00:00",
+          "source_last_updated": "2026-10-08",
+          "observations": [
+            {
+              "year": 2000,
+              "value": 549607251
+            },
+            {
+              "year": 2001,
+              "value": 60694643.6567847
+            },
+            {
+              "year": 2002,
+              "value": 229671955.675395
+            },
+            {
+              "year": 2003,
+              "value": 123820911.146426
+            },
+            {
+              "year": 2004,
+              "value": 113205866.961457
+            },
+            {
+              "year": 2005,
+              "value": 175068516.562807
+            },
+            {
+              "year": 2006,
+              "value": 87839128.3133849
+            },
+            {
+              "year": 2007,
+              "value": 257635717.488309
+            },
+            {
+              "year": 2008,
+              "value": 222184549.489168
+            },
+            {
+              "year": 2009,
+              "value": 325586827.786628
+            },
+            {
+              "year": 2010,
+              "value": 480722547
+            },
+            {
+              "year": 2011,
+              "value": 691170274
+            },
+            {
+              "year": 2012,
+              "value": 864905528
+            },
+            {
+              "year": 2013,
+              "value": 775641999
+            },
+            {
+              "year": 2014,
+              "value": 573906207.836338
+            },
+            {
+              "year": 2015,
+              "value": 171289167.823994
+            },
+            {
+              "year": 2016,
+              "value": -150550827.310313
+            },
+            {
+              "year": 2017,
+              "value": 467927550.316566
+            },
+            {
+              "year": 2018,
+              "value": 516202620.629746
+            },
+            {
+              "year": 2019,
+              "value": 373256767.246305
+            },
+            {
+              "year": 2020,
+              "value": 565542275.429333
+            },
+            {
+              "year": 2021,
+              "value": 206462739.392454
+            },
+            {
+              "year": 2022,
+              "value": -290169984.940837
+            },
+            {
+              "year": 2023,
+              "value": -55927970.3793775
+            },
+            {
+              "year": 2024,
+              "value": 29063018.6489883
+            },
+            {
+              "year": 2025,
+              "value": 61805866.3876176
+            }
+          ]
+        }
+      ]
     }
   }
 }
