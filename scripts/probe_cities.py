@@ -25,26 +25,18 @@ HEADERS = {
 }
 
 CANDIDATES = [
-    # Malaysia (DOSM / data.gov.my)
-    ("MY state GDP real (API)", "https://api.data.gov.my/data-catalogue?id=gdp_state_real_supply&limit=3"),
-    ("MY catalogue page", "https://open.dosm.gov.my/data-catalogue"),
-    ("MY archive per-capita by state", "https://archive.data.gov.my/data/dataset/gross-domestic-product-gdp-per-capita-by-state-at-current-prices"),
-    # Philippines (PSA OpenSTAT PXWeb)
-    ("PH per capita GDP prov/HUC (API meta)", "https://openstat.psa.gov.ph/PXWeb/api/v1/en/DB/2A/PPA/0092A5GPPA8.px"),
-    ("PH API root", "https://openstat.psa.gov.ph/PXWeb/api/v1/en/DB/2A/PPA"),
-    # Thailand (NSO yearbook, chapter 10)
-    ("TH NSO T10.1 2025", "https://www.nso.go.th/public/e-book/Statistical-Yearbook/SYB-2025_webPage/File%20SYB/2025/10/T%2010.1%202025.pdf"),
-    ("TH NSO T10.14 2025", "https://www.nso.go.th/public/e-book/Statistical-Yearbook/SYB-2025_webPage/File%20SYB/2025/10/T%2010.14%202025.pdf"),
-    ("TH NESDC GRP page", "https://www.nesdc.go.th/main.php?filename=gross_regional"),
-    # Vietnam (GSO / NSO)
-    ("VN GSO EN home", "https://www.gso.gov.vn/en/"),
-    ("VN NSO EN home", "https://www.nso.gov.vn/en/"),
-    ("VN PX-Web", "https://pxweb.gso.gov.vn/pxweb/en/"),
-    # Indonesia (BPS)
-    ("ID BPS PDRB per kapita table search", "https://www.bps.go.id/en/statistics-table?subject=528"),
-    # UN World Urbanization Prospects 2025
-    ("UN WUP downloads (cities)", "https://population.un.org/wup/downloads?tab=Cities"),
-    ("UN WUP home", "https://population.un.org/wup/"),
+    ("PH per capita GDP prov/HUC (meta)", "https://openstat.psa.gov.ph/PXWeb/api/v1/en/DB/2A/PPA/0092A5FPPA8.px"),
+    ("MY state GDP nominal? (API)", "https://api.data.gov.my/data-catalogue?id=gdp_state_nominal_supply&limit=2"),
+    ("VN NSO search: yearbook", "https://www.nso.gov.vn/en/?s=statistical+yearbook"),
+    ("VN NSO search: GRDP", "https://www.nso.gov.vn/en/?s=GRDP+per+capita"),
+    ("ID BPS EN home", "https://www.bps.go.id/en"),
+    ("ID BPS Jakarta", "https://jakarta.bps.go.id/en"),
+]
+
+# Pages whose JavaScript/HTML is searched for identifiers (dataset ids, file names).
+GREP = [
+    ("MY catalogue ids containing gdp", "https://open.dosm.gov.my/data-catalogue", r"gdp_[a-z0-9_]+"),
+    ("UN WUP file names", "https://population.un.org/wup/downloads?tab=Cities", r"WUP2025-[A-Za-z0-9_\-]+\.(?:xlsx|csv|zip)|assets/Download/[^\"' )]+"),
 ]
 
 DATA_LINK = re.compile(r"\.(xlsx?|csv|zip|pdf|px|json)(\?|$)|/api/|download", re.I)
@@ -99,6 +91,24 @@ def main() -> None:
             parts.append(f"- HTTP {resp.status_code}")
             if resp.ok:
                 parts.append(summarize(resp))
+        except Exception as exc:  # noqa: BLE001
+            parts.append(f"- error: {type(exc).__name__}: {exc}")
+        parts.append("")
+    for name, url, pattern in GREP:
+        parts.append(f"## {name}\n\n{url}\n")
+        try:
+            resp = session.get(url, headers=HEADERS, timeout=60)
+            found = set(re.findall(pattern, resp.text))
+            # Also search the page's own script bundles.
+            soup = BeautifulSoup(resp.text, "html.parser")
+            for tag in soup.find_all("script", src=True)[:40]:
+                src = requests.compat.urljoin(resp.url, tag["src"])
+                try:
+                    found |= set(re.findall(pattern, session.get(src, headers=HEADERS, timeout=60).text))
+                except Exception:  # noqa: BLE001
+                    pass
+            parts.append(f"- HTTP {resp.status_code}; {len(found)} matches:")
+            parts += [f"  - `{m}`" for m in sorted(found)[:150]]
         except Exception as exc:  # noqa: BLE001
             parts.append(f"- error: {type(exc).__name__}: {exc}")
         parts.append("")
