@@ -1,0 +1,21 @@
+﻿reference_id,figure_id,field,year,scope,reference_value,reference_text,reference_cited_source,our_value,our_sources,missing,diff_pct,status
+ajc_at_a_glance,asean_area,area,,"bn,kh,id,la,my,mm,ph,sg,th,vn",4450000.0,約445万km2,ASEAN事務局、総務省,4467216.3,"jetro_basic,mofa_basic",,0.39,match
+ajc_at_a_glance,japan_area,area,,jp,380000.0,約38万km2,ASEAN事務局、総務省,,,jp,,no_data
+ajc_at_a_glance,asean_population,population,2024,"bn,kh,id,la,my,mm,ph,sg,th,vn",694000000.0,約6億9400万人,世界銀行,693953263.0,worldbank_wdi,,-0.01,match
+ajc_at_a_glance,japan_population,population,2024,jp,124000000.0,約1億2400万人,世界銀行,123975371,worldbank_wdi,,-0.02,match
+ajc_at_a_glance,asean_gdp,gdp_nominal,2024,"bn,kh,id,la,my,mm,ph,sg,th,vn",3952600000000.0,約3兆9526億USドル,IMF,4011052043973.76,worldbank_wdi,,1.48,match
+ajc_at_a_glance,japan_gdp,gdp_nominal,2024,jp,4019400000000.0,約4兆0194億USドル,IMF,4190008188358.57,worldbank_wdi,,4.24,close
+ajc_at_a_glance,asean_gdp_per_capita,gdp_per_capita,2024,"bn,kh,id,la,my,mm,ph,sg,th,vn",5696,"約5,696 USドル",IMF（GDP）、世界銀行（人口）を基に日本アセアンセンター作成,5780.0,worldbank_wdi,,1.47,match
+ajc_at_a_glance,japan_gdp_per_capita,gdp_per_capita,2024,jp,32421,"約32,421 USドル",IMF（GDP）、世界銀行（人口）,33797.1,worldbank_wdi,,4.24,close
+ajc_at_a_glance,asean_gdp_per_capita_2004,gdp_per_capita,2004,"bn,kh,id,la,my,mm,ph,sg,th,vn",1599,"約1,599 USドル（2004年）",IMF（GDP）、世界銀行（人口）を基に日本アセアンセンター作成,1506.13,worldbank_wdi,,-5.81,close
+ajc_at_a_glance,asean_gdp_per_capita_2014,gdp_per_capita,2014,"bn,kh,id,la,my,mm,ph,sg,th,vn",4108,"約4,108 USドル（2014年）",IMF（GDP）、世界銀行（人口）を基に日本アセアンセンター作成,4101.51,worldbank_wdi,,-0.16,match
+ajc_at_a_glance,bn_gdp_per_capita,gdp_per_capita,2024,bn,33418,"約33,418 USドル",IMF（GDP）、世界銀行（人口）を基に日本アセアンセンター作成,33153.47,worldbank_wdi,,-0.79,match
+ajc_at_a_glance,kh_gdp_per_capita,gdp_per_capita,2024,kh,2613,"約2,613 USドル",IMF（GDP）、世界銀行（人口）を基に日本アセアンセンター作成,2627.88,worldbank_wdi,,0.57,match
+ajc_at_a_glance,id_gdp_per_capita,gdp_per_capita,2024,id,4925,"約4,925 USドル",IMF（GDP）、世界銀行（人口）を基に日本アセアンセンター作成,4925.44,worldbank_wdi,,0.01,match
+ajc_at_a_glance,la_gdp_per_capita,gdp_per_capita,2024,la,2047,"約2,047 USドル",IMF（GDP）、世界銀行（人口）を基に日本アセアンセンター作成,2123.98,worldbank_wdi,,3.76,close
+ajc_at_a_glance,my_gdp_per_capita,gdp_per_capita,2024,my,11874,"約11,874 USドル",IMF（GDP）、世界銀行（人口）を基に日本アセアンセンター作成,11874.43,worldbank_wdi,,0.0,match
+ajc_at_a_glance,mm_gdp_per_capita,gdp_per_capita,2024,mm,1131,"約1,131 USドル",IMF（GDP）、世界銀行（人口）を基に日本アセアンセンター作成,1359.05,worldbank_wdi,,20.16,differs
+ajc_at_a_glance,ph_gdp_per_capita,gdp_per_capita,2024,ph,3985,"約3,985 USドル",IMF（GDP）、世界銀行（人口）を基に日本アセアンセンター作成,3985.29,worldbank_wdi,,0.01,match
+ajc_at_a_glance,sg_gdp_per_capita,gdp_per_capita,2024,sg,90674,"約90,674 USドル",IMF（GDP）、世界銀行（人口）を基に日本アセアンセンター作成,94896.56,worldbank_wdi,,4.66,close
+ajc_at_a_glance,th_gdp_per_capita,gdp_per_capita,2024,th,7347,"約7,347 USドル",IMF（GDP）、世界銀行（人口）を基に日本アセアンセンター作成,7386.64,worldbank_wdi,,0.54,match
+ajc_at_a_glance,vn_gdp_per_capita,gdp_per_capita,2024,vn,4550,"約4,550 USドル",IMF（GDP）、世界銀行（人口）を基に日本アセアンセンター作成,4716.66,worldbank_wdi,,3.66,close

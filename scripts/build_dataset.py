@@ -5,6 +5,10 @@ Reads countries.json, schema/fields.json, sources.json, every <code>/profile.jso
 and <code>/indicators.json, and writes:
   basic/data/dataset.json
       everything the viewer needs, with full provenance on every value.
+  basic/data/observations.{csv,json}, profiles.{csv,json}, sources.{csv,json}
+      flat tables for export and the dashboard: one row per value, each row
+      carrying its publisher, URL, retrieval date and license (CSV in UTF-8 with
+      BOM so it opens in Excel).
   basic/reference/validation_report.json
       for each figure in basic/reference/*.json, the value computed from our data
       (sum over the figure's scope, or a ratio of two sums), the difference in %,
@@ -16,6 +20,8 @@ No network access. Usage:
 
 from __future__ import annotations
 
+import csv
+import json
 import sys
 
 from fetch_basic import BASIC_DIR, load_json, write_json
@@ -117,6 +123,67 @@ def validate(dataset: dict) -> dict:
     return {"thresholds": {"match": "<=2%", "close": "<=10%", "differs": ">10%"}, "results": results}
 
 
+def flatten(dataset: dict) -> dict[str, list[dict]]:
+    countries = {c["code"]: c for c in dataset["countries"]}
+    fields = {f["id"]: f for f in dataset["fields"]}
+    sources = dataset["sources"]
+
+    def place(code: str) -> dict:
+        c = countries[code]
+        return {"country_code": code, "country_ja": c["name_ja"], "country_en": c["name_en"], "group": c["group"]}
+
+    def source_cols(source_id: str) -> dict:
+        s = sources.get(source_id, {})
+        return {"source_id": source_id, "source_publisher_ja": s.get("publisher_ja"),
+                "source_publisher_en": s.get("publisher_en"), "source_title_ja": s.get("title_ja"),
+                "license": s.get("license")}
+
+    observations = []
+    for code, by_field in dataset["indicators"].items():
+        for field_id, series_list in by_field.items():
+            f = fields[field_id]
+            for series in series_list:
+                for o in series["observations"]:
+                    observations.append({
+                        **place(code), "indicator_id": field_id, "indicator_ja": f["label_ja"],
+                        "indicator_en": f["label_en"], "unit": f["unit"], "year": o["year"], "value": o["value"],
+                        "note": o.get("note"), **source_cols(series["source_id"]),
+                        "indicator_code": series.get("indicator_code"),
+                        "original_source": o.get("original_source"), "url": series["url"],
+                        "retrieved_at": series["retrieved_at"],
+                        "source_last_updated": series.get("source_last_updated") or series.get("page_last_updated"),
+                        "retrieval_method": series.get("retrieval_method", "auto"),
+                    })
+    profiles = []
+    for code, by_field in dataset["profiles"].items():
+        for field_id, values in by_field.items():
+            f = fields[field_id]
+            for v in values:
+                profiles.append({
+                    **place(code), "field_id": field_id, "field_ja": f["label_ja"], "field_en": f["label_en"],
+                    "unit": f["unit"], "value": v["value"], "value_text": v["value_text"], "as_of": v["as_of"],
+                    "note": v.get("note"), **source_cols(v["source_id"]),
+                    "original_source": v["original_source"], "url": v["url"], "retrieved_at": v["retrieved_at"],
+                    "page_last_updated": v.get("page_last_updated"),
+                    "retrieval_method": v.get("retrieval_method", "auto"),
+                })
+    source_rows = [{"source_id": k, **{c: v.get(c) for c in (
+        "publisher_ja", "publisher_en", "title_ja", "title_en", "type", "license", "terms_url",
+        "citation_format", "auto_fetch", "storage_policy")}} for k, v in sources.items()]
+    return {"observations": observations, "profiles": profiles, "sources": source_rows}
+
+
+def write_table(name: str, rows: list[dict]) -> None:
+    out = BASIC_DIR / "data"
+    out.mkdir(parents=True, exist_ok=True)
+    (out / f"{name}.json").write_text(json.dumps(rows, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+    columns = list(rows[0]) if rows else []
+    with open(out / f"{name}.csv", "w", encoding="utf-8-sig", newline="") as fh:
+        writer = csv.DictWriter(fh, fieldnames=columns)
+        writer.writeheader()
+        writer.writerows(rows)
+
+
 def main() -> int:
     dataset = build()
     report = validate(dataset)
@@ -127,6 +194,11 @@ def main() -> int:
     }
     write_json(BASIC_DIR / "data" / "dataset.json", dataset)
     write_json(BASIC_DIR / "reference" / "validation_report.json", report)
+    tables = flatten(dataset)
+    tables["validation"] = [{**r, "scope": ",".join(r["scope"]), "our_sources": ",".join(r["our_sources"]),
+                             "missing": ",".join(r["missing"])} for r in report["results"]]
+    for name, rows in tables.items():
+        write_table(name, rows)
     for r in report["results"]:
         ours = f"{r['our_value']:,.0f}" if r["our_value"] is not None else "-"
         diff = f"{r['diff_pct']:+.1f}%" if r["diff_pct"] is not None else ""
