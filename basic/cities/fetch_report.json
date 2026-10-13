@@ -1,7 +1,8 @@
 {
   "psa_ph_pcgdp": {
-    "fetch_status": "error",
-    "fetch_error": "JSONDecodeError: Unexpected UTF-8 BOM (decode using utf-8-sig): line 1 column 1 (char 0)"
+    "fetch_status": "ok",
+    "rows": 24,
+    "missing_units": []
   },
   "nso_th_gpp": {
     "fetch_status": "ok",
@@ -36,7 +37,7 @@
   },
   "un_wup2025_cities": {
     "fetch_status": "ok",
-    "rows": 20,
+    "rows": 131,
     "largest_cities_by_country": {
       "BRN": [
         "Bandar Seri Begawan",
@@ -181,6 +182,7 @@
       "grdp_per_capita_ratio"
     ],
     "th-bkk": [
+      "city_population",
       "grdp_per_capita_local",
       "grdp_per_capita_ratio",
       "grdp_per_capita_usd"
@@ -198,19 +200,32 @@
       "grdp_per_capita_usd"
     ],
     "ph-mnl": [
-      "city_population"
+      "city_population",
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
     ],
     "ph-ceb": [
-      "city_population"
+      "city_population",
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
     ],
     "ph-dvo": [
+      "city_population",
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
+    ],
+    "vn-han": [
       "city_population"
     ],
-    "vn-han": [],
     "vn-sgn": [
       "city_population"
     ],
-    "vn-dad": [],
+    "vn-dad": [
+      "city_population"
+    ],
     "id-jkt": [
       "city_population"
     ],
@@ -225,8 +240,12 @@
       "grdp_per_capita_ratio",
       "grdp_per_capita_usd"
     ],
-    "kh-pnh": [],
-    "la-vte": [],
+    "kh-pnh": [
+      "city_population"
+    ],
+    "la-vte": [
+      "city_population"
+    ],
     "mm-rgn": [
       "city_population"
     ],
