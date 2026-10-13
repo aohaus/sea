@@ -8,6 +8,8 @@
       "error": null,
       "page_last_updated": "2026-06-23",
       "retrieval_method": "manual_pdf",
+      "fetch_status": "error",
+      "fetch_error": "HTTP 403",
       "fields_filled": [
         "area",
         "capital",
@@ -28,6 +30,8 @@
       "error": null,
       "page_last_updated": "2026-07-07",
       "retrieval_method": "auto",
+      "fetch_status": "ok",
+      "fetch_error": null,
       "fields_filled": [
         "area",
         "capital",
@@ -47,6 +51,8 @@
       "error": null,
       "page_last_updated": "2026-07-01",
       "retrieval_method": "auto",
+      "fetch_status": "ok",
+      "fetch_error": null,
       "fields_filled": [
         "area",
         "capital",
@@ -65,6 +71,8 @@
       "error": null,
       "page_last_updated": "2026-06-19",
       "retrieval_method": "auto",
+      "fetch_status": "ok",
+      "fetch_error": null,
       "fields_filled": [
         "area",
         "capital",
@@ -85,6 +93,8 @@
       "error": null,
       "page_last_updated": "2026-08-19",
       "retrieval_method": "auto",
+      "fetch_status": "ok",
+      "fetch_error": null,
       "fields_filled": [
         "area",
         "capital",
@@ -104,6 +114,8 @@
       "error": null,
       "page_last_updated": "2026-07-08",
       "retrieval_method": "auto",
+      "fetch_status": "ok",
+      "fetch_error": null,
       "fields_filled": [
         "area",
         "capital",
@@ -120,6 +132,8 @@
       "error": null,
       "page_last_updated": "2026-07-02",
       "retrieval_method": "auto",
+      "fetch_status": "ok",
+      "fetch_error": null,
       "fields_filled": [
         "area",
         "capital",
@@ -139,6 +153,8 @@
       "error": null,
       "page_last_updated": "2026-06-18",
       "retrieval_method": "auto",
+      "fetch_status": "ok",
+      "fetch_error": null,
       "fields_filled": [
         "area",
         "ethnic_groups",
@@ -157,6 +173,8 @@
       "error": null,
       "page_last_updated": "2026-06-30",
       "retrieval_method": "auto",
+      "fetch_status": "ok",
+      "fetch_error": null,
       "fields_filled": [
         "area",
         "capital",
@@ -175,6 +193,8 @@
       "error": null,
       "page_last_updated": "2025-11-10",
       "retrieval_method": "manual_pdf",
+      "fetch_status": "error",
+      "fetch_error": "HTTP 403",
       "fields_filled": [
         "area",
         "capital",
@@ -195,6 +215,8 @@
       "error": null,
       "page_last_updated": "2026-07-01",
       "retrieval_method": "auto",
+      "fetch_status": "ok",
+      "fetch_error": null,
       "fields_filled": [
         "area",
         "capital",
