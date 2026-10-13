@@ -1,0 +1,216 @@
+{
+  "code": "vn",
+  "iso3": "VNM",
+  "name_ja": "ベトナム",
+  "name_en": "Viet Nam",
+  "fields": {
+    "area": {
+      "label_ja": "面積",
+      "label_en": "Area",
+      "unit": "km2",
+      "phase": 1,
+      "values": [
+        {
+          "value": 332144,
+          "value_text": "33万2,144平方キロメートル(日本の0.88倍、出所:ベトナム統計年鑑2025)",
+          "as_of": null,
+          "original_source": "ベトナム統計年鑑2025",
+          "jetro_label": "面積",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/vn/basic_01.html",
+          "retrieved_at": "2026-10-13T01:04:26+00:00",
+          "page_last_updated": "2026-07-01"
+        }
+      ]
+    },
+    "capital": {
+      "label_ja": "首都",
+      "label_en": "Capital",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "ハノイ 人口 886万人(2025年、出所:ベトナム統計年鑑2025)",
+          "value_text": "ハノイ 人口 886万人(2025年、出所:ベトナム統計年鑑2025)",
+          "as_of": "2025",
+          "original_source": "ベトナム統計年鑑2025",
+          "jetro_label": "首都",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/vn/basic_01.html",
+          "retrieved_at": "2026-10-13T01:04:26+00:00",
+          "page_last_updated": "2026-07-01"
+        }
+      ]
+    },
+    "language": {
+      "label_ja": "言語",
+      "label_en": "Languages",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "ベトナム語、ほかに少数民族語",
+          "value_text": "ベトナム語、ほかに少数民族語",
+          "as_of": null,
+          "original_source": null,
+          "jetro_label": "言語",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/vn/basic_01.html",
+          "retrieved_at": "2026-10-13T01:04:26+00:00",
+          "page_last_updated": "2026-07-01"
+        }
+      ]
+    },
+    "official_language": {
+      "label_ja": "公用語",
+      "label_en": "Official language",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "ベトナム語",
+          "value_text": "ベトナム語",
+          "as_of": null,
+          "original_source": null,
+          "jetro_label": "公用語",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/vn/basic_01.html",
+          "retrieved_at": "2026-10-13T01:04:26+00:00",
+          "page_last_updated": "2026-07-01"
+        }
+      ]
+    },
+    "religion": {
+      "label_ja": "宗教",
+      "label_en": "Religion",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "仏教、そのほかにカトリック、カオダイ教、ホアハオ教など",
+          "value_text": "仏教、そのほかにカトリック、カオダイ教、ホアハオ教など",
+          "as_of": null,
+          "original_source": null,
+          "jetro_label": "宗教",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/vn/basic_01.html",
+          "retrieved_at": "2026-10-13T01:04:26+00:00",
+          "page_last_updated": "2026-07-01"
+        }
+      ]
+    },
+    "ethnic_groups": {
+      "label_ja": "民族",
+      "label_en": "Ethnic groups",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "グエン・ディン・カン(Nguyen Dinh Khang)",
+          "value_text": "グエン・ディン・カン(Nguyen Dinh Khang)",
+          "as_of": null,
+          "original_source": null,
+          "jetro_label": "民族宗教省",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/vn/basic_01.html",
+          "retrieved_at": "2026-10-13T01:04:26+00:00",
+          "page_last_updated": "2026-07-01"
+        }
+      ]
+    },
+    "political_system": {
+      "label_ja": "政体",
+      "label_en": "Political system",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "社会主義共和国",
+          "value_text": "社会主義共和国",
+          "as_of": null,
+          "original_source": null,
+          "jetro_label": "政体",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/vn/basic_01.html",
+          "retrieved_at": "2026-10-13T01:04:26+00:00",
+          "page_last_updated": "2026-07-01"
+        }
+      ]
+    },
+    "head_of_state": {
+      "label_ja": "元首",
+      "label_en": "Head of state",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "トー・ラム(To Lam)国家主席(2026年4月7日就任、1957年生まれ)",
+          "value_text": "トー・ラム(To Lam)国家主席(2026年4月7日就任、1957年生まれ)",
+          "as_of": "2026-04-07",
+          "original_source": null,
+          "jetro_label": "元首",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/vn/basic_01.html",
+          "retrieved_at": "2026-10-13T01:04:26+00:00",
+          "page_last_updated": "2026-07-01"
+        }
+      ]
+    },
+    "population": {
+      "label_ja": "人口",
+      "label_en": "Population",
+      "unit": "persons",
+      "phase": 2,
+      "values": [
+        {
+          "value": 102350000,
+          "value_text": "1億235万人(2025年、出所:ベトナム統計年鑑2025)",
+          "as_of": "2025",
+          "original_source": "ベトナム統計年鑑2025",
+          "jetro_label": "人口",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/vn/basic_01.html",
+          "retrieved_at": "2026-10-13T01:04:26+00:00",
+          "page_last_updated": "2026-07-01"
+        }
+      ]
+    },
+    "gdp_nominal": {
+      "label_ja": "名目GDP",
+      "label_en": "Nominal GDP",
+      "unit": "USD",
+      "phase": 2,
+      "values": []
+    },
+    "gdp_per_capita": {
+      "label_ja": "一人当たりGDP",
+      "label_en": "GDP per capita",
+      "unit": "USD",
+      "phase": 2,
+      "values": []
+    },
+    "gdp_growth_real": {
+      "label_ja": "実質GDP成長率",
+      "label_en": "Real GDP growth",
+      "unit": "%",
+      "phase": 2,
+      "values": []
+    },
+    "fdi_inflow": {
+      "label_ja": "対内直接投資",
+      "label_en": "FDI inflow",
+      "unit": "USD",
+      "phase": 2,
+      "values": []
+    }
+  }
+}

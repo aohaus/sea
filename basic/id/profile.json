@@ -1,0 +1,190 @@
+{
+  "code": "id",
+  "iso3": "IDN",
+  "name_ja": "インドネシア",
+  "name_en": "Indonesia",
+  "fields": {
+    "area": {
+      "label_ja": "面積",
+      "label_en": "Area",
+      "unit": "km2",
+      "phase": 1,
+      "values": [
+        {
+          "value": 1890180,
+          "value_text": "189万180平方キロメートル(2025年、出所:中央統計庁、日本の約5倍)",
+          "as_of": "2025",
+          "original_source": "中央統計庁、日本の約5倍",
+          "jetro_label": "面積",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/idn/basic_01.html",
+          "retrieved_at": "2026-10-13T01:03:41+00:00",
+          "page_last_updated": "2026-07-01"
+        }
+      ]
+    },
+    "capital": {
+      "label_ja": "首都",
+      "label_en": "Capital",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "ジャカルタ 人口1,068万人(2025年、出所:中央統計庁)",
+          "value_text": "ジャカルタ 人口1,068万人(2025年、出所:中央統計庁)",
+          "as_of": "2025",
+          "original_source": "中央統計庁",
+          "jetro_label": "首都",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/idn/basic_01.html",
+          "retrieved_at": "2026-10-13T01:03:41+00:00",
+          "page_last_updated": "2026-07-01"
+        }
+      ]
+    },
+    "language": {
+      "label_ja": "言語",
+      "label_en": "Languages",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "インドネシア語",
+          "value_text": "インドネシア語",
+          "as_of": null,
+          "original_source": null,
+          "jetro_label": "言語",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/idn/basic_01.html",
+          "retrieved_at": "2026-10-13T01:03:41+00:00",
+          "page_last_updated": "2026-07-01"
+        }
+      ]
+    },
+    "official_language": {
+      "label_ja": "公用語",
+      "label_en": "Official language",
+      "unit": null,
+      "phase": 1,
+      "values": []
+    },
+    "religion": {
+      "label_ja": "宗教",
+      "label_en": "Religion",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "イスラム教、ヒンドゥー教、キリスト教ほか",
+          "value_text": "イスラム教、ヒンドゥー教、キリスト教ほか",
+          "as_of": null,
+          "original_source": null,
+          "jetro_label": "宗教",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/idn/basic_01.html",
+          "retrieved_at": "2026-10-13T01:03:41+00:00",
+          "page_last_updated": "2026-07-01"
+        }
+      ]
+    },
+    "ethnic_groups": {
+      "label_ja": "民族",
+      "label_en": "Ethnic groups",
+      "unit": null,
+      "phase": 1,
+      "values": []
+    },
+    "political_system": {
+      "label_ja": "政体",
+      "label_en": "Political system",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "共和制(大統領責任内閣)",
+          "value_text": "共和制(大統領責任内閣)",
+          "as_of": null,
+          "original_source": null,
+          "jetro_label": "政体",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/idn/basic_01.html",
+          "retrieved_at": "2026-10-13T01:03:41+00:00",
+          "page_last_updated": "2026-07-01"
+        }
+      ]
+    },
+    "head_of_state": {
+      "label_ja": "元首",
+      "label_en": "Head of state",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "プラボウォ・スビアント大統領(Prabowo Subianto)(就任時期:2024年10月、任期は2029年10月まで、1951年10月17日生まれ)",
+          "value_text": "プラボウォ・スビアント大統領(Prabowo Subianto)(就任時期:2024年10月、任期は2029年10月まで、1951年10月17日生まれ)",
+          "as_of": "2024-10",
+          "original_source": null,
+          "jetro_label": "元首",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/idn/basic_01.html",
+          "retrieved_at": "2026-10-13T01:03:41+00:00",
+          "page_last_updated": "2026-07-01"
+        }
+      ]
+    },
+    "population": {
+      "label_ja": "人口",
+      "label_en": "Population",
+      "unit": "persons",
+      "phase": 2,
+      "values": [
+        {
+          "value": 284440000,
+          "value_text": "2億8,444万人(2025年、出所:中央統計庁)",
+          "as_of": "2025",
+          "original_source": "中央統計庁",
+          "jetro_label": "人口",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/idn/basic_01.html",
+          "retrieved_at": "2026-10-13T01:03:41+00:00",
+          "page_last_updated": "2026-07-01"
+        }
+      ]
+    },
+    "gdp_nominal": {
+      "label_ja": "名目GDP",
+      "label_en": "Nominal GDP",
+      "unit": "USD",
+      "phase": 2,
+      "values": []
+    },
+    "gdp_per_capita": {
+      "label_ja": "一人当たりGDP",
+      "label_en": "GDP per capita",
+      "unit": "USD",
+      "phase": 2,
+      "values": []
+    },
+    "gdp_growth_real": {
+      "label_ja": "実質GDP成長率",
+      "label_en": "Real GDP growth",
+      "unit": "%",
+      "phase": 2,
+      "values": []
+    },
+    "fdi_inflow": {
+      "label_ja": "対内直接投資",
+      "label_en": "FDI inflow",
+      "unit": "USD",
+      "phase": 2,
+      "values": []
+    }
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "code": "sg",
+  "iso3": "SGP",
+  "name_ja": "シンガポール",
+  "name_en": "Singapore",
+  "fields": {
+    "area": {
+      "label_ja": "面積",
+      "label_en": "Area",
+      "unit": "km2",
+      "phase": 1,
+      "values": [
+        {
+          "value": 744.3,
+          "value_text": "744.3平方キロメートル(東京23区[627.5平方キロメートル]をやや上回る規模)",
+          "as_of": null,
+          "original_source": null,
+          "jetro_label": "面積",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/sg/basic_01.html",
+          "retrieved_at": "2026-10-13T01:04:10+00:00",
+          "page_last_updated": "2026-06-18"
+        }
+      ]
+    },
+    "capital": {
+      "label_ja": "首都",
+      "label_en": "Capital",
+      "unit": null,
+      "phase": 1,
+      "values": []
+    },
+    "language": {
+      "label_ja": "言語",
+      "label_en": "Languages",
+      "unit": null,
+      "phase": 1,
+      "values": []
+    },
+    "official_language": {
+      "label_ja": "公用語",
+      "label_en": "Official language",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "英語、中国語(北京語)、マレー語、タミル語 ※国語はマレー語",
+          "value_text": "英語、中国語(北京語)、マレー語、タミル語 ※国語はマレー語",
+          "as_of": null,
+          "original_source": null,
+          "jetro_label": "公用語",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/sg/basic_01.html",
+          "retrieved_at": "2026-10-13T01:04:10+00:00",
+          "page_last_updated": "2026-06-18"
+        }
+      ]
+    },
+    "religion": {
+      "label_ja": "宗教",
+      "label_en": "Religion",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "仏教、イスラム教、ヒンズー教、道教、キリスト教ほか",
+          "value_text": "仏教、イスラム教、ヒンズー教、道教、キリスト教ほか",
+          "as_of": null,
+          "original_source": null,
+          "jetro_label": "宗教",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/sg/basic_01.html",
+          "retrieved_at": "2026-10-13T01:04:10+00:00",
+          "page_last_updated": "2026-06-18"
+        }
+      ]
+    },
+    "ethnic_groups": {
+      "label_ja": "民族",
+      "label_en": "Ethnic groups",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "中国系(73.9%)、マレー系(13.5%)、インド系(9.0%)、その他(3.5%)(2025年) ※国民・永住者の人口(420万人)の内訳。",
+          "value_text": "中国系(73.9%)、マレー系(13.5%)、インド系(9.0%)、その他(3.5%)(2025年) ※国民・永住者の人口(420万人)の内訳。",
+          "as_of": "2025",
+          "original_source": null,
+          "jetro_label": "民族構成",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/sg/basic_01.html",
+          "retrieved_at": "2026-10-13T01:04:10+00:00",
+          "page_last_updated": "2026-06-18"
+        }
+      ]
+    },
+    "political_system": {
+      "label_ja": "政体",
+      "label_en": "Political system",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "立憲共和制",
+          "value_text": "立憲共和制",
+          "as_of": null,
+          "original_source": null,
+          "jetro_label": "政体",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/sg/basic_01.html",
+          "retrieved_at": "2026-10-13T01:04:10+00:00",
+          "page_last_updated": "2026-06-18"
+        }
+      ]
+    },
+    "head_of_state": {
+      "label_ja": "元首",
+      "label_en": "Head of state",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "ターマン・シャンムガラトナム大統領(Tharman SHANMUGARATNAM)(2023年9月14日就任)",
+          "value_text": "ターマン・シャンムガラトナム大統領(Tharman SHANMUGARATNAM)(2023年9月14日就任)",
+          "as_of": "2023-09-14",
+          "original_source": null,
+          "jetro_label": "元首",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/sg/basic_01.html",
+          "retrieved_at": "2026-10-13T01:04:10+00:00",
+          "page_last_updated": "2026-06-18"
+        }
+      ]
+    },
+    "population": {
+      "label_ja": "人口",
+      "label_en": "Population",
+      "unit": "persons",
+      "phase": 2,
+      "values": [
+        {
+          "value": 6111000,
+          "value_text": "611.1万人(2025年。人口には、国民、永住者、および長期滞在 (1年超)の外国人が含まれる。出所:シンガポール統計局)",
+          "as_of": "2025",
+          "original_source": "シンガポール統計局",
+          "jetro_label": "人口",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/sg/basic_01.html",
+          "retrieved_at": "2026-10-13T01:04:10+00:00",
+          "page_last_updated": "2026-06-18"
+        }
+      ]
+    },
+    "gdp_nominal": {
+      "label_ja": "名目GDP",
+      "label_en": "Nominal GDP",
+      "unit": "USD",
+      "phase": 2,
+      "values": []
+    },
+    "gdp_per_capita": {
+      "label_ja": "一人当たりGDP",
+      "label_en": "GDP per capita",
+      "unit": "USD",
+      "phase": 2,
+      "values": []
+    },
+    "gdp_growth_real": {
+      "label_ja": "実質GDP成長率",
+      "label_en": "Real GDP growth",
+      "unit": "%",
+      "phase": 2,
+      "values": []
+    },
+    "fdi_inflow": {
+      "label_ja": "対内直接投資",
+      "label_en": "FDI inflow",
+      "unit": "USD",
+      "phase": 2,
+      "values": []
+    }
+  }
+}

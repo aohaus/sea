@@ -1,0 +1,203 @@
+{
+  "code": "my",
+  "iso3": "MYS",
+  "name_ja": "マレーシア",
+  "name_en": "Malaysia",
+  "fields": {
+    "area": {
+      "label_ja": "面積",
+      "label_en": "Area",
+      "unit": "km2",
+      "phase": 1,
+      "values": [
+        {
+          "value": 330855,
+          "value_text": "33万855平方キロメートル(日本の0.87倍)",
+          "as_of": null,
+          "original_source": null,
+          "jetro_label": "面積",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/my/basic_01.html",
+          "retrieved_at": "2026-10-13T01:03:53+00:00",
+          "page_last_updated": "2026-08-19"
+        }
+      ]
+    },
+    "capital": {
+      "label_ja": "首都",
+      "label_en": "Capital",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "クアラルンプール 人口207万人(2025年、出所:マレーシア統計局)",
+          "value_text": "クアラルンプール 人口207万人(2025年、出所:マレーシア統計局)",
+          "as_of": "2025",
+          "original_source": "マレーシア統計局",
+          "jetro_label": "首都",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/my/basic_01.html",
+          "retrieved_at": "2026-10-13T01:03:53+00:00",
+          "page_last_updated": "2026-08-19"
+        }
+      ]
+    },
+    "language": {
+      "label_ja": "言語",
+      "label_en": "Languages",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "マレー語、英語、中国語、タミル語",
+          "value_text": "マレー語、英語、中国語、タミル語",
+          "as_of": null,
+          "original_source": null,
+          "jetro_label": "言語",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/my/basic_01.html",
+          "retrieved_at": "2026-10-13T01:03:53+00:00",
+          "page_last_updated": "2026-08-19"
+        }
+      ]
+    },
+    "official_language": {
+      "label_ja": "公用語",
+      "label_en": "Official language",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "マレー語",
+          "value_text": "マレー語",
+          "as_of": null,
+          "original_source": null,
+          "jetro_label": "公用語",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/my/basic_01.html",
+          "retrieved_at": "2026-10-13T01:03:53+00:00",
+          "page_last_updated": "2026-08-19"
+        }
+      ]
+    },
+    "religion": {
+      "label_ja": "宗教",
+      "label_en": "Religion",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "イスラム教63.5%、仏教18.7%、キリスト教9.1%、ヒンドゥー教6.1%など 注:割合は2020年の推計 出所:マレーシア統計局",
+          "value_text": "イスラム教63.5%、仏教18.7%、キリスト教9.1%、ヒンドゥー教6.1%など 注:割合は2020年の推計 出所:マレーシア統計局",
+          "as_of": null,
+          "original_source": "マレーシア統計局",
+          "jetro_label": "宗教",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/my/basic_01.html",
+          "retrieved_at": "2026-10-13T01:03:53+00:00",
+          "page_last_updated": "2026-08-19"
+        }
+      ]
+    },
+    "ethnic_groups": {
+      "label_ja": "民族",
+      "label_en": "Ethnic groups",
+      "unit": null,
+      "phase": 1,
+      "values": []
+    },
+    "political_system": {
+      "label_ja": "政体",
+      "label_en": "Political system",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "立憲君主制",
+          "value_text": "立憲君主制",
+          "as_of": null,
+          "original_source": null,
+          "jetro_label": "政体",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/my/basic_01.html",
+          "retrieved_at": "2026-10-13T01:03:53+00:00",
+          "page_last_updated": "2026-08-19"
+        }
+      ]
+    },
+    "head_of_state": {
+      "label_ja": "元首",
+      "label_en": "Head of state",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "イブラヒム第17代国王 (2024年1月就任、任期5年、統治者会議で互選。ジョホール州スルタン)",
+          "value_text": "イブラヒム第17代国王 (2024年1月就任、任期5年、統治者会議で互選。ジョホール州スルタン)",
+          "as_of": "2024-01",
+          "original_source": null,
+          "jetro_label": "元首",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/my/basic_01.html",
+          "retrieved_at": "2026-10-13T01:03:53+00:00",
+          "page_last_updated": "2026-08-19"
+        }
+      ]
+    },
+    "population": {
+      "label_ja": "人口",
+      "label_en": "Population",
+      "unit": "persons",
+      "phase": 2,
+      "values": [
+        {
+          "value": 34230000,
+          "value_text": "3,423万人(2025年、出所:マレーシア統計局)",
+          "as_of": "2025",
+          "original_source": "マレーシア統計局",
+          "jetro_label": "人口",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/my/basic_01.html",
+          "retrieved_at": "2026-10-13T01:03:53+00:00",
+          "page_last_updated": "2026-08-19"
+        }
+      ]
+    },
+    "gdp_nominal": {
+      "label_ja": "名目GDP",
+      "label_en": "Nominal GDP",
+      "unit": "USD",
+      "phase": 2,
+      "values": []
+    },
+    "gdp_per_capita": {
+      "label_ja": "一人当たりGDP",
+      "label_en": "GDP per capita",
+      "unit": "USD",
+      "phase": 2,
+      "values": []
+    },
+    "gdp_growth_real": {
+      "label_ja": "実質GDP成長率",
+      "label_en": "Real GDP growth",
+      "unit": "%",
+      "phase": 2,
+      "values": []
+    },
+    "fdi_inflow": {
+      "label_ja": "対内直接投資",
+      "label_en": "FDI inflow",
+      "unit": "USD",
+      "phase": 2,
+      "values": []
+    }
+  }
+}

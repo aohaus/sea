@@ -1,0 +1,164 @@
+{
+  "code": "mm",
+  "iso3": "MMR",
+  "name_ja": "ミャンマー",
+  "name_en": "Myanmar",
+  "fields": {
+    "area": {
+      "label_ja": "面積",
+      "label_en": "Area",
+      "unit": "km2",
+      "phase": 1,
+      "values": [
+        {
+          "value": 676578,
+          "value_text": "67万6,578平方キロメートル(日本の1.8倍)",
+          "as_of": null,
+          "original_source": null,
+          "jetro_label": "面積",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/mm/basic_01.html",
+          "retrieved_at": "2026-10-13T01:03:58+00:00",
+          "page_last_updated": "2026-07-08"
+        }
+      ]
+    },
+    "capital": {
+      "label_ja": "首都",
+      "label_en": "Capital",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "ネーピードー",
+          "value_text": "ネーピードー",
+          "as_of": null,
+          "original_source": null,
+          "jetro_label": "首都",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/mm/basic_01.html",
+          "retrieved_at": "2026-10-13T01:03:58+00:00",
+          "page_last_updated": "2026-07-08"
+        }
+      ]
+    },
+    "language": {
+      "label_ja": "言語",
+      "label_en": "Languages",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "ミャンマー語、シャン語、カレン語、英語",
+          "value_text": "ミャンマー語、シャン語、カレン語、英語",
+          "as_of": null,
+          "original_source": null,
+          "jetro_label": "言語",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/mm/basic_01.html",
+          "retrieved_at": "2026-10-13T01:03:58+00:00",
+          "page_last_updated": "2026-07-08"
+        }
+      ]
+    },
+    "official_language": {
+      "label_ja": "公用語",
+      "label_en": "Official language",
+      "unit": null,
+      "phase": 1,
+      "values": []
+    },
+    "religion": {
+      "label_ja": "宗教",
+      "label_en": "Religion",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "仏教(87.9%)、キリスト教(6.2%)、イスラム教(4.3%)、ヒンドゥー教(0.5%)など",
+          "value_text": "仏教(87.9%)、キリスト教(6.2%)、イスラム教(4.3%)、ヒンドゥー教(0.5%)など",
+          "as_of": null,
+          "original_source": null,
+          "jetro_label": "宗教",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/mm/basic_01.html",
+          "retrieved_at": "2026-10-13T01:03:58+00:00",
+          "page_last_updated": "2026-07-08"
+        }
+      ]
+    },
+    "ethnic_groups": {
+      "label_ja": "民族",
+      "label_en": "Ethnic groups",
+      "unit": null,
+      "phase": 1,
+      "values": []
+    },
+    "political_system": {
+      "label_ja": "政体",
+      "label_en": "Political system",
+      "unit": null,
+      "phase": 1,
+      "values": []
+    },
+    "head_of_state": {
+      "label_ja": "元首",
+      "label_en": "Head of state",
+      "unit": null,
+      "phase": 1,
+      "values": []
+    },
+    "population": {
+      "label_ja": "人口",
+      "label_en": "Population",
+      "unit": "persons",
+      "phase": 2,
+      "values": [
+        {
+          "value": 57530000,
+          "value_text": "5,753万人(2024年推計値、出所:米国中央情報局)",
+          "as_of": "2024",
+          "original_source": "米国中央情報局",
+          "jetro_label": "人口",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/mm/basic_01.html",
+          "retrieved_at": "2026-10-13T01:03:58+00:00",
+          "page_last_updated": "2026-07-08"
+        }
+      ]
+    },
+    "gdp_nominal": {
+      "label_ja": "名目GDP",
+      "label_en": "Nominal GDP",
+      "unit": "USD",
+      "phase": 2,
+      "values": []
+    },
+    "gdp_per_capita": {
+      "label_ja": "一人当たりGDP",
+      "label_en": "GDP per capita",
+      "unit": "USD",
+      "phase": 2,
+      "values": []
+    },
+    "gdp_growth_real": {
+      "label_ja": "実質GDP成長率",
+      "label_en": "Real GDP growth",
+      "unit": "%",
+      "phase": 2,
+      "values": []
+    },
+    "fdi_inflow": {
+      "label_ja": "対内直接投資",
+      "label_en": "FDI inflow",
+      "unit": "USD",
+      "phase": 2,
+      "values": []
+    }
+  }
+}

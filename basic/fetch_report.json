@@ -1,0 +1,170 @@
+{
+  "source_id": "jetro_basic",
+  "generated_at": "2026-10-13T01:04:29+00:00",
+  "countries": [
+    {
+      "code": "bn",
+      "url": "https://www.jetro.go.jp/world/asia/bn/basic_01.html",
+      "status": "error",
+      "error": "HTTP 404",
+      "page_last_updated": null,
+      "fields_filled": []
+    },
+    {
+      "code": "kh",
+      "url": "https://www.jetro.go.jp/world/asia/kh/basic_01.html",
+      "status": "ok",
+      "error": null,
+      "page_last_updated": "2026-07-07",
+      "fields_filled": [
+        "area",
+        "capital",
+        "head_of_state",
+        "language",
+        "official_language",
+        "political_system",
+        "population",
+        "religion"
+      ]
+    },
+    {
+      "code": "id",
+      "url": "https://www.jetro.go.jp/world/asia/idn/basic_01.html",
+      "status": "ok",
+      "error": null,
+      "page_last_updated": "2026-07-01",
+      "fields_filled": [
+        "area",
+        "capital",
+        "head_of_state",
+        "language",
+        "political_system",
+        "population",
+        "religion"
+      ]
+    },
+    {
+      "code": "la",
+      "url": "https://www.jetro.go.jp/world/asia/la/basic_01.html",
+      "status": "ok",
+      "error": null,
+      "page_last_updated": "2026-06-19",
+      "fields_filled": [
+        "area",
+        "capital",
+        "ethnic_groups",
+        "head_of_state",
+        "language",
+        "political_system",
+        "population",
+        "religion"
+      ]
+    },
+    {
+      "code": "my",
+      "url": "https://www.jetro.go.jp/world/asia/my/basic_01.html",
+      "status": "ok",
+      "error": null,
+      "page_last_updated": "2026-08-19",
+      "fields_filled": [
+        "area",
+        "capital",
+        "head_of_state",
+        "language",
+        "official_language",
+        "political_system",
+        "population",
+        "religion"
+      ]
+    },
+    {
+      "code": "mm",
+      "url": "https://www.jetro.go.jp/world/asia/mm/basic_01.html",
+      "status": "ok",
+      "error": null,
+      "page_last_updated": "2026-07-08",
+      "fields_filled": [
+        "area",
+        "capital",
+        "language",
+        "population",
+        "religion"
+      ]
+    },
+    {
+      "code": "ph",
+      "url": "https://www.jetro.go.jp/world/asia/ph/basic_01.html",
+      "status": "ok",
+      "error": null,
+      "page_last_updated": "2026-07-02",
+      "fields_filled": [
+        "area",
+        "capital",
+        "head_of_state",
+        "language",
+        "official_language",
+        "political_system",
+        "population",
+        "religion"
+      ]
+    },
+    {
+      "code": "sg",
+      "url": "https://www.jetro.go.jp/world/asia/sg/basic_01.html",
+      "status": "ok",
+      "error": null,
+      "page_last_updated": "2026-06-18",
+      "fields_filled": [
+        "area",
+        "ethnic_groups",
+        "head_of_state",
+        "official_language",
+        "political_system",
+        "population",
+        "religion"
+      ]
+    },
+    {
+      "code": "th",
+      "url": "https://www.jetro.go.jp/world/asia/th/basic_01.html",
+      "status": "ok",
+      "error": null,
+      "page_last_updated": "2026-06-30",
+      "fields_filled": [
+        "area",
+        "capital",
+        "head_of_state",
+        "language",
+        "political_system",
+        "population",
+        "religion"
+      ]
+    },
+    {
+      "code": "tl",
+      "url": "https://www.jetro.go.jp/world/asia/tl/basic_01.html",
+      "status": "error",
+      "error": "HTTP 404",
+      "page_last_updated": null,
+      "fields_filled": []
+    },
+    {
+      "code": "vn",
+      "url": "https://www.jetro.go.jp/world/asia/vn/basic_01.html",
+      "status": "ok",
+      "error": null,
+      "page_last_updated": "2026-07-01",
+      "fields_filled": [
+        "area",
+        "capital",
+        "ethnic_groups",
+        "head_of_state",
+        "language",
+        "official_language",
+        "political_system",
+        "population",
+        "religion"
+      ]
+    }
+  ]
+}
