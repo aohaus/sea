@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - "scripts/fetch_jetro_basic.py"
+      - "scripts/fetch_basic.py"
       - "basic/countries.json"
       - "basic/sources.json"
       - "basic/schema/**"
@@ -22,7 +22,7 @@ concurrency:
 
 jobs:
   fetch:
-    name: Fetch JETRO basic statistics
+    name: Fetch basic statistics (JETRO, MOFA)
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -39,7 +39,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Fetch and build profiles
-        run: python scripts/fetch_jetro_basic.py
+        run: python scripts/fetch_basic.py
 
       - name: Commit updated data
         run: |
@@ -49,6 +49,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No data changes."
           else
-            git commit -m "data(basic): update JETRO basic statistics"
+            git commit -m "data(basic): update basic statistics"
             git push
           fi

@@ -10,7 +10,7 @@ Basic data on the 11 ASEAN members (including Timor-Leste) and ASEAN as a whole,
 | `countries.json` | 対象国マスタ（フォルダコード、ISO3、日英名、JETRO URL コード） / Country master |
 | `sources.json` | 出所台帳（発行元・資料名・URL・利用条件・保存方針） / Source registry |
 | `schema/fields.json` | データ項目の定義（日英ラベル・単位・段階） / Field definitions |
-| `<code>/jetro_basic.json` | JETRO「概況・基本統計」から抽出した表（テキストのみ）と取得日 / Extracted tables + retrieval date |
+| `<code>/<source_id>.json` | 出所ページから抽出した表・見出し（テキストのみ）と取得日。`jetro_basic`＝JETRO「概況・基本統計」、`mofa_basic`＝外務省「基礎データ」 / Extracted rows + retrieval date |
 | `<code>/profile.json` | 項目ごとに整理した値。各値に出所を付与 / Values per field, each with its source |
 | `asean/` | ASEAN 全体のデータ（JETRO「ASEANの貿易投資年報」など） / ASEAN-wide data |
 | `fetch_report.json` | 直近の取得結果（国ごとの成否・埋まった項目） / Last fetch summary |
@@ -28,7 +28,7 @@ JETRO の URL ではインドネシアのみ `idn` です。
     "value_text": "33万855平方キロメートル（日本の0.87倍）",
     "as_of": null,
     "original_source": null,
-    "jetro_label": "面積",
+    "source_label": "面積",
     "source_id": "jetro_basic",
     "url": "https://www.jetro.go.jp/world/asia/my/basic_01.html",
     "retrieved_at": "2026-10-13T00:00:00+00:00",
@@ -50,18 +50,18 @@ JETRO の URL ではインドネシアのみ `idn` です。
 ## 取得状況 / Coverage
 
 - JETRO「概況・基本統計」から9か国分を取得しました（kh id la my mm ph sg th vn）。最新の状況は `fetch_report.json` を参照してください。
-- **ブルネイ（bn）と東ティモール（tl）は JETRO に該当ページがなく（HTTP 404）、`values` は空です。** 外務省「国・地域」ページなどで補う予定です。
+- ブルネイ（bn）と東ティモール（tl）は JETRO に該当ページがない（HTTP 404）ため、**外務省「基礎データ」**（`mofa_basic`）で補完しています。外務省のコンテンツは公共データ利用規約（PDL1.0）に従い、出典の記載と加工した旨の明記が必要です（`sources.json` の `citation_format`）。
 - ミャンマーのページには「政治体制」欄がないため、政体と元首は空です。
 - シンガポールのページには「首都」欄がありません（都市国家のため）。
 
 ## 更新 / Updating
 
-GitHub Actions の `Fetch basic country data` が JETRO から取得し、結果をコミットします。
+GitHub Actions の `Fetch basic country data` が各出所から取得し、結果をコミットします（抽出内容が変わらない場合はコミットしません）。
 起動のタイミングは、毎月1日、手動実行、スクリプトやスキーマの変更時です。
 ローカルで出所データから `profile.json` だけを作り直す場合：
 
 ```bash
-python scripts/fetch_jetro_basic.py --build
+python scripts/fetch_basic.py --build
 ```
 
 ## 今後 / Next

@@ -1,17 +1,8 @@
 {
-  "source_id": "jetro_basic",
-  "generated_at": "2026-10-13T01:06:55+00:00",
-  "countries": [
-    {
-      "code": "bn",
-      "url": "https://www.jetro.go.jp/world/asia/bn/basic_01.html",
-      "status": "error",
-      "error": "HTTP 404",
-      "page_last_updated": null,
-      "fields_filled": []
-    },
+  "results": [
     {
       "code": "kh",
+      "source_id": "jetro_basic",
       "url": "https://www.jetro.go.jp/world/asia/kh/basic_01.html",
       "status": "ok",
       "error": null,
@@ -30,6 +21,7 @@
     },
     {
       "code": "id",
+      "source_id": "jetro_basic",
       "url": "https://www.jetro.go.jp/world/asia/idn/basic_01.html",
       "status": "ok",
       "error": null,
@@ -47,6 +39,7 @@
     },
     {
       "code": "la",
+      "source_id": "jetro_basic",
       "url": "https://www.jetro.go.jp/world/asia/la/basic_01.html",
       "status": "ok",
       "error": null,
@@ -66,6 +59,7 @@
     },
     {
       "code": "my",
+      "source_id": "jetro_basic",
       "url": "https://www.jetro.go.jp/world/asia/my/basic_01.html",
       "status": "ok",
       "error": null,
@@ -84,6 +78,7 @@
     },
     {
       "code": "mm",
+      "source_id": "jetro_basic",
       "url": "https://www.jetro.go.jp/world/asia/mm/basic_01.html",
       "status": "ok",
       "error": null,
@@ -99,6 +94,7 @@
     },
     {
       "code": "ph",
+      "source_id": "jetro_basic",
       "url": "https://www.jetro.go.jp/world/asia/ph/basic_01.html",
       "status": "ok",
       "error": null,
@@ -117,6 +113,7 @@
     },
     {
       "code": "sg",
+      "source_id": "jetro_basic",
       "url": "https://www.jetro.go.jp/world/asia/sg/basic_01.html",
       "status": "ok",
       "error": null,
@@ -134,6 +131,7 @@
     },
     {
       "code": "th",
+      "source_id": "jetro_basic",
       "url": "https://www.jetro.go.jp/world/asia/th/basic_01.html",
       "status": "ok",
       "error": null,
@@ -150,15 +148,8 @@
       ]
     },
     {
-      "code": "tl",
-      "url": "https://www.jetro.go.jp/world/asia/tl/basic_01.html",
-      "status": "error",
-      "error": "HTTP 404",
-      "page_last_updated": null,
-      "fields_filled": []
-    },
-    {
       "code": "vn",
+      "source_id": "jetro_basic",
       "url": "https://www.jetro.go.jp/world/asia/vn/basic_01.html",
       "status": "ok",
       "error": null,
