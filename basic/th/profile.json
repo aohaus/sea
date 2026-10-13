@@ -4,6 +4,26 @@
   "name_ja": "タイ",
   "name_en": "Thailand",
   "fields": {
+    "official_name": {
+      "label_ja": "正式国名",
+      "label_en": "Official name",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "タイ王国 Kingdom of Thailand",
+          "value_text": "タイ王国 Kingdom of Thailand",
+          "as_of": null,
+          "original_source": null,
+          "jetro_label": "国・地域名",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/th/basic_01.html",
+          "retrieved_at": "2026-10-13T01:04:16+00:00",
+          "page_last_updated": "2026-06-30"
+        }
+      ]
+    },
     "area": {
       "label_ja": "面積",
       "label_en": "Area",
@@ -31,10 +51,10 @@
       "phase": 1,
       "values": [
         {
-          "value": "バンコク(タイ語名:クルンテープ・マハナコーン) 人口542万人(2025年、出所:内務省)",
+          "value": "バンコク",
           "value_text": "バンコク(タイ語名:クルンテープ・マハナコーン) 人口542万人(2025年、出所:内務省)",
-          "as_of": "2025",
-          "original_source": "内務省",
+          "as_of": null,
+          "original_source": null,
           "jetro_label": "首都",
           "note": null,
           "source_id": "jetro_basic",
@@ -127,7 +147,7 @@
         {
           "value": "マハー・ワチラロンコン・プラ・ワチラクラチャオユーフア国王 King Maha Vajiralongkorn Phra Vajiraklaochaoyuhua(2016年12月1日即位、1952年7月28日生まれ)",
           "value_text": "マハー・ワチラロンコン・プラ・ワチラクラチャオユーフア国王 King Maha Vajiralongkorn Phra Vajiraklaochaoyuhua(2016年12月1日即位、1952年7月28日生まれ)",
-          "as_of": "2016-12-01",
+          "as_of": null,
           "original_source": null,
           "jetro_label": "元首",
           "note": null,

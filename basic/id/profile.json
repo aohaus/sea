@@ -4,6 +4,26 @@
   "name_ja": "インドネシア",
   "name_en": "Indonesia",
   "fields": {
+    "official_name": {
+      "label_ja": "正式国名",
+      "label_en": "Official name",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "インドネシア共和国 Republic of Indonesia",
+          "value_text": "インドネシア共和国 Republic of Indonesia",
+          "as_of": null,
+          "original_source": null,
+          "jetro_label": "国・地域名",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/idn/basic_01.html",
+          "retrieved_at": "2026-10-13T01:03:41+00:00",
+          "page_last_updated": "2026-07-01"
+        }
+      ]
+    },
     "area": {
       "label_ja": "面積",
       "label_en": "Area",
@@ -14,7 +34,7 @@
           "value": 1890180,
           "value_text": "189万180平方キロメートル(2025年、出所:中央統計庁、日本の約5倍)",
           "as_of": "2025",
-          "original_source": "中央統計庁、日本の約5倍",
+          "original_source": "中央統計庁",
           "jetro_label": "面積",
           "note": null,
           "source_id": "jetro_basic",
@@ -31,10 +51,10 @@
       "phase": 1,
       "values": [
         {
-          "value": "ジャカルタ 人口1,068万人(2025年、出所:中央統計庁)",
+          "value": "ジャカルタ",
           "value_text": "ジャカルタ 人口1,068万人(2025年、出所:中央統計庁)",
-          "as_of": "2025",
-          "original_source": "中央統計庁",
+          "as_of": null,
+          "original_source": null,
           "jetro_label": "首都",
           "note": null,
           "source_id": "jetro_basic",
@@ -127,7 +147,7 @@
         {
           "value": "プラボウォ・スビアント大統領(Prabowo Subianto)(就任時期:2024年10月、任期は2029年10月まで、1951年10月17日生まれ)",
           "value_text": "プラボウォ・スビアント大統領(Prabowo Subianto)(就任時期:2024年10月、任期は2029年10月まで、1951年10月17日生まれ)",
-          "as_of": "2024-10",
+          "as_of": null,
           "original_source": null,
           "jetro_label": "元首",
           "note": null,

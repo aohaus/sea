@@ -4,6 +4,26 @@
   "name_ja": "マレーシア",
   "name_en": "Malaysia",
   "fields": {
+    "official_name": {
+      "label_ja": "正式国名",
+      "label_en": "Official name",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "マレーシア Malaysia",
+          "value_text": "マレーシア Malaysia",
+          "as_of": null,
+          "original_source": null,
+          "jetro_label": "国・地域名",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/my/basic_01.html",
+          "retrieved_at": "2026-10-13T01:03:53+00:00",
+          "page_last_updated": "2026-08-19"
+        }
+      ]
+    },
     "area": {
       "label_ja": "面積",
       "label_en": "Area",
@@ -31,10 +51,10 @@
       "phase": 1,
       "values": [
         {
-          "value": "クアラルンプール 人口207万人(2025年、出所:マレーシア統計局)",
+          "value": "クアラルンプール",
           "value_text": "クアラルンプール 人口207万人(2025年、出所:マレーシア統計局)",
-          "as_of": "2025",
-          "original_source": "マレーシア統計局",
+          "as_of": null,
+          "original_source": null,
           "jetro_label": "首都",
           "note": null,
           "source_id": "jetro_basic",
@@ -140,7 +160,7 @@
         {
           "value": "イブラヒム第17代国王 (2024年1月就任、任期5年、統治者会議で互選。ジョホール州スルタン)",
           "value_text": "イブラヒム第17代国王 (2024年1月就任、任期5年、統治者会議で互選。ジョホール州スルタン)",
-          "as_of": "2024-01",
+          "as_of": null,
           "original_source": null,
           "jetro_label": "元首",
           "note": null,

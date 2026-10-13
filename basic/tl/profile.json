@@ -4,6 +4,13 @@
   "name_ja": "東ティモール",
   "name_en": "Timor-Leste",
   "fields": {
+    "official_name": {
+      "label_ja": "正式国名",
+      "label_en": "Official name",
+      "unit": null,
+      "phase": 1,
+      "values": []
+    },
     "area": {
       "label_ja": "面積",
       "label_en": "Area",

@@ -159,12 +159,36 @@ def parse_as_of(text: str) -> str | None:
     return y + (f"-{int(mo):02d}" if mo else "") + (f"-{int(d):02d}" if d else "")
 
 
+_OPEN, _CLOSE = "(（〔[［", ")）〕]］"
+
+
 def parse_original_source(text: str) -> str | None:
-    m = re.search(r"出所\s*[:：]\s*([^）)]+)", text)
-    return m.group(1).strip() if m else None
+    """Return the text after "出所:" up to the bracket that encloses it, or 、/。."""
+    m = re.search(r"出所\s*[:：]\s*", text)
+    if not m:
+        return None
+    depth, out = 0, []
+    for ch in text[m.end():]:
+        if ch in _OPEN:
+            depth += 1
+        elif ch in _CLOSE:
+            if depth == 0:
+                break
+            depth -= 1
+        elif ch in "、。" and depth == 0:
+            break
+        out.append(ch)
+    return "".join(out).strip() or None
+
+
+def leading_name(text: str) -> str:
+    """'クアラルンプール 人口207万人(...)' -> 'クアラルンプール'."""
+    return re.split(r"\s*(?:人口|[(（〔])", text, maxsplit=1)[0].strip()
 
 
 def norm_label(label: str) -> str:
+    """Normalise a table label for exact matching (drop spaces and a trailing note in brackets)."""
+    label = re.sub(r"[(（][^()（）]*[)）]$", "", label)
     return re.sub(r"[\s・:：]", "", label)
 
 
@@ -193,16 +217,20 @@ def build_profile(country: dict, fields: list[dict], extract: dict | None) -> di
         "retrieved_at": extract["retrieved_at"],
         "page_last_updated": extract.get("page_last_updated"),
     }
+    by_label = {norm_label(j): f for f in fields for j in f["jetro_labels"]}
+    official = next(f for f in fields if f["id"] == "official_language")
 
-    def add(field: dict, text: str, label: str, note: str | None = None) -> None:
+    def add(field: dict, value, text: str, label: str, original_source: str | None,
+            note: str | None = None) -> None:
         values = profile["fields"][field["id"]]["values"]
-        if any(v["value_text"] == text for v in values):
+        if any(v["value"] == value for v in values):
             return
+        derive = field.get("derive_provenance", True)
         values.append({
-            "value": parse_ja_number(text) if field["type"] == "number" else text,
+            "value": value,
             "value_text": text,
-            "as_of": parse_as_of(text),
-            "original_source": parse_original_source(text),
+            "as_of": parse_as_of(text) if derive else None,
+            "original_source": original_source if derive else None,
             "jetro_label": label,
             "note": note,
             **provenance,
@@ -213,21 +241,35 @@ def build_profile(country: dict, fields: list[dict], extract: dict | None) -> di
         # extract and will be handled by the phase-2 builder.
         if len(table["header"]) > 2:
             continue
+        last_source = None
         for row in table["rows"]:
             if not row["cells"]:
                 continue
-            label = norm_label(row["label"])
             text = " ".join(row["cells"])
-            for field in fields:
-                if any(label.startswith(norm_label(j)) for j in field["jetro_labels"]):
-                    add(field, text, row["label"])
-                    break
-            # "言語" rows often state the official language inline.
-            if label.startswith("言語"):
-                m = re.search(r"公用語(?:は|:|：)\s*([^、。,，()（）]+)", text)
-                if m:
-                    official = next(f for f in fields if f["id"] == "official_language")
-                    add(official, m.group(1).strip(), row["label"],
+            source = parse_original_source(text)
+            note = None
+            if source == "同上":
+                source = last_source
+                note = "出所「同上」を直前の行の出所に置き換え / 'ditto' resolved to the previous row's source"
+            if source:
+                last_source = source
+            label = norm_label(row["label"])
+            field = by_label.get(label)
+            if field:
+                if field["type"] == "number":
+                    value = parse_ja_number(text)
+                elif field.get("value_rule") == "leading_name":
+                    value = leading_name(text)
+                else:
+                    value = text
+                add(field, value, text, row["label"], source, note)
+            # "言語" rows often state the official language inline:
+            # "公用語はマレー語" or "ラオス語(公用語)".
+            if label == "言語":
+                names = re.findall(r"公用語(?:は|:|：)\s*([^、。,，()（）]+)", text)
+                names += re.findall(r"([^、。,，()（）\s]+)\s*[(（]公用語[)）]", text)
+                for name in names:
+                    add(official, name.strip(), text, row["label"], source,
                         note="「言語」欄の記述から抽出 / extracted from the Languages row")
     return profile
 

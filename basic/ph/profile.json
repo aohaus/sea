@@ -4,6 +4,26 @@
   "name_ja": "フィリピン",
   "name_en": "Philippines",
   "fields": {
+    "official_name": {
+      "label_ja": "正式国名",
+      "label_en": "Official name",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "フィリピン共和国 Republic of the Philippines",
+          "value_text": "フィリピン共和国 Republic of the Philippines",
+          "as_of": null,
+          "original_source": null,
+          "jetro_label": "国・地域名",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/ph/basic_01.html",
+          "retrieved_at": "2026-10-13T01:04:04+00:00",
+          "page_last_updated": "2026-07-02"
+        }
+      ]
+    },
     "area": {
       "label_ja": "面積",
       "label_en": "Area",
@@ -31,10 +51,10 @@
       "phase": 1,
       "values": [
         {
-          "value": "マニラ首都圏(NCR) 人口1,400万人(2024年、出所:PSA)",
+          "value": "マニラ首都圏",
           "value_text": "マニラ首都圏(NCR) 人口1,400万人(2024年、出所:PSA)",
-          "as_of": "2024",
-          "original_source": "PSA",
+          "as_of": null,
+          "original_source": null,
           "jetro_label": "首都",
           "note": null,
           "source_id": "jetro_basic",
@@ -140,7 +160,7 @@
         {
           "value": "フェルディナンド・マルコス大統領 (Ferdinand R. MARCOS, Jr.)(2022年5月9日の大統領選で当選、1957年9月13日生まれ)",
           "value_text": "フェルディナンド・マルコス大統領 (Ferdinand R. MARCOS, Jr.)(2022年5月9日の大統領選で当選、1957年9月13日生まれ)",
-          "as_of": "2022-05-09",
+          "as_of": null,
           "original_source": null,
           "jetro_label": "元首",
           "note": null,
@@ -161,7 +181,7 @@
           "value": 112720000,
           "value_text": "1億1,272万人(2024年、出所:フィリピン統計庁(PSA))",
           "as_of": "2024",
-          "original_source": "フィリピン統計庁(PSA",
+          "original_source": "フィリピン統計庁(PSA)",
           "jetro_label": "人口",
           "note": null,
           "source_id": "jetro_basic",

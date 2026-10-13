@@ -4,6 +4,26 @@
   "name_ja": "ベトナム",
   "name_en": "Viet Nam",
   "fields": {
+    "official_name": {
+      "label_ja": "正式国名",
+      "label_en": "Official name",
+      "unit": null,
+      "phase": 1,
+      "values": [
+        {
+          "value": "ベトナム社会主義共和国 Socialist Republic of Viet Nam",
+          "value_text": "ベトナム社会主義共和国 Socialist Republic of Viet Nam",
+          "as_of": null,
+          "original_source": null,
+          "jetro_label": "国・地域名",
+          "note": null,
+          "source_id": "jetro_basic",
+          "url": "https://www.jetro.go.jp/world/asia/vn/basic_01.html",
+          "retrieved_at": "2026-10-13T01:04:26+00:00",
+          "page_last_updated": "2026-07-01"
+        }
+      ]
+    },
     "area": {
       "label_ja": "面積",
       "label_en": "Area",
@@ -31,10 +51,10 @@
       "phase": 1,
       "values": [
         {
-          "value": "ハノイ 人口 886万人(2025年、出所:ベトナム統計年鑑2025)",
+          "value": "ハノイ",
           "value_text": "ハノイ 人口 886万人(2025年、出所:ベトナム統計年鑑2025)",
-          "as_of": "2025",
-          "original_source": "ベトナム統計年鑑2025",
+          "as_of": null,
+          "original_source": null,
           "jetro_label": "首都",
           "note": null,
           "source_id": "jetro_basic",
@@ -109,20 +129,7 @@
       "label_en": "Ethnic groups",
       "unit": null,
       "phase": 1,
-      "values": [
-        {
-          "value": "グエン・ディン・カン(Nguyen Dinh Khang)",
-          "value_text": "グエン・ディン・カン(Nguyen Dinh Khang)",
-          "as_of": null,
-          "original_source": null,
-          "jetro_label": "民族宗教省",
-          "note": null,
-          "source_id": "jetro_basic",
-          "url": "https://www.jetro.go.jp/world/asia/vn/basic_01.html",
-          "retrieved_at": "2026-10-13T01:04:26+00:00",
-          "page_last_updated": "2026-07-01"
-        }
-      ]
+      "values": []
     },
     "political_system": {
       "label_ja": "政体",
@@ -153,7 +160,7 @@
         {
           "value": "トー・ラム(To Lam)国家主席(2026年4月7日就任、1957年生まれ)",
           "value_text": "トー・ラム(To Lam)国家主席(2026年4月7日就任、1957年生まれ)",
-          "as_of": "2026-04-07",
+          "as_of": null,
           "original_source": null,
           "jetro_label": "元首",
           "note": null,
