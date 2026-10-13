@@ -1,6 +1,15 @@
 {
   "results": [
     {
+      "code": "bn",
+      "source_id": "mofa_basic",
+      "url": "https://www.mofa.go.jp/mofaj/area/brunei/data.html",
+      "status": "error",
+      "error": "HTTP 403",
+      "page_last_updated": null,
+      "fields_filled": []
+    },
+    {
       "code": "kh",
       "source_id": "jetro_basic",
       "url": "https://www.jetro.go.jp/world/asia/kh/basic_01.html",
@@ -146,6 +155,15 @@
         "population",
         "religion"
       ]
+    },
+    {
+      "code": "tl",
+      "source_id": "mofa_basic",
+      "url": "https://www.mofa.go.jp/mofaj/area/easttimor/data.html",
+      "status": "error",
+      "error": "HTTP 403",
+      "page_last_updated": null,
+      "fields_filled": []
     },
     {
       "code": "vn",
