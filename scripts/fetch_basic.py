@@ -346,7 +346,7 @@ def build_profile(country: dict, fields: list[dict], extracts: list[dict]) -> di
                 # "言語" rows often state the official language inline:
                 # "公用語はマレー語" or "ラオス語(公用語)".
                 if label == "言語":
-                    names = re.findall(r"公用語(?:は|:|：)\s*([^、。,，()（）]+)", text)
+                    names = re.findall(r"公用語(?:は|:|：)[、\s]*([^、。,，()（）]+)", text)
                     names += re.findall(r"([^、。,，()（）\s]+)\s*[(（]公用語[)）]", text)
                     for name in names:
                         name = re.sub(r"と(?:定め|され|する).*$", "", name.strip())

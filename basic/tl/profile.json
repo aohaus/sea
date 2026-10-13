@@ -9,70 +9,210 @@
       "label_en": "Official name",
       "unit": null,
       "phase": 1,
-      "values": []
+      "values": [
+        {
+          "value": "東ティモール民主共和国(The Democratic Republic of Timor-Leste)",
+          "value_text": "東ティモール民主共和国(The Democratic Republic of Timor-Leste)",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "国・地域名",
+          "note": null,
+          "source_id": "mofa_basic",
+          "url": "https://www.mofa.go.jp/mofaj/area/easttimor/data.html",
+          "retrieved_at": "2026-10-13T01:19:29+00:00",
+          "page_last_updated": "2025-11-10",
+          "retrieval_method": "manual_pdf"
+        }
+      ]
     },
     "area": {
       "label_ja": "面積",
       "label_en": "Area",
       "unit": "km2",
       "phase": 1,
-      "values": []
+      "values": [
+        {
+          "value": 14900,
+          "value_text": "約1万4,900平方キロメートル(首都4都県(東京、千葉、埼玉、神奈川)の合計面積とほぼ同じ大きさ)",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "面積",
+          "note": null,
+          "source_id": "mofa_basic",
+          "url": "https://www.mofa.go.jp/mofaj/area/easttimor/data.html",
+          "retrieved_at": "2026-10-13T01:19:29+00:00",
+          "page_last_updated": "2025-11-10",
+          "retrieval_method": "manual_pdf"
+        }
+      ]
     },
     "capital": {
       "label_ja": "首都",
       "label_en": "Capital",
       "unit": null,
       "phase": 1,
-      "values": []
+      "values": [
+        {
+          "value": "ディリ",
+          "value_text": "ディリ",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "首都",
+          "note": null,
+          "source_id": "mofa_basic",
+          "url": "https://www.mofa.go.jp/mofaj/area/easttimor/data.html",
+          "retrieved_at": "2026-10-13T01:19:29+00:00",
+          "page_last_updated": "2025-11-10",
+          "retrieval_method": "manual_pdf"
+        }
+      ]
     },
     "language": {
       "label_ja": "言語",
       "label_en": "Languages",
       "unit": null,
       "phase": 1,
-      "values": []
+      "values": [
+        {
+          "value": "公用語は、テトゥン語及びポルトガル語。実用語に、インドネシア語及び英語。その他30以上の地方言語が使用されている。",
+          "value_text": "公用語は、テトゥン語及びポルトガル語。実用語に、インドネシア語及び英語。その他30以上の地方言語が使用されている。",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "言語",
+          "note": null,
+          "source_id": "mofa_basic",
+          "url": "https://www.mofa.go.jp/mofaj/area/easttimor/data.html",
+          "retrieved_at": "2026-10-13T01:19:29+00:00",
+          "page_last_updated": "2025-11-10",
+          "retrieval_method": "manual_pdf"
+        }
+      ]
     },
     "official_language": {
       "label_ja": "公用語",
       "label_en": "Official language",
       "unit": null,
       "phase": 1,
-      "values": []
+      "values": [
+        {
+          "value": "テトゥン語及びポルトガル語",
+          "value_text": "公用語は、テトゥン語及びポルトガル語。実用語に、インドネシア語及び英語。その他30以上の地方言語が使用されている。",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "言語",
+          "note": "「言語」欄の記述から抽出 / extracted from the Languages row",
+          "source_id": "mofa_basic",
+          "url": "https://www.mofa.go.jp/mofaj/area/easttimor/data.html",
+          "retrieved_at": "2026-10-13T01:19:29+00:00",
+          "page_last_updated": "2025-11-10",
+          "retrieval_method": "manual_pdf"
+        }
+      ]
     },
     "religion": {
       "label_ja": "宗教",
       "label_en": "Religion",
       "unit": null,
       "phase": 1,
-      "values": []
+      "values": [
+        {
+          "value": "キリスト教99.1%(大半がカトリック)、イスラム教0.79%",
+          "value_text": "キリスト教99.1%(大半がカトリック)、イスラム教0.79%",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "宗教",
+          "note": null,
+          "source_id": "mofa_basic",
+          "url": "https://www.mofa.go.jp/mofaj/area/easttimor/data.html",
+          "retrieved_at": "2026-10-13T01:19:29+00:00",
+          "page_last_updated": "2025-11-10",
+          "retrieval_method": "manual_pdf"
+        }
+      ]
     },
     "ethnic_groups": {
       "label_ja": "民族",
       "label_en": "Ethnic groups",
       "unit": null,
       "phase": 1,
-      "values": []
+      "values": [
+        {
+          "value": "メラネシア系とパプア系が大部分を占める。その他マレー系、中華系等、ポルトガル系を主体とする欧州系及びその混血等。",
+          "value_text": "メラネシア系とパプア系が大部分を占める。その他マレー系、中華系等、ポルトガル系を主体とする欧州系及びその混血等。",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "民族",
+          "note": null,
+          "source_id": "mofa_basic",
+          "url": "https://www.mofa.go.jp/mofaj/area/easttimor/data.html",
+          "retrieved_at": "2026-10-13T01:19:29+00:00",
+          "page_last_updated": "2025-11-10",
+          "retrieval_method": "manual_pdf"
+        }
+      ]
     },
     "political_system": {
       "label_ja": "政体",
       "label_en": "Political system",
       "unit": null,
       "phase": 1,
-      "values": []
+      "values": [
+        {
+          "value": "共和制",
+          "value_text": "共和制",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "政体",
+          "note": null,
+          "source_id": "mofa_basic",
+          "url": "https://www.mofa.go.jp/mofaj/area/easttimor/data.html",
+          "retrieved_at": "2026-10-13T01:19:29+00:00",
+          "page_last_updated": "2025-11-10",
+          "retrieval_method": "manual_pdf"
+        }
+      ]
     },
     "head_of_state": {
       "label_ja": "元首",
       "label_en": "Head of state",
       "unit": null,
       "phase": 1,
-      "values": []
+      "values": [
+        {
+          "value": "ジョゼ・ラモス=ホルタ大統領(任期5年:2022年5月20日~2027年5月19日)",
+          "value_text": "ジョゼ・ラモス=ホルタ大統領(任期5年:2022年5月20日~2027年5月19日)",
+          "as_of": null,
+          "original_source": null,
+          "source_label": "元首",
+          "note": null,
+          "source_id": "mofa_basic",
+          "url": "https://www.mofa.go.jp/mofaj/area/easttimor/data.html",
+          "retrieved_at": "2026-10-13T01:19:29+00:00",
+          "page_last_updated": "2025-11-10",
+          "retrieval_method": "manual_pdf"
+        }
+      ]
     },
     "population": {
       "label_ja": "人口",
       "label_en": "Population",
       "unit": "persons",
       "phase": 2,
-      "values": []
+      "values": [
+        {
+          "value": 1390000,
+          "value_text": "約139万人(出典:東ティモール政府統計(2023年))",
+          "as_of": "2023",
+          "original_source": "東ティモール政府統計(2023年)",
+          "source_label": "人口",
+          "note": null,
+          "source_id": "mofa_basic",
+          "url": "https://www.mofa.go.jp/mofaj/area/easttimor/data.html",
+          "retrieved_at": "2026-10-13T01:19:29+00:00",
+          "page_last_updated": "2025-11-10",
+          "retrieval_method": "manual_pdf"
+        }
+      ]
     },
     "gdp_nominal": {
       "label_ja": "名目GDP",

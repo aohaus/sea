@@ -3,7 +3,7 @@
   "url": "https://www.mofa.go.jp/mofaj/area/brunei/data.html",
   "retrieved_at": "2026-10-13T01:17:00+00:00",
   "retrieval_method": "manual_pdf",
-  "retrieval_note": "自動取得が HTTP 403 のため、ユーザーがブラウザで保存した PDF（2026-10-13 01:17 UTC 作成）のテキストから抽出 / Extracted from a PDF of the page saved by the user in a browser, because automatic fetching returned HTTP 403",
+  "retrieval_note": "自動取得が HTTP 403 のため、ブラウザで保存した PDF（2026-10-13T01:17:00+00:00 作成）のテキストから抽出 / Extracted from a browser-saved PDF of the page, because automatic fetching returned HTTP 403",
   "status": "ok",
   "page_title": "ブルネイ基礎データ",
   "page_last_updated": "2026-06-23",
