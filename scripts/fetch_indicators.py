@@ -34,7 +34,7 @@ from datetime import datetime, timezone
 
 import requests
 
-from fetch_basic import BASIC_DIR, HEADERS, TIMEOUT_SECONDS, load_json, parse_as_of, \
+from fetch_basic import BASIC_DIR, HEADERS, load_json, parse_as_of, \
     parse_ja_number, parse_original_source, norm_label, write_json
 
 FIRST_YEAR = 2000
@@ -45,10 +45,16 @@ def now() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
 
-def get_json(session: requests.Session, url: str):
-    resp = session.get(url, headers=HEADERS["default"], timeout=TIMEOUT_SECONDS)
-    resp.raise_for_status()
-    return resp.json()
+def get_json(session: requests.Session, url: str, attempts: int = 3):
+    for attempt in range(1, attempts + 1):
+        try:
+            resp = session.get(url, headers=HEADERS["default"], timeout=60)
+            resp.raise_for_status()
+            return resp.json()
+        except (requests.Timeout, requests.ConnectionError):
+            if attempt == attempts:
+                raise
+            time.sleep(5 * attempt)
 
 
 # --------------------------------------------------------------------------- #
@@ -236,8 +242,14 @@ def save_extract(code: str, source_id: str, new: dict) -> dict:
     strip = lambda d: {k: v for k, v in d.items() if k != "retrieved_at"}  # noqa: E731
     if old and strip(old) == strip(new):
         return old
-    if old and not new["series"]:
-        return old  # never replace data with an empty (failed) fetch
+    if old:
+        # An indicator that failed this run keeps its previous observations.
+        missing = set(old.get("series", {})) - set(new["series"])
+        for key in ("series", "urls", "source_last_updated"):
+            if key in new:
+                new[key] = {**{k: v for k, v in old.get(key, {}).items() if k in missing}, **new[key]}
+        if strip(old) == strip(new):
+            return old
     write_json(path, new)
     return new
 
