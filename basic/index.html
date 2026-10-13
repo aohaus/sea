@@ -1,1 +1,497 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ASEAN データエクスプローラー</title>
+<meta name="description" content="ASEAN 11か国と日本の基本情報・経済指標を、出所と照合結果つきで比較・書き出しできるビューア。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500&display=swap">
+<style>
+  /* Layout: one column of cards; controls on top, summary tiles, two charts side by side when wide, then tables. */
+  :root {
+    --bg: #f6f7f5; --panel: #ffffff; --fg: #1d2622; --muted: #5d6a64; --line: #dde2de;
+    --accent: #0f6b5c; --ref: #9aa39f; --grid: #e8ece9; --axis: #b9c1bc;
+    --ok: #1f7a46; --warn: #a3650b; --bad: #b3261e;
+    --s1: #0f6b5c; --s2: #c2552d; --s3: #3a62b0; --s4: #8a5a9e; --s5: #b08a16; --s6: #2f8f9d; --s7: #a33b62; --s8: #5b7a2e;
+    --sans: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+    --serif: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    --radius: 10px;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #121715; --panel: #1a211e; --fg: #e6ebe8; --muted: #9aa7a1; --line: #2c3632;
+      --accent: #4fc2a9; --ref: #6f7a75; --grid: #252e2a; --axis: #3d4843;
+      --ok: #5cc98a; --warn: #e0a64a; --bad: #f2786d;
+      --s1: #4fc2a9; --s2: #ef8a5f; --s3: #7fa3ec; --s4: #c39ad6; --s5: #e0c056; --s6: #6fcbd8; --s7: #e57ea5; --s8: #9cc26a;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #121715; --panel: #1a211e; --fg: #e6ebe8; --muted: #9aa7a1; --line: #2c3632;
+    --accent: #4fc2a9; --ref: #6f7a75; --grid: #252e2a; --axis: #3d4843;
+    --ok: #5cc98a; --warn: #e0a64a; --bad: #f2786d;
+    --s1: #4fc2a9; --s2: #ef8a5f; --s3: #7fa3ec; --s4: #c39ad6; --s5: #e0c056; --s6: #6fcbd8; --s7: #e57ea5; --s8: #9cc26a;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: 15px; line-height: 1.6; }
+  main { max-width: 1200px; margin-inline: auto; padding-inline: 16px; padding-block: 24px 48px; display: grid; gap: 20px; }
+  h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(1.6rem, 3vw, 2.1rem); margin: 0; line-height: 1.3; text-wrap: balance; }
+  h2 { font-size: 1.05rem; font-weight: 500; margin: 0; text-wrap: balance; }
+  .en { color: var(--muted); font-size: .8rem; font-weight: 400; margin-left: .5em; }
+  .lede { color: var(--muted); margin: 6px 0 0; max-width: 72ch; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; display: grid; gap: 10px; min-width: 0; }
+  .note { color: var(--muted); font-size: .82rem; margin: 0; }
+  .grid2 { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .label { font-size: .8rem; color: var(--muted); min-width: 5rem; letter-spacing: .03em; }
+  .chip { font: inherit; font-size: .82rem; border: 1px solid var(--line); background: var(--bg); color: var(--fg); border-radius: 999px; padding: .28rem .75rem; cursor: pointer; }
+  .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--panel); }
+  .chip.ref[aria-pressed="true"] { background: var(--ref); border-color: var(--ref); }
+  .link { font: inherit; font-size: .82rem; background: none; border: none; color: var(--accent); text-decoration: underline; cursor: pointer; padding: .28rem .2rem; }
+  select { font: inherit; font-size: .9rem; padding: .3rem .5rem; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--fg); max-width: 100%; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .tiles { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); }
+  .tile { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 18px; display: grid; gap: 4px; align-content: start; }
+  .tile .k { font-size: .8rem; color: var(--muted); }
+  .tile .v { font-family: var(--serif); font-weight: 500; font-size: 1.6rem; font-variant-numeric: tabular-nums; line-height: 1.3; }
+  .chart { position: relative; min-height: 260px; }
+  .chart svg { display: block; overflow: visible; }
+  .tip { position: absolute; pointer-events: none; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 4px 16px rgb(0 0 0 / .14); padding: 6px 10px; font-size: .78rem; line-height: 1.45; max-width: 24rem; z-index: 2; }
+  .tip .t { color: var(--muted); }
+  .tablebox { overflow: auto; max-height: 32rem; }
+  table { border-collapse: collapse; width: 100%; font-size: .82rem; font-variant-numeric: tabular-nums; }
+  th, td { text-align: left; padding: .45rem .6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { position: sticky; top: 0; background: var(--panel); font-weight: 500; white-space: nowrap; }
+  td.num, th.num { text-align: right; }
+  .src { color: var(--muted); }
+  .pill { display: inline-block; border-radius: 999px; padding: .05rem .55rem; font-size: .75rem; border: 1px solid currentColor; white-space: nowrap; }
+  .pill.match { color: var(--ok); } .pill.close { color: var(--warn); } .pill.differs { color: var(--bad); } .pill.no_data { color: var(--muted); }
+  .downloads { display: flex; flex-wrap: wrap; gap: 10px; }
+  .downloads a { color: var(--accent); font-size: .88rem; }
+  .status { color: var(--muted); }
+  .status.error { color: var(--bad); }
+  footer { color: var(--muted); font-size: .78rem; }
+  footer a { color: inherit; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>ASEAN データエクスプローラー</h1>
+    <p class="lede" id="takeaway">データを読み込んでいます…</p>
+  </header>
 
+  <section class="card" aria-label="表示条件">
+    <div class="row">
+      <span class="label">国・地域</span>
+      <div class="row" id="chips"></div>
+    </div>
+    <div class="row">
+      <span class="label">まとめて選ぶ</span>
+      <button class="link" type="button" data-preset="all">ASEAN 全11か国</button>
+      <button class="link" type="button" data-preset="asean10">ASEAN 10か国（東ティモール除く）</button>
+      <button class="link" type="button" data-preset="none">すべて外す</button>
+    </div>
+    <div class="row">
+      <label class="label" for="indicator">指標</label>
+      <select id="indicator"></select>
+      <label class="label" for="source">出所</label>
+      <select id="source"></select>
+      <label class="label" for="year">年</label>
+      <select id="year"></select>
+    </div>
+  </section>
+
+  <section class="tiles" aria-label="選択国のまとめ">
+    <div class="tile"><span class="k" id="t1k">選択国の合計</span><span class="v" id="t1">—</span><span class="note" id="t1n"></span></div>
+    <div class="tile"><span class="k">日本との比較</span><span class="v" id="t2">—</span><span class="note" id="t2n"></span></div>
+    <div class="tile"><span class="k">最大と最小</span><span class="v" id="t3">—</span><span class="note" id="t3n"></span></div>
+    <div class="tile"><span class="k">データのある国</span><span class="v" id="t4">—</span><span class="note" id="t4n"></span></div>
+  </section>
+
+  <section class="grid2">
+    <div class="card">
+      <h2 id="rank-title">国別の比較</h2>
+      <p class="note" id="rank-note"></p>
+      <div class="chart" id="ranking"></div>
+    </div>
+    <div class="card">
+      <h2 id="trend-title">推移</h2>
+      <p class="note" id="trend-note"></p>
+      <div class="chart" id="trend"></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>基本情報<span class="en">Country profile</span></h2>
+    <p class="note">JETRO「概況・基本統計」と外務省「基礎データ」から。値は原文の表記のままです。</p>
+    <div class="tablebox">
+      <table id="profile-table">
+        <thead><tr><th>国</th><th>首都</th><th class="num">面積（km²）</th><th>公用語</th><th>宗教</th><th>政体</th><th>元首</th><th>出所</th><th>照合</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>参照値との照合<span class="en">Check against ASEAN-Japan Centre figures</span></h2>
+    <p class="note">日本アセアンセンター「ひと目で分かる日ASEAN基本情報」（2024年推計）と、このデータから計算した値の差です。±2%以内を一致、±10%以内を近い、それ以上を差ありとしています。参照値の多くは IMF ベース、こちらは主に世界銀行ベースのため、出所の違いによる差を含みます。</p>
+    <div class="tablebox">
+      <table id="validation-table">
+        <thead><tr><th>項目</th><th class="num">年</th><th class="num">参照値</th><th class="num">このデータ</th><th class="num">差</th><th>判定</th><th>こちらの出所</th><th>参照値の出所</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>出所と利用条件<span class="en">Sources and terms</span></h2>
+    <div class="tablebox">
+      <table id="source-table">
+        <thead><tr><th>ID</th><th>発行元</th><th>資料</th><th>利用条件</th><th>自動取得</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <h2>書き出し<span class="en">Download</span></h2>
+    <p class="note">どの行にも、発行元・URL・取得日・利用条件・取得方法・照合結果が入っています。CSV は Excel でそのまま開けます（UTF-8 BOM）。</p>
+    <div class="downloads">
+      <a href="data/observations.csv" download>経済指標（CSV）</a>
+      <a href="data/profiles.csv" download>基本情報（CSV）</a>
+      <a href="data/validation.csv" download>照合結果（CSV）</a>
+      <a href="data/sources.csv" download>出所台帳（CSV）</a>
+      <a href="data/dataset.json" download>統合データ（JSON）</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>データは GitHub Actions が毎月1日に更新します。<a href="https://github.com/aohaus/sea/tree/main/basic">リポジトリ（aohaus/sea）</a> · <span class="status" id="status"></span></p>
+  </footer>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+(() => {
+  const ASEAN = ['bn', 'kh', 'id', 'la', 'my', 'mm', 'ph', 'sg', 'th', 'tl', 'vn'];
+  const ASEAN10 = ASEAN.filter((c) => c !== 'tl');
+  const ADDITIVE = new Set(['population', 'gdp_nominal', 'fdi_inflow']);
+  const SOURCE_LABEL = { worldbank_wdi: '世界銀行 WDI', imf_weo: 'IMF WEO', jetro_basic: 'JETRO', mofa_basic: '外務省' };
+  const STATUS = { match: '一致', close: '近い', differs: '差あり', no_data: 'データなし' };
+  const $ = (id) => document.getElementById(id);
+  const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  const series = () => ['--s1', '--s2', '--s3', '--s4', '--s5', '--s6', '--s7', '--s8'].map(css);
+
+  // ---------- state (kept in this browser only) ----------
+  const DEFAULTS = { countries: ASEAN10, japan: true, indicator: 'gdp_per_capita', source: 'worldbank_wdi', year: null };
+  let state = { ...DEFAULTS };
+  try { state = { ...DEFAULTS, ...JSON.parse(localStorage.getItem('asean-explorer') || '{}') }; } catch (e) { /* storage unavailable */ }
+  const set = (patch) => {
+    state = { ...state, ...patch };
+    try { localStorage.setItem('asean-explorer', JSON.stringify(state)); } catch (e) { /* storage unavailable */ }
+    render();
+  };
+
+  // ---------- formatting ----------
+  const num = (v, d) => v.toLocaleString('ja-JP', { maximumFractionDigits: d });
+  function fmt(v, unit) {
+    if (v == null || !isFinite(v)) return '—';
+    const a = Math.abs(v);
+    if (unit === 'persons') return a >= 1e8 ? num(v / 1e8, 2) + '億人' : a >= 1e4 ? num(v / 1e4, 0) + '万人' : num(v, 0) + '人';
+    if (unit === 'USD') return a >= 1e12 ? num(v / 1e12, 2) + '兆ドル' : a >= 1e8 ? num(v / 1e8, 0) + '億ドル' : a >= 1e4 ? num(v / 1e4, 1) + '万ドル' : num(v, 0) + 'ドル';
+    if (unit === '%') return num(v, 1) + '%';
+    return num(v, 1);
+  }
+  function fmtAxis(v, unit) {
+    const a = Math.abs(v);
+    if (unit === 'persons') return a >= 1e8 ? num(v / 1e8, 1) + '億' : a >= 1e4 ? num(v / 1e4, 0) + '万' : num(v, 0);
+    if (unit === 'USD') return a >= 1e12 ? num(v / 1e12, 1) + '兆' : a >= 1e8 ? num(v / 1e8, 0) + '億' : a >= 1e4 ? num(v / 1e4, 1) + '万' : num(v, 0);
+    if (unit === '%') return num(v, 2) + '%';  // small ranges need decimals (e.g. -0.05%)
+    return num(v, 1);
+  }
+  // Text width at 12px: full-width characters ~12px, others ~7px.
+  const textW = (s) => [...String(s)].reduce((w, ch) => w + (ch.charCodeAt(0) > 0xff ? 12 : 7), 0);
+
+  // ---------- tooltip ----------
+  function tip(box) {
+    let t = box.querySelector('.tip');
+    if (!t) { t = document.createElement('div'); t.className = 'tip'; t.hidden = true; box.appendChild(t); }
+    return t;
+  }
+  function showTip(box, event, lines) {
+    const t = tip(box);
+    t.replaceChildren(...lines.filter(Boolean).map((l, i) => { const d = document.createElement('div'); if (i === 0) d.className = 't'; d.textContent = l; return d; }));
+    t.hidden = false;
+    const r = box.getBoundingClientRect();
+    const x = event.clientX - r.left, y = event.clientY - r.top;
+    t.style.left = Math.max(0, Math.min(r.width - t.offsetWidth, x + 12)) + 'px';
+    t.style.top = Math.max(0, Math.min(r.height - t.offsetHeight, y - t.offsetHeight - 8)) + 'px';
+  }
+  const hideTip = (box) => { tip(box).hidden = true; };
+
+  let DATA = null;
+
+  // ---------- controls ----------
+  document.querySelectorAll('[data-preset]').forEach((b) => b.addEventListener('click', () => {
+    const p = b.dataset.preset;
+    set({ countries: p === 'all' ? ASEAN : p === 'asean10' ? ASEAN10 : [] });
+  }));
+  $('chips').addEventListener('click', (e) => {
+    const chip = e.target.closest('button[data-code]');
+    if (!chip) return;
+    const code = chip.dataset.code;
+    if (code === 'jp') return set({ japan: !state.japan });
+    const cur = new Set(state.countries);
+    cur.has(code) ? cur.delete(code) : cur.add(code);
+    set({ countries: ASEAN.filter((c) => cur.has(c)) });
+  });
+  $('indicator').addEventListener('change', (e) => set({ indicator: e.target.value, year: null }));
+  $('source').addEventListener('change', (e) => set({ source: e.target.value, year: null }));
+  $('year').addEventListener('change', (e) => set({ year: Number(e.target.value) }));
+
+  // ---------- render ----------
+  function render() {
+    if (!DATA) return;
+    const rows = DATA.observations;
+    const selected = state.countries;
+    const withJapan = !!state.japan;
+
+    const names = new Map(rows.map((r) => [r.country_code, r.country_ja]));
+    $('chips').replaceChildren(...[...ASEAN, 'jp'].filter((c) => names.has(c)).map((code) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'chip' + (code === 'jp' ? ' ref' : ''); b.dataset.code = code;
+      b.textContent = code === 'jp' ? names.get(code) + '（比較）' : names.get(code);
+      b.setAttribute('aria-pressed', String(code === 'jp' ? withJapan : selected.includes(code)));
+      return b;
+    }));
+
+    const indicators = [...new Map(rows.map((r) => [r.indicator_id, r])).values()];
+    const ind = indicators.some((r) => r.indicator_id === state.indicator) ? state.indicator : indicators[0].indicator_id;
+    $('indicator').replaceChildren(...indicators.map((r) => new Option(r.indicator_ja + ' / ' + r.indicator_en, r.indicator_id)));
+    $('indicator').value = ind;
+    const indRows = rows.filter((r) => r.indicator_id === ind);
+    const unit = indRows[0].unit, indName = indRows[0].indicator_ja;
+
+    const srcs = [...new Set(indRows.map((r) => r.source_id))];
+    const src = srcs.includes(state.source) ? state.source : (srcs.includes('worldbank_wdi') ? 'worldbank_wdi' : srcs[0]);
+    $('source').replaceChildren(...srcs.map((s) => new Option(SOURCE_LABEL[s] || s, s)));
+    $('source').value = src;
+    const srcRows = indRows.filter((r) => r.source_id === src);
+    const srcInfo = srcRows[0];
+
+    const years = [...new Set(srcRows.filter((r) => selected.includes(r.country_code)).map((r) => r.year))].sort((a, b) => b - a);
+    const year = years.includes(state.year) ? state.year : years[0];
+    $('year').replaceChildren(...years.map((y) => new Option(String(y), String(y))));
+    if (year != null) $('year').value = String(year);
+
+    const at = (code, y) => srcRows.find((r) => r.country_code === code && r.year === y);
+    const current = selected.map((c) => at(c, year)).filter(Boolean);
+    const missing = selected.filter((c) => !at(c, year)).map((c) => names.get(c));
+    const japan = withJapan ? at('jp', year) : null;
+    const srcName = SOURCE_LABEL[src] || src;
+
+    // summary
+    let agg = null, aggLabel = '選択国の合計', aggNote = '';
+    if (ADDITIVE.has(ind)) {
+      agg = !selected.length || missing.length ? null : d3.sum(current, (r) => r.value);
+      aggNote = !selected.length ? '国を選んでください'
+        : missing.length ? 'データのない国があるため合計を出していません（' + missing.join('、') + '）' : current.length + 'か国の単純合計';
+    } else if (ind === 'gdp_per_capita') {
+      aggLabel = '選択国全体の一人当たりGDP';
+      const pick = (id) => rows.filter((r) => r.indicator_id === id && r.source_id === src && r.year === year && selected.includes(r.country_code));
+      const g = pick('gdp_nominal'), pop = pick('population');
+      if (selected.length && g.length === selected.length && pop.length === selected.length) {
+        agg = d3.sum(g, (r) => r.value) / d3.sum(pop, (r) => r.value);
+        aggNote = '名目GDPの合計 ÷ 人口の合計（' + srcName + '）';
+      } else aggNote = 'この出所では名目GDPと人口がそろわないため計算していません';
+    } else {
+      aggLabel = '選択国の中央値';
+      agg = current.length ? d3.median(current, (r) => r.value) : null;
+      aggNote = '比率の指標は合計できないため中央値を表示';
+    }
+    $('t1k').textContent = aggLabel;
+    $('t1').textContent = fmt(agg, unit);
+    $('t1n').textContent = (year != null ? year + '年・' : '') + aggNote;
+
+    if (japan && agg != null && japan.value) {
+      const ratio = agg / japan.value;
+      $('t2').textContent = unit === '%' ? (agg - japan.value >= 0 ? '+' : '') + (agg - japan.value).toFixed(1) + 'pt' : (ratio >= 10 ? ratio.toFixed(0) : ratio.toFixed(2)) + '倍';
+      $('t2n').textContent = '日本 ' + fmt(japan.value, unit) + '（' + year + '年）';
+    } else {
+      $('t2').textContent = '—';
+      $('t2n').textContent = withJapan ? '日本のデータがこの出所・年にありません' : '日本（比較）を選ぶと表示します';
+    }
+    if (current.length) {
+      const hi = d3.greatest(current, (r) => r.value), lo = d3.least(current, (r) => r.value);
+      $('t3').textContent = lo.value > 0 && unit !== '%' ? (hi.value / lo.value).toFixed(0) + '倍の差' : fmt(hi.value - lo.value, unit) + 'の差';
+      $('t3n').textContent = '最大 ' + hi.country_ja + ' ' + fmt(hi.value, unit) + '、最小 ' + lo.country_ja + ' ' + fmt(lo.value, unit);
+      $('takeaway').textContent = indName + '（' + year + '年、' + srcName + '）：選択した' + selected.length + 'か国で最大は' + hi.country_ja + '、最小は' + lo.country_ja + '。国を選び直すと合計と比較が計算し直されます。';
+    } else {
+      $('t3').textContent = '—'; $('t3n').textContent = '国を選んでください';
+      $('takeaway').textContent = '国を選ぶと、指標ごとの合計・比較・推移を表示します。';
+    }
+    $('t4').textContent = current.length + ' / ' + selected.length;
+    $('t4n').textContent = missing.length ? 'データなし：' + missing.join('、') : srcName + (year != null ? '・' + year + '年' : '');
+
+    const srcNote = (srcInfo.source_publisher_ja || '') + '「' + (srcInfo.source_title_ja || '') + '」' + (srcInfo.indicator_code ? ' ' + srcInfo.indicator_code : '') + (srcInfo.source_last_updated ? '、更新 ' + srcInfo.source_last_updated : '');
+    const checked = current.filter((r) => r.cross_check_status);
+    const differs = checked.filter((r) => r.cross_check_status === 'differs').map((r) => r.country_ja);
+    $('rank-title').textContent = indName + '：国別の比較（' + (year ?? '—') + '年）';
+    $('rank-note').textContent = '出所：' + srcNote + (withJapan ? '。日本は比較用の灰色の棒です' : '') + '。'
+      + (checked.length ? '照合済み ' + checked.length + 'か国' + (differs.length ? '（他の出所と差あり：' + differs.join('、') + '）' : '（大きな差なし）') + '。棒にカーソルを合わせると照合の内容を表示します。' : '');
+    $('trend-title').textContent = indName + '：推移';
+    $('trend-note').textContent = '出所：' + srcNote + '。線の端に国名を表示します。';
+
+    drawRanking($('ranking'), current.concat(japan ? [japan] : []), unit);
+    const trendCodes = selected.concat(withJapan ? ['jp'] : []);
+    drawTrend($('trend'), srcRows.filter((r) => trendCodes.includes(r.country_code)), unit, year);
+    renderTables(selected);
+  }
+
+  function drawRanking(box, data, unit) {
+    const sorted = [...data].sort((a, b) => b.value - a.value);
+    if (!sorted.length) { box.replaceChildren(); return; }
+    const width = box.clientWidth || 600;
+    const height = Math.max(120, sorted.length * 30 + 30);
+    const labelW = d3.max(sorted, (d) => textW(d.country_ja)) + 4;
+    const valueW = d3.max(sorted, (d) => textW(fmt(d.value, unit))) + 10;
+    const lo = Math.min(0, d3.min(sorted, (d) => d.value));
+    // Bars start at 0, so the domain always includes 0 at both ends.
+    let hi = Math.max(0, d3.max(sorted, (d) => d.value));
+    if (hi === lo) hi = lo + 1;
+    const x = d3.scaleLinear([lo, hi], [labelW + 8, width - valueW]);
+    const y = d3.scaleBand(sorted.map((d) => d.country_code), [10, height - 20]).paddingInner(0.25);
+    const svg = d3.create('svg').attr('width', '100%').attr('viewBox', `0 0 ${width} ${height}`).attr('role', 'img');
+    const ticks = x.ticks(4);
+    svg.append('g').selectAll('line').data(ticks).join('line').attr('x1', (t) => x(t)).attr('x2', (t) => x(t)).attr('y1', 6).attr('y2', height - 20).attr('stroke', css('--grid'));
+    svg.append('g').selectAll('text').data(ticks).join('text').attr('x', (t) => x(t)).attr('y', height - 4).attr('text-anchor', 'middle').attr('fill', css('--muted')).attr('font-size', 11).text((t) => fmtAxis(t, unit));
+    const g = svg.append('g').selectAll('g').data(sorted).join('g');
+    g.append('text').attr('x', labelW).attr('y', (d) => y(d.country_code) + y.bandwidth() / 2).attr('dy', '0.35em').attr('text-anchor', 'end').attr('font-size', 12).attr('fill', css('--fg')).text((d) => d.country_ja);
+    g.append('rect').attr('x', (d) => x(Math.min(0, d.value))).attr('y', (d) => y(d.country_code))
+      .attr('width', (d) => Math.max(1, Math.abs(x(d.value) - x(0)))).attr('height', y.bandwidth()).attr('rx', 4)
+      .attr('fill', (d) => d.country_code === 'jp' ? css('--ref') : css('--accent'))
+      .on('mousemove', (event, d) => showTip(box, event, [d.country_ja + ' · ' + d.year + '年', fmt(d.value, unit),
+        '出所：' + (d.source_publisher_ja || '') + (d.original_source ? '（元統計：' + d.original_source + '）' : '') + (d.note ? '・' + d.note : ''),
+        d.cross_check ? '照合：' + d.cross_check : '']))
+      .on('mouseleave', () => hideTip(box));
+    g.append('text').attr('x', (d) => x(Math.max(0, d.value)) + 6).attr('y', (d) => y(d.country_code) + y.bandwidth() / 2).attr('dy', '0.35em').attr('font-size', 12).attr('fill', css('--muted')).text((d) => fmt(d.value, unit));
+    if (lo < 0) svg.append('line').attr('x1', x(0)).attr('x2', x(0)).attr('y1', 6).attr('y2', height - 20).attr('stroke', css('--axis'));
+    box.replaceChildren(svg.node(), tip(box));
+    box.style.minHeight = height + 'px';
+  }
+
+  function drawTrend(box, data, unit, year) {
+    const groups = d3.groups(data, (d) => d.country_code).map(([code, v]) => ({ code, name: v[0].country_ja, values: v.sort((a, b) => a.year - b.year) }));
+    if (!groups.length) { box.replaceChildren(); return; }
+    const width = box.clientWidth || 600, height = 300;
+    const endW = d3.max(groups, (s) => textW(s.name)) + 10;
+    const ext = d3.extent(data, (d) => d.value);
+    const y = d3.scaleLinear([Math.min(0, ext[0]), ext[1] || 1], [height - 24, 12]).nice();
+    const yt = y.ticks(5);
+    const axisW = d3.max(yt, (t) => textW(fmtAxis(t, unit))) + 8;
+    const x = d3.scaleLinear(d3.extent(data, (d) => d.year), [axisW, width - endW]);
+    const palette = series();
+    const color = (s, i) => s.code === 'jp' ? css('--ref') : palette[i % palette.length];
+    const svg = d3.create('svg').attr('width', '100%').attr('viewBox', `0 0 ${width} ${height}`).attr('role', 'img');
+    svg.append('g').selectAll('line').data(yt).join('line').attr('x1', axisW).attr('x2', width - endW).attr('y1', (t) => y(t)).attr('y2', (t) => y(t)).attr('stroke', css('--grid'));
+    svg.append('g').selectAll('text').data(yt).join('text').attr('x', axisW - 6).attr('y', (t) => y(t)).attr('dy', '0.35em').attr('text-anchor', 'end').attr('font-size', 11).attr('fill', css('--muted')).text((t) => fmtAxis(t, unit));
+    const xt = x.ticks(Math.max(2, Math.floor((width - axisW - endW) / 70))).filter(Number.isInteger);
+    svg.append('g').selectAll('text').data(xt).join('text').attr('x', (t) => x(t)).attr('y', height - 6).attr('text-anchor', 'middle').attr('font-size', 11).attr('fill', css('--muted')).text(String);
+    if (year != null) svg.append('line').attr('x1', x(year)).attr('x2', x(year)).attr('y1', 12).attr('y2', height - 24).attr('stroke', css('--axis')).attr('stroke-dasharray', '3 3');
+    const line = d3.line().x((d) => x(d.year)).y((d) => y(d.value));
+    groups.forEach((s, i) => svg.append('path').datum(s.values).attr('d', line).attr('fill', 'none').attr('stroke', color(s, i)).attr('stroke-width', 2).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round'));
+    const ends = groups.map((s, i) => ({ s, i, y: y(s.values[s.values.length - 1].value) })).sort((a, b) => a.y - b.y);
+    for (let k = 1; k < ends.length; k++) if (ends[k].y - ends[k - 1].y < 13) ends[k].y = ends[k - 1].y + 13;
+    ends.forEach(({ s, i, y: ly }) => svg.append('text').attr('x', x(s.values[s.values.length - 1].year) + 6).attr('y', ly).attr('dy', '0.35em').attr('font-size', 11).attr('fill', color(s, i)).text(s.name));
+    const dot = svg.append('circle').attr('r', 4).attr('fill', css('--fg')).attr('visibility', 'hidden');
+    svg.append('rect').attr('x', axisW).attr('y', 0).attr('width', Math.max(0, width - endW - axisW)).attr('height', height).attr('fill', 'transparent')
+      .on('mousemove', (event) => {
+        const [mx, my] = d3.pointer(event);
+        const yr = Math.round(x.invert(mx));
+        let best = null;
+        groups.forEach((s) => { const v = s.values.find((d) => d.year === yr); if (v && (!best || Math.abs(y(v.value) - my) < Math.abs(y(best.value) - my))) best = v; });
+        if (!best) { hideTip(box); dot.attr('visibility', 'hidden'); return; }
+        dot.attr('cx', x(best.year)).attr('cy', y(best.value)).attr('visibility', 'visible');
+        showTip(box, event, [best.country_ja + ' · ' + best.year + '年', fmt(best.value, unit), best.note || '', best.cross_check ? '照合：' + best.cross_check : '']);
+      })
+      .on('mouseleave', () => { hideTip(box); dot.attr('visibility', 'hidden'); });
+    box.replaceChildren(svg.node(), tip(box));
+  }
+
+  // ---------- tables ----------
+  const cell = (text, cls) => { const td = document.createElement('td'); if (cls) td.className = cls; td.textContent = text ?? ''; return td; };
+  const FIG = (id) => id.replace('asean_', 'ASEAN ').replace('japan_', '日本 ').replace('_gdp_per_capita', ' 一人当たりGDP').replace('gdp_per_capita', '一人当たりGDP').replace('population', '人口').replace('gdp', '名目GDP').replace('area', '面積');
+
+  function profileWide(profiles) {
+    const by = new Map();
+    for (const r of profiles) {
+      const row = by.get(r.country_code) || { country_code: r.country_code, country_ja: r.country_ja, sources: [] };
+      if (row[r.field_id] == null) row[r.field_id] = r.field_id === 'area' ? Number(r.value) : r.value;
+      const label = r.source_publisher_ja + (r.page_last_updated ? '（' + r.page_last_updated + '）' : '');
+      if (!row.sources.includes(label)) row.sources.push(label);
+      if (r.cross_check && r.field_id === 'area') row.checks = '面積：' + r.cross_check;
+      by.set(r.country_code, row);
+    }
+    return [...by.values()];
+  }
+
+  function renderTables(selected) {
+    const sel = new Set(selected);
+    document.querySelector('#profile-table tbody').replaceChildren(...DATA.profileWide.filter((r) => sel.has(r.country_code)).map((r) => {
+      const tr = document.createElement('tr');
+      tr.append(cell(r.country_ja), cell(r.capital), cell(r.area != null ? Number(r.area).toLocaleString('ja-JP') : '', 'num'),
+        cell(r.official_language), cell(r.religion), cell(r.political_system), cell(r.head_of_state), cell(r.sources.join('、'), 'src'), cell(r.checks || '', 'src'));
+      return tr;
+    }));
+  }
+
+  function renderStaticTables() {
+    document.querySelector('#validation-table tbody').replaceChildren(...DATA.validation.map((r) => {
+      const tr = document.createElement('tr');
+      const unit = r.field === 'population' ? 'persons' : r.field === 'area' ? '' : 'USD';
+      const show = (v) => v == null || v === '' ? '—' : unit ? fmt(Number(v), unit) : Number(v).toLocaleString('ja-JP') + ' km²';
+      const pill = document.createElement('td');
+      const s = document.createElement('span'); s.className = 'pill ' + r.status; s.textContent = STATUS[r.status] || r.status; pill.append(s);
+      const diff = r.diff_pct == null || r.diff_pct === '' ? '—' : (Number(r.diff_pct) > 0 ? '+' : '') + Number(r.diff_pct).toFixed(1) + '%';
+      tr.append(cell(FIG(r.figure_id)), cell(r.year ?? '—', 'num'), cell(show(r.reference_value), 'num'), cell(show(r.our_value), 'num'),
+        cell(diff, 'num'), pill, cell(r.our_sources, 'src'), cell(r.reference_cited_source, 'src'));
+      return tr;
+    }));
+    document.querySelector('#source-table tbody').replaceChildren(...DATA.sources.map((r) => {
+      const tr = document.createElement('tr');
+      tr.append(cell(r.source_id), cell(r.publisher_ja), cell(r.title_ja), cell(r.license || '—'),
+        cell(r.auto_fetch === true ? 'する' : r.auto_fetch === false ? 'しない' : '—'));
+      return tr;
+    }));
+  }
+
+  // ---------- load ----------
+  const load = (name) => fetch('data/' + name + '.json', { cache: 'no-cache' }).then((r) => {
+    if (!r.ok) throw new Error(name + '.json: HTTP ' + r.status);
+    return r.json();
+  });
+  Promise.all(['observations', 'profiles', 'sources', 'validation'].map(load)).then(([observations, profiles, sources, validation]) => {
+    DATA = {
+      observations: observations.map((r) => ({ ...r, year: Number(r.year), value: Number(r.value) })),
+      profileWide: profileWide(profiles), sources, validation,
+    };
+    const latest = d3.max(observations, (r) => r.retrieved_at);
+    $('status').textContent = latest ? 'データ取得日 ' + latest.slice(0, 10) : '';
+    renderStaticTables();
+    render();
+  }).catch((err) => {
+    $('takeaway').textContent = 'データを読み込めませんでした（' + err.message + '）。ページを再読み込みしてください。';
+    $('status').textContent = '読み込みエラー';
+    $('status').classList.add('error');
+  });
+
+  let resizeTimer;
+  window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(render, 150); });
+  matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', render);
+})();
+</script>
+</body>
+</html>
