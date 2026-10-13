@@ -59,6 +59,11 @@ def now() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
 
+def get_json(session: requests.Session, url: str, **kw):
+    """JSON from a response that may start with a UTF-8 BOM (PSA OpenSTAT does)."""
+    return json.loads(get(session, url, **kw).content.decode("utf-8-sig"))
+
+
 def get(session: requests.Session, url: str, **kw) -> requests.Response:
     for attempt in range(3):
         try:
@@ -88,7 +93,7 @@ def save_raw(source_id: str, new: dict) -> dict:
 # --------------------------------------------------------------------------- #
 
 def fetch_psa(session, cities) -> dict:
-    meta = get(session, PSA_URL).json()
+    meta = get_json(session, PSA_URL)
     geo = next(v for v in meta["variables"] if v["code"] == "Geolocation")
     val = next(v for v in meta["variables"] if v["code"] == "Type of Valuation")
     year = next(v for v in meta["variables"] if v["code"] == "Year")
@@ -100,7 +105,7 @@ def fetch_psa(session, cities) -> dict:
         {"code": "Type of Valuation", "selection": {"filter": "item", "values": [current]}},
         {"code": "Year", "selection": {"filter": "item", "values": year["values"]}},
     ], "response": {"format": "json"}}
-    data = get(session, PSA_URL, method="POST", json=query).json()
+    data = get_json(session, PSA_URL, method="POST", json=query)
     code_to_geo = {v: k for k, v in geo_codes.items()}
     code_to_year = dict(zip(year["values"], year["valueTexts"]))
     rows = []
@@ -188,7 +193,9 @@ def fetch_un(session, cities, iso3s) -> dict:
         rows.append({"iso3": rec["ISO3_Code"], "city_code": rec.get("City_Code"), "city_name": rec["City_Name"],
                      "capital": rec.get("Capital"), "population_thousand": {str(k): v for k, v in years.items()}})
     names = {c["id"]: [n.lower() for n in c["un_names"]] for c in cities}
-    kept = [r for r in rows if any(r["city_name"].lower() in ns for ns in names.values())]
+    # Keep the named cities plus every city of 300,000+ (2025), so a name fix needs no re-fetch.
+    kept = [r for r in rows if any(r["city_name"].lower() in ns for ns in names.values())
+            or (r["population_thousand"].get("2025") or 0) >= 300]
     largest = {k: [n for n, _ in sorted(v, key=lambda t: -t[1])[:12]] for k, v in by_country.items()}
     return {"source_id": "un_wup2025_cities", "url": UN_URL, "retrieved_at": now(), "rows": kept,
             "largest_cities_by_country": largest}
@@ -248,8 +255,9 @@ def build(cities, countries, sources, raw) -> list[dict]:
         iso3 = by_code[city["country"]]["iso3"]
         basis_note = "名目（当年価格）" if basis == "current" else "実質（2015年価格）"
         for year, v in sorted(series.items()):
-            row(city, "grdp_per_capita_local", currency, year, v, src["source_id"], src["url"], src["retrieved_at"],
-                note=basis_note)
+            row(city, "grdp_per_capita_local", currency, year, round(v, 2), src["source_id"], src["url"],
+                src["retrieved_at"], note=basis_note,
+                derivation=None if basis == "current" else "州の実質GDP（2015年価格）÷ 州の人口（同じ統計局のデータ）")
             fx = wb_value("PA.NUS.FCRF", iso3, year) if basis == "current" else None
             if fx:
                 row(city, "grdp_per_capita_usd", "USD", year, round(v / fx, 2), src["source_id"], src["url"],
