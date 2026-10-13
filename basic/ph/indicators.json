@@ -13,7 +13,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "SP.POP.TOTL",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/SP.POP.TOTL?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-13T01:24:54+00:00",
+          "retrieved_at": "2026-10-13T01:27:22+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {
@@ -149,7 +149,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "NY.GDP.MKTP.CD",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/NY.GDP.MKTP.CD?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-13T01:24:54+00:00",
+          "retrieved_at": "2026-10-13T01:27:22+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {
@@ -269,7 +269,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "NY.GDP.PCAP.CD",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/NY.GDP.PCAP.CD?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-13T01:24:54+00:00",
+          "retrieved_at": "2026-10-13T01:27:22+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {
@@ -408,6 +408,119 @@
       "unit": "%",
       "series": [
         {
+          "source_id": "worldbank_wdi",
+          "indicator_code": "NY.GDP.MKTP.KD.ZG",
+          "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=20000&date=2000:2031",
+          "retrieved_at": "2026-10-13T01:27:22+00:00",
+          "source_last_updated": "2026-10-08",
+          "observations": [
+            {
+              "year": 2000,
+              "value": 4.38250500083399
+            },
+            {
+              "year": 2001,
+              "value": 3.04923134463486
+            },
+            {
+              "year": 2002,
+              "value": 3.71625500158383
+            },
+            {
+              "year": 2003,
+              "value": 5.08691113513073
+            },
+            {
+              "year": 2004,
+              "value": 6.56922851180626
+            },
+            {
+              "year": 2005,
+              "value": 4.94250511877678
+            },
+            {
+              "year": 2006,
+              "value": 5.31641682136939
+            },
+            {
+              "year": 2007,
+              "value": 6.51929155018938
+            },
+            {
+              "year": 2008,
+              "value": 4.34448730509183
+            },
+            {
+              "year": 2009,
+              "value": 1.44832306275669
+            },
+            {
+              "year": 2010,
+              "value": 7.33449996034538
+            },
+            {
+              "year": 2011,
+              "value": 3.85823282795663
+            },
+            {
+              "year": 2012,
+              "value": 6.89695171050985
+            },
+            {
+              "year": 2013,
+              "value": 6.75053130142255
+            },
+            {
+              "year": 2014,
+              "value": 6.34798748260867
+            },
+            {
+              "year": 2015,
+              "value": 6.34830971672761
+            },
+            {
+              "year": 2016,
+              "value": 7.14945675000752
+            },
+            {
+              "year": 2017,
+              "value": 6.9309883258402
+            },
+            {
+              "year": 2018,
+              "value": 6.34148557153473
+            },
+            {
+              "year": 2019,
+              "value": 6.11852566221303
+            },
+            {
+              "year": 2020,
+              "value": -9.51829474045297
+            },
+            {
+              "year": 2021,
+              "value": 5.71473313185116
+            },
+            {
+              "year": 2022,
+              "value": 7.58098212785563
+            },
+            {
+              "year": 2023,
+              "value": 5.51894967856043
+            },
+            {
+              "year": 2024,
+              "value": 5.71474526128652
+            },
+            {
+              "year": 2025,
+              "value": 4.40240158710621
+            }
+          ]
+        },
+        {
           "source_id": "jetro_basic",
           "source_label": "実質GDP成長率",
           "url": "https://www.jetro.go.jp/world/asia/ph/basic_01.html",
@@ -440,7 +553,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "FP.CPI.TOTL.ZG",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/FP.CPI.TOTL.ZG?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-13T01:24:54+00:00",
+          "retrieved_at": "2026-10-13T01:27:22+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {
@@ -582,7 +695,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "SL.UEM.TOTL.ZS",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/SL.UEM.TOTL.ZS?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-13T01:24:54+00:00",
+          "retrieved_at": "2026-10-13T01:27:22+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {
@@ -724,7 +837,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "BX.KLT.DINV.CD.WD",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/BX.KLT.DINV.CD.WD?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-13T01:24:54+00:00",
+          "retrieved_at": "2026-10-13T01:27:22+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {

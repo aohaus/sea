@@ -1,8 +1,6 @@
 {
   "errors": {
-    "worldbank_wdi": [
-      "NY.GDP.MKTP.KD.ZG: ReadTimeout: HTTPSConnectionPool(host='api.worldbank.org', port=443): Read timed out. (read timeout=20)"
-    ]
+    "worldbank_wdi": []
   },
   "countries": [
     {
@@ -18,7 +16,9 @@
         "gdp_per_capita": [
           "worldbank_wdi"
         ],
-        "gdp_growth_real": [],
+        "gdp_growth_real": [
+          "worldbank_wdi"
+        ],
         "inflation_cpi": [
           "worldbank_wdi"
         ],
@@ -45,6 +45,7 @@
           "jetro_basic"
         ],
         "gdp_growth_real": [
+          "worldbank_wdi",
           "jetro_basic"
         ],
         "inflation_cpi": [
@@ -75,6 +76,7 @@
           "jetro_basic"
         ],
         "gdp_growth_real": [
+          "worldbank_wdi",
           "jetro_basic"
         ],
         "inflation_cpi": [
@@ -105,6 +107,7 @@
           "jetro_basic"
         ],
         "gdp_growth_real": [
+          "worldbank_wdi",
           "jetro_basic"
         ],
         "inflation_cpi": [
@@ -134,6 +137,7 @@
           "jetro_basic"
         ],
         "gdp_growth_real": [
+          "worldbank_wdi",
           "jetro_basic"
         ],
         "inflation_cpi": [
@@ -164,6 +168,7 @@
           "jetro_basic"
         ],
         "gdp_growth_real": [
+          "worldbank_wdi",
           "jetro_basic"
         ],
         "inflation_cpi": [
@@ -193,6 +198,7 @@
           "jetro_basic"
         ],
         "gdp_growth_real": [
+          "worldbank_wdi",
           "jetro_basic"
         ],
         "inflation_cpi": [
@@ -223,6 +229,7 @@
           "jetro_basic"
         ],
         "gdp_growth_real": [
+          "worldbank_wdi",
           "jetro_basic"
         ],
         "inflation_cpi": [
@@ -253,6 +260,7 @@
           "jetro_basic"
         ],
         "gdp_growth_real": [
+          "worldbank_wdi",
           "jetro_basic"
         ],
         "inflation_cpi": [
@@ -281,7 +289,9 @@
         "gdp_per_capita": [
           "worldbank_wdi"
         ],
-        "gdp_growth_real": [],
+        "gdp_growth_real": [
+          "worldbank_wdi"
+        ],
         "inflation_cpi": [
           "worldbank_wdi"
         ],
@@ -308,6 +318,7 @@
           "jetro_basic"
         ],
         "gdp_growth_real": [
+          "worldbank_wdi",
           "jetro_basic"
         ],
         "inflation_cpi": [

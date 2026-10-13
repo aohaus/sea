@@ -13,7 +13,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "SP.POP.TOTL",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/SP.POP.TOTL?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-13T01:24:54+00:00",
+          "retrieved_at": "2026-10-13T01:27:22+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {
@@ -149,7 +149,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "NY.GDP.MKTP.CD",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/NY.GDP.MKTP.CD?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-13T01:24:54+00:00",
+          "retrieved_at": "2026-10-13T01:27:22+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {
@@ -269,7 +269,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "NY.GDP.PCAP.CD",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/NY.GDP.PCAP.CD?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-13T01:24:54+00:00",
+          "retrieved_at": "2026-10-13T01:27:22+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {
@@ -384,7 +384,121 @@
       "label_ja": "実質GDP成長率",
       "label_en": "Real GDP growth",
       "unit": "%",
-      "series": []
+      "series": [
+        {
+          "source_id": "worldbank_wdi",
+          "indicator_code": "NY.GDP.MKTP.KD.ZG",
+          "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=20000&date=2000:2031",
+          "retrieved_at": "2026-10-13T01:27:22+00:00",
+          "source_last_updated": "2026-10-08",
+          "observations": [
+            {
+              "year": 2000,
+              "value": 58.0780959334582
+            },
+            {
+              "year": 2001,
+              "value": 16.3476940466477
+            },
+            {
+              "year": 2002,
+              "value": -6.70069541098115
+            },
+            {
+              "year": 2003,
+              "value": -2.18226413236545
+            },
+            {
+              "year": 2004,
+              "value": 0.400003981151968
+            },
+            {
+              "year": 2005,
+              "value": 2.98457963807486
+            },
+            {
+              "year": 2006,
+              "value": -4.11609268942114
+            },
+            {
+              "year": 2007,
+              "value": 10.2653884542201
+            },
+            {
+              "year": 2008,
+              "value": 11.3948048266465
+            },
+            {
+              "year": 2009,
+              "value": 10.1469544183475
+            },
+            {
+              "year": 2010,
+              "value": 9.33149490201264
+            },
+            {
+              "year": 2011,
+              "value": 5.95855605611087
+            },
+            {
+              "year": 2012,
+              "value": 4.86062186827468
+            },
+            {
+              "year": 2013,
+              "value": 3.10436683211147
+            },
+            {
+              "year": 2014,
+              "value": 4.47249846569638
+            },
+            {
+              "year": 2015,
+              "value": 2.48004040218397
+            },
+            {
+              "year": 2016,
+              "value": 3.00993062553351
+            },
+            {
+              "year": 2017,
+              "value": -3.18241522489195
+            },
+            {
+              "year": 2018,
+              "value": -0.466502170658785
+            },
+            {
+              "year": 2019,
+              "value": 24.2128840085001
+            },
+            {
+              "year": 2020,
+              "value": 31.7257416721413
+            },
+            {
+              "year": 2021,
+              "value": 5.36980119392668
+            },
+            {
+              "year": 2022,
+              "value": -20.5224802314812
+            },
+            {
+              "year": 2023,
+              "value": -18.1359049134472
+            },
+            {
+              "year": 2024,
+              "value": -9.10069289810397
+            },
+            {
+              "year": 2025,
+              "value": 6.97538939119629
+            }
+          ]
+        }
+      ]
     },
     "inflation_cpi": {
       "label_ja": "消費者物価上昇率",
@@ -395,7 +509,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "FP.CPI.TOTL.ZG",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/FP.CPI.TOTL.ZG?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-13T01:24:54+00:00",
+          "retrieved_at": "2026-10-13T01:27:22+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {
@@ -503,7 +617,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "SL.UEM.TOTL.ZS",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/SL.UEM.TOTL.ZS?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-13T01:24:54+00:00",
+          "retrieved_at": "2026-10-13T01:27:22+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {
@@ -623,7 +737,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "BX.KLT.DINV.CD.WD",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/BX.KLT.DINV.CD.WD?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-13T01:24:54+00:00",
+          "retrieved_at": "2026-10-13T01:27:22+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {
