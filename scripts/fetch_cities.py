@@ -64,10 +64,10 @@ def get_json(session: requests.Session, url: str, **kw):
     return json.loads(get(session, url, **kw).content.decode("utf-8-sig"))
 
 
-def get(session: requests.Session, url: str, **kw) -> requests.Response:
+def get(session: requests.Session, url: str, method: str = "GET", **kw) -> requests.Response:
     for attempt in range(3):
         try:
-            resp = session.request(kw.pop("method", "GET"), url, headers=HEADERS, timeout=120, **kw)
+            resp = session.request(method, url, headers=HEADERS, timeout=120, **kw)
             resp.raise_for_status()
             return resp
         except (requests.Timeout, requests.ConnectionError):
@@ -77,12 +77,24 @@ def get(session: requests.Session, url: str, **kw) -> requests.Response:
     raise RuntimeError("unreachable")
 
 
+def is_empty(rows) -> bool:
+    """No rows at all, or (for sources made of several series) any series empty."""
+    if isinstance(rows, dict):
+        return not rows or any(not v for v in rows.values())
+    return not rows
+
+
 def save_raw(source_id: str, new: dict) -> dict:
-    """Write raw/<source_id>.json unless only retrieved_at changed; keep old data on empty fetch."""
+    """Write raw/<source_id>.json unless only retrieved_at changed.
+
+    An empty result is treated as a failed fetch: the saved data is kept and
+    the error is raised so the run reports it instead of committing deletions."""
     path = RAW / f"{source_id}.json"
     old = load_json(path) if path.exists() else None
+    if is_empty(new.get("rows")):
+        raise ValueError("empty result; kept the previously saved data")
     strip = lambda d: {k: v for k, v in d.items() if k != "retrieved_at"}  # noqa: E731
-    if old and (strip(old) == strip(new) or not new.get("rows")):
+    if old and strip(old) == strip(new):
         return old
     write_json(path, new)
     return new
