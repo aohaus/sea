@@ -16,6 +16,7 @@ Basic data on the 11 ASEAN members (including Timor-Leste) and ASEAN as a whole,
 | `<code>/worldbank_wdi.json` | 世界銀行 API から取得した観測値と URL・取得日 / Raw World Bank observations |
 | `asean/` | ASEAN 全体のデータ（JETRO「ASEANの貿易投資年報」など） / ASEAN-wide data |
 | `data/` | 統合データ（`dataset.json`）と出所つきの書き出し用の表（`observations`・`profiles`・`sources`・`validation` の CSV/JSON）/ Consolidated dataset and flat export tables with provenance |
+| `cities/` | 主要都市のマスタ（`cities.json`）と、取得した元データ（`raw/`）・取得結果 / Major cities |
 | `reference/` | 検証用の参照値（日本アセアンセンター「ひと目で分かる日ASEAN基本情報」）と照合結果 / Reference figures and validation report |
 | `fetch_report.json` | 直近の取得結果（国ごとの成否・埋まった項目） / Last fetch summary |
 
@@ -106,6 +107,30 @@ python scripts/build_dataset.py
 - 値は基本単位（USD・人・%）に換算します。出所ごとに別の系列として保存し、1つの値にまとめません（出所間の差がそのまま見えるようにするため）。
 - ミャンマーの JETRO 値は年度（例：2024/25年度）です。`year` は開始年とし、`note` に年度である旨を記録します。
 - **IMF は自動取得を止めています**（`sources.json` の `auto_fetch: false`）。IMF の利用条件が、自動技術による一括ダウンロードと商用再利用に IMF の許可を求めているためです。許可を得たら有効にできます。
+
+## 主要都市 / Major cities
+
+`cities/cities.json` に各国1〜3都市（計22都市）を定義し、`scripts/fetch_cities.py` が取得します。結果は `data/city_observations.{csv,json}` です。
+
+| 指標 | 内容 |
+|---|---|
+| `grdp_per_capita_local` | 一人当たり地域GDP（現地通貨。各国統計局の州・県・市の値） |
+| `grdp_per_capita_usd` | 上の値を世界銀行の公式為替レート（PA.NUS.FCRF、年平均）で米ドル換算 |
+| `grdp_per_capita_ratio` | 対全国比（同じ基準の全国一人当たりGDP で割った値） |
+| `city_population` | 国連 WUP 2025 の都市人口（DEGURBA の都市域。2025年より後は予測） |
+
+| 国 | 地域GDP の出所 | 都市と単位 |
+|---|---|---|
+| フィリピン | PSA OpenSTAT（州・高度都市化市別、名目） | マニラ首都圏（NCR）、セブ市、ダバオ市 |
+| タイ | 国家統計局 統計年鑑 表10.14（県別、名目、最新年は暫定値） | バンコク都、チョンブリ県、チェンマイ県 |
+| マレーシア | 統計局 API（州別の実質GDP〔2015年価格〕÷ 州人口） | クアラルンプール（プトラジャヤを含む）、ペナン州、ジョホール州。実質値のため米ドル換算はなし |
+| シンガポール | 世界銀行（国全体＝都市） | シンガポール |
+| ベトナム・インドネシア | 未取得（統計局のデータを自動取得できない） | 人口のみ |
+| カンボジア・ラオス・ミャンマー・ブルネイ・東ティモール | 地域別の公表なし | 人口のみ |
+
+- 換算や比率の行には、計算過程を `derivation` 列に書きます（例：「675,979 THB ÷ 世界銀行 公式為替レート 2023年平均 34.8022 THB/USD」）。
+- 都市そのものと統計の単位が違う場合は `unit_note` に書きます（例：ジョホールバル → ジョホール州全体）。
+- 国連の都市人口は都市域（市街地のまとまり）の人口で、行政区域の人口とは異なります。
 
 ## 今後 / Next
 

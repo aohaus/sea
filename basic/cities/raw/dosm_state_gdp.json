@@ -1,0 +1,1251 @@
+{
+  "source_id": "dosm_state_gdp",
+  "urls": {
+    "gdp": "https://api.data.gov.my/data-catalogue/?id=gdp_state_real_supply&limit=100000",
+    "population": "https://api.data.gov.my/data-catalogue/?id=population_state&limit=100000"
+  },
+  "url": "https://api.data.gov.my/data-catalogue/?id=gdp_state_real_supply&limit=100000",
+  "retrieved_at": "2026-10-13T02:27:20+00:00",
+  "currency": "MYR",
+  "basis": "constant_2015",
+  "rows": {
+    "gdp_rm_million": [
+      {
+        "state": "Johor",
+        "year": 2015,
+        "value": 110002.221
+      },
+      {
+        "state": "Kedah",
+        "year": 2015,
+        "value": 39549.581
+      },
+      {
+        "state": "Kelantan",
+        "year": 2015,
+        "value": 21407.736
+      },
+      {
+        "state": "Melaka",
+        "year": 2015,
+        "value": 36077.257
+      },
+      {
+        "state": "Negeri Sembilan",
+        "year": 2015,
+        "value": 40185.677
+      },
+      {
+        "state": "Pahang",
+        "year": 2015,
+        "value": 49449.712
+      },
+      {
+        "state": "Perak",
+        "year": 2015,
+        "value": 63175.555
+      },
+      {
+        "state": "Perlis",
+        "year": 2015,
+        "value": 5352.875
+      },
+      {
+        "state": "Pulau Pinang",
+        "year": 2015,
+        "value": 78146.215
+      },
+      {
+        "state": "Sabah",
+        "year": 2015,
+        "value": 73776.128
+      },
+      {
+        "state": "Sarawak",
+        "year": 2015,
+        "value": 121585.277
+      },
+      {
+        "state": "Selangor",
+        "year": 2015,
+        "value": 268824.995
+      },
+      {
+        "state": "Terengganu",
+        "year": 2015,
+        "value": 31124.445
+      },
+      {
+        "state": "W.P. Kuala Lumpur",
+        "year": 2015,
+        "value": 180864.541
+      },
+      {
+        "state": "W.P. Labuan",
+        "year": 2015,
+        "value": 5999.225
+      },
+      {
+        "state": "Johor",
+        "year": 2016,
+        "value": 116682.227
+      },
+      {
+        "state": "Kedah",
+        "year": 2016,
+        "value": 41155.715
+      },
+      {
+        "state": "Kelantan",
+        "year": 2016,
+        "value": 22475.73
+      },
+      {
+        "state": "Melaka",
+        "year": 2016,
+        "value": 37712.736
+      },
+      {
+        "state": "Negeri Sembilan",
+        "year": 2016,
+        "value": 41771.246
+      },
+      {
+        "state": "Pahang",
+        "year": 2016,
+        "value": 50875.222
+      },
+      {
+        "state": "Perak",
+        "year": 2016,
+        "value": 65958.409
+      },
+      {
+        "state": "Perlis",
+        "year": 2016,
+        "value": 5569.584
+      },
+      {
+        "state": "Pulau Pinang",
+        "year": 2016,
+        "value": 82493.279
+      },
+      {
+        "state": "Sabah",
+        "year": 2016,
+        "value": 77518.046
+      },
+      {
+        "state": "Sarawak",
+        "year": 2016,
+        "value": 124512.946
+      },
+      {
+        "state": "Selangor",
+        "year": 2016,
+        "value": 281838.865
+      },
+      {
+        "state": "Terengganu",
+        "year": 2016,
+        "value": 32133.081
+      },
+      {
+        "state": "W.P. Kuala Lumpur",
+        "year": 2016,
+        "value": 191640.985
+      },
+      {
+        "state": "W.P. Labuan",
+        "year": 2016,
+        "value": 6412.031
+      },
+      {
+        "state": "Johor",
+        "year": 2017,
+        "value": 123561.327
+      },
+      {
+        "state": "Kedah",
+        "year": 2017,
+        "value": 43066.583
+      },
+      {
+        "state": "Kelantan",
+        "year": 2017,
+        "value": 23501.175
+      },
+      {
+        "state": "Melaka",
+        "year": 2017,
+        "value": 40829.986
+      },
+      {
+        "state": "Negeri Sembilan",
+        "year": 2017,
+        "value": 43815.729
+      },
+      {
+        "state": "Pahang",
+        "year": 2017,
+        "value": 54591.139
+      },
+      {
+        "state": "Perak",
+        "year": 2017,
+        "value": 69336.571
+      },
+      {
+        "state": "Perlis",
+        "year": 2017,
+        "value": 5694.648
+      },
+      {
+        "state": "Pulau Pinang",
+        "year": 2017,
+        "value": 86767.823
+      },
+      {
+        "state": "Sabah",
+        "year": 2017,
+        "value": 83793.257
+      },
+      {
+        "state": "Sarawak",
+        "year": 2017,
+        "value": 130168.608
+      },
+      {
+        "state": "Selangor",
+        "year": 2017,
+        "value": 302186.45
+      },
+      {
+        "state": "Terengganu",
+        "year": 2017,
+        "value": 33978.557
+      },
+      {
+        "state": "W.P. Kuala Lumpur",
+        "year": 2017,
+        "value": 206175.307
+      },
+      {
+        "state": "W.P. Labuan",
+        "year": 2017,
+        "value": 6789.806
+      },
+      {
+        "state": "Johor",
+        "year": 2018,
+        "value": 130585.945
+      },
+      {
+        "state": "Kedah",
+        "year": 2018,
+        "value": 44803.83
+      },
+      {
+        "state": "Kelantan",
+        "year": 2018,
+        "value": 24142.691
+      },
+      {
+        "state": "Melaka",
+        "year": 2018,
+        "value": 42375.671
+      },
+      {
+        "state": "Negeri Sembilan",
+        "year": 2018,
+        "value": 45694.04
+      },
+      {
+        "state": "Pahang",
+        "year": 2018,
+        "value": 56289.94
+      },
+      {
+        "state": "Perak",
+        "year": 2018,
+        "value": 73030.81
+      },
+      {
+        "state": "Perlis",
+        "year": 2018,
+        "value": 5885.364
+      },
+      {
+        "state": "Pulau Pinang",
+        "year": 2018,
+        "value": 91234.235
+      },
+      {
+        "state": "Sabah",
+        "year": 2018,
+        "value": 85012.016
+      },
+      {
+        "state": "Sarawak",
+        "year": 2018,
+        "value": 133009.823
+      },
+      {
+        "state": "Selangor",
+        "year": 2018,
+        "value": 323215.439
+      },
+      {
+        "state": "Terengganu",
+        "year": 2018,
+        "value": 34838.208
+      },
+      {
+        "state": "W.P. Kuala Lumpur",
+        "year": 2018,
+        "value": 220358.974
+      },
+      {
+        "state": "W.P. Labuan",
+        "year": 2018,
+        "value": 7244.941
+      },
+      {
+        "state": "Johor",
+        "year": 2019,
+        "value": 134225.938
+      },
+      {
+        "state": "Kedah",
+        "year": 2019,
+        "value": 46841.199
+      },
+      {
+        "state": "Kelantan",
+        "year": 2019,
+        "value": 25479.178
+      },
+      {
+        "state": "Melaka",
+        "year": 2019,
+        "value": 43583.397
+      },
+      {
+        "state": "Negeri Sembilan",
+        "year": 2019,
+        "value": 48033.554
+      },
+      {
+        "state": "Pahang",
+        "year": 2019,
+        "value": 58434.372
+      },
+      {
+        "state": "Perak",
+        "year": 2019,
+        "value": 75992.708
+      },
+      {
+        "state": "Perlis",
+        "year": 2019,
+        "value": 6151.334
+      },
+      {
+        "state": "Pulau Pinang",
+        "year": 2019,
+        "value": 94645.352
+      },
+      {
+        "state": "Sabah",
+        "year": 2019,
+        "value": 85641.69
+      },
+      {
+        "state": "Sarawak",
+        "year": 2019,
+        "value": 136759.184
+      },
+      {
+        "state": "Selangor",
+        "year": 2019,
+        "value": 345008.461
+      },
+      {
+        "state": "Terengganu",
+        "year": 2019,
+        "value": 36000.52
+      },
+      {
+        "state": "W.P. Kuala Lumpur",
+        "year": 2019,
+        "value": 233793.693
+      },
+      {
+        "state": "W.P. Labuan",
+        "year": 2019,
+        "value": 7623.268
+      },
+      {
+        "state": "Johor",
+        "year": 2020,
+        "value": 128073.564
+      },
+      {
+        "state": "Kedah",
+        "year": 2020,
+        "value": 46042.458
+      },
+      {
+        "state": "Kelantan",
+        "year": 2020,
+        "value": 25187.708
+      },
+      {
+        "state": "Melaka",
+        "year": 2020,
+        "value": 41030.449
+      },
+      {
+        "state": "Negeri Sembilan",
+        "year": 2020,
+        "value": 46336.101
+      },
+      {
+        "state": "Pahang",
+        "year": 2020,
+        "value": 54885.462
+      },
+      {
+        "state": "Perak",
+        "year": 2020,
+        "value": 74263.987
+      },
+      {
+        "state": "Perlis",
+        "year": 2020,
+        "value": 5785.067
+      },
+      {
+        "state": "Pulau Pinang",
+        "year": 2020,
+        "value": 92690.682
+      },
+      {
+        "state": "Sabah",
+        "year": 2020,
+        "value": 77840.052
+      },
+      {
+        "state": "Sarawak",
+        "year": 2020,
+        "value": 127556.288
+      },
+      {
+        "state": "Selangor",
+        "year": 2020,
+        "value": 326805.3
+      },
+      {
+        "state": "Terengganu",
+        "year": 2020,
+        "value": 33994.032
+      },
+      {
+        "state": "W.P. Kuala Lumpur",
+        "year": 2020,
+        "value": 217447.043
+      },
+      {
+        "state": "W.P. Labuan",
+        "year": 2020,
+        "value": 7613.361
+      },
+      {
+        "state": "Johor",
+        "year": 2021,
+        "value": 131242.981
+      },
+      {
+        "state": "Kedah",
+        "year": 2021,
+        "value": 47505.068
+      },
+      {
+        "state": "Kelantan",
+        "year": 2021,
+        "value": 25781.895
+      },
+      {
+        "state": "Melaka",
+        "year": 2021,
+        "value": 41871.632
+      },
+      {
+        "state": "Negeri Sembilan",
+        "year": 2021,
+        "value": 47787.092
+      },
+      {
+        "state": "Pahang",
+        "year": 2021,
+        "value": 55440.104
+      },
+      {
+        "state": "Perak",
+        "year": 2021,
+        "value": 76900.997
+      },
+      {
+        "state": "Perlis",
+        "year": 2021,
+        "value": 5866.65
+      },
+      {
+        "state": "Pulau Pinang",
+        "year": 2021,
+        "value": 99123.944
+      },
+      {
+        "state": "Sabah",
+        "year": 2021,
+        "value": 79000.069
+      },
+      {
+        "state": "Sarawak",
+        "year": 2021,
+        "value": 131593.878
+      },
+      {
+        "state": "Selangor",
+        "year": 2021,
+        "value": 344102.741
+      },
+      {
+        "state": "Terengganu",
+        "year": 2021,
+        "value": 35235.898
+      },
+      {
+        "state": "W.P. Kuala Lumpur",
+        "year": 2021,
+        "value": 219883.721
+      },
+      {
+        "state": "W.P. Labuan",
+        "year": 2021,
+        "value": 7649.669
+      },
+      {
+        "state": "Johor",
+        "year": 2022,
+        "value": 142369.692
+      },
+      {
+        "state": "Kedah",
+        "year": 2022,
+        "value": 50982.123
+      },
+      {
+        "state": "Kelantan",
+        "year": 2022,
+        "value": 26934.566
+      },
+      {
+        "state": "Melaka",
+        "year": 2022,
+        "value": 45579.035
+      },
+      {
+        "state": "Negeri Sembilan",
+        "year": 2022,
+        "value": 50939.264
+      },
+      {
+        "state": "Pahang",
+        "year": 2022,
+        "value": 61746.204
+      },
+      {
+        "state": "Perak",
+        "year": 2022,
+        "value": 80426.886
+      },
+      {
+        "state": "Perlis",
+        "year": 2022,
+        "value": 6209.957
+      },
+      {
+        "state": "Pulau Pinang",
+        "year": 2022,
+        "value": 112281.052
+      },
+      {
+        "state": "Sabah",
+        "year": 2022,
+        "value": 82106.428
+      },
+      {
+        "state": "Sarawak",
+        "year": 2022,
+        "value": 140698.831
+      },
+      {
+        "state": "Selangor",
+        "year": 2022,
+        "value": 385158.798
+      },
+      {
+        "state": "Terengganu",
+        "year": 2022,
+        "value": 37353.84
+      },
+      {
+        "state": "W.P. Kuala Lumpur",
+        "year": 2022,
+        "value": 240517.538
+      },
+      {
+        "state": "W.P. Labuan",
+        "year": 2022,
+        "value": 7962.511
+      },
+      {
+        "state": "Johor",
+        "year": 2023,
+        "value": 148710.224
+      },
+      {
+        "state": "Kedah",
+        "year": 2023,
+        "value": 51897.111
+      },
+      {
+        "state": "Kelantan",
+        "year": 2023,
+        "value": 27674.208
+      },
+      {
+        "state": "Melaka",
+        "year": 2023,
+        "value": 46867.46
+      },
+      {
+        "state": "Negeri Sembilan",
+        "year": 2023,
+        "value": 51927.126
+      },
+      {
+        "state": "Pahang",
+        "year": 2023,
+        "value": 64995.276
+      },
+      {
+        "state": "Perak",
+        "year": 2023,
+        "value": 82689.048
+      },
+      {
+        "state": "Perlis",
+        "year": 2023,
+        "value": 6344.468
+      },
+      {
+        "state": "Pulau Pinang",
+        "year": 2023,
+        "value": 115983.459
+      },
+      {
+        "state": "Sabah",
+        "year": 2023,
+        "value": 83470.946
+      },
+      {
+        "state": "Sarawak",
+        "year": 2023,
+        "value": 142760.202
+      },
+      {
+        "state": "Selangor",
+        "year": 2023,
+        "value": 406785.848
+      },
+      {
+        "state": "Terengganu",
+        "year": 2023,
+        "value": 38235.038
+      },
+      {
+        "state": "W.P. Kuala Lumpur",
+        "year": 2023,
+        "value": 237185.211
+      },
+      {
+        "state": "W.P. Labuan",
+        "year": 2023,
+        "value": 8124.923
+      },
+      {
+        "state": "W.P. Putrajaya",
+        "year": 2023,
+        "value": 13028.169
+      },
+      {
+        "state": "Johor",
+        "year": 2024,
+        "value": 158348.264
+      },
+      {
+        "state": "Kedah",
+        "year": 2024,
+        "value": 54101.506
+      },
+      {
+        "state": "Kelantan",
+        "year": 2024,
+        "value": 28599.018
+      },
+      {
+        "state": "Melaka",
+        "year": 2024,
+        "value": 48844.201
+      },
+      {
+        "state": "Negeri Sembilan",
+        "year": 2024,
+        "value": 54335.264
+      },
+      {
+        "state": "Pahang",
+        "year": 2024,
+        "value": 68754.028
+      },
+      {
+        "state": "Perak",
+        "year": 2024,
+        "value": 86619.938
+      },
+      {
+        "state": "Perlis",
+        "year": 2024,
+        "value": 6544.734
+      },
+      {
+        "state": "Pulau Pinang",
+        "year": 2024,
+        "value": 121437.238
+      },
+      {
+        "state": "Sabah",
+        "year": 2024,
+        "value": 84506.014
+      },
+      {
+        "state": "Sarawak",
+        "year": 2024,
+        "value": 148189.153
+      },
+      {
+        "state": "Selangor",
+        "year": 2024,
+        "value": 432929.901
+      },
+      {
+        "state": "Terengganu",
+        "year": 2024,
+        "value": 39951.104
+      },
+      {
+        "state": "W.P. Kuala Lumpur",
+        "year": 2024,
+        "value": 251946.876
+      },
+      {
+        "state": "W.P. Labuan",
+        "year": 2024,
+        "value": 8553.218
+      },
+      {
+        "state": "W.P. Putrajaya",
+        "year": 2024,
+        "value": 13702.485
+      },
+      {
+        "state": "Johor",
+        "year": 2025,
+        "value": 170947.488
+      },
+      {
+        "state": "Kedah",
+        "year": 2025,
+        "value": 56303.087
+      },
+      {
+        "state": "Kelantan",
+        "year": 2025,
+        "value": 29775.762
+      },
+      {
+        "state": "Melaka",
+        "year": 2025,
+        "value": 50286.011
+      },
+      {
+        "state": "Negeri Sembilan",
+        "year": 2025,
+        "value": 55767.291
+      },
+      {
+        "state": "Pahang",
+        "year": 2025,
+        "value": 70962.277
+      },
+      {
+        "state": "Perak",
+        "year": 2025,
+        "value": 91529.379
+      },
+      {
+        "state": "Perlis",
+        "year": 2025,
+        "value": 6675.575
+      },
+      {
+        "state": "Pulau Pinang",
+        "year": 2025,
+        "value": 130283.385
+      },
+      {
+        "state": "Sabah",
+        "year": 2025,
+        "value": 88773.954
+      },
+      {
+        "state": "Sarawak",
+        "year": 2025,
+        "value": 153511.242
+      },
+      {
+        "state": "Selangor",
+        "year": 2025,
+        "value": 460113.648
+      },
+      {
+        "state": "Terengganu",
+        "year": 2025,
+        "value": 40596.613
+      },
+      {
+        "state": "W.P. Kuala Lumpur",
+        "year": 2025,
+        "value": 265103.982
+      },
+      {
+        "state": "W.P. Labuan",
+        "year": 2025,
+        "value": 8700.231
+      },
+      {
+        "state": "W.P. Putrajaya",
+        "year": 2025,
+        "value": 14365.914
+      },
+      {
+        "state": "Supra",
+        "year": 2015,
+        "value": 51419.75
+      },
+      {
+        "state": "Supra",
+        "year": 2016,
+        "value": 50562.395
+      },
+      {
+        "state": "Supra",
+        "year": 2017,
+        "value": 46512.054
+      },
+      {
+        "state": "Supra",
+        "year": 2018,
+        "value": 46044.467
+      },
+      {
+        "state": "Supra",
+        "year": 2019,
+        "value": 45738.116
+      },
+      {
+        "state": "Supra",
+        "year": 2020,
+        "value": 40697.536
+      },
+      {
+        "state": "Supra",
+        "year": 2021,
+        "value": 41895.612
+      },
+      {
+        "state": "Supra",
+        "year": 2022,
+        "value": 42872.705
+      },
+      {
+        "state": "Supra",
+        "year": 2023,
+        "value": 44095.463
+      },
+      {
+        "state": "Supra",
+        "year": 2024,
+        "value": 44509.846
+      },
+      {
+        "state": "Supra",
+        "year": 2025,
+        "value": 43257.43
+      }
+    ],
+    "population_thousand": [
+      {
+        "state": "Johor",
+        "year": 2020,
+        "value": 4009.7
+      },
+      {
+        "state": "Kedah",
+        "year": 2020,
+        "value": 2131.4
+      },
+      {
+        "state": "Kelantan",
+        "year": 2020,
+        "value": 1792.5
+      },
+      {
+        "state": "Melaka",
+        "year": 2020,
+        "value": 998.4
+      },
+      {
+        "state": "Negeri Sembilan",
+        "year": 2020,
+        "value": 1200.0
+      },
+      {
+        "state": "Pahang",
+        "year": 2020,
+        "value": 1591.3
+      },
+      {
+        "state": "Perak",
+        "year": 2020,
+        "value": 2496.0
+      },
+      {
+        "state": "Perlis",
+        "year": 2020,
+        "value": 284.9
+      },
+      {
+        "state": "Pulau Pinang",
+        "year": 2020,
+        "value": 1740.4
+      },
+      {
+        "state": "Sabah",
+        "year": 2020,
+        "value": 3418.8
+      },
+      {
+        "state": "Sarawak",
+        "year": 2020,
+        "value": 2453.7
+      },
+      {
+        "state": "Selangor",
+        "year": 2020,
+        "value": 6994.4
+      },
+      {
+        "state": "Terengganu",
+        "year": 2020,
+        "value": 1149.4
+      },
+      {
+        "state": "W.P. Kuala Lumpur",
+        "year": 2020,
+        "value": 1982.1
+      },
+      {
+        "state": "W.P. Labuan",
+        "year": 2020,
+        "value": 95.1
+      },
+      {
+        "state": "W.P. Putrajaya",
+        "year": 2020,
+        "value": 109.2
+      },
+      {
+        "state": "Johor",
+        "year": 2021,
+        "value": 4020.0
+      },
+      {
+        "state": "Kedah",
+        "year": 2021,
+        "value": 2151.7
+      },
+      {
+        "state": "Kelantan",
+        "year": 2021,
+        "value": 1812.3
+      },
+      {
+        "state": "Melaka",
+        "year": 2021,
+        "value": 1004.5
+      },
+      {
+        "state": "Negeri Sembilan",
+        "year": 2021,
+        "value": 1204.2
+      },
+      {
+        "state": "Pahang",
+        "year": 2021,
+        "value": 1601.5
+      },
+      {
+        "state": "Perak",
+        "year": 2021,
+        "value": 2515.8
+      },
+      {
+        "state": "Perlis",
+        "year": 2021,
+        "value": 287.6
+      },
+      {
+        "state": "Pulau Pinang",
+        "year": 2021,
+        "value": 1740.0
+      },
+      {
+        "state": "Sabah",
+        "year": 2021,
+        "value": 3412.6
+      },
+      {
+        "state": "Sarawak",
+        "year": 2021,
+        "value": 2465.6
+      },
+      {
+        "state": "Selangor",
+        "year": 2021,
+        "value": 7014.7
+      },
+      {
+        "state": "Terengganu",
+        "year": 2021,
+        "value": 1170.7
+      },
+      {
+        "state": "W.P. Kuala Lumpur",
+        "year": 2021,
+        "value": 1964.0
+      },
+      {
+        "state": "W.P. Labuan",
+        "year": 2021,
+        "value": 96.0
+      },
+      {
+        "state": "W.P. Putrajaya",
+        "year": 2021,
+        "value": 115.2
+      },
+      {
+        "state": "Johor",
+        "year": 2022,
+        "value": 4028.3
+      },
+      {
+        "state": "Kedah",
+        "year": 2022,
+        "value": 2163.1
+      },
+      {
+        "state": "Kelantan",
+        "year": 2022,
+        "value": 1830.6
+      },
+      {
+        "state": "Melaka",
+        "year": 2022,
+        "value": 1008.6
+      },
+      {
+        "state": "Negeri Sembilan",
+        "year": 2022,
+        "value": 1207.9
+      },
+      {
+        "state": "Pahang",
+        "year": 2022,
+        "value": 1614.3
+      },
+      {
+        "state": "Perak",
+        "year": 2022,
+        "value": 2514.4
+      },
+      {
+        "state": "Perlis",
+        "year": 2022,
+        "value": 289.8
+      },
+      {
+        "state": "Pulau Pinang",
+        "year": 2022,
+        "value": 1740.9
+      },
+      {
+        "state": "Sabah",
+        "year": 2022,
+        "value": 3414.9
+      },
+      {
+        "state": "Sarawak",
+        "year": 2022,
+        "value": 2473.5
+      },
+      {
+        "state": "Selangor",
+        "year": 2022,
+        "value": 7050.3
+      },
+      {
+        "state": "Terengganu",
+        "year": 2022,
+        "value": 1186.6
+      },
+      {
+        "state": "W.P. Kuala Lumpur",
+        "year": 2022,
+        "value": 1961.2
+      },
+      {
+        "state": "W.P. Labuan",
+        "year": 2022,
+        "value": 96.9
+      },
+      {
+        "state": "W.P. Putrajaya",
+        "year": 2022,
+        "value": 117.0
+      },
+      {
+        "state": "Johor",
+        "year": 2023,
+        "value": 4100.9
+      },
+      {
+        "state": "Kedah",
+        "year": 2023,
+        "value": 2187.5
+      },
+      {
+        "state": "Kelantan",
+        "year": 2023,
+        "value": 1857.6
+      },
+      {
+        "state": "Melaka",
+        "year": 2023,
+        "value": 1027.5
+      },
+      {
+        "state": "Negeri Sembilan",
+        "year": 2023,
+        "value": 1224.3
+      },
+      {
+        "state": "Pahang",
+        "year": 2023,
+        "value": 1642.7
+      },
+      {
+        "state": "Perak",
+        "year": 2023,
+        "value": 2540.4
+      },
+      {
+        "state": "Perlis",
+        "year": 2023,
+        "value": 292.7
+      },
+      {
+        "state": "Pulau Pinang",
+        "year": 2023,
+        "value": 1771.6
+      },
+      {
+        "state": "Sabah",
+        "year": 2023,
+        "value": 3592.8
+      },
+      {
+        "state": "Sarawak",
+        "year": 2023,
+        "value": 2509.5
+      },
+      {
+        "state": "Selangor",
+        "year": 2023,
+        "value": 7205.3
+      },
+      {
+        "state": "Terengganu",
+        "year": 2023,
+        "value": 1209.4
+      },
+      {
+        "state": "W.P. Kuala Lumpur",
+        "year": 2023,
+        "value": 1998.6
+      },
+      {
+        "state": "W.P. Labuan",
+        "year": 2023,
+        "value": 99.5
+      },
+      {
+        "state": "W.P. Putrajaya",
+        "year": 2023,
+        "value": 119.2
+      }
+    ]
+  },
+  "states": [
+    "Johor",
+    "Kedah",
+    "Kelantan",
+    "Melaka",
+    "Negeri Sembilan",
+    "Pahang",
+    "Perak",
+    "Perlis",
+    "Pulau Pinang",
+    "Sabah",
+    "Sarawak",
+    "Selangor",
+    "Supra",
+    "Terengganu",
+    "W.P. Kuala Lumpur",
+    "W.P. Labuan",
+    "W.P. Putrajaya"
+  ]
+}

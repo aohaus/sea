@@ -1,0 +1,262 @@
+{
+  "psa_ph_pcgdp": {
+    "fetch_status": "ok",
+    "rows": 24,
+    "missing_units": []
+  },
+  "nso_th_gpp": {
+    "fetch_status": "ok",
+    "rows": 12,
+    "missing_units": []
+  },
+  "dosm_state_gdp": {
+    "fetch_status": "ok",
+    "rows": {
+      "gdp_rm_million": 179,
+      "population_thousand": 64
+    },
+    "states": [
+      "Johor",
+      "Kedah",
+      "Kelantan",
+      "Melaka",
+      "Negeri Sembilan",
+      "Pahang",
+      "Perak",
+      "Perlis",
+      "Pulau Pinang",
+      "Sabah",
+      "Sarawak",
+      "Selangor",
+      "Supra",
+      "Terengganu",
+      "W.P. Kuala Lumpur",
+      "W.P. Labuan",
+      "W.P. Putrajaya"
+    ]
+  },
+  "un_wup2025_cities": {
+    "fetch_status": "ok",
+    "rows": 131,
+    "largest_cities_by_country": {
+      "BRN": [
+        "Bandar Seri Begawan",
+        "Lambak"
+      ],
+      "KHM": [
+        "Phnum Pénh (Phnom Penh)",
+        "Siem Reap",
+        "Battambang",
+        "Anlong Veng",
+        "Poipet",
+        "Sihanoukville",
+        "Trapeang Prasat",
+        "Phumi Roessei",
+        "Sisophon",
+        "Kampong Cham",
+        "Kamrieng",
+        "Ou Krouch"
+      ],
+      "IDN": [
+        "Jakarta",
+        "Bandung",
+        "Surabaya",
+        "Medan",
+        "Tasikmalaya",
+        "Yogyakarta",
+        "Semarang",
+        "Denpasar",
+        "Makassar",
+        "Palembang",
+        "Tarogong",
+        "Malang"
+      ],
+      "LAO": [
+        "Viangchan (Vientiane)",
+        "Pakse",
+        "Luang Prabang",
+        "Savannakhet",
+        "Thakhek"
+      ],
+      "MYS": [
+        "Kuala Lumpur",
+        "Johor Bahru",
+        "Ipoh",
+        "Kota Kinabalu",
+        "George Town",
+        "Kuching",
+        "Malacca City",
+        "Bukit Mertajam",
+        "Kota Bharu",
+        "Seremban",
+        "Sandakan",
+        "Tawau"
+      ],
+      "MMR": [
+        "Yangon",
+        "Mandalay",
+        "Pegu",
+        "Myeik",
+        "Taunggyi",
+        "Myitkyina",
+        "Hpa-An",
+        "Pathein",
+        "Thanlyin",
+        "Mawlamyine",
+        "Monywa",
+        "Lashio"
+      ],
+      "PHL": [
+        "Manila",
+        "Cebu City",
+        "Davao City",
+        "Angeles",
+        "Dagupan [Lingayen]",
+        "Cagayan de Oro",
+        "Iloilo City",
+        "Bacolod",
+        "Lipa",
+        "Baguio",
+        "Zamboanga City",
+        "General Santos"
+      ],
+      "SGP": [
+        "Singapore",
+        "Sembawang"
+      ],
+      "THA": [
+        "Krung Thep Maha Nakhon (Bangkok)",
+        "Chiang Mai",
+        "Hat Yai",
+        "Phuket",
+        "Lop Buri",
+        "Chon Buri",
+        "Khon Kaen",
+        "Pattaya",
+        "Nakhon Pathom",
+        "Nakhon Ratchasima",
+        "Songkhla",
+        "Phra Nakhon Si Ayutthaya"
+      ],
+      "TLS": [
+        "Dili"
+      ],
+      "VNM": [
+        "Ho Chi Minh City",
+        "Hà Nội (Hanoi)",
+        "Cần Thơ",
+        "Đà Nẵng",
+        "Hải Phòng",
+        "Long Xuyên",
+        "Mỹ Tho",
+        "Nha Trang",
+        "Vũng Tàu",
+        "Tây Ninh",
+        "Huế",
+        "Vinh"
+      ]
+    }
+  },
+  "worldbank_wdi": {
+    "fetch_status": "ok",
+    "rows": {
+      "PA.NUS.FCRF": 155,
+      "NY.GDP.PCAP.CN": 156,
+      "NY.GDP.PCAP.CD": 156
+    }
+  },
+  "coverage": {
+    "my-kul": [
+      "city_population",
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio"
+    ],
+    "my-pen": [
+      "city_population",
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio"
+    ],
+    "my-jhb": [
+      "city_population",
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio"
+    ],
+    "th-bkk": [
+      "city_population",
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
+    ],
+    "th-cbi": [
+      "city_population",
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
+    ],
+    "th-cnx": [
+      "city_population",
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
+    ],
+    "ph-mnl": [
+      "city_population",
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
+    ],
+    "ph-ceb": [
+      "city_population",
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
+    ],
+    "ph-dvo": [
+      "city_population",
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
+    ],
+    "vn-han": [
+      "city_population"
+    ],
+    "vn-sgn": [
+      "city_population"
+    ],
+    "vn-dad": [
+      "city_population"
+    ],
+    "id-jkt": [
+      "city_population"
+    ],
+    "id-sub": [
+      "city_population"
+    ],
+    "id-bdg": [
+      "city_population"
+    ],
+    "sg-sin": [
+      "city_population",
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
+    ],
+    "kh-pnh": [
+      "city_population"
+    ],
+    "la-vte": [
+      "city_population"
+    ],
+    "mm-rgn": [
+      "city_population"
+    ],
+    "mm-mdl": [
+      "city_population"
+    ],
+    "bn-bwn": [
+      "city_population"
+    ],
+    "tl-dil": [
+      "city_population"
+    ]
+  }
+}

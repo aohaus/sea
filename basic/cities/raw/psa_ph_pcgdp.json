@@ -1,0 +1,131 @@
+{
+  "source_id": "psa_ph_pcgdp",
+  "url": "https://openstat.psa.gov.ph/PXWeb/api/v1/en/DB/2A/PPA/0092A5FPPA8.px",
+  "retrieved_at": "2026-10-13T02:29:09+00:00",
+  "currency": "PHP",
+  "basis": "current",
+  "table": "Per Capita Gross Domestic Product by Province and HUC",
+  "rows": [
+    {
+      "unit": "National Capital Region (NCR)",
+      "year": 2018,
+      "value": 432181.459230047
+    },
+    {
+      "unit": "National Capital Region (NCR)",
+      "year": 2019,
+      "value": 461671.329415884
+    },
+    {
+      "unit": "National Capital Region (NCR)",
+      "year": 2020,
+      "value": 429756.046319957
+    },
+    {
+      "unit": "National Capital Region (NCR)",
+      "year": 2021,
+      "value": 453797.389024816
+    },
+    {
+      "unit": "National Capital Region (NCR)",
+      "year": 2022,
+      "value": 505368.265887083
+    },
+    {
+      "unit": "National Capital Region (NCR)",
+      "year": 2023,
+      "value": 552211.737734336
+    },
+    {
+      "unit": "National Capital Region (NCR)",
+      "year": 2024,
+      "value": 595591.069014594
+    },
+    {
+      "unit": "National Capital Region (NCR)",
+      "year": 2025,
+      "value": 631279.077518638
+    },
+    {
+      "unit": "..City of Cebu",
+      "year": 2018,
+      "value": 270519.39678173
+    },
+    {
+      "unit": "..City of Cebu",
+      "year": 2019,
+      "value": 291058.262679041
+    },
+    {
+      "unit": "..City of Cebu",
+      "year": 2020,
+      "value": 264676.236428229
+    },
+    {
+      "unit": "..City of Cebu",
+      "year": 2021,
+      "value": 281744.92549742
+    },
+    {
+      "unit": "..City of Cebu",
+      "year": 2022,
+      "value": 316544.901386471
+    },
+    {
+      "unit": "..City of Cebu",
+      "year": 2023,
+      "value": 355955.60343351
+    },
+    {
+      "unit": "..City of Cebu",
+      "year": 2024,
+      "value": 393691.971602722
+    },
+    {
+      "unit": "..City of Cebu",
+      "year": 2025,
+      "value": 423445.527274593
+    },
+    {
+      "unit": "..City of Davao",
+      "year": 2018,
+      "value": 247341.815376582
+    },
+    {
+      "unit": "..City of Davao",
+      "year": 2019,
+      "value": 270395.203573493
+    },
+    {
+      "unit": "..City of Davao",
+      "year": 2020,
+      "value": 249530.64384933
+    },
+    {
+      "unit": "..City of Davao",
+      "year": 2021,
+      "value": 267005.357286614
+    },
+    {
+      "unit": "..City of Davao",
+      "year": 2022,
+      "value": 303028.593390862
+    },
+    {
+      "unit": "..City of Davao",
+      "year": 2023,
+      "value": 340842.395427161
+    },
+    {
+      "unit": "..City of Davao",
+      "year": 2024,
+      "value": 377068.318135965
+    },
+    {
+      "unit": "..City of Davao",
+      "year": 2025,
+      "value": 395023.384491737
+    }
+  ],
+  "missing_units": []
+}

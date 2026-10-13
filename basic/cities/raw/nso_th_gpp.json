@@ -1,0 +1,72 @@
+{
+  "source_id": "nso_th_gpp",
+  "url": "https://www.nso.go.th/public/e-book/Statistical-Yearbook/SYB-2025_webPage/File%20SYB/2025/10/T%2010.14%202025.pdf",
+  "retrieved_at": "2026-10-13T02:27:17+00:00",
+  "currency": "THB",
+  "basis": "current",
+  "table": "Table 10.14 Gross Regional and Provincial Product by Current Market Prices",
+  "rows": [
+    {
+      "unit": "Bangkok",
+      "year": 2021,
+      "value": 588899.0
+    },
+    {
+      "unit": "Bangkok",
+      "year": 2022,
+      "value": 627732.0
+    },
+    {
+      "unit": "Bangkok",
+      "year": 2023,
+      "value": 675979.0
+    },
+    {
+      "unit": "Chon Buri",
+      "year": 2021,
+      "value": 525127.0
+    },
+    {
+      "unit": "Chon Buri",
+      "year": 2022,
+      "value": 601439.0
+    },
+    {
+      "unit": "Chon Buri",
+      "year": 2023,
+      "value": 592335.0
+    },
+    {
+      "unit": "Chiang Mai",
+      "year": 2021,
+      "value": 133051.0
+    },
+    {
+      "unit": "Chiang Mai",
+      "year": 2022,
+      "value": 137395.0
+    },
+    {
+      "unit": "Chiang Mai",
+      "year": 2023,
+      "value": 154925.0
+    },
+    {
+      "unit": "Whole Kingdom",
+      "year": 2021,
+      "value": 232274.0
+    },
+    {
+      "unit": "Whole Kingdom",
+      "year": 2022,
+      "value": 248788.0
+    },
+    {
+      "unit": "Whole Kingdom",
+      "year": 2023,
+      "value": 256345.0
+    }
+  ],
+  "missing_units": [],
+  "note": "最新年は暫定値（p） / latest year is preliminary"
+}

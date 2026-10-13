@@ -284,6 +284,59 @@
       "license": "All Rights Reserved（データは出典明記で利用可。商用再利用・自動技術による一括取得は IMF の許可が必要）",
       "auto_fetch": false,
       "auto_fetch_note": "IMF の利用条件が自動技術による一括ダウンロードと商用再利用に許可を求めているため、許可を得るまで自動取得しない / Disabled until permission: IMF terms require permission for automated bulk download and commercial reuse."
+    },
+    "psa_ph_pcgdp": {
+      "publisher_ja": "フィリピン統計庁（PSA）",
+      "publisher_en": "Philippine Statistics Authority (PSA)",
+      "title_ja": "州・高度都市化市別の一人当たりGDP（OpenSTAT）",
+      "title_en": "Per Capita Gross Domestic Product by Province and HUC (OpenSTAT)",
+      "url_template": "https://openstat.psa.gov.ph/PXWeb/api/v1/en/DB/2A/PPA/0092A5FPPA8.px",
+      "type": "api",
+      "language": "en",
+      "terms_url": "https://openstat.psa.gov.ph/",
+      "license": null,
+      "license_note": "利用条件は未確認 / terms not yet verified",
+      "storage_policy": "抽出した値・URL・取得日のみ保存 / Extracted values, URL and retrieval date only."
+    },
+    "nso_th_gpp": {
+      "publisher_ja": "タイ国家統計局（NSO）",
+      "publisher_en": "National Statistical Office of Thailand (NSO)",
+      "title_ja": "統計年鑑 表10.14 地域・県別総生産（当年価格）",
+      "title_en": "Statistical Yearbook, Table 10.14 Gross Regional and Provincial Product (current prices)",
+      "url_template": "https://www.nso.go.th/public/e-book/Statistical-Yearbook/SYB-{year}_webPage/File%20SYB/{year}/10/T%2010.14%20{year}.pdf",
+      "type": "pdf",
+      "language": "th/en",
+      "terms_url": "https://www.nso.go.th/",
+      "license": null,
+      "license_note": "利用条件は未確認 / terms not yet verified",
+      "original_compiler": "国家経済社会開発評議会（NESDC）",
+      "storage_policy": "抽出した値・URL・取得日のみ保存 / Extracted values, URL and retrieval date only."
+    },
+    "dosm_state_gdp": {
+      "publisher_ja": "マレーシア統計局（DOSM）",
+      "publisher_en": "Department of Statistics Malaysia (DOSM)",
+      "title_ja": "州別実質GDP（2015年価格）と州別人口（OpenDOSM / data.gov.my API）",
+      "title_en": "Annual real GDP by state and population by state (OpenDOSM API)",
+      "url_template": "https://api.data.gov.my/data-catalogue?id={dataset}",
+      "type": "api",
+      "language": "en",
+      "terms_url": "https://open.dosm.gov.my/",
+      "license": null,
+      "license_note": "利用条件は未確認 / terms not yet verified",
+      "storage_policy": "抽出した値・URL・取得日のみ保存 / Extracted values, URL and retrieval date only."
+    },
+    "un_wup2025_cities": {
+      "publisher_ja": "国連経済社会局 人口部（UN DESA）",
+      "publisher_en": "United Nations, Department of Economic and Social Affairs, Population Division",
+      "title_ja": "世界都市化予測 2025年版 ファイル21：都市の人口",
+      "title_en": "World Urbanization Prospects 2025, File 21: Population of Cities",
+      "url_template": "https://population.un.org/wup/assets/Download/Cities/WUP2025-F21-DEGURBA-Cities_Pop.xlsx",
+      "type": "xlsx",
+      "language": "en",
+      "terms_url": "https://population.un.org/wup/",
+      "license": null,
+      "license_note": "© 2025 United Nations。ファイル記載の引用形式で出典を明記",
+      "storage_policy": "抽出した値・URL・取得日のみ保存 / Extracted values, URL and retrieval date only."
     }
   },
   "profiles": {
