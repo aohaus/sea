@@ -15,6 +15,8 @@ Basic data on the 11 ASEAN members (including Timor-Leste) and ASEAN as a whole,
 | `<code>/indicators.json` | 第2段階（経済指標）の時系列。出所ごとに別系列で保存 / Economic time series, one series per source |
 | `<code>/worldbank_wdi.json` | 世界銀行 API から取得した観測値と URL・取得日 / Raw World Bank observations |
 | `asean/` | ASEAN 全体のデータ（JETRO「ASEANの貿易投資年報」など） / ASEAN-wide data |
+| `data/` | 統合データ（`dataset.json`）と出所つきの書き出し用の表（`observations`・`profiles`・`sources`・`validation` の CSV/JSON）/ Consolidated dataset and flat export tables with provenance |
+| `reference/` | 検証用の参照値（日本アセアンセンター「ひと目で分かる日ASEAN基本情報」）と照合結果 / Reference figures and validation report |
 | `fetch_report.json` | 直近の取得結果（国ごとの成否・埋まった項目） / Last fetch summary |
 
 フォルダコードは ISO 3166-1 alpha-2 の小文字です（`bn kh id la my mm ph sg th tl vn`）。
@@ -72,6 +74,7 @@ GitHub Actions の `Fetch basic country data` が各出所から取得し、結�
 ```bash
 python scripts/fetch_basic.py --build
 python scripts/fetch_indicators.py --build
+python scripts/build_dataset.py
 ```
 
 ## 第2段階：経済指標 / Phase 2: economic indicators
