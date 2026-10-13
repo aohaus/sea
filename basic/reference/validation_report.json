@@ -92,13 +92,13 @@
       "reference_value": 124000000.0,
       "reference_text": "約1億2400万人",
       "reference_cited_source": "世界銀行",
-      "our_value": null,
-      "our_sources": [],
-      "missing": [
-        "jp"
+      "our_value": 123975371,
+      "our_sources": [
+        "worldbank_wdi"
       ],
-      "diff_pct": null,
-      "status": "no_data"
+      "missing": [],
+      "diff_pct": -0.02,
+      "status": "match"
     },
     {
       "reference_id": "ajc_at_a_glance",
@@ -139,13 +139,13 @@
       "reference_value": 4019400000000.0,
       "reference_text": "約4兆0194億USドル",
       "reference_cited_source": "IMF",
-      "our_value": null,
-      "our_sources": [],
-      "missing": [
-        "jp"
+      "our_value": 4190008188358.57,
+      "our_sources": [
+        "worldbank_wdi"
       ],
-      "diff_pct": null,
-      "status": "no_data"
+      "missing": [],
+      "diff_pct": 4.24,
+      "status": "close"
     },
     {
       "reference_id": "ajc_at_a_glance",
@@ -186,13 +186,13 @@
       "reference_value": 32421,
       "reference_text": "約32,421 USドル",
       "reference_cited_source": "IMF（GDP）、世界銀行（人口）",
-      "our_value": null,
-      "our_sources": [],
-      "missing": [
-        "jp"
+      "our_value": 33797.1,
+      "our_sources": [
+        "worldbank_wdi"
       ],
-      "diff_pct": null,
-      "status": "no_data"
+      "missing": [],
+      "diff_pct": 4.24,
+      "status": "close"
     },
     {
       "reference_id": "ajc_at_a_glance",

@@ -333,6 +333,32 @@
           "worldbank_wdi"
         ]
       }
+    },
+    {
+      "code": "jp",
+      "coverage": {
+        "population": [
+          "worldbank_wdi"
+        ],
+        "gdp_nominal": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita": [
+          "worldbank_wdi"
+        ],
+        "gdp_growth_real": [
+          "worldbank_wdi"
+        ],
+        "inflation_cpi": [
+          "worldbank_wdi"
+        ],
+        "unemployment": [
+          "worldbank_wdi"
+        ],
+        "fdi_inflow": [
+          "worldbank_wdi"
+        ]
+      }
     }
   ]
 }
