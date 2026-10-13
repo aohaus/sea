@@ -75,8 +75,13 @@ def our_value(dataset: dict, code: str, field: str, year: int | None) -> tuple[f
     return None, None
 
 
-def compute(dataset: dict, fig: dict) -> tuple[float | None, list[str], list[str]]:
-    """Value for a reference figure: sum over scope, or ratio of two sums."""
+def compute(dataset: dict, fig: dict) -> tuple[float | None, list[str], list[str], dict]:
+    """Value for a reference figure: sum over scope, or ratio of two sums.
+
+    Also returns `picked`: {country: {field: source_id}}, the exact series each
+    country contributed, so checks can be attached to those values only."""
+    picked: dict[str, dict[str, str]] = {}
+
     def total(field: str):
         acc, used, missing = 0.0, set(), []
         for code in fig["scope"]:
@@ -86,6 +91,7 @@ def compute(dataset: dict, fig: dict) -> tuple[float | None, list[str], list[str
             else:
                 acc += v
                 used.add(src)
+                picked.setdefault(code, {})[field] = src
         return acc, used, missing
 
     agg = fig.get("aggregate")
@@ -94,12 +100,9 @@ def compute(dataset: dict, fig: dict) -> tuple[float | None, list[str], list[str
         a, used_a, miss_a = total(num)
         b, used_b, miss_b = total(den)
         missing = sorted(set(miss_a + miss_b))
-        return (a / b if b and not missing else None), sorted(used_a | used_b), missing
-    if len(fig["scope"]) == 1:
-        v, src = our_value(dataset, fig["scope"][0], fig["field"], fig["year"])
-        return v, [src] if src else [], [] if v is not None else fig["scope"]
+        return (a / b if b and not missing else None), sorted(used_a | used_b), missing, picked
     a, used, missing = total(fig["field"])
-    return (a if not missing else None), sorted(used), missing
+    return (a if not missing else None), sorted(used), missing, picked
 
 
 STATUS_RANK = {"match": 0, "close": 1, "differs": 2}
@@ -177,16 +180,16 @@ def attach_checks(dataset: dict) -> None:
             check = {"kind": "aggregate", "subject": what, "against": ref_label(ref, fig),
                      "reference_id": ref_id, "figure_id": fig["id"], "against_value": fig["value"],
                      "our_total": res["our_value"], "diff_pct": res["diff_pct"], "status": res["status"]}
-            for code in fig["scope"]:
-                if fig["year"] is None:
-                    for v in dataset["profiles"].get(code, {}).get(fig["field"], []):
-                        if v["source_id"] in res["our_sources"]:
-                            v.setdefault("checks", []).append(check)
-                    continue
-                inputs = fig.get("aggregate", "").removeprefix("ratio:").split("/") if fig.get("aggregate") else [fig["field"]]
-                for field_id in inputs:
+            # Only the exact value each country contributed to our total.
+            for code, by_field in res["picked"].items():
+                for field_id, source_id in by_field.items():
+                    if fig["year"] is None:
+                        values = dataset["profiles"].get(code, {}).get(field_id, [])
+                        if values and values[0]["source_id"] == source_id:  # our_value takes the first
+                            values[0].setdefault("checks", []).append(check)
+                        continue
                     for s in dataset["indicators"].get(code, {}).get(field_id, []):
-                        if s["source_id"] in res["our_sources"]:
+                        if s["source_id"] == source_id:
                             for o in s["observations"]:
                                 if o["year"] == fig["year"]:
                                     o["checks"].append(check)
@@ -224,7 +227,7 @@ def validate(dataset: dict) -> dict:
             continue
         ref = load_json(path)
         for fig in ref["figures"]:
-            ours, used, missing = compute(dataset, fig)
+            ours, used, missing, picked = compute(dataset, fig)
             if ours is None:
                 status, diff = "no_data", None
             else:
@@ -236,7 +239,7 @@ def validate(dataset: dict) -> dict:
                 "reference_value": fig["value"], "reference_text": fig["value_text"],
                 "reference_cited_source": fig["cited_source"],
                 "our_value": round(ours, 2) if ours is not None else None,
-                "our_sources": used, "missing": missing,
+                "our_sources": used, "missing": missing, "picked": picked,
                 "diff_pct": round(diff, 2) if diff is not None else None, "status": status,
             })
     return {"thresholds": {"match": "<=2%", "close": "<=10%", "differs": ">10%"}, "results": results}
@@ -318,7 +321,9 @@ def main() -> int:
     write_json(BASIC_DIR / "reference" / "validation_report.json", report)
     tables = flatten(dataset)
     tables["validation"] = [{**r, "scope": ",".join(r["scope"]), "our_sources": ",".join(r["our_sources"]),
-                             "missing": ",".join(r["missing"])} for r in report["results"]]
+                             "missing": ",".join(r["missing"]),
+                             "picked": "; ".join(f"{c}:" + ",".join(f"{f}={src}" for f, src in v.items())
+                                                 for c, v in r["picked"].items())} for r in report["results"]]
     for name, rows in tables.items():
         write_table(name, rows)
     for r in report["results"]:

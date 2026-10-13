@@ -16,8 +16,11 @@ country has a value for the source's `country_key` in basic/countries.json
      source_id, URL, retrieval date and, when the text names one, the original
      statistical source ("出所:..." / "出典:...").
 
-A run summary is written to basic/fetch_report.json. The script exits with
-status 1 only when nothing could be fetched at all.
+A run summary is written to basic/fetch_report.json: for each country and
+source, `status` is the data in use (a cached or manually imported extract can
+be "ok") and `fetch_status`/`fetch_error` are what this run's request returned.
+The script exits with status 1 when no request in this run succeeded, so an
+outage is not hidden behind cached data.
 
 Usage:
   python scripts/fetch_basic.py                    # fetch all sources + build
@@ -387,6 +390,7 @@ def main() -> int:
             extract_path = BASIC_DIR / country["code"] / f"{source['id']}.json"
             previous = load_json(extract_path) if extract_path.exists() else None
             extract = previous
+            fetched = None
             if not args.build and (not args.source or source["id"] in args.source):
                 if not first_request:
                     time.sleep(DELAY_SECONDS)
@@ -408,6 +412,9 @@ def main() -> int:
                     "error": extract.get("error"),
                     "page_last_updated": extract.get("page_last_updated"),
                     "retrieval_method": extract.get("retrieval_method", "auto"),
+                    # This run's request, separate from the data in use (which may be cached).
+                    "fetch_status": fetched["status"] if fetched else "not_run",
+                    "fetch_error": fetched.get("error") if fetched else None,
                 })
         profile = build_profile(country, fields, extracts)
         write_json(BASIC_DIR / country["code"] / "profile.json", profile)
@@ -421,7 +428,12 @@ def main() -> int:
         print(f"{country['code']:<3} {', '.join(filled) or '(no data)'}")
 
     write_json(BASIC_DIR / "fetch_report.json", {"results": report})
-    return 0 if any(r["status"] == "ok" for r in report) else 1
+    if args.build:
+        return 0
+    failed = [f"{r['code']}/{r['source_id']}: {r['fetch_error']}" for r in report if r["fetch_status"] not in ("ok", "not_run")]
+    for line in failed:
+        print(f"FETCH FAILED {line}", file=sys.stderr)
+    return 0 if any(r["fetch_status"] == "ok" for r in report) else 1
 
 
 if __name__ == "__main__":

@@ -17793,6 +17793,38 @@
           "mofa_basic"
         ],
         "missing": [],
+        "picked": {
+          "bn": {
+            "area": "mofa_basic"
+          },
+          "kh": {
+            "area": "jetro_basic"
+          },
+          "id": {
+            "area": "jetro_basic"
+          },
+          "la": {
+            "area": "jetro_basic"
+          },
+          "my": {
+            "area": "jetro_basic"
+          },
+          "mm": {
+            "area": "jetro_basic"
+          },
+          "ph": {
+            "area": "jetro_basic"
+          },
+          "sg": {
+            "area": "jetro_basic"
+          },
+          "th": {
+            "area": "jetro_basic"
+          },
+          "vn": {
+            "area": "jetro_basic"
+          }
+        },
         "diff_pct": 0.39,
         "status": "match"
       },
@@ -17812,6 +17844,7 @@
         "missing": [
           "jp"
         ],
+        "picked": {},
         "diff_pct": null,
         "status": "no_data"
       },
@@ -17840,6 +17873,38 @@
           "worldbank_wdi"
         ],
         "missing": [],
+        "picked": {
+          "bn": {
+            "population": "worldbank_wdi"
+          },
+          "kh": {
+            "population": "worldbank_wdi"
+          },
+          "id": {
+            "population": "worldbank_wdi"
+          },
+          "la": {
+            "population": "worldbank_wdi"
+          },
+          "my": {
+            "population": "worldbank_wdi"
+          },
+          "mm": {
+            "population": "worldbank_wdi"
+          },
+          "ph": {
+            "population": "worldbank_wdi"
+          },
+          "sg": {
+            "population": "worldbank_wdi"
+          },
+          "th": {
+            "population": "worldbank_wdi"
+          },
+          "vn": {
+            "population": "worldbank_wdi"
+          }
+        },
         "diff_pct": -0.01,
         "status": "match"
       },
@@ -17854,11 +17919,16 @@
         "reference_value": 124000000.0,
         "reference_text": "約1億2400万人",
         "reference_cited_source": "世界銀行",
-        "our_value": 123975371,
+        "our_value": 123975371.0,
         "our_sources": [
           "worldbank_wdi"
         ],
         "missing": [],
+        "picked": {
+          "jp": {
+            "population": "worldbank_wdi"
+          }
+        },
         "diff_pct": -0.02,
         "status": "match"
       },
@@ -17887,6 +17957,38 @@
           "worldbank_wdi"
         ],
         "missing": [],
+        "picked": {
+          "bn": {
+            "gdp_nominal": "worldbank_wdi"
+          },
+          "kh": {
+            "gdp_nominal": "worldbank_wdi"
+          },
+          "id": {
+            "gdp_nominal": "worldbank_wdi"
+          },
+          "la": {
+            "gdp_nominal": "worldbank_wdi"
+          },
+          "my": {
+            "gdp_nominal": "worldbank_wdi"
+          },
+          "mm": {
+            "gdp_nominal": "worldbank_wdi"
+          },
+          "ph": {
+            "gdp_nominal": "worldbank_wdi"
+          },
+          "sg": {
+            "gdp_nominal": "worldbank_wdi"
+          },
+          "th": {
+            "gdp_nominal": "worldbank_wdi"
+          },
+          "vn": {
+            "gdp_nominal": "worldbank_wdi"
+          }
+        },
         "diff_pct": 1.48,
         "status": "match"
       },
@@ -17906,6 +18008,11 @@
           "worldbank_wdi"
         ],
         "missing": [],
+        "picked": {
+          "jp": {
+            "gdp_nominal": "worldbank_wdi"
+          }
+        },
         "diff_pct": 4.24,
         "status": "close"
       },
@@ -17934,6 +18041,48 @@
           "worldbank_wdi"
         ],
         "missing": [],
+        "picked": {
+          "bn": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "kh": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "id": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "la": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "my": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "mm": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "ph": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "sg": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "th": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "vn": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          }
+        },
         "diff_pct": 1.47,
         "status": "match"
       },
@@ -17953,6 +18102,11 @@
           "worldbank_wdi"
         ],
         "missing": [],
+        "picked": {
+          "jp": {
+            "gdp_per_capita": "worldbank_wdi"
+          }
+        },
         "diff_pct": 4.24,
         "status": "close"
       },
@@ -17981,6 +18135,48 @@
           "worldbank_wdi"
         ],
         "missing": [],
+        "picked": {
+          "bn": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "kh": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "id": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "la": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "my": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "mm": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "ph": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "sg": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "th": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "vn": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          }
+        },
         "diff_pct": -5.81,
         "status": "close"
       },
@@ -18009,6 +18205,48 @@
           "worldbank_wdi"
         ],
         "missing": [],
+        "picked": {
+          "bn": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "kh": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "id": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "la": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "my": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "mm": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "ph": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "sg": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "th": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          },
+          "vn": {
+            "gdp_nominal": "worldbank_wdi",
+            "population": "worldbank_wdi"
+          }
+        },
         "diff_pct": -0.16,
         "status": "match"
       },
@@ -18028,6 +18266,11 @@
           "worldbank_wdi"
         ],
         "missing": [],
+        "picked": {
+          "bn": {
+            "gdp_per_capita": "worldbank_wdi"
+          }
+        },
         "diff_pct": -0.79,
         "status": "match"
       },
@@ -18047,6 +18290,11 @@
           "worldbank_wdi"
         ],
         "missing": [],
+        "picked": {
+          "kh": {
+            "gdp_per_capita": "worldbank_wdi"
+          }
+        },
         "diff_pct": 0.57,
         "status": "match"
       },
@@ -18066,6 +18314,11 @@
           "worldbank_wdi"
         ],
         "missing": [],
+        "picked": {
+          "id": {
+            "gdp_per_capita": "worldbank_wdi"
+          }
+        },
         "diff_pct": 0.01,
         "status": "match"
       },
@@ -18085,6 +18338,11 @@
           "worldbank_wdi"
         ],
         "missing": [],
+        "picked": {
+          "la": {
+            "gdp_per_capita": "worldbank_wdi"
+          }
+        },
         "diff_pct": 3.76,
         "status": "close"
       },
@@ -18104,6 +18362,11 @@
           "worldbank_wdi"
         ],
         "missing": [],
+        "picked": {
+          "my": {
+            "gdp_per_capita": "worldbank_wdi"
+          }
+        },
         "diff_pct": 0.0,
         "status": "match"
       },
@@ -18123,6 +18386,11 @@
           "worldbank_wdi"
         ],
         "missing": [],
+        "picked": {
+          "mm": {
+            "gdp_per_capita": "worldbank_wdi"
+          }
+        },
         "diff_pct": 20.16,
         "status": "differs"
       },
@@ -18142,6 +18410,11 @@
           "worldbank_wdi"
         ],
         "missing": [],
+        "picked": {
+          "ph": {
+            "gdp_per_capita": "worldbank_wdi"
+          }
+        },
         "diff_pct": 0.01,
         "status": "match"
       },
@@ -18161,6 +18434,11 @@
           "worldbank_wdi"
         ],
         "missing": [],
+        "picked": {
+          "sg": {
+            "gdp_per_capita": "worldbank_wdi"
+          }
+        },
         "diff_pct": 4.66,
         "status": "close"
       },
@@ -18180,6 +18458,11 @@
           "worldbank_wdi"
         ],
         "missing": [],
+        "picked": {
+          "th": {
+            "gdp_per_capita": "worldbank_wdi"
+          }
+        },
         "diff_pct": 0.54,
         "status": "match"
       },
@@ -18199,6 +18482,11 @@
           "worldbank_wdi"
         ],
         "missing": [],
+        "picked": {
+          "vn": {
+            "gdp_per_capita": "worldbank_wdi"
+          }
+        },
         "diff_pct": 3.66,
         "status": "close"
       }
