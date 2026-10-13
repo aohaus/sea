@@ -45,9 +45,24 @@ TIMEOUT_SECONDS = 20
 DELAY_SECONDS = 3  # be polite to the source sites
 
 HEADERS = {
-    "User-Agent": "sea-basic-collector/0.1 (+https://github.com/aohaus/sea)",
-    "Accept": "text/html,application/xhtml+xml;q=0.9,*/*;q=0.8",
-    "Accept-Language": "ja,en;q=0.8",
+    "default": {
+        "User-Agent": "sea-basic-collector/0.1 (+https://github.com/aohaus/sea)",
+        "Accept": "text/html,application/xhtml+xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "ja,en;q=0.8",
+    },
+    # For sites that reject non-browser clients (selected per source in sources.json).
+    "browser": {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+            "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+        ),
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        "Accept-Language": "ja,en-US;q=0.9,en;q=0.8",
+        "Accept-Encoding": "gzip, deflate",
+        "Cache-Control": "no-cache",
+        "Connection": "keep-alive",
+        "Upgrade-Insecure-Requests": "1",
+    },
 }
 
 
@@ -174,7 +189,7 @@ def fetch(country: dict, source: dict, session: requests.Session) -> dict:
     retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
     result = {"source_id": source["id"], "url": url, "retrieved_at": retrieved_at}
     try:
-        resp = session.get(url, headers=HEADERS, timeout=TIMEOUT_SECONDS)
+        resp = session.get(url, headers=HEADERS[source.get("headers", "default")], timeout=TIMEOUT_SECONDS)
     except requests.RequestException as exc:
         return {**result, "status": "error", "error": f"{type(exc).__name__}: {exc}"}
     result["http_status"] = resp.status_code
