@@ -25,19 +25,17 @@ HEADERS = {
 }
 
 CANDIDATES = [
-    ("PH per capita GDP prov/HUC (meta)", "https://openstat.psa.gov.ph/PXWeb/api/v1/en/DB/2A/PPA/0092A5FPPA8.px"),
-    ("MY state GDP nominal? (API)", "https://api.data.gov.my/data-catalogue?id=gdp_state_nominal_supply&limit=2"),
-    ("VN NSO search: yearbook", "https://www.nso.gov.vn/en/?s=statistical+yearbook"),
-    ("VN NSO search: GRDP", "https://www.nso.gov.vn/en/?s=GRDP+per+capita"),
-    ("ID BPS EN home", "https://www.bps.go.id/en"),
-    ("ID BPS Jakarta", "https://jakarta.bps.go.id/en"),
+    ("PH per capita GDP prov/HUC (meta, full)", "https://openstat.psa.gov.ph/PXWeb/api/v1/en/DB/2A/PPA/0092A5FPPA8.px"),
+    ("MY archive CKAN package (per capita by state, current)", "https://archive.data.gov.my/data/api/3/action/package_show?id=gross-domestic-product-gdp-per-capita-by-state-at-current-prices"),
+    ("MY population by state (API)", "https://api.data.gov.my/data-catalogue?id=population_state&limit=3"),
+    ("MY state GDP real (API, KL rows)", "https://api.data.gov.my/data-catalogue?id=gdp_state_real_supply&filter=W.P.%20Kuala%20Lumpur@state&limit=12"),
+    ("VN NSO search: Statistical Yearbook 2024", "https://www.nso.gov.vn/en/?s=Statistical+Yearbook+of+Vietnam+2024"),
+    ("VN NSO data-and-statistics", "https://www.nso.gov.vn/en/data-and-statistics/"),
+    ("UN WUP F21 cities pop (HEAD)", "https://population.un.org/wup/assets/Download/Cities/WUP2025-F21-DEGURBA-Cities_Pop.xlsx"),
 ]
 
 # Pages whose JavaScript/HTML is searched for identifiers (dataset ids, file names).
-GREP = [
-    ("MY catalogue ids containing gdp", "https://open.dosm.gov.my/data-catalogue", r"gdp_[a-z0-9_]+"),
-    ("UN WUP file names", "https://population.un.org/wup/downloads?tab=Cities", r"WUP2025-[A-Za-z0-9_\-]+\.(?:xlsx|csv|zip)|assets/Download/[^\"' )]+"),
-]
+GREP = []
 
 DATA_LINK = re.compile(r"\.(xlsx?|csv|zip|pdf|px|json)(\?|$)|/api/|download", re.I)
 
@@ -49,7 +47,7 @@ def summarize(resp: requests.Response) -> str:
     if "json" in ctype or body[:1] in (b"{", b"["):
         try:
             data = resp.json()
-            text = json.dumps(data, ensure_ascii=False)[:1500]
+            text = json.dumps(data, ensure_ascii=False)[:6000]
             lines.append(f"- JSON (first 1500 chars):\n\n```\n{text}\n```")
             return "\n".join(lines)
         except ValueError:
@@ -76,6 +74,19 @@ def summarize(resp: requests.Response) -> str:
         lines += [f"  - {l}" for l in links[:60]]
         if not links:
             lines.append(f"- body text (first 800 chars): {soup.get_text(' ', strip=True)[:800]}")
+        return "\n".join(lines)
+    if body[:2] == b"PK":
+        try:
+            import openpyxl
+            wb = openpyxl.load_workbook(io.BytesIO(body), read_only=True)
+            for ws in wb.worksheets[:3]:
+                lines.append(f"- sheet `{ws.title}`")
+                for i, row in enumerate(ws.iter_rows(values_only=True)):
+                    if i >= 25:
+                        break
+                    lines.append("  - " + " | ".join("" if v is None else str(v)[:30] for v in row[:14]))
+        except Exception as exc:  # noqa: BLE001
+            lines.append(f"- xlsx read failed: {exc}")
         return "\n".join(lines)
     lines.append(f"- text (first 800 chars):\n\n```\n{resp.text[:800]}\n```")
     return "\n".join(lines)
