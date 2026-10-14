@@ -321,35 +321,37 @@ def build(cities, countries, sources, raw) -> list[dict]:
             "country_code": city["country"], "country_ja": c["name_ja"], "country_en": c["name_en"],
             "indicator_id": indicator, "indicator_ja": labels[0], "indicator_en": labels[1], "unit": unit,
             "year": year, "value": value,
-            "region_unit": (city.get("region") or {}).get("unit") if indicator != "city_population" else extra.pop("region_unit", None),
-            "unit_note": (city.get("region") or {}).get("unit_note") if indicator != "city_population" else extra.pop("unit_note", None),
+            "region_unit": extra.pop("region_unit", None if indicator == "city_population" else (city.get("region") or {}).get("unit")),
+            "unit_note": extra.pop("unit_note", None if indicator == "city_population" else (city.get("region") or {}).get("unit_note")),
             "note": extra.pop("note", None), "derivation": extra.pop("derivation", None),
             "source_id": source_id, "source_publisher_ja": s.get("publisher_ja"), "source_publisher_en": s.get("publisher_en"),
             "source_title_ja": s.get("title_ja"), "license": s.get("license"),
             "url": url, "retrieved_at": retrieved_at, "retrieval_method": "auto", **extra,
         })
 
-    def add_regional(city, series, national, src, currency, basis, nat_label, extra_note=None, local_derivation=None):
-        """series/national: {year: per-capita value in local currency}."""
+    def add_regional(city, series, national, src, currency, basis, nat_label, extra_note=None, local_derivation=None,
+                     **unit_extra):
+        """series/national: {year: per-capita value in local currency}; unit_extra goes on every row
+        (region_unit / unit_note for a unit other than city["region"], retrieval_method, quote...)."""
         iso3 = by_code[city["country"]]["iso3"]
         basis_note = "名目（当年価格）" if basis == "current" else "実質（2015年価格）"
         if extra_note:
             basis_note += "・" + extra_note
         for year, v in sorted(series.items()):
             row(city, "grdp_per_capita_local", currency, year, round(v, 2), src["source_id"], src["url"],
-                src["retrieved_at"], note=basis_note,
+                src["retrieved_at"], note=basis_note, **unit_extra,
                 derivation=(local_derivation(year) if callable(local_derivation) else local_derivation)
                 or (None if basis == "current" else "州の実質GDP（2015年価格）÷ 州の人口（同じ統計局のデータ）"))
             fx = wb_value("PA.NUS.FCRF", iso3, year) if basis == "current" else None
             if fx:
                 row(city, "grdp_per_capita_usd", "USD", year, round(v / fx, 2), src["source_id"], src["url"],
-                    src["retrieved_at"], note=basis_note,
+                    src["retrieved_at"], note=basis_note, **unit_extra,
                     derivation=f"{v:,.0f} {currency} ÷ 世界銀行 公式為替レート PA.NUS.FCRF {year}年平均 {fx:,.4f} {currency}/USD",
                     fx_rate=fx, fx_url=wb_url("PA.NUS.FCRF"))
             nat = national.get(year)
             if nat:
                 row(city, "grdp_per_capita_ratio", "ratio", year, round(v / nat, 3), src["source_id"], src["url"],
-                    src["retrieved_at"], note=basis_note,
+                    src["retrieved_at"], note=basis_note, **unit_extra,
                     derivation=f"{v:,.0f} ÷ 全国 {nat:,.0f} {currency}（{nat_label}）")
 
     # Philippines
@@ -392,6 +394,23 @@ def build(cities, countries, sources, raw) -> list[dict]:
                     series[y] = g / p * 1000
             add_regional(city, series, national, {**src, "url": src["urls"]["gdp"]}, "MYR", "constant_2015",
                          "全州の合計 ÷ 全州人口")
+    # Malaysia, nominal: DOSM State Socioeconomic Report (manual PDF import), for cities whose
+    # regions_extra names it. The national figure is the one stated in the same sentence.
+    if "dosm_ssr" in raw:
+        src = raw["dosm_ssr"]
+        national = {r["year"]: r["value"] for r in src["rows"] if r["unit"] == "Malaysia"}
+        for city in cities:
+            for reg in city.get("regions_extra", []):
+                if reg["source_id"] != "dosm_ssr":
+                    continue
+                found = [r for r in src["rows"] if r["unit"] == reg["unit"]]
+                if not found:
+                    continue
+                add_regional(city, {r["year"]: r["value"] for r in found}, national, src, "MYR", "current",
+                             "同じ文の全国値", region_unit=reg["unit"], unit_note=reg["unit_note"],
+                             retrieval_method=src.get("retrieval_method", "manual_pdf"),
+                             local_derivation=lambda y, f=found: (
+                                 f"DOSM「{src['publication']}」（{src.get('published')} 公表）本文の値。引用：「{f[0]['quote']}」"))
     # Japan: designated cities, fiscal years; GDP (million yen) / population
     if "esri_kenmin" in raw:
         src = raw["esri_kenmin"]
