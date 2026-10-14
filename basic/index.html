@@ -646,8 +646,10 @@
     svg.append('g').selectAll('text').data(xt).join('text').attr('x', (t) => x(t)).attr('y', height - 6).attr('text-anchor', 'middle').attr('font-size', 11).attr('fill', css('--muted')).text(String);
     if (year != null) svg.append('line').attr('x1', x(year)).attr('x2', x(year)).attr('y1', 12).attr('y2', height - 24).attr('stroke', css('--axis')).attr('stroke-dasharray', '3 3');
     if (opts.ref != null) svg.append('line').attr('x1', axisW).attr('x2', width - endW).attr('y1', y(opts.ref)).attr('y2', y(opts.ref)).attr('stroke', css('--axis')).attr('stroke-dasharray', '4 3');
-    const line = d3.line().x((d) => x(d.year)).y((d) => y(d.value));
-    groups.forEach((s, i) => svg.append('path').datum(s.values).attr('d', line).attr('fill', 'none').attr('stroke', color(s, i)).attr('stroke-width', 2).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round'));
+    const line = d3.line().defined((d) => d.value != null).x((d) => x(d.year)).y((d) => y(d.value));
+    // opts.gaps: break the line where years are missing or where the series changes segment (a break in the data).
+    const withGaps = (v) => !opts.gaps ? v : v.flatMap((d, k) => k && (d.year - v[k - 1].year > 1 || d.segment !== v[k - 1].segment) ? [{ year: d.year, value: null }, d] : [d]);
+    groups.forEach((s, i) => svg.append('path').datum(withGaps(s.values)).attr('d', line).attr('fill', 'none').attr('stroke', color(s, i)).attr('stroke-width', 2).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round'));
     const ends = groups.map((s, i) => ({ s, i, y: y(s.values[s.values.length - 1].value) })).sort((a, b) => a.y - b.y);
     for (let k = 1; k < ends.length; k++) if (ends[k].y - ends[k - 1].y < 13) ends[k].y = ends[k - 1].y + 13;
     ends.forEach(({ s, i, y: ly }) => svg.append('text').attr('x', x(s.values[s.values.length - 1].year) + 6).attr('y', ly).attr('dy', '0.35em').attr('font-size', 11).attr('fill', color(s, i)).text(s.name));
@@ -772,33 +774,58 @@
 
   // ---------- currencies and exchange rates ----------
   // World Bank PA.NUS.FCRF (local currency per USD, annual average). "Value" index = rate(base) / rate(year) × 100,
-  // so above 100 means the currency buys more dollars than in the base year. JETRO's figures appear as cross-checks.
+  // so above 100 means the currency buys more dollars than in the base year. JETRO's figures appear as cross-checks,
+  // and fill years the World Bank does not cover where listed in FX_SUPPLEMENT.
   const FX_SOURCE = 'worldbank_wdi';
+  const FX_SUPPLEMENT = { mm: { from: 2021, source: 'jetro_basic' } };  // Myanmar: World Bank series ends in 2020
+  const FX_BREAK = 10;  // a year-on-year change beyond ×10 (or ÷10) is treated as a break in the series
+
+  // One series per country: World Bank values, plus supplement values for later years, sorted by year.
+  function fxSeries(all, code) {
+    const wb = all.filter((r) => r.source_id === FX_SOURCE && r.country_code === code && r.value > 0);
+    const sup = FX_SUPPLEMENT[code];
+    const lastWb = d3.max(wb, (r) => r.year) ?? -Infinity;
+    const extra = sup ? all.filter((r) => r.source_id === sup.source && r.country_code === code && r.year >= sup.from && r.year > lastWb && r.value > 0)
+      .map((r) => ({ ...r, supplement: true })) : [];
+    const series = wb.concat(extra).sort((x, y) => x.year - y.year);
+    // Breaks: the first year after a jump beyond FX_BREAK. Segment id = number of breaks before the year.
+    const breaks = [];
+    series.forEach((r, i) => { if (i && (r.value / series[i - 1].value > FX_BREAK || series[i - 1].value / r.value > FX_BREAK)) breaks.push(i); });
+    series.forEach((r, i) => { r.segment = breaks.filter((k) => k <= i).length; });
+    return { series, breaks: breaks.map((i) => [series[i - 1], series[i]]), extra, lastWb };
+  }
+
   function renderFx(codes) {
     const all = DATA.observations.filter((r) => r.indicator_id === 'exchange_rate');
-    const wb = all.filter((r) => r.source_id === FX_SOURCE && codes.includes(r.country_code) && r.value > 0);
     const cur = new Map((DATA.currencies || []).map((c) => [c.country_code, c]));
-    const years = [...new Set(wb.map((r) => r.year))].sort((a, b) => a - b);
+    const by = new Map(codes.map((code) => [code, fxSeries(all, code)]));
+    const rowsAll = [...by.values()].flatMap((x) => x.series);
+    const years = [...new Set(rowsAll.filter((r) => !r.supplement).map((r) => r.year))].sort((a, b) => a - b);
     const base = years.includes(state.fxBase) ? state.fxBase : (years.find((y) => y >= 2005) ?? years[0]);
     $('fx-base').replaceChildren(...years.map((y) => new Option(String(y), String(y))));
     if (base != null) $('fx-base').value = String(base);
     $('fx-mode').value = state.fxMode;
-    const at = (code, y) => wb.find((r) => r.country_code === code && r.year === y);
+    const at = (code, y) => by.get(code)?.series.find((r) => r.year === y);
+    const ccy = (code) => cur.get(code)?.currency_ja || '';
     const name = (r) => r.country_ja + '（' + (cur.get(r.country_code)?.currency_code || '') + '）';
+    const tag = (r) => r.supplement ? '（JETRO で補完' + (r.note && /年度/.test(r.note) ? '、年度値' : '') + '）' : '';
     let rows;
     if (state.fxMode === 'rate') {
-      rows = wb.map((r) => ({ ...r, country_ja: name(r), label: fmt(r.value, 'LCU/USD') + ' ' + (cur.get(r.country_code)?.currency_ja || '') + '／米ドル' }));
+      rows = rowsAll.map((r) => ({ ...r, country_ja: name(r), label: fmt(r.value, 'LCU/USD') + ' ' + ccy(r.country_code) + '／米ドル' + tag(r) }));
     } else {
-      rows = wb.filter((r) => at(r.country_code, base)).map((r) => {
+      // An index never crosses a break: only the segment that contains the base year is drawn.
+      rows = rowsAll.filter((r) => at(r.country_code, base) && r.segment === at(r.country_code, base).segment).map((r) => {
         const v = at(r.country_code, base).value / r.value * 100;
-        return { ...r, country_ja: name(r), value: v, label: num(v, 1) + '（' + base + '年＝100）、1米ドル＝' + fmt(r.value, 'LCU/USD') + ' ' + (cur.get(r.country_code)?.currency_ja || '') };
+        return { ...r, country_ja: name(r), value: v, label: num(v, 1) + '（' + base + '年＝100）、1米ドル＝' + fmt(r.value, 'LCU/USD') + ' ' + ccy(r.country_code) + tag(r) };
       });
     }
-    const info = wb[0];
+    const info = rowsAll.find((r) => !r.supplement);
+    const special = codes.filter((c) => by.get(c).extra.length || by.get(c).breaks.length).map((c) => at(c, by.get(c).series[0]?.year)?.country_ja).filter(Boolean);
     $('fx-note').textContent = !info ? '国を選んでください。' : '出所：' + info.source_publisher_ja + '「' + info.source_title_ja + '」 ' + (info.indicator_code || '')
       + (info.source_last_updated ? '、更新 ' + info.source_last_updated : '') + '（公式為替レート、年平均）。'
-      + (state.fxMode === 'index' ? '点線は基準年（' + base + '年）の水準。' : '') + (codes.includes('jp') ? '日本（円）は比較用の灰色の線です。' : '');
-    drawTrend($('fx-trend'), rows, state.fxMode === 'rate' ? 'LCU/USD' : 'index', null, state.fxMode === 'rate' ? { log: true } : { ref: 100 });
+      + (state.fxMode === 'index' ? '点線は基準年（' + base + '年）の水準。' : '') + (codes.includes('jp') ? '日本（円）は比較用の灰色の線です。' : '')
+      + (special.length ? special.join('・') + 'は系列の断絶や補完があります（表の備考を参照）。値のない年は線を切っています。' : '');
+    drawTrend($('fx-trend'), rows, state.fxMode === 'rate' ? 'LCU/USD' : 'index', null, state.fxMode === 'rate' ? { log: true, gaps: true } : { ref: 100, gaps: true });
 
     // table
     const book = noteBook();
@@ -809,25 +836,34 @@
     const labels = headerMarks(table, [[], [], srcN ? [srcN] : [], [], [chgN], []]);
     table.querySelector('tbody').replaceChildren(...codes.map((code) => {
       const c = cur.get(code);
-      const series = wb.filter((r) => r.country_code === code);
+      const { series, breaks, extra, lastWb } = by.get(code);
       const jetro = all.filter((r) => r.country_code === code && r.source_id !== FX_SOURCE);
-      // Without a World Bank series, fall back to JETRO's latest figure (marked as such).
-      const wbLast = d3.greatest(series, (r) => r.year), last = wbLast || d3.greatest(jetro, (r) => r.year), b = at(code, base);
+      const last = d3.greatest(series, (r) => r.year) || d3.greatest(jetro, (r) => r.year), b = at(code, base);
       const notes = [];
       if (last?.cross_check && last.cross_check_status !== 'match') notes.push('照合（' + last.year + '年）：' + last.cross_check);
       const bases = new Set(jetro.flatMap((r) => (r.note || '').split('; ')).filter((t) => t.startsWith('JETRO の表記：')).map((t) => t.split(' / ')[0].replace('JETRO の表記：', '')));
-      for (const basis of bases) notes.push('JETRO の為替レートは' + basis + '（年平均ではない）' + (jetro.some((r) => /年度/.test(r.note || '')) ? '、年度の値' : '') + '。');
-      if (!wbLast && last) notes.push('世界銀行の公式為替レートにこの国の値がないため、JETRO「概況・基本統計」の値を表示しています。');
+      for (const basis of bases) notes.push('JETRO の為替レートは' + basis + '（年平均ではない）' + (jetro.some((r) => /年度/.test(r.note || '')) ? '、年度の値（例：2023/24年度を2023年として表示）' : '') + '。');
+      if (extra.length) {
+        const from = FX_SUPPLEMENT[code].from, first = extra[0].year;
+        const missing = d3.range(Math.max(from, lastWb + 1), first);
+        notes.push(from + '年以降は世界銀行に値がない（最新は' + lastWb + '年）ため、JETRO「概況・基本統計」の為替レート（' + extra[0].year + '〜' + extra[extra.length - 1].year + '年）で補っています。'
+          + (missing.length ? missing[0] + (missing.length > 1 ? '〜' + missing[missing.length - 1] : '') + '年は値がありません。' : '') + '出所と算出方法が異なるため、つなぎ目の前後は厳密には比較できません。');
+      }
+      for (const [p, q] of breaks) notes.push('系列の断絶：世界銀行の値は' + p.year + '年の' + fmt(p.value, 'LCU/USD') + 'から' + q.year + '年の' + fmt(q.value, 'LCU/USD')
+        + '（' + ccy(code) + '／米ドル）に変わっています。断絶をまたぐ指数と価値の変化は計算していません。');
+      if (c?.currency_code === 'USD' && last) notes.push('米ドルを法定通貨としているため、対米ドルの為替レートは常に1です。');
+      if (!series.length && last) notes.push('世界銀行の公式為替レートにこの国の値がないため、JETRO「概況・基本統計」の値を表示しています。');
       else if (!last && c?.currency_code === 'USD') notes.push('米ドルを法定通貨としているため、対米ドルの為替レートはありません。');
       else if (!last) notes.push('世界銀行の公式為替レートにこの国の値がありません。');
       const tr = document.createElement('tr');
       const country = DATA.observations.find((r) => r.country_code === code)?.country_ja || code;
       tr.append(cell(country), noteCell(c ? c.currency_ja + '（' + c.currency_code + '）' : '—', [], 'nowrap', labels[1]),
-        noteCell(last ? fmt(last.value, 'LCU/USD') + '（' + last.year + '）' : '—', [...new Set(notes)].map(book.text), 'num nowrap', labels[2], wbLast && srcN ? [srcN] : []),
+        noteCell(last ? fmt(last.value, 'LCU/USD') + '（' + last.year + (last.supplement ? '、JETRO' : '') + '）' : '—', [...new Set(notes)].map(book.text), 'num nowrap', labels[2],
+          last && !last.supplement && series.length && srcN ? [srcN] : []),
         noteCell(b ? fmt(b.value, 'LCU/USD') + '（' + base + '）' : '—', [], 'num nowrap', labels[3]));
-      const chg = last && b ? b.value / last.value - 1 : null;
+      const chg = last && b && last.segment === b.segment ? b.value / last.value - 1 : null;
       tr.append(noteCell(chg == null ? '—' : (chg >= 0 ? '+' : '') + num(chg * 100, 1) + '%', [], 'num nowrap', labels[4], chg == null ? [] : [chgN]),
-        noteCell([wbLast ? '世界銀行' : '', jetro.length ? (wbLast ? 'JETRO（照合）' : 'JETRO') : ''].filter(Boolean).join('・'), [], 'src', labels[5]));
+        noteCell([series.some((r) => !r.supplement) ? '世界銀行' : '', jetro.length ? (extra.length ? 'JETRO（補完・照合）' : series.length ? 'JETRO（照合）' : 'JETRO') : ''].filter(Boolean).join('・'), [], 'src', labels[5]));
       return tr;
     }));
     renderNotes($('fx-notes'), book);
