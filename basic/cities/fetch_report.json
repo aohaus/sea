@@ -174,8 +174,8 @@
   "esri_kenmin": {
     "fetch_status": "ok",
     "rows": {
-      "gdp_million_yen": 207,
-      "population": 208
+      "gdp_million_yen": 600,
+      "population": 613
     },
     "missing_units": [],
     "release": "2023年度版",
@@ -194,6 +194,22 @@
       },
       "2022/soukatu9": {
         "rows": 204,
+        "non_numeric_cells": 0
+      },
+      "2021/soukatu1": {
+        "rows": 187,
+        "non_numeric_cells": 0
+      },
+      "2021/soukatu9": {
+        "rows": 187,
+        "non_numeric_cells": 0
+      },
+      "2020/soukatu1": {
+        "rows": 170,
+        "non_numeric_cells": 0
+      },
+      "2020/soukatu9": {
+        "rows": 170,
         "non_numeric_cells": 0
       }
     }
