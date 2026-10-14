@@ -37,7 +37,7 @@
   },
   "un_wup2025_cities": {
     "fetch_status": "ok",
-    "rows": 131,
+    "rows": 159,
     "largest_cities_by_country": {
       "BRN": [
         "Bandar Seri Begawan",
@@ -70,6 +70,20 @@
         "Palembang",
         "Tarogong",
         "Malang"
+      ],
+      "JPN": [
+        "Tōkyō (Tokyo)",
+        "Osaka",
+        "Nagoya",
+        "Fukuoka",
+        "Sapporo",
+        "Sendai",
+        "Kitakyushu",
+        "Hiroshima",
+        "Naha",
+        "Nara",
+        "Okayama",
+        "Kumamoto"
       ],
       "LAO": [
         "Viangchan (Vientiane)",
@@ -157,12 +171,55 @@
       ]
     }
   },
+  "esri_kenmin": {
+    "fetch_status": "ok",
+    "rows": {
+      "gdp_million_yen": 600,
+      "population": 613
+    },
+    "missing_units": [],
+    "release": "2023年度版",
+    "diagnostics": {
+      "2023/soukatu1": {
+        "rows": 39,
+        "non_numeric_cells": 169
+      },
+      "2023/soukatu9": {
+        "rows": 52,
+        "non_numeric_cells": 156
+      },
+      "2022/soukatu1": {
+        "rows": 204,
+        "non_numeric_cells": 0
+      },
+      "2022/soukatu9": {
+        "rows": 204,
+        "non_numeric_cells": 0
+      },
+      "2021/soukatu1": {
+        "rows": 187,
+        "non_numeric_cells": 0
+      },
+      "2021/soukatu9": {
+        "rows": 187,
+        "non_numeric_cells": 0
+      },
+      "2020/soukatu1": {
+        "rows": 170,
+        "non_numeric_cells": 0
+      },
+      "2020/soukatu9": {
+        "rows": 170,
+        "non_numeric_cells": 0
+      }
+    }
+  },
   "worldbank_wdi": {
     "fetch_status": "ok",
     "rows": {
-      "PA.NUS.FCRF": 155,
-      "NY.GDP.PCAP.CN": 156,
-      "NY.GDP.PCAP.CD": 156
+      "PA.NUS.FCRF": 181,
+      "NY.GDP.PCAP.CN": 182,
+      "NY.GDP.PCAP.CD": 182
     }
   },
   "coverage": {
@@ -256,6 +313,103 @@
       "city_population"
     ],
     "tl-dil": [
+      "city_population"
+    ],
+    "jp-sapporo": [
+      "city_population",
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
+    ],
+    "jp-sendai": [
+      "city_population",
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
+    ],
+    "jp-saitama": [],
+    "jp-chiba": [
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
+    ],
+    "jp-yokohama": [
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
+    ],
+    "jp-kawasaki": [
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
+    ],
+    "jp-sagamihara": [],
+    "jp-niigata": [
+      "city_population",
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
+    ],
+    "jp-shizuoka": [
+      "city_population"
+    ],
+    "jp-hamamatsu": [
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
+    ],
+    "jp-nagoya": [
+      "city_population",
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
+    ],
+    "jp-kyoto": [
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
+    ],
+    "jp-osaka": [
+      "city_population",
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
+    ],
+    "jp-sakai": [
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
+    ],
+    "jp-kobe": [
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
+    ],
+    "jp-okayama": [
+      "city_population",
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
+    ],
+    "jp-hiroshima": [
+      "city_population",
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
+    ],
+    "jp-kitakyushu": [
+      "city_population",
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
+    ],
+    "jp-fukuoka": [
+      "city_population",
+      "grdp_per_capita_local",
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
+    ],
+    "jp-kumamoto": [
       "city_population"
     ]
   }

@@ -129,7 +129,7 @@
 
   <section class="card" id="cities">
     <h2>主要都市の比較<span class="en">Major cities</span></h2>
-    <p class="note">上で選んだ国の主要都市（各国1〜3都市）を比べます。一人当たり地域GDP は各国統計局の州・県・市の値で、都市そのものと単位が違う場合は「単位」に示します。都市人口は国連 WUP 2025 の都市域（行政区域とは異なる）です。</p>
+    <p class="note">上で選んだ国の主要都市（各国1〜3都市）を比べます。「日本（比較）」を選ぶと日本の政令指定都市20市も加わります（灰色）。一人当たり地域GDP は各国統計局の州・県・市の値で、都市そのものと単位が違う場合は「単位」に示します。都市人口は国連 WUP 2025 の都市域（行政区域とは異なる）です。</p>
     <div class="row">
       <label class="label" for="city-indicator">指標</label>
       <select id="city-indicator"></select>
@@ -184,6 +184,7 @@
       <a href="data/profiles.csv" download>基本情報（CSV）</a>
       <a href="data/validation.csv" download>照合結果（CSV）</a>
       <a href="data/city_observations.csv" download>主要都市（CSV）</a>
+      <a href="data/city_list.csv" download>都市一覧（CSV）</a>
       <a href="data/sources.csv" download>出所台帳（CSV）</a>
       <a href="data/dataset.json" download>統合データ（JSON）</a>
     </div>
@@ -373,7 +374,7 @@
     const trendCodes = selected.concat(withJapan ? ['jp'] : []);
     drawTrend($('trend'), srcRows.filter((r) => trendCodes.includes(r.country_code)), unit, year);
     renderTables(selected);
-    renderCities(selected);
+    renderCities(selected.concat(withJapan ? ['jp'] : []));
   }
 
   // ---------- major cities ----------
@@ -405,9 +406,9 @@
     const data = [...pick.values()].sort((a, b) => b.value - a.value);
     const unit = ind === 'grdp_per_capita_local' ? 'local' : CITY_UNIT[ind];
     const noteByInd = {
-      grdp_per_capita_usd: '現地通貨の値を世界銀行の公式為替レート（年平均）で米ドルに換算。マレーシアは実質値のみ公表のため含みません。',
+      grdp_per_capita_usd: '現地通貨の値を世界銀行の公式為替レート（年平均）で米ドルに換算。マレーシアは実質値のみ公表のため含みません。日本の政令指定都市は年度値を暦年平均レートで換算。',
       grdp_per_capita_ratio: '一人当たり地域GDP ÷ その国の一人当たりGDP。1.0（点線）が全国平均。マレーシアは実質（2015年価格）での比。',
-      grdp_per_capita_local: '各国通貨のため、国をまたいだ大小の比較はできません。',
+      grdp_per_capita_local: '各国通貨のため、国をまたいだ大小の比較はできません。日本は円（年度値）。',
       city_population: '国連 WUP 2025 の都市域人口。「各都市の最新年」は2025年（推計）です。',
     };
     $('city-note').textContent = noteByInd[ind] || '';
@@ -418,21 +419,25 @@
       const rs = DATA.cities.filter((r) => r.city_id === cityId && r.indicator_id === id && (id !== 'city_population' || r.year === 2025));
       return rs.length ? rs.reduce((a, b) => (b.year > a.year ? b : a)) : null;
     };
-    const cities = [...new Map(rows.map((r) => [r.city_id, r])).values()];
+    const cities = (DATA.cityList || [...new Map(rows.map((r) => [r.city_id, r])).values()])
+      .filter((c) => selected.includes(c.country_code));
     const cell = (text, cls) => { const td = document.createElement('td'); if (cls) td.className = cls; td.textContent = text ?? ''; return td; };
     $('city-table').querySelector('tbody').replaceChildren(...cities.map((c) => {
       const usd = latest(c.city_id, 'grdp_per_capita_usd'), ratio = latest(c.city_id, 'grdp_per_capita_ratio'), pop = latest(c.city_id, 'city_population');
       const any = usd || ratio;
       const tr = document.createElement('tr');
-      tr.append(cell(c.city_ja), cell(c.country_ja), cell(any ? any.unit_note : '（地域GDP なし）', 'src'),
+      tr.append(cell(c.city_ja), cell(c.country_ja), cell(any ? any.unit_note : '地域GDP なし：' + (c.gdp_note || ''), 'src'),
         cell(usd ? fmt(usd.value, 'USD') + '（' + usd.year + '）' : '—', 'num'),
         cell(ratio ? ratio.value.toFixed(2) + '倍（' + ratio.year + '）' : '—', 'num'),
-        cell(pop ? fmt(pop.value, 'persons') : '—', 'num'),
+        Object.assign(cell(pop ? fmt(pop.value, 'persons') : (c.un_note ? '— ※' : '—'), 'num'), { title: pop ? '' : (c.un_note || '') }),
         cell([...new Set([usd, ratio, pop].filter(Boolean).map((r) => r.source_publisher_ja))].join('、'), 'src'));
       return tr;
     }));
-    const noGdp = cities.filter((c) => !latest(c.city_id, 'grdp_per_capita_ratio')).map((c) => c.city_ja);
-    $('city-missing').textContent = noGdp.length ? '地域GDP がまだない都市：' + noGdp.join('、') + '（ベトナム・インドネシアは統計局のデータを自動取得できないため準備中。その他の国は地域別の公表なし）' : '';
+    const noGdp = d3.groups(cities.filter((c) => !latest(c.city_id, 'grdp_per_capita_ratio')), (c) => c.gdp_note || '理由不明');
+    const noPop = cities.filter((c) => c.un_note && !latest(c.city_id, 'city_population')).map((c) => c.city_ja);
+    $('city-missing').textContent = (noPop.length ? '※ 都市人口なし：' + noPop.join('、') + '（国連 WUP 2025 では周辺と一体の都市域（東京・大阪など）に含まれるため）。' : '') + (noGdp.length
+      ? '地域GDP がない都市：' + noGdp.map(([why, cs]) => cs.map((c) => c.city_ja).join('、') + '（' + why + '）').join('／')
+      : '');
   }
 
   function drawCityChart(box, data, unit) {
@@ -448,7 +453,8 @@
     const y = d3.scaleBand(data.map((d) => d.city_id), [10, height - 20]).paddingInner(0.25);
     const palette = series();
     const countries = [...new Set(data.map((d) => d.country_code))];
-    const color = (d) => palette[countries.indexOf(d.country_code) % palette.length];
+    const asean = countries.filter((c) => c !== 'jp');
+    const color = (d) => d.country_code === 'jp' ? css('--ref') : palette[asean.indexOf(d.country_code) % palette.length];
     const svg = d3.create('svg').attr('width', '100%').attr('viewBox', `0 0 ${width} ${height}`).attr('role', 'img');
     const ticks = x.ticks(4);
     svg.append('g').selectAll('line').data(ticks).join('line').attr('x1', (t) => x(t)).attr('x2', (t) => x(t)).attr('y1', 6).attr('y2', height - 20).attr('stroke', css('--grid'));
@@ -598,8 +604,9 @@
     $('status').textContent = latest ? 'データ取得日 ' + latest.slice(0, 10) : '';
     renderStaticTables();
     render();
-    load('city_observations').then((rows) => {
+    Promise.all([load('city_observations'), load('city_list').catch(() => null)]).then(([rows, list]) => {
       DATA.cities = rows.map((r) => ({ ...r, year: Number(r.year), value: Number(r.value) }));
+      DATA.cityList = list;
       render();
     }).catch(() => { DATA.citiesFailed = true; render(); });
   }).catch((err) => {
