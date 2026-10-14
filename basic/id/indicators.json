@@ -13,7 +13,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "SP.POP.TOTL",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/SP.POP.TOTL?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-13T01:29:23+00:00",
+          "retrieved_at": "2026-10-14T15:29:05+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {
@@ -149,7 +149,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "NY.GDP.MKTP.CD",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/NY.GDP.MKTP.CD?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-13T01:29:23+00:00",
+          "retrieved_at": "2026-10-14T15:29:05+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {
@@ -269,7 +269,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "NY.GDP.PCAP.CD",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/NY.GDP.PCAP.CD?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-13T01:29:23+00:00",
+          "retrieved_at": "2026-10-14T15:29:05+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {
@@ -411,7 +411,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "NY.GDP.MKTP.KD.ZG",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-13T01:29:23+00:00",
+          "retrieved_at": "2026-10-14T15:29:05+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {
@@ -553,7 +553,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "FP.CPI.TOTL.ZG",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/FP.CPI.TOTL.ZG?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-13T01:29:23+00:00",
+          "retrieved_at": "2026-10-14T15:29:05+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {
@@ -695,7 +695,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "SL.UEM.TOTL.ZS",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/SL.UEM.TOTL.ZS?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-13T01:29:23+00:00",
+          "retrieved_at": "2026-10-14T15:29:05+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {
@@ -837,7 +837,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "BX.KLT.DINV.CD.WD",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/BX.KLT.DINV.CD.WD?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-13T01:29:23+00:00",
+          "retrieved_at": "2026-10-14T15:29:05+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {
@@ -943,6 +943,151 @@
             {
               "year": 2025,
               "value": 22698158405.2659
+            }
+          ]
+        }
+      ]
+    },
+    "exchange_rate": {
+      "label_ja": "為替レート（1米ドルあたりの現地通貨、年平均）",
+      "label_en": "Exchange rate (local currency per USD, annual average)",
+      "unit": "LCU/USD",
+      "series": [
+        {
+          "source_id": "worldbank_wdi",
+          "indicator_code": "PA.NUS.FCRF",
+          "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/PA.NUS.FCRF?format=json&per_page=20000&date=2000:2031",
+          "retrieved_at": "2026-10-14T15:29:05+00:00",
+          "source_last_updated": "2026-10-08",
+          "observations": [
+            {
+              "year": 2000,
+              "value": 8421.775
+            },
+            {
+              "year": 2001,
+              "value": 10260.85
+            },
+            {
+              "year": 2002,
+              "value": 9311.19166666666
+            },
+            {
+              "year": 2003,
+              "value": 8577.13333333333
+            },
+            {
+              "year": 2004,
+              "value": 8938.85
+            },
+            {
+              "year": 2005,
+              "value": 9704.74166666666
+            },
+            {
+              "year": 2006,
+              "value": 9159.31666666666
+            },
+            {
+              "year": 2007,
+              "value": 9141
+            },
+            {
+              "year": 2008,
+              "value": 9698.9625
+            },
+            {
+              "year": 2009,
+              "value": 10389.9375
+            },
+            {
+              "year": 2010,
+              "value": 9090.43333333333
+            },
+            {
+              "year": 2011,
+              "value": 8770.43333333333
+            },
+            {
+              "year": 2012,
+              "value": 9386.62916666666
+            },
+            {
+              "year": 2013,
+              "value": 10461.24
+            },
+            {
+              "year": 2014,
+              "value": 11865.2112962963
+            },
+            {
+              "year": 2015,
+              "value": 13389.4129365079
+            },
+            {
+              "year": 2016,
+              "value": 13308.3268020541
+            },
+            {
+              "year": 2017,
+              "value": 13380.8338788891
+            },
+            {
+              "year": 2018,
+              "value": 14236.9387734817
+            },
+            {
+              "year": 2019,
+              "value": 14147.6713605454
+            },
+            {
+              "year": 2020,
+              "value": 14582.2034678177
+            },
+            {
+              "year": 2021,
+              "value": 14308.1439011896
+            },
+            {
+              "year": 2022,
+              "value": 14849.8539362104
+            },
+            {
+              "year": 2023,
+              "value": 15236.8846620506
+            },
+            {
+              "year": 2024,
+              "value": 15855.448286671
+            },
+            {
+              "year": 2025,
+              "value": 16477.8651797835
+            }
+          ]
+        },
+        {
+          "source_id": "jetro_basic",
+          "source_label": "為替レート",
+          "url": "https://www.jetro.go.jp/world/asia/idn/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:22+00:00",
+          "page_last_updated": "2026-07-01",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 15416,
+              "note": "JETRO の表記：期末平均 / JETRO basis: 期末平均"
+            },
+            {
+              "year": 2024,
+              "value": 16162,
+              "note": "JETRO の表記：期末平均 / JETRO basis: 期末平均"
+            },
+            {
+              "year": 2025,
+              "value": 16782,
+              "note": "JETRO の表記：期末平均 / JETRO basis: 期末平均"
             }
           ]
         }

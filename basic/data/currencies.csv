@@ -1,0 +1,13 @@
+﻿country_code,country_ja,country_en,group,currency_code,currency_ja,currency_en
+bn,ブルネイ,Brunei Darussalam,asean,BND,ブルネイ・ドル,Brunei dollar
+kh,カンボジア,Cambodia,asean,KHR,リエル,Cambodian riel
+id,インドネシア,Indonesia,asean,IDR,ルピア,Indonesian rupiah
+la,ラオス,Lao PDR,asean,LAK,ラオス・キープ,Lao kip
+my,マレーシア,Malaysia,asean,MYR,リンギ,Malaysian ringgit
+mm,ミャンマー,Myanmar,asean,MMK,ミャンマー・チャット,Myanmar kyat
+ph,フィリピン,Philippines,asean,PHP,ペソ,Philippine peso
+sg,シンガポール,Singapore,asean,SGD,シンガポール・ドル,Singapore dollar
+th,タイ,Thailand,asean,THB,バーツ,Thai baht
+tl,東ティモール,Timor-Leste,asean,USD,米ドル,US dollar
+vn,ベトナム,Viet Nam,asean,VND,ベトナム・ドン,Vietnamese dong
+jp,日本,Japan,benchmark,JPY,円,Japanese yen

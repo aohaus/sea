@@ -27,6 +27,9 @@
         ],
         "fdi_inflow": [
           "worldbank_wdi"
+        ],
+        "exchange_rate": [
+          "worldbank_wdi"
         ]
       }
     },
@@ -58,6 +61,10 @@
         ],
         "fdi_inflow": [
           "worldbank_wdi"
+        ],
+        "exchange_rate": [
+          "worldbank_wdi",
+          "jetro_basic"
         ]
       }
     },
@@ -89,6 +96,10 @@
         ],
         "fdi_inflow": [
           "worldbank_wdi"
+        ],
+        "exchange_rate": [
+          "worldbank_wdi",
+          "jetro_basic"
         ]
       }
     },
@@ -119,6 +130,10 @@
         ],
         "fdi_inflow": [
           "worldbank_wdi"
+        ],
+        "exchange_rate": [
+          "worldbank_wdi",
+          "jetro_basic"
         ]
       }
     },
@@ -150,6 +165,10 @@
         ],
         "fdi_inflow": [
           "worldbank_wdi"
+        ],
+        "exchange_rate": [
+          "worldbank_wdi",
+          "jetro_basic"
         ]
       }
     },
@@ -180,6 +199,10 @@
         ],
         "fdi_inflow": [
           "worldbank_wdi"
+        ],
+        "exchange_rate": [
+          "worldbank_wdi",
+          "jetro_basic"
         ]
       }
     },
@@ -211,6 +234,10 @@
         ],
         "fdi_inflow": [
           "worldbank_wdi"
+        ],
+        "exchange_rate": [
+          "worldbank_wdi",
+          "jetro_basic"
         ]
       }
     },
@@ -242,6 +269,10 @@
         ],
         "fdi_inflow": [
           "worldbank_wdi"
+        ],
+        "exchange_rate": [
+          "worldbank_wdi",
+          "jetro_basic"
         ]
       }
     },
@@ -273,6 +304,10 @@
         ],
         "fdi_inflow": [
           "worldbank_wdi"
+        ],
+        "exchange_rate": [
+          "worldbank_wdi",
+          "jetro_basic"
         ]
       }
     },
@@ -299,6 +334,9 @@
           "worldbank_wdi"
         ],
         "fdi_inflow": [
+          "worldbank_wdi"
+        ],
+        "exchange_rate": [
           "worldbank_wdi"
         ]
       }
@@ -331,6 +369,10 @@
         ],
         "fdi_inflow": [
           "worldbank_wdi"
+        ],
+        "exchange_rate": [
+          "worldbank_wdi",
+          "jetro_basic"
         ]
       }
     },
@@ -356,6 +398,9 @@
           "worldbank_wdi"
         ],
         "fdi_inflow": [
+          "worldbank_wdi"
+        ],
+        "exchange_rate": [
           "worldbank_wdi"
         ]
       }

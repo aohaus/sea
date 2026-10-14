@@ -1,6 +1,6 @@
 {
   "source_id": "worldbank_wdi",
-  "retrieved_at": "2026-10-13T01:29:23+00:00",
+  "retrieved_at": "2026-10-14T15:29:05+00:00",
   "series": {
     "SP.POP.TOTL": [
       {
@@ -743,6 +743,108 @@
         "year": 2025,
         "value": 21990000000
       }
+    ],
+    "PA.NUS.FCRF": [
+      {
+        "year": 2000,
+        "value": 14167.75
+      },
+      {
+        "year": 2001,
+        "value": 14725.1666666666
+      },
+      {
+        "year": 2002,
+        "value": 15279.5
+      },
+      {
+        "year": 2003,
+        "value": 15509.5833333333
+      },
+      {
+        "year": 2004,
+        "value": 15746
+      },
+      {
+        "year": 2005,
+        "value": 15858.9166666666
+      },
+      {
+        "year": 2006,
+        "value": 15994.25
+      },
+      {
+        "year": 2007,
+        "value": 16105.125
+      },
+      {
+        "year": 2008,
+        "value": 16302.25
+      },
+      {
+        "year": 2009,
+        "value": 17065.0833333333
+      },
+      {
+        "year": 2010,
+        "value": 18612.9166666666
+      },
+      {
+        "year": 2011,
+        "value": 20509.75
+      },
+      {
+        "year": 2012,
+        "value": 20828
+      },
+      {
+        "year": 2013,
+        "value": 20933.4166666666
+      },
+      {
+        "year": 2014,
+        "value": 21148
+      },
+      {
+        "year": 2015,
+        "value": 21697.5675
+      },
+      {
+        "year": 2016,
+        "value": 21935.0008333333
+      },
+      {
+        "year": 2017,
+        "value": 22370.0866666666
+      },
+      {
+        "year": 2018,
+        "value": 22602.05
+      },
+      {
+        "year": 2019,
+        "value": 23050.2416666666
+      },
+      {
+        "year": 2020,
+        "value": 23208.3683333333
+      },
+      {
+        "year": 2021,
+        "value": 23159.7825925925
+      },
+      {
+        "year": 2022,
+        "value": 23271.2125
+      },
+      {
+        "year": 2023,
+        "value": 23787.3191666666
+      },
+      {
+        "year": 2024,
+        "value": 24164.8858333333
+      }
     ]
   },
   "urls": {
@@ -752,7 +854,8 @@
     "NY.GDP.MKTP.KD.ZG": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=20000&date=2000:2031",
     "FP.CPI.TOTL.ZG": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/FP.CPI.TOTL.ZG?format=json&per_page=20000&date=2000:2031",
     "SL.UEM.TOTL.ZS": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/SL.UEM.TOTL.ZS?format=json&per_page=20000&date=2000:2031",
-    "BX.KLT.DINV.CD.WD": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/BX.KLT.DINV.CD.WD?format=json&per_page=20000&date=2000:2031"
+    "BX.KLT.DINV.CD.WD": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/BX.KLT.DINV.CD.WD?format=json&per_page=20000&date=2000:2031",
+    "PA.NUS.FCRF": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/PA.NUS.FCRF?format=json&per_page=20000&date=2000:2031"
   },
   "source_last_updated": {
     "SP.POP.TOTL": "2026-10-08",
@@ -761,6 +864,7 @@
     "NY.GDP.MKTP.KD.ZG": "2026-10-08",
     "FP.CPI.TOTL.ZG": "2026-10-08",
     "SL.UEM.TOTL.ZS": "2026-10-08",
-    "BX.KLT.DINV.CD.WD": "2026-10-08"
+    "BX.KLT.DINV.CD.WD": "2026-10-08",
+    "PA.NUS.FCRF": "2026-10-08"
   }
 }
