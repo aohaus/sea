@@ -1,37 +1,563 @@
 {
-  "_comment": "主要都市のマスタ / Major cities. region は地域別GDPの出所上の単位（都市そのものと一致しない場合は unit_note に記す）。un_names は国連 WUP 2025（DEGURBA の都市）で照合する名前の候補。",
-  "cities": [
-    {"id": "my-kul", "country": "my", "name_ja": "クアラルンプール", "name_en": "Kuala Lumpur", "un_names": ["Kuala Lumpur"],
-     "region": {"source_id": "dosm_state_gdp", "unit": "W.P. Kuala Lumpur", "unit_note": "連邦直轄領クアラルンプール（統計局の注記により、プトラジャヤの値を含む）"}},
-    {"id": "my-pen", "country": "my", "name_ja": "ペナン", "name_en": "Penang", "un_names": ["George Town"],
-     "region": {"source_id": "dosm_state_gdp", "unit": "Pulau Pinang", "unit_note": "ペナン州全体"}},
-    {"id": "my-jhb", "country": "my", "name_ja": "ジョホールバル", "name_en": "Johor Bahru", "un_names": ["Johor Bahru"],
-     "region": {"source_id": "dosm_state_gdp", "unit": "Johor", "unit_note": "ジョホール州全体（ジョホールバル市単独の値ではない）"}},
-    {"id": "th-bkk", "country": "th", "name_ja": "バンコク", "name_en": "Bangkok", "un_names": ["Krung Thep Maha Nakhon (Bangkok)", "Bangkok"],
-     "region": {"source_id": "nso_th_gpp", "unit": "Bangkok", "unit_note": "バンコク都"}},
-    {"id": "th-cbi", "country": "th", "name_ja": "チョンブリ（パタヤ・東部臨海）", "name_en": "Chon Buri", "un_names": ["Chon Buri"],
-     "region": {"source_id": "nso_th_gpp", "unit": "Chon Buri", "unit_note": "チョンブリ県全体"}},
-    {"id": "th-cnx", "country": "th", "name_ja": "チェンマイ", "name_en": "Chiang Mai", "un_names": ["Chiang Mai"],
-     "region": {"source_id": "nso_th_gpp", "unit": "Chiang Mai", "unit_note": "チェンマイ県全体"}},
-    {"id": "ph-mnl", "country": "ph", "name_ja": "マニラ首都圏", "name_en": "Metro Manila", "un_names": ["Manila"],
-     "region": {"source_id": "psa_ph_pcgdp", "unit": "National Capital Region (NCR)", "unit_note": "マニラ首都圏（NCR）"}},
-    {"id": "ph-ceb", "country": "ph", "name_ja": "セブ", "name_en": "Cebu City", "un_names": ["Cebu City"],
-     "region": {"source_id": "psa_ph_pcgdp", "unit": "..City of Cebu", "unit_note": "セブ市（高度都市化市）"}},
-    {"id": "ph-dvo", "country": "ph", "name_ja": "ダバオ", "name_en": "Davao City", "un_names": ["Davao City"],
-     "region": {"source_id": "psa_ph_pcgdp", "unit": "..City of Davao", "unit_note": "ダバオ市（高度都市化市）"}},
-    {"id": "vn-han", "country": "vn", "name_ja": "ハノイ", "name_en": "Hanoi", "un_names": ["Hà Nội (Hanoi)", "Hanoi"], "region": null},
-    {"id": "vn-sgn", "country": "vn", "name_ja": "ホーチミン", "name_en": "Ho Chi Minh City", "un_names": ["Ho Chi Minh City", "Thanh Pho Ho Chi Minh"], "region": null},
-    {"id": "vn-dad", "country": "vn", "name_ja": "ダナン", "name_en": "Da Nang", "un_names": ["Đà Nẵng", "Da Nang"], "region": null},
-    {"id": "id-jkt", "country": "id", "name_ja": "ジャカルタ", "name_en": "Jakarta", "un_names": ["Jakarta"], "region": null},
-    {"id": "id-sub", "country": "id", "name_ja": "スラバヤ", "name_en": "Surabaya", "un_names": ["Surabaya"], "region": null},
-    {"id": "id-bdg", "country": "id", "name_ja": "バンドン", "name_en": "Bandung", "un_names": ["Bandung"], "region": null},
-    {"id": "sg-sin", "country": "sg", "name_ja": "シンガポール", "name_en": "Singapore", "un_names": ["Singapore"],
-     "region": {"source_id": "national", "unit": "Singapore", "unit_note": "都市国家のため国全体の値"}},
-    {"id": "kh-pnh", "country": "kh", "name_ja": "プノンペン", "name_en": "Phnom Penh", "un_names": ["Phnum Pénh (Phnom Penh)", "Phnom Penh"], "region": null},
-    {"id": "la-vte", "country": "la", "name_ja": "ビエンチャン", "name_en": "Vientiane", "un_names": ["Viangchan (Vientiane)", "Vientiane"], "region": null},
-    {"id": "mm-rgn", "country": "mm", "name_ja": "ヤンゴン", "name_en": "Yangon", "un_names": ["Yangon", "Rangoon"], "region": null},
-    {"id": "mm-mdl", "country": "mm", "name_ja": "マンダレー", "name_en": "Mandalay", "un_names": ["Mandalay"], "region": null},
-    {"id": "bn-bwn", "country": "bn", "name_ja": "バンダルスリブガワン", "name_en": "Bandar Seri Begawan", "un_names": ["Bandar Seri Begawan"], "region": null},
-    {"id": "tl-dil", "country": "tl", "name_ja": "ディリ", "name_en": "Dili", "un_names": ["Dili"], "region": null}
-  ]
+ "_comment": "主要都市のマスタ / Major cities. region は地域別GDPの出所上の単位（都市そのものと一致しない場合は unit_note に記す）。un_names は国連 WUP 2025（DEGURBA の都市）で照合する名前の候補。 日本は政令指定都市20市（比較用）。un_names が空の市は国連の都市域で大都市と一体のため人口なし。gdp_note は地域GDP がない理由。",
+ "cities": [
+  {
+   "id": "my-kul",
+   "country": "my",
+   "name_ja": "クアラルンプール",
+   "name_en": "Kuala Lumpur",
+   "un_names": [
+    "Kuala Lumpur"
+   ],
+   "region": {
+    "source_id": "dosm_state_gdp",
+    "unit": "W.P. Kuala Lumpur",
+    "unit_note": "連邦直轄領クアラルンプール（統計局の注記により、プトラジャヤの値を含む）"
+   }
+  },
+  {
+   "id": "my-pen",
+   "country": "my",
+   "name_ja": "ペナン",
+   "name_en": "Penang",
+   "un_names": [
+    "George Town"
+   ],
+   "region": {
+    "source_id": "dosm_state_gdp",
+    "unit": "Pulau Pinang",
+    "unit_note": "ペナン州全体"
+   }
+  },
+  {
+   "id": "my-jhb",
+   "country": "my",
+   "name_ja": "ジョホールバル",
+   "name_en": "Johor Bahru",
+   "un_names": [
+    "Johor Bahru"
+   ],
+   "region": {
+    "source_id": "dosm_state_gdp",
+    "unit": "Johor",
+    "unit_note": "ジョホール州全体（ジョホールバル市単独の値ではない）"
+   }
+  },
+  {
+   "id": "th-bkk",
+   "country": "th",
+   "name_ja": "バンコク",
+   "name_en": "Bangkok",
+   "un_names": [
+    "Krung Thep Maha Nakhon (Bangkok)",
+    "Bangkok"
+   ],
+   "region": {
+    "source_id": "nso_th_gpp",
+    "unit": "Bangkok",
+    "unit_note": "バンコク都"
+   }
+  },
+  {
+   "id": "th-cbi",
+   "country": "th",
+   "name_ja": "チョンブリ（パタヤ・東部臨海）",
+   "name_en": "Chon Buri",
+   "un_names": [
+    "Chon Buri"
+   ],
+   "region": {
+    "source_id": "nso_th_gpp",
+    "unit": "Chon Buri",
+    "unit_note": "チョンブリ県全体"
+   }
+  },
+  {
+   "id": "th-cnx",
+   "country": "th",
+   "name_ja": "チェンマイ",
+   "name_en": "Chiang Mai",
+   "un_names": [
+    "Chiang Mai"
+   ],
+   "region": {
+    "source_id": "nso_th_gpp",
+    "unit": "Chiang Mai",
+    "unit_note": "チェンマイ県全体"
+   }
+  },
+  {
+   "id": "ph-mnl",
+   "country": "ph",
+   "name_ja": "マニラ首都圏",
+   "name_en": "Metro Manila",
+   "un_names": [
+    "Manila"
+   ],
+   "region": {
+    "source_id": "psa_ph_pcgdp",
+    "unit": "National Capital Region (NCR)",
+    "unit_note": "マニラ首都圏（NCR）"
+   }
+  },
+  {
+   "id": "ph-ceb",
+   "country": "ph",
+   "name_ja": "セブ",
+   "name_en": "Cebu City",
+   "un_names": [
+    "Cebu City"
+   ],
+   "region": {
+    "source_id": "psa_ph_pcgdp",
+    "unit": "..City of Cebu",
+    "unit_note": "セブ市（高度都市化市）"
+   }
+  },
+  {
+   "id": "ph-dvo",
+   "country": "ph",
+   "name_ja": "ダバオ",
+   "name_en": "Davao City",
+   "un_names": [
+    "Davao City"
+   ],
+   "region": {
+    "source_id": "psa_ph_pcgdp",
+    "unit": "..City of Davao",
+    "unit_note": "ダバオ市（高度都市化市）"
+   }
+  },
+  {
+   "id": "vn-han",
+   "country": "vn",
+   "name_ja": "ハノイ",
+   "name_en": "Hanoi",
+   "un_names": [
+    "Hà Nội (Hanoi)",
+    "Hanoi"
+   ],
+   "region": null,
+   "gdp_note": "統計局のデータを自動取得できないため準備中"
+  },
+  {
+   "id": "vn-sgn",
+   "country": "vn",
+   "name_ja": "ホーチミン",
+   "name_en": "Ho Chi Minh City",
+   "un_names": [
+    "Ho Chi Minh City",
+    "Thanh Pho Ho Chi Minh"
+   ],
+   "region": null,
+   "gdp_note": "統計局のデータを自動取得できないため準備中"
+  },
+  {
+   "id": "vn-dad",
+   "country": "vn",
+   "name_ja": "ダナン",
+   "name_en": "Da Nang",
+   "un_names": [
+    "Đà Nẵng",
+    "Da Nang"
+   ],
+   "region": null,
+   "gdp_note": "統計局のデータを自動取得できないため準備中"
+  },
+  {
+   "id": "id-jkt",
+   "country": "id",
+   "name_ja": "ジャカルタ",
+   "name_en": "Jakarta",
+   "un_names": [
+    "Jakarta"
+   ],
+   "region": null,
+   "gdp_note": "統計局のデータを自動取得できないため準備中"
+  },
+  {
+   "id": "id-sub",
+   "country": "id",
+   "name_ja": "スラバヤ",
+   "name_en": "Surabaya",
+   "un_names": [
+    "Surabaya"
+   ],
+   "region": null,
+   "gdp_note": "統計局のデータを自動取得できないため準備中"
+  },
+  {
+   "id": "id-bdg",
+   "country": "id",
+   "name_ja": "バンドン",
+   "name_en": "Bandung",
+   "un_names": [
+    "Bandung"
+   ],
+   "region": null,
+   "gdp_note": "統計局のデータを自動取得できないため準備中"
+  },
+  {
+   "id": "sg-sin",
+   "country": "sg",
+   "name_ja": "シンガポール",
+   "name_en": "Singapore",
+   "un_names": [
+    "Singapore"
+   ],
+   "region": {
+    "source_id": "national",
+    "unit": "Singapore",
+    "unit_note": "都市国家のため国全体の値"
+   }
+  },
+  {
+   "id": "kh-pnh",
+   "country": "kh",
+   "name_ja": "プノンペン",
+   "name_en": "Phnom Penh",
+   "un_names": [
+    "Phnum Pénh (Phnom Penh)",
+    "Phnom Penh"
+   ],
+   "region": null,
+   "gdp_note": "地域別の公表なし"
+  },
+  {
+   "id": "la-vte",
+   "country": "la",
+   "name_ja": "ビエンチャン",
+   "name_en": "Vientiane",
+   "un_names": [
+    "Viangchan (Vientiane)",
+    "Vientiane"
+   ],
+   "region": null,
+   "gdp_note": "地域別の公表なし"
+  },
+  {
+   "id": "mm-rgn",
+   "country": "mm",
+   "name_ja": "ヤンゴン",
+   "name_en": "Yangon",
+   "un_names": [
+    "Yangon",
+    "Rangoon"
+   ],
+   "region": null,
+   "gdp_note": "地域別の公表なし"
+  },
+  {
+   "id": "mm-mdl",
+   "country": "mm",
+   "name_ja": "マンダレー",
+   "name_en": "Mandalay",
+   "un_names": [
+    "Mandalay"
+   ],
+   "region": null,
+   "gdp_note": "地域別の公表なし"
+  },
+  {
+   "id": "bn-bwn",
+   "country": "bn",
+   "name_ja": "バンダルスリブガワン",
+   "name_en": "Bandar Seri Begawan",
+   "un_names": [
+    "Bandar Seri Begawan"
+   ],
+   "region": null,
+   "gdp_note": "地域別の公表なし"
+  },
+  {
+   "id": "tl-dil",
+   "country": "tl",
+   "name_ja": "ディリ",
+   "name_en": "Dili",
+   "un_names": [
+    "Dili"
+   ],
+   "region": null,
+   "gdp_note": "地域別の公表なし"
+  },
+  {
+   "id": "jp-sapporo",
+   "country": "jp",
+   "name_ja": "札幌市",
+   "name_en": "Sapporo",
+   "un_names": [
+    "Sapporo"
+   ],
+   "designated_city": true,
+   "region": {
+    "source_id": "esri_kenmin",
+    "unit": "札幌市",
+    "unit_note": "札幌市（政令指定都市、年度値）"
+   }
+  },
+  {
+   "id": "jp-sendai",
+   "country": "jp",
+   "name_ja": "仙台市",
+   "name_en": "Sendai",
+   "un_names": [
+    "Sendai"
+   ],
+   "designated_city": true,
+   "region": {
+    "source_id": "esri_kenmin",
+    "unit": "仙台市",
+    "unit_note": "仙台市（政令指定都市、年度値）"
+   }
+  },
+  {
+   "id": "jp-saitama",
+   "country": "jp",
+   "name_ja": "さいたま市",
+   "name_en": "Saitama",
+   "un_names": [],
+   "designated_city": true,
+   "region": null,
+   "gdp_note": "内閣府「県民経済計算」に市の計数がないため",
+   "un_note": "国連 WUP 2025 では周辺と一体の都市域（東京・大阪など）に含まれるため、市単独の人口なし"
+  },
+  {
+   "id": "jp-chiba",
+   "country": "jp",
+   "name_ja": "千葉市",
+   "name_en": "Chiba",
+   "un_names": [],
+   "designated_city": true,
+   "region": {
+    "source_id": "esri_kenmin",
+    "unit": "千葉市",
+    "unit_note": "千葉市（政令指定都市、年度値）"
+   },
+   "un_note": "国連 WUP 2025 では周辺と一体の都市域（東京・大阪など）に含まれるため、市単独の人口なし"
+  },
+  {
+   "id": "jp-yokohama",
+   "country": "jp",
+   "name_ja": "横浜市",
+   "name_en": "Yokohama",
+   "un_names": [],
+   "designated_city": true,
+   "region": {
+    "source_id": "esri_kenmin",
+    "unit": "横浜市",
+    "unit_note": "横浜市（政令指定都市、年度値）"
+   },
+   "un_note": "国連 WUP 2025 では周辺と一体の都市域（東京・大阪など）に含まれるため、市単独の人口なし"
+  },
+  {
+   "id": "jp-kawasaki",
+   "country": "jp",
+   "name_ja": "川崎市",
+   "name_en": "Kawasaki",
+   "un_names": [],
+   "designated_city": true,
+   "region": {
+    "source_id": "esri_kenmin",
+    "unit": "川崎市",
+    "unit_note": "川崎市（政令指定都市、年度値）"
+   },
+   "un_note": "国連 WUP 2025 では周辺と一体の都市域（東京・大阪など）に含まれるため、市単独の人口なし"
+  },
+  {
+   "id": "jp-sagamihara",
+   "country": "jp",
+   "name_ja": "相模原市",
+   "name_en": "Sagamihara",
+   "un_names": [],
+   "designated_city": true,
+   "region": null,
+   "gdp_note": "内閣府「県民経済計算」に市の計数がないため",
+   "un_note": "国連 WUP 2025 では周辺と一体の都市域（東京・大阪など）に含まれるため、市単独の人口なし"
+  },
+  {
+   "id": "jp-niigata",
+   "country": "jp",
+   "name_ja": "新潟市",
+   "name_en": "Niigata",
+   "un_names": [
+    "Niigata"
+   ],
+   "designated_city": true,
+   "region": {
+    "source_id": "esri_kenmin",
+    "unit": "新潟市",
+    "unit_note": "新潟市（政令指定都市、年度値）"
+   }
+  },
+  {
+   "id": "jp-shizuoka",
+   "country": "jp",
+   "name_ja": "静岡市",
+   "name_en": "Shizuoka",
+   "un_names": [
+    "Shizuoka"
+   ],
+   "designated_city": true,
+   "region": null,
+   "gdp_note": "内閣府「県民経済計算」に市の計数がないため"
+  },
+  {
+   "id": "jp-hamamatsu",
+   "country": "jp",
+   "name_ja": "浜松市",
+   "name_en": "Hamamatsu",
+   "un_names": [],
+   "designated_city": true,
+   "region": {
+    "source_id": "esri_kenmin",
+    "unit": "浜松市",
+    "unit_note": "浜松市（政令指定都市、年度値）"
+   },
+   "un_note": "国連 WUP 2025 では周辺と一体の都市域（東京・大阪など）に含まれるため、市単独の人口なし"
+  },
+  {
+   "id": "jp-nagoya",
+   "country": "jp",
+   "name_ja": "名古屋市",
+   "name_en": "Nagoya",
+   "un_names": [
+    "Nagoya"
+   ],
+   "designated_city": true,
+   "region": {
+    "source_id": "esri_kenmin",
+    "unit": "名古屋市",
+    "unit_note": "名古屋市（政令指定都市、年度値）"
+   }
+  },
+  {
+   "id": "jp-kyoto",
+   "country": "jp",
+   "name_ja": "京都市",
+   "name_en": "Kyoto",
+   "un_names": [],
+   "designated_city": true,
+   "region": {
+    "source_id": "esri_kenmin",
+    "unit": "京都市",
+    "unit_note": "京都市（政令指定都市、年度値）"
+   },
+   "un_note": "国連 WUP 2025 では周辺と一体の都市域（東京・大阪など）に含まれるため、市単独の人口なし"
+  },
+  {
+   "id": "jp-osaka",
+   "country": "jp",
+   "name_ja": "大阪市",
+   "name_en": "Osaka",
+   "un_names": [
+    "Osaka"
+   ],
+   "designated_city": true,
+   "region": {
+    "source_id": "esri_kenmin",
+    "unit": "大阪市",
+    "unit_note": "大阪市（政令指定都市、年度値）"
+   }
+  },
+  {
+   "id": "jp-sakai",
+   "country": "jp",
+   "name_ja": "堺市",
+   "name_en": "Sakai",
+   "un_names": [],
+   "designated_city": true,
+   "region": {
+    "source_id": "esri_kenmin",
+    "unit": "堺市",
+    "unit_note": "堺市（政令指定都市、年度値）"
+   },
+   "un_note": "国連 WUP 2025 では周辺と一体の都市域（東京・大阪など）に含まれるため、市単独の人口なし"
+  },
+  {
+   "id": "jp-kobe",
+   "country": "jp",
+   "name_ja": "神戸市",
+   "name_en": "Kobe",
+   "un_names": [],
+   "designated_city": true,
+   "region": {
+    "source_id": "esri_kenmin",
+    "unit": "神戸市",
+    "unit_note": "神戸市（政令指定都市、年度値）"
+   },
+   "un_note": "国連 WUP 2025 では周辺と一体の都市域（東京・大阪など）に含まれるため、市単独の人口なし"
+  },
+  {
+   "id": "jp-okayama",
+   "country": "jp",
+   "name_ja": "岡山市",
+   "name_en": "Okayama",
+   "un_names": [
+    "Okayama"
+   ],
+   "designated_city": true,
+   "region": {
+    "source_id": "esri_kenmin",
+    "unit": "岡山市",
+    "unit_note": "岡山市（政令指定都市、年度値）"
+   }
+  },
+  {
+   "id": "jp-hiroshima",
+   "country": "jp",
+   "name_ja": "広島市",
+   "name_en": "Hiroshima",
+   "un_names": [
+    "Hiroshima"
+   ],
+   "designated_city": true,
+   "region": {
+    "source_id": "esri_kenmin",
+    "unit": "広島市",
+    "unit_note": "広島市（政令指定都市、年度値）"
+   }
+  },
+  {
+   "id": "jp-kitakyushu",
+   "country": "jp",
+   "name_ja": "北九州市",
+   "name_en": "Kitakyushu",
+   "un_names": [
+    "Kitakyushu"
+   ],
+   "designated_city": true,
+   "region": {
+    "source_id": "esri_kenmin",
+    "unit": "北九州市",
+    "unit_note": "北九州市（政令指定都市、年度値）"
+   }
+  },
+  {
+   "id": "jp-fukuoka",
+   "country": "jp",
+   "name_ja": "福岡市",
+   "name_en": "Fukuoka",
+   "un_names": [
+    "Fukuoka"
+   ],
+   "designated_city": true,
+   "region": {
+    "source_id": "esri_kenmin",
+    "unit": "福岡市",
+    "unit_note": "福岡市（政令指定都市、年度値）"
+   }
+  },
+  {
+   "id": "jp-kumamoto",
+   "country": "jp",
+   "name_ja": "熊本市",
+   "name_en": "Kumamoto",
+   "un_names": [
+    "Kumamoto"
+   ],
+   "designated_city": true,
+   "region": null,
+   "gdp_note": "内閣府「県民経済計算」に市の計数がないため"
+  }
+ ]
 }

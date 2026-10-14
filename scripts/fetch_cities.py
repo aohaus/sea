@@ -7,6 +7,8 @@ Sources (registered in basic/sources.json):
   nso_th_gpp         NSO Thailand Statistical Yearbook, Table 10.14: GPP per capita (current, THB)
   dosm_state_gdp     DOSM / data.gov.my: state GDP at constant 2015 prices and state population
   un_wup2025_cities  UN World Urbanization Prospects 2025, File 21: population of cities
+  esri_kenmin        Cabinet Office (ESRI) prefectural accounts: nominal GDP and population of
+                     the designated cities (政令指定都市) in Japan, fiscal years
   worldbank_wdi      exchange rates (PA.NUS.FCRF) and national GDP per capita (current LCU / USD)
 
 Writes:
@@ -51,6 +53,8 @@ PSA_URL = "https://openstat.psa.gov.ph/PXWeb/api/v1/en/DB/2A/PPA/0092A5FPPA8.px"
 TH_URL = ("https://www.nso.go.th/public/e-book/Statistical-Yearbook/SYB-{y}_webPage/"
           "File%20SYB/{y}/10/T%2010.14%20{y}.pdf")
 DOSM_URL = "https://api.data.gov.my/data-catalogue"
+ESRI_PAGE = "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/main_{y}.html"
+ESRI_TABLE = "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/{y}/{name}.xlsx"
 WB_URL = "https://api.worldbank.org/v2/country/{iso3}/indicator/{code}?format=json&per_page=20000&date=2000:{y}"
 FIRST_YEAR = 2000
 
@@ -213,6 +217,37 @@ def fetch_un(session, cities, iso3s) -> dict:
             "largest_cities_by_country": largest}
 
 
+def fetch_esri(session, cities) -> dict:
+    """Nominal GDP (million yen) and total population of designated cities, from the latest release."""
+    import openpyxl
+    wanted = {c["region"]["unit"] for c in cities if c.get("region") and c["region"]["source_id"] == "esri_kenmin"}
+    for y in range(datetime.now(timezone.utc).year, 2019, -1):
+        try:
+            get(session, ESRI_PAGE.format(y=y))
+        except Exception:  # noqa: BLE001 - release not published yet
+            continue
+        tables = {}
+        for name in ("soukatu1", "soukatu9"):  # GDP (production, nominal); total population
+            url = ESRI_TABLE.format(y=y, name=name)
+            ws = openpyxl.load_workbook(io.BytesIO(get(session, url).content), read_only=True, data_only=True).worksheets[0]
+            years, rows = None, []
+            for r in ws.iter_rows(values_only=True):
+                if years is None:
+                    if r and isinstance(r[3], (int, float)) and 1990 < r[3] < 2100:
+                        years = [int(v) for v in r[3:] if isinstance(v, (int, float))]
+                    continue
+                label = (r[1] or "").strip() if isinstance(r[1], str) else ""
+                if label in wanted or label == "全県計":
+                    rows += [{"unit": label, "year": yr, "value": v}
+                             for yr, v in zip(years, r[3:3 + len(years)]) if isinstance(v, (int, float))]
+            tables[name] = {"url": url, "rows": rows}
+        return {"source_id": "esri_kenmin", "url": ESRI_PAGE.format(y=y), "retrieved_at": now(), "currency": "JPY",
+                "basis": "current", "release": f"{y}年度版", "urls": {k: v["url"] for k, v in tables.items()},
+                "rows": {"gdp_million_yen": tables["soukatu1"]["rows"], "population": tables["soukatu9"]["rows"]},
+                "missing_units": sorted(wanted - {r["unit"] for r in tables["soukatu1"]["rows"]})}
+    raise RuntimeError("no ESRI prefectural accounts release found")
+
+
 def fetch_wb(session, iso3s) -> dict:
     y = datetime.now(timezone.utc).year
     rows = {}
@@ -262,14 +297,16 @@ def build(cities, countries, sources, raw) -> list[dict]:
             "url": url, "retrieved_at": retrieved_at, "retrieval_method": "auto", **extra,
         })
 
-    def add_regional(city, series, national, src, currency, basis, nat_label):
+    def add_regional(city, series, national, src, currency, basis, nat_label, extra_note=None, local_derivation=None):
         """series/national: {year: per-capita value in local currency}."""
         iso3 = by_code[city["country"]]["iso3"]
         basis_note = "名目（当年価格）" if basis == "current" else "実質（2015年価格）"
+        if extra_note:
+            basis_note += "・" + extra_note
         for year, v in sorted(series.items()):
             row(city, "grdp_per_capita_local", currency, year, round(v, 2), src["source_id"], src["url"],
                 src["retrieved_at"], note=basis_note,
-                derivation=None if basis == "current" else "州の実質GDP（2015年価格）÷ 州の人口（同じ統計局のデータ）")
+                derivation=local_derivation or (None if basis == "current" else "州の実質GDP（2015年価格）÷ 州の人口（同じ統計局のデータ）"))
             fx = wb_value("PA.NUS.FCRF", iso3, year) if basis == "current" else None
             if fx:
                 row(city, "grdp_per_capita_usd", "USD", year, round(v / fx, 2), src["source_id"], src["url"],
@@ -322,6 +359,20 @@ def build(cities, countries, sources, raw) -> list[dict]:
                     series[y] = g / p * 1000
             add_regional(city, series, national, {**src, "url": src["urls"]["gdp"]}, "MYR", "constant_2015",
                          "全州の合計 ÷ 全州人口")
+    # Japan: designated cities, fiscal years; GDP (million yen) / population
+    if "esri_kenmin" in raw:
+        src = raw["esri_kenmin"]
+        gdp, pop = src["rows"]["gdp_million_yen"], src["rows"]["population"]
+
+        def per_capita(unit):
+            p = {r["year"]: r["value"] for r in pop if r["unit"] == unit}
+            return {r["year"]: r["value"] * 1e6 / p[r["year"]] for r in gdp if r["unit"] == unit and p.get(r["year"])}
+        national = per_capita("全県計")
+        for city in cities:
+            if (city.get("region") or {}).get("source_id") == "esri_kenmin":
+                add_regional(city, per_capita(city["region"]["unit"]), national, src, "JPY", "current",
+                             "同じ表の全県計 ÷ 全県人口", extra_note="年度（4月〜翌3月）の値を暦年平均レートで換算",
+                             local_derivation="市内総生産（名目）÷ 市の総人口（内閣府「県民経済計算」総括表1・9）")
     # Singapore: the city is the country
     for city in cities:
         if (city.get("region") or {}).get("source_id") == "national" and wb:
@@ -368,7 +419,9 @@ def main() -> int:
     args = parser.parse_args()
 
     cities = load_json(BASIC_DIR / "cities" / "cities.json")["cities"]
-    countries = load_json(BASIC_DIR / "countries.json")["countries"]
+    master = load_json(BASIC_DIR / "countries.json")
+    # Benchmarks (Japan) are included for the designated-city comparison.
+    countries = master["countries"] + master.get("benchmarks", [])
     sources = {s["id"]: s for s in load_json(BASIC_DIR / "sources.json")["sources"]}
     iso3s = [c["iso3"] for c in countries]
 
@@ -380,14 +433,15 @@ def main() -> int:
             "nso_th_gpp": lambda: fetch_th(session, cities),
             "dosm_state_gdp": lambda: fetch_dosm(session, cities),
             "un_wup2025_cities": lambda: fetch_un(session, cities, iso3s),
-            "worldbank_wdi": lambda: fetch_wb(session, ["MYS", "THA", "PHL", "SGP", "VNM", "IDN"]),
+            "esri_kenmin": lambda: fetch_esri(session, cities),
+            "worldbank_wdi": lambda: fetch_wb(session, ["MYS", "THA", "PHL", "SGP", "VNM", "IDN", "JPN"]),
         }
         for source_id, job in jobs.items():
             try:
                 saved = save_raw(source_id, job())
                 report[source_id] = {"fetch_status": "ok", "rows": len(saved["rows"]) if isinstance(saved["rows"], list)
                                      else {k: len(v) for k, v in saved["rows"].items()}}
-                for key in ("missing_units", "states", "largest_cities_by_country"):
+                for key in ("missing_units", "states", "largest_cities_by_country", "release"):
                     if key in saved:
                         report[source_id][key] = saved[key]
             except Exception as exc:  # noqa: BLE001
@@ -397,6 +451,13 @@ def main() -> int:
     raw = {p.stem: load_json(p) for p in sorted(RAW.glob("*.json"))}
     rows = build(cities, countries, sources, raw)
     write_table("city_observations", rows)
+    by_code = {c["code"]: c for c in countries}
+    write_table("city_list", [{
+        "city_id": c["id"], "city_ja": c["name_ja"], "city_en": c["name_en"], "country_code": c["country"],
+        "country_ja": by_code[c["country"]]["name_ja"], "designated_city": c.get("designated_city", False),
+        "region_unit": (c.get("region") or {}).get("unit"), "unit_note": (c.get("region") or {}).get("unit_note"),
+        "gdp_note": c.get("gdp_note"), "un_note": c.get("un_note"),
+    } for c in cities])
     covered = {}
     for r in rows:
         covered.setdefault(r["city_id"], set()).add(r["indicator_id"])

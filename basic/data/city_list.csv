@@ -1,0 +1,43 @@
+﻿city_id,city_ja,city_en,country_code,country_ja,designated_city,region_unit,unit_note,gdp_note,un_note
+my-kul,クアラルンプール,Kuala Lumpur,my,マレーシア,False,W.P. Kuala Lumpur,連邦直轄領クアラルンプール（統計局の注記により、プトラジャヤの値を含む）,,
+my-pen,ペナン,Penang,my,マレーシア,False,Pulau Pinang,ペナン州全体,,
+my-jhb,ジョホールバル,Johor Bahru,my,マレーシア,False,Johor,ジョホール州全体（ジョホールバル市単独の値ではない）,,
+th-bkk,バンコク,Bangkok,th,タイ,False,Bangkok,バンコク都,,
+th-cbi,チョンブリ（パタヤ・東部臨海）,Chon Buri,th,タイ,False,Chon Buri,チョンブリ県全体,,
+th-cnx,チェンマイ,Chiang Mai,th,タイ,False,Chiang Mai,チェンマイ県全体,,
+ph-mnl,マニラ首都圏,Metro Manila,ph,フィリピン,False,National Capital Region (NCR),マニラ首都圏（NCR）,,
+ph-ceb,セブ,Cebu City,ph,フィリピン,False,..City of Cebu,セブ市（高度都市化市）,,
+ph-dvo,ダバオ,Davao City,ph,フィリピン,False,..City of Davao,ダバオ市（高度都市化市）,,
+vn-han,ハノイ,Hanoi,vn,ベトナム,False,,,統計局のデータを自動取得できないため準備中,
+vn-sgn,ホーチミン,Ho Chi Minh City,vn,ベトナム,False,,,統計局のデータを自動取得できないため準備中,
+vn-dad,ダナン,Da Nang,vn,ベトナム,False,,,統計局のデータを自動取得できないため準備中,
+id-jkt,ジャカルタ,Jakarta,id,インドネシア,False,,,統計局のデータを自動取得できないため準備中,
+id-sub,スラバヤ,Surabaya,id,インドネシア,False,,,統計局のデータを自動取得できないため準備中,
+id-bdg,バンドン,Bandung,id,インドネシア,False,,,統計局のデータを自動取得できないため準備中,
+sg-sin,シンガポール,Singapore,sg,シンガポール,False,Singapore,都市国家のため国全体の値,,
+kh-pnh,プノンペン,Phnom Penh,kh,カンボジア,False,,,地域別の公表なし,
+la-vte,ビエンチャン,Vientiane,la,ラオス,False,,,地域別の公表なし,
+mm-rgn,ヤンゴン,Yangon,mm,ミャンマー,False,,,地域別の公表なし,
+mm-mdl,マンダレー,Mandalay,mm,ミャンマー,False,,,地域別の公表なし,
+bn-bwn,バンダルスリブガワン,Bandar Seri Begawan,bn,ブルネイ,False,,,地域別の公表なし,
+tl-dil,ディリ,Dili,tl,東ティモール,False,,,地域別の公表なし,
+jp-sapporo,札幌市,Sapporo,jp,日本,True,札幌市,札幌市（政令指定都市、年度値）,,
+jp-sendai,仙台市,Sendai,jp,日本,True,仙台市,仙台市（政令指定都市、年度値）,,
+jp-saitama,さいたま市,Saitama,jp,日本,True,,,内閣府「県民経済計算」に市の計数がないため,国連 WUP 2025 では周辺と一体の都市域（東京・大阪など）に含まれるため、市単独の人口なし
+jp-chiba,千葉市,Chiba,jp,日本,True,千葉市,千葉市（政令指定都市、年度値）,,国連 WUP 2025 では周辺と一体の都市域（東京・大阪など）に含まれるため、市単独の人口なし
+jp-yokohama,横浜市,Yokohama,jp,日本,True,横浜市,横浜市（政令指定都市、年度値）,,国連 WUP 2025 では周辺と一体の都市域（東京・大阪など）に含まれるため、市単独の人口なし
+jp-kawasaki,川崎市,Kawasaki,jp,日本,True,川崎市,川崎市（政令指定都市、年度値）,,国連 WUP 2025 では周辺と一体の都市域（東京・大阪など）に含まれるため、市単独の人口なし
+jp-sagamihara,相模原市,Sagamihara,jp,日本,True,,,内閣府「県民経済計算」に市の計数がないため,国連 WUP 2025 では周辺と一体の都市域（東京・大阪など）に含まれるため、市単独の人口なし
+jp-niigata,新潟市,Niigata,jp,日本,True,新潟市,新潟市（政令指定都市、年度値）,,
+jp-shizuoka,静岡市,Shizuoka,jp,日本,True,,,内閣府「県民経済計算」に市の計数がないため,
+jp-hamamatsu,浜松市,Hamamatsu,jp,日本,True,浜松市,浜松市（政令指定都市、年度値）,,国連 WUP 2025 では周辺と一体の都市域（東京・大阪など）に含まれるため、市単独の人口なし
+jp-nagoya,名古屋市,Nagoya,jp,日本,True,名古屋市,名古屋市（政令指定都市、年度値）,,
+jp-kyoto,京都市,Kyoto,jp,日本,True,京都市,京都市（政令指定都市、年度値）,,国連 WUP 2025 では周辺と一体の都市域（東京・大阪など）に含まれるため、市単独の人口なし
+jp-osaka,大阪市,Osaka,jp,日本,True,大阪市,大阪市（政令指定都市、年度値）,,
+jp-sakai,堺市,Sakai,jp,日本,True,堺市,堺市（政令指定都市、年度値）,,国連 WUP 2025 では周辺と一体の都市域（東京・大阪など）に含まれるため、市単独の人口なし
+jp-kobe,神戸市,Kobe,jp,日本,True,神戸市,神戸市（政令指定都市、年度値）,,国連 WUP 2025 では周辺と一体の都市域（東京・大阪など）に含まれるため、市単独の人口なし
+jp-okayama,岡山市,Okayama,jp,日本,True,岡山市,岡山市（政令指定都市、年度値）,,
+jp-hiroshima,広島市,Hiroshima,jp,日本,True,広島市,広島市（政令指定都市、年度値）,,
+jp-kitakyushu,北九州市,Kitakyushu,jp,日本,True,北九州市,北九州市（政令指定都市、年度値）,,
+jp-fukuoka,福岡市,Fukuoka,jp,日本,True,福岡市,福岡市（政令指定都市、年度値）,,
+jp-kumamoto,熊本市,Kumamoto,jp,日本,True,,,内閣府「県民経済計算」に市の計数がないため,
