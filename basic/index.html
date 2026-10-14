@@ -69,24 +69,25 @@
   th { position: sticky; top: 0; background: var(--panel); font-weight: 500; white-space: nowrap; }
   td.num, th.num { text-align: right; }
   .src { color: var(--muted); }
-  /* Profile: shared sources and checks go to a numbered notes list under the table; cells carry only a marker. */
+  /* Note tables (profile, cities): shared sources and checks go to a numbered notes list under the table; cells carry only a marker. */
   sup.fn { color: var(--accent); font-size: .7rem; margin-left: .15rem; font-weight: 500; }
-  #profile-table th:first-child, #profile-table td:first-child { position: sticky; left: 0; background: var(--panel); white-space: nowrap; }
-  #profile-table th:first-child { z-index: 1; }
-  #profile-table td.nowrap { white-space: nowrap; }
-  #profile-table td.wide { min-width: 7em; }
+  table.cards th:first-child, table.cards td:first-child { position: sticky; left: 0; background: var(--panel); white-space: nowrap; }
+  table.cards th:first-child { z-index: 1; }
+  table.cards td.nowrap { white-space: nowrap; }
+  table.cards td.wide { min-width: 7em; }
   sup.fn.hdr { display: none; }
-  /* Phone: one card per country, field label on the left; header markers move into the cells. */
+  /* Phone: one card per row, field label on the left; header markers move into the cells. */
   @media (max-width: 640px) {
-    #profile-box { max-height: none; overflow: visible; }
-    #profile-table thead { display: none; }
-    #profile-table, #profile-table tbody, #profile-table tr, #profile-table td { display: block; }
-    #profile-table tr { padding: .6rem 0; border-bottom: 1px solid var(--line); }
-    #profile-table td { border: none; padding: .12rem 0; display: grid; grid-template-columns: 5em 1fr; gap: .6rem; text-align: left; white-space: normal; }
-    #profile-table td::before { content: attr(data-label); color: var(--muted); font-size: .78rem; }
-    #profile-table td:first-child { position: static; display: block; font-weight: 500; font-size: .95rem; padding-bottom: .25rem; }
-    #profile-table td:first-child::before { content: none; }
-    #profile-table td.empty { display: none; }
+    .tablebox.cards-box { max-height: none; overflow: visible; }
+    table.cards thead { display: none; }
+    table.cards, table.cards tbody, table.cards tr, table.cards td { display: block; }
+    table.cards tr { padding: .6rem 0; border-bottom: 1px solid var(--line); }
+    table.cards td { border: none; padding: .12rem 0; display: grid; grid-template-columns: 5em 1fr; gap: .6rem; text-align: left; white-space: normal; }
+    table.cards td::before { content: attr(data-label); color: var(--muted); font-size: .78rem; }
+    table.cards td:first-child { position: static; display: block; font-weight: 500; font-size: .95rem; padding-bottom: .25rem; }
+    table.cards td:first-child::before { content: none; }
+    table.cards td.empty { display: none; }
+    table.cards td.nowrap { white-space: normal; }
     sup.fn.hdr { display: inline; }
   }
   .notes { margin: 0; padding-left: 0; list-style: none; display: grid; gap: 6px; font-size: .8rem; color: var(--muted); line-height: 1.55; }
@@ -162,20 +163,20 @@
     </div>
     <p class="note" id="city-note"></p>
     <div class="chart" id="city-chart"></div>
-    <div class="tablebox">
-      <table id="city-table">
-        <thead><tr><th>都市</th><th>国</th><th>単位（地域GDP の対象）</th><th class="num">一人当たり地域GDP（米ドル）</th><th class="num">対全国比</th><th class="num">都市人口</th><th>出所</th></tr></thead>
+    <div class="tablebox cards-box">
+      <table id="city-table" class="cards">
+        <thead><tr><th>都市</th><th>国</th><th data-short="単位">単位（地域GDP の対象）</th><th class="num" data-short="米ドル換算">一人当たり地域GDP（米ドル）</th><th class="num">対全国比</th><th class="num">都市人口</th><th data-short="出所">地域GDP の出所</th></tr></thead>
         <tbody></tbody>
       </table>
     </div>
-    <p class="note" id="city-missing"></p>
+    <ol class="notes" id="city-notes" aria-label="備考"></ol>
   </section>
 
   <section class="card">
     <h2>基本情報<span class="en">Country profile</span></h2>
     <p class="note">値は原文の表記のままです。出所と照合結果は、共通のものを表の下の備考にまとめています（番号は備考の番号）。</p>
-    <div class="tablebox" id="profile-box">
-      <table id="profile-table">
+    <div class="tablebox cards-box">
+      <table id="profile-table" class="cards">
         <thead><tr><th>国</th><th>首都</th><th class="num">面積（km²）</th><th class="num">総人口</th><th>公用語</th><th>宗教</th><th>政体</th><th>元首</th><th>出所</th></tr></thead>
         <tbody></tbody>
       </table>
@@ -446,30 +447,78 @@
     $('city-note').textContent = noteByInd[ind] || '';
     drawCityChart(box, data, unit);
 
-    // table: latest of each indicator per city
+    renderCityTable(rows, selected);
+  }
+
+  // Major-city table: values in cells, sources / conversion / missing-data reasons as numbered notes.
+  const CITY_SHORT = { psa_ph_pcgdp: 'PSA', nso_th_gpp: 'NSO', dosm_state_gdp: 'DOSM', dosm_ssr: 'DOSM', worldbank_wdi: '世界銀行',
+    esri_kenmin: '内閣府', un_wup2025_cities: '国連' };
+  const CITY_COL_NOTES = {
+    usd: '米ドル換算：現地通貨の値 ÷ 世界銀行 公式為替レート（PA.NUS.FCRF、年平均）。シンガポールは世界銀行の米ドル値。日本は年度値を暦年平均レートで換算。',
+    ratio: '対全国比：一人当たり地域GDP ÷ 同じ基準の全国の一人当たりGDP（1.00 が全国平均）。',
+  };
+  function renderCityTable(rows, selected) {
     const latest = (cityId, id) => {
       const rs = DATA.cities.filter((r) => r.city_id === cityId && r.indicator_id === id && (id !== 'city_population' || r.year === 2025));
       return rs.length ? rs.reduce((a, b) => (b.year > a.year ? b : a)) : null;
     };
     const cities = (DATA.cityList || [...new Map(rows.map((r) => [r.city_id, r])).values()])
       .filter((c) => selected.includes(c.country_code));
-    const cell = (text, cls) => { const td = document.createElement('td'); if (cls) td.className = cls; td.textContent = text ?? ''; return td; };
-    $('city-table').querySelector('tbody').replaceChildren(...cities.map((c) => {
+    const book = noteBook();
+    const srcNote = (r) => {
+      const o = { urls: [] };
+      o.build = (el) => {
+        el.append('出所：' + r.source_publisher_ja + '「' + r.source_title_ja + '」（' + (METHOD[r.retrieval_method] || r.retrieval_method) + '）');
+        o.urls.forEach((u, i) => el.append(i ? '、' : '。', link(u, o.urls.length > 1 ? '資料' + (i + 1) : '資料')));
+      };
+      return o;
+    };
+    const source = (r) => {
+      const n = book.mark('src:' + r.source_id, () => srcNote(r));
+      const x = book.notes.get('src:' + r.source_id);
+      if (r.url && !x.urls.includes(r.url)) x.urls.push(r.url);
+      return n;
+    };
+    // One entry per city: shown text and note texts per column (unit, usd, ratio, pop), plus its GDP source rows.
+    const entries = cities.map((c) => {
       const usd = latest(c.city_id, 'grdp_per_capita_usd'), ratio = latest(c.city_id, 'grdp_per_capita_ratio'), pop = latest(c.city_id, 'city_population');
       const any = usd || ratio;
+      let unitText = any ? any.unit_note : '地域GDP なし';
+      const unitNotes = any ? [] : ['地域GDP なし：' + (c.gdp_note || '理由未記録')];
+      const m = unitText.match(/^(.*)（政令指定都市、年度値）$/);
+      if (m) { unitText = '市全体'; unitNotes.push('日本の政令指定都市：市内総生産 ÷ 市の総人口。年度値（4月〜翌年3月）。'); }
+      return {
+        c, usd, ratio, pop,
+        cols: {
+          unit: { text: unitText, notes: unitNotes },
+          usd: { text: usd ? fmt(usd.value, 'USD') + '（' + usd.year + '）' : '—', notes: usd ? [CITY_COL_NOTES.usd] : null },
+          ratio: { text: ratio ? ratio.value.toFixed(2) + '倍（' + ratio.year + '）' : '—',
+            notes: ratio ? [CITY_COL_NOTES.ratio, ...(ratio.source_id === 'dosm_state_gdp' ? ['実質（2015年価格）の一人当たりGDP での比（この州の名目値は未取得のため）。'] : [])] : null },
+          pop: { text: pop ? fmt(pop.value, 'persons') : '—', notes: pop ? ['__un'] : (c.un_note ? ['都市人口なし：' + c.un_note] : []) },
+        },
+        gdpSources: [...new Map([usd, ratio].filter(Boolean).map((r) => [r.source_id, r])).values()],
+      };
+    });
+    const COLS = ['unit', 'usd', 'ratio', 'pop'];
+    const shared = Object.fromEntries(COLS.map((k) => [k, sharedNotes(entries.map((e) => e.cols[k].text !== '—' ? e.cols[k].notes : null))]));
+    const un = entries.find((e) => e.pop)?.pop;
+    const noteNum = (t) => t === '__un' ? source(un) : book.text(t);
+    const table = $('city-table');
+    // Columns: 都市, 国, 単位, 米ドル, 対全国比, 都市人口, 出所
+    const labels = headerMarks(table, [[], [], ...COLS.map((k) => shared[k].map(noteNum)), []]);
+    table.querySelector('tbody').replaceChildren(...entries.map((e) => {
       const tr = document.createElement('tr');
-      tr.append(cell(c.city_ja), cell(c.country_ja), cell(any ? any.unit_note : '地域GDP なし：' + (c.gdp_note || ''), 'src'),
-        cell(usd ? fmt(usd.value, 'USD') + '（' + usd.year + '）' : '—', 'num'),
-        cell(ratio ? ratio.value.toFixed(2) + '倍（' + ratio.year + '）' : '—', 'num'),
-        Object.assign(cell(pop ? fmt(pop.value, 'persons') : (c.un_note ? '— ※' : '—'), 'num'), { title: pop ? '' : (c.un_note || '') }),
-        cell([...new Set([usd, ratio, pop].filter(Boolean).map((r) => r.source_publisher_ja))].join('、'), 'src'));
+      tr.append(cell(e.c.city_ja), noteCell(e.c.country_ja, [], 'nowrap', labels[1]));
+      COLS.forEach((k, i) => {
+        const col = e.cols[k];
+        const own = (col.notes || []).filter((t) => !shared[k].includes(t));
+        tr.append(noteCell(col.text, own.map(noteNum), { unit: 'src', usd: 'num nowrap', ratio: 'num nowrap', pop: 'num nowrap' }[k], labels[i + 2],
+          col.text !== '—' ? shared[k].map(noteNum) : []));
+      });
+      tr.append(noteCell(e.gdpSources.map((r) => CITY_SHORT[r.source_id] || r.source_id).join('・'), e.gdpSources.map(source), 'src', labels[labels.length - 1]));
       return tr;
     }));
-    const noGdp = d3.groups(cities.filter((c) => !latest(c.city_id, 'grdp_per_capita_ratio')), (c) => c.gdp_note || '理由不明');
-    const noPop = cities.filter((c) => c.un_note && !latest(c.city_id, 'city_population')).map((c) => c.city_ja);
-    $('city-missing').textContent = (noPop.length ? '※ 都市人口なし：' + noPop.join('、') + '（国連 WUP 2025 では周辺と一体の都市域（東京・大阪など）に含まれるため）。' : '') + (noGdp.length
-      ? '地域GDP がない都市：' + noGdp.map(([why, cs]) => cs.map((c) => c.city_ja).join('、') + '（' + why + '）').join('／')
-      : '');
+    renderNotes($('city-notes'), book);
   }
 
   function drawCityChart(box, data, unit) {
@@ -633,74 +682,86 @@
     drawTrend($('pop-trend'), rows, 'persons', d3.max(rows, (r) => r.year));
   }
 
+  // ---------- note tables ----------
+  // Each distinct note gets one number, in order of first use; cells and headers carry only "[n]" and the text
+  // goes once into the list under the table. A note is { n, text } or { n, build(el) } for notes with links.
+  function noteBook() {
+    const notes = new Map();
+    const mark = (key, make) => { if (!notes.has(key)) notes.set(key, { n: notes.size + 1, ...make() }); return notes.get(key).n; };
+    return { notes, mark, text: (t) => mark('note:' + t, () => ({ text: t })) };
+  }
+  const addMarks = (el, nums, cls = 'fn') => {
+    for (const n of nums) { const s = document.createElement('sup'); s.className = cls; s.textContent = '[' + n + ']'; el.append(s); }
+    return el;
+  };
+  // Cell content sits in one span so the phone layout can grid it next to the field label (data-label).
+  // hdrNums repeat the header's markers; they show only on phones, where the header is hidden.
+  function noteCell(text, nums, cls, label, hdrNums = []) {
+    const td = document.createElement('td');
+    td.className = [cls, text === '' || text == null ? 'empty' : ''].filter(Boolean).join(' ');
+    td.dataset.label = label;
+    const span = document.createElement('span');
+    span.textContent = text ?? '';
+    addMarks(span, hdrNums, 'fn hdr');
+    td.append(addMarks(span, nums));
+    return td;
+  }
+  // Notes every row with a value in that column shares (2+ rows) are marked once, in the header.
+  function sharedNotes(lists) {
+    const filled = lists.filter((l) => l);
+    return filled.length > 1 ? filled[0].filter((t) => filled.every((l) => l.includes(t))) : [];
+  }
+  function headerMarks(table, numsByCol) {
+    const head = [...table.querySelectorAll('thead th')];
+    head.forEach((th, i) => { th.querySelectorAll('sup.fn').forEach((x) => x.remove()); addMarks(th, numsByCol[i] || []); });
+    return head.map((th) => th.dataset.short || th.firstChild.textContent);  // phone labels
+  }
+  function renderNotes(ol, book) {
+    ol.replaceChildren(...[...book.notes.values()].map((x) => {
+      const li = document.createElement('li');
+      const mk = document.createElement('span'); mk.className = 'mk'; mk.textContent = '[' + x.n + ']';
+      const body = document.createElement('span');
+      if (x.build) x.build(body); else body.textContent = x.text;
+      li.append(mk, body);
+      return li;
+    }));
+  }
+  const link = (href, text) => { const a = document.createElement('a'); a.href = href; a.textContent = text; a.target = '_blank'; a.rel = 'noopener'; return a; };
+
   function renderTables(selected) {
     const sel = new Set(selected);
     const rows = DATA.profileWide.filter((r) => sel.has(r.country_code));
-    // Number each distinct note once, in order of first appearance: sources first, then cell notes.
-    const notes = new Map();
-    const mark = (key, make) => { if (!notes.has(key)) notes.set(key, { n: notes.size + 1, ...make() }); return notes.get(key).n; };
+    const book = noteBook();
+    // Sources first, one note per source listing each country's page and page date.
     const srcKey = (p) => 'src:' + p.source_id + ':' + p.method;
-    for (const r of rows) for (const p of r.pages) mark(srcKey(p), () => ({ source: p, countries: [] }));
-    for (const r of rows) for (const p of r.pages) notes.get(srcKey(p)).countries.push({ name: r.country_ja, url: p.url, date: p.date });
-    const addMarks = (el, nums, cls = 'fn') => {
-      for (const n of nums) { const s = document.createElement('sup'); s.className = cls; s.textContent = '[' + n + ']'; el.append(s); }
-      return el;
+    const srcNote = (p) => {
+      const o = { countries: [] };
+      o.build = (el) => {
+        el.append('出所：' + p.label + '（' + (METHOD[p.method] || p.method) + '）。ページ更新日：');
+        o.countries.forEach((c, i) => el.append(i ? '、' : '', link(c.url, c.name), ' ' + (c.date || '—')));
+      };
+      return o;
     };
-    // Cell content sits in one span so the phone layout can grid it next to the field label (data-label).
-    const withMarks = (text, nums, cls, label, hdrNums = []) => {
-      const td = document.createElement('td');
-      td.className = [cls, text === '' || text == null ? 'empty' : ''].filter(Boolean).join(' ');
-      td.dataset.label = label;
-      const span = document.createElement('span');
-      span.textContent = text ?? '';
-      addMarks(span, hdrNums, 'fn hdr');
-      td.append(addMarks(span, nums));
-      return td;
-    };
-    const noteMark = (t) => mark('note:' + t, () => ({ text: t }));
-    // A note shared by every shown row of a column (e.g. the ASEAN-wide area check) is marked once, in the header.
-    const shared = {};
-    for (const f of PROFILE_FIELDS) {
-      const lists = rows.map((r) => r.fields[f]?.notes || []);
-      shared[f] = rows.length > 1 ? lists[0].filter((t) => lists.every((l) => l.includes(t))) : [];
-    }
-    const head = document.querySelectorAll('#profile-table thead th');
-    const labels = [...head].map((th) => th.firstChild.textContent);
-    PROFILE_FIELDS.forEach((f, i) => {
-      const th = head[i + 1];
-      th.querySelectorAll('sup.fn').forEach((x) => x.remove());
-      addMarks(th, shared[f].map(noteMark));
-    });
-    document.querySelector('#profile-table tbody').replaceChildren(...rows.map((r) => {
+    for (const r of rows) for (const p of r.pages) book.mark(srcKey(p), () => srcNote(p));
+    for (const r of rows) for (const p of r.pages) book.notes.get(srcKey(p)).countries.push({ name: r.country_ja, url: p.url, date: p.date });
+    const shared = Object.fromEntries(PROFILE_FIELDS.map((f) => [f, sharedNotes(rows.map((r) => r.fields[f]?.notes))]));
+    const table = $('profile-table');
+    const labels = headerMarks(table, [[], ...PROFILE_FIELDS.map((f) => shared[f].map(book.text))]);
+    table.querySelector('tbody').replaceChildren(...rows.map((r) => {
       const tr = document.createElement('tr');
       tr.append(cell(r.country_ja));
-      for (const f of PROFILE_FIELDS) {
+      PROFILE_FIELDS.forEach((f, i) => {
         const v = r.fields[f];
         const text = !v ? '' : f === 'area' ? (Number.isFinite(v.value) ? v.value.toLocaleString('ja-JP') : '')
           : f === 'population' ? fmt(v.value, 'persons') : v.value;
         const cls = { area: 'num nowrap', population: 'num nowrap', capital: 'nowrap', political_system: 'wide' }[f] || '';
-        tr.append(withMarks(text, v ? v.notes.filter((t) => !shared[f].includes(t)).map(noteMark) : [], cls, labels[PROFILE_FIELDS.indexOf(f) + 1],
-          text ? shared[f].map(noteMark) : []));
-      }
-      const last = labels.length - 1;
-      tr.append(withMarks(r.pages.map((p) => SHORT[p.source_id] || p.source_id).join('・'), r.pages.map((p) => notes.get(srcKey(p)).n), 'src', labels[last]));
+        tr.append(noteCell(text, v ? v.notes.filter((t) => !shared[f].includes(t)).map(book.text) : [], cls, labels[i + 1],
+          text ? shared[f].map(book.text) : []));
+      });
+      tr.append(noteCell(r.pages.map((p) => SHORT[p.source_id] || p.source_id).join('・'), r.pages.map((p) => book.notes.get(srcKey(p)).n), 'src', labels[labels.length - 1]));
       return tr;
     }));
-    document.getElementById('profile-notes').replaceChildren(...[...notes.values()].map((x) => {
-      const li = document.createElement('li');
-      const mk = document.createElement('span'); mk.className = 'mk'; mk.textContent = '[' + x.n + ']';
-      const body = document.createElement('span');
-      if (x.source) {
-        body.append('出所：' + x.source.label + '（' + (METHOD[x.source.method] || x.source.method) + '）。ページ更新日：');
-        x.countries.forEach((c, i) => {
-          if (i) body.append('、');
-          const a = document.createElement('a'); a.href = c.url; a.textContent = c.name; a.target = '_blank'; a.rel = 'noopener';
-          body.append(a, ' ' + (c.date || '—'));
-        });
-      } else body.textContent = x.text;
-      li.append(mk, body);
-      return li;
-    }));
+    renderNotes($('profile-notes'), book);
   }
 
   function renderStaticTables() {
