@@ -337,6 +337,19 @@
       "license": null,
       "license_note": "© 2025 United Nations。ファイル記載の引用形式で出典を明記",
       "storage_policy": "抽出した値・URL・取得日のみ保存 / Extracted values, URL and retrieval date only."
+    },
+    "esri_kenmin": {
+      "publisher_ja": "内閣府 経済社会総合研究所",
+      "publisher_en": "Economic and Social Research Institute, Cabinet Office, Japan",
+      "title_ja": "県民経済計算 総括表（1 県内総生産〔生産側、名目〕・9 総人口）＜政令指定都市分＞",
+      "title_en": "Prefectural accounts: summary tables (GDP nominal, total population), designated cities",
+      "url_template": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/main_{year}.html",
+      "type": "xlsx",
+      "language": "ja",
+      "terms_url": "https://www.esri.cao.go.jp/",
+      "license": null,
+      "license_note": "利用条件は未確認 / terms not yet verified",
+      "storage_policy": "抽出した値・URL・取得日のみ保存 / Extracted values, URL and retrieval date only."
     }
   },
   "profiles": {

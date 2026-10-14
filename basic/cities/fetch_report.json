@@ -37,7 +37,7 @@
   },
   "un_wup2025_cities": {
     "fetch_status": "ok",
-    "rows": 131,
+    "rows": 159,
     "largest_cities_by_country": {
       "BRN": [
         "Bandar Seri Begawan",
@@ -70,6 +70,20 @@
         "Palembang",
         "Tarogong",
         "Malang"
+      ],
+      "JPN": [
+        "Tōkyō (Tokyo)",
+        "Osaka",
+        "Nagoya",
+        "Fukuoka",
+        "Sapporo",
+        "Sendai",
+        "Kitakyushu",
+        "Hiroshima",
+        "Naha",
+        "Nara",
+        "Okayama",
+        "Kumamoto"
       ],
       "LAO": [
         "Viangchan (Vientiane)",
@@ -157,12 +171,35 @@
       ]
     }
   },
+  "esri_kenmin": {
+    "fetch_status": "ok",
+    "rows": {
+      "gdp_million_yen": 39,
+      "population": 52
+    },
+    "missing_units": [
+      "京都市",
+      "北九州市",
+      "千葉市",
+      "堺市",
+      "大阪市",
+      "岡山市",
+      "川崎市",
+      "広島市",
+      "新潟市",
+      "札幌市",
+      "浜松市",
+      "神戸市",
+      "福岡市"
+    ],
+    "release": "2023年度版"
+  },
   "worldbank_wdi": {
     "fetch_status": "ok",
     "rows": {
-      "PA.NUS.FCRF": 155,
-      "NY.GDP.PCAP.CN": 156,
-      "NY.GDP.PCAP.CD": 156
+      "PA.NUS.FCRF": 181,
+      "NY.GDP.PCAP.CN": 182,
+      "NY.GDP.PCAP.CD": 182
     }
   },
   "coverage": {
@@ -256,6 +293,55 @@
       "city_population"
     ],
     "tl-dil": [
+      "city_population"
+    ],
+    "jp-sapporo": [
+      "city_population"
+    ],
+    "jp-sendai": [
+      "city_population",
+      "grdp_per_capita_local",
+      "grdp_per_capita_usd"
+    ],
+    "jp-saitama": [],
+    "jp-chiba": [],
+    "jp-yokohama": [
+      "grdp_per_capita_local",
+      "grdp_per_capita_usd"
+    ],
+    "jp-kawasaki": [],
+    "jp-sagamihara": [],
+    "jp-niigata": [
+      "city_population"
+    ],
+    "jp-shizuoka": [
+      "city_population"
+    ],
+    "jp-hamamatsu": [],
+    "jp-nagoya": [
+      "city_population",
+      "grdp_per_capita_local",
+      "grdp_per_capita_usd"
+    ],
+    "jp-kyoto": [],
+    "jp-osaka": [
+      "city_population"
+    ],
+    "jp-sakai": [],
+    "jp-kobe": [],
+    "jp-okayama": [
+      "city_population"
+    ],
+    "jp-hiroshima": [
+      "city_population"
+    ],
+    "jp-kitakyushu": [
+      "city_population"
+    ],
+    "jp-fukuoka": [
+      "city_population"
+    ],
+    "jp-kumamoto": [
       "city_population"
     ]
   }
