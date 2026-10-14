@@ -192,15 +192,15 @@
 
   <section class="card">
     <h2>通貨と為替レート（対米ドル）<span class="en">Currencies and exchange rates against the US dollar</span></h2>
-    <p class="note">各国通貨の対米ドルの動きを、上で選んだ国について比べます。「通貨の価値（指数）」は基準年の対米ドルの価値を100とした値で、100を上回ると基準年より通貨高（ドル安）、下回ると通貨安です。「為替レート（対数目盛）」は1米ドルあたりの現地通貨の額で、桁の違う通貨を同じ図で比べるために縦軸を対数にしています（上に行くほど通貨安）。</p>
+    <p class="note">上で選んだ国の通貨について、期間の最初の年（基準年）から見た対米ドルの価値の増減を比べます。縦軸の0%が基準年の水準で、プラスは通貨高（同じ額の現地通貨で買える米ドルが増えた）、マイナスは通貨安です。「為替レート（対数目盛）」は1米ドルあたりの現地通貨の額で、桁の違う通貨を同じ図で比べるために縦軸を対数にしています（上に行くほど通貨安）。</p>
     <div class="row">
       <label class="label" for="fx-mode">表示</label>
       <select id="fx-mode">
-        <option value="index">通貨の価値（指数、基準年＝100）</option>
+        <option value="index">対米ドルの価値の増減（基準年比、%）</option>
         <option value="rate">為替レート（1米ドルあたり、対数目盛）</option>
       </select>
-      <label class="label" for="fx-base">基準年</label>
-      <select id="fx-base"></select>
+      <label class="label" for="fx-span">期間</label>
+      <select id="fx-span"></select>
     </div>
     <p class="note" id="fx-note"></p>
     <div class="chart" id="fx-trend"></div>
@@ -265,7 +265,7 @@
 
   // ---------- state (kept in this browser only) ----------
   const DEFAULTS = { countries: ASEAN10, japan: true, indicator: 'gdp_per_capita', source: 'worldbank_wdi', year: null,
-    cityIndicator: 'grdp_per_capita_usd', cityYear: 'latest', fxMode: 'index', fxBase: 2005 };
+    cityIndicator: 'grdp_per_capita_usd', cityYear: 'latest', fxMode: 'index', fxSpan: 10 };
   let state = { ...DEFAULTS };
   try { state = { ...DEFAULTS, ...JSON.parse(localStorage.getItem('asean-explorer') || '{}') }; } catch (e) { /* storage unavailable */ }
   const set = (patch) => {
@@ -292,8 +292,11 @@
     if (unit === '%') return num(v, 2) + '%';  // small ranges need decimals (e.g. -0.05%)
     if (unit === 'LCU/USD') return a >= 1e4 ? num(v / 1e4, 1) + '万' : num(v, a < 10 ? 2 : 0);
     if (unit === 'index') return num(v, 0);
+    if (unit === 'chg%') return (v > 0 ? '+' : '') + num(v, 0) + '%';
     return num(v, 1);
   }
+  // Signed percentage change, e.g. +27.3% / −11.6%.
+  const fmtChg = (v) => (v > 0 ? '+' : v < 0 ? '−' : '±') + Math.abs(v).toFixed(1) + '%';
   // Text width at 12px: full-width characters ~12px, others ~7px.
   const textW = (s) => [...String(s)].reduce((w, ch) => w + (ch.charCodeAt(0) > 0xff ? 12 : 7), 0);
 
@@ -336,7 +339,7 @@
   $('city-indicator').addEventListener('change', (e) => set({ cityIndicator: e.target.value, cityYear: 'latest' }));
   $('city-year').addEventListener('change', (e) => set({ cityYear: e.target.value === 'latest' ? 'latest' : Number(e.target.value) }));
   $('fx-mode').addEventListener('change', (e) => set({ fxMode: e.target.value }));
-  $('fx-base').addEventListener('change', (e) => set({ fxBase: Number(e.target.value) }));
+  $('fx-span').addEventListener('change', (e) => set({ fxSpan: e.target.value === 'all' ? 'all' : Number(e.target.value) }));
 
   // ---------- render ----------
   function render() {
@@ -652,7 +655,8 @@
     groups.forEach((s, i) => svg.append('path').datum(withGaps(s.values)).attr('d', line).attr('fill', 'none').attr('stroke', color(s, i)).attr('stroke-width', 2).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round'));
     const ends = groups.map((s, i) => ({ s, i, y: y(s.values[s.values.length - 1].value) })).sort((a, b) => a.y - b.y);
     for (let k = 1; k < ends.length; k++) if (ends[k].y - ends[k - 1].y < 13) ends[k].y = ends[k - 1].y + 13;
-    ends.forEach(({ s, i, y: ly }) => svg.append('text').attr('x', x(s.values[s.values.length - 1].year) + 6).attr('y', ly).attr('dy', '0.35em').attr('font-size', 11).attr('fill', color(s, i)).text(s.name));
+    // Labels sit at the right edge, so a series that ends early (e.g. 2024) does not overlap the others.
+    ends.forEach(({ s, i, y: ly }) => svg.append('text').attr('x', x.range()[1] + 6).attr('y', ly).attr('dy', '0.35em').attr('font-size', 11).attr('fill', color(s, i)).text(s.name));
     const dot = svg.append('circle').attr('r', 4).attr('fill', css('--fg')).attr('visibility', 'hidden');
     svg.append('rect').attr('x', axisW).attr('y', 0).attr('width', Math.max(0, width - endW - axisW)).attr('height', height).attr('fill', 'transparent')
       .on('mousemove', (event) => {
@@ -801,9 +805,14 @@
     const by = new Map(codes.map((code) => [code, fxSeries(all, code)]));
     const rowsAll = [...by.values()].flatMap((x) => x.series);
     const years = [...new Set(rowsAll.filter((r) => !r.supplement).map((r) => r.year))].sort((a, b) => a - b);
-    const base = years.includes(state.fxBase) ? state.fxBase : (years.find((y) => y >= 2005) ?? years[0]);
-    $('fx-base').replaceChildren(...years.map((y) => new Option(String(y), String(y))));
-    if (base != null) $('fx-base').value = String(base);
+    // Period: the latest N years (default 10); its first year is the base year.
+    const latestYear = years[years.length - 1];
+    const spans = [10, 15, 20].filter((n) => latestYear - n >= years[0]);
+    const span = state.fxSpan === 'all' || spans.includes(state.fxSpan) ? state.fxSpan : (spans[0] ?? 'all');
+    const base = span === 'all' ? years[0] : latestYear - span;
+    $('fx-span').replaceChildren(...spans.map((n) => new Option('直近' + n + '年（' + (latestYear - n) + '〜' + latestYear + '）', String(n))),
+      new Option('全期間（' + years[0] + '〜' + latestYear + '）', 'all'));
+    if (latestYear != null) $('fx-span').value = String(span);
     $('fx-mode').value = state.fxMode;
     const at = (code, y) => by.get(code)?.series.find((r) => r.year === y);
     const ccy = (code) => cur.get(code)?.currency_ja || '';
@@ -811,21 +820,22 @@
     const tag = (r) => r.supplement ? '（JETRO で補完' + (r.note && /年度/.test(r.note) ? '、年度値' : '') + '）' : '';
     let rows;
     if (state.fxMode === 'rate') {
-      rows = rowsAll.map((r) => ({ ...r, country_ja: name(r), label: fmt(r.value, 'LCU/USD') + ' ' + ccy(r.country_code) + '／米ドル' + tag(r) }));
+      rows = rowsAll.filter((r) => r.year >= base).map((r) => ({ ...r, country_ja: name(r), label: fmt(r.value, 'LCU/USD') + ' ' + ccy(r.country_code) + '／米ドル' + tag(r) }));
     } else {
-      // An index never crosses a break: only the segment that contains the base year is drawn.
-      rows = rowsAll.filter((r) => at(r.country_code, base) && r.segment === at(r.country_code, base).segment).map((r) => {
-        const v = at(r.country_code, base).value / r.value * 100;
-        return { ...r, country_ja: name(r), value: v, label: num(v, 1) + '（' + base + '年＝100）、1米ドル＝' + fmt(r.value, 'LCU/USD') + ' ' + ccy(r.country_code) + tag(r) };
+      // Change in the currency's dollar value since the base year: rate(base) / rate(year) − 1, in %.
+      // It never crosses a break: only the segment that contains the base year is drawn.
+      rows = rowsAll.filter((r) => r.year >= base && at(r.country_code, base) && r.segment === at(r.country_code, base).segment).map((r) => {
+        const v = (at(r.country_code, base).value / r.value - 1) * 100;
+        return { ...r, country_ja: name(r), value: v, label: fmtChg(v) + '（' + base + '年比）、1米ドル＝' + fmt(r.value, 'LCU/USD') + ' ' + ccy(r.country_code) + tag(r) };
       });
     }
     const info = rowsAll.find((r) => !r.supplement);
     const special = codes.filter((c) => by.get(c).extra.length || by.get(c).breaks.length).map((c) => at(c, by.get(c).series[0]?.year)?.country_ja).filter(Boolean);
     $('fx-note').textContent = !info ? '国を選んでください。' : '出所：' + info.source_publisher_ja + '「' + info.source_title_ja + '」 ' + (info.indicator_code || '')
       + (info.source_last_updated ? '、更新 ' + info.source_last_updated : '') + '（公式為替レート、年平均）。'
-      + (state.fxMode === 'index' ? '点線は基準年（' + base + '年）の水準。' : '') + (codes.includes('jp') ? '日本（円）は比較用の灰色の線です。' : '')
+      + (state.fxMode === 'index' ? '点線（0%）は基準年（' + base + '年）の水準。' : '') + (codes.includes('jp') ? '日本（円）は比較用の灰色の線です。' : '')
       + (special.length ? special.join('・') + 'は系列の断絶や補完があります（表の備考を参照）。値のない年は線を切っています。' : '');
-    drawTrend($('fx-trend'), rows, state.fxMode === 'rate' ? 'LCU/USD' : 'index', null, state.fxMode === 'rate' ? { log: true, gaps: true } : { ref: 100, gaps: true });
+    drawTrend($('fx-trend'), rows, state.fxMode === 'rate' ? 'LCU/USD' : 'chg%', null, state.fxMode === 'rate' ? { log: true, gaps: true } : { ref: 0, gaps: true });
 
     // table
     const book = noteBook();
@@ -855,7 +865,7 @@
           + (missing.length ? missing[0] + (missing.length > 1 ? '〜' + missing[missing.length - 1] : '') + '年は値がありません。' : '') + '出所と算出方法が異なるため、つなぎ目の前後は厳密には比較できません。');
       }
       for (const [p, q] of breaks) notes.push('系列の断絶：世界銀行の値は' + p.year + '年の' + fmt(p.value, 'LCU/USD') + 'から' + q.year + '年の' + fmt(q.value, 'LCU/USD')
-        + '（' + ccy(code) + '／米ドル）に変わっています。断絶をまたぐ指数と価値の変化は計算していません。');
+        + '（' + ccy(code) + '／米ドル）に変わっています。断絶をまたぐ価値の増減は計算していません。');
       if (c?.currency_code === 'USD' && last) notes.push('米ドルを法定通貨としているため、対米ドルの為替レートは常に1です。');
       if (!series.length && last) notes.push('世界銀行の公式為替レートにこの国の値がないため、JETRO「概況・基本統計」の値を表示しています。');
       else if (!last && c?.currency_code === 'USD') notes.push('米ドルを法定通貨としているため、対米ドルの為替レートはありません。');
@@ -867,7 +877,7 @@
           [...(isWb && !wbOnly ? [srcN] : []), ...[...new Set(notes)].map(book.text)], 'num nowrap', labels[2], isWb && wbOnly ? [srcN] : []),
         noteCell(b ? fmt(b.value, 'LCU/USD') + '（' + base + '）' : '—', [], 'num nowrap', labels[3]));
       const chg = last && b && last.segment === b.segment ? b.value / last.value - 1 : null;
-      tr.append(noteCell(chg == null ? '—' : (chg >= 0 ? '+' : '') + num(chg * 100, 1) + '%', [], 'num nowrap', labels[4], chg == null ? [] : [chgN]),
+      tr.append(noteCell(chg == null ? '—' : fmtChg(chg * 100), [], 'num nowrap', labels[4], chg == null ? [] : [chgN]),
         noteCell([series.some((r) => !r.supplement) ? '世界銀行' : '', jetro.length ? (extra.length ? 'JETRO（補完・照合）' : series.length ? 'JETRO（照合）' : 'JETRO') : ''].filter(Boolean).join('・'), [], 'src', labels[5]));
       return tr;
     }));
