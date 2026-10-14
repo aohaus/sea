@@ -226,12 +226,14 @@
     "my-kul": [
       "city_population",
       "grdp_per_capita_local",
-      "grdp_per_capita_ratio"
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
     ],
     "my-pen": [
       "city_population",
       "grdp_per_capita_local",
-      "grdp_per_capita_ratio"
+      "grdp_per_capita_ratio",
+      "grdp_per_capita_usd"
     ],
     "my-jhb": [
       "city_population",
