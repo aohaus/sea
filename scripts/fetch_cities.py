@@ -220,6 +220,7 @@ def fetch_un(session, cities, iso3s) -> dict:
 def fetch_esri(session, cities) -> dict:
     """Nominal GDP (million yen) and total population of designated cities, from the latest release."""
     import openpyxl
+    squash = lambda t: re.sub(r"\s+", "", t)  # noqa: E731 - labels may be spaced out ("札　幌　市")
     wanted = {c["region"]["unit"] for c in cities if c.get("region") and c["region"]["source_id"] == "esri_kenmin"}
     for y in range(datetime.now(timezone.utc).year, 2019, -1):
         try:
@@ -230,21 +231,24 @@ def fetch_esri(session, cities) -> dict:
         for name in ("soukatu1", "soukatu9"):  # GDP (production, nominal); total population
             url = ESRI_TABLE.format(y=y, name=name)
             ws = openpyxl.load_workbook(io.BytesIO(get(session, url).content), read_only=True, data_only=True).worksheets[0]
-            years, rows = None, []
+            years, rows, seen = None, [], []
             for r in ws.iter_rows(values_only=True):
                 if years is None:
                     if r and isinstance(r[3], (int, float)) and 1990 < r[3] < 2100:
                         years = [int(v) for v in r[3:] if isinstance(v, (int, float))]
                     continue
-                label = (r[1] or "").strip() if isinstance(r[1], str) else ""
+                label = squash(r[1]) if isinstance(r[1], str) else ""
+                if label:
+                    seen.append(label)
                 if label in wanted or label == "全県計":
                     rows += [{"unit": label, "year": yr, "value": v}
                              for yr, v in zip(years, r[3:3 + len(years)]) if isinstance(v, (int, float))]
-            tables[name] = {"url": url, "rows": rows}
+            tables[name] = {"url": url, "rows": rows, "seen": seen}
         return {"source_id": "esri_kenmin", "url": ESRI_PAGE.format(y=y), "retrieved_at": now(), "currency": "JPY",
                 "basis": "current", "release": f"{y}年度版", "urls": {k: v["url"] for k, v in tables.items()},
                 "rows": {"gdp_million_yen": tables["soukatu1"]["rows"], "population": tables["soukatu9"]["rows"]},
-                "missing_units": sorted(wanted - {r["unit"] for r in tables["soukatu1"]["rows"]})}
+                "missing_units": sorted(wanted - {r["unit"] for r in tables["soukatu1"]["rows"]}),
+                "labels_seen": tables["soukatu1"]["seen"][-40:]}
     raise RuntimeError("no ESRI prefectural accounts release found")
 
 
@@ -441,7 +445,7 @@ def main() -> int:
                 saved = save_raw(source_id, job())
                 report[source_id] = {"fetch_status": "ok", "rows": len(saved["rows"]) if isinstance(saved["rows"], list)
                                      else {k: len(v) for k, v in saved["rows"].items()}}
-                for key in ("missing_units", "states", "largest_cities_by_country", "release"):
+                for key in ("missing_units", "states", "largest_cities_by_country", "release", "labels_seen"):
                     if key in saved:
                         report[source_id][key] = saved[key]
             except Exception as exc:  # noqa: BLE001
