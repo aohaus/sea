@@ -5,7 +5,7 @@ Reads countries.json, schema/fields.json, sources.json, every <code>/profile.jso
 and <code>/indicators.json, and writes:
   basic/data/dataset.json
       everything the viewer needs, with full provenance on every value.
-  basic/data/observations.{csv,json}, profiles.{csv,json}, sources.{csv,json}
+  basic/data/observations.{csv,json}, profiles.{csv,json}, sources.{csv,json}, currencies.{csv,json}
       flat tables for export and the dashboard: one row per value, each row
       carrying its publisher, URL, retrieval date and license, and its cross-checks
       (CSV in UTF-8 with BOM so it opens in Excel).
@@ -42,7 +42,7 @@ def build() -> dict:
               + [{**c, "group": "benchmark"} for c in master.get("benchmarks", [])])
 
     dataset = {
-        "countries": [{k: c.get(k) for k in ("code", "iso3", "name_ja", "name_en", "group")} for c in places],
+        "countries": [{k: c.get(k) for k in ("code", "iso3", "name_ja", "name_en", "group", "currency")} for c in places],
         "fields": [{k: f.get(k) for k in ("id", "phase", "type", "unit", "label_ja", "label_en")} for f in fields],
         "sources": {s["id"]: {k: v for k, v in s.items() if k != "id"} for s in sources},
         "profiles": {},
@@ -294,7 +294,10 @@ def flatten(dataset: dict) -> dict[str, list[dict]]:
     source_rows = [{"source_id": k, **{c: v.get(c) for c in (
         "publisher_ja", "publisher_en", "title_ja", "title_en", "type", "license", "terms_url",
         "citation_format", "auto_fetch", "storage_policy")}} for k, v in sources.items()]
-    return {"observations": observations, "profiles": profiles, "sources": source_rows}
+    # Currency of each place (ISO 4217 code; Japanese name as JETRO writes it), for the exchange-rate view.
+    currencies = [{**place(c["code"]), "currency_code": c["currency"]["code"], "currency_ja": c["currency"]["name_ja"],
+                   "currency_en": c["currency"]["name_en"]} for c in dataset["countries"] if c.get("currency")]
+    return {"observations": observations, "profiles": profiles, "sources": source_rows, "currencies": currencies}
 
 
 def write_table(name: str, rows: list[dict]) -> None:
