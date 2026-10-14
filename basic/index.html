@@ -833,12 +833,17 @@
       + '（公式為替レート、1米ドルあたりの現地通貨、年平均）。JETRO「概況・基本統計」の為替レート欄と照合し、差が±2%を超える場合と、JETRO の表記が年平均でない場合に注記します。' })) : null;
     const chgN = book.mark('chg', () => ({ text: '通貨の価値の変化：基準年の1米ドルあたりの額 ÷ 最新年の額 − 1。プラスは基準年より通貨高（ドル安）、マイナスは通貨安。' }));
     const table = $('fx-table');
-    const labels = headerMarks(table, [[], [], srcN ? [srcN] : [], [], [chgN], []]);
+    // The World Bank note goes in the header only when every shown latest value is a World Bank value;
+    // otherwise it is marked per cell so a supplemented (JETRO) value is not attributed to the World Bank.
+    const latestOf = (code) => d3.greatest(by.get(code).series, (r) => r.year);
+    const wbOnly = codes.every((code) => { const l = latestOf(code); return l ? !l.supplement : !all.some((r) => r.country_code === code); });
+    const labels = headerMarks(table, [[], [], srcN && wbOnly ? [srcN] : [], [], [chgN], []]);
     table.querySelector('tbody').replaceChildren(...codes.map((code) => {
       const c = cur.get(code);
       const { series, breaks, extra, lastWb } = by.get(code);
       const jetro = all.filter((r) => r.country_code === code && r.source_id !== FX_SOURCE);
       const last = d3.greatest(series, (r) => r.year) || d3.greatest(jetro, (r) => r.year), b = at(code, base);
+      const isWb = !!(srcN && last && !last.supplement && last.source_id === FX_SOURCE);
       const notes = [];
       if (last?.cross_check && last.cross_check_status !== 'match') notes.push('照合（' + last.year + '年）：' + last.cross_check);
       const bases = new Set(jetro.flatMap((r) => (r.note || '').split('; ')).filter((t) => t.startsWith('JETRO の表記：')).map((t) => t.split(' / ')[0].replace('JETRO の表記：', '')));
@@ -858,8 +863,8 @@
       const tr = document.createElement('tr');
       const country = DATA.observations.find((r) => r.country_code === code)?.country_ja || code;
       tr.append(cell(country), noteCell(c ? c.currency_ja + '（' + c.currency_code + '）' : '—', [], 'nowrap', labels[1]),
-        noteCell(last ? fmt(last.value, 'LCU/USD') + '（' + last.year + (last.supplement ? '、JETRO' : '') + '）' : '—', [...new Set(notes)].map(book.text), 'num nowrap', labels[2],
-          last && !last.supplement && series.length && srcN ? [srcN] : []),
+        noteCell(last ? fmt(last.value, 'LCU/USD') + '（' + last.year + (last.supplement ? '、JETRO' : '') + '）' : '—',
+          [...(isWb && !wbOnly ? [srcN] : []), ...[...new Set(notes)].map(book.text)], 'num nowrap', labels[2], isWb && wbOnly ? [srcN] : []),
         noteCell(b ? fmt(b.value, 'LCU/USD') + '（' + base + '）' : '—', [], 'num nowrap', labels[3]));
       const chg = last && b && last.segment === b.segment ? b.value / last.value - 1 : null;
       tr.append(noteCell(chg == null ? '—' : (chg >= 0 ? '+' : '') + num(chg * 100, 1) + '%', [], 'num nowrap', labels[4], chg == null ? [] : [chgN]),
