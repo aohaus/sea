@@ -218,38 +218,66 @@ def fetch_un(session, cities, iso3s) -> dict:
 
 
 def fetch_esri(session, cities) -> dict:
-    """Nominal GDP (million yen) and total population of designated cities, from the latest release."""
+    """Nominal GDP (million yen) and total population of designated cities.
+
+    Reads the latest two releases: some cells in a new release can be stored as
+    formulas without cached values, so each (city, year) takes the newest release
+    that has a number, and records which release that was. If the national total
+    row has no numbers, it is summed from the 47 prefectures."""
     import openpyxl
     squash = lambda t: re.sub(r"\s+", "", t)  # noqa: E731 - labels may be spaced out ("札　幌　市")
     wanted = {c["region"]["unit"] for c in cities if c.get("region") and c["region"]["source_id"] == "esri_kenmin"}
+    pref = re.compile(r"^(北海道|.+[都府県])$")
+
+    def read_table(y, name):
+        url = ESRI_TABLE.format(y=y, name=name)
+        ws = openpyxl.load_workbook(io.BytesIO(get(session, url).content), read_only=True, data_only=True).worksheets[0]
+        years, rows, prefs, non_numeric = None, [], {}, 0
+        for r in ws.iter_rows(values_only=True):
+            if years is None:
+                if r and isinstance(r[3], (int, float)) and 1990 < r[3] < 2100:
+                    years = [int(v) for v in r[3:] if isinstance(v, (int, float))]
+                continue
+            label = squash(r[1]) if isinstance(r[1], str) else ""
+            cells = list(zip(years, r[3:3 + len(years)]))
+            if label in wanted or label == "全県計":
+                for yr, v in cells:
+                    if isinstance(v, (int, float)):
+                        rows.append({"unit": label, "year": yr, "value": v, "release": y})
+                    else:
+                        non_numeric += 1
+            elif pref.match(label) and label != "全県計":
+                for yr, v in cells:
+                    if isinstance(v, (int, float)):
+                        prefs.setdefault(yr, []).append(v)
+        have_total = {r["year"] for r in rows if r["unit"] == "全県計"}
+        for yr, vs in prefs.items():
+            if yr not in have_total and len(vs) == 47:
+                rows.append({"unit": "全県計", "year": yr, "value": sum(vs), "release": y, "summed_from_prefectures": True})
+        return url, rows, non_numeric
+
+    releases, combined, urls, diagnostics = [], {"soukatu1": {}, "soukatu9": {}}, {}, {}
     for y in range(datetime.now(timezone.utc).year, 2019, -1):
+        if len(releases) == 2:
+            break
         try:
             get(session, ESRI_PAGE.format(y=y))
-        except Exception:  # noqa: BLE001 - release not published yet
+        except Exception:  # noqa: BLE001 - release not published
             continue
-        tables = {}
+        releases.append(y)
         for name in ("soukatu1", "soukatu9"):  # GDP (production, nominal); total population
-            url = ESRI_TABLE.format(y=y, name=name)
-            ws = openpyxl.load_workbook(io.BytesIO(get(session, url).content), read_only=True, data_only=True).worksheets[0]
-            years, rows, seen = None, [], []
-            for r in ws.iter_rows(values_only=True):
-                if years is None:
-                    if r and isinstance(r[3], (int, float)) and 1990 < r[3] < 2100:
-                        years = [int(v) for v in r[3:] if isinstance(v, (int, float))]
-                    continue
-                label = squash(r[1]) if isinstance(r[1], str) else ""
-                if label:
-                    seen.append(label)
-                if label in wanted or label == "全県計":
-                    rows += [{"unit": label, "year": yr, "value": v}
-                             for yr, v in zip(years, r[3:3 + len(years)]) if isinstance(v, (int, float))]
-            tables[name] = {"url": url, "rows": rows, "seen": seen}
-        return {"source_id": "esri_kenmin", "url": ESRI_PAGE.format(y=y), "retrieved_at": now(), "currency": "JPY",
-                "basis": "current", "release": f"{y}年度版", "urls": {k: v["url"] for k, v in tables.items()},
-                "rows": {"gdp_million_yen": tables["soukatu1"]["rows"], "population": tables["soukatu9"]["rows"]},
-                "missing_units": sorted(wanted - {r["unit"] for r in tables["soukatu1"]["rows"]}),
-                "labels_seen": tables["soukatu1"]["seen"][-40:]}
-    raise RuntimeError("no ESRI prefectural accounts release found")
+            url, rows, non_numeric = read_table(y, name)
+            urls.setdefault(name, url)
+            diagnostics[f"{y}/{name}"] = {"rows": len(rows), "non_numeric_cells": non_numeric}
+            for r in rows:
+                combined[name].setdefault((r["unit"], r["year"]), r)  # newest release first
+    if not releases:
+        raise RuntimeError("no ESRI prefectural accounts release found")
+    gdp, pop = list(combined["soukatu1"].values()), list(combined["soukatu9"].values())
+    return {"source_id": "esri_kenmin", "url": ESRI_PAGE.format(y=releases[0]), "retrieved_at": now(),
+            "currency": "JPY", "basis": "current", "release": f"{releases[0]}年度版", "releases": releases,
+            "urls": urls, "rows": {"gdp_million_yen": gdp, "population": pop},
+            "missing_units": sorted(wanted - {r["unit"] for r in gdp}), "diagnostics": diagnostics}
 
 
 def fetch_wb(session, iso3s) -> dict:
@@ -310,7 +338,8 @@ def build(cities, countries, sources, raw) -> list[dict]:
         for year, v in sorted(series.items()):
             row(city, "grdp_per_capita_local", currency, year, round(v, 2), src["source_id"], src["url"],
                 src["retrieved_at"], note=basis_note,
-                derivation=local_derivation or (None if basis == "current" else "州の実質GDP（2015年価格）÷ 州の人口（同じ統計局のデータ）"))
+                derivation=(local_derivation(year) if callable(local_derivation) else local_derivation)
+                or (None if basis == "current" else "州の実質GDP（2015年価格）÷ 州の人口（同じ統計局のデータ）"))
             fx = wb_value("PA.NUS.FCRF", iso3, year) if basis == "current" else None
             if fx:
                 row(city, "grdp_per_capita_usd", "USD", year, round(v / fx, 2), src["source_id"], src["url"],
@@ -372,11 +401,14 @@ def build(cities, countries, sources, raw) -> list[dict]:
             p = {r["year"]: r["value"] for r in pop if r["unit"] == unit}
             return {r["year"]: r["value"] * 1e6 / p[r["year"]] for r in gdp if r["unit"] == unit and p.get(r["year"])}
         national = per_capita("全県計")
+        release = {(r["unit"], r["year"]): r.get("release") for r in gdp}
         for city in cities:
             if (city.get("region") or {}).get("source_id") == "esri_kenmin":
-                add_regional(city, per_capita(city["region"]["unit"]), national, src, "JPY", "current",
+                unit = city["region"]["unit"]
+                add_regional(city, per_capita(unit), national, src, "JPY", "current",
                              "同じ表の全県計 ÷ 全県人口", extra_note="年度（4月〜翌3月）の値を暦年平均レートで換算",
-                             local_derivation="市内総生産（名目）÷ 市の総人口（内閣府「県民経済計算」総括表1・9）")
+                             local_derivation=lambda y, u=unit: (
+                                 f"市内総生産（名目）÷ 市の総人口（内閣府「県民経済計算」{release.get((u, y))}年度版 総括表1・9）"))
     # Singapore: the city is the country
     for city in cities:
         if (city.get("region") or {}).get("source_id") == "national" and wb:
@@ -445,7 +477,7 @@ def main() -> int:
                 saved = save_raw(source_id, job())
                 report[source_id] = {"fetch_status": "ok", "rows": len(saved["rows"]) if isinstance(saved["rows"], list)
                                      else {k: len(v) for k, v in saved["rows"].items()}}
-                for key in ("missing_units", "states", "largest_cities_by_country", "release", "labels_seen"):
+                for key in ("missing_units", "states", "largest_cities_by_country", "release", "diagnostics"):
                     if key in saved:
                         report[source_id][key] = saved[key]
             except Exception as exc:  # noqa: BLE001
