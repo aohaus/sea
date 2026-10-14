@@ -220,10 +220,12 @@ def fetch_un(session, cities, iso3s) -> dict:
 def fetch_esri(session, cities) -> dict:
     """Nominal GDP (million yen) and total population of designated cities.
 
-    Reads the latest two releases: some cells in a new release can be stored as
-    formulas without cached values, so each (city, year) takes the newest release
-    that has a number, and records which release that was. If the national total
-    row has no numbers, it is summed from the 47 prefectures."""
+    Reads every release back to 2020 and keeps each release's rows separately,
+    with the workbook URL: some cells in a new release are stored as formulas
+    without cached values, so the build takes, per city and year, the newest
+    release that has the numbers, and computes ratios only within one release.
+    If a release's national total row has no numbers, it is summed from the 47
+    prefectures of that same release."""
     import openpyxl
     squash = lambda t: re.sub(r"\s+", "", t)  # noqa: E731 - labels may be spaced out ("札　幌　市")
     wanted = {c["region"]["unit"] for c in cities if c.get("region") and c["region"]["source_id"] == "esri_kenmin"}
@@ -243,7 +245,7 @@ def fetch_esri(session, cities) -> dict:
             if label in wanted or label == "全県計":
                 for yr, v in cells:
                     if isinstance(v, (int, float)):
-                        rows.append({"unit": label, "year": yr, "value": v, "release": y})
+                        rows.append({"unit": label, "year": yr, "value": v, "release": y, "url": url})
                     else:
                         non_numeric += 1
             elif pref.match(label) and label != "全県計":
@@ -253,13 +255,12 @@ def fetch_esri(session, cities) -> dict:
         have_total = {r["year"] for r in rows if r["unit"] == "全県計"}
         for yr, vs in prefs.items():
             if yr not in have_total and len(vs) == 47:
-                rows.append({"unit": "全県計", "year": yr, "value": sum(vs), "release": y, "summed_from_prefectures": True})
+                rows.append({"unit": "全県計", "year": yr, "value": sum(vs), "release": y, "url": url,
+                             "summed_from_prefectures": True})
         return url, rows, non_numeric
 
-    releases, combined, urls, diagnostics = [], {"soukatu1": {}, "soukatu9": {}}, {}, {}
+    releases, combined, urls, diagnostics = [], {"soukatu1": [], "soukatu9": []}, {}, {}
     for y in range(datetime.now(timezone.utc).year, 2019, -1):
-        if len(releases) == 2:
-            break
         try:
             get(session, ESRI_PAGE.format(y=y))
         except Exception:  # noqa: BLE001 - release not published
@@ -269,11 +270,10 @@ def fetch_esri(session, cities) -> dict:
             url, rows, non_numeric = read_table(y, name)
             urls.setdefault(name, url)
             diagnostics[f"{y}/{name}"] = {"rows": len(rows), "non_numeric_cells": non_numeric}
-            for r in rows:
-                combined[name].setdefault((r["unit"], r["year"]), r)  # newest release first
+            combined[name] += rows
     if not releases:
         raise RuntimeError("no ESRI prefectural accounts release found")
-    gdp, pop = list(combined["soukatu1"].values()), list(combined["soukatu9"].values())
+    gdp, pop = combined["soukatu1"], combined["soukatu9"]
     return {"source_id": "esri_kenmin", "url": ESRI_PAGE.format(y=releases[0]), "retrieved_at": now(),
             "currency": "JPY", "basis": "current", "release": f"{releases[0]}年度版", "releases": releases,
             "urls": urls, "rows": {"gdp_million_yen": gdp, "population": pop},
@@ -395,20 +395,44 @@ def build(cities, countries, sources, raw) -> list[dict]:
     # Japan: designated cities, fiscal years; GDP (million yen) / population
     if "esri_kenmin" in raw:
         src = raw["esri_kenmin"]
-        gdp, pop = src["rows"]["gdp_million_yen"], src["rows"]["population"]
+        gdp = {(r.get("release"), r["unit"], r["year"]): r for r in src["rows"]["gdp_million_yen"]}
+        pop = {(r.get("release"), r["unit"], r["year"]): r for r in src["rows"]["population"]}
+        releases = sorted({k[0] for k in gdp}, reverse=True)
 
-        def per_capita(unit):
-            p = {r["year"]: r["value"] for r in pop if r["unit"] == unit}
-            return {r["year"]: r["value"] * 1e6 / p[r["year"]] for r in gdp if r["unit"] == unit and p.get(r["year"])}
-        national = per_capita("全県計")
-        release = {(r["unit"], r["year"]): r.get("release") for r in gdp}
+        def per_capita(rel, unit, year):
+            g, p = gdp.get((rel, unit, year)), pop.get((rel, unit, year))
+            return (g["value"] * 1e6 / p["value"], g, p) if g and p and p["value"] else None
+        note = "名目（当年価格）・年度（4月〜翌3月）の値を暦年平均レートで換算"
         for city in cities:
-            if (city.get("region") or {}).get("source_id") == "esri_kenmin":
-                unit = city["region"]["unit"]
-                add_regional(city, per_capita(unit), national, src, "JPY", "current",
-                             "同じ表の全県計 ÷ 全県人口", extra_note="年度（4月〜翌3月）の値を暦年平均レートで換算",
-                             local_derivation=lambda y, u=unit: (
-                                 f"市内総生産（名目）÷ 市の総人口（内閣府「県民経済計算」{release.get((u, y))}年度版 総括表1・9）"))
+            if (city.get("region") or {}).get("source_id") != "esri_kenmin":
+                continue
+            unit = city["region"]["unit"]
+            for year in sorted({k[2] for k in gdp if k[1] == unit}):
+                # Value: the newest release that has both GDP and population for this city and year.
+                local = next(((rel, pc) for rel in releases if (pc := per_capita(rel, unit, year))), None)
+                if local:
+                    rel, (v, g, p) = local
+                    table = f"内閣府「県民経済計算」{rel}年度版 総括表1・9"
+                    row(city, "grdp_per_capita_local", "JPY", year, round(v, 2), "esri_kenmin", g["url"],
+                        src["retrieved_at"], note=note, url_population=p["url"],
+                        derivation=f"市内総生産（名目）÷ 市の総人口（{table}）")
+                    fx = wb_value("PA.NUS.FCRF", "JPN", year)
+                    if fx:
+                        row(city, "grdp_per_capita_usd", "USD", year, round(v / fx, 2), "esri_kenmin", g["url"],
+                            src["retrieved_at"], note=note, url_population=p["url"], fx_rate=fx,
+                            fx_url=wb_url("PA.NUS.FCRF"),
+                            derivation=f"{v:,.0f} JPY（{table}）÷ 世界銀行 公式為替レート PA.NUS.FCRF {year}年平均 {fx:,.4f} JPY/USD")
+                # Ratio: city and national total from the same release only.
+                for rel in releases:
+                    city_pc, nat_pc = per_capita(rel, unit, year), per_capita(rel, "全県計", year)
+                    if city_pc and nat_pc:
+                        nat_how = "47都道府県の合計" if nat_pc[1].get("summed_from_prefectures") else "全県計"
+                        row(city, "grdp_per_capita_ratio", "ratio", year, round(city_pc[0] / nat_pc[0], 3),
+                            "esri_kenmin", city_pc[1]["url"], src["retrieved_at"], note=note,
+                            url_population=city_pc[2]["url"],
+                            derivation=f"{city_pc[0]:,.0f} ÷ 全国 {nat_pc[0]:,.0f} JPY（どちらも内閣府「県民経済計算」"
+                                       f"{rel}年度版。全国は{nat_how}の総生産 ÷ 総人口）")
+                        break
     # Singapore: the city is the country
     for city in cities:
         if (city.get("region") or {}).get("source_id") == "national" and wb:
