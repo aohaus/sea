@@ -176,11 +176,17 @@
     <p class="note">値は原文の表記のままです。出所と照合結果は、共通のものを表の下の備考にまとめています（番号は備考の番号）。</p>
     <div class="tablebox" id="profile-box">
       <table id="profile-table">
-        <thead><tr><th>国</th><th>首都</th><th class="num">面積（km²）</th><th>公用語</th><th>宗教</th><th>政体</th><th>元首</th><th>出所</th></tr></thead>
+        <thead><tr><th>国</th><th>首都</th><th class="num">面積（km²）</th><th class="num">総人口</th><th>公用語</th><th>宗教</th><th>政体</th><th>元首</th><th>出所</th></tr></thead>
         <tbody></tbody>
       </table>
     </div>
     <ol class="notes" id="profile-notes" aria-label="備考"></ol>
+  </section>
+
+  <section class="card">
+    <h2 id="pop-trend-title">総人口：推移<span class="en">Population trend</span></h2>
+    <p class="note" id="pop-trend-note"></p>
+    <div class="chart" id="pop-trend"></div>
   </section>
 
   <section class="card">
@@ -399,6 +405,7 @@
     const trendCodes = selected.concat(withJapan ? ['jp'] : []);
     drawTrend($('trend'), srcRows.filter((r) => trendCodes.includes(r.country_code)), unit, year);
     renderTables(selected);
+    renderPopulationTrend(trendCodes);
     renderCities(selected.concat(withJapan ? ['jp'] : []));
   }
 
@@ -572,7 +579,7 @@
   const cell = (text, cls) => { const td = document.createElement('td'); if (cls) td.className = cls; td.textContent = text ?? ''; return td; };
   const FIG = (id) => id.replace('asean_', 'ASEAN ').replace('japan_', '日本 ').replace('_gdp_per_capita', ' 一人当たりGDP').replace('gdp_per_capita', '一人当たりGDP').replace('population', '人口').replace('gdp', '名目GDP').replace('area', '面積');
 
-  const PROFILE_FIELDS = ['capital', 'area', 'official_language', 'religion', 'political_system', 'head_of_state'];
+  const PROFILE_FIELDS = ['capital', 'area', 'population', 'official_language', 'religion', 'political_system', 'head_of_state'];
   const SHORT = { jetro_basic: 'JETRO', mofa_basic: '外務省' };
   const METHOD = { auto: '自動取得', manual_pdf: 'ページを PDF 保存して手動で取り込み' };
 
@@ -598,6 +605,32 @@
       by.set(r.country_code, row);
     }
     return [...by.values()];
+  }
+
+  // Total population: the latest World Bank value per country, with its cross-check against JETRO/MOFA noted only when
+  // the two differ by more than the "match" band (±2%).
+  const POP_SOURCE = 'worldbank_wdi';
+  const sci = (t) => t.replace(/\d+(?:\.\d+)?e\+\d+/g, (m) => fmt(Number(m), 'persons'));
+  function addPopulation(wide, observations) {
+    const pop = observations.filter((r) => r.indicator_id === 'population' && r.source_id === POP_SOURCE);
+    for (const row of wide) {
+      const latest = d3.greatest(pop.filter((r) => r.country_code === row.country_code), (r) => r.year);
+      if (!latest) continue;
+      const notes = ['総人口：' + latest.source_publisher_ja + '「' + latest.source_title_ja + '」' + (latest.indicator_code ? ' ' + latest.indicator_code : '')
+        + '、' + latest.year + '年（各国の最新年）。他の出所との差が±2%を超える国だけ照合結果を注記します。'];
+      if (latest.cross_check && latest.cross_check_status !== 'match') notes.push('総人口の照合（' + latest.year + '年）：' + sci(latest.cross_check));
+      row.fields.population = { value: Number(latest.value), notes };
+    }
+    return wide;
+  }
+
+  function renderPopulationTrend(codes) {
+    const rows = DATA.observations.filter((r) => r.indicator_id === 'population' && r.source_id === POP_SOURCE && codes.includes(r.country_code));
+    const info = rows[0];
+    $('pop-trend-note').textContent = !info ? '国を選んでください。'
+      : '出所：' + info.source_publisher_ja + '「' + info.source_title_ja + '」 ' + (info.indicator_code || '') + (info.source_last_updated ? '、更新 ' + info.source_last_updated : '')
+        + '。線の端に国名を表示します。' + (codes.includes('jp') ? '日本は比較用の灰色の線です。' : '');
+    drawTrend($('pop-trend'), rows, 'persons', d3.max(rows, (r) => r.year));
   }
 
   function renderTables(selected) {
@@ -643,8 +676,9 @@
       tr.append(cell(r.country_ja));
       for (const f of PROFILE_FIELDS) {
         const v = r.fields[f];
-        const text = !v ? '' : f === 'area' ? (Number.isFinite(v.value) ? v.value.toLocaleString('ja-JP') : '') : v.value;
-        const cls = { area: 'num nowrap', capital: 'nowrap', political_system: 'wide' }[f] || '';
+        const text = !v ? '' : f === 'area' ? (Number.isFinite(v.value) ? v.value.toLocaleString('ja-JP') : '')
+          : f === 'population' ? fmt(v.value, 'persons') : v.value;
+        const cls = { area: 'num nowrap', population: 'num nowrap', capital: 'nowrap', political_system: 'wide' }[f] || '';
         tr.append(withMarks(text, v ? v.notes.filter((t) => !shared[f].includes(t)).map(noteMark) : [], cls, labels[PROFILE_FIELDS.indexOf(f) + 1],
           text ? shared[f].map(noteMark) : []));
       }
@@ -697,7 +731,7 @@
   Promise.all(['observations', 'profiles', 'sources', 'validation'].map(load)).then(([observations, profiles, sources, validation]) => {
     DATA = {
       observations: observations.map((r) => ({ ...r, year: Number(r.year), value: Number(r.value) })),
-      profileWide: profileWide(profiles), sources, validation,
+      profileWide: addPopulation(profileWide(profiles), observations), sources, validation,
     };
     const latest = d3.max(observations, (r) => r.retrieved_at);
     $('status').textContent = latest ? 'データ取得日 ' + latest.slice(0, 10) : '';
