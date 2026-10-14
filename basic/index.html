@@ -69,6 +69,30 @@
   th { position: sticky; top: 0; background: var(--panel); font-weight: 500; white-space: nowrap; }
   td.num, th.num { text-align: right; }
   .src { color: var(--muted); }
+  /* Profile: shared sources and checks go to a numbered notes list under the table; cells carry only a marker. */
+  sup.fn { color: var(--accent); font-size: .7rem; margin-left: .15rem; font-weight: 500; }
+  #profile-table th:first-child, #profile-table td:first-child { position: sticky; left: 0; background: var(--panel); white-space: nowrap; }
+  #profile-table th:first-child { z-index: 1; }
+  #profile-table td.nowrap { white-space: nowrap; }
+  #profile-table td.wide { min-width: 7em; }
+  sup.fn.hdr { display: none; }
+  /* Phone: one card per country, field label on the left; header markers move into the cells. */
+  @media (max-width: 640px) {
+    #profile-box { max-height: none; overflow: visible; }
+    #profile-table thead { display: none; }
+    #profile-table, #profile-table tbody, #profile-table tr, #profile-table td { display: block; }
+    #profile-table tr { padding: .6rem 0; border-bottom: 1px solid var(--line); }
+    #profile-table td { border: none; padding: .12rem 0; display: grid; grid-template-columns: 5em 1fr; gap: .6rem; text-align: left; white-space: normal; }
+    #profile-table td::before { content: attr(data-label); color: var(--muted); font-size: .78rem; }
+    #profile-table td:first-child { position: static; display: block; font-weight: 500; font-size: .95rem; padding-bottom: .25rem; }
+    #profile-table td:first-child::before { content: none; }
+    #profile-table td.empty { display: none; }
+    sup.fn.hdr { display: inline; }
+  }
+  .notes { margin: 0; padding-left: 0; list-style: none; display: grid; gap: 6px; font-size: .8rem; color: var(--muted); line-height: 1.55; }
+  .notes li { display: grid; grid-template-columns: 2.2rem 1fr; }
+  .notes .mk { color: var(--accent); font-weight: 500; }
+  .notes a { color: var(--accent); }
   .pill { display: inline-block; border-radius: 999px; padding: .05rem .55rem; font-size: .75rem; border: 1px solid currentColor; white-space: nowrap; }
   .pill.match { color: var(--ok); } .pill.close { color: var(--warn); } .pill.differs { color: var(--bad); } .pill.no_data { color: var(--muted); }
   .downloads { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -149,13 +173,14 @@
 
   <section class="card">
     <h2>基本情報<span class="en">Country profile</span></h2>
-    <p class="note">JETRO「概況・基本統計」と外務省「基礎データ」から。値は原文の表記のままです。</p>
-    <div class="tablebox">
+    <p class="note">値は原文の表記のままです。出所と照合結果は、共通のものを表の下の備考にまとめています（番号は備考の番号）。</p>
+    <div class="tablebox" id="profile-box">
       <table id="profile-table">
-        <thead><tr><th>国</th><th>首都</th><th class="num">面積（km²）</th><th>公用語</th><th>宗教</th><th>政体</th><th>元首</th><th>出所</th><th>照合</th></tr></thead>
+        <thead><tr><th>国</th><th>首都</th><th class="num">面積（km²）</th><th>公用語</th><th>宗教</th><th>政体</th><th>元首</th><th>出所</th></tr></thead>
         <tbody></tbody>
       </table>
     </div>
+    <ol class="notes" id="profile-notes" aria-label="備考"></ol>
   </section>
 
   <section class="card">
@@ -547,14 +572,28 @@
   const cell = (text, cls) => { const td = document.createElement('td'); if (cls) td.className = cls; td.textContent = text ?? ''; return td; };
   const FIG = (id) => id.replace('asean_', 'ASEAN ').replace('japan_', '日本 ').replace('_gdp_per_capita', ' 一人当たりGDP').replace('gdp_per_capita', '一人当たりGDP').replace('population', '人口').replace('gdp', '名目GDP').replace('area', '面積');
 
+  const PROFILE_FIELDS = ['capital', 'area', 'official_language', 'religion', 'political_system', 'head_of_state'];
+  const SHORT = { jetro_basic: 'JETRO', mofa_basic: '外務省' };
+  const METHOD = { auto: '自動取得', manual_pdf: 'ページを PDF 保存して手動で取り込み' };
+
+  // One row per country: the first value of each field plus the notes attached to it (original statistic, extraction
+  // note, cross-check). The page itself (publisher, URL, page date) is kept per country for the shared source notes.
   function profileWide(profiles) {
     const by = new Map();
     for (const r of profiles) {
-      const row = by.get(r.country_code) || { country_code: r.country_code, country_ja: r.country_ja, sources: [] };
-      if (row[r.field_id] == null) row[r.field_id] = r.field_id === 'area' ? Number(r.value) : r.value;
-      const label = r.source_publisher_ja + (r.page_last_updated ? '（' + r.page_last_updated + '）' : '');
-      if (!row.sources.includes(label)) row.sources.push(label);
-      if (r.cross_check && r.field_id === 'area') row.checks = '面積：' + r.cross_check;
+      const row = by.get(r.country_code) || { country_code: r.country_code, country_ja: r.country_ja, fields: {}, pages: [] };
+      if (PROFILE_FIELDS.includes(r.field_id) && !row.fields[r.field_id]) {
+        const notes = [];
+        // Skip the original statistic when the cell text already names it.
+        if (r.original_source && !(r.value_text || r.value || '').includes(r.original_source)) notes.push('元統計：' + r.original_source + (r.as_of ? '（' + r.as_of + '年）' : ''));
+        if (r.note && r.note.startsWith('「言語」欄')) notes.push('公用語：' + r.note.split(' / ')[0] + '。');
+        if (r.cross_check) notes.push(r.field_ja + 'の照合：' + r.cross_check);
+        row.fields[r.field_id] = { value: r.field_id === 'area' ? Number(r.value) : r.value, notes };
+      }
+      if (!row.pages.some((p) => p.source_id === r.source_id)) {
+        row.pages.push({ source_id: r.source_id, label: r.source_publisher_ja + (r.source_title_ja.includes('「') ? ' ' + r.source_title_ja : '「' + r.source_title_ja + '」'),
+          method: r.retrieval_method, url: r.url, date: r.page_last_updated });
+      }
       by.set(r.country_code, row);
     }
     return [...by.values()];
@@ -562,11 +601,70 @@
 
   function renderTables(selected) {
     const sel = new Set(selected);
-    document.querySelector('#profile-table tbody').replaceChildren(...DATA.profileWide.filter((r) => sel.has(r.country_code)).map((r) => {
+    const rows = DATA.profileWide.filter((r) => sel.has(r.country_code));
+    // Number each distinct note once, in order of first appearance: sources first, then cell notes.
+    const notes = new Map();
+    const mark = (key, make) => { if (!notes.has(key)) notes.set(key, { n: notes.size + 1, ...make() }); return notes.get(key).n; };
+    const srcKey = (p) => 'src:' + p.source_id + ':' + p.method;
+    for (const r of rows) for (const p of r.pages) mark(srcKey(p), () => ({ source: p, countries: [] }));
+    for (const r of rows) for (const p of r.pages) notes.get(srcKey(p)).countries.push({ name: r.country_ja, url: p.url, date: p.date });
+    const addMarks = (el, nums, cls = 'fn') => {
+      for (const n of nums) { const s = document.createElement('sup'); s.className = cls; s.textContent = '[' + n + ']'; el.append(s); }
+      return el;
+    };
+    // Cell content sits in one span so the phone layout can grid it next to the field label (data-label).
+    const withMarks = (text, nums, cls, label, hdrNums = []) => {
+      const td = document.createElement('td');
+      td.className = [cls, text === '' || text == null ? 'empty' : ''].filter(Boolean).join(' ');
+      td.dataset.label = label;
+      const span = document.createElement('span');
+      span.textContent = text ?? '';
+      addMarks(span, hdrNums, 'fn hdr');
+      td.append(addMarks(span, nums));
+      return td;
+    };
+    const noteMark = (t) => mark('note:' + t, () => ({ text: t }));
+    // A note shared by every shown row of a column (e.g. the ASEAN-wide area check) is marked once, in the header.
+    const shared = {};
+    for (const f of PROFILE_FIELDS) {
+      const lists = rows.map((r) => r.fields[f]?.notes || []);
+      shared[f] = rows.length > 1 ? lists[0].filter((t) => lists.every((l) => l.includes(t))) : [];
+    }
+    const head = document.querySelectorAll('#profile-table thead th');
+    const labels = [...head].map((th) => th.firstChild.textContent);
+    PROFILE_FIELDS.forEach((f, i) => {
+      const th = head[i + 1];
+      th.querySelectorAll('sup.fn').forEach((x) => x.remove());
+      addMarks(th, shared[f].map(noteMark));
+    });
+    document.querySelector('#profile-table tbody').replaceChildren(...rows.map((r) => {
       const tr = document.createElement('tr');
-      tr.append(cell(r.country_ja), cell(r.capital), cell(r.area != null ? Number(r.area).toLocaleString('ja-JP') : '', 'num'),
-        cell(r.official_language), cell(r.religion), cell(r.political_system), cell(r.head_of_state), cell(r.sources.join('、'), 'src'), cell(r.checks || '', 'src'));
+      tr.append(cell(r.country_ja));
+      for (const f of PROFILE_FIELDS) {
+        const v = r.fields[f];
+        const text = !v ? '' : f === 'area' ? (Number.isFinite(v.value) ? v.value.toLocaleString('ja-JP') : '') : v.value;
+        const cls = { area: 'num nowrap', capital: 'nowrap', political_system: 'wide' }[f] || '';
+        tr.append(withMarks(text, v ? v.notes.filter((t) => !shared[f].includes(t)).map(noteMark) : [], cls, labels[PROFILE_FIELDS.indexOf(f) + 1],
+          text ? shared[f].map(noteMark) : []));
+      }
+      const last = labels.length - 1;
+      tr.append(withMarks(r.pages.map((p) => SHORT[p.source_id] || p.source_id).join('・'), r.pages.map((p) => notes.get(srcKey(p)).n), 'src', labels[last]));
       return tr;
+    }));
+    document.getElementById('profile-notes').replaceChildren(...[...notes.values()].map((x) => {
+      const li = document.createElement('li');
+      const mk = document.createElement('span'); mk.className = 'mk'; mk.textContent = '[' + x.n + ']';
+      const body = document.createElement('span');
+      if (x.source) {
+        body.append('出所：' + x.source.label + '（' + (METHOD[x.source.method] || x.source.method) + '）。ページ更新日：');
+        x.countries.forEach((c, i) => {
+          if (i) body.append('、');
+          const a = document.createElement('a'); a.href = c.url; a.textContent = c.name; a.target = '_blank'; a.rel = 'noopener';
+          body.append(a, ' ' + (c.date || '—'));
+        });
+      } else body.textContent = x.text;
+      li.append(mk, body);
+      return li;
     }));
   }
 
