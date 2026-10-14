@@ -350,6 +350,20 @@
       "license": null,
       "license_note": "利用条件は未確認 / terms not yet verified",
       "storage_policy": "抽出した値・URL・取得日のみ保存 / Extracted values, URL and retrieval date only."
+    },
+    "dosm_ssr": {
+      "publisher_ja": "マレーシア統計局（DOSM）",
+      "publisher_en": "Department of Statistics Malaysia (DOSM)",
+      "title_ja": "State Socioeconomic Report（州別社会経済報告）プレスリリース",
+      "title_en": "State Socioeconomic Report (press release)",
+      "url_template": null,
+      "type": "pdf",
+      "language": "en",
+      "terms_url": "https://www.dosm.gov.my/",
+      "license": null,
+      "license_note": "Copyright © Department of Statistics Malaysia. All Rights Reserved（本文中の数値のみ抽出）",
+      "retrieval": "手動（ユーザー提供の PDF を scripts/import_dosm_ssr.py で取り込み）",
+      "storage_policy": "抽出した値と引用文・公表日のみ保存 / Extracted values with the quoted sentence and publication date only."
     }
   },
   "profiles": {

@@ -406,7 +406,7 @@
     const data = [...pick.values()].sort((a, b) => b.value - a.value);
     const unit = ind === 'grdp_per_capita_local' ? 'local' : CITY_UNIT[ind];
     const noteByInd = {
-      grdp_per_capita_usd: '現地通貨の値を世界銀行の公式為替レート（年平均）で米ドルに換算。マレーシアは実質値のみ公表のため含みません。日本の政令指定都市は年度値を暦年平均レートで換算。',
+      grdp_per_capita_usd: '現地通貨の値を世界銀行の公式為替レート（年平均）で米ドルに換算。マレーシアは統計局が名目値を公表している2025年のクアラルンプール・ペナンのみ（ジョホールは未取得）。日本の政令指定都市は年度値を暦年平均レートで換算。',
       grdp_per_capita_ratio: '一人当たり地域GDP ÷ その国の一人当たりGDP。1.0（点線）が全国平均。マレーシアは実質（2015年価格）での比。',
       grdp_per_capita_local: '各国通貨のため、国をまたいだ大小の比較はできません。日本は円（年度値）。',
       city_population: '国連 WUP 2025 の都市域人口。「各都市の最新年」は2025年（推計）です。',

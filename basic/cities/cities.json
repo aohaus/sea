@@ -1,5 +1,5 @@
 {
- "_comment": "主要都市のマスタ / Major cities. region は地域別GDPの出所上の単位（都市そのものと一致しない場合は unit_note に記す）。un_names は国連 WUP 2025（DEGURBA の都市）で照合する名前の候補。 日本は政令指定都市20市（比較用）。un_names が空の市は国連の都市域で大都市と一体のため人口なし。gdp_note は地域GDP がない理由。",
+ "_comment": "主要都市のマスタ / Major cities. region は地域別GDPの出所上の単位（都市そのものと一致しない場合は unit_note に記す）。un_names は国連 WUP 2025（DEGURBA の都市）で照合する名前の候補。 日本は政令指定都市20市（比較用）。un_names が空の市は国連の都市域で大都市と一体のため人口なし。gdp_note は地域GDP がない理由。 regions_extra は同じ都市の別の出所（例：マレーシア統計局の名目値、単位が region と異なる場合あり）。",
  "cities": [
   {
    "id": "my-kul",
@@ -13,7 +13,14 @@
     "source_id": "dosm_state_gdp",
     "unit": "W.P. Kuala Lumpur",
     "unit_note": "連邦直轄領クアラルンプール（統計局の注記により、プトラジャヤの値を含む）"
-   }
+   },
+   "regions_extra": [
+    {
+     "source_id": "dosm_ssr",
+     "unit": "W.P. Kuala Lumpur",
+     "unit_note": "連邦直轄領クアラルンプール（プトラジャヤを含まない）"
+    }
+   ]
   },
   {
    "id": "my-pen",
@@ -27,7 +34,14 @@
     "source_id": "dosm_state_gdp",
     "unit": "Pulau Pinang",
     "unit_note": "ペナン州全体"
-   }
+   },
+   "regions_extra": [
+    {
+     "source_id": "dosm_ssr",
+     "unit": "Pulau Pinang",
+     "unit_note": "ペナン州全体"
+    }
+   ]
   },
   {
    "id": "my-jhb",

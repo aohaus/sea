@@ -1,0 +1,55 @@
+{
+  "source_id": "dosm_ssr",
+  "url": null,
+  "url_note": "ユーザーが PDF で提供。公開ページの URL は未記録 / Provided by the user as a PDF; page URL not recorded.",
+  "retrieved_at": "2026-10-14T22:23:14+08:00",
+  "retrieval_method": "manual_pdf",
+  "publication": "State Socioeconomic Report, 2025",
+  "published": "2026-08-05",
+  "currency": "MYR",
+  "basis": "current",
+  "rows": [
+    {
+      "unit": "Malaysia",
+      "year": 2025,
+      "value": 59186,
+      "quote": "In terms of GDP per capita, six states recorded values above the national level (RM59,186), namely W.P. Kuala Lumpur (RM144,827), W.P. Putrajaya (RM126,431), W.P. Labuan (RM88,779), Pulau Pinang (RM80,540), Sarawak (RM73,784) and Selangor (RM70,345)."
+    },
+    {
+      "unit": "W.P. Kuala Lumpur",
+      "year": 2025,
+      "value": 144827,
+      "quote": "In terms of GDP per capita, six states recorded values above the national level (RM59,186), namely W.P. Kuala Lumpur (RM144,827), W.P. Putrajaya (RM126,431), W.P. Labuan (RM88,779), Pulau Pinang (RM80,540), Sarawak (RM73,784) and Selangor (RM70,345)."
+    },
+    {
+      "unit": "W.P. Putrajaya",
+      "year": 2025,
+      "value": 126431,
+      "quote": "In terms of GDP per capita, six states recorded values above the national level (RM59,186), namely W.P. Kuala Lumpur (RM144,827), W.P. Putrajaya (RM126,431), W.P. Labuan (RM88,779), Pulau Pinang (RM80,540), Sarawak (RM73,784) and Selangor (RM70,345)."
+    },
+    {
+      "unit": "W.P. Labuan",
+      "year": 2025,
+      "value": 88779,
+      "quote": "In terms of GDP per capita, six states recorded values above the national level (RM59,186), namely W.P. Kuala Lumpur (RM144,827), W.P. Putrajaya (RM126,431), W.P. Labuan (RM88,779), Pulau Pinang (RM80,540), Sarawak (RM73,784) and Selangor (RM70,345)."
+    },
+    {
+      "unit": "Pulau Pinang",
+      "year": 2025,
+      "value": 80540,
+      "quote": "In terms of GDP per capita, six states recorded values above the national level (RM59,186), namely W.P. Kuala Lumpur (RM144,827), W.P. Putrajaya (RM126,431), W.P. Labuan (RM88,779), Pulau Pinang (RM80,540), Sarawak (RM73,784) and Selangor (RM70,345)."
+    },
+    {
+      "unit": "Sarawak",
+      "year": 2025,
+      "value": 73784,
+      "quote": "In terms of GDP per capita, six states recorded values above the national level (RM59,186), namely W.P. Kuala Lumpur (RM144,827), W.P. Putrajaya (RM126,431), W.P. Labuan (RM88,779), Pulau Pinang (RM80,540), Sarawak (RM73,784) and Selangor (RM70,345)."
+    },
+    {
+      "unit": "Selangor",
+      "year": 2025,
+      "value": 70345,
+      "quote": "In terms of GDP per capita, six states recorded values above the national level (RM59,186), namely W.P. Kuala Lumpur (RM144,827), W.P. Putrajaya (RM126,431), W.P. Labuan (RM88,779), Pulau Pinang (RM80,540), Sarawak (RM73,784) and Selangor (RM70,345)."
+    }
+  ]
+}
