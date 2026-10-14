@@ -103,9 +103,13 @@ python scripts/build_dataset.py
 | 消費者物価上昇率 | % | FP.CPI.TOTL.ZG | PCPIPCH | 消費者物価上昇率 |
 | 失業率 | % | SL.UEM.TOTL.ZS | LUR | 失業率 |
 | 対内直接投資（純流入） | USD | BX.KLT.DINV.CD.WD | ― | ― |
+| 為替レート（1米ドルあたりの現地通貨、年平均） | LCU/USD | PA.NUS.FCRF | ― | 為替レート |
 
 - 値は基本単位（USD・人・%）に換算します。出所ごとに別の系列として保存し、1つの値にまとめません（出所間の差がそのまま見えるようにするため）。
 - ミャンマーの JETRO 値は年度（例：2024/25年度）です。`year` は開始年とし、`note` に年度である旨を記録します。
+- 為替レートは世界銀行の公式為替レート（PA.NUS.FCRF）を主な系列とし、JETRO「概況・基本統計」の為替レート欄を照合に使います。JETRO の表記が年平均でないもの（インドネシアは「期末平均」、ミャンマーは「公定レート」・年度）は、各値の `note` に記録します。
+- 通貨は `countries.json` の `currency`（ISO 4217 の通貨コードと日英名）で、`data/currencies.{csv,json}` に書き出します。東ティモールは米ドルを法定通貨としています。
+- 民間の金融情報サイト（Trading Economics・Investing.com・Yahoo Finance など）は、利用規約でデータの再配布や自動取得を制限しているため使いません。
 - **IMF は自動取得を止めています**（`sources.json` の `auto_fetch: false`）。IMF の利用条件が、自動技術による一括ダウンロードと商用再利用に IMF の許可を求めているためです。許可を得たら有効にできます。
 
 ## 主要都市 / Major cities

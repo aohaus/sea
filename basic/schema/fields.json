@@ -214,6 +214,18 @@
         "対内直接投資"
       ],
       "worldbank": "BX.KLT.DINV.CD.WD"
+    },
+    {
+      "id": "exchange_rate",
+      "phase": 2,
+      "type": "number",
+      "unit": "LCU/USD",
+      "label_ja": "為替レート（1米ドルあたりの現地通貨、年平均）",
+      "label_en": "Exchange rate (local currency per USD, annual average)",
+      "labels": [
+        "為替レート"
+      ],
+      "worldbank": "PA.NUS.FCRF"
     }
   ]
 }

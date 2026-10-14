@@ -191,6 +191,29 @@
   </section>
 
   <section class="card">
+    <h2>通貨と為替レート（対米ドル）<span class="en">Currencies and exchange rates against the US dollar</span></h2>
+    <p class="note">各国通貨の対米ドルの動きを、上で選んだ国について比べます。「通貨の価値（指数）」は基準年の対米ドルの価値を100とした値で、100を上回ると基準年より通貨高（ドル安）、下回ると通貨安です。「為替レート（対数目盛）」は1米ドルあたりの現地通貨の額で、桁の違う通貨を同じ図で比べるために縦軸を対数にしています（上に行くほど通貨安）。</p>
+    <div class="row">
+      <label class="label" for="fx-mode">表示</label>
+      <select id="fx-mode">
+        <option value="index">通貨の価値（指数、基準年＝100）</option>
+        <option value="rate">為替レート（1米ドルあたり、対数目盛）</option>
+      </select>
+      <label class="label" for="fx-base">基準年</label>
+      <select id="fx-base"></select>
+    </div>
+    <p class="note" id="fx-note"></p>
+    <div class="chart" id="fx-trend"></div>
+    <div class="tablebox cards-box">
+      <table id="fx-table" class="cards">
+        <thead><tr><th>国</th><th>通貨</th><th class="num" data-short="最新">1米ドルあたり（最新）</th><th class="num" data-short="基準年">1米ドルあたり（基準年）</th><th class="num" data-short="価値の変化">通貨の価値の変化</th><th>出所</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <ol class="notes" id="fx-notes" aria-label="備考"></ol>
+  </section>
+
+  <section class="card">
     <h2>参照値との照合<span class="en">Check against ASEAN-Japan Centre figures</span></h2>
     <p class="note">日本アセアンセンター「ひと目で分かる日ASEAN基本情報」（2024年推計）と、このデータから計算した値の差です。±2%以内を一致、±10%以内を近い、それ以上を差ありとしています。参照値の多くは IMF ベース、こちらは主に世界銀行ベースのため、出所の違いによる差を含みます。</p>
     <div class="tablebox">
@@ -217,6 +240,7 @@
       <a href="data/validation.csv" download>照合結果（CSV）</a>
       <a href="data/city_observations.csv" download>主要都市（CSV）</a>
       <a href="data/city_list.csv" download>都市一覧（CSV）</a>
+      <a href="data/currencies.csv" download>通貨（CSV）</a>
       <a href="data/sources.csv" download>出所台帳（CSV）</a>
       <a href="data/dataset.json" download>統合データ（JSON）</a>
     </div>
@@ -241,7 +265,7 @@
 
   // ---------- state (kept in this browser only) ----------
   const DEFAULTS = { countries: ASEAN10, japan: true, indicator: 'gdp_per_capita', source: 'worldbank_wdi', year: null,
-    cityIndicator: 'grdp_per_capita_usd', cityYear: 'latest' };
+    cityIndicator: 'grdp_per_capita_usd', cityYear: 'latest', fxMode: 'index', fxBase: 2005 };
   let state = { ...DEFAULTS };
   try { state = { ...DEFAULTS, ...JSON.parse(localStorage.getItem('asean-explorer') || '{}') }; } catch (e) { /* storage unavailable */ }
   const set = (patch) => {
@@ -258,6 +282,7 @@
     if (unit === 'persons') return a >= 1e8 ? num(v / 1e8, 2) + '億人' : a >= 1e4 ? num(v / 1e4, 0) + '万人' : num(v, 0) + '人';
     if (unit === 'USD') return a >= 1e12 ? num(v / 1e12, 2) + '兆ドル' : a >= 1e8 ? num(v / 1e8, 0) + '億ドル' : a >= 1e4 ? num(v / 1e4, 1) + '万ドル' : num(v, 0) + 'ドル';
     if (unit === '%') return num(v, 1) + '%';
+    if (unit === 'LCU/USD') return num(v, a < 10 ? 4 : a < 1000 ? 2 : 0);
     return num(v, 1);
   }
   function fmtAxis(v, unit) {
@@ -265,6 +290,8 @@
     if (unit === 'persons') return a >= 1e8 ? num(v / 1e8, 1) + '億' : a >= 1e4 ? num(v / 1e4, 0) + '万' : num(v, 0);
     if (unit === 'USD') return a >= 1e12 ? num(v / 1e12, 1) + '兆' : a >= 1e8 ? num(v / 1e8, 0) + '億' : a >= 1e4 ? num(v / 1e4, 1) + '万' : num(v, 0);
     if (unit === '%') return num(v, 2) + '%';  // small ranges need decimals (e.g. -0.05%)
+    if (unit === 'LCU/USD') return a >= 1e4 ? num(v / 1e4, 1) + '万' : num(v, a < 10 ? 2 : 0);
+    if (unit === 'index') return num(v, 0);
     return num(v, 1);
   }
   // Text width at 12px: full-width characters ~12px, others ~7px.
@@ -308,6 +335,8 @@
   $('year').addEventListener('change', (e) => set({ year: Number(e.target.value) }));
   $('city-indicator').addEventListener('change', (e) => set({ cityIndicator: e.target.value, cityYear: 'latest' }));
   $('city-year').addEventListener('change', (e) => set({ cityYear: e.target.value === 'latest' ? 'latest' : Number(e.target.value) }));
+  $('fx-mode').addEventListener('change', (e) => set({ fxMode: e.target.value }));
+  $('fx-base').addEventListener('change', (e) => set({ fxBase: Number(e.target.value) }));
 
   // ---------- render ----------
   function render() {
@@ -325,7 +354,8 @@
       return b;
     }));
 
-    const indicators = [...new Map(rows.map((r) => [r.indicator_id, r])).values()];
+    // The exchange rate has its own section: amounts in different currencies cannot be summed or ranked.
+    const indicators = [...new Map(rows.filter((r) => r.indicator_id !== 'exchange_rate').map((r) => [r.indicator_id, r])).values()];
     const ind = indicators.some((r) => r.indicator_id === state.indicator) ? state.indicator : indicators[0].indicator_id;
     $('indicator').replaceChildren(...indicators.map((r) => new Option(r.indicator_ja + ' / ' + r.indicator_en, r.indicator_id)));
     $('indicator').value = ind;
@@ -407,6 +437,7 @@
     drawTrend($('trend'), srcRows.filter((r) => trendCodes.includes(r.country_code)), unit, year);
     renderTables(selected);
     renderPopulationTrend(trendCodes);
+    renderFx(trendCodes);
     renderCities(selected.concat(withJapan ? ['jp'] : []));
   }
 
@@ -586,14 +617,24 @@
     box.style.minHeight = height + 'px';
   }
 
-  function drawTrend(box, data, unit, year) {
+  // Log-axis ticks: 1-2-5 steps per decade, thinned to about six labels.
+  function logTicks(y) {
+    const [lo, hi] = y.domain();
+    const t = [];
+    for (let e = Math.floor(Math.log10(lo)); e <= Math.ceil(Math.log10(hi)); e++) for (const m of [1, 2, 5]) { const v = m * 10 ** e; if (v >= lo && v <= hi) t.push(v); }
+    return t.length > 7 ? t.filter((v) => /^1/.test(String(v))) : t;
+  }
+
+  function drawTrend(box, data, unit, year, opts = {}) {
     const groups = d3.groups(data, (d) => d.country_code).map(([code, v]) => ({ code, name: v[0].country_ja, values: v.sort((a, b) => a.year - b.year) }));
     if (!groups.length) { box.replaceChildren(); return; }
     const width = box.clientWidth || 600, height = 300;
     const endW = d3.max(groups, (s) => textW(s.name)) + 10;
     const ext = d3.extent(data, (d) => d.value);
-    const y = d3.scaleLinear([Math.min(0, ext[0]), ext[1] || 1], [height - 24, 12]).nice();
-    const yt = y.ticks(5);
+    // opts.log: log scale for values of very different magnitudes; opts.ref: a dashed reference line (e.g. index 100).
+    const y = opts.log ? d3.scaleLog([ext[0], ext[1]], [height - 24, 12]).nice()
+      : d3.scaleLinear([opts.ref != null ? Math.min(ext[0], opts.ref) : Math.min(0, ext[0]), Math.max(ext[1] || 1, opts.ref ?? -Infinity)], [height - 24, 12]).nice();
+    const yt = opts.log ? logTicks(y) : y.ticks(5);
     const axisW = d3.max(yt, (t) => textW(fmtAxis(t, unit))) + 8;
     const x = d3.scaleLinear(d3.extent(data, (d) => d.year), [axisW, width - endW]);
     const palette = series();
@@ -604,6 +645,7 @@
     const xt = x.ticks(Math.max(2, Math.floor((width - axisW - endW) / 70))).filter(Number.isInteger);
     svg.append('g').selectAll('text').data(xt).join('text').attr('x', (t) => x(t)).attr('y', height - 6).attr('text-anchor', 'middle').attr('font-size', 11).attr('fill', css('--muted')).text(String);
     if (year != null) svg.append('line').attr('x1', x(year)).attr('x2', x(year)).attr('y1', 12).attr('y2', height - 24).attr('stroke', css('--axis')).attr('stroke-dasharray', '3 3');
+    if (opts.ref != null) svg.append('line').attr('x1', axisW).attr('x2', width - endW).attr('y1', y(opts.ref)).attr('y2', y(opts.ref)).attr('stroke', css('--axis')).attr('stroke-dasharray', '4 3');
     const line = d3.line().x((d) => x(d.year)).y((d) => y(d.value));
     groups.forEach((s, i) => svg.append('path').datum(s.values).attr('d', line).attr('fill', 'none').attr('stroke', color(s, i)).attr('stroke-width', 2).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round'));
     const ends = groups.map((s, i) => ({ s, i, y: y(s.values[s.values.length - 1].value) })).sort((a, b) => a.y - b.y);
@@ -618,7 +660,7 @@
         groups.forEach((s) => { const v = s.values.find((d) => d.year === yr); if (v && (!best || Math.abs(y(v.value) - my) < Math.abs(y(best.value) - my))) best = v; });
         if (!best) { hideTip(box); dot.attr('visibility', 'hidden'); return; }
         dot.attr('cx', x(best.year)).attr('cy', y(best.value)).attr('visibility', 'visible');
-        showTip(box, event, [best.country_ja + ' · ' + best.year + '年', fmt(best.value, unit), best.note || '', best.cross_check ? '照合：' + best.cross_check : '']);
+        showTip(box, event, [best.country_ja + ' · ' + best.year + '年', best.label || fmt(best.value, unit), best.note || '', best.cross_check ? '照合：' + best.cross_check : '']);
       })
       .on('mouseleave', () => { hideTip(box); dot.attr('visibility', 'hidden'); });
     box.replaceChildren(svg.node(), tip(box));
@@ -728,6 +770,69 @@
   }
   const link = (href, text) => { const a = document.createElement('a'); a.href = href; a.textContent = text; a.target = '_blank'; a.rel = 'noopener'; return a; };
 
+  // ---------- currencies and exchange rates ----------
+  // World Bank PA.NUS.FCRF (local currency per USD, annual average). "Value" index = rate(base) / rate(year) × 100,
+  // so above 100 means the currency buys more dollars than in the base year. JETRO's figures appear as cross-checks.
+  const FX_SOURCE = 'worldbank_wdi';
+  function renderFx(codes) {
+    const all = DATA.observations.filter((r) => r.indicator_id === 'exchange_rate');
+    const wb = all.filter((r) => r.source_id === FX_SOURCE && codes.includes(r.country_code) && r.value > 0);
+    const cur = new Map((DATA.currencies || []).map((c) => [c.country_code, c]));
+    const years = [...new Set(wb.map((r) => r.year))].sort((a, b) => a - b);
+    const base = years.includes(state.fxBase) ? state.fxBase : (years.find((y) => y >= 2005) ?? years[0]);
+    $('fx-base').replaceChildren(...years.map((y) => new Option(String(y), String(y))));
+    if (base != null) $('fx-base').value = String(base);
+    $('fx-mode').value = state.fxMode;
+    const at = (code, y) => wb.find((r) => r.country_code === code && r.year === y);
+    const name = (r) => r.country_ja + '（' + (cur.get(r.country_code)?.currency_code || '') + '）';
+    let rows;
+    if (state.fxMode === 'rate') {
+      rows = wb.map((r) => ({ ...r, country_ja: name(r), label: fmt(r.value, 'LCU/USD') + ' ' + (cur.get(r.country_code)?.currency_ja || '') + '／米ドル' }));
+    } else {
+      rows = wb.filter((r) => at(r.country_code, base)).map((r) => {
+        const v = at(r.country_code, base).value / r.value * 100;
+        return { ...r, country_ja: name(r), value: v, label: num(v, 1) + '（' + base + '年＝100）、1米ドル＝' + fmt(r.value, 'LCU/USD') + ' ' + (cur.get(r.country_code)?.currency_ja || '') };
+      });
+    }
+    const info = wb[0];
+    $('fx-note').textContent = !info ? '国を選んでください。' : '出所：' + info.source_publisher_ja + '「' + info.source_title_ja + '」 ' + (info.indicator_code || '')
+      + (info.source_last_updated ? '、更新 ' + info.source_last_updated : '') + '（公式為替レート、年平均）。'
+      + (state.fxMode === 'index' ? '点線は基準年（' + base + '年）の水準。' : '') + (codes.includes('jp') ? '日本（円）は比較用の灰色の線です。' : '');
+    drawTrend($('fx-trend'), rows, state.fxMode === 'rate' ? 'LCU/USD' : 'index', null, state.fxMode === 'rate' ? { log: true } : { ref: 100 });
+
+    // table
+    const book = noteBook();
+    const srcN = info ? book.mark('src:wb', () => ({ text: '出所：' + info.source_publisher_ja + '「' + info.source_title_ja + '」 ' + info.indicator_code
+      + '（公式為替レート、1米ドルあたりの現地通貨、年平均）。JETRO「概況・基本統計」の為替レート欄と照合し、差が±2%を超える場合と、JETRO の表記が年平均でない場合に注記します。' })) : null;
+    const chgN = book.mark('chg', () => ({ text: '通貨の価値の変化：基準年の1米ドルあたりの額 ÷ 最新年の額 − 1。プラスは基準年より通貨高（ドル安）、マイナスは通貨安。' }));
+    const table = $('fx-table');
+    const labels = headerMarks(table, [[], [], srcN ? [srcN] : [], [], [chgN], []]);
+    table.querySelector('tbody').replaceChildren(...codes.map((code) => {
+      const c = cur.get(code);
+      const series = wb.filter((r) => r.country_code === code);
+      const jetro = all.filter((r) => r.country_code === code && r.source_id !== FX_SOURCE);
+      // Without a World Bank series, fall back to JETRO's latest figure (marked as such).
+      const wbLast = d3.greatest(series, (r) => r.year), last = wbLast || d3.greatest(jetro, (r) => r.year), b = at(code, base);
+      const notes = [];
+      if (last?.cross_check && last.cross_check_status !== 'match') notes.push('照合（' + last.year + '年）：' + last.cross_check);
+      const bases = new Set(jetro.flatMap((r) => (r.note || '').split('; ')).filter((t) => t.startsWith('JETRO の表記：')).map((t) => t.split(' / ')[0].replace('JETRO の表記：', '')));
+      for (const basis of bases) notes.push('JETRO の為替レートは' + basis + '（年平均ではない）' + (jetro.some((r) => /年度/.test(r.note || '')) ? '、年度の値' : '') + '。');
+      if (!wbLast && last) notes.push('世界銀行の公式為替レートにこの国の値がないため、JETRO「概況・基本統計」の値を表示しています。');
+      else if (!last && c?.currency_code === 'USD') notes.push('米ドルを法定通貨としているため、対米ドルの為替レートはありません。');
+      else if (!last) notes.push('世界銀行の公式為替レートにこの国の値がありません。');
+      const tr = document.createElement('tr');
+      const country = DATA.observations.find((r) => r.country_code === code)?.country_ja || code;
+      tr.append(cell(country), noteCell(c ? c.currency_ja + '（' + c.currency_code + '）' : '—', [], 'nowrap', labels[1]),
+        noteCell(last ? fmt(last.value, 'LCU/USD') + '（' + last.year + '）' : '—', [...new Set(notes)].map(book.text), 'num nowrap', labels[2], wbLast && srcN ? [srcN] : []),
+        noteCell(b ? fmt(b.value, 'LCU/USD') + '（' + base + '）' : '—', [], 'num nowrap', labels[3]));
+      const chg = last && b ? b.value / last.value - 1 : null;
+      tr.append(noteCell(chg == null ? '—' : (chg >= 0 ? '+' : '') + num(chg * 100, 1) + '%', [], 'num nowrap', labels[4], chg == null ? [] : [chgN]),
+        noteCell([wbLast ? '世界銀行' : '', jetro.length ? (wbLast ? 'JETRO（照合）' : 'JETRO') : ''].filter(Boolean).join('・'), [], 'src', labels[5]));
+      return tr;
+    }));
+    renderNotes($('fx-notes'), book);
+  }
+
   function renderTables(selected) {
     const sel = new Set(selected);
     const rows = DATA.profileWide.filter((r) => sel.has(r.country_code));
@@ -789,8 +894,10 @@
     if (!r.ok) throw new Error(name + '.json: HTTP ' + r.status);
     return r.json();
   });
-  Promise.all(['observations', 'profiles', 'sources', 'validation'].map(load)).then(([observations, profiles, sources, validation]) => {
+  Promise.all(['observations', 'profiles', 'sources', 'validation', 'currencies'].map((n) => load(n).catch((e) => n === 'currencies' ? [] : Promise.reject(e))))
+    .then(([observations, profiles, sources, validation, currencies]) => {
     DATA = {
+      currencies,
       observations: observations.map((r) => ({ ...r, year: Number(r.year), value: Number(r.value) })),
       profileWide: addPopulation(profileWide(profiles), observations), sources, validation,
     };

@@ -133,6 +133,20 @@ def jetro_unit_scale(unit: str, target: str) -> float | None:
             return None
         base = float(m.group(1) or 1)
         return base * {"億": 1e8, "万": 1e4, None: 1}[m.group(2)]
+    if target == "LCU/USD":
+        return 1.0 if RATE_UNIT.fullmatch(unit) else None
+    return None
+
+
+# '(1米ドルにつき、バーツ、期中平均)' -> currency 'バーツ', basis '期中平均' (also 期末平均, 公定レート).
+RATE_UNIT = re.compile(r"\(1米ドルにつき、(?P<currency>[^、]+)、(?P<basis>[^)]+)\)")
+
+
+def unit_note(unit: str, target: str) -> str | None:
+    """A note when a JETRO exchange rate is not the annual average the World Bank series uses."""
+    m = RATE_UNIT.fullmatch(unit) if target == "LCU/USD" else None
+    if m and m["basis"] != "期中平均":
+        return f"JETRO の表記：{m['basis']} / JETRO basis: {m['basis']}"
     return None
 
 
@@ -158,8 +172,10 @@ def jetro_series(extract: dict, field: dict) -> list[dict]:
             scale = jetro_unit_scale(unit, field["unit"])
             if scale is None:
                 return []
+            basis = unit_note(unit, field["unit"])
             obs = []
             for (year, note), cell in zip(years, cells):
+                note = "; ".join(n for n in (note, basis) if n) or None
                 value = parse_ja_number(cell.replace("△", "-").replace("▲", "-"))
                 if value is None:
                     continue
