@@ -584,8 +584,9 @@
       const row = by.get(r.country_code) || { country_code: r.country_code, country_ja: r.country_ja, fields: {}, pages: [] };
       if (PROFILE_FIELDS.includes(r.field_id) && !row.fields[r.field_id]) {
         const notes = [];
-        // Skip the original statistic when the cell text already names it.
-        if (r.original_source && !(r.value_text || r.value || '').includes(r.original_source)) notes.push('元統計：' + r.original_source + (r.as_of ? '（' + r.as_of + '年）' : ''));
+        // Skip the original statistic when the displayed cell text already names it (area shows only the number).
+        const shown = r.field_id === 'area' ? '' : String(r.value ?? '');
+        if (r.original_source && !shown.includes(r.original_source)) notes.push('元統計：' + r.original_source + (r.as_of ? '（' + r.as_of + '年）' : ''));
         if (r.note && r.note.startsWith('「言語」欄')) notes.push('公用語：' + r.note.split(' / ')[0] + '。');
         if (r.cross_check) notes.push(r.field_ja + 'の照合：' + r.cross_check);
         row.fields[r.field_id] = { value: r.field_id === 'area' ? Number(r.value) : r.value, notes };
