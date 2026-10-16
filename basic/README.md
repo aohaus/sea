@@ -148,6 +148,13 @@ python scripts/build_dataset.py
 - **一人当たりGDP（購買力平価）**（NY.GDP.PCAP.PP.CD）：物価の違いをならした比較用に追加しました。
 - **主要都市**：ASEAN の都市の一人当たり地域GDP（米ドル）に近い日本の政令指定都市（±15%以内）を示します。外れる場合は、もっとも低い（高い）市の何倍かを示します。
 
+## 2060年までの見通し / Outlook to 2060
+
+- 国連「世界人口推計（World Population Prospects）」の人口動態指標（中位推計）から、対象12か国の総人口・年齢の中央値・合計特殊出生率・平均寿命を1950〜2100年分取得します（`scripts/fetch_projections.py`、出所 `un_wpp`）。結果は `data/projections.{json,csv}` で、各行に推計（estimate）／予測（projection）の区別と版（edition）が付きます。
+- ビューアの「2060年までの見通し」は、推計を実線、予測を点線で描き、2025年と2060年の値、人口のピーク年、日本の2025年の水準に達する年を表にします。
+- 予測は前提によって変わり、版ごとに改訂されます。`projections` は年次の版にも含め、版（edition）ごとに比較するため、後から「当時の予測」と実績を比べられます。
+- 新しい版（通常2年ごと）が出たら、`sources.json` の `un_wpp` の `edition`・`estimates_until`・`url_candidates` を更新してください。版が3年以上前のものになると自動チェックが知らせます。
+
 ## 年次の版と自動チェック / Yearly versions and health checks
 
 2060年ごろまで毎年データを積み上げるための仕組みです。

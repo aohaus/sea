@@ -5,7 +5,6 @@
   "fetch_error": null,
   "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz",
   "rows": 7248,
-  "changed": true,
   "years": [
     1950,
     2100

@@ -130,7 +130,7 @@ def main() -> int:
             writer = csv.DictWriter(fh, fieldnames=list(rows[0]))
             writer.writeheader()
             writer.writerows(rows)
-    report.update({"fetch_status": "ok", "fetch_error": None, "url": url, "rows": len(rows), "changed": changed,
+    report.update({"fetch_status": "ok", "fetch_error": None, "url": url, "rows": len(rows),
                    "years": [min(r["year"] for r in rows), max(r["year"] for r in rows)]})
     write_json(REPORT, report)
     print(f"un_wpp {source['edition']}: {len(rows)} rows from {url}" + ("" if changed else " (unchanged)"))
