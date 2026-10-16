@@ -20,6 +20,7 @@ field, source). A change smaller than 1e-9 (relative) is ignored.
 Usage:
   python scripts/snapshot.py                 # freeze the current year (fails if it exists)
   python scripts/snapshot.py --if-missing    # freeze only if this year has no version yet
+  python scripts/snapshot.py --if-missing --require-no-errors   # ...and only if no source failed (workflow)
   python scripts/snapshot.py --year 2026     # freeze as a given year
 """
 
@@ -112,6 +113,9 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--year", type=int, default=datetime.now(timezone.utc).year)
     parser.add_argument("--if-missing", action="store_true", help="do nothing if the version already exists")
+    parser.add_argument("--require-no-errors", action="store_true",
+                        help="do nothing if scripts/check_health.py reports an error (a source failed in this run), "
+                             "so that a version is never frozen with stale data from a failed source")
     args = parser.parse_args()
 
     out = ARCHIVE_DIR / str(args.year)
@@ -121,6 +125,19 @@ def main() -> int:
             return 0
         print(f"version {args.year} already exists; versions are never overwritten", file=sys.stderr)
         return 1
+
+    health_errors = []
+    if args.require_no_errors:
+        from check_health import check
+        now = datetime.now(timezone.utc)
+        health_errors = [i for i in check(now, None) if i["level"] == "error"]
+        # Wait for a healthy run, but not past the year: a December run freezes anyway and records
+        # the errors in the manifest, so a source that fails all year does not cost the year's version.
+        if health_errors and now.month < 12:
+            print(f"not freezing version {args.year}: {len(health_errors)} fetch error(s); will retry on the next run")
+            for e in health_errors:
+                print(f"  {e['source_id']}: {e['what']} {e['detail']}")
+            return 0
 
     index_path = ARCHIVE_DIR / "index.json"
     index = load_json(index_path) if index_path.exists() else {"schema_version": SCHEMA_VERSION, "versions": []}
@@ -157,6 +174,7 @@ def main() -> int:
         "previous_version": earlier[0] if earlier else None, "tables": files,
         "latest_retrieval_by_source": dict(sorted(latest_by_source.items())),
         "revisions": {"file": "revisions.json.gz" if prev_dir else None, "summary": rev_summary},
+        "health_errors_at_freeze": health_errors,
     }
     write_json(out / "manifest.json", manifest)
 

@@ -145,7 +145,7 @@ python scripts/build_dataset.py
 
 2060年ごろまで毎年データを積み上げるための仕組みです。
 
-- **年次の版**：毎年最初の自動取得（main ブランチ）のときに、`scripts/snapshot.py --if-missing` がその時点の表を `archive/<年>/` に凍結します（`<表>.json.gz`、`manifest.json`、2回目以降は `revisions.json.gz`）。一度作った版は書き換えません。`archive/index.json` が版の一覧です。
+- **年次の版**：毎年、取得エラーのない最初の自動取得（main ブランチ）のときに、`scripts/snapshot.py --if-missing --require-no-errors` がその時点の表を `archive/<年>/` に凍結します（エラーが続く場合も12月の取得で凍結し、エラーの内容を `manifest.json` に記録します）（`<表>.json.gz`、`manifest.json`、2回目以降は `revisions.json.gz`）。一度作った版は書き換えません。`archive/index.json` が版の一覧です。
   - `manifest.json`：凍結日時、元のコミット、各表の行数と SHA-256、出所ごとの最終取得日時、`schema_version`。
   - `revisions.json.gz`：前の版と比べて値が変わった・増えた・消えた行（経済指標・主要都市・基本情報）。統計の改訂を後から追えます。
   - ビューアの「データの版」で過去の版に切り替えて表示できます（gzip の展開にブラウザの DecompressionStream を使います）。
@@ -153,7 +153,7 @@ python scripts/build_dataset.py
 - **自動チェック**：毎回の自動取得のあと、`scripts/check_health.py` が次を調べます。問題があれば GitHub に `data-health` ラベルの Issue を作るか追記し、問題がなくなると自動で閉じます。
   - 自動取得の出所の失敗、ワークフローの失敗（エラー）
   - 手動取り込み（外務省・DOSM の PDF など）から400日以上経過（要確認：取り込み直しの時期）
-  - 系列の最新年が4年以上前（要確認：出所の更新停止や URL 変更の疑い）
+  - 国・都市ごとの系列の最新年（将来推計の年は除く）が4年以上前（要確認：出所の更新停止や URL 変更の疑い）。意図した停止は `health_acknowledged.json` に理由とともに記録すると「確認済み」として扱い、Issue を開いたままにしません
 - **長期の保守**：データは CSV/JSON（版は gzip）で持ち、d3 は外部 CDN ではなく `vendor/` に置いています（ISC ライセンス、`vendor/d3-LICENSE.txt`）。表の列の意味を変えるときは `scripts/build_dataset.py` と `scripts/snapshot.py` の `SCHEMA_VERSION` を上げてください。
 
 ## 今後 / Next

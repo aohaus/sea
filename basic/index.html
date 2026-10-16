@@ -976,21 +976,28 @@
     }
     return JSON.parse(new TextDecoder().decode(buf));
   }
-  const load = (name) => {
-    const url = VERSION === 'latest' ? 'data/' + name + '.json' : 'archive/' + VERSION + '/' + name + '.json.gz';
+  const load = (name, version) => {
+    const url = version === 'latest' ? 'data/' + name + '.json' : 'archive/' + version + '/' + name + '.json.gz';
     return fetch(url, { cache: 'no-cache' }).then((r) => {
       if (!r.ok) throw new Error(name + ': HTTP ' + r.status);
       return readJson(r);
     });
   };
 
+  // Each load is bound to the version chosen when it started; a load superseded by a later choice
+  // (the user switched versions while it was still fetching) is dropped instead of overwriting DATA.
+  let loadSeq = 0;
   function loadAll() {
+    const seq = ++loadSeq, version = VERSION;
+    const current = () => seq === loadSeq;
+    const load1 = (name) => load(name, version);
     $('takeaway').textContent = 'データを読み込んでいます…';
     const v = VERSIONS.find((x) => String(x.version) === String(VERSION));
     $('version-note').textContent = v ? v.version + '年版（' + v.created_at.slice(0, 10) + ' に凍結）を表示しています。毎月の更新は反映されません。' : '';
     $('version-note').classList.toggle('archived', !!v);
-    return Promise.all(['observations', 'profiles', 'sources', 'validation', 'currencies'].map((n) => load(n).catch((e) => n === 'currencies' ? [] : Promise.reject(e))))
+    return Promise.all(['observations', 'profiles', 'sources', 'validation', 'currencies'].map((n) => load1(n).catch((e) => n === 'currencies' ? [] : Promise.reject(e))))
       .then(([observations, profiles, sources, validation, currencies]) => {
+      if (!current()) return;
       DATA = {
         currencies,
         observations: observations.map((r) => ({ ...r, year: Number(r.year), value: Number(r.value) })),
@@ -1001,12 +1008,15 @@
       $('status').textContent = latest ? 'データ取得日 ' + latest.slice(0, 10) : '';
       renderStaticTables();
       render();
-      Promise.all([load('city_observations'), load('city_list').catch(() => null)]).then(([rows, list]) => {
+      const data = DATA;
+      Promise.all([load1('city_observations'), load1('city_list').catch(() => null)]).then(([rows, list]) => {
+        if (!current() || DATA !== data) return;
         DATA.cities = rows.map((r) => ({ ...r, year: Number(r.year), value: Number(r.value) }));
         DATA.cityList = list;
         render();
-      }).catch(() => { DATA.citiesFailed = true; render(); });
+      }).catch(() => { if (current() && DATA === data) { DATA.citiesFailed = true; render(); } });
     }).catch((err) => {
+      if (!current()) return;
       $('takeaway').textContent = 'データを読み込めませんでした（' + err.message + '）。ページを再読み込みしてください。';
       $('status').textContent = '読み込みエラー';
       $('status').classList.add('error');

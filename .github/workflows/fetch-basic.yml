@@ -58,11 +58,13 @@ jobs:
       - name: Build dataset and validate against references
         run: python scripts/build_dataset.py
 
-      # Yearly version: the first successful run of each year (on main) freezes the data
-      # as basic/archive/<year>/. Existing versions are never overwritten.
+      # Yearly version: the first run of each year (on main) in which no source failed freezes the
+      # data as basic/archive/<year>/. Existing versions are never overwritten; a run with fetch
+      # errors skips the freeze and a later healthy run of the same year makes it (the December run
+      # freezes regardless and records the errors in the manifest).
       - name: Freeze this year's version if missing
         if: github.ref == 'refs/heads/main'
-        run: python scripts/snapshot.py --if-missing
+        run: python scripts/snapshot.py --if-missing --require-no-errors
 
       - name: Commit updated data
         run: |

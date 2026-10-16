@@ -7,8 +7,10 @@ lists:
 
   error    a source that failed in this run (automatic sources), or a failed workflow run
   warning  a manually imported source whose import is older than MANUAL_MAX_DAYS
-           (time to save the page/PDF again), or a series whose latest year is more
-           than STALE_YEARS behind the current year (the source may have stopped)
+           (time to save the page/PDF again), or a series (per country or city) whose
+           latest observed year is more than STALE_YEARS behind the current year
+  info     such a series that is listed in basic/health_acknowledged.json (a known stop);
+           shown in the report but does not keep the issue open
 
 Writes a JSON summary and a Markdown body (for a GitHub issue). Exits 0 either
 way; the workflow decides what to do with the result.
@@ -38,6 +40,12 @@ def age_days(iso: str | None, now: datetime) -> int | None:
     if t.tzinfo is None:
         t = t.replace(tzinfo=timezone.utc)
     return (now - t).days
+
+
+def load_acknowledged() -> list[dict]:
+    """Series known to have stopped, with the reason (basic/health_acknowledged.json)."""
+    path = BASIC_DIR / "health_acknowledged.json"
+    return load_json(path).get("stopped_series", []) if path.exists() else []
 
 
 def check(now: datetime, job_status: str | None) -> list[dict]:
@@ -83,28 +91,44 @@ def check(now: datetime, job_status: str | None) -> list[dict]:
                 add("warning", d.get("source_id"), f"手動取り込みから{days}日経過",
                     f"{d.get('publication') or raw.name}：新しい版を取り込んでください（前回 {d['retrieved_at'][:10]}）")
 
-    # Series that stopped: latest year per source and indicator
-    for table, ind_key in (("observations", "indicator_id"), ("city_observations", "indicator_id")):
+    # Series that stopped: the latest observed year per source, indicator and place. Years after the
+    # current one are projections (e.g. UN city population to 2050) and do not count as fresh data.
+    acknowledged = {(a["source_id"], a["indicator_id"], a["place"]): a for a in load_acknowledged()}
+    for table, place_key in (("observations", "country_code"), ("city_observations", "city_id")):
         path = BASIC_DIR / "data" / f"{table}.json"
         if not path.exists():
             continue
         latest: dict[tuple, int] = {}
         for r in load_json(path):
-            k = (r["source_id"], r[ind_key])
-            latest[k] = max(latest.get(k, 0), int(r["year"]))
-        for (source_id, ind), year in sorted(latest.items()):
-            if year < now.year - STALE_YEARS:
-                add("warning", source_id, f"{ind}：最新年が{year}年", f"{now.year - STALE_YEARS}年より古いデータしかありません。出所の更新停止や URL の変更がないか確認してください")
+            year = int(r["year"])
+            if year > now.year:
+                continue
+            k = (r["source_id"], r["indicator_id"], r[place_key])
+            latest[k] = max(latest.get(k, 0), year)
+        for (source_id, ind, place), year in sorted(latest.items()):
+            if year >= now.year - STALE_YEARS:
+                continue
+            ack = acknowledged.get((source_id, ind, place))
+            if ack:
+                add("info", source_id, f"{place} {ind}：最新年が{year}年（確認済み）", ack.get("reason", ""))
+            else:
+                add("warning", source_id, f"{place} {ind}：最新年が{year}年",
+                    f"{now.year - STALE_YEARS}年より古いデータしかありません。出所の更新停止や URL の変更がないか確認し、"
+                    "意図したものなら basic/health_acknowledged.json に理由を記録してください")
     return issues
 
 
 def markdown(issues: list[dict], now: datetime) -> str:
-    level_ja = {"error": "エラー", "warning": "要確認"}
+    level_ja = {"error": "エラー", "warning": "要確認", "info": "確認済み"}
     lines = [f"データの自動チェック（{now.date().isoformat()}）", ""]
-    if not issues:
-        return "\n".join(lines + ["問題は見つかりませんでした。"]) + "\n"
+    if not any(i["level"] != "info" for i in issues):
+        lines.append("問題は見つかりませんでした。")
+        if issues:
+            lines += ["", "確認済みの停止系列：" + "、".join(i["what"] for i in issues)]
+        return "\n".join(lines) + "\n"
     lines += ["| 区分 | 出所 | 内容 | 詳細 |", "|---|---|---|---|"]
-    for i in sorted(issues, key=lambda i: (i["level"] != "error", i["source_id"] or "")):
+    order = {"error": 0, "warning": 1, "info": 2}
+    for i in sorted(issues, key=lambda i: (order[i["level"]], i["source_id"] or "")):
         lines.append(f"| {level_ja[i['level']]} | {i['source_id'] or '—'} | {i['what']} | {i['detail'].replace('|', '／')} |")
     lines += ["", "このチェックは毎月の自動取得（Fetch basic country data）のたびに実行され、問題がなくなるとこの Issue は自動で閉じます。"]
     return "\n".join(lines) + "\n"
@@ -118,7 +142,7 @@ def main() -> int:
     args = parser.parse_args()
     now = datetime.now(timezone.utc)
     issues = check(now, args.job_status)
-    summary = {"checked_at": now.isoformat(timespec="seconds"), "ok": not issues,
+    summary = {"checked_at": now.isoformat(timespec="seconds"), "ok": not any(i["level"] != "info" for i in issues),
                "errors": sum(i["level"] == "error" for i in issues),
                "warnings": sum(i["level"] == "warning" for i in issues), "issues": issues}
     if args.json:
