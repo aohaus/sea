@@ -99,6 +99,11 @@
   .downloads { display: flex; flex-wrap: wrap; gap: 10px; }
   .downloads a { color: var(--accent); font-size: .88rem; }
   .status { color: var(--muted); }
+  .version-row { margin-top: 10px; }
+  #version-note.archived { color: var(--warn); }
+  code { font-size: .85em; }
+  #version-table td.nowrap { white-space: nowrap; }
+  #version-table a { color: var(--accent); }
   .status.error { color: var(--bad); }
   footer { color: var(--muted); font-size: .78rem; }
   footer a { color: inherit; }
@@ -109,6 +114,11 @@
   <header>
     <h1>ASEAN データエクスプローラー</h1>
     <p class="lede" id="takeaway">データを読み込んでいます…</p>
+    <div class="row version-row">
+      <label class="label" for="version">データの版</label>
+      <select id="version"><option value="latest">最新（毎月更新）</option></select>
+      <span class="note" id="version-note"></span>
+    </div>
   </header>
 
   <section class="card" aria-label="表示条件">
@@ -225,6 +235,17 @@
   </section>
 
   <section class="card">
+    <h2>データの版<span class="en">Yearly versions</span></h2>
+    <p class="note">毎年最初の自動取得のときに、その時点のデータを「○○年版」として凍結し、以後は書き換えません（<code>basic/archive/</code>）。統計は後から改訂されることがあるため、版を重ねることで「その年に何が分かっていたか」と、前の版から改訂された値を残します。上の「データの版」で過去の版に切り替えて表示できます。</p>
+    <div class="tablebox">
+      <table id="version-table">
+        <thead><tr><th>版</th><th>凍結日</th><th class="num">経済指標の値</th><th class="num">主要都市の値</th><th>前の版からの改訂</th><th>ダウンロード</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card">
     <h2>出所と利用条件<span class="en">Sources and terms</span></h2>
     <div class="tablebox">
       <table id="source-table">
@@ -251,7 +272,8 @@
   </footer>
 </main>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<!-- d3 is kept in the repository so the page keeps working without an external CDN. -->
+<script src="vendor/d3-7.9.0.min.js"></script>
 <script>
 (() => {
   const ASEAN = ['bn', 'kh', 'id', 'la', 'my', 'mm', 'ph', 'sg', 'th', 'tl', 'vn'];
@@ -941,31 +963,97 @@
   }
 
   // ---------- load ----------
-  const load = (name) => fetch('data/' + name + '.json', { cache: 'no-cache' }).then((r) => {
-    if (!r.ok) throw new Error(name + '.json: HTTP ' + r.status);
-    return r.json();
-  });
-  Promise.all(['observations', 'profiles', 'sources', 'validation', 'currencies'].map((n) => load(n).catch((e) => n === 'currencies' ? [] : Promise.reject(e))))
-    .then(([observations, profiles, sources, validation, currencies]) => {
-    DATA = {
-      currencies,
-      observations: observations.map((r) => ({ ...r, year: Number(r.year), value: Number(r.value) })),
-      profileWide: addPopulation(profileWide(profiles), observations), sources, validation,
-    };
-    const latest = d3.max(observations, (r) => r.retrieved_at);
-    $('status').textContent = latest ? 'データ取得日 ' + latest.slice(0, 10) : '';
-    renderStaticTables();
-    render();
-    Promise.all([load('city_observations'), load('city_list').catch(() => null)]).then(([rows, list]) => {
-      DATA.cities = rows.map((r) => ({ ...r, year: Number(r.year), value: Number(r.value) }));
-      DATA.cityList = list;
+  // ---------- load ----------
+  // "latest" reads basic/data/*.json; a yearly version reads basic/archive/<year>/*.json.gz.
+  let VERSION = 'latest';
+  let VERSIONS = [];
+  async function readJson(resp) {
+    const buf = new Uint8Array(await resp.arrayBuffer());
+    if (buf[0] === 0x1f && buf[1] === 0x8b) {  // gzip (a server may also have decoded it already)
+      if (typeof DecompressionStream === 'undefined') throw new Error('このブラウザは過去の版の展開に対応していません');
+      const stream = new Blob([buf]).stream().pipeThrough(new DecompressionStream('gzip'));
+      return JSON.parse(await new Response(stream).text());
+    }
+    return JSON.parse(new TextDecoder().decode(buf));
+  }
+  const load = (name, version) => {
+    const url = version === 'latest' ? 'data/' + name + '.json' : 'archive/' + version + '/' + name + '.json.gz';
+    return fetch(url, { cache: 'no-cache' }).then((r) => {
+      if (!r.ok) throw new Error(name + ': HTTP ' + r.status);
+      return readJson(r);
+    });
+  };
+
+  // Each load is bound to the version chosen when it started; a load superseded by a later choice
+  // (the user switched versions while it was still fetching) is dropped instead of overwriting DATA.
+  let loadSeq = 0;
+  function loadAll() {
+    const seq = ++loadSeq, version = VERSION;
+    const current = () => seq === loadSeq;
+    const load1 = (name) => load(name, version);
+    $('takeaway').textContent = 'データを読み込んでいます…';
+    const v = VERSIONS.find((x) => String(x.version) === String(VERSION));
+    $('version-note').textContent = v ? v.version + '年版（' + v.created_at.slice(0, 10) + ' に凍結）を表示しています。毎月の更新は反映されません。' : '';
+    $('version-note').classList.toggle('archived', !!v);
+    return Promise.all(['observations', 'profiles', 'sources', 'validation', 'currencies'].map((n) => load1(n).catch((e) => n === 'currencies' ? [] : Promise.reject(e))))
+      .then(([observations, profiles, sources, validation, currencies]) => {
+      if (!current()) return;
+      DATA = {
+        currencies,
+        observations: observations.map((r) => ({ ...r, year: Number(r.year), value: Number(r.value) })),
+        profileWide: addPopulation(profileWide(profiles), observations), sources, validation,
+      };
+      const latest = d3.max(observations, (r) => r.retrieved_at);
+      $('status').classList.remove('error');
+      $('status').textContent = latest ? 'データ取得日 ' + latest.slice(0, 10) : '';
+      renderStaticTables();
       render();
-    }).catch(() => { DATA.citiesFailed = true; render(); });
-  }).catch((err) => {
-    $('takeaway').textContent = 'データを読み込めませんでした（' + err.message + '）。ページを再読み込みしてください。';
-    $('status').textContent = '読み込みエラー';
-    $('status').classList.add('error');
-  });
+      const data = DATA;
+      Promise.all([load1('city_observations'), load1('city_list').catch(() => null)]).then(([rows, list]) => {
+        if (!current() || DATA !== data) return;
+        DATA.cities = rows.map((r) => ({ ...r, year: Number(r.year), value: Number(r.value) }));
+        DATA.cityList = list;
+        render();
+      }).catch(() => { if (current() && DATA === data) { DATA.citiesFailed = true; render(); } });
+    }).catch((err) => {
+      if (!current()) return;
+      $('takeaway').textContent = 'データを読み込めませんでした（' + err.message + '）。ページを再読み込みしてください。';
+      $('status').textContent = '読み込みエラー';
+      $('status').classList.add('error');
+    });
+  }
+
+  // Yearly versions: the selector in the header and the table of versions.
+  function renderVersions() {
+    $('version').replaceChildren(new Option('最新（毎月更新）', 'latest'),
+      ...VERSIONS.map((v) => new Option(v.version + '年版（' + v.created_at.slice(0, 10) + ' 凍結）', String(v.version))));
+    $('version').value = String(VERSION);
+    const tbody = $('version-table').querySelector('tbody');
+    if (!VERSIONS.length) {
+      const tr = document.createElement('tr');
+      const td = cell('まだ凍結した版はありません。毎年最初の自動取得のときに作られます。');
+      td.colSpan = 6; tr.append(td); tbody.replaceChildren(tr);
+      return;
+    }
+    const TABLE_JA = { observations: '経済指標', city_observations: '主要都市', profiles: '基本情報' };
+    tbody.replaceChildren(...VERSIONS.map((v) => {
+      const tr = document.createElement('tr');
+      const rev = !v.previous_version ? '—（最初の版）' : Object.entries(v.revisions || {})
+        .map(([t, c]) => TABLE_JA[t] + '：変更 ' + c.changed + '・追加 ' + c.added + '・削除 ' + c.removed).join('／') + '（' + v.previous_version + '年版との比較）';
+      const dl = document.createElement('td');
+      const files = ['manifest.json', 'observations.json.gz', 'city_observations.json.gz', 'profiles.json.gz'].concat(v.previous_version ? ['revisions.json.gz'] : []);
+      files.forEach((f, i) => { const a = document.createElement('a'); a.href = 'archive/' + v.path + f; a.textContent = f; a.setAttribute('download', ''); dl.append(i ? ' · ' : '', a); });
+      dl.className = 'src';
+      tr.append(cell(v.version + '年版', 'nowrap'), cell(v.created_at.slice(0, 10), 'nowrap'), cell((v.rows?.observations ?? 0).toLocaleString('ja-JP'), 'num'),
+        cell((v.rows?.city_observations ?? 0).toLocaleString('ja-JP'), 'num'), cell(rev, 'src'), dl);
+      return tr;
+    }));
+  }
+  $('version').addEventListener('change', (e) => { VERSION = e.target.value; loadAll(); });
+
+  fetch('archive/index.json', { cache: 'no-cache' }).then((r) => r.ok ? r.json() : { versions: [] }).catch(() => ({ versions: [] }))
+    .then((idx) => { VERSIONS = idx.versions || []; renderVersions(); });
+  loadAll();
 
   let resizeTimer;
   window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(render, 150); });

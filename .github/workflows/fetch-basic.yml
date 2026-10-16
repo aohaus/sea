@@ -11,6 +11,8 @@ on:
       - "scripts/fetch_indicators.py"
       - "scripts/build_dataset.py"
       - "scripts/fetch_cities.py"
+      - "scripts/snapshot.py"
+      - "scripts/check_health.py"
       - "basic/cities/cities.json"
       - "basic/reference/ajc_*.json"
       - "basic/countries.json"
@@ -20,6 +22,7 @@ on:
 
 permissions:
   contents: write
+  issues: write   # open / update / close the data-health issue
 
 concurrency:
   group: fetch-basic-${{ github.ref }}
@@ -55,6 +58,14 @@ jobs:
       - name: Build dataset and validate against references
         run: python scripts/build_dataset.py
 
+      # Yearly version: the first run of each year (on main) in which no source failed freezes the
+      # data as basic/archive/<year>/. Existing versions are never overwritten; a run with fetch
+      # errors skips the freeze and a later healthy run of the same year makes it (the December run
+      # freezes regardless and records the errors in the manifest).
+      - name: Freeze this year's version if missing
+        if: github.ref == 'refs/heads/main'
+        run: python scripts/snapshot.py --if-missing --require-no-errors
+
       - name: Commit updated data
         run: |
           git config user.name "github-actions[bot]"
@@ -65,4 +76,24 @@ jobs:
           else
             git commit -m "data(basic): update basic statistics"
             git push
+          fi
+
+      # Data health: open (or update) an issue labelled data-health when a source fails, a manual
+      # import is due, or a series has stopped; close it once everything is fine again.
+      - name: Check data health
+        if: always() && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          JOB_STATUS: ${{ job.status }}
+        run: |
+          python scripts/check_health.py --json "$RUNNER_TEMP/health.json" --markdown "$RUNNER_TEMP/health.md" --job-status "$JOB_STATUS"
+          ok=$(python -c "import json,sys; print(json.load(open(sys.argv[1]))['ok'])" "$RUNNER_TEMP/health.json")
+          gh label create data-health --color D93F0B --description "データ取得の自動チェック" --force
+          num=$(gh issue list --label data-health --state open --json number --jq '.[0].number')
+          if [ "$ok" = "True" ]; then
+            if [ -n "$num" ]; then gh issue close "$num" --comment "自動チェックで問題が見つからなくなったため閉じます。"; fi
+          elif [ -n "$num" ]; then
+            gh issue comment "$num" --body-file "$RUNNER_TEMP/health.md"
+          else
+            gh issue create --title "データ取得の自動チェックで要確認の項目があります" --label data-health --body-file "$RUNNER_TEMP/health.md"
           fi
