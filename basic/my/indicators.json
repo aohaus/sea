@@ -2601,6 +2601,113 @@
           ]
         }
       ]
+    },
+    "japan_exports": {
+      "label_ja": "日本の輸出（この国向け）",
+      "label_en": "Japan's exports to the country",
+      "unit": "USD",
+      "series": [
+        {
+          "source_id": "jetro_basic",
+          "source_label": "日本の輸出（この国向け）",
+          "url": "https://www.jetro.go.jp/world/asia/my/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:31+00:00",
+          "page_last_updated": "2026-08-19",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2021,
+              "value": 15602000000.0,
+              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
+            },
+            {
+              "year": 2022,
+              "value": 16483000000.0,
+              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
+            },
+            {
+              "year": 2023,
+              "value": 13939000000.0,
+              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
+            },
+            {
+              "year": 2024,
+              "value": 13916000000.0,
+              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
+            },
+            {
+              "year": 2025,
+              "value": 14148000000.0,
+              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
+            }
+          ]
+        }
+      ]
+    },
+    "japan_imports": {
+      "label_ja": "日本の輸入（この国から）",
+      "label_en": "Japan's imports from the country",
+      "unit": "USD",
+      "series": [
+        {
+          "source_id": "jetro_basic",
+          "source_label": "日本の輸入（この国から）",
+          "url": "https://www.jetro.go.jp/world/asia/my/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:31+00:00",
+          "page_last_updated": "2026-08-19",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2021,
+              "value": 19691000000.0,
+              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
+            },
+            {
+              "year": 2022,
+              "value": 26002000000.0,
+              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
+            },
+            {
+              "year": 2023,
+              "value": 20189000000.0,
+              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
+            },
+            {
+              "year": 2024,
+              "value": 19063000000.0,
+              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
+            },
+            {
+              "year": 2025,
+              "value": 19516000000.0,
+              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
+            }
+          ]
+        }
+      ]
+    },
+    "japanese_residents": {
+      "label_ja": "在留邦人数",
+      "label_en": "Japanese nationals residing in the country",
+      "unit": "persons",
+      "series": [
+        {
+          "source_id": "jetro_basic",
+          "source_label": "在留邦人",
+          "url": "https://www.jetro.go.jp/world/asia/my/basic_01.html",
+          "retrieved_at": "2026-10-13T01:06:31+00:00",
+          "page_last_updated": "2026-08-19",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2025,
+              "value": 19690,
+              "value_text": "1万9,690人(2025年10月1日現在) 出所:外務省「海外在留邦人数調査統計」",
+              "original_source": "外務省「海外在留邦人数調査統計」"
+            }
+          ]
+        }
+      ]
     }
   }
 }

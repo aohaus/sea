@@ -2343,6 +2343,41 @@
           ]
         }
       ]
+    },
+    "japan_exports": {
+      "label_ja": "日本の輸出（この国向け）",
+      "label_en": "Japan's exports to the country",
+      "unit": "USD",
+      "series": []
+    },
+    "japan_imports": {
+      "label_ja": "日本の輸入（この国から）",
+      "label_en": "Japan's imports from the country",
+      "unit": "USD",
+      "series": []
+    },
+    "japanese_residents": {
+      "label_ja": "在留邦人数",
+      "label_en": "Japanese nationals residing in the country",
+      "unit": "persons",
+      "series": [
+        {
+          "source_id": "mofa_basic",
+          "source_label": "在留邦人",
+          "url": "https://www.mofa.go.jp/mofaj/area/easttimor/data.html",
+          "retrieved_at": "2026-10-13T01:19:29+00:00",
+          "page_last_updated": "2025-11-10",
+          "retrieval_method": "manual_pdf",
+          "observations": [
+            {
+              "year": 2024,
+              "value": 114,
+              "value_text": "114名(2024年10月1日現在、出典:海外在留邦人数調査統計)",
+              "original_source": "海外在留邦人数調査統計"
+            }
+          ]
+        }
+      ]
     }
   }
 }

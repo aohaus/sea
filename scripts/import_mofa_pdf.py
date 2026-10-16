@@ -3,8 +3,8 @@
 
 MOFA rejects automated requests from GitHub Actions (HTTP 403), so pages are
 saved from a browser as PDF and imported with this script. It reads the PDF's
-text layer, takes the 一般事情 section (items up to 略史) and 政体 / 元首 from
-政治体制・内政, and writes an extract in the same format as fetch_basic.py, with
+text layer, takes the 一般事情 section (items up to 略史), 政体 / 元首 from
+政治体制・内政 and the resident counts (在留邦人数, 在日○○人数) from 二国間関係, and writes an extract in the same format as fetch_basic.py, with
 retrieval_method "manual_pdf". Run `python scripts/fetch_basic.py --build`
 afterwards to rebuild profile.json.
 
@@ -76,6 +76,11 @@ def main() -> int:
     general = general[:next((k for k, l in enumerate(general) if re.match(r"^\d+　略史", l)), len(general))]
     political = [r for r in rows_from(section(lines, "政治体制・内政", ("外交・国防", "経済")))
                  if r["label"] in ("政体", "元首")]
+    # 二国間関係: residents (在留邦人数, and nationals of the country living in Japan) for the Japan-ties view.
+    bilateral = []
+    if "二国間関係" in lines:
+        bilateral = [r for r in rows_from(section(lines, "二国間関係", ("その他", "外交・国防", "経済", "経済協力")))
+                     if r["label"] == "在留邦人数" or re.fullmatch(r"在日.+人数", r["label"])]
     created = pdf_created_at(doc)
 
     extract = {
@@ -95,6 +100,7 @@ def main() -> int:
              "rows": [{"label": "国・地域名", "cells": [clean(lines[head - 1])]}]},
             {"section": "一般事情", "header": [], "rows": rows_from(general)},
             {"section": "政治体制・内政", "header": [], "rows": political},
+            *([{"section": "二国間関係", "header": [], "rows": bilateral}] if bilateral else []),
         ],
     }
     write_json(BASIC_DIR / args.code / "mofa_basic.json", extract)

@@ -178,6 +178,19 @@
     <div class="chart" id="tm-chart"></div>
   </section>
 
+  <section class="card">
+    <h2>日本とのつながり<span class="en">Ties with Japan</span></h2>
+    <p class="note">日本との貿易（日本から見た輸出・輸入）と、その国に住む日本人（在留邦人）の数です。棒は日本との貿易額（輸出＋輸入）。人口あたりの在留邦人を見ると、規模の違う国どうしでも「日本人の身近さ」を比べられます。</p>
+    <div class="chart" id="jt-chart"></div>
+    <div class="tablebox cards-box">
+      <table id="jt-table" class="cards">
+        <thead><tr><th>国</th><th class="num" data-short="貿易額">日本との貿易額</th><th class="num" data-short="日本の輸出">日本の輸出</th><th class="num" data-short="日本の輸入">日本の輸入</th><th class="num" data-short="収支">日本から見た収支</th><th class="num">在留邦人</th><th class="num" data-short="人口1万人あたり">人口1万人あたりの在留邦人</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <ol class="notes" id="jt-notes" aria-label="備考"></ol>
+  </section>
+
   <section class="card" id="cities">
     <h2>主要都市の比較<span class="en">Major cities</span></h2>
     <p class="note">上で選んだ国の主要都市（各国1〜3都市）を比べます。「日本（比較）」を選ぶと日本の政令指定都市20市も加わります（灰色）。一人当たり地域GDP は各国統計局の州・県・市の値で、都市そのものと単位が違う場合は「単位」に示します。都市人口は国連 WUP 2025 の都市域（行政区域とは異なる）です。</p>
@@ -543,6 +556,7 @@
     renderTables(selected);
     renderPopulationTrend(trendCodes);
     renderTimeMachine(selected);
+    renderJapanTies(selected);
     renderProjections(trendCodes);
     renderFx(trendCodes);
     renderCities(selected.concat(withJapan ? ['jp'] : []));
@@ -977,6 +991,50 @@
       .on('mouseleave', () => hideTip(box));
     box.replaceChildren(svg.node(), tip(box));
     box.style.minHeight = height + 'px';
+  }
+
+  // ---------- ties with Japan ----------
+  // Trade with Japan (JETRO, from Global Trade Atlas; Japan's exports to / imports from the country) and
+  // Japanese residents (MOFA's annual survey, via the JETRO / MOFA country pages).
+  function renderJapanTies(codes) {
+    const obs = DATA.observations;
+    const latest = (code, id) => d3.greatest(obs.filter((r) => r.country_code === code && r.indicator_id === id), (r) => r.year);
+    const pop = (code, year) => obs.find((r) => r.country_code === code && r.indicator_id === 'population' && r.source_id === 'worldbank_wdi' && r.year === year)
+      || d3.greatest(obs.filter((r) => r.country_code === code && r.indicator_id === 'population' && r.source_id === 'worldbank_wdi'), (r) => r.year);
+    const items = codes.filter((c) => c !== 'jp').map((code) => {
+      const ex = latest(code, 'japan_exports'), im = latest(code, 'japan_imports'), res = latest(code, 'japanese_residents');
+      const sameYear = ex && im && ex.year === im.year;
+      const p = res ? pop(code, res.year) : null;
+      return { code, name: (ex || im || res || obs.find((r) => r.country_code === code))?.country_ja || code, ex, im, res, sameYear,
+        total: sameYear ? ex.value + im.value : null, perPop: res && p ? res.value / p.value * 1e4 : null, popRow: p };
+    });
+    const bars = items.filter((d) => d.total != null).map((d) => ({ country_code: d.code, country_ja: d.name, year: d.ex.year, value: d.total,
+      label: fmt(d.total, 'USD') + '（日本の輸出 ' + fmt(d.ex.value, 'USD') + '・輸入 ' + fmt(d.im.value, 'USD') + '、' + d.ex.year + '年）',
+      source_publisher_ja: d.ex.source_publisher_ja, original_source: d.ex.original_source }));
+    drawRanking($('jt-chart'), bars, 'USD');
+
+    const book = noteBook();
+    const anyTrade = items.find((d) => d.ex);
+    const tradeN = anyTrade ? book.mark('trade', () => ({ text: '日本との貿易：' + anyTrade.ex.source_publisher_ja + '「' + anyTrade.ex.source_title_ja + '」の「日本との貿易（通関ベース）」（元統計：'
+      + (anyTrade.ex.original_source || '—') + '）。日本から見た輸出・輸入で、貿易額はその合計、収支は輸出−輸入です。' })) : null;
+    const resN = book.mark('res', () => ({ text: '在留邦人：外務省「海外在留邦人数調査統計」（各国の JETRO「概況・基本統計」または外務省「基礎データ」に掲載の値。時点は各セル）。人口1万人あたりは、同じ年の世界銀行の総人口で割った値です。' }));
+    const noTrade = items.filter((d) => !d.ex).map((d) => d.name);
+    const noTradeN = noTrade.length ? book.text('日本との貿易：' + noTrade.join('・') + 'は、JETRO「概況・基本統計」のページがないため未掲載（外務省「基礎データ」には財務省貿易統計の円建ての値があります）。') : null;
+    const table = $('jt-table');
+    const labels = headerMarks(table, [[], tradeN ? [tradeN] : [], [], [], [], [resN], [resN]]);
+    table.querySelector('tbody').replaceChildren(...items.map((d) => {
+      const tr = document.createElement('tr');
+      const bal = d.sameYear ? d.ex.value - d.im.value : null;
+      tr.append(cell(d.name),
+        noteCell(d.total != null ? fmt(d.total, 'USD') + '（' + d.ex.year + '）' : '—', !d.ex && noTradeN ? [noTradeN] : [], 'num nowrap', labels[1], d.total != null && tradeN ? [tradeN] : []),
+        noteCell(d.ex ? fmt(d.ex.value, 'USD') : '—', [], 'num nowrap', labels[2]),
+        noteCell(d.im ? fmt(d.im.value, 'USD') : '—', [], 'num nowrap', labels[3]),
+        noteCell(bal != null ? (bal >= 0 ? '+' : '−') + fmt(Math.abs(bal), 'USD') : '—', [], 'num nowrap', labels[4]),
+        noteCell(d.res ? num(d.res.value, 0) + '人（' + d.res.year + '）' : '—', [], 'num nowrap', labels[5], d.res ? [resN] : []),
+        noteCell(d.perPop != null ? num(d.perPop, d.perPop < 10 ? 1 : 0) + '人' : '—', [], 'num nowrap', labels[6], d.perPop != null ? [resN] : []));
+      return tr;
+    }));
+    renderNotes($('jt-notes'), book);
   }
 
   // ---------- outlook to 2060 (UN WPP) ----------

@@ -191,7 +191,7 @@ def single_value(extract: dict, field: dict) -> list[dict]:
     """Population-style single figures from the overview pages ('3,423万人(2025年、出所:...)')."""
     labels = {norm_label(j) for j in field.get("labels", [])}
     for table in extract.get("tables", []):
-        if len(table["header"]) > 2:
+        if len(table["header"]) > 2 and not field.get("any_table"):
             continue
         for row in table["rows"]:
             if norm_label(row["label"]) in labels and row["cells"]:
@@ -201,6 +201,34 @@ def single_value(extract: dict, field: dict) -> list[dict]:
                     return []
                 return [{"year": int(as_of[:4]), "value": value, "value_text": text,
                          "original_source": parse_original_source(text)}]
+    return []
+
+
+def japan_trade(extract: dict, field: dict) -> list[dict]:
+    """Trade with Japan from JETRO's 日本との関係 table: header 年 / 日本の輸出(A) / 日本の輸入(B) / 収支(A-B).
+
+    The amounts are in million USD (the summary row "日本との貿易(通関ベース)(100万ドル)" says so);
+    field["japan_trade"] picks column A ("exports") or B ("imports")."""
+    col = {"exports": 0, "imports": 1}.get(field.get("japan_trade"))
+    if col is None:
+        return []
+    summary = next((r for t in extract.get("tables", []) for r in t["rows"] if r["label"].startswith("日本との貿易")), None)
+    if not summary or not re.search(r"(100万|百万)ドル", summary["label"] + " ".join(summary["cells"])):
+        return []
+    # "出所:Global Trade Atlas(GTA)からジェトロ作成 年 日本の輸出(A) ..." -> the part before the table text.
+    source = (parse_original_source(" ".join(summary["cells"])) or "").split(" 年 ")[0].strip() or None
+    for table in extract.get("tables", []):
+        header = table["header"]
+        if len(header) < 3 or not header[1].startswith("日本の輸出"):
+            continue
+        obs = []
+        for row in table["rows"]:
+            if not re.fullmatch(r"\d{4}", row["label"].strip()) or len(row["cells"]) <= col:
+                continue
+            value = parse_ja_number(row["cells"][col])
+            if value is not None:
+                obs.append({"year": int(row["label"]), "value": value * 1e6, **({"original_source": source} if source else {})})
+        return obs
     return []
 
 
@@ -234,10 +262,10 @@ def build_indicators(country: dict, fields: list[dict], extracts: dict[str, dict
             ex = extracts.get(source_id)
             if not ex or ex.get("status") != "ok":
                 continue
-            obs = jetro_series(ex, f) or single_value(ex, f)
+            obs = jetro_series(ex, f) or single_value(ex, f) or japan_trade(ex, f)
             if obs:
                 series.append({
-                    "source_id": source_id, "source_label": f["labels"][0],
+                    "source_id": source_id, "source_label": f["labels"][0] if f["labels"] else f["label_ja"],
                     "url": ex.get("final_url") or ex["url"], "retrieved_at": ex["retrieved_at"],
                     "page_last_updated": ex.get("page_last_updated"),
                     "retrieval_method": ex.get("retrieval_method", "auto"),

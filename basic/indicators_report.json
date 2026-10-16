@@ -1,7 +1,5 @@
 {
-  "errors": {
-    "worldbank_wdi": []
-  },
+  "errors": {},
   "countries": [
     {
       "code": "bn",
@@ -48,6 +46,11 @@
         ],
         "urban_share": [
           "worldbank_wdi"
+        ],
+        "japan_exports": [],
+        "japan_imports": [],
+        "japanese_residents": [
+          "mofa_basic"
         ]
       }
     },
@@ -101,6 +104,15 @@
         ],
         "urban_share": [
           "worldbank_wdi"
+        ],
+        "japan_exports": [
+          "jetro_basic"
+        ],
+        "japan_imports": [
+          "jetro_basic"
+        ],
+        "japanese_residents": [
+          "jetro_basic"
         ]
       }
     },
@@ -154,6 +166,15 @@
         ],
         "urban_share": [
           "worldbank_wdi"
+        ],
+        "japan_exports": [
+          "jetro_basic"
+        ],
+        "japan_imports": [
+          "jetro_basic"
+        ],
+        "japanese_residents": [
+          "jetro_basic"
         ]
       }
     },
@@ -206,6 +227,15 @@
         ],
         "urban_share": [
           "worldbank_wdi"
+        ],
+        "japan_exports": [
+          "jetro_basic"
+        ],
+        "japan_imports": [
+          "jetro_basic"
+        ],
+        "japanese_residents": [
+          "jetro_basic"
         ]
       }
     },
@@ -259,6 +289,15 @@
         ],
         "urban_share": [
           "worldbank_wdi"
+        ],
+        "japan_exports": [
+          "jetro_basic"
+        ],
+        "japan_imports": [
+          "jetro_basic"
+        ],
+        "japanese_residents": [
+          "jetro_basic"
         ]
       }
     },
@@ -311,6 +350,15 @@
         ],
         "urban_share": [
           "worldbank_wdi"
+        ],
+        "japan_exports": [
+          "jetro_basic"
+        ],
+        "japan_imports": [
+          "jetro_basic"
+        ],
+        "japanese_residents": [
+          "jetro_basic"
         ]
       }
     },
@@ -364,6 +412,15 @@
         ],
         "urban_share": [
           "worldbank_wdi"
+        ],
+        "japan_exports": [
+          "jetro_basic"
+        ],
+        "japan_imports": [
+          "jetro_basic"
+        ],
+        "japanese_residents": [
+          "jetro_basic"
         ]
       }
     },
@@ -417,6 +474,15 @@
         ],
         "urban_share": [
           "worldbank_wdi"
+        ],
+        "japan_exports": [
+          "jetro_basic"
+        ],
+        "japan_imports": [
+          "jetro_basic"
+        ],
+        "japanese_residents": [
+          "jetro_basic"
         ]
       }
     },
@@ -470,6 +536,15 @@
         ],
         "urban_share": [
           "worldbank_wdi"
+        ],
+        "japan_exports": [
+          "jetro_basic"
+        ],
+        "japan_imports": [
+          "jetro_basic"
+        ],
+        "japanese_residents": [
+          "jetro_basic"
         ]
       }
     },
@@ -518,6 +593,11 @@
         ],
         "urban_share": [
           "worldbank_wdi"
+        ],
+        "japan_exports": [],
+        "japan_imports": [],
+        "japanese_residents": [
+          "mofa_basic"
         ]
       }
     },
@@ -571,6 +651,15 @@
         ],
         "urban_share": [
           "worldbank_wdi"
+        ],
+        "japan_exports": [
+          "jetro_basic"
+        ],
+        "japan_imports": [
+          "jetro_basic"
+        ],
+        "japanese_residents": [
+          "jetro_basic"
         ]
       }
     },
@@ -618,7 +707,10 @@
         ],
         "urban_share": [
           "worldbank_wdi"
-        ]
+        ],
+        "japan_exports": [],
+        "japan_imports": [],
+        "japanese_residents": []
       }
     }
   ]
