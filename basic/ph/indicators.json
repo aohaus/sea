@@ -13,7 +13,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "SP.POP.TOTL",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/SP.POP.TOTL?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-14T15:29:05+00:00",
+          "retrieved_at": "2026-10-16T12:57:13+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {
@@ -149,7 +149,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "NY.GDP.MKTP.CD",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/NY.GDP.MKTP.CD?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-14T15:29:05+00:00",
+          "retrieved_at": "2026-10-16T12:57:13+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {
@@ -269,7 +269,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "NY.GDP.PCAP.CD",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/NY.GDP.PCAP.CD?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-14T15:29:05+00:00",
+          "retrieved_at": "2026-10-16T12:57:13+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {
@@ -411,7 +411,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "NY.GDP.MKTP.KD.ZG",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-14T15:29:05+00:00",
+          "retrieved_at": "2026-10-16T12:57:13+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {
@@ -553,7 +553,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "FP.CPI.TOTL.ZG",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/FP.CPI.TOTL.ZG?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-14T15:29:05+00:00",
+          "retrieved_at": "2026-10-16T12:57:13+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {
@@ -695,7 +695,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "SL.UEM.TOTL.ZS",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/SL.UEM.TOTL.ZS?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-14T15:29:05+00:00",
+          "retrieved_at": "2026-10-16T12:57:13+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {
@@ -837,7 +837,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "BX.KLT.DINV.CD.WD",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/BX.KLT.DINV.CD.WD?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-14T15:29:05+00:00",
+          "retrieved_at": "2026-10-16T12:57:13+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {
@@ -957,7 +957,7 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "PA.NUS.FCRF",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/PA.NUS.FCRF?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-14T15:29:05+00:00",
+          "retrieved_at": "2026-10-16T12:57:13+00:00",
           "source_last_updated": "2026-10-08",
           "observations": [
             {
@@ -1085,6 +1085,1518 @@
             {
               "year": 2025,
               "value": 57.5
+            }
+          ]
+        }
+      ]
+    },
+    "gdp_per_capita_ppp": {
+      "label_ja": "一人当たりGDP（購買力平価）",
+      "label_en": "GDP per capita, PPP (current international $)",
+      "unit": "PPP$",
+      "series": [
+        {
+          "source_id": "worldbank_wdi",
+          "indicator_code": "NY.GDP.PCAP.PP.CD",
+          "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/NY.GDP.PCAP.PP.CD?format=json&per_page=20000&date=2000:2031",
+          "retrieved_at": "2026-10-16T12:57:13+00:00",
+          "source_last_updated": "2026-10-08",
+          "observations": [
+            {
+              "year": 2000,
+              "value": 3365.55833526093
+            },
+            {
+              "year": 2001,
+              "value": 3468.89888325765
+            },
+            {
+              "year": 2002,
+              "value": 3580.38245467153
+            },
+            {
+              "year": 2003,
+              "value": 3761.49624592314
+            },
+            {
+              "year": 2004,
+              "value": 4037.17193795436
+            },
+            {
+              "year": 2005,
+              "value": 4289.05223688469
+            },
+            {
+              "year": 2006,
+              "value": 4578.70630900797
+            },
+            {
+              "year": 2007,
+              "value": 4923.19718551963
+            },
+            {
+              "year": 2008,
+              "value": 5144.3357817008
+            },
+            {
+              "year": 2009,
+              "value": 5157.27825093616
+            },
+            {
+              "year": 2010,
+              "value": 5489.23543439664
+            },
+            {
+              "year": 2011,
+              "value": 5705.43591174904
+            },
+            {
+              "year": 2012,
+              "value": 6094.26837338658
+            },
+            {
+              "year": 2013,
+              "value": 6372.83382112545
+            },
+            {
+              "year": 2014,
+              "value": 6688.73961232553
+            },
+            {
+              "year": 2015,
+              "value": 6894.26702217935
+            },
+            {
+              "year": 2016,
+              "value": 7382.66758431792
+            },
+            {
+              "year": 2017,
+              "value": 7773.79853599024
+            },
+            {
+              "year": 2018,
+              "value": 8357.74357934219
+            },
+            {
+              "year": 2019,
+              "value": 8924.10116402887
+            },
+            {
+              "year": 2020,
+              "value": 8238.36802037457
+            },
+            {
+              "year": 2021,
+              "value": 8857.78995115514
+            },
+            {
+              "year": 2022,
+              "value": 10129.7407504053
+            },
+            {
+              "year": 2023,
+              "value": 10994.8840414773
+            },
+            {
+              "year": 2024,
+              "value": 11813.805926453
+            },
+            {
+              "year": 2025,
+              "value": 12576.9867435109
+            }
+          ]
+        }
+      ]
+    },
+    "gdp_per_capita_real": {
+      "label_ja": "一人当たり実質GDP（2015年米ドル）",
+      "label_en": "GDP per capita (constant 2015 US$)",
+      "unit": "USD",
+      "series": [
+        {
+          "source_id": "worldbank_wdi",
+          "indicator_code": "NY.GDP.PCAP.KD",
+          "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/NY.GDP.PCAP.KD?format=json&per_page=20000&date=1960:2031",
+          "retrieved_at": "2026-10-16T12:57:13+00:00",
+          "source_last_updated": "2026-10-08",
+          "observations": [
+            {
+              "year": 1960,
+              "value": 1123.78209980486
+            },
+            {
+              "year": 1961,
+              "value": 1150.62906586528
+            },
+            {
+              "year": 1962,
+              "value": 1168.60880125748
+            },
+            {
+              "year": 1963,
+              "value": 1211.82149959902
+            },
+            {
+              "year": 1964,
+              "value": 1214.70925760191
+            },
+            {
+              "year": 1965,
+              "value": 1241.10921652117
+            },
+            {
+              "year": 1966,
+              "value": 1257.98440669165
+            },
+            {
+              "year": 1967,
+              "value": 1285.2931010298
+            },
+            {
+              "year": 1968,
+              "value": 1311.52148738311
+            },
+            {
+              "year": 1969,
+              "value": 1334.73174869948
+            },
+            {
+              "year": 1970,
+              "value": 1348.64912771152
+            },
+            {
+              "year": 1971,
+              "value": 1388.24899930969
+            },
+            {
+              "year": 1972,
+              "value": 1430.58532244744
+            },
+            {
+              "year": 1973,
+              "value": 1522.01742049488
+            },
+            {
+              "year": 1974,
+              "value": 1540.04224351715
+            },
+            {
+              "year": 1975,
+              "value": 1587.49928255808
+            },
+            {
+              "year": 1976,
+              "value": 1683.65998853926
+            },
+            {
+              "year": 1977,
+              "value": 1730.59409726768
+            },
+            {
+              "year": 1978,
+              "value": 1772.22820167607
+            },
+            {
+              "year": 1979,
+              "value": 1822.1450227022
+            },
+            {
+              "year": 1980,
+              "value": 1867.56862352125
+            },
+            {
+              "year": 1981,
+              "value": 1881.81520256172
+            },
+            {
+              "year": 1982,
+              "value": 1898.13930580212
+            },
+            {
+              "year": 1983,
+              "value": 1878.60173410166
+            },
+            {
+              "year": 1984,
+              "value": 1696.57673822151
+            },
+            {
+              "year": 1985,
+              "value": 1537.66555840437
+            },
+            {
+              "year": 1986,
+              "value": 1551.40892775445
+            },
+            {
+              "year": 1987,
+              "value": 1576.97337027736
+            },
+            {
+              "year": 1988,
+              "value": 1638.03682404026
+            },
+            {
+              "year": 1989,
+              "value": 1696.00236347127
+            },
+            {
+              "year": 1990,
+              "value": 1704.07568899121
+            },
+            {
+              "year": 1991,
+              "value": 1656.38349704781
+            },
+            {
+              "year": 1992,
+              "value": 1624.34939806129
+            },
+            {
+              "year": 1993,
+              "value": 1620.35505833942
+            },
+            {
+              "year": 1994,
+              "value": 1654.74613902838
+            },
+            {
+              "year": 1995,
+              "value": 1693.80873081644
+            },
+            {
+              "year": 1996,
+              "value": 1752.23800104559
+            },
+            {
+              "year": 1997,
+              "value": 1800.25913137613
+            },
+            {
+              "year": 1998,
+              "value": 1746.52590513282
+            },
+            {
+              "year": 1999,
+              "value": 1759.42105225652
+            },
+            {
+              "year": 2000,
+              "value": 1793.34761146436
+            },
+            {
+              "year": 2001,
+              "value": 1807.70892524758
+            },
+            {
+              "year": 2002,
+              "value": 1837.25429286854
+            },
+            {
+              "year": 2003,
+              "value": 1892.82161995051
+            },
+            {
+              "year": 2004,
+              "value": 1978.34489133113
+            },
+            {
+              "year": 2005,
+              "value": 2037.8776605946
+            },
+            {
+              "year": 2006,
+              "value": 2110.42044781284
+            },
+            {
+              "year": 2007,
+              "value": 2209.34651083329
+            },
+            {
+              "year": 2008,
+              "value": 2264.9462907288
+            },
+            {
+              "year": 2009,
+              "value": 2256.72554835463
+            },
+            {
+              "year": 2010,
+              "value": 2373.14312064664
+            },
+            {
+              "year": 2011,
+              "value": 2416.75212064542
+            },
+            {
+              "year": 2012,
+              "value": 2533.74141964959
+            },
+            {
+              "year": 2013,
+              "value": 2654.41506933978
+            },
+            {
+              "year": 2014,
+              "value": 2776.92005909479
+            },
+            {
+              "year": 2015,
+              "value": 2909.85818010301
+            },
+            {
+              "year": 2016,
+              "value": 3076.3374186759
+            },
+            {
+              "year": 2017,
+              "value": 3247.4503878362
+            },
+            {
+              "year": 2018,
+              "value": 3410.93647976109
+            },
+            {
+              "year": 2019,
+              "value": 3575.88170922922
+            },
+            {
+              "year": 2020,
+              "value": 3198.66690008413
+            },
+            {
+              "year": 2021,
+              "value": 3350.97587587776
+            },
+            {
+              "year": 2022,
+              "value": 3577.70136573244
+            },
+            {
+              "year": 2023,
+              "value": 3744.69763802686
+            },
+            {
+              "year": 2024,
+              "value": 3926.14900894495
+            },
+            {
+              "year": 2025,
+              "value": 4065.88615171728
+            }
+          ]
+        }
+      ]
+    },
+    "aged_65_share": {
+      "label_ja": "高齢化率（65歳以上の割合）",
+      "label_en": "Population ages 65 and above (% of total)",
+      "unit": "%",
+      "series": [
+        {
+          "source_id": "worldbank_wdi",
+          "indicator_code": "SP.POP.65UP.TO.ZS",
+          "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/SP.POP.65UP.TO.ZS?format=json&per_page=20000&date=1960:2031",
+          "retrieved_at": "2026-10-16T12:57:13+00:00",
+          "source_last_updated": "2026-10-08",
+          "observations": [
+            {
+              "year": 1960,
+              "value": 2.23177178963891
+            },
+            {
+              "year": 1961,
+              "value": 2.19437477043814
+            },
+            {
+              "year": 1962,
+              "value": 2.16740191733241
+            },
+            {
+              "year": 1963,
+              "value": 2.14866920919372
+            },
+            {
+              "year": 1964,
+              "value": 2.1382938610038
+            },
+            {
+              "year": 1965,
+              "value": 2.13629964743176
+            },
+            {
+              "year": 1966,
+              "value": 2.14125552717935
+            },
+            {
+              "year": 1967,
+              "value": 2.15210887395397
+            },
+            {
+              "year": 1968,
+              "value": 2.16812695719683
+            },
+            {
+              "year": 1969,
+              "value": 2.1860530099194
+            },
+            {
+              "year": 1970,
+              "value": 2.20656530382962
+            },
+            {
+              "year": 1971,
+              "value": 2.23566713472554
+            },
+            {
+              "year": 1972,
+              "value": 2.27500570593031
+            },
+            {
+              "year": 1973,
+              "value": 2.31982549319218
+            },
+            {
+              "year": 1974,
+              "value": 2.3688114401151
+            },
+            {
+              "year": 1975,
+              "value": 2.42057693740384
+            },
+            {
+              "year": 1976,
+              "value": 2.46792656771452
+            },
+            {
+              "year": 1977,
+              "value": 2.51069904901199
+            },
+            {
+              "year": 1978,
+              "value": 2.55044502577565
+            },
+            {
+              "year": 1979,
+              "value": 2.58739894041937
+            },
+            {
+              "year": 1980,
+              "value": 2.62423366707088
+            },
+            {
+              "year": 1981,
+              "value": 2.65888375801561
+            },
+            {
+              "year": 1982,
+              "value": 2.68702927165974
+            },
+            {
+              "year": 1983,
+              "value": 2.7090789940699
+            },
+            {
+              "year": 1984,
+              "value": 2.72813826093465
+            },
+            {
+              "year": 1985,
+              "value": 2.74716522407782
+            },
+            {
+              "year": 1986,
+              "value": 2.76580784976417
+            },
+            {
+              "year": 1987,
+              "value": 2.77977064211981
+            },
+            {
+              "year": 1988,
+              "value": 2.79128720348029
+            },
+            {
+              "year": 1989,
+              "value": 2.80490854690659
+            },
+            {
+              "year": 1990,
+              "value": 2.81573365757974
+            },
+            {
+              "year": 1991,
+              "value": 2.8262254618212
+            },
+            {
+              "year": 1992,
+              "value": 2.83556478683098
+            },
+            {
+              "year": 1993,
+              "value": 2.84468061648152
+            },
+            {
+              "year": 1994,
+              "value": 2.85795242376512
+            },
+            {
+              "year": 1995,
+              "value": 2.87174177114784
+            },
+            {
+              "year": 1996,
+              "value": 2.88757376040121
+            },
+            {
+              "year": 1997,
+              "value": 2.90852267814892
+            },
+            {
+              "year": 1998,
+              "value": 2.93271601660904
+            },
+            {
+              "year": 1999,
+              "value": 2.95965995970857
+            },
+            {
+              "year": 2000,
+              "value": 2.98848745457432
+            },
+            {
+              "year": 2001,
+              "value": 3.02090178007557
+            },
+            {
+              "year": 2002,
+              "value": 3.05926748977748
+            },
+            {
+              "year": 2003,
+              "value": 3.09952274726494
+            },
+            {
+              "year": 2004,
+              "value": 3.13944331956901
+            },
+            {
+              "year": 2005,
+              "value": 3.17798834703408
+            },
+            {
+              "year": 2006,
+              "value": 3.21661056466442
+            },
+            {
+              "year": 2007,
+              "value": 3.25148670575291
+            },
+            {
+              "year": 2008,
+              "value": 3.28354609763745
+            },
+            {
+              "year": 2009,
+              "value": 3.31330809960348
+            },
+            {
+              "year": 2010,
+              "value": 3.34135983402037
+            },
+            {
+              "year": 2011,
+              "value": 3.37924918015002
+            },
+            {
+              "year": 2012,
+              "value": 3.43181972740095
+            },
+            {
+              "year": 2013,
+              "value": 3.50982278595893
+            },
+            {
+              "year": 2014,
+              "value": 3.62337717155712
+            },
+            {
+              "year": 2015,
+              "value": 3.77024234469686
+            },
+            {
+              "year": 2016,
+              "value": 3.93781110895032
+            },
+            {
+              "year": 2017,
+              "value": 4.11815540339097
+            },
+            {
+              "year": 2018,
+              "value": 4.31408910623004
+            },
+            {
+              "year": 2019,
+              "value": 4.51942674426754
+            },
+            {
+              "year": 2020,
+              "value": 4.72567431073939
+            },
+            {
+              "year": 2021,
+              "value": 4.8807304447929
+            },
+            {
+              "year": 2022,
+              "value": 5.04131518299472
+            },
+            {
+              "year": 2023,
+              "value": 5.26217156111322
+            },
+            {
+              "year": 2024,
+              "value": 5.49193411039176
+            },
+            {
+              "year": 2025,
+              "value": 5.72400622201301
+            }
+          ]
+        }
+      ]
+    },
+    "life_expectancy": {
+      "label_ja": "平均寿命（出生時の平均余命）",
+      "label_en": "Life expectancy at birth (years)",
+      "unit": "years",
+      "series": [
+        {
+          "source_id": "worldbank_wdi",
+          "indicator_code": "SP.DYN.LE00.IN",
+          "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/SP.DYN.LE00.IN?format=json&per_page=20000&date=1960:2031",
+          "retrieved_at": "2026-10-16T12:57:13+00:00",
+          "source_last_updated": "2026-10-08",
+          "observations": [
+            {
+              "year": 1960,
+              "value": 59.175
+            },
+            {
+              "year": 1961,
+              "value": 59.469
+            },
+            {
+              "year": 1962,
+              "value": 59.755
+            },
+            {
+              "year": 1963,
+              "value": 60.018
+            },
+            {
+              "year": 1964,
+              "value": 60.13
+            },
+            {
+              "year": 1965,
+              "value": 60.41
+            },
+            {
+              "year": 1966,
+              "value": 60.623
+            },
+            {
+              "year": 1967,
+              "value": 60.804
+            },
+            {
+              "year": 1968,
+              "value": 60.917
+            },
+            {
+              "year": 1969,
+              "value": 60.981
+            },
+            {
+              "year": 1970,
+              "value": 60.827
+            },
+            {
+              "year": 1971,
+              "value": 61.065
+            },
+            {
+              "year": 1972,
+              "value": 60.911
+            },
+            {
+              "year": 1973,
+              "value": 60.741
+            },
+            {
+              "year": 1974,
+              "value": 60.816
+            },
+            {
+              "year": 1975,
+              "value": 60.904
+            },
+            {
+              "year": 1976,
+              "value": 60.869
+            },
+            {
+              "year": 1977,
+              "value": 61.431
+            },
+            {
+              "year": 1978,
+              "value": 61.531
+            },
+            {
+              "year": 1979,
+              "value": 61.727
+            },
+            {
+              "year": 1980,
+              "value": 61.884
+            },
+            {
+              "year": 1981,
+              "value": 61.942
+            },
+            {
+              "year": 1982,
+              "value": 62.175
+            },
+            {
+              "year": 1983,
+              "value": 62.349
+            },
+            {
+              "year": 1984,
+              "value": 62.426
+            },
+            {
+              "year": 1985,
+              "value": 62.735
+            },
+            {
+              "year": 1986,
+              "value": 62.875
+            },
+            {
+              "year": 1987,
+              "value": 63.299
+            },
+            {
+              "year": 1988,
+              "value": 63.711
+            },
+            {
+              "year": 1989,
+              "value": 64.105
+            },
+            {
+              "year": 1990,
+              "value": 64.382
+            },
+            {
+              "year": 1991,
+              "value": 64.622
+            },
+            {
+              "year": 1992,
+              "value": 65.353
+            },
+            {
+              "year": 1993,
+              "value": 65.661
+            },
+            {
+              "year": 1994,
+              "value": 66
+            },
+            {
+              "year": 1995,
+              "value": 66.311
+            },
+            {
+              "year": 1996,
+              "value": 66.691
+            },
+            {
+              "year": 1997,
+              "value": 66.994
+            },
+            {
+              "year": 1998,
+              "value": 67.212
+            },
+            {
+              "year": 1999,
+              "value": 67.503
+            },
+            {
+              "year": 2000,
+              "value": 67.789
+            },
+            {
+              "year": 2001,
+              "value": 67.829
+            },
+            {
+              "year": 2002,
+              "value": 67.886
+            },
+            {
+              "year": 2003,
+              "value": 68.049
+            },
+            {
+              "year": 2004,
+              "value": 68.301
+            },
+            {
+              "year": 2005,
+              "value": 68.423
+            },
+            {
+              "year": 2006,
+              "value": 68.172
+            },
+            {
+              "year": 2007,
+              "value": 68.549
+            },
+            {
+              "year": 2008,
+              "value": 68.643
+            },
+            {
+              "year": 2009,
+              "value": 68.631
+            },
+            {
+              "year": 2010,
+              "value": 68.883
+            },
+            {
+              "year": 2011,
+              "value": 69.096
+            },
+            {
+              "year": 2012,
+              "value": 69.237
+            },
+            {
+              "year": 2013,
+              "value": 69.283
+            },
+            {
+              "year": 2014,
+              "value": 69.311
+            },
+            {
+              "year": 2015,
+              "value": 69.45
+            },
+            {
+              "year": 2016,
+              "value": 69.49
+            },
+            {
+              "year": 2017,
+              "value": 69.966
+            },
+            {
+              "year": 2018,
+              "value": 69.761
+            },
+            {
+              "year": 2019,
+              "value": 69.68
+            },
+            {
+              "year": 2020,
+              "value": 70.097
+            },
+            {
+              "year": 2021,
+              "value": 66.675
+            },
+            {
+              "year": 2022,
+              "value": 69.472
+            },
+            {
+              "year": 2023,
+              "value": 69.833
+            },
+            {
+              "year": 2024,
+              "value": 69.946
+            }
+          ]
+        }
+      ]
+    },
+    "fertility_rate": {
+      "label_ja": "合計特殊出生率",
+      "label_en": "Fertility rate, total (births per woman)",
+      "unit": "births",
+      "series": [
+        {
+          "source_id": "worldbank_wdi",
+          "indicator_code": "SP.DYN.TFRT.IN",
+          "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/SP.DYN.TFRT.IN?format=json&per_page=20000&date=1960:2031",
+          "retrieved_at": "2026-10-16T12:57:13+00:00",
+          "source_last_updated": "2026-10-08",
+          "observations": [
+            {
+              "year": 1960,
+              "value": 6.996
+            },
+            {
+              "year": 1961,
+              "value": 6.994
+            },
+            {
+              "year": 1962,
+              "value": 6.98
+            },
+            {
+              "year": 1963,
+              "value": 6.952
+            },
+            {
+              "year": 1964,
+              "value": 6.886
+            },
+            {
+              "year": 1965,
+              "value": 6.799
+            },
+            {
+              "year": 1966,
+              "value": 6.691
+            },
+            {
+              "year": 1967,
+              "value": 6.572
+            },
+            {
+              "year": 1968,
+              "value": 6.448
+            },
+            {
+              "year": 1969,
+              "value": 6.333
+            },
+            {
+              "year": 1970,
+              "value": 6.218
+            },
+            {
+              "year": 1971,
+              "value": 6.083
+            },
+            {
+              "year": 1972,
+              "value": 5.937
+            },
+            {
+              "year": 1973,
+              "value": 5.787
+            },
+            {
+              "year": 1974,
+              "value": 5.693
+            },
+            {
+              "year": 1975,
+              "value": 5.596
+            },
+            {
+              "year": 1976,
+              "value": 5.505
+            },
+            {
+              "year": 1977,
+              "value": 5.442
+            },
+            {
+              "year": 1978,
+              "value": 5.393
+            },
+            {
+              "year": 1979,
+              "value": 5.255
+            },
+            {
+              "year": 1980,
+              "value": 5.108
+            },
+            {
+              "year": 1981,
+              "value": 4.973
+            },
+            {
+              "year": 1982,
+              "value": 4.917
+            },
+            {
+              "year": 1983,
+              "value": 4.867
+            },
+            {
+              "year": 1984,
+              "value": 4.77
+            },
+            {
+              "year": 1985,
+              "value": 4.664
+            },
+            {
+              "year": 1986,
+              "value": 4.563
+            },
+            {
+              "year": 1987,
+              "value": 4.509
+            },
+            {
+              "year": 1988,
+              "value": 4.449
+            },
+            {
+              "year": 1989,
+              "value": 4.365
+            },
+            {
+              "year": 1990,
+              "value": 4.322
+            },
+            {
+              "year": 1991,
+              "value": 4.273
+            },
+            {
+              "year": 1992,
+              "value": 4.161
+            },
+            {
+              "year": 1993,
+              "value": 4.098
+            },
+            {
+              "year": 1994,
+              "value": 4.079
+            },
+            {
+              "year": 1995,
+              "value": 4.067
+            },
+            {
+              "year": 1996,
+              "value": 4.004
+            },
+            {
+              "year": 1997,
+              "value": 3.943
+            },
+            {
+              "year": 1998,
+              "value": 3.884
+            },
+            {
+              "year": 1999,
+              "value": 3.825
+            },
+            {
+              "year": 2000,
+              "value": 3.754
+            },
+            {
+              "year": 2001,
+              "value": 3.719
+            },
+            {
+              "year": 2002,
+              "value": 3.651
+            },
+            {
+              "year": 2003,
+              "value": 3.591
+            },
+            {
+              "year": 2004,
+              "value": 3.524
+            },
+            {
+              "year": 2005,
+              "value": 3.448
+            },
+            {
+              "year": 2006,
+              "value": 3.466
+            },
+            {
+              "year": 2007,
+              "value": 3.403
+            },
+            {
+              "year": 2008,
+              "value": 3.401
+            },
+            {
+              "year": 2009,
+              "value": 3.376
+            },
+            {
+              "year": 2010,
+              "value": 3.315
+            },
+            {
+              "year": 2011,
+              "value": 3.236
+            },
+            {
+              "year": 2012,
+              "value": 3.143
+            },
+            {
+              "year": 2013,
+              "value": 3.042
+            },
+            {
+              "year": 2014,
+              "value": 2.894
+            },
+            {
+              "year": 2015,
+              "value": 2.829
+            },
+            {
+              "year": 2016,
+              "value": 2.679
+            },
+            {
+              "year": 2017,
+              "value": 2.525
+            },
+            {
+              "year": 2018,
+              "value": 2.378
+            },
+            {
+              "year": 2019,
+              "value": 2.215
+            },
+            {
+              "year": 2020,
+              "value": 2.075
+            },
+            {
+              "year": 2021,
+              "value": 1.95
+            },
+            {
+              "year": 2022,
+              "value": 1.929
+            },
+            {
+              "year": 2023,
+              "value": 1.916
+            },
+            {
+              "year": 2024,
+              "value": 1.894
+            }
+          ]
+        }
+      ]
+    },
+    "urban_share": {
+      "label_ja": "都市人口の割合",
+      "label_en": "Urban population (% of total)",
+      "unit": "%",
+      "series": [
+        {
+          "source_id": "worldbank_wdi",
+          "indicator_code": "SP.URB.TOTL.IN.ZS",
+          "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/SP.URB.TOTL.IN.ZS?format=json&per_page=20000&date=1960:2031",
+          "retrieved_at": "2026-10-16T12:57:13+00:00",
+          "source_last_updated": "2026-10-08",
+          "observations": [
+            {
+              "year": 1960,
+              "value": 30.0110353409461
+            },
+            {
+              "year": 1961,
+              "value": 30.2531994816089
+            },
+            {
+              "year": 1962,
+              "value": 30.4646163598705
+            },
+            {
+              "year": 1963,
+              "value": 30.652613340391
+            },
+            {
+              "year": 1964,
+              "value": 30.8237757005861
+            },
+            {
+              "year": 1965,
+              "value": 30.9846887178715
+            },
+            {
+              "year": 1966,
+              "value": 31.1419376696627
+            },
+            {
+              "year": 1967,
+              "value": 31.3021078333755
+            },
+            {
+              "year": 1968,
+              "value": 31.4717844864255
+            },
+            {
+              "year": 1969,
+              "value": 31.6575529062283
+            },
+            {
+              "year": 1970,
+              "value": 31.8647345837349
+            },
+            {
+              "year": 1971,
+              "value": 32.0792468136461
+            },
+            {
+              "year": 1972,
+              "value": 32.2872916439915
+            },
+            {
+              "year": 1973,
+              "value": 32.4905527566074
+            },
+            {
+              "year": 1974,
+              "value": 32.6898424283533
+            },
+            {
+              "year": 1975,
+              "value": 32.8859729360885
+            },
+            {
+              "year": 1976,
+              "value": 33.0797565566725
+            },
+            {
+              "year": 1977,
+              "value": 33.2720055669647
+            },
+            {
+              "year": 1978,
+              "value": 33.4635322438245
+            },
+            {
+              "year": 1979,
+              "value": 33.6551488641112
+            },
+            {
+              "year": 1980,
+              "value": 33.8476677046844
+            },
+            {
+              "year": 1981,
+              "value": 34.0419010424033
+            },
+            {
+              "year": 1982,
+              "value": 34.2386611541275
+            },
+            {
+              "year": 1983,
+              "value": 34.4387603167162
+            },
+            {
+              "year": 1984,
+              "value": 34.643010807029
+            },
+            {
+              "year": 1985,
+              "value": 34.8522249019252
+            },
+            {
+              "year": 1986,
+              "value": 35.0672148782642
+            },
+            {
+              "year": 1987,
+              "value": 35.2887930129054
+            },
+            {
+              "year": 1988,
+              "value": 35.5177715827083
+            },
+            {
+              "year": 1989,
+              "value": 35.7549628645322
+            },
+            {
+              "year": 1990,
+              "value": 36.0011791352366
+            },
+            {
+              "year": 1991,
+              "value": 36.2572326716808
+            },
+            {
+              "year": 1992,
+              "value": 36.5239357507243
+            },
+            {
+              "year": 1993,
+              "value": 36.8021006492264
+            },
+            {
+              "year": 1994,
+              "value": 37.0925396440467
+            },
+            {
+              "year": 1995,
+              "value": 37.3960650120444
+            },
+            {
+              "year": 1996,
+              "value": 37.713489030079
+            },
+            {
+              "year": 1997,
+              "value": 38.0456239750098
+            },
+            {
+              "year": 1998,
+              "value": 38.3932821236964
+            },
+            {
+              "year": 1999,
+              "value": 38.757275752998
+            },
+            {
+              "year": 2000,
+              "value": 39.1384171397742
+            },
+            {
+              "year": 2001,
+              "value": 39.5375185608843
+            },
+            {
+              "year": 2002,
+              "value": 39.9553922931877
+            },
+            {
+              "year": 2003,
+              "value": 40.3928506135438
+            },
+            {
+              "year": 2004,
+              "value": 40.8507057988121
+            },
+            {
+              "year": 2005,
+              "value": 41.3297701258519
+            },
+            {
+              "year": 2006,
+              "value": 41.8308558715226
+            },
+            {
+              "year": 2007,
+              "value": 42.3470499959497
+            },
+            {
+              "year": 2008,
+              "value": 43.1547492407016
+            },
+            {
+              "year": 2009,
+              "value": 44.3356772609527
+            },
+            {
+              "year": 2010,
+              "value": 45.5208176726647
+            },
+            {
+              "year": 2011,
+              "value": 46.6833632464759
+            },
+            {
+              "year": 2012,
+              "value": 47.9182784810426
+            },
+            {
+              "year": 2013,
+              "value": 49.1313688766206
+            },
+            {
+              "year": 2014,
+              "value": 50.2392400212368
+            },
+            {
+              "year": 2015,
+              "value": 51.1549047745227
+            },
+            {
+              "year": 2016,
+              "value": 51.9114748151175
+            },
+            {
+              "year": 2017,
+              "value": 52.6010482354344
+            },
+            {
+              "year": 2018,
+              "value": 53.2088897464754
+            },
+            {
+              "year": 2019,
+              "value": 53.7157859948017
+            },
+            {
+              "year": 2020,
+              "value": 54.1077719895977
+            },
+            {
+              "year": 2021,
+              "value": 54.4504102510776
+            },
+            {
+              "year": 2022,
+              "value": 54.7902343568327
+            },
+            {
+              "year": 2023,
+              "value": 55.1242716168851
+            },
+            {
+              "year": 2024,
+              "value": 55.4520983215477
+            },
+            {
+              "year": 2025,
+              "value": 55.7732907605332
             }
           ]
         }
