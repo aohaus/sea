@@ -1,5 +1,7 @@
 {
-  "errors": {},
+  "errors": {
+    "worldbank_wdi": []
+  },
   "countries": [
     {
       "code": "bn",
