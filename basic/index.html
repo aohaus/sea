@@ -295,6 +295,8 @@
   const ASEAN = ['bn', 'kh', 'id', 'la', 'my', 'mm', 'ph', 'sg', 'th', 'tl', 'vn'];
   const ASEAN10 = ASEAN.filter((c) => c !== 'tl');
   const ADDITIVE = new Set(['population', 'gdp_nominal', 'fdi_inflow']);
+  // Units compared by difference rather than ratio (a 16-year gap in life expectancy, not "1.2 times").
+  const DIFF_UNITS = new Set(['%', 'years', 'births']);
   const SOURCE_LABEL = { worldbank_wdi: '世界銀行 WDI', imf_weo: 'IMF WEO', jetro_basic: 'JETRO', mofa_basic: '外務省' };
   const STATUS = { match: '一致', close: '近い', differs: '差あり', no_data: 'データなし' };
   const $ = (id) => document.getElementById(id);
@@ -455,7 +457,9 @@
 
     if (japan && agg != null && japan.value) {
       const ratio = agg / japan.value;
-      $('t2').textContent = unit === '%' ? (agg - japan.value >= 0 ? '+' : '') + (agg - japan.value).toFixed(1) + 'pt' : (ratio >= 10 ? ratio.toFixed(0) : ratio.toFixed(2)) + '倍';
+      const d = agg - japan.value;
+      $('t2').textContent = unit === '%' ? (d >= 0 ? '+' : '') + d.toFixed(1) + 'pt'
+        : DIFF_UNITS.has(unit) ? (d >= 0 ? '+' : '−') + fmt(Math.abs(d), unit) : (ratio >= 10 ? ratio.toFixed(0) : ratio.toFixed(2)) + '倍';
       $('t2n').textContent = '日本 ' + fmt(japan.value, unit) + '（' + year + '年）';
     } else {
       $('t2').textContent = '—';
@@ -463,7 +467,9 @@
     }
     if (current.length) {
       const hi = d3.greatest(current, (r) => r.value), lo = d3.least(current, (r) => r.value);
-      $('t3').textContent = lo.value > 0 && unit !== '%' ? (hi.value / lo.value).toFixed(0) + '倍の差' : fmt(hi.value - lo.value, unit) + 'の差';
+      // Amounts compare as a ratio; rates, ages and births per woman as a difference.
+      const r = hi.value / lo.value;
+      $('t3').textContent = lo.value > 0 && !DIFF_UNITS.has(unit) ? (r >= 10 ? r.toFixed(0) : r.toFixed(1)) + '倍の差' : fmt(hi.value - lo.value, unit) + 'の差';
       $('t3n').textContent = '最大 ' + hi.country_ja + ' ' + fmt(hi.value, unit) + '、最小 ' + lo.country_ja + ' ' + fmt(lo.value, unit);
       $('takeaway').textContent = indName + '（' + year + '年、' + srcName + '）：選択した' + selected.length + 'か国で最大は' + hi.country_ja + '、最小は' + lo.country_ja + '。国を選び直すと合計と比較が計算し直されます。';
     } else {
