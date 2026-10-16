@@ -44,7 +44,7 @@
   h2 { font-size: 1.05rem; font-weight: 500; margin: 0; text-wrap: balance; }
   .en { color: var(--muted); font-size: .8rem; font-weight: 400; margin-left: .5em; }
   .lede { color: var(--muted); margin: 6px 0 0; max-width: 72ch; }
-  .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; display: grid; gap: 10px; min-width: 0; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; min-width: 0; }
   .note { color: var(--muted); font-size: .82rem; margin: 0; }
   .grid2 { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); }
   .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
@@ -139,6 +139,11 @@
       <select id="source"></select>
       <label class="label" for="year">年</label>
       <select id="year"></select>
+      <label class="label" for="rel">比べ方</label>
+      <select id="rel">
+        <option value="abs">実数</option>
+        <option value="japan">日本を物差しに（日本＝100／日本との差）</option>
+      </select>
     </div>
   </section>
 
@@ -162,6 +167,17 @@
     </div>
   </section>
 
+  <section class="card">
+    <h2>日本の何年ごろ？<span class="en">Where was Japan at this level?</span></h2>
+    <p class="note">選んだ国のいまの値が、日本では何年ごろの水準だったかを示します。日本の時系列（1960年〜）をさかのぼり、初めてその値に達した年を前後の年から按分して求めています。物価・制度・技術の違いがあるため目安ですが、「何十年の差か」をつかむ物差しになります。</p>
+    <div class="row">
+      <label class="label" for="tm-indicator">指標</label>
+      <select id="tm-indicator"></select>
+    </div>
+    <p class="note" id="tm-note"></p>
+    <div class="chart" id="tm-chart"></div>
+  </section>
+
   <section class="card" id="cities">
     <h2>主要都市の比較<span class="en">Major cities</span></h2>
     <p class="note">上で選んだ国の主要都市（各国1〜3都市）を比べます。「日本（比較）」を選ぶと日本の政令指定都市20市も加わります（灰色）。一人当たり地域GDP は各国統計局の州・県・市の値で、都市そのものと単位が違う場合は「単位」に示します。都市人口は国連 WUP 2025 の都市域（行政区域とは異なる）です。</p>
@@ -175,7 +191,7 @@
     <div class="chart" id="city-chart"></div>
     <div class="tablebox cards-box">
       <table id="city-table" class="cards">
-        <thead><tr><th>都市</th><th>国</th><th data-short="単位">単位（地域GDP の対象）</th><th class="num" data-short="米ドル換算">一人当たり地域GDP（米ドル）</th><th class="num">対全国比</th><th class="num">都市人口</th><th data-short="出所">地域GDP の出所</th></tr></thead>
+        <thead><tr><th>都市</th><th>国</th><th data-short="単位">単位（地域GDP の対象）</th><th class="num" data-short="米ドル換算">一人当たり地域GDP（米ドル）</th><th class="num">対全国比</th><th class="num">都市人口</th><th data-short="近い日本の市">一人当たりが近い政令指定都市</th><th data-short="出所">地域GDP の出所</th></tr></thead>
         <tbody></tbody>
       </table>
     </div>
@@ -279,6 +295,8 @@
   const ASEAN = ['bn', 'kh', 'id', 'la', 'my', 'mm', 'ph', 'sg', 'th', 'tl', 'vn'];
   const ASEAN10 = ASEAN.filter((c) => c !== 'tl');
   const ADDITIVE = new Set(['population', 'gdp_nominal', 'fdi_inflow']);
+  // Units compared by difference rather than ratio (a 16-year gap in life expectancy, not "1.2 times").
+  const DIFF_UNITS = new Set(['%', 'years', 'births']);
   const SOURCE_LABEL = { worldbank_wdi: '世界銀行 WDI', imf_weo: 'IMF WEO', jetro_basic: 'JETRO', mofa_basic: '外務省' };
   const STATUS = { match: '一致', close: '近い', differs: '差あり', no_data: 'データなし' };
   const $ = (id) => document.getElementById(id);
@@ -287,7 +305,7 @@
 
   // ---------- state (kept in this browser only) ----------
   const DEFAULTS = { countries: ASEAN10, japan: true, indicator: 'gdp_per_capita', source: 'worldbank_wdi', year: null,
-    cityIndicator: 'grdp_per_capita_usd', cityYear: 'latest', fxMode: 'index', fxSpan: 10 };
+    cityIndicator: 'grdp_per_capita_usd', cityYear: 'latest', fxMode: 'index', fxSpan: 10, rel: 'abs', tmIndicator: 'aged_65_share' };
   let state = { ...DEFAULTS };
   try { state = { ...DEFAULTS, ...JSON.parse(localStorage.getItem('asean-explorer') || '{}') }; } catch (e) { /* storage unavailable */ }
   const set = (patch) => {
@@ -305,6 +323,11 @@
     if (unit === 'USD') return a >= 1e12 ? num(v / 1e12, 2) + '兆ドル' : a >= 1e8 ? num(v / 1e8, 0) + '億ドル' : a >= 1e4 ? num(v / 1e4, 1) + '万ドル' : num(v, 0) + 'ドル';
     if (unit === '%') return num(v, 1) + '%';
     if (unit === 'LCU/USD') return num(v, a < 10 ? 4 : a < 1000 ? 2 : 0);
+    if (unit === 'PPP$') return a >= 1e4 ? num(v / 1e4, 1) + '万国際ドル' : num(v, 0) + '国際ドル';
+    if (unit === 'years') return num(v, 1) + '歳';
+    if (unit === 'births') return num(v, 2);
+    if (unit === 'index') return num(v, 0);
+    if (unit === 'pt') return (v > 0 ? '+' : v < 0 ? '−' : '±') + num(Math.abs(v), 1) + 'pt';
     return num(v, 1);
   }
   function fmtAxis(v, unit) {
@@ -314,6 +337,8 @@
     if (unit === '%') return num(v, 2) + '%';  // small ranges need decimals (e.g. -0.05%)
     if (unit === 'LCU/USD') return a >= 1e4 ? num(v / 1e4, 1) + '万' : num(v, a < 10 ? 2 : 0);
     if (unit === 'index') return num(v, 0);
+    if (unit === 'PPP$') return a >= 1e4 ? num(v / 1e4, 1) + '万' : num(v, 0);
+    if (unit === 'pt') return (v > 0 ? '+' : '') + num(v, 0);
     if (unit === 'chg%') return (v > 0 ? '+' : '') + num(v, 0) + '%';
     return num(v, 1);
   }
@@ -358,6 +383,8 @@
   $('indicator').addEventListener('change', (e) => set({ indicator: e.target.value, year: null }));
   $('source').addEventListener('change', (e) => set({ source: e.target.value, year: null }));
   $('year').addEventListener('change', (e) => set({ year: Number(e.target.value) }));
+  $('rel').addEventListener('change', (e) => set({ rel: e.target.value }));
+  $('tm-indicator').addEventListener('change', (e) => set({ tmIndicator: e.target.value }));
   $('city-indicator').addEventListener('change', (e) => set({ cityIndicator: e.target.value, cityYear: 'latest' }));
   $('city-year').addEventListener('change', (e) => set({ cityYear: e.target.value === 'latest' ? 'latest' : Number(e.target.value) }));
   $('fx-mode').addEventListener('change', (e) => set({ fxMode: e.target.value }));
@@ -430,7 +457,9 @@
 
     if (japan && agg != null && japan.value) {
       const ratio = agg / japan.value;
-      $('t2').textContent = unit === '%' ? (agg - japan.value >= 0 ? '+' : '') + (agg - japan.value).toFixed(1) + 'pt' : (ratio >= 10 ? ratio.toFixed(0) : ratio.toFixed(2)) + '倍';
+      const d = agg - japan.value;
+      $('t2').textContent = unit === '%' ? (d >= 0 ? '+' : '') + d.toFixed(1) + 'pt'
+        : DIFF_UNITS.has(unit) ? (d >= 0 ? '+' : '−') + fmt(Math.abs(d), unit) : (ratio >= 10 ? ratio.toFixed(0) : ratio.toFixed(2)) + '倍';
       $('t2n').textContent = '日本 ' + fmt(japan.value, unit) + '（' + year + '年）';
     } else {
       $('t2').textContent = '—';
@@ -438,7 +467,9 @@
     }
     if (current.length) {
       const hi = d3.greatest(current, (r) => r.value), lo = d3.least(current, (r) => r.value);
-      $('t3').textContent = lo.value > 0 && unit !== '%' ? (hi.value / lo.value).toFixed(0) + '倍の差' : fmt(hi.value - lo.value, unit) + 'の差';
+      // Amounts compare as a ratio; rates, ages and births per woman as a difference.
+      const r = hi.value / lo.value;
+      $('t3').textContent = lo.value > 0 && !DIFF_UNITS.has(unit) ? (r >= 10 ? r.toFixed(0) : r.toFixed(1)) + '倍の差' : fmt(hi.value - lo.value, unit) + 'の差';
       $('t3n').textContent = '最大 ' + hi.country_ja + ' ' + fmt(hi.value, unit) + '、最小 ' + lo.country_ja + ' ' + fmt(lo.value, unit);
       $('takeaway').textContent = indName + '（' + year + '年、' + srcName + '）：選択した' + selected.length + 'か国で最大は' + hi.country_ja + '、最小は' + lo.country_ja + '。国を選び直すと合計と比較が計算し直されます。';
     } else {
@@ -457,11 +488,30 @@
     $('trend-title').textContent = indName + '：推移';
     $('trend-note').textContent = '出所：' + srcNote + '。線の端に国名を表示します。';
 
-    drawRanking($('ranking'), current.concat(japan ? [japan] : []), unit);
+    // "Japan as the yardstick": each value against Japan's value in the same year and source —
+    // a ratio (Japan = 100) for amounts, a difference in points for rates (%).
     const trendCodes = selected.concat(withJapan ? ['jp'] : []);
-    drawTrend($('trend'), srcRows.filter((r) => trendCodes.includes(r.country_code)), unit, year);
+    const jpAt = new Map(srcRows.filter((r) => r.country_code === 'jp').map((r) => [r.year, r.value]));
+    const relUnit = unit === '%' ? 'pt' : 'index';
+    const toRel = (r) => {
+      const j = jpAt.get(r.year);
+      if (j == null || (relUnit === 'index' && !j)) return null;
+      const v = relUnit === 'pt' ? r.value - j : r.value / j * 100;
+      return { ...r, value: v, label: fmt(v, relUnit) + '（日本 ' + fmt(j, unit) + '、' + r.year + '年）' };
+    };
+    const rel = state.rel === 'japan' && jpAt.size > 0;
+    if (state.rel === 'japan') {
+      $('rank-note').textContent = (rel ? (relUnit === 'pt' ? '日本との差（ポイント）。0 が日本と同じ水準。' : '日本＝100 とした値。同じ年・同じ出所の日本の値で割っています。')
+        : 'この出所には日本の値がないため、実数で表示しています。') + $('rank-note').textContent;
+      if (rel) $('trend-note').textContent = (relUnit === 'pt' ? '日本との差（ポイント）の推移。' : '日本＝100 とした値の推移。') + $('trend-note').textContent;
+    }
+    $('rel').value = state.rel;
+    drawRanking($('ranking'), rel ? current.concat(japan ? [japan] : []).map(toRel).filter(Boolean) : current.concat(japan ? [japan] : []), rel ? relUnit : unit);
+    drawTrend($('trend'), (rel ? srcRows.map(toRel).filter(Boolean) : srcRows).filter((r) => trendCodes.includes(r.country_code)), rel ? relUnit : unit, year,
+      rel ? { ref: relUnit === 'pt' ? 0 : 100 } : {});
     renderTables(selected);
     renderPopulationTrend(trendCodes);
+    renderTimeMachine(selected);
     renderFx(trendCodes);
     renderCities(selected.concat(withJapan ? ['jp'] : []));
   }
@@ -561,7 +611,24 @@
     const noteNum = (t) => t === '__un' ? source(un) : book.text(t);
     const table = $('city-table');
     // Columns: 都市, 国, 単位, 米ドル, 対全国比, 都市人口, 出所
-    const labels = headerMarks(table, [[], [], ...COLS.map((k) => shared[k].map(noteNum)), []]);
+    // The designated city whose per-capita GDP (USD) is closest to each ASEAN city's: a yardstick in Japanese terms.
+    const jpUsd = cities.length ? DATA.cities.filter((r) => r.indicator_id === 'grdp_per_capita_usd' && r.country_code === 'jp')
+      .reduce((m, r) => (!m.has(r.city_id) || r.year > m.get(r.city_id).year ? m.set(r.city_id, r) : m), new Map()) : new Map();
+    // Within ±15% → "≒ city"; below or above every designated city → a multiple of the lowest / highest.
+    const nearest = (e) => {
+      if (!e.usd || e.c.country_code === 'jp' || !jpUsd.size) return null;
+      const all = [...jpUsd.values()], v = e.usd.value;
+      const close = d3.least(all, (r) => Math.abs(r.value - v));
+      if (Math.abs(close.value - v) <= 0.15 * close.value) return { text: '≒ ' + close.city_ja + '（' + fmt(close.value, 'USD') + '）' };
+      const lo = d3.least(all, (r) => r.value), hi = d3.greatest(all, (r) => r.value);
+      if (v < lo.value) return { text: 'もっとも低い' + lo.city_ja + '（' + fmt(lo.value, 'USD') + '）の' + (v / lo.value).toFixed(2) + '倍' };
+      if (v > hi.value) return { text: 'もっとも高い' + hi.city_ja + '（' + fmt(hi.value, 'USD') + '）の' + (v / hi.value).toFixed(2) + '倍' };
+      const below = d3.greatest(all.filter((r) => r.value < v), (r) => r.value), above = d3.least(all.filter((r) => r.value > v), (r) => r.value);
+      return { text: below.city_ja + 'と' + above.city_ja + 'の間' };
+    };
+    const nearN = jpUsd.size && entries.some((e) => nearest(e))
+      ? book.text('一人当たりが近い政令指定都市：米ドル換算の一人当たり地域GDP が±15%以内の日本の政令指定都市。外れる場合は、もっとも低い（高い）市の何倍かを示します（日本の市は' + d3.min([...jpUsd.values()], (r) => r.year) + '〜' + d3.max([...jpUsd.values()], (r) => r.year) + '年度の値。年が異なるため目安）。') : null;
+    const labels = headerMarks(table, [[], [], ...COLS.map((k) => shared[k].map(noteNum)), nearN ? [nearN] : [], []]);
     table.querySelector('tbody').replaceChildren(...entries.map((e) => {
       const tr = document.createElement('tr');
       tr.append(cell(e.c.city_ja), noteCell(e.c.country_ja, [], 'nowrap', labels[1]));
@@ -571,6 +638,8 @@
         tr.append(noteCell(col.text, own.map(noteNum), { unit: 'src', usd: 'num nowrap', ratio: 'num nowrap', pop: 'num nowrap' }[k], labels[i + 2],
           col.text !== '—' ? shared[k].map(noteNum) : []));
       });
+      const near = nearest(e);
+      tr.append(noteCell(near ? near.text : '', [], '', labels[COLS.length + 2], near && nearN ? [nearN] : []));
       tr.append(noteCell(e.gdpSources.map((r) => CITY_SHORT[r.source_id] || r.source_id).join('・'), e.gdpSources.map(source), 'src', labels[labels.length - 1]));
       return tr;
     }));
@@ -632,7 +701,7 @@
     g.append('rect').attr('x', (d) => x(Math.min(0, d.value))).attr('y', (d) => y(d.country_code))
       .attr('width', (d) => Math.max(1, Math.abs(x(d.value) - x(0)))).attr('height', y.bandwidth()).attr('rx', 4)
       .attr('fill', (d) => d.country_code === 'jp' ? css('--ref') : css('--accent'))
-      .on('mousemove', (event, d) => showTip(box, event, [d.country_ja + ' · ' + d.year + '年', fmt(d.value, unit),
+      .on('mousemove', (event, d) => showTip(box, event, [d.country_ja + ' · ' + d.year + '年', d.label || fmt(d.value, unit),
         '出所：' + (d.source_publisher_ja || '') + (d.original_source ? '（元統計：' + d.original_source + '）' : '') + (d.note ? '・' + d.note : ''),
         d.cross_check ? '照合：' + d.cross_check : '']))
       .on('mouseleave', () => hideTip(box));
@@ -677,6 +746,8 @@
     groups.forEach((s, i) => svg.append('path').datum(withGaps(s.values)).attr('d', line).attr('fill', 'none').attr('stroke', color(s, i)).attr('stroke-width', 2).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round'));
     const ends = groups.map((s, i) => ({ s, i, y: y(s.values[s.values.length - 1].value) })).sort((a, b) => a.y - b.y);
     for (let k = 1; k < ends.length; k++) if (ends[k].y - ends[k - 1].y < 13) ends[k].y = ends[k - 1].y + 13;
+    // Keep the stack inside the chart: push it back up from the bottom if it ran past the axis.
+    for (let k = ends.length - 1; k >= 0; k--) ends[k].y = Math.min(ends[k].y, k === ends.length - 1 ? height - 30 : ends[k + 1].y - 13);
     // Labels sit at the right edge, so a series that ends early (e.g. 2024) does not overlap the others.
     ends.forEach(({ s, i, y: ly }) => svg.append('text').attr('x', x.range()[1] + 6).attr('y', ly).attr('dy', '0.35em').attr('font-size', 11).attr('fill', color(s, i)).text(s.name));
     const dot = svg.append('circle').attr('r', 4).attr('fill', css('--fg')).attr('visibility', 'hidden');
@@ -797,6 +868,77 @@
     }));
   }
   const link = (href, text) => { const a = document.createElement('a'); a.href = href; a.textContent = text; a.target = '_blank'; a.rel = 'noopener'; return a; };
+
+  // ---------- Japan time machine ----------
+  // For each country's latest value, the year Japan first reached that value (linear between years).
+  // dir 'up': the indicator rises over time (ageing, life expectancy...); 'down': it falls (fertility).
+  const TM = [
+    { id: 'aged_65_share', dir: 'up' }, { id: 'life_expectancy', dir: 'up' }, { id: 'fertility_rate', dir: 'down' },
+    { id: 'urban_share', dir: 'up' }, { id: 'gdp_per_capita_real', dir: 'up' },
+  ];
+  const TM_SOURCE = 'worldbank_wdi';
+  function japanYear(value, jp, dir) {
+    const reached = (v) => dir === 'up' ? v >= value : v <= value;
+    if (!jp.length) return null;
+    if (reached(jp[0].value) && jp[0].value !== value) return { before: jp[0].year };
+    for (let i = 0; i < jp.length; i++) {
+      if (!reached(jp[i].value)) continue;
+      if (i === 0) return { year: jp[0].year };
+      const a = jp[i - 1], b = jp[i];
+      return { year: a.year + (value - a.value) / (b.value - a.value) * (b.year - a.year) };
+    }
+    return { beyond: jp[jp.length - 1].year };
+  }
+  function renderTimeMachine(codes) {
+    const obs = DATA.observations.filter((r) => r.source_id === TM_SOURCE);
+    const avail = TM.filter((t) => obs.some((r) => r.indicator_id === t.id && r.country_code === 'jp'));
+    if (!avail.length) { $('tm-note').textContent = 'このデータの版には、日本と比べる指標がありません。'; $('tm-chart').replaceChildren(); $('tm-indicator').replaceChildren(); return; }
+    const t = avail.find((x) => x.id === state.tmIndicator) || avail[0];
+    $('tm-indicator').replaceChildren(...avail.map((x) => new Option(obs.find((r) => r.indicator_id === x.id).indicator_ja, x.id)));
+    $('tm-indicator').value = t.id;
+    const rows = obs.filter((r) => r.indicator_id === t.id);
+    const unit = rows[0].unit;
+    const jp = rows.filter((r) => r.country_code === 'jp').sort((a, b) => a.year - b.year);
+    const items = codes.filter((c) => c !== 'jp').map((code) => {
+      const last = d3.greatest(rows.filter((r) => r.country_code === code), (r) => r.year);
+      return last ? { ...last, eq: japanYear(last.value, jp, t.dir) } : null;
+    }).filter(Boolean);
+    const info = rows[0];
+    $('tm-note').textContent = '出所：' + info.source_publisher_ja + '「' + info.source_title_ja + '」 ' + (info.indicator_code || '')
+      + (info.source_last_updated ? '、更新 ' + info.source_last_updated : '') + '。日本は ' + jp[0].year + '年 ' + fmt(jp[0].value, unit) + ' → ' + jp[jp.length - 1].year + '年 '
+      + fmt(jp[jp.length - 1].value, unit) + '。' + (t.id === 'gdp_per_capita_real' ? '実質値（2015年米ドル、物価変動を除いた値）で比べています。' : '');
+    drawTimeMachine($('tm-chart'), items, jp, unit);
+  }
+  function drawTimeMachine(box, items, jp, unit) {
+    if (!items.length || !jp.length) { box.replaceChildren(); return; }
+    const first = jp[0].year, lastJp = jp[jp.length - 1].year;
+    const pos = (d) => d.eq.year ?? (d.eq.before != null ? first - 4 : lastJp + 4);
+    const sorted = [...items].sort((a, b) => pos(a) - pos(b));
+    const text = (d) => d.country_ja + ' ' + fmt(d.value, unit) + '（' + d.year + '）';
+    // Narrow screens: the label goes on its own line above the dot, so the timeline gets the full width.
+    const width = box.clientWidth || 600, narrow = width < 560, rowH = narrow ? 44 : 30, height = sorted.length * rowH + 40;
+    const labelW = narrow ? 0 : Math.min(width * 0.45, d3.max(sorted, (d) => textW(text(d))) + 8);
+    const x = d3.scaleLinear([first - 6, lastJp + 6], [labelW + 8, width - 70]);
+    const svg = d3.create('svg').attr('width', '100%').attr('viewBox', `0 0 ${width} ${height}`).attr('role', 'img');
+    const ticks = x.ticks(Math.max(3, Math.floor((width - labelW) / 70))).filter((y) => y >= first && y <= lastJp && Number.isInteger(y));
+    svg.append('g').selectAll('line').data(ticks).join('line').attr('x1', (t) => x(t)).attr('x2', (t) => x(t)).attr('y1', 6).attr('y2', height - 24).attr('stroke', css('--grid'));
+    svg.append('g').selectAll('text').data(ticks).join('text').attr('x', (t) => x(t)).attr('y', height - 8).attr('text-anchor', 'middle').attr('font-size', 11).attr('fill', css('--muted')).text(String);
+    // Japan's own range: the years its series covers.
+    svg.append('line').attr('x1', x(first)).attr('x2', x(lastJp)).attr('y1', height - 24).attr('y2', height - 24).attr('stroke', css('--ref')).attr('stroke-width', 3);
+    const g = svg.append('g').selectAll('g').data(sorted).join('g').attr('transform', (d, i) => `translate(0,${i * rowH + (narrow ? 30 : 18)})`);
+    if (narrow) g.append('text').attr('x', 8).attr('y', -16).attr('font-size', 12).attr('fill', css('--fg')).text(text);
+    else g.append('text').attr('x', labelW).attr('dy', '0.35em').attr('text-anchor', 'end').attr('font-size', 12).attr('fill', css('--fg')).text(text);
+    g.append('circle').attr('cx', (d) => x(pos(d))).attr('r', 6).attr('fill', (d) => d.eq.year != null ? css('--accent') : 'none').attr('stroke', css('--accent')).attr('stroke-width', 2);
+    g.append('text').attr('x', (d) => x(pos(d)) + 10).attr('dy', '0.35em').attr('font-size', 12).attr('fill', css('--muted'))
+      .text((d) => d.eq.year != null ? Math.round(d.eq.year) + '年ごろ' : d.eq.before != null ? d.eq.before + '年より前' : '日本の現在より先')
+      .attr('text-anchor', (d) => d.eq.beyond != null ? 'end' : 'start').attr('x', (d) => d.eq.beyond != null ? x(pos(d)) - 10 : x(pos(d)) + 10);
+    g.on('mousemove', (event, d) => showTip(box, event, [d.country_ja + ' · ' + d.year + '年 ' + fmt(d.value, unit),
+      d.eq.year != null ? '日本がこの水準になったのは ' + Math.round(d.eq.year) + '年ごろ（' + Math.round(d.year - d.eq.year) + '年の差）'
+        : d.eq.before != null ? '日本の最初の年（' + d.eq.before + '年）の時点で、すでにこの水準を超えていました' : '日本の最新年（' + d.eq.beyond + '年）の水準を超えています']))
+      .on('mouseleave', () => hideTip(box));
+    box.replaceChildren(svg.node(), tip(box));
+    box.style.minHeight = height + 'px';
+  }
 
   // ---------- currencies and exchange rates ----------
   // World Bank PA.NUS.FCRF (local currency per USD, annual average). "Value" index = rate(base) / rate(year) × 100,

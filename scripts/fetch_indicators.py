@@ -70,7 +70,7 @@ def fetch_worldbank(session, countries, fields, last_year) -> dict[str, dict]:
         if not code:
             continue
         url = (f"https://api.worldbank.org/v2/country/{iso3}/indicator/{code}"
-               f"?format=json&per_page=20000&date={FIRST_YEAR}:{last_year}")
+               f"?format=json&per_page=20000&date={f.get('first_year', FIRST_YEAR)}:{last_year}")
         try:
             meta, rows = get_json(session, url)
         except Exception as exc:  # noqa: BLE001 - record and continue with other indicators

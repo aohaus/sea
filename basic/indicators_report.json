@@ -30,6 +30,24 @@
         ],
         "exchange_rate": [
           "worldbank_wdi"
+        ],
+        "gdp_per_capita_ppp": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita_real": [
+          "worldbank_wdi"
+        ],
+        "aged_65_share": [
+          "worldbank_wdi"
+        ],
+        "life_expectancy": [
+          "worldbank_wdi"
+        ],
+        "fertility_rate": [
+          "worldbank_wdi"
+        ],
+        "urban_share": [
+          "worldbank_wdi"
         ]
       }
     },
@@ -65,6 +83,24 @@
         "exchange_rate": [
           "worldbank_wdi",
           "jetro_basic"
+        ],
+        "gdp_per_capita_ppp": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita_real": [
+          "worldbank_wdi"
+        ],
+        "aged_65_share": [
+          "worldbank_wdi"
+        ],
+        "life_expectancy": [
+          "worldbank_wdi"
+        ],
+        "fertility_rate": [
+          "worldbank_wdi"
+        ],
+        "urban_share": [
+          "worldbank_wdi"
         ]
       }
     },
@@ -100,6 +136,24 @@
         "exchange_rate": [
           "worldbank_wdi",
           "jetro_basic"
+        ],
+        "gdp_per_capita_ppp": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita_real": [
+          "worldbank_wdi"
+        ],
+        "aged_65_share": [
+          "worldbank_wdi"
+        ],
+        "life_expectancy": [
+          "worldbank_wdi"
+        ],
+        "fertility_rate": [
+          "worldbank_wdi"
+        ],
+        "urban_share": [
+          "worldbank_wdi"
         ]
       }
     },
@@ -134,6 +188,24 @@
         "exchange_rate": [
           "worldbank_wdi",
           "jetro_basic"
+        ],
+        "gdp_per_capita_ppp": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita_real": [
+          "worldbank_wdi"
+        ],
+        "aged_65_share": [
+          "worldbank_wdi"
+        ],
+        "life_expectancy": [
+          "worldbank_wdi"
+        ],
+        "fertility_rate": [
+          "worldbank_wdi"
+        ],
+        "urban_share": [
+          "worldbank_wdi"
         ]
       }
     },
@@ -169,6 +241,24 @@
         "exchange_rate": [
           "worldbank_wdi",
           "jetro_basic"
+        ],
+        "gdp_per_capita_ppp": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita_real": [
+          "worldbank_wdi"
+        ],
+        "aged_65_share": [
+          "worldbank_wdi"
+        ],
+        "life_expectancy": [
+          "worldbank_wdi"
+        ],
+        "fertility_rate": [
+          "worldbank_wdi"
+        ],
+        "urban_share": [
+          "worldbank_wdi"
         ]
       }
     },
@@ -203,6 +293,24 @@
         "exchange_rate": [
           "worldbank_wdi",
           "jetro_basic"
+        ],
+        "gdp_per_capita_ppp": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita_real": [
+          "worldbank_wdi"
+        ],
+        "aged_65_share": [
+          "worldbank_wdi"
+        ],
+        "life_expectancy": [
+          "worldbank_wdi"
+        ],
+        "fertility_rate": [
+          "worldbank_wdi"
+        ],
+        "urban_share": [
+          "worldbank_wdi"
         ]
       }
     },
@@ -238,6 +346,24 @@
         "exchange_rate": [
           "worldbank_wdi",
           "jetro_basic"
+        ],
+        "gdp_per_capita_ppp": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita_real": [
+          "worldbank_wdi"
+        ],
+        "aged_65_share": [
+          "worldbank_wdi"
+        ],
+        "life_expectancy": [
+          "worldbank_wdi"
+        ],
+        "fertility_rate": [
+          "worldbank_wdi"
+        ],
+        "urban_share": [
+          "worldbank_wdi"
         ]
       }
     },
@@ -273,6 +399,24 @@
         "exchange_rate": [
           "worldbank_wdi",
           "jetro_basic"
+        ],
+        "gdp_per_capita_ppp": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita_real": [
+          "worldbank_wdi"
+        ],
+        "aged_65_share": [
+          "worldbank_wdi"
+        ],
+        "life_expectancy": [
+          "worldbank_wdi"
+        ],
+        "fertility_rate": [
+          "worldbank_wdi"
+        ],
+        "urban_share": [
+          "worldbank_wdi"
         ]
       }
     },
@@ -308,6 +452,24 @@
         "exchange_rate": [
           "worldbank_wdi",
           "jetro_basic"
+        ],
+        "gdp_per_capita_ppp": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita_real": [
+          "worldbank_wdi"
+        ],
+        "aged_65_share": [
+          "worldbank_wdi"
+        ],
+        "life_expectancy": [
+          "worldbank_wdi"
+        ],
+        "fertility_rate": [
+          "worldbank_wdi"
+        ],
+        "urban_share": [
+          "worldbank_wdi"
         ]
       }
     },
@@ -337,6 +499,24 @@
           "worldbank_wdi"
         ],
         "exchange_rate": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita_ppp": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita_real": [
+          "worldbank_wdi"
+        ],
+        "aged_65_share": [
+          "worldbank_wdi"
+        ],
+        "life_expectancy": [
+          "worldbank_wdi"
+        ],
+        "fertility_rate": [
+          "worldbank_wdi"
+        ],
+        "urban_share": [
           "worldbank_wdi"
         ]
       }
@@ -373,6 +553,24 @@
         "exchange_rate": [
           "worldbank_wdi",
           "jetro_basic"
+        ],
+        "gdp_per_capita_ppp": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita_real": [
+          "worldbank_wdi"
+        ],
+        "aged_65_share": [
+          "worldbank_wdi"
+        ],
+        "life_expectancy": [
+          "worldbank_wdi"
+        ],
+        "fertility_rate": [
+          "worldbank_wdi"
+        ],
+        "urban_share": [
+          "worldbank_wdi"
         ]
       }
     },
@@ -401,6 +599,24 @@
           "worldbank_wdi"
         ],
         "exchange_rate": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita_ppp": [
+          "worldbank_wdi"
+        ],
+        "gdp_per_capita_real": [
+          "worldbank_wdi"
+        ],
+        "aged_65_share": [
+          "worldbank_wdi"
+        ],
+        "life_expectancy": [
+          "worldbank_wdi"
+        ],
+        "fertility_rate": [
+          "worldbank_wdi"
+        ],
+        "urban_share": [
           "worldbank_wdi"
         ]
       }
