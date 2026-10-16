@@ -1,5 +1,5 @@
 {
-  "_comment": "データ項目の定義 / Field definitions. phase 1 = 静的情報, phase 2 = 動態情報（経済指標）。labels は出所ページ（JETRO「概況・基本統計」、外務省「基礎データ」）の見出しとの対応（表記ゆれを除いた完全一致）。value_rule: leading_name = 先頭の名称のみを value にする（例：「クアラルンプール 人口207万人…」→「クアラルンプール」）。derive_provenance: false = 原文中の年・出所は値そのものを指さない（首都人口・就任日など）ため as_of / original_source を付けない。 phase 2: worldbank = 世界銀行 WDI の指標コード、imf = IMF DataMapper の指標コードと単位倍率（scale、例：NGDPD は10億米ドル単位なので 1e9）。値は unit（基本単位）に換算して保存する。",
+  "_comment": "データ項目の定義 / Field definitions. phase 1 = 静的情報, phase 2 = 動態情報（経済指標）。labels は出所ページ（JETRO「概況・基本統計」、外務省「基礎データ」）の見出しとの対応（表記ゆれを除いた完全一致）。value_rule: leading_name = 先頭の名称のみを value にする（例：「クアラルンプール 人口207万人…」→「クアラルンプール」）。derive_provenance: false = 原文中の年・出所は値そのものを指さない（首都人口・就任日など）ため as_of / original_source を付けない。 phase 2: worldbank = 世界銀行 WDI の指標コード、imf = IMF DataMapper の指標コードと単位倍率（scale、例：NGDPD は10億米ドル単位なので 1e9）。値は unit（基本単位）に換算して保存する。 first_year：取得を始める年（既定は2000年）。日本と比べる「日本の何年ごろ」に使う指標は、日本の長い系列が必要なため1960年から取得する。",
   "fields": [
     {
       "id": "official_name",
@@ -226,6 +226,71 @@
         "為替レート"
       ],
       "worldbank": "PA.NUS.FCRF"
+    },
+    {
+      "id": "gdp_per_capita_ppp",
+      "phase": 2,
+      "type": "number",
+      "unit": "PPP$",
+      "label_ja": "一人当たりGDP（購買力平価）",
+      "label_en": "GDP per capita, PPP (current international $)",
+      "labels": [],
+      "worldbank": "NY.GDP.PCAP.PP.CD"
+    },
+    {
+      "id": "gdp_per_capita_real",
+      "phase": 2,
+      "type": "number",
+      "unit": "USD",
+      "label_ja": "一人当たり実質GDP（2015年米ドル）",
+      "label_en": "GDP per capita (constant 2015 US$)",
+      "labels": [],
+      "worldbank": "NY.GDP.PCAP.KD",
+      "first_year": 1960
+    },
+    {
+      "id": "aged_65_share",
+      "phase": 2,
+      "type": "number",
+      "unit": "%",
+      "label_ja": "高齢化率（65歳以上の割合）",
+      "label_en": "Population ages 65 and above (% of total)",
+      "labels": [],
+      "worldbank": "SP.POP.65UP.TO.ZS",
+      "first_year": 1960
+    },
+    {
+      "id": "life_expectancy",
+      "phase": 2,
+      "type": "number",
+      "unit": "years",
+      "label_ja": "平均寿命（出生時の平均余命）",
+      "label_en": "Life expectancy at birth (years)",
+      "labels": [],
+      "worldbank": "SP.DYN.LE00.IN",
+      "first_year": 1960
+    },
+    {
+      "id": "fertility_rate",
+      "phase": 2,
+      "type": "number",
+      "unit": "births",
+      "label_ja": "合計特殊出生率",
+      "label_en": "Fertility rate, total (births per woman)",
+      "labels": [],
+      "worldbank": "SP.DYN.TFRT.IN",
+      "first_year": 1960
+    },
+    {
+      "id": "urban_share",
+      "phase": 2,
+      "type": "number",
+      "unit": "%",
+      "label_ja": "都市人口の割合",
+      "label_en": "Urban population (% of total)",
+      "labels": [],
+      "worldbank": "SP.URB.TOTL.IN.ZS",
+      "first_year": 1960
     }
   ]
 }
