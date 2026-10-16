@@ -55,22 +55,31 @@ def now() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
 
+# The whole download must fit well inside the workflow's 15-minute job, so that a hanging server
+# leads to a recorded failure (and the other sources still get committed), not a killed job.
+DEADLINE_SECONDS = 240
+TIMEOUT = (15, 90)  # connect, read (between bytes)
+
+
 def download(urls: list[str]) -> tuple[str, bytes]:
     errors = []
+    start = time.monotonic()
     for url in urls:
-        for attempt in range(3):
+        for attempt in range(2):
+            if time.monotonic() - start > DEADLINE_SECONDS:
+                errors.append(f"gave up after {DEADLINE_SECONDS}s")
+                raise RuntimeError("; ".join(errors))
             try:
-                resp = requests.get(url, headers=HEADERS, timeout=300)
+                resp = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
                 resp.raise_for_status()
                 return url, resp.content
             except requests.HTTPError as exc:
                 errors.append(f"{url}: HTTP {exc.response.status_code}")
                 break
             except (requests.Timeout, requests.ConnectionError) as exc:
-                if attempt == 2:
-                    errors.append(f"{url}: {type(exc).__name__}")
-                else:
-                    time.sleep(10 * (attempt + 1))
+                errors.append(f"{url}: {type(exc).__name__}")
+                if attempt == 0:
+                    time.sleep(10)
     raise RuntimeError("; ".join(errors))
 
 
@@ -103,6 +112,22 @@ def extract(raw: bytes, places: dict[str, dict], source: dict, url: str, retriev
     return rows
 
 
+def incomplete(rows: list[dict], places: dict[str, dict]) -> list[str]:
+    """Every country × indicator must have every year FIRST_YEAR..LAST_YEAR; otherwise the saved
+    table is kept (a renamed column or a shorter range in a new edition must not shrink the data)."""
+    have: dict[tuple, set] = {}
+    for r in rows:
+        have.setdefault((r["country_code"], r["indicator_id"]), set()).add(r["year"])
+    want = set(range(FIRST_YEAR, LAST_YEAR + 1))
+    out = []
+    for p in places.values():
+        for ind, *_ in INDICATORS.values():
+            gap = want - have.get((p["code"], ind), set())
+            if gap:
+                out.append(f"{p['code']} {ind}: {len(gap)} years missing")
+    return out
+
+
 def main() -> int:
     master = load_json(BASIC_DIR / "countries.json")
     places = {c["iso3"]: {**c, "group": "asean"} for c in master["countries"]}
@@ -112,9 +137,9 @@ def main() -> int:
     try:
         url, raw = download(source["url_candidates"])
         rows = extract(raw, places, source, url, now())
-        missing = sorted({p["code"] for p in places.values()} - {r["country_code"] for r in rows})
-        if not rows or missing:
-            raise RuntimeError(f"no rows for {missing or 'any country'}")
+        missing = incomplete(rows, places)
+        if missing:
+            raise RuntimeError("incomplete: " + "; ".join(missing[:10]) + (f" (+{len(missing) - 10})" if len(missing) > 10 else ""))
     except Exception as exc:  # noqa: BLE001 - keep the saved table and report the error
         report.update({"fetch_status": "error", "fetch_error": f"{type(exc).__name__}: {exc}"})
         write_json(REPORT, report)
