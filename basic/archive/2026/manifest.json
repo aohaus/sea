@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "version": 2026,
+  "created_at": "2026-10-16T12:57:15+00:00",
+  "git_commit": "33e4f9051e649c667e8a2fc5d9a6fb39e73c1e5b",
+  "previous_version": null,
+  "tables": {
+    "observations": {
+      "file": "observations.json.gz",
+      "rows": 2616,
+      "sha256": "3ccfb4d1d5d6d9f4f1dab25be283062c21c2577495e5697ed057a5c1e2ad5118"
+    },
+    "profiles": {
+      "file": "profiles.json.gz",
+      "rows": 85,
+      "sha256": "3bd1d323c61fba0e1182137f9ec62866ce2c0ff7349c80b0cb09f3d185399fb4"
+    },
+    "city_observations": {
+      "file": "city_observations.json.gz",
+      "rows": 2431,
+      "sha256": "7d3705a561f24e8b181a9efd8160fbed46f60cac1b191f92e9d96f7648fa4474"
+    },
+    "city_list": {
+      "file": "city_list.json.gz",
+      "rows": 42,
+      "sha256": "9877971c13d509a4dfb0398cd605272c54bec6e79cfa26f38a6c13f30614f66a"
+    },
+    "currencies": {
+      "file": "currencies.json.gz",
+      "rows": 12,
+      "sha256": "436da5ded0c49da96e64f679725e3acb39172403487b374073241f0da08f13d8"
+    },
+    "sources": {
+      "file": "sources.json.gz",
+      "rows": 11,
+      "sha256": "e69336c0ac12aca91a4c7ae904ea5913b98b2edb0ca41a3a3a72ab85333d578e"
+    },
+    "validation": {
+      "file": "validation.json.gz",
+      "rows": 20,
+      "sha256": "5e29e313a6ab379f99a0c1d1408258a0da8f47134929bf9c8ae2775bb5c29a1d"
+    }
+  },
+  "latest_retrieval_by_source": {
+    "dosm_ssr": "2026-10-14T22:23:14+08:00",
+    "dosm_state_gdp": "2026-10-13T02:27:20+00:00",
+    "esri_kenmin": "2026-10-14T13:29:44+00:00",
+    "jetro_basic": "2026-10-13T01:06:55+00:00",
+    "mofa_basic": "2026-10-13T01:19:29+00:00",
+    "nso_th_gpp": "2026-10-13T02:27:17+00:00",
+    "psa_ph_pcgdp": "2026-10-13T02:29:09+00:00",
+    "un_wup2025_cities": "2026-10-14T13:17:46+00:00",
+    "worldbank_wdi": "2026-10-14T15:29:05+00:00"
+  },
+  "revisions": {
+    "file": null,
+    "summary": {}
+  },
+  "health_errors_at_freeze": []
+}
