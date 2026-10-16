@@ -79,7 +79,13 @@ jobs:
             echo "No data changes."
           else
             git commit -m "data(basic): update basic statistics"
-            git push
+            # The branch may have moved while this run was fetching (e.g. a new push); replay the data
+            # commit on top and retry, instead of failing the run.
+            for attempt in 1 2 3; do
+              if git push; then break; fi
+              if [ "$attempt" = 3 ]; then exit 1; fi
+              git pull --rebase origin "${GITHUB_REF_NAME}" || { git rebase --abort; echo "rebase conflict; the next run will refresh the data"; exit 1; }
+            done
           fi
 
       # Data health: open (or update) an issue labelled data-health when a source fails, a manual
