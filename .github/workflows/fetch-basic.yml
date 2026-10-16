@@ -12,6 +12,7 @@ on:
       - "scripts/build_dataset.py"
       - "scripts/fetch_cities.py"
       - "scripts/snapshot.py"
+      - "scripts/fetch_projections.py"
       - "scripts/check_health.py"
       - "basic/cities/cities.json"
       - "basic/reference/ajc_*.json"
@@ -54,6 +55,9 @@ jobs:
 
       - name: Fetch and build major-city data
         run: python scripts/fetch_cities.py
+
+      - name: Fetch population projections (UN WPP)
+        run: python scripts/fetch_projections.py
 
       - name: Build dataset and validate against references
         run: python scripts/build_dataset.py
