@@ -30,6 +30,10 @@ import sys
 
 from fetch_basic import BASIC_DIR, load_json, write_json
 
+# Version of the dataset layout; bump it when a table's columns change meaning, so that
+# yearly versions (basic/archive/) can be read correctly decades later.
+SCHEMA_VERSION = 1
+
 # Which series to use when computing a figure from our data, in order of preference.
 SERIES_PREFERENCE = ["worldbank_wdi", "imf_weo", "jetro_basic", "mofa_basic"]
 
@@ -42,6 +46,7 @@ def build() -> dict:
               + [{**c, "group": "benchmark"} for c in master.get("benchmarks", [])])
 
     dataset = {
+        "schema_version": SCHEMA_VERSION,
         "countries": [{k: c.get(k) for k in ("code", "iso3", "name_ja", "name_en", "group", "currency")} for c in places],
         "fields": [{k: f.get(k) for k in ("id", "phase", "type", "unit", "label_ja", "label_en")} for f in fields],
         "sources": {s["id"]: {k: v for k, v in s.items() if k != "id"} for s in sources},
