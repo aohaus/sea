@@ -5154,8 +5154,50 @@
         {
           "source_id": "isa_residents",
           "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
-          "retrieved_at": "2026-10-17T13:18:32+00:00",
+          "retrieved_at": "2026-10-17T13:25:40+00:00",
           "observations": [
+            {
+              "year": 2012,
+              "value": 41,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000021315227&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2013,
+              "value": 46,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000024395065&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2014,
+              "value": 42,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000029226524&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2015,
+              "value": 57,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031399575&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2016,
+              "value": 54,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031557945&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2017,
+              "value": 47,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031669224&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2018,
+              "value": 61,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031832809&fileKind=0",
+              "checks": []
+            },
             {
               "year": 2023,
               "value": 78,
@@ -8717,8 +8759,50 @@
         {
           "source_id": "isa_residents",
           "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
-          "retrieved_at": "2026-10-17T13:18:32+00:00",
+          "retrieved_at": "2026-10-17T13:25:40+00:00",
           "observations": [
+            {
+              "year": 2012,
+              "value": 2862,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000021315227&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2013,
+              "value": 3085,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000024395065&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2014,
+              "value": 4090,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000029226524&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2015,
+              "value": 6111,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031399575&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2016,
+              "value": 8367,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031557945&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2017,
+              "value": 10719,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031669224&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2018,
+              "value": 12174,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031832809&fileKind=0",
+              "checks": []
+            },
             {
               "year": 2023,
               "value": 23750,
@@ -12482,8 +12566,50 @@
         {
           "source_id": "isa_residents",
           "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
-          "retrieved_at": "2026-10-17T13:18:32+00:00",
+          "retrieved_at": "2026-10-17T13:25:40+00:00",
           "observations": [
+            {
+              "year": 2012,
+              "value": 25532,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000021315227&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2013,
+              "value": 27214,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000024395065&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2014,
+              "value": 30210,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000029226524&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2015,
+              "value": 35910,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031399575&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2016,
+              "value": 42850,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031557945&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2017,
+              "value": 49982,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031669224&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2018,
+              "value": 56346,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031832809&fileKind=0",
+              "checks": []
+            },
             {
               "year": 2023,
               "value": 149101,
@@ -15967,8 +16093,50 @@
         {
           "source_id": "isa_residents",
           "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
-          "retrieved_at": "2026-10-17T13:18:32+00:00",
+          "retrieved_at": "2026-10-17T13:25:40+00:00",
           "observations": [
+            {
+              "year": 2012,
+              "value": 2521,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000021315227&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2013,
+              "value": 2564,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000024395065&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2014,
+              "value": 2556,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000029226524&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2015,
+              "value": 2592,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031399575&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2016,
+              "value": 2668,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031557945&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2017,
+              "value": 2745,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031669224&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2018,
+              "value": 2842,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031832809&fileKind=0",
+              "checks": []
+            },
             {
               "year": 2023,
               "value": 3859,
@@ -19729,8 +19897,50 @@
         {
           "source_id": "isa_residents",
           "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
-          "retrieved_at": "2026-10-17T13:18:32+00:00",
+          "retrieved_at": "2026-10-17T13:25:40+00:00",
           "observations": [
+            {
+              "year": 2012,
+              "value": 7848,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000021315227&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2013,
+              "value": 7971,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000024395065&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2014,
+              "value": 8288,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000029226524&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2015,
+              "value": 8738,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031399575&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2016,
+              "value": 9084,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031557945&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2017,
+              "value": 9638,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031669224&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2018,
+              "value": 10368,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031832809&fileKind=0",
+              "checks": []
+            },
             {
               "year": 2023,
               "value": 11471,
@@ -23205,8 +23415,50 @@
         {
           "source_id": "isa_residents",
           "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
-          "retrieved_at": "2026-10-17T13:18:32+00:00",
+          "retrieved_at": "2026-10-17T13:25:40+00:00",
           "observations": [
+            {
+              "year": 2012,
+              "value": 8046,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000021315227&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2013,
+              "value": 8600,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000024395065&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2014,
+              "value": 10252,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000029226524&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2015,
+              "value": 13737,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031399575&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2016,
+              "value": 17775,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031557945&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2017,
+              "value": 22519,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031669224&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2018,
+              "value": 26456,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031832809&fileKind=0",
+              "checks": []
+            },
             {
               "year": 2023,
               "value": 86546,
@@ -26966,8 +27218,50 @@
         {
           "source_id": "isa_residents",
           "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
-          "retrieved_at": "2026-10-17T13:18:32+00:00",
+          "retrieved_at": "2026-10-17T13:25:40+00:00",
           "observations": [
+            {
+              "year": 2012,
+              "value": 202985,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000021315227&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2013,
+              "value": 209183,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000024395065&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2014,
+              "value": 217585,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000029226524&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2015,
+              "value": 229595,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031399575&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2016,
+              "value": 243662,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031557945&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2017,
+              "value": 260553,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031669224&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2018,
+              "value": 271289,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031832809&fileKind=0",
+              "checks": []
+            },
             {
               "year": 2023,
               "value": 322046,
@@ -30797,8 +31091,50 @@
         {
           "source_id": "isa_residents",
           "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
-          "retrieved_at": "2026-10-17T13:18:32+00:00",
+          "retrieved_at": "2026-10-17T13:25:40+00:00",
           "observations": [
+            {
+              "year": 2012,
+              "value": 2136,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000021315227&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2013,
+              "value": 2228,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000024395065&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2014,
+              "value": 2366,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000029226524&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2015,
+              "value": 2501,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031399575&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2016,
+              "value": 2615,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031557945&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2017,
+              "value": 2817,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031669224&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2018,
+              "value": 3042,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031832809&fileKind=0",
+              "checks": []
+            },
             {
               "year": 2023,
               "value": 3498,
@@ -34628,8 +34964,50 @@
         {
           "source_id": "isa_residents",
           "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
-          "retrieved_at": "2026-10-17T13:18:32+00:00",
+          "retrieved_at": "2026-10-17T13:25:40+00:00",
           "observations": [
+            {
+              "year": 2012,
+              "value": 40133,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000021315227&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2013,
+              "value": 41208,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000024395065&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2014,
+              "value": 43081,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000029226524&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2015,
+              "value": 45379,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031399575&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2016,
+              "value": 47647,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031557945&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2017,
+              "value": 50179,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031669224&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2018,
+              "value": 52323,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031832809&fileKind=0",
+              "checks": []
+            },
             {
               "year": 2023,
               "value": 61771,
@@ -37559,8 +37937,50 @@
         {
           "source_id": "isa_residents",
           "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
-          "retrieved_at": "2026-10-17T13:18:32+00:00",
+          "retrieved_at": "2026-10-17T13:25:40+00:00",
           "observations": [
+            {
+              "year": 2012,
+              "value": 34,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000021315227&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2013,
+              "value": 34,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000024395065&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2014,
+              "value": 37,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000029226524&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2015,
+              "value": 26,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031399575&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2016,
+              "value": 26,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031557945&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2017,
+              "value": 31,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031669224&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2018,
+              "value": 31,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031832809&fileKind=0",
+              "checks": []
+            },
             {
               "year": 2023,
               "value": 61,
@@ -41178,8 +41598,50 @@
         {
           "source_id": "isa_residents",
           "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
-          "retrieved_at": "2026-10-17T13:18:32+00:00",
+          "retrieved_at": "2026-10-17T13:25:40+00:00",
           "observations": [
+            {
+              "year": 2012,
+              "value": 52367,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000021315227&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2013,
+              "value": 72256,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000024395065&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2014,
+              "value": 99865,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000029226524&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2015,
+              "value": 146956,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031399575&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2016,
+              "value": 199990,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031557945&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2017,
+              "value": 262405,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031669224&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2018,
+              "value": 330835,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031832809&fileKind=0",
+              "checks": []
+            },
             {
               "year": 2023,
               "value": 565026,
