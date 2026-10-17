@@ -85,19 +85,36 @@
   table.cards td.nowrap { white-space: nowrap; }
   table.cards td.wide { min-width: 7em; }
   sup.fn.hdr { display: none; }
+  .phone-only { display: none; }
+  .scroll-hint { display: none; color: var(--muted); font-size: .74rem; margin: 0; }
   /* Phone: one card per row, field label on the left; header markers move into the cells. */
   @media (max-width: 640px) {
-    .tablebox.cards-box { max-height: none; overflow: visible; }
-    table.cards thead { display: none; }
-    table.cards, table.cards tbody, table.cards tr, table.cards td { display: block; }
-    table.cards tr { padding: .6rem 0; border-bottom: 1px solid var(--line); }
-    table.cards td { border: none; padding: .12rem 0; display: grid; grid-template-columns: 5em 1fr; gap: .6rem; text-align: left; white-space: normal; }
-    table.cards td::before { content: attr(data-label); color: var(--muted); font-size: .78rem; }
-    table.cards td:first-child { position: static; display: block; font-weight: 500; font-size: .95rem; padding-bottom: .25rem; }
-    table.cards td:first-child::before { content: none; }
-    table.cards td.empty { display: none; }
-    table.cards td.nowrap { white-space: normal; }
+    .tablebox.cards-box:not(.matrix-box) { max-height: none; overflow: visible; }
+    table.cards:not(.matrix) thead { display: none; }
+    table.cards:not(.matrix), table.cards:not(.matrix) tbody, table.cards:not(.matrix) tr, table.cards:not(.matrix) td { display: block; }
+    table.cards:not(.matrix) tr { padding: .6rem 0; border-bottom: 1px solid var(--line); }
+    table.cards:not(.matrix) td { border: none; padding: .12rem 0; display: grid; grid-template-columns: 5em 1fr; gap: .6rem; text-align: left; white-space: normal; }
+    table.cards:not(.matrix) td::before { content: attr(data-label); color: var(--muted); font-size: .78rem; }
+    table.cards:not(.matrix) td:first-child { position: static; display: block; font-weight: 500; font-size: .95rem; padding-bottom: .25rem; }
+    table.cards:not(.matrix) td:first-child::before { content: none; }
+    table.cards:not(.matrix) td.empty { display: none; }
+    table.cards:not(.matrix) td.nowrap { white-space: normal; }
     sup.fn.hdr { display: inline; }
+    table.matrix sup.fn.hdr { display: none; }
+    /* Comparison tables stay tables on phones: scroll sideways with the name column pinned, so a column
+       can be read down across countries/cities (cards would put each row in its own box). */
+    .tablebox.matrix-box { max-height: none; overflow-x: auto; overscroll-behavior-x: contain; }
+    table.matrix { font-size: .74rem; width: max-content; min-width: 100%; }
+    table.matrix th, table.matrix td { padding: .35rem .45rem; }
+    table.matrix th[data-short] { font-size: 0; }
+    table.matrix th[data-short]::before { content: attr(data-short); font-size: .74rem; }
+    table.matrix th:first-child, table.matrix td:first-child { box-shadow: 1px 0 0 var(--line); }
+    table.matrix td.clamp { white-space: normal; min-width: 8em; max-width: 11em; }
+    .scroll-hint { display: block; }
+    table.matrix .phone-hide { display: none; }
+    table.matrix .phone-only { display: block; }
+    table.matrix td:first-child { white-space: normal; min-width: 6.5em; max-width: 8.5em; }
+    table.matrix td:first-child .sub { color: var(--muted); font-size: .68rem; }
   }
   .notes { margin: 0; padding-left: 0; list-style: none; display: grid; gap: 6px; font-size: .8rem; color: var(--muted); line-height: 1.55; }
   .notes li { display: grid; grid-template-columns: 2.2rem 1fr; }
@@ -195,15 +212,17 @@
       <select id="jt-metric"></select>
     </div>
     <div class="chart" id="jt-chart"></div>
-    <div class="tablebox cards-box">
-      <table id="jt-table" class="cards">
+    <p class="scroll-hint" aria-hidden="true">← 表は横にスクロールできます →</p>
+    <div class="tablebox cards-box matrix-box">
+      <table id="jt-table" class="cards matrix">
         <thead><tr><th>国</th><th class="num" data-short="貿易額">日本との貿易額</th><th class="num" data-short="日本の輸出">日本の輸出</th><th class="num" data-short="日本の輸入">日本の輸入</th><th class="num" data-short="収支">日本から見た収支</th><th class="num">在留邦人</th><th class="num" data-short="人口1万人あたり">人口1万人あたりの在留邦人</th></tr></thead>
         <tbody></tbody>
       </table>
     </div>
     <h3 class="sub">人の行き来と投資<span class="en">People and investment</span></h3>
-    <div class="tablebox cards-box">
-      <table id="jt-flow-table" class="cards">
+    <p class="scroll-hint" aria-hidden="true">← 表は横にスクロールできます →</p>
+    <div class="tablebox cards-box matrix-box">
+      <table id="jt-flow-table" class="cards matrix">
         <thead><tr><th>国</th><th class="num">訪日客数</th><th class="num" data-short="人口千人あたり">人口千人あたりの訪日客</th><th class="num" data-short="日本に住む人">日本に住むこの国の人</th><th class="num" data-short="直接投資">日本からの直接投資</th><th class="num" data-short="直接投資5年計">直接投資（直近5年の合計）</th></tr></thead>
         <tbody></tbody>
       </table>
@@ -222,9 +241,10 @@
     </div>
     <p class="note" id="city-note"></p>
     <div class="chart" id="city-chart"></div>
-    <div class="tablebox cards-box">
-      <table id="city-table" class="cards">
-        <thead><tr><th>都市</th><th>国</th><th data-short="単位">単位（地域GDP の対象）</th><th class="num" data-short="米ドル換算">一人当たり地域GDP（米ドル）</th><th class="num">対全国比</th><th class="num">都市人口</th><th data-short="近い日本の市">一人当たりが近い政令指定都市</th><th data-short="出所">地域GDP の出所</th></tr></thead>
+    <p class="scroll-hint" aria-hidden="true">← 表は横にスクロールできます →</p>
+    <div class="tablebox cards-box matrix-box">
+      <table id="city-table" class="cards matrix">
+        <thead><tr><th>都市</th><th class="phone-hide">国</th><th class="num" data-short="米ドル換算">一人当たり地域GDP（米ドル）</th><th class="num">対全国比</th><th class="num">都市人口</th><th data-short="近い日本の市">一人当たりが近い政令指定都市</th><th data-short="単位">単位（地域GDP の対象）</th><th data-short="出所">地域GDP の出所</th></tr></thead>
         <tbody></tbody>
       </table>
     </div>
@@ -684,12 +704,12 @@
         gdpSources: [...new Map([usd, ratio].filter(Boolean).map((r) => [r.source_id, r])).values()],
       };
     });
-    const COLS = ['unit', 'usd', 'ratio', 'pop'];
-    const shared = Object.fromEntries(COLS.map((k) => [k, sharedNotes(entries.map((e) => e.cols[k].text !== '—' ? e.cols[k].notes : null))]));
+    const COLS = ['usd', 'ratio', 'pop'];
+    const shared = Object.fromEntries([...COLS, 'unit'].map((k) => [k, sharedNotes(entries.map((e) => e.cols[k].text !== '—' ? e.cols[k].notes : null))]));
     const un = entries.find((e) => e.pop)?.pop;
     const noteNum = (t) => t === '__un' ? source(un) : book.text(t);
     const table = $('city-table');
-    // Columns: 都市, 国, 単位, 米ドル, 対全国比, 都市人口, 出所
+    // Columns: 都市, 国, 米ドル, 対全国比, 都市人口, 近い政令指定都市, 単位, 出所 (numbers first, so a phone shows them beside the pinned name)
     // The designated city whose per-capita GDP (USD) is closest to each ASEAN city's: a yardstick in Japanese terms.
     const jpUsd = cities.length ? DATA.cities.filter((r) => r.indicator_id === 'grdp_per_capita_usd' && r.country_code === 'jp')
       .reduce((m, r) => (!m.has(r.city_id) || r.year > m.get(r.city_id).year ? m.set(r.city_id, r) : m), new Map()) : new Map();
@@ -707,18 +727,22 @@
     };
     const nearN = jpUsd.size && entries.some((e) => nearest(e))
       ? book.text('一人当たりが近い政令指定都市：米ドル換算の一人当たり地域GDP が±15%以内の日本の政令指定都市。外れる場合は、もっとも低い（高い）市の何倍かを示します（日本の市は' + d3.min([...jpUsd.values()], (r) => r.year) + '〜' + d3.max([...jpUsd.values()], (r) => r.year) + '年度の値。年が異なるため目安）。') : null;
-    const labels = headerMarks(table, [[], [], ...COLS.map((k) => shared[k].map(noteNum)), nearN ? [nearN] : [], []]);
+    const labels = headerMarks(table, [[], [], ...COLS.map((k) => shared[k].map(noteNum)), nearN ? [nearN] : [], shared.unit.map(noteNum), []]);
+    const colCell = (e, k, i, cls) => {
+      const col = e.cols[k];
+      const own = (col.notes || []).filter((t) => !shared[k].includes(t));
+      return noteCell(col.text, own.map(noteNum), cls, labels[i], col.text !== '—' ? shared[k].map(noteNum) : []);
+    };
     table.querySelector('tbody').replaceChildren(...entries.map((e) => {
       const tr = document.createElement('tr');
-      tr.append(cell(e.c.city_ja), noteCell(e.c.country_ja, [], 'nowrap', labels[1]));
-      COLS.forEach((k, i) => {
-        const col = e.cols[k];
-        const own = (col.notes || []).filter((t) => !shared[k].includes(t));
-        tr.append(noteCell(col.text, own.map(noteNum), { unit: 'src', usd: 'num nowrap', ratio: 'num nowrap', pop: 'num nowrap' }[k], labels[i + 2],
-          col.text !== '—' ? shared[k].map(noteNum) : []));
-      });
+      const name = cell(e.c.city_ja);
+      const sub = document.createElement('span'); sub.className = 'sub phone-only'; sub.textContent = e.c.country_ja;
+      name.append(sub);
+      tr.append(name, noteCell(e.c.country_ja, [], 'nowrap phone-hide', labels[1]));
+      COLS.forEach((k, i) => tr.append(colCell(e, k, i + 2, 'num nowrap')));
       const near = nearest(e);
-      tr.append(noteCell(near ? near.text : '', [], '', labels[COLS.length + 2], near && nearN ? [nearN] : []));
+      tr.append(noteCell(near ? near.text : '', [], 'clamp', labels[COLS.length + 2], near && nearN ? [nearN] : []));
+      tr.append(colCell(e, 'unit', COLS.length + 3, 'src clamp'));
       tr.append(noteCell(e.gdpSources.map((r) => CITY_SHORT[r.source_id] || r.source_id).join('・'), e.gdpSources.map(source), 'src', labels[labels.length - 1]));
       return tr;
     }));

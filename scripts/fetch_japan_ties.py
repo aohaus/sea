@@ -159,11 +159,11 @@ def isa_table(rows: list[list], places: dict[str, str]) -> dict[str, float]:
     long (newer): columns 時点 / 州 / 国籍・地域 / 在留資格 / 在留外国人数, total where 在留資格 = 総数."""
     for i, r in enumerate(rows):
         cells = [norm(v) for v in r]
-        if "国籍・地域" not in cells:
+        if not any(c.startswith("国籍") for c in cells):
             continue
-        nat = cells.index("国籍・地域")
         out = {}
         if "在留資格" in cells:
+            nat = next(j for j, c in enumerate(cells) if c.startswith("国籍"))
             kind = cells.index("在留資格")
             val = next(j for j, c in enumerate(cells) if j > kind and c)
             for row in rows[i + 1:]:
@@ -171,11 +171,14 @@ def isa_table(rows: list[list], places: dict[str, str]) -> dict[str, float]:
                 if len(c) > val and c[kind] == "総数" and c[nat] in places:
                     out.setdefault(places[c[nat]], number(row[val]))
         else:
-            total = next(j for j, c in enumerate(cells) if c == "総数")
+            # Merged header cells do not line up with the data columns, so each row is read as
+            # its label (first text cell) and the first number after it (the 総数 column).
             for row in rows[i + 1:]:
-                label = norm(row[nat]) if len(row) > nat else ""
-                if label in places and len(row) > total:
-                    out.setdefault(places[label], number(row[total]))
+                j = next((j for j, v in enumerate(row) if isinstance(v, str) and v.strip()), None)
+                if j is None or norm(row[j]) not in places:
+                    continue
+                value = next((number(v) for v in row[j + 1:] if number(v) is not None), None)
+                out.setdefault(places[norm(row[j])], value)
         return {k: v for k, v in out.items() if v is not None}
     raise RuntimeError("header '国籍・地域' not found")
 
@@ -217,8 +220,16 @@ def fetch_isa(session, places: dict[str, str], saved: dict) -> tuple[str, dict, 
                     break
             if not target:
                 raise RuntimeError("table '国籍・地域別 在留資格別 在留外国人' not found")
-            ws = workbook(get(session, target).content).worksheets[0]
-            values = isa_table(sheet_rows(ws, 30000, 60), places)
+            values, problems = {}, []
+            for ws in workbook(get(session, target).content).worksheets:  # the table is usually the first sheet
+                try:
+                    values = isa_table(sheet_rows(ws, 30000, 60), places)
+                except RuntimeError as exc:
+                    problems.append(f"{ws.title}: {exc}")
+                if values:
+                    break
+            if not values and problems:
+                raise RuntimeError("; ".join(problems))
             if not values:
                 raise RuntimeError("no target nationality in the table")
             for code, v in values.items():
