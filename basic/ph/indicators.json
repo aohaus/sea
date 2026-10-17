@@ -2823,7 +2823,7 @@
         {
           "source_id": "isa_residents",
           "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
-          "retrieved_at": "2026-10-17T13:30:02+00:00",
+          "retrieved_at": "2026-10-17T13:37:49+00:00",
           "observations": [
             {
               "year": 2012,
@@ -2864,6 +2864,21 @@
               "year": 2019,
               "value": 282798,
               "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031964914&fileKind=0"
+            },
+            {
+              "year": 2020,
+              "value": 284165,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000032104291&fileKind=0"
+            },
+            {
+              "year": 2021,
+              "value": 279255,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000032213254&fileKind=0"
+            },
+            {
+              "year": 2022,
+              "value": 298740,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040068461&fileKind=0"
             },
             {
               "year": 2023,
