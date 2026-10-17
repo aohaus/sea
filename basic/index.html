@@ -7,58 +7,66 @@
 <meta name="description" content="ASEAN 11か国と日本の基本情報・経済指標を、出所と照合結果つきで比較・書き出しできるビューア。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
 <style>
   /* Layout: one column of cards; controls on top, summary tiles, two charts side by side when wide, then tables. */
+  /* Palette and type follow Campur.ai: warm off-white page, white cards with a dark frame, deep green
+     as the main colour (buttons, selected chips), mint chips, rust and mustard as accents, Noto Sans JP
+     throughout with heavy headings. */
   :root {
-    --bg: #f6f7f5; --panel: #ffffff; --fg: #1d2622; --muted: #5d6a64; --line: #dde2de;
-    --accent: #0f6b5c; --ref: #9aa39f; --grid: #e8ece9; --axis: #b9c1bc;
+    --bg: #f7f5f0; --panel: #ffffff; --fg: #1e1e1c; --muted: #5e5a55; --line: #e4e0d8; --frame: #2b2a27;
+    --accent: #0f5a44; --on-accent: #ffffff; --accent-soft: #e7f4ec; --accent-line: #8fceac; --rust: #b4501c; --mustard-soft: #fdf3c8; --mustard-line: #e6c35c;
+    --ref: #9b9891; --grid: #ece9e2; --axis: #bdb8ae;
     --ok: #1f7a46; --warn: #a3650b; --bad: #b3261e;
-    --s1: #0f6b5c; --s2: #c2552d; --s3: #3a62b0; --s4: #8a5a9e; --s5: #b08a16; --s6: #2f8f9d; --s7: #a33b62; --s8: #5b7a2e;
+    --s1: #0f5a44; --s2: #b4501c; --s3: #2f5fa8; --s4: #7b4e9a; --s5: #b8860b; --s6: #2b8c8c; --s7: #a33b62; --s8: #5b7a2e;
     --sans: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
-    --serif: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
-    --radius: 10px;
+    --radius: 6px;
     color-scheme: light;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --bg: #121715; --panel: #1a211e; --fg: #e6ebe8; --muted: #9aa7a1; --line: #2c3632;
-      --accent: #4fc2a9; --ref: #6f7a75; --grid: #252e2a; --axis: #3d4843;
+      --bg: #121411; --panel: #1a1d19; --fg: #ecebe6; --muted: #a3a09a; --line: #2d302b; --frame: #5a5d56;
+      --accent: #5cc79e; --on-accent: #0d1a14; --accent-soft: #15302a; --accent-line: #2f6b55; --rust: #e07a45; --mustard-soft: #3a3214; --mustard-line: #7d6a24;
+      --ref: #77756f; --grid: #252823; --axis: #44473f;
       --ok: #5cc98a; --warn: #e0a64a; --bad: #f2786d;
-      --s1: #4fc2a9; --s2: #ef8a5f; --s3: #7fa3ec; --s4: #c39ad6; --s5: #e0c056; --s6: #6fcbd8; --s7: #e57ea5; --s8: #9cc26a;
+      --s1: #5cc79e; --s2: #e07a45; --s3: #7fa3ec; --s4: #c39ad6; --s5: #e0c056; --s6: #6fcbd8; --s7: #e57ea5; --s8: #9cc26a;
       color-scheme: dark;
     }
   }
   :root[data-theme="dark"] {
-    --bg: #121715; --panel: #1a211e; --fg: #e6ebe8; --muted: #9aa7a1; --line: #2c3632;
-    --accent: #4fc2a9; --ref: #6f7a75; --grid: #252e2a; --axis: #3d4843;
+    --bg: #121411; --panel: #1a1d19; --fg: #ecebe6; --muted: #a3a09a; --line: #2d302b; --frame: #5a5d56;
+    --accent: #5cc79e; --on-accent: #0d1a14; --accent-soft: #15302a; --accent-line: #2f6b55; --rust: #e07a45; --mustard-soft: #3a3214; --mustard-line: #7d6a24;
+    --ref: #77756f; --grid: #252823; --axis: #44473f;
     --ok: #5cc98a; --warn: #e0a64a; --bad: #f2786d;
-    --s1: #4fc2a9; --s2: #ef8a5f; --s3: #7fa3ec; --s4: #c39ad6; --s5: #e0c056; --s6: #6fcbd8; --s7: #e57ea5; --s8: #9cc26a;
+    --s1: #5cc79e; --s2: #e07a45; --s3: #7fa3ec; --s4: #c39ad6; --s5: #e0c056; --s6: #6fcbd8; --s7: #e57ea5; --s8: #9cc26a;
     color-scheme: dark;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; }
   body { background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: 15px; line-height: 1.6; }
   main { max-width: 1200px; margin-inline: auto; padding-inline: 16px; padding-block: 24px 48px; display: grid; gap: 20px; }
-  h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(1.6rem, 3vw, 2.1rem); margin: 0; line-height: 1.3; text-wrap: balance; }
-  h2 { font-size: 1.05rem; font-weight: 500; margin: 0; text-wrap: balance; }
+  h1 { font-weight: 900; font-size: clamp(1.6rem, 3vw, 2.1rem); margin: 0; line-height: 1.3; letter-spacing: .01em; text-wrap: balance; }
+  h2 { font-size: 1.12rem; font-weight: 900; margin: 0; line-height: 1.45; text-wrap: balance; }
+  /* Section headings carry a short rust bar, like the section badges on Campur.ai. */
+  .card > h2:first-child { padding-left: .7rem; border-left: 4px solid var(--rust); }
   .en { color: var(--muted); font-size: .8rem; font-weight: 400; margin-left: .5em; }
   .lede { color: var(--muted); margin: 6px 0 0; max-width: 72ch; }
-  .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; min-width: 0; }
+  .card { background: var(--panel); border: 1.5px solid var(--frame); border-radius: var(--radius); padding: 18px 20px; display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; gap: 10px; min-width: 0; }
   .note { color: var(--muted); font-size: .82rem; margin: 0; }
   .grid2 { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); }
   .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-  .label { font-size: .8rem; color: var(--muted); min-width: 5rem; letter-spacing: .03em; }
-  .chip { font: inherit; font-size: .82rem; border: 1px solid var(--line); background: var(--bg); color: var(--fg); border-radius: 999px; padding: .28rem .75rem; cursor: pointer; }
-  .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--panel); }
+  .label { font-size: .8rem; font-weight: 700; color: var(--fg); min-width: 5rem; letter-spacing: .03em; }
+  .chip { font: inherit; font-size: .82rem; font-weight: 700; border: 1px solid var(--accent-line); background: var(--accent-soft); color: var(--accent); border-radius: 4px; padding: .28rem .75rem; cursor: pointer; }
+  .chip[aria-pressed="false"] { background: var(--panel); border-color: var(--line); color: var(--muted); font-weight: 500; }
+  .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
   .chip.ref[aria-pressed="true"] { background: var(--ref); border-color: var(--ref); }
-  .link { font: inherit; font-size: .82rem; background: none; border: none; color: var(--accent); text-decoration: underline; cursor: pointer; padding: .28rem .2rem; }
-  select { font: inherit; font-size: .9rem; padding: .3rem .5rem; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--fg); max-width: 100%; }
+  .link { font: inherit; font-size: .82rem; font-weight: 700; background: none; border: none; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; padding: .28rem .2rem; }
+  select { font: inherit; font-size: .9rem; padding: .35rem .55rem; border: 1px solid var(--frame); border-radius: 4px; background: var(--panel); color: var(--fg); max-width: 100%; }
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .tiles { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); }
-  .tile { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 18px; display: grid; gap: 4px; align-content: start; }
+  .tile { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--accent); border-radius: var(--radius); padding: 14px 18px; display: grid; gap: 4px; align-content: start; }
   .tile .k { font-size: .8rem; color: var(--muted); }
-  .tile .v { font-family: var(--serif); font-weight: 500; font-size: 1.6rem; font-variant-numeric: tabular-nums; line-height: 1.3; }
+  .tile .v { font-weight: 900; font-size: 1.6rem; font-variant-numeric: tabular-nums; line-height: 1.3; }
   .chart { position: relative; min-height: 260px; }
   .chart svg { display: block; overflow: visible; }
   .tip { position: absolute; pointer-events: none; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 4px 16px rgb(0 0 0 / .14); padding: 6px 10px; font-size: .78rem; line-height: 1.45; max-width: 24rem; z-index: 2; }
@@ -66,7 +74,7 @@
   .tablebox { overflow: auto; max-height: 32rem; }
   table { border-collapse: collapse; width: 100%; font-size: .82rem; font-variant-numeric: tabular-nums; }
   th, td { text-align: left; padding: .45rem .6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
-  th { position: sticky; top: 0; background: var(--panel); font-weight: 500; white-space: nowrap; }
+  th { position: sticky; top: 0; background: var(--panel); font-weight: 700; white-space: nowrap; border-bottom: 1.5px solid var(--frame); }
   td.num, th.num { text-align: right; }
   .src { color: var(--muted); }
   /* Note tables (profile, cities): shared sources and checks go to a numbered notes list under the table; cells carry only a marker. */
@@ -97,7 +105,7 @@
   .pill { display: inline-block; border-radius: 999px; padding: .05rem .55rem; font-size: .75rem; border: 1px solid currentColor; white-space: nowrap; }
   .pill.match { color: var(--ok); } .pill.close { color: var(--warn); } .pill.differs { color: var(--bad); } .pill.no_data { color: var(--muted); }
   .downloads { display: flex; flex-wrap: wrap; gap: 10px; }
-  .downloads a { color: var(--accent); font-size: .88rem; }
+  .downloads a { color: var(--accent); font-size: .85rem; font-weight: 700; background: var(--accent-soft); border: 1px solid var(--accent-line); border-radius: 4px; padding: .3rem .7rem; text-decoration: none; }
   .status { color: var(--muted); }
   .version-row { margin-top: 10px; }
   #version-note.archived { color: var(--warn); }
