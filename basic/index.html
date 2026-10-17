@@ -110,6 +110,7 @@
     table.matrix th[data-short]::before { content: attr(data-short); font-size: .74rem; }
     table.matrix th:first-child, table.matrix td:first-child { box-shadow: 1px 0 0 var(--line); }
     table.matrix td.clamp { white-space: normal; min-width: 8em; max-width: 11em; }
+    table.matrix td.clamp-wide { white-space: normal; min-width: 12em; max-width: 20em; }
     .scroll-hint { display: block; }
     table.matrix .phone-hide { display: none; }
     table.matrix .phone-only { display: block; }
@@ -254,9 +255,10 @@
   <section class="card">
     <h2>基本情報<span class="en">Country profile</span></h2>
     <p class="note">値は原文の表記のままです。出所と照合結果は、共通のものを表の下の備考にまとめています（番号は備考の番号）。</p>
-    <div class="tablebox cards-box">
-      <table id="profile-table" class="cards">
-        <thead><tr><th>国</th><th>首都</th><th class="num">面積（km²）</th><th class="num">総人口</th><th>公用語</th><th>宗教</th><th>政体</th><th>元首</th><th>出所</th></tr></thead>
+    <p class="scroll-hint" aria-hidden="true">← 表は横にスクロールできます →</p>
+    <div class="tablebox cards-box matrix-box">
+      <table id="profile-table" class="cards matrix">
+        <thead><tr><th>国</th><th class="num">総人口</th><th class="num">面積（km²）</th><th>首都</th><th>公用語</th><th>宗教</th><th>政体</th><th>元首</th><th>出所</th></tr></thead>
         <tbody></tbody>
       </table>
     </div>
@@ -288,8 +290,9 @@
     </div>
     <p class="note" id="pj-note"></p>
     <div class="chart" id="pj-chart"></div>
-    <div class="tablebox cards-box">
-      <table id="pj-table" class="cards">
+    <p class="scroll-hint" aria-hidden="true">← 表は横にスクロールできます →</p>
+    <div class="tablebox cards-box matrix-box">
+      <table id="pj-table" class="cards matrix">
         <thead><tr><th>国</th><th class="num">2025年</th><th class="num">2060年</th><th class="num" data-short="変化">2025→2060年の変化</th><th data-short="注目点">注目点</th></tr></thead>
         <tbody></tbody>
       </table>
@@ -879,7 +882,7 @@
   const cell = (text, cls) => { const td = document.createElement('td'); if (cls) td.className = cls; td.textContent = text ?? ''; return td; };
   const FIG = (id) => id.replace('asean_', 'ASEAN ').replace('japan_', '日本 ').replace('_gdp_per_capita', ' 一人当たりGDP').replace('gdp_per_capita', '一人当たりGDP').replace('population', '人口').replace('gdp', '名目GDP').replace('area', '面積');
 
-  const PROFILE_FIELDS = ['capital', 'area', 'population', 'official_language', 'religion', 'political_system', 'head_of_state'];
+  const PROFILE_FIELDS = ['population', 'area', 'capital', 'official_language', 'religion', 'political_system', 'head_of_state'];
   const SHORT = { jetro_basic: 'JETRO', mofa_basic: '外務省' };
   const METHOD = { auto: '自動取得', manual_pdf: 'ページを PDF 保存して手動で取り込み' };
 
@@ -1219,7 +1222,7 @@
         noteCell(a ? fmt(a.value, unit) : '—', [], 'num nowrap', labels[1], [srcN]),
         noteCell(b ? fmt(b.value, unit) : '—', [], 'num nowrap', labels[2]),
         noteCell(chg, [], 'num nowrap', labels[3]),
-        noteCell(insight, [], '', labels[4], insight ? [insightN] : []));
+        noteCell(insight, [], 'clamp', labels[4], insight ? [insightN] : []));
       return tr;
     }));
     renderNotes($('pj-notes'), book);
@@ -1359,7 +1362,7 @@
         const v = r.fields[f];
         const text = !v ? '' : f === 'area' ? (Number.isFinite(v.value) ? v.value.toLocaleString('ja-JP') : '')
           : f === 'population' ? fmt(v.value, 'persons') : v.value;
-        const cls = { area: 'num nowrap', population: 'num nowrap', capital: 'nowrap', political_system: 'wide' }[f] || '';
+        const cls = { area: 'num nowrap', population: 'num nowrap', capital: 'nowrap', political_system: 'wide clamp-wide' }[f] || 'clamp-wide';
         tr.append(noteCell(text, v ? v.notes.filter((t) => !shared[f].includes(t)).map(book.text) : [], cls, labels[i + 1],
           text ? shared[f].map(book.text) : []));
       });
