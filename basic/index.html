@@ -355,10 +355,12 @@
 (() => {
   const ASEAN = ['bn', 'kh', 'id', 'la', 'my', 'mm', 'ph', 'sg', 'th', 'tl', 'vn'];
   const ASEAN10 = ASEAN.filter((c) => c !== 'tl');
-  const ADDITIVE = new Set(['population', 'gdp_nominal', 'fdi_inflow']);
+  const ADDITIVE = new Set(['population', 'gdp_nominal', 'fdi_inflow', 'japan_exports', 'japan_imports', 'japanese_residents',
+    'visitors_to_japan', 'residents_in_japan', 'fdi_from_japan']);
   // Units compared by difference rather than ratio (a 16-year gap in life expectancy, not "1.2 times").
   const DIFF_UNITS = new Set(['%', 'years', 'births']);
-  const SOURCE_LABEL = { worldbank_wdi: '世界銀行 WDI', imf_weo: 'IMF WEO', jetro_basic: 'JETRO', mofa_basic: '外務省' };
+  const SOURCE_LABEL = { worldbank_wdi: '世界銀行 WDI', imf_weo: 'IMF WEO', jetro_basic: 'JETRO', mofa_basic: '外務省',
+    jnto_visitors: 'JNTO', isa_residents: '出入国在留管理庁', mof_fdi: '財務省' };
   const STATUS = { match: '一致', close: '近い', differs: '差あり', no_data: 'データなし' };
   const $ = (id) => document.getElementById(id);
   const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
