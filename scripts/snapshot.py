@@ -40,14 +40,16 @@ from fetch_basic import BASIC_DIR, load_json, write_json
 
 SCHEMA_VERSION = 1
 ARCHIVE_DIR = BASIC_DIR / "archive"
-TABLES = ["observations", "profiles", "city_observations", "city_list", "currencies", "sources", "validation"]
+TABLES = ["observations", "profiles", "city_observations", "city_list", "currencies", "sources", "validation", "projections"]
 # Tables whose values are compared between versions, and the columns that identify a value.
 KEYS = {
     "observations": ("country_code", "indicator_id", "source_id", "year"),
     "city_observations": ("city_id", "indicator_id", "source_id", "year", "url"),
     "profiles": ("country_code", "field_id", "source_id"),
+    # Projections: keyed by edition too, so a new WPP edition shows up as added rows (old ones removed).
+    "projections": ("country_code", "indicator_id", "edition", "year"),
 }
-VALUE = {"observations": "value", "city_observations": "value", "profiles": "value_text"}
+VALUE = {"observations": "value", "city_observations": "value", "profiles": "value_text", "projections": "value"}
 
 
 def gz_bytes(data: bytes) -> bytes:

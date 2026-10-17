@@ -2475,6 +2475,24 @@
           ]
         }
       ]
+    },
+    "japan_exports": {
+      "label_ja": "日本の輸出（この国向け）",
+      "label_en": "Japan's exports to the country",
+      "unit": "USD",
+      "series": []
+    },
+    "japan_imports": {
+      "label_ja": "日本の輸入（この国から）",
+      "label_en": "Japan's imports from the country",
+      "unit": "USD",
+      "series": []
+    },
+    "japanese_residents": {
+      "label_ja": "在留邦人数",
+      "label_en": "Japanese nationals residing in the country",
+      "unit": "persons",
+      "series": []
     }
   }
 }

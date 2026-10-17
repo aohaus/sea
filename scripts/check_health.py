@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from datetime import datetime, timezone
 
@@ -83,6 +84,17 @@ def check(now: datetime, job_status: str | None) -> list[dict]:
         for source_id, r in load_json(report).items():
             if isinstance(r, dict) and "fetch_status" in r and r["fetch_status"] != "ok":
                 add("error", source_id, "都市データの取得に失敗", str(r.get("error") or r.get("fetch_error") or r["fetch_status"]))
+    # Population projections (UN WPP): fetch result, and an edition that is getting old.
+    report = BASIC_DIR / "projections_report.json"
+    if report.exists():
+        r = load_json(report)
+        if r.get("fetch_status") != "ok":
+            add("error", r.get("source_id"), "将来推計の取得に失敗", str(r.get("fetch_error")))
+        edition_year = int(re.sub(r"\D", "", r.get("edition") or "") or 0)
+        if edition_year and edition_year < now.year - 3:
+            add("warning", r.get("source_id"), f"{r['edition']} より新しい版が出ていないか確認",
+                "国連の世界人口推計は通常2年ごとに改訂されます。新しい版があれば basic/sources.json（un_wpp）の edition・estimates_until・url_candidates を更新してください")
+
     for raw in sorted((BASIC_DIR / "cities" / "raw").glob("*.json")):
         d = load_json(raw)
         if d.get("retrieval_method") == "manual_pdf":

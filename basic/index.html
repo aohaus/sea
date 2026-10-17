@@ -7,58 +7,66 @@
 <meta name="description" content="ASEAN 11か国と日本の基本情報・経済指標を、出所と照合結果つきで比較・書き出しできるビューア。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
 <style>
   /* Layout: one column of cards; controls on top, summary tiles, two charts side by side when wide, then tables. */
+  /* Palette and type follow Campur.ai: warm off-white page, white cards with a dark frame, deep green
+     as the main colour (buttons, selected chips), mint chips, rust and mustard as accents, Noto Sans JP
+     throughout with heavy headings. */
   :root {
-    --bg: #f6f7f5; --panel: #ffffff; --fg: #1d2622; --muted: #5d6a64; --line: #dde2de;
-    --accent: #0f6b5c; --ref: #9aa39f; --grid: #e8ece9; --axis: #b9c1bc;
+    --bg: #f7f5f0; --panel: #ffffff; --fg: #1e1e1c; --muted: #5e5a55; --line: #e4e0d8; --frame: #2b2a27;
+    --accent: #0f5a44; --on-accent: #ffffff; --accent-soft: #e7f4ec; --accent-line: #8fceac; --rust: #b4501c; --mustard-soft: #fdf3c8; --mustard-line: #e6c35c;
+    --ref: #9b9891; --grid: #ece9e2; --axis: #bdb8ae;
     --ok: #1f7a46; --warn: #a3650b; --bad: #b3261e;
-    --s1: #0f6b5c; --s2: #c2552d; --s3: #3a62b0; --s4: #8a5a9e; --s5: #b08a16; --s6: #2f8f9d; --s7: #a33b62; --s8: #5b7a2e;
+    --s1: #0f5a44; --s2: #b4501c; --s3: #2f5fa8; --s4: #7b4e9a; --s5: #b8860b; --s6: #2b8c8c; --s7: #a33b62; --s8: #5b7a2e;
     --sans: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
-    --serif: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
-    --radius: 10px;
+    --radius: 6px;
     color-scheme: light;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --bg: #121715; --panel: #1a211e; --fg: #e6ebe8; --muted: #9aa7a1; --line: #2c3632;
-      --accent: #4fc2a9; --ref: #6f7a75; --grid: #252e2a; --axis: #3d4843;
+      --bg: #121411; --panel: #1a1d19; --fg: #ecebe6; --muted: #a3a09a; --line: #2d302b; --frame: #5a5d56;
+      --accent: #5cc79e; --on-accent: #0d1a14; --accent-soft: #15302a; --accent-line: #2f6b55; --rust: #e07a45; --mustard-soft: #3a3214; --mustard-line: #7d6a24;
+      --ref: #77756f; --grid: #252823; --axis: #44473f;
       --ok: #5cc98a; --warn: #e0a64a; --bad: #f2786d;
-      --s1: #4fc2a9; --s2: #ef8a5f; --s3: #7fa3ec; --s4: #c39ad6; --s5: #e0c056; --s6: #6fcbd8; --s7: #e57ea5; --s8: #9cc26a;
+      --s1: #5cc79e; --s2: #e07a45; --s3: #7fa3ec; --s4: #c39ad6; --s5: #e0c056; --s6: #6fcbd8; --s7: #e57ea5; --s8: #9cc26a;
       color-scheme: dark;
     }
   }
   :root[data-theme="dark"] {
-    --bg: #121715; --panel: #1a211e; --fg: #e6ebe8; --muted: #9aa7a1; --line: #2c3632;
-    --accent: #4fc2a9; --ref: #6f7a75; --grid: #252e2a; --axis: #3d4843;
+    --bg: #121411; --panel: #1a1d19; --fg: #ecebe6; --muted: #a3a09a; --line: #2d302b; --frame: #5a5d56;
+    --accent: #5cc79e; --on-accent: #0d1a14; --accent-soft: #15302a; --accent-line: #2f6b55; --rust: #e07a45; --mustard-soft: #3a3214; --mustard-line: #7d6a24;
+    --ref: #77756f; --grid: #252823; --axis: #44473f;
     --ok: #5cc98a; --warn: #e0a64a; --bad: #f2786d;
-    --s1: #4fc2a9; --s2: #ef8a5f; --s3: #7fa3ec; --s4: #c39ad6; --s5: #e0c056; --s6: #6fcbd8; --s7: #e57ea5; --s8: #9cc26a;
+    --s1: #5cc79e; --s2: #e07a45; --s3: #7fa3ec; --s4: #c39ad6; --s5: #e0c056; --s6: #6fcbd8; --s7: #e57ea5; --s8: #9cc26a;
     color-scheme: dark;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; }
   body { background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: 15px; line-height: 1.6; }
   main { max-width: 1200px; margin-inline: auto; padding-inline: 16px; padding-block: 24px 48px; display: grid; gap: 20px; }
-  h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(1.6rem, 3vw, 2.1rem); margin: 0; line-height: 1.3; text-wrap: balance; }
-  h2 { font-size: 1.05rem; font-weight: 500; margin: 0; text-wrap: balance; }
+  h1 { font-weight: 900; font-size: clamp(1.6rem, 3vw, 2.1rem); margin: 0; line-height: 1.3; letter-spacing: .01em; text-wrap: balance; }
+  h2 { font-size: 1.12rem; font-weight: 900; margin: 0; line-height: 1.45; text-wrap: balance; }
+  /* Section headings carry a short rust bar, like the section badges on Campur.ai. */
+  .card > h2:first-child { padding-left: .7rem; border-left: 4px solid var(--rust); }
   .en { color: var(--muted); font-size: .8rem; font-weight: 400; margin-left: .5em; }
   .lede { color: var(--muted); margin: 6px 0 0; max-width: 72ch; }
-  .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; min-width: 0; }
+  .card { background: var(--panel); border: 1.5px solid var(--frame); border-radius: var(--radius); padding: 18px 20px; display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; gap: 10px; min-width: 0; }
   .note { color: var(--muted); font-size: .82rem; margin: 0; }
   .grid2 { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); }
   .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-  .label { font-size: .8rem; color: var(--muted); min-width: 5rem; letter-spacing: .03em; }
-  .chip { font: inherit; font-size: .82rem; border: 1px solid var(--line); background: var(--bg); color: var(--fg); border-radius: 999px; padding: .28rem .75rem; cursor: pointer; }
-  .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--panel); }
+  .label { font-size: .8rem; font-weight: 700; color: var(--fg); min-width: 5rem; letter-spacing: .03em; }
+  .chip { font: inherit; font-size: .82rem; font-weight: 700; border: 1px solid var(--accent-line); background: var(--accent-soft); color: var(--accent); border-radius: 4px; padding: .28rem .75rem; cursor: pointer; }
+  .chip[aria-pressed="false"] { background: var(--panel); border-color: var(--line); color: var(--muted); font-weight: 500; }
+  .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
   .chip.ref[aria-pressed="true"] { background: var(--ref); border-color: var(--ref); }
-  .link { font: inherit; font-size: .82rem; background: none; border: none; color: var(--accent); text-decoration: underline; cursor: pointer; padding: .28rem .2rem; }
-  select { font: inherit; font-size: .9rem; padding: .3rem .5rem; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--fg); max-width: 100%; }
+  .link { font: inherit; font-size: .82rem; font-weight: 700; background: none; border: none; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; padding: .28rem .2rem; }
+  select { font: inherit; font-size: .9rem; padding: .35rem .55rem; border: 1px solid var(--frame); border-radius: 4px; background: var(--panel); color: var(--fg); max-width: 100%; }
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .tiles { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); }
-  .tile { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 18px; display: grid; gap: 4px; align-content: start; }
+  .tile { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--accent); border-radius: var(--radius); padding: 14px 18px; display: grid; gap: 4px; align-content: start; }
   .tile .k { font-size: .8rem; color: var(--muted); }
-  .tile .v { font-family: var(--serif); font-weight: 500; font-size: 1.6rem; font-variant-numeric: tabular-nums; line-height: 1.3; }
+  .tile .v { font-weight: 900; font-size: 1.6rem; font-variant-numeric: tabular-nums; line-height: 1.3; }
   .chart { position: relative; min-height: 260px; }
   .chart svg { display: block; overflow: visible; }
   .tip { position: absolute; pointer-events: none; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 4px 16px rgb(0 0 0 / .14); padding: 6px 10px; font-size: .78rem; line-height: 1.45; max-width: 24rem; z-index: 2; }
@@ -66,7 +74,7 @@
   .tablebox { overflow: auto; max-height: 32rem; }
   table { border-collapse: collapse; width: 100%; font-size: .82rem; font-variant-numeric: tabular-nums; }
   th, td { text-align: left; padding: .45rem .6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
-  th { position: sticky; top: 0; background: var(--panel); font-weight: 500; white-space: nowrap; }
+  th { position: sticky; top: 0; background: var(--panel); font-weight: 700; white-space: nowrap; border-bottom: 1.5px solid var(--frame); }
   td.num, th.num { text-align: right; }
   .src { color: var(--muted); }
   /* Note tables (profile, cities): shared sources and checks go to a numbered notes list under the table; cells carry only a marker. */
@@ -97,7 +105,7 @@
   .pill { display: inline-block; border-radius: 999px; padding: .05rem .55rem; font-size: .75rem; border: 1px solid currentColor; white-space: nowrap; }
   .pill.match { color: var(--ok); } .pill.close { color: var(--warn); } .pill.differs { color: var(--bad); } .pill.no_data { color: var(--muted); }
   .downloads { display: flex; flex-wrap: wrap; gap: 10px; }
-  .downloads a { color: var(--accent); font-size: .88rem; }
+  .downloads a { color: var(--accent); font-size: .85rem; font-weight: 700; background: var(--accent-soft); border: 1px solid var(--accent-line); border-radius: 4px; padding: .3rem .7rem; text-decoration: none; }
   .status { color: var(--muted); }
   .version-row { margin-top: 10px; }
   #version-note.archived { color: var(--warn); }
@@ -178,6 +186,19 @@
     <div class="chart" id="tm-chart"></div>
   </section>
 
+  <section class="card">
+    <h2>日本とのつながり<span class="en">Ties with Japan</span></h2>
+    <p class="note">日本との貿易（日本から見た輸出・輸入）と、その国に住む日本人（在留邦人）の数です。棒は日本との貿易額（輸出＋輸入）。人口あたりの在留邦人を見ると、規模の違う国どうしでも「日本人の身近さ」を比べられます。</p>
+    <div class="chart" id="jt-chart"></div>
+    <div class="tablebox cards-box">
+      <table id="jt-table" class="cards">
+        <thead><tr><th>国</th><th class="num" data-short="貿易額">日本との貿易額</th><th class="num" data-short="日本の輸出">日本の輸出</th><th class="num" data-short="日本の輸入">日本の輸入</th><th class="num" data-short="収支">日本から見た収支</th><th class="num">在留邦人</th><th class="num" data-short="人口1万人あたり">人口1万人あたりの在留邦人</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <ol class="notes" id="jt-notes" aria-label="備考"></ol>
+  </section>
+
   <section class="card" id="cities">
     <h2>主要都市の比較<span class="en">Major cities</span></h2>
     <p class="note">上で選んだ国の主要都市（各国1〜3都市）を比べます。「日本（比較）」を選ぶと日本の政令指定都市20市も加わります（灰色）。一人当たり地域GDP は各国統計局の州・県・市の値で、都市そのものと単位が違う場合は「単位」に示します。都市人口は国連 WUP 2025 の都市域（行政区域とは異なる）です。</p>
@@ -214,6 +235,34 @@
     <h2 id="pop-trend-title">総人口：推移<span class="en">Population trend</span></h2>
     <p class="note" id="pop-trend-note"></p>
     <div class="chart" id="pop-trend"></div>
+  </section>
+
+  <section class="card">
+    <h2>2060年までの見通し<span class="en">Outlook to 2060 (UN projections)</span></h2>
+    <p class="note">国連の世界人口推計による、実績の推計（実線）と将来の予測（点線、中位推計）です。予測は出生・死亡・人の移動の前提で変わるため、版が改訂されるたびに見直されます。年ごとの版（データの版）に残すことで、後から「当時の予測」と実績を比べられます。</p>
+    <div class="row">
+      <label class="label" for="pj-indicator">指標</label>
+      <select id="pj-indicator"></select>
+      <label class="label" for="pj-scale">比べ方</label>
+      <select id="pj-scale">
+        <option value="abs">実数</option>
+        <option value="index">2025年＝100</option>
+      </select>
+      <label class="label" for="pj-span">期間</label>
+      <select id="pj-span">
+        <option value="1990">1990〜2070年</option>
+        <option value="1950">1950〜2100年</option>
+      </select>
+    </div>
+    <p class="note" id="pj-note"></p>
+    <div class="chart" id="pj-chart"></div>
+    <div class="tablebox cards-box">
+      <table id="pj-table" class="cards">
+        <thead><tr><th>国</th><th class="num">2025年</th><th class="num">2060年</th><th class="num" data-short="変化">2025→2060年の変化</th><th data-short="注目点">注目点</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <ol class="notes" id="pj-notes" aria-label="備考"></ol>
   </section>
 
   <section class="card">
@@ -305,7 +354,7 @@
 
   // ---------- state (kept in this browser only) ----------
   const DEFAULTS = { countries: ASEAN10, japan: true, indicator: 'gdp_per_capita', source: 'worldbank_wdi', year: null,
-    cityIndicator: 'grdp_per_capita_usd', cityYear: 'latest', fxMode: 'index', fxSpan: 10, rel: 'abs', tmIndicator: 'aged_65_share' };
+    cityIndicator: 'grdp_per_capita_usd', cityYear: 'latest', fxMode: 'index', fxSpan: 10, rel: 'abs', tmIndicator: 'aged_65_share', pjIndicator: 'population', pjScale: 'abs', pjSpan: 1990 };
   let state = { ...DEFAULTS };
   try { state = { ...DEFAULTS, ...JSON.parse(localStorage.getItem('asean-explorer') || '{}') }; } catch (e) { /* storage unavailable */ }
   const set = (patch) => {
@@ -385,6 +434,9 @@
   $('year').addEventListener('change', (e) => set({ year: Number(e.target.value) }));
   $('rel').addEventListener('change', (e) => set({ rel: e.target.value }));
   $('tm-indicator').addEventListener('change', (e) => set({ tmIndicator: e.target.value }));
+  $('pj-indicator').addEventListener('change', (e) => set({ pjIndicator: e.target.value }));
+  $('pj-scale').addEventListener('change', (e) => set({ pjScale: e.target.value }));
+  $('pj-span').addEventListener('change', (e) => set({ pjSpan: Number(e.target.value) }));
   $('city-indicator').addEventListener('change', (e) => set({ cityIndicator: e.target.value, cityYear: 'latest' }));
   $('city-year').addEventListener('change', (e) => set({ cityYear: e.target.value === 'latest' ? 'latest' : Number(e.target.value) }));
   $('fx-mode').addEventListener('change', (e) => set({ fxMode: e.target.value }));
@@ -512,6 +564,8 @@
     renderTables(selected);
     renderPopulationTrend(trendCodes);
     renderTimeMachine(selected);
+    renderJapanTies(selected);
+    renderProjections(trendCodes);
     renderFx(trendCodes);
     renderCities(selected.concat(withJapan ? ['jp'] : []));
   }
@@ -743,7 +797,14 @@
     const line = d3.line().defined((d) => d.value != null).x((d) => x(d.year)).y((d) => y(d.value));
     // opts.gaps: break the line where years are missing or where the series changes segment (a break in the data).
     const withGaps = (v) => !opts.gaps ? v : v.flatMap((d, k) => k && (d.year - v[k - 1].year > 1 || d.segment !== v[k - 1].segment) ? [{ year: d.year, value: null }, d] : [d]);
-    groups.forEach((s, i) => svg.append('path').datum(withGaps(s.values)).attr('d', line).attr('fill', 'none').attr('stroke', color(s, i)).attr('stroke-width', 2).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round'));
+    // opts.dashFrom: values after this year (projections) are drawn dashed.
+    const draw = (vals, i, s, dash) => svg.append('path').datum(withGaps(vals)).attr('d', line).attr('fill', 'none').attr('stroke', color(s, i))
+      .attr('stroke-width', 2).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round').attr('stroke-dasharray', dash ? '5 4' : null);
+    groups.forEach((s, i) => {
+      if (opts.dashFrom == null) return draw(s.values, i, s, false);
+      draw(s.values.filter((d) => d.year <= opts.dashFrom), i, s, false);
+      draw(s.values.filter((d) => d.year >= opts.dashFrom), i, s, true);
+    });
     const ends = groups.map((s, i) => ({ s, i, y: y(s.values[s.values.length - 1].value) })).sort((a, b) => a.y - b.y);
     for (let k = 1; k < ends.length; k++) if (ends[k].y - ends[k - 1].y < 13) ends[k].y = ends[k - 1].y + 13;
     // Keep the stack inside the chart: push it back up from the bottom if it ran past the axis.
@@ -938,6 +999,121 @@
       .on('mouseleave', () => hideTip(box));
     box.replaceChildren(svg.node(), tip(box));
     box.style.minHeight = height + 'px';
+  }
+
+  // ---------- ties with Japan ----------
+  // Trade with Japan (JETRO, from Global Trade Atlas; Japan's exports to / imports from the country) and
+  // Japanese residents (MOFA's annual survey, via the JETRO / MOFA country pages).
+  function renderJapanTies(codes) {
+    const obs = DATA.observations;
+    const latest = (code, id) => d3.greatest(obs.filter((r) => r.country_code === code && r.indicator_id === id), (r) => r.year);
+    const pop = (code, year) => obs.find((r) => r.country_code === code && r.indicator_id === 'population' && r.source_id === 'worldbank_wdi' && r.year === year)
+      || d3.greatest(obs.filter((r) => r.country_code === code && r.indicator_id === 'population' && r.source_id === 'worldbank_wdi'), (r) => r.year);
+    const items = codes.filter((c) => c !== 'jp').map((code) => {
+      const ex = latest(code, 'japan_exports'), im = latest(code, 'japan_imports'), res = latest(code, 'japanese_residents');
+      const sameYear = ex && im && ex.year === im.year;
+      const p = res ? pop(code, res.year) : null;
+      return { code, name: (ex || im || res || obs.find((r) => r.country_code === code))?.country_ja || code, ex, im, res, sameYear,
+        total: sameYear ? ex.value + im.value : null, perPop: res && p ? res.value / p.value * 1e4 : null, popRow: p };
+    });
+    const bars = items.filter((d) => d.total != null).map((d) => ({ country_code: d.code, country_ja: d.name, year: d.ex.year, value: d.total,
+      label: fmt(d.total, 'USD') + '（日本の輸出 ' + fmt(d.ex.value, 'USD') + '・輸入 ' + fmt(d.im.value, 'USD') + '、' + d.ex.year + '年）',
+      source_publisher_ja: d.ex.source_publisher_ja, original_source: d.ex.original_source }));
+    drawRanking($('jt-chart'), bars, 'USD');
+
+    const book = noteBook();
+    const anyTrade = items.find((d) => d.ex);
+    const tradeN = anyTrade ? book.mark('trade', () => ({ text: '日本との貿易：' + anyTrade.ex.source_publisher_ja + '「' + anyTrade.ex.source_title_ja + '」の「日本との貿易（通関ベース）」（元統計：'
+      + (anyTrade.ex.original_source || '—') + '）。日本から見た輸出・輸入で、貿易額はその合計、収支は輸出−輸入です。' })) : null;
+    const resN = book.mark('res', () => ({ text: '在留邦人：外務省「海外在留邦人数調査統計」（各国の JETRO「概況・基本統計」または外務省「基礎データ」に掲載の値。時点は各セル）。人口1万人あたりは、同じ年の世界銀行の総人口で割った値です。' }));
+    const noTrade = items.filter((d) => !d.ex).map((d) => d.name);
+    const noTradeN = noTrade.length ? book.text('日本との貿易：' + noTrade.join('・') + 'は、JETRO「概況・基本統計」のページがないため未掲載（外務省「基礎データ」には財務省貿易統計の円建ての値があります）。') : null;
+    const table = $('jt-table');
+    const labels = headerMarks(table, [[], tradeN ? [tradeN] : [], [], [], [], [resN], [resN]]);
+    table.querySelector('tbody').replaceChildren(...items.map((d) => {
+      const tr = document.createElement('tr');
+      const bal = d.sameYear ? d.ex.value - d.im.value : null;
+      tr.append(cell(d.name),
+        noteCell(d.total != null ? fmt(d.total, 'USD') + '（' + d.ex.year + '）' : '—', !d.ex && noTradeN ? [noTradeN] : [], 'num nowrap', labels[1], d.total != null && tradeN ? [tradeN] : []),
+        noteCell(d.ex ? fmt(d.ex.value, 'USD') : '—', [], 'num nowrap', labels[2]),
+        noteCell(d.im ? fmt(d.im.value, 'USD') : '—', [], 'num nowrap', labels[3]),
+        noteCell(bal != null ? (bal >= 0 ? '+' : '−') + fmt(Math.abs(bal), 'USD') : '—', [], 'num nowrap', labels[4]),
+        noteCell(d.res ? num(d.res.value, 0) + '人（' + d.res.year + '）' : '—', [], 'num nowrap', labels[5], d.res ? [resN] : []),
+        noteCell(d.perPop != null ? num(d.perPop, d.perPop < 10 ? 1 : 0) + '人' : '—', [], 'num nowrap', labels[6], d.perPop != null ? [resN] : []));
+      return tr;
+    }));
+    renderNotes($('jt-notes'), book);
+  }
+
+  // ---------- outlook to 2060 (UN WPP) ----------
+  // Estimates (solid) and medium-variant projections (dashed). The table gives 2025 → 2060 and, per
+  // indicator, the population peak or the year each country reaches Japan's 2025 level.
+  const PJ_DIR = { median_age: 'up', life_expectancy: 'up', fertility_rate: 'down' };
+  function renderProjections(codes) {
+    const box = $('pj-chart');
+    if (!DATA.projections) { $('pj-note').textContent = '将来推計のデータを読み込んでいます…'; return; }
+    if (!DATA.projections.length) {
+      $('pj-note').textContent = 'このデータの版には将来推計がありません。'; box.replaceChildren(); $('pj-indicator').replaceChildren();
+      $('pj-table').querySelector('tbody').replaceChildren(); $('pj-notes').replaceChildren(); return;
+    }
+    const inds = [...new Map(DATA.projections.map((r) => [r.indicator_id, r])).values()];
+    const ind = inds.some((r) => r.indicator_id === state.pjIndicator) ? state.pjIndicator : inds[0].indicator_id;
+    $('pj-indicator').replaceChildren(...inds.map((r) => new Option(r.indicator_ja, r.indicator_id)));
+    $('pj-indicator').value = ind;
+    $('pj-scale').value = state.pjScale; $('pj-span').value = String(state.pjSpan);
+    const all = DATA.projections.filter((r) => r.indicator_id === ind);
+    const unit = all[0].unit, info = all[0];
+    const lastEst = d3.max(all.filter((r) => r.kind === 'estimate'), (r) => r.year);
+    const at = (code, y) => all.find((r) => r.country_code === code && r.year === y);
+    const span = state.pjSpan === 1950 ? [1950, 2100] : [1990, 2070];
+    let rows = all.filter((r) => codes.includes(r.country_code) && r.year >= span[0] && r.year <= span[1]);
+    let chartUnit = unit;
+    if (state.pjScale === 'index') {
+      chartUnit = 'index';
+      rows = rows.filter((r) => at(r.country_code, 2025)).map((r) => {
+        const v = r.value / at(r.country_code, 2025).value * 100;
+        return { ...r, value: v, label: num(v, 1) + '（2025年＝100）、' + fmt(r.value, unit) + '・' + (r.kind === 'projection' ? '予測' : '推計') };
+      });
+    } else {
+      rows = rows.map((r) => ({ ...r, label: fmt(r.value, unit) + '（' + (r.kind === 'projection' ? '予測・中位' : '推計') + '）' }));
+    }
+    $('pj-note').textContent = '出所：' + info.source_publisher_ja + '「' + info.source_title_ja + '」。' + lastEst + '年までが推計、'
+      + (lastEst + 1) + '年以降が予測（点線）。縦の点線が推計と予測の境目です。' + (codes.includes('jp') ? '日本は比較用の灰色の線です。' : '');
+    drawTrend(box, rows, chartUnit, lastEst, { dashFrom: lastEst, ...(state.pjScale === 'index' ? { ref: 100 } : {}) });
+
+    // table
+    const book = noteBook();
+    const srcN = book.mark('src', () => ({ text: '出所：' + info.source_publisher_ja + '「' + info.source_title_ja + '」（' + info.edition + '、' + (info.license || '利用条件は出所を参照')
+      + '）。' + lastEst + '年までは推計、以降は中位推計による予測です。' }));
+    const jp25 = at('jp', 2025);
+    const insightN = book.mark('insight', () => ({ text: ind === 'population'
+      ? '注目点（総人口）：推計・予測の期間（1950〜2100年）で人口がもっとも多くなる年。'
+      : '注目点：日本の2025年の水準（' + (jp25 ? fmt(jp25.value, unit) : '—') + '）に達する年（予測の中位推計による、前後の年から按分）。' }));
+    const table = $('pj-table');
+    const labels = headerMarks(table, [[], [srcN], [], [], [insightN]]);
+    table.querySelector('tbody').replaceChildren(...codes.map((code) => {
+      const series = all.filter((r) => r.country_code === code).sort((a, b) => a.year - b.year);
+      const a = at(code, 2025), b = at(code, 2060);
+      let insight = '';
+      if (ind === 'population' && series.length) {
+        const peak = d3.greatest(series, (r) => r.value);
+        insight = peak.year >= 2100 ? '2100年まで増え続ける' : peak.year <= lastEst ? '人口のピークは' + peak.year + '年（' + fmt(peak.value, unit) + '）、すでに減少' : 'ピークは' + peak.year + '年ごろ（' + fmt(peak.value, unit) + '）';
+      } else if (PJ_DIR[ind] && jp25 && code !== 'jp' && series.length) {
+        const eq = japanYear(jp25.value, series, PJ_DIR[ind]);
+        insight = eq.before != null ? '日本の2025年の水準をすでに超えている' : eq.beyond != null ? '2100年までに日本の2025年の水準に届かない'
+          : eq.year <= 2025 ? 'すでに日本の2025年の水準に達している（' + Math.round(eq.year) + '年ごろ）' : '日本の2025年の水準に達するのは' + Math.round(eq.year) + '年ごろ';
+      }
+      const dd = a && b ? b.value - a.value : null;
+      const chg = dd == null ? '—' : DIFF_UNITS.has(unit) ? (Math.abs(dd) < 0.005 ? '±' : dd > 0 ? '+' : '−') + fmt(Math.abs(dd), unit) : fmtChg((b.value / a.value - 1) * 100);
+      const tr = document.createElement('tr');
+      tr.append(cell(DATA.observations.find((r) => r.country_code === code)?.country_ja || code),
+        noteCell(a ? fmt(a.value, unit) : '—', [], 'num nowrap', labels[1], [srcN]),
+        noteCell(b ? fmt(b.value, unit) : '—', [], 'num nowrap', labels[2]),
+        noteCell(chg, [], 'num nowrap', labels[3]),
+        noteCell(insight, [], '', labels[4], insight ? [insightN] : []));
+      return tr;
+    }));
+    renderNotes($('pj-notes'), book);
   }
 
   // ---------- currencies and exchange rates ----------
@@ -1157,6 +1333,11 @@
         DATA.cityList = list;
         render();
       }).catch(() => { if (current() && DATA === data) { DATA.citiesFailed = true; render(); } });
+      load1('projections').then((rows) => {
+        if (!current() || DATA !== data) return;
+        DATA.projections = rows.map((r) => ({ ...r, year: Number(r.year), value: Number(r.value) }));
+        render();
+      }).catch(() => { if (current() && DATA === data) { DATA.projections = []; render(); } });
     }).catch((err) => {
       if (!current()) return;
       $('takeaway').textContent = 'データを読み込めませんでした（' + err.message + '）。ページを再読み込みしてください。';

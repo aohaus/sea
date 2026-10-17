@@ -160,6 +160,27 @@
       "license_note": "Copyright © Department of Statistics Malaysia. All Rights Reserved（本文中の数値のみ抽出）",
       "retrieval": "手動（ユーザー提供の PDF を scripts/import_dosm_ssr.py で取り込み）",
       "storage_policy": "抽出した値と引用文・公表日のみ保存 / Extracted values with the quoted sentence and publication date only."
+    },
+    {
+      "id": "un_wpp",
+      "publisher_ja": "国連経済社会局 人口部（UN DESA）",
+      "publisher_en": "United Nations, Department of Economic and Social Affairs, Population Division",
+      "title_ja": "世界人口推計 2024年版（人口動態指標、中位推計）",
+      "title_en": "World Population Prospects 2024, Demographic Indicators (Medium variant)",
+      "edition": "WPP2024",
+      "estimates_until": 2023,
+      "url_candidates": [
+        "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz",
+        "https://population.un.org/wpp/Download/Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz"
+      ],
+      "type": "csv.gz",
+      "language": "en",
+      "terms_url": "https://population.un.org/wpp/",
+      "license": "CC BY 3.0 IGO",
+      "license_note": "WPP の利用条件ページで要確認。出典：United Nations, Department of Economic and Social Affairs, Population Division (2024). World Population Prospects 2024.",
+      "storage_policy": "対象国の値（年・値）と URL・取得日のみ保存。CSV 本体は保存しない / Values for the target countries with URL and retrieval date only.",
+      "auto_fetch": true,
+      "update_note": "新しい版（2年ごと）が出たら edition・estimates_until・url_candidates を更新する"
     }
   ]
 }
