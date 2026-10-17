@@ -448,6 +448,7 @@
     const rows = DATA.observations;
     const selected = state.countries;
     const withJapan = !!state.japan;
+    const trendCodes0 = () => selected.concat(withJapan ? ['jp'] : []);
 
     const names = new Map(rows.map((r) => [r.country_code, r.country_ja]));
     $('chips').replaceChildren(...[...ASEAN, 'jp'].filter((c) => names.has(c)).map((code) => {
@@ -539,10 +540,16 @@
       + (checked.length ? '照合済み ' + checked.length + 'か国' + (differs.length ? '（他の出所と差あり：' + differs.join('、') + '）' : '（大きな差なし）') + '。棒にカーソルを合わせると照合の内容を表示します。' : '');
     $('trend-title').textContent = indName + '：推移';
     $('trend-note').textContent = '出所：' + srcNote + '。線の端に国名を表示します。';
+    // Known stopped series (basic/health_acknowledged.json) for the shown indicator, source and countries.
+    const stops = (DATA.acknowledged || []).filter((a) => a.indicator_id === ind && a.source_id === src && trendCodes0().includes(a.place));
+    if (stops.length) {
+      const extra = stops.map((a) => '注（' + (names.get(a.place) || a.place) + '）：' + a.reason.replace(/。?$/, '。')).join('');
+      $('rank-note').textContent += extra; $('trend-note').textContent += extra;
+    }
 
     // "Japan as the yardstick": each value against Japan's value in the same year and source —
     // a ratio (Japan = 100) for amounts, a difference in points for rates (%).
-    const trendCodes = selected.concat(withJapan ? ['jp'] : []);
+    const trendCodes = trendCodes0();
     const jpAt = new Map(srcRows.filter((r) => r.country_code === 'jp').map((r) => [r.year, r.value]));
     const relUnit = unit === '%' ? 'pt' : 'index';
     const toRel = (r) => {
@@ -1285,6 +1292,7 @@
   // "latest" reads basic/data/*.json; a yearly version reads basic/archive/<year>/*.json.gz.
   let VERSION = 'latest';
   let VERSIONS = [];
+  let ACKNOWLEDGED = [];
   async function readJson(resp) {
     const buf = new Uint8Array(await resp.arrayBuffer());
     if (buf[0] === 0x1f && buf[1] === 0x8b) {  // gzip (a server may also have decoded it already)
@@ -1317,6 +1325,7 @@
       .then(([observations, profiles, sources, validation, currencies]) => {
       if (!current()) return;
       DATA = {
+        acknowledged: ACKNOWLEDGED,
         currencies,
         observations: observations.map((r) => ({ ...r, year: Number(r.year), value: Number(r.value) })),
         profileWide: addPopulation(profileWide(profiles), observations), sources, validation,
@@ -1374,6 +1383,9 @@
   }
   $('version').addEventListener('change', (e) => { VERSION = e.target.value; loadAll(); });
 
+  // Series known to have stopped, with the reason (shown in the chart notes).
+  fetch('health_acknowledged.json', { cache: 'no-cache' }).then((r) => r.ok ? r.json() : null).catch(() => null)
+    .then((d) => { ACKNOWLEDGED = d?.stopped_series || []; if (DATA) { DATA.acknowledged = ACKNOWLEDGED; render(); } });
   fetch('archive/index.json', { cache: 'no-cache' }).then((r) => r.ok ? r.json() : { versions: [] }).catch(() => ({ versions: [] }))
     .then((idx) => { VERSIONS = idx.versions || []; renderVersions(); });
   loadAll();
