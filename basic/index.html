@@ -49,6 +49,7 @@
   h2 { font-size: 1.12rem; font-weight: 900; margin: 0; line-height: 1.45; text-wrap: balance; }
   /* Section headings carry a short rust bar, like the section badges on Campur.ai. */
   .card > h2:first-child { padding-left: .7rem; border-left: 4px solid var(--rust); }
+  h3.sub { font-size: .98rem; font-weight: 700; margin: 8px 0 0; line-height: 1.45; }
   .en { color: var(--muted); font-size: .8rem; font-weight: 400; margin-left: .5em; }
   .lede { color: var(--muted); margin: 6px 0 0; max-width: 72ch; }
   .card { background: var(--panel); border: 1.5px solid var(--frame); border-radius: var(--radius); padding: 18px 20px; display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; gap: 10px; min-width: 0; }
@@ -188,11 +189,22 @@
 
   <section class="card">
     <h2>日本とのつながり<span class="en">Ties with Japan</span></h2>
-    <p class="note">日本との貿易（日本から見た輸出・輸入）と、その国に住む日本人（在留邦人）の数です。棒は日本との貿易額（輸出＋輸入）。人口あたりの在留邦人を見ると、規模の違う国どうしでも「日本人の身近さ」を比べられます。</p>
+    <p class="note">日本との貿易、人の行き来（日本を訪れる人・日本に住む人・その国に住む日本人）、日本からの直接投資です。人口あたりにすると、規模の違う国どうしでも「日本との近さ」を比べられます。各指標の年ごとの推移は、上の「指標」でも選べます。</p>
+    <div class="row">
+      <label class="label" for="jt-metric">グラフ</label>
+      <select id="jt-metric"></select>
+    </div>
     <div class="chart" id="jt-chart"></div>
     <div class="tablebox cards-box">
       <table id="jt-table" class="cards">
         <thead><tr><th>国</th><th class="num" data-short="貿易額">日本との貿易額</th><th class="num" data-short="日本の輸出">日本の輸出</th><th class="num" data-short="日本の輸入">日本の輸入</th><th class="num" data-short="収支">日本から見た収支</th><th class="num">在留邦人</th><th class="num" data-short="人口1万人あたり">人口1万人あたりの在留邦人</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <h3 class="sub">人の行き来と投資<span class="en">People and investment</span></h3>
+    <div class="tablebox cards-box">
+      <table id="jt-flow-table" class="cards">
+        <thead><tr><th>国</th><th class="num">訪日客数</th><th class="num" data-short="人口千人あたり">人口千人あたりの訪日客</th><th class="num" data-short="日本に住む人">日本に住むこの国の人</th><th class="num" data-short="直接投資">日本からの直接投資</th><th class="num" data-short="直接投資5年計">直接投資（直近5年の合計）</th></tr></thead>
         <tbody></tbody>
       </table>
     </div>
@@ -354,7 +366,7 @@
 
   // ---------- state (kept in this browser only) ----------
   const DEFAULTS = { countries: ASEAN10, japan: true, indicator: 'gdp_per_capita', source: 'worldbank_wdi', year: null,
-    cityIndicator: 'grdp_per_capita_usd', cityYear: 'latest', fxMode: 'index', fxSpan: 10, rel: 'abs', tmIndicator: 'aged_65_share', pjIndicator: 'population', pjScale: 'abs', pjSpan: 1990 };
+    cityIndicator: 'grdp_per_capita_usd', cityYear: 'latest', fxMode: 'index', fxSpan: 10, rel: 'abs', tmIndicator: 'aged_65_share', jtMetric: 'trade', pjIndicator: 'population', pjScale: 'abs', pjSpan: 1990 };
   let state = { ...DEFAULTS };
   try { state = { ...DEFAULTS, ...JSON.parse(localStorage.getItem('asean-explorer') || '{}') }; } catch (e) { /* storage unavailable */ }
   const set = (patch) => {
@@ -369,6 +381,8 @@
     if (v == null || !isFinite(v)) return '—';
     const a = Math.abs(v);
     if (unit === 'persons') return a >= 1e8 ? num(v / 1e8, 2) + '億人' : a >= 1e4 ? num(v / 1e4, 0) + '万人' : num(v, 0) + '人';
+    if (unit === 'perK') return num(v, a < 10 ? 1 : 0) + '人';
+    if (unit === 'JPY') return a >= 1e12 ? num(v / 1e12, 2) + '兆円' : a >= 1e8 ? num(v / 1e8, 0) + '億円' : num(v / 1e4, 0) + '万円';
     if (unit === 'USD') return a >= 1e12 ? num(v / 1e12, 2) + '兆ドル' : a >= 1e8 ? num(v / 1e8, 0) + '億ドル' : a >= 1e4 ? num(v / 1e4, 1) + '万ドル' : num(v, 0) + 'ドル';
     if (unit === '%') return num(v, 1) + '%';
     if (unit === 'LCU/USD') return num(v, a < 10 ? 4 : a < 1000 ? 2 : 0);
@@ -382,6 +396,7 @@
   function fmtAxis(v, unit) {
     const a = Math.abs(v);
     if (unit === 'persons') return a >= 1e8 ? num(v / 1e8, 1) + '億' : a >= 1e4 ? num(v / 1e4, 0) + '万' : num(v, 0);
+    if (unit === 'JPY') return a >= 1e12 ? num(v / 1e12, 1) + '兆' : a >= 1e8 ? num(v / 1e8, 0) + '億' : num(v / 1e4, 0) + '万';
     if (unit === 'USD') return a >= 1e12 ? num(v / 1e12, 1) + '兆' : a >= 1e8 ? num(v / 1e8, 0) + '億' : a >= 1e4 ? num(v / 1e4, 1) + '万' : num(v, 0);
     if (unit === '%') return num(v, 2) + '%';  // small ranges need decimals (e.g. -0.05%)
     if (unit === 'LCU/USD') return a >= 1e4 ? num(v / 1e4, 1) + '万' : num(v, a < 10 ? 2 : 0);
@@ -440,6 +455,7 @@
   $('city-indicator').addEventListener('change', (e) => set({ cityIndicator: e.target.value, cityYear: 'latest' }));
   $('city-year').addEventListener('change', (e) => set({ cityYear: e.target.value === 'latest' ? 'latest' : Number(e.target.value) }));
   $('fx-mode').addEventListener('change', (e) => set({ fxMode: e.target.value }));
+  $('jt-metric').addEventListener('change', (e) => set({ jtMetric: e.target.value }));
   $('fx-span').addEventListener('change', (e) => set({ fxSpan: e.target.value === 'all' ? 'all' : Number(e.target.value) }));
 
   // ---------- render ----------
@@ -1009,24 +1025,59 @@
   }
 
   // ---------- ties with Japan ----------
-  // Trade with Japan (JETRO, from Global Trade Atlas; Japan's exports to / imports from the country) and
-  // Japanese residents (MOFA's annual survey, via the JETRO / MOFA country pages).
+  // Trade with Japan (JETRO, from Global Trade Atlas; Japan's exports to / imports from the country), Japanese
+  // residents (MOFA's annual survey, via the JETRO / MOFA country pages), visitor arrivals to Japan (JNTO),
+  // residents of Japan by nationality (ISA) and Japan's direct investment to the country (MOF, net flow).
+  const JT_METRICS = [
+    ['trade', '日本との貿易額（輸出＋輸入）', 'USD'],
+    ['visitors', '訪日客数（年間）', 'persons'],
+    ['visitorsPer', '人口千人あたりの訪日客', 'perK'],
+    ['residentsJp', '日本に住むこの国の人', 'persons'],
+    ['japanese', 'その国に住む日本人（在留邦人）', 'persons'],
+    ['fdi', '日本からの直接投資（ネット、年間）', 'JPY'],
+    ['fdi5', '日本からの直接投資（直近5年の合計）', 'JPY'],
+  ];
   function renderJapanTies(codes) {
     const obs = DATA.observations;
     const latest = (code, id) => d3.greatest(obs.filter((r) => r.country_code === code && r.indicator_id === id), (r) => r.year);
     const pop = (code, year) => obs.find((r) => r.country_code === code && r.indicator_id === 'population' && r.source_id === 'worldbank_wdi' && r.year === year)
       || d3.greatest(obs.filter((r) => r.country_code === code && r.indicator_id === 'population' && r.source_id === 'worldbank_wdi'), (r) => r.year);
+    // Direct investment swings a lot from year to year (one large deal or withdrawal), so the last five years are summed too.
+    const fdi5 = (code) => {
+      const rows = obs.filter((r) => r.country_code === code && r.indicator_id === 'fdi_from_japan');
+      const last = d3.max(rows, (r) => r.year);
+      const span = rows.filter((r) => r.year > last - 5);
+      return span.length === 5 ? { value: d3.sum(span, (r) => r.value), from: last - 4, to: last, row: d3.greatest(span, (r) => r.year) } : null;
+    };
     const items = codes.filter((c) => c !== 'jp').map((code) => {
       const ex = latest(code, 'japan_exports'), im = latest(code, 'japan_imports'), res = latest(code, 'japanese_residents');
+      const vis = latest(code, 'visitors_to_japan'), inJp = latest(code, 'residents_in_japan'), fdi = latest(code, 'fdi_from_japan');
       const sameYear = ex && im && ex.year === im.year;
-      const p = res ? pop(code, res.year) : null;
-      return { code, name: (ex || im || res || obs.find((r) => r.country_code === code))?.country_ja || code, ex, im, res, sameYear,
-        total: sameYear ? ex.value + im.value : null, perPop: res && p ? res.value / p.value * 1e4 : null, popRow: p };
+      const p = res ? pop(code, res.year) : null, pv = vis ? pop(code, vis.year) : null;
+      return { code, name: (ex || im || res || vis || inJp || fdi || obs.find((r) => r.country_code === code))?.country_ja || code, ex, im, res, sameYear,
+        total: sameYear ? ex.value + im.value : null, perPop: res && p ? res.value / p.value * 1e4 : null,
+        vis, visPer: vis && pv ? vis.value / pv.value * 1e3 : null, inJp, fdi, fdi5: fdi5(code) };
     });
-    const bars = items.filter((d) => d.total != null).map((d) => ({ country_code: d.code, country_ja: d.name, year: d.ex.year, value: d.total,
-      label: fmt(d.total, 'USD') + '（日本の輸出 ' + fmt(d.ex.value, 'USD') + '・輸入 ' + fmt(d.im.value, 'USD') + '、' + d.ex.year + '年）',
-      source_publisher_ja: d.ex.source_publisher_ja, original_source: d.ex.original_source }));
-    drawRanking($('jt-chart'), bars, 'USD');
+
+    // Chart: one metric at a time.
+    const metric = JT_METRICS.find((m) => m[0] === state.jtMetric) || JT_METRICS[0];
+    $('jt-metric').replaceChildren(...JT_METRICS.map(([k, label]) => new Option(label, k)));
+    $('jt-metric').value = metric[0];
+    const bar = (d, value, row, label, extra = {}) => ({ country_code: d.code, country_ja: d.name, year: row.year, value, label,
+      source_publisher_ja: row.source_publisher_ja, original_source: row.original_source, note: row.note, ...extra });
+    const perK = (v) => fmt(v, 'perK');
+    const bars = items.map((d) => {
+      switch (metric[0]) {
+        case 'trade': return d.total != null && bar(d, d.total, d.ex, fmt(d.total, 'USD') + '（日本の輸出 ' + fmt(d.ex.value, 'USD') + '・輸入 ' + fmt(d.im.value, 'USD') + '、' + d.ex.year + '年）');
+        case 'visitors': return d.vis && bar(d, d.vis.value, d.vis, num(d.vis.value, 0) + '人（' + d.vis.year + '年）');
+        case 'visitorsPer': return d.visPer != null && bar(d, d.visPer, d.vis, '人口千人あたり ' + perK(d.visPer) + '（' + d.vis.year + '年）');
+        case 'residentsJp': return d.inJp && bar(d, d.inJp.value, d.inJp, num(d.inJp.value, 0) + '人（' + d.inJp.year + '年12月末）');
+        case 'japanese': return d.res && bar(d, d.res.value, d.res, num(d.res.value, 0) + '人（' + d.res.year + '年）');
+        case 'fdi': return d.fdi && bar(d, d.fdi.value, d.fdi, fmt(d.fdi.value, 'JPY') + '（' + d.fdi.year + '年）');
+        default: return d.fdi5 && bar(d, d.fdi5.value, d.fdi5.row, fmt(d.fdi5.value, 'JPY') + '（' + d.fdi5.from + '〜' + d.fdi5.to + '年の合計）');
+      }
+    }).filter(Boolean);
+    drawRanking($('jt-chart'), bars, metric[2]);
 
     const book = noteBook();
     const anyTrade = items.find((d) => d.ex);
@@ -1047,6 +1098,31 @@
         noteCell(bal != null ? (bal >= 0 ? '+' : '−') + fmt(Math.abs(bal), 'USD') : '—', [], 'num nowrap', labels[4]),
         noteCell(d.res ? num(d.res.value, 0) + '人（' + d.res.year + '）' : '—', [], 'num nowrap', labels[5], d.res ? [resN] : []),
         noteCell(d.perPop != null ? num(d.perPop, d.perPop < 10 ? 1 : 0) + '人' : '—', [], 'num nowrap', labels[6], d.perPop != null ? [resN] : []));
+      return tr;
+    }));
+
+    // People and investment.
+    const missing = (key) => items.filter((d) => !d[key]).map((d) => d.name);
+    const visN = items.some((d) => d.vis) ? book.mark('vis', () => ({ text: '訪日客数：日本政府観光局（JNTO）「訪日外客統計」の国籍別の年間合計（1〜12月）。観光のほか商用などで日本に入国した外国人旅行者で、日本に住む外国人は含みません。最新の年は暫定値を含み、のちに改訂されることがあります。人口千人あたりは、同じ年の世界銀行の総人口で割った値です。' })) : null;
+    const noVis = missing('vis');
+    const noVisN = noVis.length ? book.text('訪日客数：' + noVis.join('・') + 'は、JNTO の国籍別統計に個別の掲載がないため未掲載（「その他アジア」などにまとめて計上）。') : null;
+    const inJpN = items.some((d) => d.inJp) ? book.mark('injp', () => ({ text: '日本に住むこの国の人：出入国在留管理庁「在留外国人統計」（e-Stat）の各年12月末の在留外国人数（国籍・地域別。中長期在留者と特別永住者）。' })) : null;
+    const noInJp = missing('inJp');
+    const noInJpN = noInJp.length ? book.text('日本に住むこの国の人：' + noInJp.join('・') + 'は、在留外国人統計の表に個別の掲載がないため未掲載。') : null;
+    const fdiN = items.some((d) => d.fdi) ? book.mark('fdi', () => ({ text: '日本からの直接投資：財務省「国際収支状況」の対外直接投資の地域別内訳（暦年）のネット（実行−回収）。円建てで、マイナスは回収が上回った年です。(P) の速報値を含むことがあります。年ごとの振れが大きいため、直近5年の合計も示します。' })) : null;
+    const noFdi = missing('fdi');
+    const noFdiN = noFdi.length ? book.text('日本からの直接投資：' + noFdi.join('・') + 'は、財務省の地域別内訳に個別の掲載がないため未掲載（ASEAN 合計などに含まれます）。') : null;
+    const flow = $('jt-flow-table');
+    const fl = headerMarks(flow, [[], visN ? [visN] : [], visN ? [visN] : [], inJpN ? [inJpN] : [], fdiN ? [fdiN] : [], fdiN ? [fdiN] : []]);
+    const withNote = (row, what) => row && row.note ? [book.text(what + '：' + row.year + '年の値は' + row.note.replace(/^暫定値を含む$/, '暫定値を含みます') + (row.note === '速報値' ? 'です' : '') + '。')] : [];
+    flow.querySelector('tbody').replaceChildren(...items.map((d) => {
+      const tr = document.createElement('tr');
+      tr.append(cell(d.name),
+        noteCell(d.vis ? num(d.vis.value, 0) + '人（' + d.vis.year + '）' : '—', d.vis ? withNote(d.vis, '訪日客数') : noVisN ? [noVisN] : [], 'num nowrap', fl[1], d.vis && visN ? [visN] : []),
+        noteCell(d.visPer != null ? perK(d.visPer) : '—', [], 'num nowrap', fl[2], d.visPer != null && visN ? [visN] : []),
+        noteCell(d.inJp ? num(d.inJp.value, 0) + '人（' + d.inJp.year + '年末）' : '—', d.inJp ? [] : noInJpN ? [noInJpN] : [], 'num nowrap', fl[3], d.inJp && inJpN ? [inJpN] : []),
+        noteCell(d.fdi ? fmt(d.fdi.value, 'JPY').replace('-', '−') + '（' + d.fdi.year + '）' : '—', d.fdi ? withNote(d.fdi, '日本からの直接投資') : noFdiN ? [noFdiN] : [], 'num nowrap', fl[4], d.fdi && fdiN ? [fdiN] : []),
+        noteCell(d.fdi5 ? fmt(d.fdi5.value, 'JPY') + '（' + d.fdi5.from + '〜' + String(d.fdi5.to).slice(2) + '）' : '—', [], 'num nowrap', fl[5], d.fdi5 && fdiN ? [fdiN] : []));
       return tr;
     }));
     renderNotes($('jt-notes'), book);

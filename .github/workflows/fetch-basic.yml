@@ -13,6 +13,7 @@ on:
       - "scripts/fetch_cities.py"
       - "scripts/snapshot.py"
       - "scripts/fetch_projections.py"
+      - "scripts/fetch_japan_ties.py"
       - "scripts/check_health.py"
       - "basic/cities/cities.json"
       - "basic/reference/ajc_*.json"
@@ -49,6 +50,10 @@ jobs:
 
       - name: Fetch and build profiles
         run: python scripts/fetch_basic.py
+
+      # Before the indicators build, which reads basic/ties/.
+      - name: Fetch ties with Japan (JNTO visitors, foreign residents, direct investment)
+        run: python scripts/fetch_japan_ties.py
 
       - name: Fetch and build economic indicators
         run: python scripts/fetch_indicators.py
