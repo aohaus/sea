@@ -76,27 +76,24 @@ def xlsx_rows(url, sheet_index=0, match=None, limit=60, show_header=8):
 
 ASEAN = r"タイ|シンガポール|マレーシア|インドネシア|フィリピン|ベトナム|ミャンマー|カンボジア|ラオス|ブルネイ|東ティモール|総数|アジア"
 
-section("e-Stat zairyu 2025-12 xlsx")
-xlsx_rows("https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040472260&fileKind=0", match=ASEAN, show_header=10, limit=50)
 
-section("MOF 6d-2")
+section("MOF 6d-2 header")
+import csv as _csv
 r = get("https://www.mof.go.jp/policy/international_policy/reference/balance_of_payments/bp_trend/bpfdi/fdi/6d-2.csv")
-for enc in ("cp932", "utf-8-sig"):
-    try:
-        text = r.content.decode(enc); print("ENC", enc); break
-    except UnicodeDecodeError:
-        pass
-lines = text.splitlines()
-print("LINES", len(lines))
-for i, ln in enumerate(lines[:14]):
-    print("  H", i, ln[:900])
-for ln in lines[-4:]:
-    print("  T", ln[:400])
-section("MOF 6d-0-1")
-r = get("https://www.mof.go.jp/policy/international_policy/reference/balance_of_payments/bp_trend/bpfdi/fdi/6d-0-1.csv")
-text = r.content.decode("cp932", errors="replace").splitlines()
-for i, ln in enumerate(text[:10]):
-    print("  H", i, ln[:600])
-for ln in text[-3:]:
-    print("  T", ln[:300])
+rows = list(_csv.reader(io.StringIO(r.content.decode("cp932"))))
+for i, row in enumerate(rows[14:40], 14):
+    cells = [(j, c) for j, c in enumerate(row) if c.strip()]
+    print("  R", i, cells[:90])
+for i, row in enumerate(rows[40:], 40):
+    if row[0].strip():
+        print("  Y", i, row[:6])
+
+for sid in ("000021315227", "000031650151"):
+    section("e-Stat old " + sid)
+    xlsx_rows(f"https://www.e-stat.go.jp/stat-search/file-download?statInfId={sid}&fileKind=0", match=r"ベトナム|タイ|総数", show_header=10, limit=20)
+
+section("ISA year-end lids")
+found = links("https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html", pat=r"lid=", limit=0)
+for t, h in found:
+    print("  L", t, "|", h[-40:])
 sys.exit(0)
