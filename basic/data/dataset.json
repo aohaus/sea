@@ -354,6 +354,30 @@
       "unit": "persons",
       "label_ja": "在留邦人数",
       "label_en": "Japanese nationals residing in the country"
+    },
+    {
+      "id": "visitors_to_japan",
+      "phase": 2,
+      "type": "number",
+      "unit": "persons",
+      "label_ja": "訪日客数（この国から）",
+      "label_en": "Visitor arrivals to Japan from the country"
+    },
+    {
+      "id": "residents_in_japan",
+      "phase": 2,
+      "type": "number",
+      "unit": "persons",
+      "label_ja": "日本に住むこの国の人（在留外国人）",
+      "label_en": "Residents of Japan with the country's nationality"
+    },
+    {
+      "id": "fdi_from_japan",
+      "phase": 2,
+      "type": "number",
+      "unit": "JPY",
+      "label_ja": "日本からの直接投資（ネット・フロー）",
+      "label_en": "Japan's direct investment to the country (net flow)"
     }
   ],
   "sources": {
@@ -525,6 +549,48 @@
       "storage_policy": "対象国の値（年・値）と URL・取得日のみ保存。CSV 本体は保存しない / Values for the target countries with URL and retrieval date only.",
       "auto_fetch": true,
       "update_note": "新しい版（2年ごと）が出たら edition・estimates_until・url_candidates を更新する"
+    },
+    "jnto_visitors": {
+      "publisher_ja": "日本政府観光局（JNTO）",
+      "publisher_en": "Japan National Tourism Organization (JNTO)",
+      "title_ja": "訪日外客統計（国籍/月別 訪日外客数）",
+      "title_en": "Visitor arrivals to Japan by nationality",
+      "page_url": "https://www.jnto.go.jp/statistics/data/visitors-statistics/",
+      "type": "xlsx",
+      "language": "ja",
+      "terms_url": "https://www.jnto.go.jp/statistics/",
+      "license": "要確認",
+      "license_note": "出典：日本政府観光局（JNTO）。利用条件は要確認。直近の値は暫定値で、確定値に改訂されることがあります。",
+      "storage_policy": "対象国の年計（年・値）と URL・取得日のみ保存。Excel 本体は保存しない / Annual totals for the target countries with URL and retrieval date only.",
+      "auto_fetch": true
+    },
+    "isa_residents": {
+      "publisher_ja": "出入国在留管理庁",
+      "publisher_en": "Immigration Services Agency of Japan",
+      "title_ja": "在留外国人統計（国籍・地域別 在留資格別 在留外国人、各年12月末）",
+      "title_en": "Statistics on foreign residents (by nationality, end of December)",
+      "page_url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
+      "type": "xlsx (e-Stat)",
+      "language": "ja",
+      "terms_url": "https://www.e-stat.go.jp/terms-of-use",
+      "license": "政府標準利用規約（第2.0版）準拠（要確認）",
+      "license_note": "出典：出入国在留管理庁「在留外国人統計」（e-Stat）。e-Stat の利用規約は CC BY 4.0 と互換とされるが、個別に要確認。",
+      "storage_policy": "対象国籍の総数（年・値）と URL・取得日のみ保存 / Totals for the target nationalities with URL and retrieval date only.",
+      "auto_fetch": true
+    },
+    "mof_fdi": {
+      "publisher_ja": "財務省",
+      "publisher_en": "Ministry of Finance, Japan",
+      "title_ja": "国際収支状況 対外直接投資の地域別内訳（6d-2、暦年）",
+      "title_en": "Balance of payments: direct investment assets by country (6d-2, calendar year)",
+      "page_url": "https://www.mof.go.jp/policy/international_policy/reference/balance_of_payments/bpfdi.htm",
+      "type": "csv",
+      "language": "ja",
+      "terms_url": "https://www.mof.go.jp/use_of_contents/",
+      "license": "政府標準利用規約（第2.0版）準拠（要確認）",
+      "license_note": "出典：財務省・日本銀行「国際収支統計」。ネット（実行−回収）のフロー。(P) は速報値。",
+      "storage_policy": "対象国の年計（年・値）と URL・取得日のみ保存 / Annual net flows for the target countries with URL and retrieval date only.",
+      "auto_fetch": true
     }
   },
   "profiles": {
@@ -5083,6 +5149,33 @@
             }
           ]
         }
+      ],
+      "residents_in_japan": [
+        {
+          "source_id": "isa_residents",
+          "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
+          "retrieved_at": "2026-10-17T13:18:32+00:00",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 78,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040186952&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2024,
+              "value": 104,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040292366&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2025,
+              "value": 104,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040472260&fileKind=0",
+              "checks": []
+            }
+          ]
+        }
       ]
     },
     "kh": {
@@ -8615,6 +8708,33 @@
               "value": 2915,
               "value_text": "2,915人(2025年10月現在) 出所:外務省「海外在留邦人数調査統計」",
               "original_source": "外務省「海外在留邦人数調査統計」",
+              "checks": []
+            }
+          ]
+        }
+      ],
+      "residents_in_japan": [
+        {
+          "source_id": "isa_residents",
+          "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
+          "retrieved_at": "2026-10-17T13:18:32+00:00",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 23750,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040186952&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2024,
+              "value": 26827,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040292366&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2025,
+              "value": 28957,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040472260&fileKind=0",
               "checks": []
             }
           ]
@@ -12233,6 +12353,226 @@
             }
           ]
         }
+      ],
+      "visitors_to_japan": [
+        {
+          "source_id": "jnto_visitors",
+          "url": "https://www.jnto.go.jp/statistics/data/_files/20260916_1615-5.xlsx",
+          "retrieved_at": "2026-10-17T13:17:21+00:00",
+          "observations": [
+            {
+              "year": 2025,
+              "value": 640577,
+              "checks": []
+            },
+            {
+              "year": 2024,
+              "value": 517651,
+              "checks": []
+            },
+            {
+              "year": 2023,
+              "value": 429382,
+              "checks": []
+            },
+            {
+              "year": 2022,
+              "value": 119723,
+              "checks": []
+            },
+            {
+              "year": 2021,
+              "value": 5209,
+              "checks": []
+            },
+            {
+              "year": 2020,
+              "value": 77724,
+              "checks": []
+            },
+            {
+              "year": 2019,
+              "value": 412779,
+              "checks": []
+            },
+            {
+              "year": 2018,
+              "value": 396852,
+              "checks": []
+            },
+            {
+              "year": 2017,
+              "value": 352330,
+              "checks": []
+            },
+            {
+              "year": 2016,
+              "value": 271014,
+              "checks": []
+            },
+            {
+              "year": 2015,
+              "value": 205083,
+              "checks": []
+            },
+            {
+              "year": 2014,
+              "value": 158739,
+              "checks": []
+            },
+            {
+              "year": 2013,
+              "value": 136797,
+              "checks": []
+            },
+            {
+              "year": 2012,
+              "value": 101460,
+              "checks": []
+            },
+            {
+              "year": 2011,
+              "value": 61911,
+              "checks": []
+            },
+            {
+              "year": 2010,
+              "value": 80632,
+              "checks": []
+            },
+            {
+              "year": 2009,
+              "value": 63617,
+              "checks": []
+            },
+            {
+              "year": 2008,
+              "value": 66593,
+              "checks": []
+            },
+            {
+              "year": 2007,
+              "value": 64178,
+              "checks": []
+            },
+            {
+              "year": 2006,
+              "value": 59911,
+              "checks": []
+            },
+            {
+              "year": 2005,
+              "value": 58974,
+              "checks": []
+            },
+            {
+              "year": 2004,
+              "value": 55259,
+              "checks": []
+            },
+            {
+              "year": 2003,
+              "value": 64637,
+              "checks": []
+            }
+          ]
+        }
+      ],
+      "residents_in_japan": [
+        {
+          "source_id": "isa_residents",
+          "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
+          "retrieved_at": "2026-10-17T13:18:32+00:00",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 149101,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040186952&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2024,
+              "value": 199824,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040292366&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2025,
+              "value": 266069,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040472260&fileKind=0",
+              "checks": []
+            }
+          ]
+        }
+      ],
+      "fdi_from_japan": [
+        {
+          "source_id": "mof_fdi",
+          "url": "https://www.mof.go.jp/policy/international_policy/reference/balance_of_payments/bp_trend/bpfdi/fdi/6d-2.csv",
+          "retrieved_at": "2026-10-17T13:18:34+00:00",
+          "observations": [
+            {
+              "year": 2014,
+              "value": 513800000000.0,
+              "checks": []
+            },
+            {
+              "year": 2015,
+              "value": 388800000000.0,
+              "checks": []
+            },
+            {
+              "year": 2016,
+              "value": 341600000000.0,
+              "checks": []
+            },
+            {
+              "year": 2017,
+              "value": 396200000000.0,
+              "checks": []
+            },
+            {
+              "year": 2018,
+              "value": 380500000000.0,
+              "checks": []
+            },
+            {
+              "year": 2019,
+              "value": 971700000000.0,
+              "checks": []
+            },
+            {
+              "year": 2020,
+              "value": 177000000000.0,
+              "checks": []
+            },
+            {
+              "year": 2021,
+              "value": 325700000000.0,
+              "checks": []
+            },
+            {
+              "year": 2022,
+              "value": 410900000000.0,
+              "checks": []
+            },
+            {
+              "year": 2023,
+              "value": 395200000000.0,
+              "checks": []
+            },
+            {
+              "year": 2024,
+              "value": 380700000000.0,
+              "checks": []
+            },
+            {
+              "year": 2025,
+              "value": 328700000000.0,
+              "checks": []
+            }
+          ]
+        }
       ]
     },
     "la": {
@@ -15618,6 +15958,33 @@
               "value": 621,
               "value_text": "621人(2025年10月1日現在) 出所:外務省「海外在留邦人数調査統計」",
               "original_source": "外務省「海外在留邦人数調査統計」",
+              "checks": []
+            }
+          ]
+        }
+      ],
+      "residents_in_japan": [
+        {
+          "source_id": "isa_residents",
+          "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
+          "retrieved_at": "2026-10-17T13:18:32+00:00",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 3859,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040186952&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2024,
+              "value": 4442,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040292366&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2025,
+              "value": 4993,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040472260&fileKind=0",
               "checks": []
             }
           ]
@@ -19233,6 +19600,226 @@
             }
           ]
         }
+      ],
+      "visitors_to_japan": [
+        {
+          "source_id": "jnto_visitors",
+          "url": "https://www.jnto.go.jp/statistics/data/_files/20260916_1615-5.xlsx",
+          "retrieved_at": "2026-10-17T13:17:21+00:00",
+          "observations": [
+            {
+              "year": 2025,
+              "value": 636575,
+              "checks": []
+            },
+            {
+              "year": 2024,
+              "value": 506883,
+              "checks": []
+            },
+            {
+              "year": 2023,
+              "value": 415712,
+              "checks": []
+            },
+            {
+              "year": 2022,
+              "value": 74095,
+              "checks": []
+            },
+            {
+              "year": 2021,
+              "value": 1831,
+              "checks": []
+            },
+            {
+              "year": 2020,
+              "value": 76573,
+              "checks": []
+            },
+            {
+              "year": 2019,
+              "value": 501592,
+              "checks": []
+            },
+            {
+              "year": 2018,
+              "value": 468360,
+              "checks": []
+            },
+            {
+              "year": 2017,
+              "value": 439548,
+              "checks": []
+            },
+            {
+              "year": 2016,
+              "value": 394268,
+              "checks": []
+            },
+            {
+              "year": 2015,
+              "value": 305447,
+              "checks": []
+            },
+            {
+              "year": 2014,
+              "value": 249521,
+              "checks": []
+            },
+            {
+              "year": 2013,
+              "value": 176521,
+              "checks": []
+            },
+            {
+              "year": 2012,
+              "value": 130183,
+              "checks": []
+            },
+            {
+              "year": 2011,
+              "value": 81516,
+              "checks": []
+            },
+            {
+              "year": 2010,
+              "value": 114519,
+              "checks": []
+            },
+            {
+              "year": 2009,
+              "value": 89509,
+              "checks": []
+            },
+            {
+              "year": 2008,
+              "value": 105663,
+              "checks": []
+            },
+            {
+              "year": 2007,
+              "value": 100890,
+              "checks": []
+            },
+            {
+              "year": 2006,
+              "value": 85627,
+              "checks": []
+            },
+            {
+              "year": 2005,
+              "value": 78173,
+              "checks": []
+            },
+            {
+              "year": 2004,
+              "value": 72445,
+              "checks": []
+            },
+            {
+              "year": 2003,
+              "value": 65369,
+              "checks": []
+            }
+          ]
+        }
+      ],
+      "residents_in_japan": [
+        {
+          "source_id": "isa_residents",
+          "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
+          "retrieved_at": "2026-10-17T13:18:32+00:00",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 11471,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040186952&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2024,
+              "value": 11968,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040292366&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2025,
+              "value": 12266,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040472260&fileKind=0",
+              "checks": []
+            }
+          ]
+        }
+      ],
+      "fdi_from_japan": [
+        {
+          "source_id": "mof_fdi",
+          "url": "https://www.mof.go.jp/policy/international_policy/reference/balance_of_payments/bp_trend/bpfdi/fdi/6d-2.csv",
+          "retrieved_at": "2026-10-17T13:18:34+00:00",
+          "observations": [
+            {
+              "year": 2014,
+              "value": 140200000000.0,
+              "checks": []
+            },
+            {
+              "year": 2015,
+              "value": 353600000000.0,
+              "checks": []
+            },
+            {
+              "year": 2016,
+              "value": 140100000000.0,
+              "checks": []
+            },
+            {
+              "year": 2017,
+              "value": 121700000000.0,
+              "checks": []
+            },
+            {
+              "year": 2018,
+              "value": 141400000000.0,
+              "checks": []
+            },
+            {
+              "year": 2019,
+              "value": 64400000000.0,
+              "checks": []
+            },
+            {
+              "year": 2020,
+              "value": 153400000000.0,
+              "checks": []
+            },
+            {
+              "year": 2021,
+              "value": 274000000000.0,
+              "checks": []
+            },
+            {
+              "year": 2022,
+              "value": 283500000000.0,
+              "checks": []
+            },
+            {
+              "year": 2023,
+              "value": 270400000000.0,
+              "checks": []
+            },
+            {
+              "year": 2024,
+              "value": 351900000000.0,
+              "checks": []
+            },
+            {
+              "year": 2025,
+              "value": 412100000000.0,
+              "checks": []
+            }
+          ]
+        }
       ]
     },
     "mm": {
@@ -22609,6 +23196,33 @@
               "value": 1768,
               "value_text": "1,768人(2025年10月1日現在) 出所:外務省「海外在留邦人数調査統計」",
               "original_source": "外務省「海外在留邦人数調査統計」",
+              "checks": []
+            }
+          ]
+        }
+      ],
+      "residents_in_japan": [
+        {
+          "source_id": "isa_residents",
+          "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
+          "retrieved_at": "2026-10-17T13:18:32+00:00",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 86546,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040186952&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2024,
+              "value": 134574,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040292366&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2025,
+              "value": 182567,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040472260&fileKind=0",
               "checks": []
             }
           ]
@@ -26219,6 +26833,226 @@
               "value": 13342,
               "value_text": "1万3,342人(2025年10月1日現在) 出所:外務省「海外在留邦人数調査統計」",
               "original_source": "外務省「海外在留邦人数調査統計」",
+              "checks": []
+            }
+          ]
+        }
+      ],
+      "visitors_to_japan": [
+        {
+          "source_id": "jnto_visitors",
+          "url": "https://www.jnto.go.jp/statistics/data/_files/20260916_1615-5.xlsx",
+          "retrieved_at": "2026-10-17T13:17:21+00:00",
+          "observations": [
+            {
+              "year": 2025,
+              "value": 885023,
+              "checks": []
+            },
+            {
+              "year": 2024,
+              "value": 818659,
+              "checks": []
+            },
+            {
+              "year": 2023,
+              "value": 622293,
+              "checks": []
+            },
+            {
+              "year": 2022,
+              "value": 126842,
+              "checks": []
+            },
+            {
+              "year": 2021,
+              "value": 5625,
+              "checks": []
+            },
+            {
+              "year": 2020,
+              "value": 109110,
+              "checks": []
+            },
+            {
+              "year": 2019,
+              "value": 613114,
+              "checks": []
+            },
+            {
+              "year": 2018,
+              "value": 503976,
+              "checks": []
+            },
+            {
+              "year": 2017,
+              "value": 424121,
+              "checks": []
+            },
+            {
+              "year": 2016,
+              "value": 347861,
+              "checks": []
+            },
+            {
+              "year": 2015,
+              "value": 268361,
+              "checks": []
+            },
+            {
+              "year": 2014,
+              "value": 184204,
+              "checks": []
+            },
+            {
+              "year": 2013,
+              "value": 108351,
+              "checks": []
+            },
+            {
+              "year": 2012,
+              "value": 85037,
+              "checks": []
+            },
+            {
+              "year": 2011,
+              "value": 63099,
+              "checks": []
+            },
+            {
+              "year": 2010,
+              "value": 77377,
+              "checks": []
+            },
+            {
+              "year": 2009,
+              "value": 71485,
+              "checks": []
+            },
+            {
+              "year": 2008,
+              "value": 82177,
+              "checks": []
+            },
+            {
+              "year": 2007,
+              "value": 89532,
+              "checks": []
+            },
+            {
+              "year": 2006,
+              "value": 95530,
+              "checks": []
+            },
+            {
+              "year": 2005,
+              "value": 139572,
+              "checks": []
+            },
+            {
+              "year": 2004,
+              "value": 154588,
+              "checks": []
+            },
+            {
+              "year": 2003,
+              "value": 137584,
+              "checks": []
+            }
+          ]
+        }
+      ],
+      "residents_in_japan": [
+        {
+          "source_id": "isa_residents",
+          "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
+          "retrieved_at": "2026-10-17T13:18:32+00:00",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 322046,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040186952&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2024,
+              "value": 341518,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040292366&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2025,
+              "value": 356579,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040472260&fileKind=0",
+              "checks": []
+            }
+          ]
+        }
+      ],
+      "fdi_from_japan": [
+        {
+          "source_id": "mof_fdi",
+          "url": "https://www.mof.go.jp/policy/international_policy/reference/balance_of_payments/bp_trend/bpfdi/fdi/6d-2.csv",
+          "retrieved_at": "2026-10-17T13:18:34+00:00",
+          "observations": [
+            {
+              "year": 2014,
+              "value": 96200000000.0,
+              "checks": []
+            },
+            {
+              "year": 2015,
+              "value": 185400000000.0,
+              "checks": []
+            },
+            {
+              "year": 2016,
+              "value": 253200000000.0,
+              "checks": []
+            },
+            {
+              "year": 2017,
+              "value": 125500000000.0,
+              "checks": []
+            },
+            {
+              "year": 2018,
+              "value": 125500000000.0,
+              "checks": []
+            },
+            {
+              "year": 2019,
+              "value": 183800000000.0,
+              "checks": []
+            },
+            {
+              "year": 2020,
+              "value": 108700000000.0,
+              "checks": []
+            },
+            {
+              "year": 2021,
+              "value": 130300000000.0,
+              "checks": []
+            },
+            {
+              "year": 2022,
+              "value": 169700000000.0,
+              "checks": []
+            },
+            {
+              "year": 2023,
+              "value": 287900000000.0,
+              "checks": []
+            },
+            {
+              "year": 2024,
+              "value": 116400000000.0,
+              "checks": []
+            },
+            {
+              "year": 2025,
+              "value": 171800000000.0,
               "checks": []
             }
           ]
@@ -29834,6 +30668,226 @@
             }
           ]
         }
+      ],
+      "visitors_to_japan": [
+        {
+          "source_id": "jnto_visitors",
+          "url": "https://www.jnto.go.jp/statistics/data/_files/20260916_1615-5.xlsx",
+          "retrieved_at": "2026-10-17T13:17:21+00:00",
+          "observations": [
+            {
+              "year": 2025,
+              "value": 726251,
+              "checks": []
+            },
+            {
+              "year": 2024,
+              "value": 691226,
+              "checks": []
+            },
+            {
+              "year": 2023,
+              "value": 591267,
+              "checks": []
+            },
+            {
+              "year": 2022,
+              "value": 131969,
+              "checks": []
+            },
+            {
+              "year": 2021,
+              "value": 857,
+              "checks": []
+            },
+            {
+              "year": 2020,
+              "value": 55273,
+              "checks": []
+            },
+            {
+              "year": 2019,
+              "value": 492252,
+              "checks": []
+            },
+            {
+              "year": 2018,
+              "value": 437280,
+              "checks": []
+            },
+            {
+              "year": 2017,
+              "value": 404132,
+              "checks": []
+            },
+            {
+              "year": 2016,
+              "value": 361807,
+              "checks": []
+            },
+            {
+              "year": 2015,
+              "value": 308783,
+              "checks": []
+            },
+            {
+              "year": 2014,
+              "value": 227962,
+              "checks": []
+            },
+            {
+              "year": 2013,
+              "value": 189280,
+              "checks": []
+            },
+            {
+              "year": 2012,
+              "value": 142201,
+              "checks": []
+            },
+            {
+              "year": 2011,
+              "value": 111354,
+              "checks": []
+            },
+            {
+              "year": 2010,
+              "value": 180960,
+              "checks": []
+            },
+            {
+              "year": 2009,
+              "value": 145224,
+              "checks": []
+            },
+            {
+              "year": 2008,
+              "value": 167894,
+              "checks": []
+            },
+            {
+              "year": 2007,
+              "value": 151860,
+              "checks": []
+            },
+            {
+              "year": 2006,
+              "value": 115870,
+              "checks": []
+            },
+            {
+              "year": 2005,
+              "value": 94161,
+              "checks": []
+            },
+            {
+              "year": 2004,
+              "value": 90001,
+              "checks": []
+            },
+            {
+              "year": 2003,
+              "value": 76896,
+              "checks": []
+            }
+          ]
+        }
+      ],
+      "residents_in_japan": [
+        {
+          "source_id": "isa_residents",
+          "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
+          "retrieved_at": "2026-10-17T13:18:32+00:00",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 3498,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040186952&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2024,
+              "value": 3739,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040292366&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2025,
+              "value": 4007,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040472260&fileKind=0",
+              "checks": []
+            }
+          ]
+        }
+      ],
+      "fdi_from_japan": [
+        {
+          "source_id": "mof_fdi",
+          "url": "https://www.mof.go.jp/policy/international_policy/reference/balance_of_payments/bp_trend/bpfdi/fdi/6d-2.csv",
+          "retrieved_at": "2026-10-17T13:18:34+00:00",
+          "observations": [
+            {
+              "year": 2014,
+              "value": 869400000000.0,
+              "checks": []
+            },
+            {
+              "year": 2015,
+              "value": 853700000000.0,
+              "checks": []
+            },
+            {
+              "year": 2016,
+              "value": -1872100000000.0,
+              "checks": []
+            },
+            {
+              "year": 2017,
+              "value": 1075000000000.0,
+              "checks": []
+            },
+            {
+              "year": 2018,
+              "value": 1859400000000.0,
+              "checks": []
+            },
+            {
+              "year": 2019,
+              "value": 1499500000000.0,
+              "checks": []
+            },
+            {
+              "year": 2020,
+              "value": 822400000000.0,
+              "checks": []
+            },
+            {
+              "year": 2021,
+              "value": 2208700000000.0,
+              "checks": []
+            },
+            {
+              "year": 2022,
+              "value": 931600000000.0,
+              "checks": []
+            },
+            {
+              "year": 2023,
+              "value": 1393100000000.0,
+              "checks": []
+            },
+            {
+              "year": 2024,
+              "value": 2056100000000.0,
+              "checks": []
+            },
+            {
+              "year": 2025,
+              "value": 1605500000000.0,
+              "checks": []
+            }
+          ]
+        }
       ]
     },
     "th": {
@@ -33445,6 +34499,226 @@
             }
           ]
         }
+      ],
+      "visitors_to_japan": [
+        {
+          "source_id": "jnto_visitors",
+          "url": "https://www.jnto.go.jp/statistics/data/_files/20260916_1615-5.xlsx",
+          "retrieved_at": "2026-10-17T13:17:21+00:00",
+          "observations": [
+            {
+              "year": 2025,
+              "value": 1233103,
+              "checks": []
+            },
+            {
+              "year": 2024,
+              "value": 1148848,
+              "checks": []
+            },
+            {
+              "year": 2023,
+              "value": 995558,
+              "checks": []
+            },
+            {
+              "year": 2022,
+              "value": 198037,
+              "checks": []
+            },
+            {
+              "year": 2021,
+              "value": 2758,
+              "checks": []
+            },
+            {
+              "year": 2020,
+              "value": 219830,
+              "checks": []
+            },
+            {
+              "year": 2019,
+              "value": 1318977,
+              "checks": []
+            },
+            {
+              "year": 2018,
+              "value": 1132160,
+              "checks": []
+            },
+            {
+              "year": 2017,
+              "value": 987211,
+              "checks": []
+            },
+            {
+              "year": 2016,
+              "value": 901525,
+              "checks": []
+            },
+            {
+              "year": 2015,
+              "value": 796731,
+              "checks": []
+            },
+            {
+              "year": 2014,
+              "value": 657570,
+              "checks": []
+            },
+            {
+              "year": 2013,
+              "value": 453642,
+              "checks": []
+            },
+            {
+              "year": 2012,
+              "value": 260640,
+              "checks": []
+            },
+            {
+              "year": 2011,
+              "value": 144969,
+              "checks": []
+            },
+            {
+              "year": 2010,
+              "value": 214881,
+              "checks": []
+            },
+            {
+              "year": 2009,
+              "value": 177541,
+              "checks": []
+            },
+            {
+              "year": 2008,
+              "value": 191881,
+              "checks": []
+            },
+            {
+              "year": 2007,
+              "value": 167481,
+              "checks": []
+            },
+            {
+              "year": 2006,
+              "value": 125704,
+              "checks": []
+            },
+            {
+              "year": 2005,
+              "value": 120238,
+              "checks": []
+            },
+            {
+              "year": 2004,
+              "value": 104864,
+              "checks": []
+            },
+            {
+              "year": 2003,
+              "value": 80022,
+              "checks": []
+            }
+          ]
+        }
+      ],
+      "residents_in_japan": [
+        {
+          "source_id": "isa_residents",
+          "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
+          "retrieved_at": "2026-10-17T13:18:32+00:00",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 61771,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040186952&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2024,
+              "value": 65398,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040292366&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2025,
+              "value": 67097,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040472260&fileKind=0",
+              "checks": []
+            }
+          ]
+        }
+      ],
+      "fdi_from_japan": [
+        {
+          "source_id": "mof_fdi",
+          "url": "https://www.mof.go.jp/policy/international_policy/reference/balance_of_payments/bp_trend/bpfdi/fdi/6d-2.csv",
+          "retrieved_at": "2026-10-17T13:18:34+00:00",
+          "observations": [
+            {
+              "year": 2014,
+              "value": 591900000000.0,
+              "checks": []
+            },
+            {
+              "year": 2015,
+              "value": 490200000000.0,
+              "checks": []
+            },
+            {
+              "year": 2016,
+              "value": 511000000000.0,
+              "checks": []
+            },
+            {
+              "year": 2017,
+              "value": 553700000000.0,
+              "checks": []
+            },
+            {
+              "year": 2018,
+              "value": 751600000000.0,
+              "checks": []
+            },
+            {
+              "year": 2019,
+              "value": 475600000000.0,
+              "checks": []
+            },
+            {
+              "year": 2020,
+              "value": 387800000000.0,
+              "checks": []
+            },
+            {
+              "year": 2021,
+              "value": 484400000000.0,
+              "checks": []
+            },
+            {
+              "year": 2022,
+              "value": 853300000000.0,
+              "checks": []
+            },
+            {
+              "year": 2023,
+              "value": 481900000000.0,
+              "checks": []
+            },
+            {
+              "year": 2024,
+              "value": 556600000000.0,
+              "checks": []
+            },
+            {
+              "year": 2025,
+              "value": 526600000000.0,
+              "checks": []
+            }
+          ]
+        }
       ]
     },
     "tl": {
@@ -36276,6 +37550,33 @@
               "value": 114,
               "value_text": "114名(2024年10月1日現在、出典:海外在留邦人数調査統計)",
               "original_source": "海外在留邦人数調査統計",
+              "checks": []
+            }
+          ]
+        }
+      ],
+      "residents_in_japan": [
+        {
+          "source_id": "isa_residents",
+          "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
+          "retrieved_at": "2026-10-17T13:18:32+00:00",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 61,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040186952&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2024,
+              "value": 87,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040292366&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2025,
+              "value": 144,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040472260&fileKind=0",
               "checks": []
             }
           ]
@@ -39744,6 +41045,226 @@
               "value": 16636,
               "value_text": "1万6,636人(2025年10月1日現在) 出所:外務省「海外在留邦人数調査統計」",
               "original_source": "外務省「海外在留邦人数調査統計」",
+              "checks": []
+            }
+          ]
+        }
+      ],
+      "visitors_to_japan": [
+        {
+          "source_id": "jnto_visitors",
+          "url": "https://www.jnto.go.jp/statistics/data/_files/20260916_1615-5.xlsx",
+          "retrieved_at": "2026-10-17T13:17:21+00:00",
+          "observations": [
+            {
+              "year": 2025,
+              "value": 678594,
+              "checks": []
+            },
+            {
+              "year": 2024,
+              "value": 621173,
+              "checks": []
+            },
+            {
+              "year": 2023,
+              "value": 573916,
+              "checks": []
+            },
+            {
+              "year": 2022,
+              "value": 284113,
+              "checks": []
+            },
+            {
+              "year": 2021,
+              "value": 26586,
+              "checks": []
+            },
+            {
+              "year": 2020,
+              "value": 152559,
+              "checks": []
+            },
+            {
+              "year": 2019,
+              "value": 495051,
+              "checks": []
+            },
+            {
+              "year": 2018,
+              "value": 389005,
+              "checks": []
+            },
+            {
+              "year": 2017,
+              "value": 308898,
+              "checks": []
+            },
+            {
+              "year": 2016,
+              "value": 233763,
+              "checks": []
+            },
+            {
+              "year": 2015,
+              "value": 185395,
+              "checks": []
+            },
+            {
+              "year": 2014,
+              "value": 124266,
+              "checks": []
+            },
+            {
+              "year": 2013,
+              "value": 84469,
+              "checks": []
+            },
+            {
+              "year": 2012,
+              "value": 55156,
+              "checks": []
+            },
+            {
+              "year": 2011,
+              "value": 41048,
+              "checks": []
+            },
+            {
+              "year": 2010,
+              "value": 41862,
+              "checks": []
+            },
+            {
+              "year": 2009,
+              "value": 34221,
+              "checks": []
+            },
+            {
+              "year": 2008,
+              "value": 34794,
+              "checks": []
+            },
+            {
+              "year": 2007,
+              "value": 31909,
+              "checks": []
+            },
+            {
+              "year": 2006,
+              "value": 25637,
+              "checks": []
+            },
+            {
+              "year": 2005,
+              "value": 22138,
+              "checks": []
+            },
+            {
+              "year": 2004,
+              "value": 19056,
+              "checks": []
+            },
+            {
+              "year": 2003,
+              "value": 17094,
+              "checks": []
+            }
+          ]
+        }
+      ],
+      "residents_in_japan": [
+        {
+          "source_id": "isa_residents",
+          "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
+          "retrieved_at": "2026-10-17T13:18:32+00:00",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 565026,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040186952&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2024,
+              "value": 634361,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040292366&fileKind=0",
+              "checks": []
+            },
+            {
+              "year": 2025,
+              "value": 681100,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040472260&fileKind=0",
+              "checks": []
+            }
+          ]
+        }
+      ],
+      "fdi_from_japan": [
+        {
+          "source_id": "mof_fdi",
+          "url": "https://www.mof.go.jp/policy/international_policy/reference/balance_of_payments/bp_trend/bpfdi/fdi/6d-2.csv",
+          "retrieved_at": "2026-10-17T13:18:34+00:00",
+          "observations": [
+            {
+              "year": 2014,
+              "value": 173400000000.0,
+              "checks": []
+            },
+            {
+              "year": 2015,
+              "value": 175000000000.0,
+              "checks": []
+            },
+            {
+              "year": 2016,
+              "value": 179900000000.0,
+              "checks": []
+            },
+            {
+              "year": 2017,
+              "value": 227300000000.0,
+              "checks": []
+            },
+            {
+              "year": 2018,
+              "value": 219200000000.0,
+              "checks": []
+            },
+            {
+              "year": 2019,
+              "value": 288700000000.0,
+              "checks": []
+            },
+            {
+              "year": 2020,
+              "value": 251700000000.0,
+              "checks": []
+            },
+            {
+              "year": 2021,
+              "value": 409200000000.0,
+              "checks": []
+            },
+            {
+              "year": 2022,
+              "value": 418700000000.0,
+              "checks": []
+            },
+            {
+              "year": 2023,
+              "value": 715800000000.0,
+              "checks": []
+            },
+            {
+              "year": 2024,
+              "value": 431800000000.0,
+              "checks": []
+            },
+            {
+              "year": 2025,
+              "value": 566100000000.0,
               "checks": []
             }
           ]

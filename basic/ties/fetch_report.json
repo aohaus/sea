@@ -1,0 +1,58 @@
+{
+  "jnto_visitors": {
+    "fetch_status": "ok",
+    "fetch_error": null,
+    "url": "https://www.jnto.go.jp/statistics/data/_files/20260916_1615-5.xlsx",
+    "countries": [
+      "id",
+      "my",
+      "ph",
+      "sg",
+      "th",
+      "vn"
+    ],
+    "years": [
+      2003,
+      2025
+    ]
+  },
+  "isa_residents": {
+    "fetch_status": "partial",
+    "fetch_error": "2012年12月末 (http://www.e-stat.go.jp/SG1/estat/List.do?lid=000001111233): RuntimeError: no target nationality in the table; 2013年12月末 (http://www.e-stat.go.jp/SG1/estat/List.do?lid=000001118467): RuntimeError: no target nationality in the table; 2014年12月末 (http://www.e-stat.go.jp/SG1/estat/List.do?lid=000001133760): RuntimeError: no target nationality in the table; 2015年12月末 (http://www.e-stat.go.jp/SG1/estat/List.do?lid=000001150236): RuntimeError: no target nationality in the table; 2016年12月末 (http://www.e-stat.go.jp/SG1/estat/List.do?lid=000001177523): RuntimeError: no target nationality in the table; 2017年12月末 (http://www.e-stat.go.jp/SG1/estat/List.do?lid=000001201946): RuntimeError: no target nationality in the table; 2018年12月末 (http://www.e-stat.go.jp/SG1/estat/List.do?lid=000001234467): RuntimeError: no target nationality in the table; 2019年12月末 (http://www.e-stat.go.jp/SG1/estat/List.do?lid=000001250236): RuntimeError: header '国籍・地域' not found; 2020年12月末 (http://www.e-stat.go.jp/SG1/estat/List.do?lid=000001277096): RuntimeError: no target nationality in the table; 2021年12月末 (http://www.e-stat.go.jp/SG1/estat/List.do?lid=000001295578): RuntimeError: no target nationality in the table; 2022年12月末 (http://www.e-stat.go.jp/SG1/estat/List.do?lid=000001413154): RuntimeError: no target nationality in the table",
+    "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
+    "countries": [
+      "bn",
+      "id",
+      "kh",
+      "la",
+      "mm",
+      "my",
+      "ph",
+      "sg",
+      "th",
+      "tl",
+      "vn"
+    ],
+    "years": [
+      2023,
+      2025
+    ]
+  },
+  "mof_fdi": {
+    "fetch_status": "ok",
+    "fetch_error": null,
+    "url": "https://www.mof.go.jp/policy/international_policy/reference/balance_of_payments/bp_trend/bpfdi/fdi/6d-2.csv",
+    "countries": [
+      "id",
+      "my",
+      "ph",
+      "sg",
+      "th",
+      "vn"
+    ],
+    "years": [
+      2014,
+      2025
+    ]
+  }
+}
