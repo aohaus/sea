@@ -18,7 +18,7 @@
   },
   "isa_residents": {
     "fetch_status": "partial",
-    "fetch_error": "2025年12月末 (http://www.e-stat.go.jp/SG1/estat/List.do?lid=000001486479): RuntimeError: no target nationality in the table; 2024年12月末 (http://www.e-stat.go.jp/SG1/estat/List.do?lid=000001462230): RuntimeError: no target nationality in the table; 2022年12月末 (http://www.e-stat.go.jp/SG1/estat/List.do?lid=000001413154): RuntimeError: no target nationality in the table; 2021年12月末 (http://www.e-stat.go.jp/SG1/estat/List.do?lid=000001295578): RuntimeError: no target nationality in the table; 2020年12月末 (http://www.e-stat.go.jp/SG1/estat/List.do?lid=000001277096): RuntimeError: no target nationality in the table; 2019年12月末 (http://www.e-stat.go.jp/SG1/estat/List.do?lid=000001250236): RuntimeError: 19-12-01-1: header '国籍・地域' not found",
+    "fetch_error": "2022年12月末 (http://www.e-stat.go.jp/SG1/estat/List.do?lid=000001413154): RuntimeError: no target nationality in the table; 2021年12月末 (http://www.e-stat.go.jp/SG1/estat/List.do?lid=000001295578): RuntimeError: no target nationality in the table; 2020年12月末 (http://www.e-stat.go.jp/SG1/estat/List.do?lid=000001277096): RuntimeError: no target nationality in the table",
     "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
     "countries": [
       "bn",
