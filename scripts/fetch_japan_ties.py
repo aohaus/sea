@@ -170,12 +170,13 @@ def isa_table(rows: list[list], places: dict[str, str]) -> dict[str, float]:
             if len(c) > val and c[kind] == "総数" and c[nat] in places:
                 out.setdefault(places[c[nat]], number(row[val]))
     else:
-        # Wide layout (or no recognisable header): merged header cells do not line up with the data
-        # columns, so each row is read as its label (first text cell) and the first number after it
-        # (the 総数 column).
+        # Wide layout, a long one with differently named columns, or no recognisable header: merged
+        # header cells do not line up with the data columns, so each row is read as the first cell
+        # naming a target nationality and the first number after it (the 総数 column; in a long
+        # table the first row of a nationality is its 総数 row).
         for row in rows[(head or 0):]:
-            j = next((j for j, v in enumerate(row) if isinstance(v, str) and v.strip()), None)
-            if j is None or norm(row[j]) not in places:
+            j = next((j for j, v in enumerate(row) if isinstance(v, str) and norm(v) in places), None)
+            if j is None:
                 continue
             value = next((number(v) for v in row[j + 1:] if number(v) is not None), None)
             out.setdefault(places[norm(row[j])], value)
