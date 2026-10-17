@@ -153,8 +153,8 @@
       "error": null,
       "page_last_updated": "2026-06-18",
       "retrieval_method": "auto",
-      "fetch_status": "ok",
-      "fetch_error": null,
+      "fetch_status": "error",
+      "fetch_error": "HTTP 503",
       "fields_filled": [
         "area",
         "ethnic_groups",
@@ -173,8 +173,8 @@
       "error": null,
       "page_last_updated": "2026-06-30",
       "retrieval_method": "auto",
-      "fetch_status": "ok",
-      "fetch_error": null,
+      "fetch_status": "error",
+      "fetch_error": "HTTP 503",
       "fields_filled": [
         "area",
         "capital",
