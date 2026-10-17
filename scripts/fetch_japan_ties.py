@@ -44,8 +44,11 @@ from bs4 import BeautifulSoup
 from fetch_basic import BASIC_DIR, HEADERS, load_json, write_json
 
 OUT_DIR = BASIC_DIR / "ties"
-TIMEOUT = (15, 90)
+TIMEOUT = (15, 60)
 DELAY_SECONDS = 1
+# The workflow job has 15 minutes for every source. Years not reached within this budget are
+# reported and fetched on the next run (years already saved are not downloaded again).
+ISA_BUDGET_SECONDS = 300
 
 JNTO_PAGE = "https://www.jnto.go.jp/statistics/data/visitors-statistics/"
 ISA_PAGE = "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html"
@@ -88,6 +91,18 @@ def workbook(body: bytes):
     return openpyxl.load_workbook(io.BytesIO(body), read_only=True, data_only=True)
 
 
+def sheet_rows(ws, max_rows: int, max_cols: int) -> list[list]:
+    """Rows of a read-only sheet, bounded: some workbooks declare a used range of a million rows,
+    and reading it cell by cell would take minutes. Stops early after 200 empty rows."""
+    rows, empty = [], 0
+    for r in ws.iter_rows(max_row=max_rows, max_col=max_cols, values_only=True):
+        rows.append(list(r))
+        empty = empty + 1 if all(v is None for v in r) else 0
+        if empty > 200:
+            break
+    return rows
+
+
 def number(v) -> float | None:
     if isinstance(v, (int, float)):
         return float(v)
@@ -109,7 +124,7 @@ def fetch_jnto(session, places: dict[str, str]) -> tuple[str, dict]:
         if not re.fullmatch(r"\d{4}", ws.title.strip()):
             continue
         year = int(ws.title)
-        rows = [list(r) for r in ws.iter_rows(values_only=True)]
+        rows = sheet_rows(ws, 300, 40)
         header = next((r for r in rows if any(norm(v) == "12月" for v in r)), None)
         if header is None:
             continue
@@ -179,8 +194,15 @@ def fetch_isa(session, places: dict[str, str], saved: dict) -> tuple[str, dict, 
     recent = sorted(year_ends)[-2:]
     series = {code: [o for o in obs if o["year"] not in recent and o["year"] in have] for code, obs in saved.get("series", {}).items()}
     errors = []
-    for year, lid_url in sorted(year_ends.items()):
+    start = time.monotonic()
+    # Newest first, so a run cut short by the budget still brings the latest year.
+    for year, lid_url in sorted(year_ends.items(), reverse=True):
         if year in have and year not in recent:
+            continue
+        if time.monotonic() - start > ISA_BUDGET_SECONDS:
+            errors.append(f"{year}年12月末: not fetched within {ISA_BUDGET_SECONDS}s (next run)")
+            for code, obs in saved.get("series", {}).items():
+                series.setdefault(code, []).extend(o for o in obs if o["year"] == year)
             continue
         try:
             resp = get(session, lid_url)
@@ -196,7 +218,7 @@ def fetch_isa(session, places: dict[str, str], saved: dict) -> tuple[str, dict, 
             if not target:
                 raise RuntimeError("table '国籍・地域別 在留資格別 在留外国人' not found")
             ws = workbook(get(session, target).content).worksheets[0]
-            values = isa_table([list(r) for r in ws.iter_rows(values_only=True)], places)
+            values = isa_table(sheet_rows(ws, 30000, 60), places)
             if not values:
                 raise RuntimeError("no target nationality in the table")
             for code, v in values.items():

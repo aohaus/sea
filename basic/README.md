@@ -14,6 +14,7 @@ Basic data on the 11 ASEAN members (including Timor-Leste) and ASEAN as a whole,
 | `<code>/profile.json` | 第1段階（静的情報）の値。項目ごとに整理し、各値に出所を付与 / Static values per field, each with its source |
 | `<code>/indicators.json` | 第2段階（経済指標）の時系列。出所ごとに別系列で保存 / Economic time series, one series per source |
 | `<code>/worldbank_wdi.json` | 世界銀行 API から取得した観測値と URL・取得日 / Raw World Bank observations |
+| `ties/` | 日本とのつながり（訪日客数・在留外国人・日本からの直接投資）の国別の値と取得結果 / Ties with Japan |
 | `asean/` | ASEAN 全体のデータ（JETRO「ASEANの貿易投資年報」など） / ASEAN-wide data |
 | `data/` | 統合データ（`dataset.json`）と出所つきの書き出し用の表（`observations`・`profiles`・`sources`・`validation` の CSV/JSON）/ Consolidated dataset and flat export tables with provenance |
 | `cities/` | 主要都市のマスタ（`cities.json`）と、取得した元データ（`raw/`）・取得結果 / Major cities |
@@ -152,8 +153,11 @@ python scripts/build_dataset.py
 
 - **日本との貿易**（`japan_exports`・`japan_imports`、米ドル）：JETRO「概況・基本統計」の「日本との貿易（通関ベース）」表（元統計は Global Trade Atlas）から、日本の輸出（この国向け）と輸入（この国から）を直近5年分読み取ります（`scripts/fetch_indicators.py` の `japan_trade`）。ブルネイ・東ティモールは JETRO のページがないため未掲載です。
 - **在留邦人数**（`japanese_residents`）：外務省「海外在留邦人数調査統計」の値を、JETRO「概況・基本統計」（9か国）と外務省「基礎データ」（ブルネイ・東ティモール。`scripts/import_mofa_pdf.py` が「二国間関係」から読み取り）から取ります。
-- ビューアの「日本とのつながり」は、貿易額（輸出＋輸入）の棒グラフと、輸出・輸入・収支、在留邦人数、人口1万人あたりの在留邦人を表にします。
-- 次の候補（未実装）：訪日客数（JNTO）、在日の各国人数（出入国在留管理庁「在留外国人統計」）、日本からの直接投資（日本銀行「国際収支統計」）。いずれも取得方法と利用条件の確認が必要です。
+- **訪日客数**（`visitors_to_japan`、人）：日本政府観光局（JNTO）「訪日外客統計」の「国籍/月別 訪日外客数」（Excel、年ごとのシート）から、国籍別の年間合計（累計列）を読みます。12月まで埋まった年だけを使い、最新年は暫定値を含みます。ASEAN で個別に載るのはタイ・シンガポール・マレーシア・インドネシア・フィリピン・ベトナムの6か国です（出所 `jnto_visitors`）。
+- **日本に住むこの国の人**（`residents_in_japan`、人）：出入国在留管理庁「在留外国人統計」（e-Stat）の「国籍・地域別 在留資格別 在留外国人」の総数を、2012年以降の各年12月末について読みます。表の形が年によって異なる（古い年は国籍ごとの行、新しい年は「時点・州・国籍・地域・在留資格・人数」の縦長）ため両方に対応しています。値ごとに元の Excel の URL を残します（出所 `isa_residents`）。
+- **日本からの直接投資**（`fdi_from_japan`、円）：財務省「国際収支状況」の別表 6d-2「対外直接投資の地域別内訳」（CSV、億円）の暦年の行から、ネット（実行−回収）を読みます（2014年〜、BPM6 基準）。個別に載るのはシンガポール・タイ・インドネシア・マレーシア・フィリピン・ベトナムです。ドル建ての JETRO「直接投資統計」は取得時にメンテナンス中で使えなかったため、元統計の財務省を直接使っています（出所 `mof_fdi`）。
+- この3つは `scripts/fetch_japan_ties.py` が `ties/<source_id>.json`（国コードごとの年・値）に保存し、`fetch_indicators.py` が指標の系列にします（`fields.json` の `ties_source`）。ファイルの場所は各ページのリンク文字列（「国籍/月別 訪日外客数」「YYYY年12月末」など）で探すので、ファイル名が変わっても追従します。取得に失敗した出所は保存済みの値を残し、`ties/fetch_report.json` に記録します（自動チェックでエラーとして報告）。
+- ビューアの「日本とのつながり」は、指標を切り替えられる棒グラフ（貿易額・訪日客数・人口千人あたりの訪日客・日本に住む人・在留邦人・直接投資・直接投資の直近5年合計）と、2つの表（貿易と在留邦人／人の行き来と投資）です。各指標の年ごとの推移は、上の「指標」でも選べます。
 
 ## 2060年までの見通し / Outlook to 2060
 
