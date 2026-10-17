@@ -164,10 +164,13 @@ def isa_table(rows: list[list], places: dict[str, str]) -> dict[str, float]:
     if "在留資格" in cells:
         nat = next(j for j, c in enumerate(cells) if is_nat(c))
         kind = cells.index("在留資格")
-        val = next(j for j, c in enumerate(cells) if j > kind and c)
+        # The count is the column whose header ends in 人数; 2020-2022 tables add a 在留目的 column
+        # (total row = 計) between 在留資格 and the count.
+        val = next(j for j, c in enumerate(cells) if c.endswith("人数"))
+        purpose = cells.index("在留目的") if "在留目的" in cells else None
         for row in rows[head + 1:]:
             c = [norm(v) for v in row]
-            if len(c) > val and c[kind] == "総数" and c[nat] in places:
+            if len(c) > val and c[kind] == "総数" and c[nat] in places and (purpose is None or c[purpose] in ("計", "総数")):
                 out.setdefault(places[c[nat]], number(row[val]))
     else:
         # Wide layout, a long one with differently named columns, or no recognisable header: merged
@@ -213,7 +216,7 @@ def fetch_isa(session, places: dict[str, str], saved: dict) -> tuple[str, dict, 
             target, seen = None, False
             for a in soup.find_all("a", href=True):
                 text = norm(a.get_text(" ", strip=True))
-                if "stat_infid" in a["href"] and re.fullmatch(r"国籍・地域別在留資格.*別在留外国人", text):
+                if "stat_infid" in a["href"] and re.fullmatch(r"国籍・地域別在留資格(\(在留目的\))?別在留外国人", text):
                     seen = True
                 elif seen and "file-download" in a["href"] and "fileKind=0" in a["href"]:
                     target = urljoin(resp.url, a["href"])
