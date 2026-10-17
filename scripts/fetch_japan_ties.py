@@ -221,9 +221,12 @@ def fetch_isa(session, places: dict[str, str], saved: dict) -> tuple[str, dict, 
             if not target:
                 raise RuntimeError("table '国籍・地域別 在留資格別 在留外国人' not found")
             values, problems = {}, []
+            sample = ""
             for ws in workbook(get(session, target).content).worksheets:  # the table is usually the first sheet
                 try:
-                    values = isa_table(sheet_rows(ws, 30000, 60), places)
+                    rows = sheet_rows(ws, 30000, 60)
+                    sample = sample or " | ".join(",".join(norm(v) for v in r if v is not None)[:80] for r in rows[:12] if any(v is not None for v in r))
+                    values = isa_table(rows, places)
                 except RuntimeError as exc:
                     problems.append(f"{ws.title}: {exc}")
                 if values:
@@ -231,7 +234,8 @@ def fetch_isa(session, places: dict[str, str], saved: dict) -> tuple[str, dict, 
             if not values and problems:
                 raise RuntimeError("; ".join(problems))
             if not values:
-                raise RuntimeError("no target nationality in the table")
+                # The first rows go into the report, so a changed layout can be seen without downloading the file.
+                raise RuntimeError(f"no target nationality in the table {target} (first rows: {sample[:600]})")
             for code, v in values.items():
                 series.setdefault(code, []).append({"year": year, "value": round(v), "url": target})
         except Exception as exc:  # noqa: BLE001 - keep the other years
