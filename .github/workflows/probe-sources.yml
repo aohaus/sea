@@ -1,0 +1,18 @@
+# Temporary: investigates candidate source pages. Removed before merge.
+name: Probe sources
+on:
+  push:
+    branches: [claude/sea-basic-data]
+    paths: ["scripts/probe_sources.py", ".github/workflows/probe-sources.yml"]
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install requests beautifulsoup4
+      - run: python scripts/probe_sources.py
