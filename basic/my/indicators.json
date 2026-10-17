@@ -2708,6 +2708,258 @@
           ]
         }
       ]
+    },
+    "visitors_to_japan": {
+      "label_ja": "訪日客数（この国から）",
+      "label_en": "Visitor arrivals to Japan from the country",
+      "unit": "persons",
+      "series": [
+        {
+          "source_id": "jnto_visitors",
+          "url": "https://www.jnto.go.jp/statistics/data/_files/20260916_1615-5.xlsx",
+          "retrieved_at": "2026-10-17T13:17:21+00:00",
+          "observations": [
+            {
+              "year": 2025,
+              "value": 636575
+            },
+            {
+              "year": 2024,
+              "value": 506883
+            },
+            {
+              "year": 2023,
+              "value": 415712
+            },
+            {
+              "year": 2022,
+              "value": 74095
+            },
+            {
+              "year": 2021,
+              "value": 1831
+            },
+            {
+              "year": 2020,
+              "value": 76573
+            },
+            {
+              "year": 2019,
+              "value": 501592
+            },
+            {
+              "year": 2018,
+              "value": 468360
+            },
+            {
+              "year": 2017,
+              "value": 439548
+            },
+            {
+              "year": 2016,
+              "value": 394268
+            },
+            {
+              "year": 2015,
+              "value": 305447
+            },
+            {
+              "year": 2014,
+              "value": 249521
+            },
+            {
+              "year": 2013,
+              "value": 176521
+            },
+            {
+              "year": 2012,
+              "value": 130183
+            },
+            {
+              "year": 2011,
+              "value": 81516
+            },
+            {
+              "year": 2010,
+              "value": 114519
+            },
+            {
+              "year": 2009,
+              "value": 89509
+            },
+            {
+              "year": 2008,
+              "value": 105663
+            },
+            {
+              "year": 2007,
+              "value": 100890
+            },
+            {
+              "year": 2006,
+              "value": 85627
+            },
+            {
+              "year": 2005,
+              "value": 78173
+            },
+            {
+              "year": 2004,
+              "value": 72445
+            },
+            {
+              "year": 2003,
+              "value": 65369
+            }
+          ]
+        }
+      ]
+    },
+    "residents_in_japan": {
+      "label_ja": "日本に住むこの国の人（在留外国人）",
+      "label_en": "Residents of Japan with the country's nationality",
+      "unit": "persons",
+      "series": [
+        {
+          "source_id": "isa_residents",
+          "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
+          "retrieved_at": "2026-10-17T13:37:49+00:00",
+          "observations": [
+            {
+              "year": 2012,
+              "value": 7848,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000021315227&fileKind=0"
+            },
+            {
+              "year": 2013,
+              "value": 7971,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000024395065&fileKind=0"
+            },
+            {
+              "year": 2014,
+              "value": 8288,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000029226524&fileKind=0"
+            },
+            {
+              "year": 2015,
+              "value": 8738,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031399575&fileKind=0"
+            },
+            {
+              "year": 2016,
+              "value": 9084,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031557945&fileKind=0"
+            },
+            {
+              "year": 2017,
+              "value": 9638,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031669224&fileKind=0"
+            },
+            {
+              "year": 2018,
+              "value": 10368,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031832809&fileKind=0"
+            },
+            {
+              "year": 2019,
+              "value": 10862,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031964914&fileKind=0"
+            },
+            {
+              "year": 2020,
+              "value": 11066,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000032104291&fileKind=0"
+            },
+            {
+              "year": 2021,
+              "value": 10078,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000032213254&fileKind=0"
+            },
+            {
+              "year": 2022,
+              "value": 11045,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040068461&fileKind=0"
+            },
+            {
+              "year": 2023,
+              "value": 11471,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040186952&fileKind=0"
+            },
+            {
+              "year": 2024,
+              "value": 11968,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040292366&fileKind=0"
+            },
+            {
+              "year": 2025,
+              "value": 12266,
+              "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040472260&fileKind=0"
+            }
+          ]
+        }
+      ]
+    },
+    "fdi_from_japan": {
+      "label_ja": "日本からの直接投資（ネット・フロー）",
+      "label_en": "Japan's direct investment to the country (net flow)",
+      "unit": "JPY",
+      "series": [
+        {
+          "source_id": "mof_fdi",
+          "url": "https://www.mof.go.jp/policy/international_policy/reference/balance_of_payments/bp_trend/bpfdi/fdi/6d-2.csv",
+          "retrieved_at": "2026-10-17T13:18:34+00:00",
+          "observations": [
+            {
+              "year": 2014,
+              "value": 140200000000.0
+            },
+            {
+              "year": 2015,
+              "value": 353600000000.0
+            },
+            {
+              "year": 2016,
+              "value": 140100000000.0
+            },
+            {
+              "year": 2017,
+              "value": 121700000000.0
+            },
+            {
+              "year": 2018,
+              "value": 141400000000.0
+            },
+            {
+              "year": 2019,
+              "value": 64400000000.0
+            },
+            {
+              "year": 2020,
+              "value": 153400000000.0
+            },
+            {
+              "year": 2021,
+              "value": 274000000000.0
+            },
+            {
+              "year": 2022,
+              "value": 283500000000.0
+            },
+            {
+              "year": 2023,
+              "value": 270400000000.0
+            },
+            {
+              "year": 2024,
+              "value": 351900000000.0
+            },
+            {
+              "year": 2025,
+              "value": 412100000000.0
+            }
+          ]
+        }
+      ]
     }
   }
 }

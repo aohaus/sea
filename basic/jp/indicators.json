@@ -2493,6 +2493,24 @@
       "label_en": "Japanese nationals residing in the country",
       "unit": "persons",
       "series": []
+    },
+    "visitors_to_japan": {
+      "label_ja": "訪日客数（この国から）",
+      "label_en": "Visitor arrivals to Japan from the country",
+      "unit": "persons",
+      "series": []
+    },
+    "residents_in_japan": {
+      "label_ja": "日本に住むこの国の人（在留外国人）",
+      "label_en": "Residents of Japan with the country's nationality",
+      "unit": "persons",
+      "series": []
+    },
+    "fdi_from_japan": {
+      "label_ja": "日本からの直接投資（ネット・フロー）",
+      "label_en": "Japan's direct investment to the country (net flow)",
+      "unit": "JPY",
+      "series": []
     }
   }
 }

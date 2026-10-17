@@ -1,11 +1,17 @@
 {
-  "_comment": "自動チェック（scripts/check_health.py）で「最新年が古い」と出る系列のうち、確認済みで意図したもの。place は国コードまたは都市 ID。ここに載せた系列は Issue を開いたままにせず、報告に「確認済み」として表示する。",
+  "_comment": "自動チェック（scripts/check_health.py）で「最新年が古い」と出る系列のうち、確認済みで意図したもの。place は国コードまたは都市 ID。ここに載せた系列は Issue を開いたままにせず、報告に「確認済み」として表示する。 ビューアは、表示中の指標・出所に該当する系列があると、グラフの注記に reason を表示する。",
   "stopped_series": [
     {
       "source_id": "worldbank_wdi",
       "indicator_id": "exchange_rate",
       "place": "mm",
       "reason": "世界銀行の公式為替レートは2020年で終了。ビューアでは2021年以降を JETRO「概況・基本統計」の公定レートで補完（2026-10 確認）"
+    },
+    {
+      "source_id": "worldbank_wdi",
+      "indicator_id": "inflation_cpi",
+      "place": "mm",
+      "reason": "世界銀行の消費者物価上昇率（FP.CPI.TOTL.ZG）は2019年で終了。2023年以降は JETRO「概況・基本統計」の値（年度値）があり、出所を JETRO に切り替えると表示されます（2026-10 確認）"
     }
   ]
 }

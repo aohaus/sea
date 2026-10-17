@@ -276,7 +276,7 @@ def flatten(dataset: dict) -> dict[str, list[dict]]:
                         "indicator_en": f["label_en"], "unit": f["unit"], "year": o["year"], "value": o["value"],
                         "note": o.get("note"), **source_cols(series["source_id"]),
                         "indicator_code": series.get("indicator_code"),
-                        "original_source": o.get("original_source"), "url": series["url"],
+                        "original_source": o.get("original_source"), "url": o.get("url") or series["url"],
                         "retrieved_at": series["retrieved_at"],
                         "source_last_updated": series.get("source_last_updated") or series.get("page_last_updated"),
                         "retrieval_method": series.get("retrieval_method", "auto"),

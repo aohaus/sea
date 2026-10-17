@@ -1,0 +1,58 @@
+{
+  "jnto_visitors": {
+    "fetch_status": "ok",
+    "fetch_error": null,
+    "url": "https://www.jnto.go.jp/statistics/data/_files/20260916_1615-5.xlsx",
+    "countries": [
+      "id",
+      "my",
+      "ph",
+      "sg",
+      "th",
+      "vn"
+    ],
+    "years": [
+      2003,
+      2025
+    ]
+  },
+  "isa_residents": {
+    "fetch_status": "ok",
+    "fetch_error": null,
+    "url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
+    "countries": [
+      "bn",
+      "id",
+      "kh",
+      "la",
+      "mm",
+      "my",
+      "ph",
+      "sg",
+      "th",
+      "tl",
+      "vn"
+    ],
+    "years": [
+      2012,
+      2025
+    ]
+  },
+  "mof_fdi": {
+    "fetch_status": "ok",
+    "fetch_error": null,
+    "url": "https://www.mof.go.jp/policy/international_policy/reference/balance_of_payments/bp_trend/bpfdi/fdi/6d-2.csv",
+    "countries": [
+      "id",
+      "my",
+      "ph",
+      "sg",
+      "th",
+      "vn"
+    ],
+    "years": [
+      2014,
+      2025
+    ]
+  }
+}

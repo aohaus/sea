@@ -8,6 +8,8 @@ Sources (registered in basic/sources.json):
                  bulk download and commercial reuse)
   jetro_basic    the "基礎的経済指標" table already saved by fetch_basic.py
   mofa_basic     single population figure already saved (manual import)
+  jnto_visitors, isa_residents, mof_fdi
+                 ties with Japan, already saved by fetch_japan_ties.py in basic/ties/
 
 Indicator codes per field are in basic/schema/fields.json (phase 2). For every
 country it writes:
@@ -271,6 +273,13 @@ def build_indicators(country: dict, fields: list[dict], extracts: dict[str, dict
                     "retrieval_method": ex.get("retrieval_method", "auto"),
                     "observations": obs,
                 })
+        # Ties with Japan (scripts/fetch_japan_ties.py): one file per source, keyed by country.
+        ties = extracts.get(f.get("ties_source") or "")
+        if ties and ties["series"].get(country["code"]):
+            series.append({
+                "source_id": f["ties_source"], "url": ties["url"], "retrieved_at": ties["retrieved_at"],
+                "observations": ties["series"][country["code"]],
+            })
         result["indicators"][f["id"]] = {
             "label_ja": f["label_ja"], "label_en": f["label_en"], "unit": f["unit"], "series": series,
         }
@@ -325,6 +334,11 @@ def main() -> int:
                 save_extract(c["code"], source_id, {"source_id": source_id, "retrieved_at": retrieved_at,
                                                     **data[c["iso3"]]})
 
+    ties = {}
+    for f in fields:
+        path = BASIC_DIR / "ties" / f"{f.get('ties_source')}.json"
+        if f.get("ties_source") and path.exists():
+            ties[f["ties_source"]] = load_json(path)
     report = []
     for c in countries:
         extracts = {}
@@ -332,6 +346,7 @@ def main() -> int:
             path = BASIC_DIR / c["code"] / f"{source_id}.json"
             if path.exists():
                 extracts[source_id] = load_json(path)
+        extracts.update(ties)
         result = build_indicators(c, fields, extracts)
         write_json(BASIC_DIR / c["code"] / "indicators.json", result)
         coverage = {k: [s["source_id"] for s in v["series"]] for k, v in result["indicators"].items()}

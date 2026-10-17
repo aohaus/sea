@@ -53,7 +53,12 @@
         "japan_imports": [],
         "japanese_residents": [
           "mofa_basic"
-        ]
+        ],
+        "visitors_to_japan": [],
+        "residents_in_japan": [
+          "isa_residents"
+        ],
+        "fdi_from_japan": []
       }
     },
     {
@@ -115,7 +120,12 @@
         ],
         "japanese_residents": [
           "jetro_basic"
-        ]
+        ],
+        "visitors_to_japan": [],
+        "residents_in_japan": [
+          "isa_residents"
+        ],
+        "fdi_from_japan": []
       }
     },
     {
@@ -177,6 +187,15 @@
         ],
         "japanese_residents": [
           "jetro_basic"
+        ],
+        "visitors_to_japan": [
+          "jnto_visitors"
+        ],
+        "residents_in_japan": [
+          "isa_residents"
+        ],
+        "fdi_from_japan": [
+          "mof_fdi"
         ]
       }
     },
@@ -238,7 +257,12 @@
         ],
         "japanese_residents": [
           "jetro_basic"
-        ]
+        ],
+        "visitors_to_japan": [],
+        "residents_in_japan": [
+          "isa_residents"
+        ],
+        "fdi_from_japan": []
       }
     },
     {
@@ -300,6 +324,15 @@
         ],
         "japanese_residents": [
           "jetro_basic"
+        ],
+        "visitors_to_japan": [
+          "jnto_visitors"
+        ],
+        "residents_in_japan": [
+          "isa_residents"
+        ],
+        "fdi_from_japan": [
+          "mof_fdi"
         ]
       }
     },
@@ -361,7 +394,12 @@
         ],
         "japanese_residents": [
           "jetro_basic"
-        ]
+        ],
+        "visitors_to_japan": [],
+        "residents_in_japan": [
+          "isa_residents"
+        ],
+        "fdi_from_japan": []
       }
     },
     {
@@ -423,6 +461,15 @@
         ],
         "japanese_residents": [
           "jetro_basic"
+        ],
+        "visitors_to_japan": [
+          "jnto_visitors"
+        ],
+        "residents_in_japan": [
+          "isa_residents"
+        ],
+        "fdi_from_japan": [
+          "mof_fdi"
         ]
       }
     },
@@ -485,6 +532,15 @@
         ],
         "japanese_residents": [
           "jetro_basic"
+        ],
+        "visitors_to_japan": [
+          "jnto_visitors"
+        ],
+        "residents_in_japan": [
+          "isa_residents"
+        ],
+        "fdi_from_japan": [
+          "mof_fdi"
         ]
       }
     },
@@ -547,6 +603,15 @@
         ],
         "japanese_residents": [
           "jetro_basic"
+        ],
+        "visitors_to_japan": [
+          "jnto_visitors"
+        ],
+        "residents_in_japan": [
+          "isa_residents"
+        ],
+        "fdi_from_japan": [
+          "mof_fdi"
         ]
       }
     },
@@ -600,7 +665,12 @@
         "japan_imports": [],
         "japanese_residents": [
           "mofa_basic"
-        ]
+        ],
+        "visitors_to_japan": [],
+        "residents_in_japan": [
+          "isa_residents"
+        ],
+        "fdi_from_japan": []
       }
     },
     {
@@ -662,6 +732,15 @@
         ],
         "japanese_residents": [
           "jetro_basic"
+        ],
+        "visitors_to_japan": [
+          "jnto_visitors"
+        ],
+        "residents_in_japan": [
+          "isa_residents"
+        ],
+        "fdi_from_japan": [
+          "mof_fdi"
         ]
       }
     },
@@ -712,7 +791,10 @@
         ],
         "japan_exports": [],
         "japan_imports": [],
-        "japanese_residents": []
+        "japanese_residents": [],
+        "visitors_to_japan": [],
+        "residents_in_japan": [],
+        "fdi_from_japan": []
       }
     }
   ]

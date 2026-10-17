@@ -84,6 +84,12 @@ def check(now: datetime, job_status: str | None) -> list[dict]:
         for source_id, r in load_json(report).items():
             if isinstance(r, dict) and "fetch_status" in r and r["fetch_status"] != "ok":
                 add("error", source_id, "都市データの取得に失敗", str(r.get("error") or r.get("fetch_error") or r["fetch_status"]))
+    # Ties with Japan (JNTO / ISA / MOF): "partial" means some years failed and kept their saved values.
+    report = BASIC_DIR / "ties" / "fetch_report.json"
+    if report.exists():
+        for source_id, r in load_json(report).items():
+            if r.get("fetch_status") != "ok":
+                add("error", source_id, "日本とのつながりデータの取得に失敗", str(r.get("fetch_error")))
     # Population projections (UN WPP): fetch result, and an edition that is getting old.
     report = BASIC_DIR / "projections_report.json"
     if report.exists():

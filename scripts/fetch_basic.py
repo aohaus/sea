@@ -433,7 +433,10 @@ def main() -> int:
     failed = [f"{r['code']}/{r['source_id']}: {r['fetch_error']}" for r in report if r["fetch_status"] not in ("ok", "not_run")]
     for line in failed:
         print(f"FETCH FAILED {line}", file=sys.stderr)
-    return 0 if any(r["fetch_status"] == "ok" for r in report) else 1
+    # Even when every page fails (e.g. a site-wide maintenance), the saved extracts are kept and the
+    # failures are in fetch_report.json, which scripts/check_health.py reports. Exiting 0 lets the
+    # workflow go on to the other sources instead of skipping them all.
+    return 0
 
 
 if __name__ == "__main__":

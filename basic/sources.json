@@ -181,6 +181,51 @@
       "storage_policy": "対象国の値（年・値）と URL・取得日のみ保存。CSV 本体は保存しない / Values for the target countries with URL and retrieval date only.",
       "auto_fetch": true,
       "update_note": "新しい版（2年ごと）が出たら edition・estimates_until・url_candidates を更新する"
+    },
+    {
+      "id": "jnto_visitors",
+      "publisher_ja": "日本政府観光局（JNTO）",
+      "publisher_en": "Japan National Tourism Organization (JNTO)",
+      "title_ja": "訪日外客統計（国籍/月別 訪日外客数）",
+      "title_en": "Visitor arrivals to Japan by nationality",
+      "page_url": "https://www.jnto.go.jp/statistics/data/visitors-statistics/",
+      "type": "xlsx",
+      "language": "ja",
+      "terms_url": "https://www.jnto.go.jp/statistics/",
+      "license": "要確認",
+      "license_note": "出典：日本政府観光局（JNTO）。利用条件は要確認。直近の値は暫定値で、確定値に改訂されることがあります。",
+      "storage_policy": "対象国の年計（年・値）と URL・取得日のみ保存。Excel 本体は保存しない / Annual totals for the target countries with URL and retrieval date only.",
+      "auto_fetch": true
+    },
+    {
+      "id": "isa_residents",
+      "publisher_ja": "出入国在留管理庁",
+      "publisher_en": "Immigration Services Agency of Japan",
+      "title_ja": "在留外国人統計（国籍・地域別 在留資格別 在留外国人、各年12月末）",
+      "title_en": "Statistics on foreign residents (by nationality, end of December)",
+      "page_url": "https://www.moj.go.jp/isa/policies/statistics/toukei_ichiran_touroku.html",
+      "type": "xlsx (e-Stat)",
+      "language": "ja",
+      "terms_url": "https://www.e-stat.go.jp/terms-of-use",
+      "license": "政府標準利用規約（第2.0版）準拠（要確認）",
+      "license_note": "出典：出入国在留管理庁「在留外国人統計」（e-Stat）。e-Stat の利用規約は CC BY 4.0 と互換とされるが、個別に要確認。",
+      "storage_policy": "対象国籍の総数（年・値）と URL・取得日のみ保存 / Totals for the target nationalities with URL and retrieval date only.",
+      "auto_fetch": true
+    },
+    {
+      "id": "mof_fdi",
+      "publisher_ja": "財務省",
+      "publisher_en": "Ministry of Finance, Japan",
+      "title_ja": "国際収支状況 対外直接投資の地域別内訳（6d-2、暦年）",
+      "title_en": "Balance of payments: direct investment assets by country (6d-2, calendar year)",
+      "page_url": "https://www.mof.go.jp/policy/international_policy/reference/balance_of_payments/bpfdi.htm",
+      "type": "csv",
+      "language": "ja",
+      "terms_url": "https://www.mof.go.jp/use_of_contents/",
+      "license": "政府標準利用規約（第2.0版）準拠（要確認）",
+      "license_note": "出典：財務省・日本銀行「国際収支統計」。ネット（実行−回収）のフロー。(P) は速報値。",
+      "storage_policy": "対象国の年計（年・値）と URL・取得日のみ保存 / Annual net flows for the target countries with URL and retrieval date only.",
+      "auto_fetch": true
     }
   ]
 }
