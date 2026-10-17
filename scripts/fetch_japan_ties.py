@@ -292,6 +292,22 @@ def fetch_mof(session, places: dict[str, str]) -> tuple[str, dict]:
 
 # --------------------------------------------------------------------------- #
 
+def keep_saved(source_id: str, series: dict) -> list[str]:
+    """Add back every saved country-year the new parse lacks, so a changed layout that yields only part
+    of the table never deletes history. Returns what was missing (reported as a partial fetch)."""
+    path = OUT_DIR / f"{source_id}.json"
+    old = load_json(path).get("series", {}) if path.exists() else {}
+    missing = []
+    for code, obs in old.items():
+        have = {o["year"] for o in series.get(code, [])}
+        lost = [o for o in obs if o["year"] not in have]
+        if lost:
+            series.setdefault(code, []).extend(lost)
+            series[code].sort(key=lambda o: o["year"])
+            missing.append(f"{code} {', '.join(str(o['year']) for o in lost)}")
+    return missing
+
+
 def save(source_id: str, url: str, series: dict) -> bool:
     path = OUT_DIR / f"{source_id}.json"
     old = load_json(path) if path.exists() else {}
@@ -313,7 +329,12 @@ def main() -> int:
     def run(source_id, fn):
         try:
             url, series, *errs = fn()
-            errors = errs[0] if errs else []
+            errors = list(errs[0]) if errs else []
+            if not series:
+                raise RuntimeError("no values parsed (layout changed?)")
+            missing = keep_saved(source_id, series)
+            if missing:
+                errors.append("not in this fetch, kept the saved values: " + "; ".join(missing))
             changed = save(source_id, url, series)
             report[source_id] = {"fetch_status": "ok" if not errors else "partial", "fetch_error": "; ".join(errors) or None,
                                  "url": url, "countries": sorted(series),
