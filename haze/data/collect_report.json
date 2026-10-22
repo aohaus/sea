@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-10-22T23:44:00+08:00",
+  "run_at": "2026-10-22T23:54:16+08:00",
   "sources": {
     "doe": {
       "status": "ok",
@@ -7,8 +7,9 @@
       "notes": []
     },
     "waqi": {
-      "status": "skipped",
-      "detail": "WAQI_TOKEN secret is not set"
+      "status": "ok",
+      "readings": 14,
+      "notes": []
     }
   },
   "time_samples": {
