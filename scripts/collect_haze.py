@@ -64,6 +64,13 @@ def slot_of(t: datetime) -> str:
     return t.replace(hour=t.hour - t.hour % 2, minute=0, second=0, microsecond=0).strftime("%Y-%m-%dT%H")
 
 
+def redact(text: str) -> str:
+    """Remove secrets from text that goes into the committed report or the log (an exception from
+    requests includes the full URL, query string and token)."""
+    token = os.environ.get("WAQI_TOKEN")
+    return text.replace(token, "***") if token else text
+
+
 def get_json(url: str) -> dict:
     last = None
     for _ in range(2):
@@ -125,7 +132,7 @@ def fetch_waqi(token: str) -> tuple[list[tuple], list[str]]:
             if isinstance(pm, (int, float)):
                 out.append((slot_of(t), sid, "waqi_pm25", round(pm), name))
         except Exception as exc:  # noqa: BLE001 - one station's failure does not stop the others
-            notes.append(f"{sid}: {type(exc).__name__}: {exc}")
+            notes.append(redact(f"{sid}: {type(exc).__name__}: {exc}"))
     if not out and notes:
         raise RuntimeError("; ".join(notes))
     return out, notes
@@ -153,7 +160,7 @@ def main() -> int:
             readings += got
             report["sources"][name] = {"status": "ok" if not notes else "partial", "readings": len(got), "notes": notes}
         except Exception as exc:  # noqa: BLE001 - report and keep the other source
-            report["sources"][name] = {"status": "error", "detail": f"{type(exc).__name__}: {exc}"}
+            report["sources"][name] = {"status": "error", "detail": redact(f"{type(exc).__name__}: {exc}")}
 
     # Add to the monthly archives (a later reading for the same slot replaces an earlier one). A reading
     # dated after the current slot means a time-zone mistake; it is reported, not stored.
@@ -187,8 +194,9 @@ def main() -> int:
         "stations": stations, "meta": meta,
     })
     report["time_samples"] = SAMPLES
-    (DATA / "collect_report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps(report, ensure_ascii=False, indent=2))
+    text = redact(json.dumps(report, ensure_ascii=False, indent=2))  # again over everything, in case
+    (DATA / "collect_report.json").write_text(text + "\n", encoding="utf-8")
+    print(text)
     return 0
 
 
