@@ -1,11 +1,11 @@
 {
-  "run_at": "2026-10-22T23:34:57+08:00",
+  "run_at": "2026-10-22T23:35:36+08:00",
   "sources": {
     "doe": {
       "status": "partial",
       "readings": 6,
       "notes": [
-        "sample: DOE Cheras, W.P. KUALA LUMPUR (CA16W, PM2.5) DATETIME=1792710000000 -> 2026-10-23T07:00:00+08:00 (slot 2026-10-23T06)"
+        "sample: DOE Cheras, W.P. KUALA LUMPUR (CA16W, PM2.5) DATETIME=1792710000000 -> 2026-10-22T23:00:00+08:00 (slot 2026-10-22T22)"
       ]
     },
     "waqi": {
