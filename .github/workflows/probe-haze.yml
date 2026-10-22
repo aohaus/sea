@@ -1,0 +1,28 @@
+name: Probe haze sources (temporary)
+on:
+  push:
+    branches: [claude/haze-probe]
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probe
+        run: |
+          O="Origin: https://aohaus.github.io"
+          for u in \
+            "https://air-quality-api.open-meteo.com/v1/air-quality?latitude=3.08&longitude=101.74&hourly=pm2_5,pm10,us_aqi&past_days=14&forecast_days=1&timezone=Asia%2FSingapore" \
+            "https://api-open.data.gov.sg/v2/real-time/api/psi?date=2026-10-21" \
+            "https://api-open.data.gov.sg/v2/real-time/api/pm25?date=2026-10-21" \
+            "https://api.waqi.info/feed/geo:3.08;101.74/?token=demo" \
+            "https://api.waqi.info/feed/@1/?token=demo" \
+            "https://eqms.doe.gov.my/api3/publicmapproxy/PUBLIC_DISPLAY/CAQM_MCAQM_Current_Reading/MapServer/0/query?where=1%3D1&outFields=*&f=json" \
+            "https://apims.doe.gov.my/api_table.html" ; do
+            echo "===== $u"
+            curl -s -D h.txt -o b.txt --max-time 25 -H "$O" "$u"; grep -i "^HTTP\|access-control-allow-origin\|content-type" h.txt
+            head -c 900 b.txt; echo
+          done
+          echo "===== OM detail"
+          curl -s "https://air-quality-api.open-meteo.com/v1/air-quality?latitude=1.35&longitude=103.82&hourly=pm2_5,pm10,us_aqi&past_days=14&forecast_days=1&timezone=Asia%2FSingapore" | python3 -c "import sys,json;h=json.load(sys.stdin)['hourly'];print(len(h['time']),h['time'][0],h['time'][-1]);print(h['pm2_5'][::24])"
+          echo "===== NEA detail"
+          curl -s "https://api-open.data.gov.sg/v2/real-time/api/pm25?date=2026-10-21" | python3 -c "import sys,json;d=json.load(sys.stdin);print(d.keys());it=d['data']['items'];print(len(it));print(json.dumps(it[0])[:400]);print(json.dumps(d['data'].get('regionMetadata'))[:400])"
+          curl -s "https://api-open.data.gov.sg/v2/real-time/api/psi?date=2026-10-21" | python3 -c "import sys,json;d=json.load(sys.stdin);it=d['data']['items'];print(len(it));print(json.dumps(it[0])[:700])"
