@@ -143,7 +143,8 @@
   }
 
   // ---------- data store ----------
-  // DATA[station][seriesKey] = { values: [168], mode: 'sim' | 'live' | 'mixed', note }
+  // DATA[station][seriesKey] = { values: [168], mode: 'sim' | 'live' | 'mixed', note, real }
+  // mode 'mixed': only the slots in real (a Set of indices) are real readings; the rest are simulated.
   const DATA = {};
   for (const st of STATIONS) {
     const sim = simulate(st);
@@ -157,11 +158,12 @@
     collector: { state: 'none', text: '' },
   };
   // Collected series (data/series.json) are kept; the browser fetchers only replace the others.
-  const setLive = (st, key, values, mode, note, collected = false) => {
+  const setLive = (st, key, values, mode, note, collected = false, real = null) => {
     const cur = DATA[st]?.[key];
     if (!cur || (cur.collected && !collected)) return;
-    DATA[st][key] = { values, mode, note, collected };
+    DATA[st][key] = { values, mode, note, collected, real };
   };
+  const isReal = (data, i) => data.mode === 'live' || !!data.real?.has(i);
 
   // ---------- live fetchers ----------
   const fetchJson = async (url, ms = 20000) => {
@@ -244,8 +246,7 @@
           if (!cur || cur.collected || v == null || !isFinite(v)) continue;
           const values = cur.values.slice(); values[i] = v;
           // History stays simulated: only the reading at slot i is real.
-          setLive(st.id, key, values, 'mixed', 'WAQI 観測局「' + d.data.city.name + '」の現在値（' + shortLabel(SLOTS[i]) + '）。それ以前は模擬値');
-          DATA[st.id][key].liveIndex = i;
+          setLive(st.id, key, values, 'mixed', 'WAQI 観測局「' + d.data.city.name + '」の現在値（' + shortLabel(SLOTS[i]) + '）。それ以前は模擬値', false, new Set([i]));
         }
         ok++;
       } catch (e) { console.warn('WAQI', st.id, e); }
@@ -261,14 +262,20 @@
       const d = await fetchJson('data/series.json', 10000);
       const idx = (d.slots || []).map((t) => slotIndex.get(slotKey(Date.parse(t))));
       let n = 0;
+      // Collected readings replace the simulated values slot by slot; until 14 days have been collected
+      // the older slots stay simulated (mode 'mixed').
       for (const [st, byKey] of Object.entries(d.stations || {})) for (const [key, arr] of Object.entries(byKey)) {
         if (!DATA[st]?.[key]) continue;
-        const values = Array(N).fill(null);
-        arr.forEach((v, j) => { if (idx[j] != null) values[idx[j]] = v; });
-        if (values.filter((v) => v != null).length < N / 4) continue;
-        setLive(st, key, values, 'live', '収集データ（' + String(d.generated_at).slice(0, 16).replace('T', ' ') + ' 更新）', true); n++;
+        const values = DATA[st][key].values.slice(), real = new Set();
+        arr.forEach((v, j) => { if (idx[j] != null && v != null && isFinite(v)) { values[idx[j]] = v; real.add(idx[j]); } });
+        if (!real.size) continue;
+        const source = d.meta?.[st]?.[key] || '';
+        setLive(st, key, values, real.size === N ? 'live' : 'mixed',
+          '収集データ' + (source ? '：' + source : '') + '（' + real.size + '/' + N + '枠、' + String(d.generated_at).slice(0, 16).replace('T', ' ') + ' 更新）'
+            + (real.size < N ? '。収集前の枠は模擬値' : ''), true, real);
+        n++;
       }
-      STATUS.collector = n ? { state: 'live', text: n + '系列を収集データから表示' } : { state: 'none', text: '' };
+      STATUS.collector = n ? { state: 'live', text: n + '系列に収集データ（2時間ごと）' } : { state: 'none', text: '' };
     } catch (e) { STATUS.collector = { state: 'none', text: '' }; }
   }
 
@@ -366,7 +373,7 @@
   const modeBadge = (mode) => {
     const s = document.createElement('span');
     s.className = 'badge ' + (mode === 'live' ? 'badge-live' : mode === 'mixed' ? 'badge-live' : 'badge-sim');
-    s.textContent = mode === 'live' ? '実データ' : mode === 'mixed' ? '最新のみ実データ' : '模擬';
+    s.textContent = mode === 'live' ? '実データ' : mode === 'mixed' ? '一部実データ' : '模擬';
     return s;
   };
   function renderTiles(ls) {
@@ -439,12 +446,14 @@
     const hasIndex = ls.some((l) => l.def.kind === 'index'), hasConc = ls.some((l) => l.def.kind === 'conc');
     const grid = css('--grid'), muted = css('--muted'), fg = css('--fg');
     const datasets = ls.map((l) => ({
-      label: l.label + (l.data.mode === 'sim' ? '（模擬）' : l.data.mode === 'mixed' ? '（最新のみ実データ）' : ''),
+      label: l.label + (l.data.mode === 'sim' ? '（模擬）' : l.data.mode === 'mixed' ? '（一部実データ）' : ''),
       data: l.data.values, borderColor: l.color, backgroundColor: l.color,
       yAxisID: l.def.kind === 'index' ? 'yIndex' : 'yConc',
       borderWidth: l.data.mode === 'sim' ? 1.6 : 2.2,
       borderDash: l.def.kind === 'conc' ? [6, 3] : [],
-      pointRadius: (ctx) => (l.data.liveIndex === ctx.dataIndex ? 5 : 0),
+      // In a partly real series, real readings get a dot and the simulated stretches are faded.
+      pointRadius: (ctx) => (l.data.mode === 'mixed' && isReal(l.data, ctx.dataIndex) ? (l.data.real.size === 1 ? 5 : 2.5) : 0),
+      segment: l.data.mode === 'mixed' ? { borderColor: (ctx) => (isReal(l.data, ctx.p0DataIndex) && isReal(l.data, ctx.p1DataIndex) ? l.color : l.color + '55') } : undefined,
       pointHoverRadius: 4, tension: 0.25, spanGaps: false,
       meta: l,
     }));
@@ -472,7 +481,7 @@
             label: (item) => {
               const l = item.dataset.meta, v = item.parsed.y;
               const cat = category(l.def.bands, v);
-              const live = l.data.mode === 'live' || l.data.liveIndex === item.dataIndex;
+              const live = isReal(l.data, item.dataIndex);
               return ' ' + l.label + '：' + fmt(v, l.def.unit) + (l.def.unit ? ' ' + l.def.unit : '') + (cat ? '（' + cat.ja + '）' : '') + (live ? '' : ' 模擬');
             },
           },
@@ -548,9 +557,19 @@
     box.replaceChildren(range, ...items);
     if (STATUS.collector.state === 'live') { const c = document.createElement('span'); c.className = 'badge badge-live'; c.textContent = STATUS.collector.text; box.append(c); }
 
+    // Collected series (GitHub Actions every 2 hours): how many slots of the 14 days are real.
+    const collected = (keys) => {
+      const ds = STATIONS.flatMap((st) => keys.map((k) => DATA[st.id][k])).filter((x) => x?.collected);
+      if (!ds.length) return null;
+      const share = Math.min(...ds.map((x) => (x.mode === 'live' ? N : x.real.size)));
+      return { state: share >= N ? 'live' : 'mixed', text: '2時間ごとの収集データ（14日のうち' + share + '枠以上）。収集前の枠は模擬値' };
+    };
+    const doe = collected(['doe_api']), waqi = collected(['waqi_aqi']);
     const rows = [
-      ['A', 'US AQI、PM2.5 指数', STATUS.A, 'WAQI（aqicn.org）が各国の観測局を US EPA の AQI にそろえて公開。無料 API は現在値のみで、利用には個人のトークンが必要です（下で入力）。'],
-      ['B', 'マレーシア：API（DOE APIMS）', { state: 'sim', text: '' }, 'マレーシア環境局の API は、ブラウザから他サイトの読み込みを許可していないため、このページでは模擬値です。2時間ごとにサーバー側で取得する収集処理（data/series.json）を用意すると実データになります。'],
+      ['A', 'US AQI、PM2.5 指数', waqi || STATUS.A, 'WAQI（aqicn.org）が各国の観測局を US EPA の AQI にそろえて公開。2時間ごとにサーバー側で現在値を取得して貯めています（トークンはリポジトリのシークレット）。'
+        + (waqi ? '' : 'まだ収集データがないため、下でご自身のトークンを入れると現在値だけ取得できます。')],
+      ['B', 'マレーシア：API（DOE APIMS）', doe || { state: 'sim', text: '' }, 'マレーシア環境局の API は、ブラウザから他サイトの読み込みを許可していないため、2時間ごとにサーバー側で全観測局の現在値を取得して貯めています。'
+        + (doe ? '' : 'まだ収集データがないため模擬値です。')],
       ['B', 'シンガポール：24時間 PSI、PM2.5 1時間値（NEA）', STATUS.B.state === 'mixed' ? { state: 'live' } : STATUS.B, 'シンガポール国家環境庁（NEA）の data.gov.sg v2 API から、中部地域の値を日ごとに取得します。'],
       ['C', 'PM2.5・PM10（µg/m³）、US AQI', STATUS.C, 'Open-Meteo Air Quality API（欧州 CAMS のモデル）。地点の座標に最も近い格子の1時間値です。実測ではないため、観測値との比較や傾向の確認に使います。'],
     ];
