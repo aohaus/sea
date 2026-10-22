@@ -94,7 +94,8 @@ def fetch_doe() -> tuple[list[tuple], list[str]]:
         if api is None or when is None or float(api) < 0:
             notes.append(f"{sid}: no reading at {best.get('STATION_LOCATION')}")
             continue
-        t = datetime.fromtimestamp(int(when) / 1000, tz=timezone.utc)
+        # DATETIME is the local (UTC+8) wall-clock time stored as if it were UTC.
+        t = datetime.fromtimestamp(int(when) / 1000, tz=timezone.utc).replace(tzinfo=TZ)
         name = f"DOE {best.get('STATION_LOCATION')} ({best.get('STATION_ID')}, {best.get('PARAM_SELECTED') or 'API'})"
         out.append((slot_of(t), sid, "doe_api", round(float(api)), name))
         if sid == "cheras":  # one raw time in the report, to check the time zone of DOE's DATETIME
@@ -153,8 +154,13 @@ def main() -> int:
         except Exception as exc:  # noqa: BLE001 - report and keep the other source
             report["sources"][name] = {"status": "error", "detail": f"{type(exc).__name__}: {exc}"}
 
-    # Add to the monthly archives (a later reading for the same slot replaces an earlier one).
+    # Add to the monthly archives (a later reading for the same slot replaces an earlier one). A reading
+    # dated after the current slot means a time-zone mistake; it is reported, not stored.
+    current = slot_of(now)
     for slot, sid, key, value, source in readings:
+        if slot > current:
+            report.setdefault("rejected", []).append(f"{sid} {key}: reading slot {slot} is after the current slot {current}")
+            continue
         path = DATA / "archive" / f"{slot[:7]}.json"
         arc = load(path, {"slots": {}, "meta": {}})
         arc["slots"].setdefault(slot, {}).setdefault(sid, {})[key] = value
