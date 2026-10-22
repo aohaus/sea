@@ -317,6 +317,14 @@
   };
 
   // ---------- controls ----------
+  // What the folded filter panel holds, so a phone shows the selection without opening it.
+  function renderFilterSummary(ls, bandsKey) {
+    const parts = [];
+    if (state.mode === 'indices') parts.push(ls.length + '系列', '出所 ' + (state.sources.length ? [...state.sources].sort().join('・') : 'なし'));
+    parts.push('色帯：' + (BANDS[bandsKey]?.ja.replace(/（.*/, '') || 'なし'));
+    $('filters-summary').textContent = parts.join('／');
+  }
+
   function renderControls() {
     $('city-tabs').replaceChildren(...CITIES.map((c) => {
       const b = document.createElement('button');
@@ -387,13 +395,13 @@
       const vals = l.data.values, i = latestOf(vals), v = i >= 0 ? vals[i] : null;
       const cat = category(l.def.bands, v);
       const div = document.createElement('div');
-      div.className = 'card grid gap-1 content-start';
+      div.className = 'card grid gap-1 content-start !p-3 sm:!p-5';
       div.style.borderLeft = '6px solid ' + l.color;
-      const head = document.createElement('div'); head.className = 'flex items-start justify-between gap-2';
+      const head = document.createElement('div'); head.className = 'flex flex-wrap items-start justify-between gap-1';
       const name = document.createElement('div'); name.className = 'text-[.8rem] font-bold leading-snug';
       name.textContent = state.mode === 'places' ? l.station.ja : l.def.ja;
       head.append(name, modeBadge(l.data.mode));
-      const val = document.createElement('div'); val.className = 'text-[1.9rem] font-black leading-none tnum';
+      const val = document.createElement('div'); val.className = 'text-[1.6rem] sm:text-[1.9rem] font-black leading-none tnum';
       val.textContent = fmt(v, l.def.unit);
       if (l.def.unit) { const u = document.createElement('span'); u.className = 'text-[.8rem] font-medium text-muted ml-1'; u.textContent = l.def.unit; val.append(u); }
       const sub = document.createElement('div'); sub.className = 'text-[.75rem] text-muted';
@@ -510,13 +518,13 @@
       data: hours.map((h) => { const v = l.data.values.filter((x, i) => x != null && slotHour(SLOTS[i]) === h); return v.length ? v.reduce((a, b) => a + b, 0) / v.length : null; }),
       meta: l,
     }));
-    const scales = { x: { ticks: { color: muted }, grid: { display: false } } };
+    const scales = { x: { ticks: { color: muted, maxRotation: 0, autoSkip: true, autoSkipPadding: 8 }, grid: { display: false } } };
     if (hasIndex || !hasConc) scales.yIndex = { position: 'left', beginAtZero: true, ticks: { color: muted }, grid: { color: grid }, title: { display: true, text: '指数', color: muted } };
     if (hasConc) scales.yConc = { position: hasIndex ? 'right' : 'left', beginAtZero: true, ticks: { color: muted }, grid: { color: hasIndex ? 'transparent' : grid }, title: { display: true, text: 'µg/m³', color: muted } };
     const options = {
       responsive: true, maintainAspectRatio: false, animation: { duration: 250 },
       interaction: { mode: 'index', intersect: false },
-      plugins: { legend: { display: false }, tooltip: { callbacks: {
+      plugins: { legend: { position: 'bottom', labels: { color: fg, usePointStyle: true, pointStyle: 'line', boxWidth: 24, font: { size: 11 } } }, tooltip: { callbacks: {
         title: (items) => (items.length ? hours[items[0].dataIndex] + ':00 の平均（14日間）' : ''),
         label: (item) => ' ' + item.dataset.meta.label + '：' + fmt(item.parsed.y, item.dataset.meta.def.unit) } } },
       scales,
@@ -533,15 +541,21 @@
       const b = BANDS[l.def.bands];
       const share = b && vals.length ? vals.filter((v) => v > b.harmful).length / vals.length : null;
       const tr = document.createElement('tr'); tr.className = 'border-b border-line';
-      const name = document.createElement('td'); name.className = 'py-1.5 pr-3';
+      // The name gets room (min width) and the badge its own line, so phones do not wrap each word.
+      const name = document.createElement('td'); name.className = 'py-1.5 pr-2 sm:pr-3 min-w-[8rem]';
       const sw = document.createElement('span'); sw.className = 'swatch'; sw.style.background = l.color;
-      name.append(sw, l.label, ' ', modeBadge(l.data.mode));
-      const td = (t) => { const c = document.createElement('td'); c.className = 'py-1.5 px-2 text-right whitespace-nowrap'; c.textContent = t; return c; };
+      const badge = document.createElement('div'); badge.className = 'mt-0.5'; badge.append(modeBadge(l.data.mode));
+      name.append(sw, l.label, badge);
+      const td = (t) => { const c = document.createElement('td'); c.className = 'py-1.5 px-1.5 sm:px-2 text-right whitespace-nowrap'; c.textContent = t; return c; };
       const i = latestOf(l.data.values);
       tr.append(name, td(fmt(i >= 0 ? l.data.values[i] : null, l.def.unit)),
         td(fmt(vals.length ? vals.reduce((a, c) => a + c, 0) / vals.length : null, l.def.unit)),
         td(fmt(vals.length ? Math.max(...vals) : null, l.def.unit)),
-        td(share == null ? '—' : Math.round(share * 100) + '%（' + b.harmful + '超）'));
+        share == null ? td('—') : (() => {
+          const c = td(Math.round(share * 100) + '%');
+          const sub = document.createElement('div'); sub.className = 'text-[.7rem] text-muted'; sub.textContent = b.harmful + ' 超';
+          c.append(sub); return c;
+        })());
       return tr;
     });
     $('summary').querySelector('tbody').replaceChildren(...rows);
@@ -600,6 +614,7 @@
     renderControls();
     const ls = lines();
     const bandsKey = bandsFor(ls);
+    renderFilterSummary(ls, bandsKey);
     const b = BANDS[bandsKey];
     $('bands-note').textContent = b ? '色帯は' + (b.axis === 'index' ? '左（指数）' : '濃度') + 'の軸に合わせています。点線は「健康に良くない」の下限です。' : '';
     $('band-legend').replaceChildren(...(b ? b.levels.map((lv) => {
@@ -619,6 +634,7 @@
 
   // ---------- events ----------
   document.querySelectorAll('[data-mode]').forEach((b) => { b.onclick = () => set({ mode: b.dataset.mode }); });
+  $('filters').open = matchMedia('(min-width: 640px)').matches;
   $('metric').onchange = (e) => set({ metric: e.target.value });
   $('bands').onchange = (e) => set({ bands: e.target.value });
   $('theme').onchange = (e) => {
