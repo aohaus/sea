@@ -38,6 +38,7 @@ DATA = ROOT / "haze" / "data"
 TZ = timezone(timedelta(hours=8))
 SLOTS_SHOWN = 168
 MAX_KM = 20
+SAMPLES: dict[str, str] = {}  # one raw reading time per source, written to the report
 HEADERS = {"User-Agent": "sea-haze-collector/0.1 (+https://github.com/aohaus/sea)"}
 DOE_URL = ("https://eqms.doe.gov.my/api3/publicmapproxy/PUBLIC_DISPLAY/CAQM_MCAQM_Current_Reading/MapServer/0/query"
            "?where=1%3D1&outFields=*&f=json")
@@ -99,7 +100,7 @@ def fetch_doe() -> tuple[list[tuple], list[str]]:
         name = f"DOE {best.get('STATION_LOCATION')} ({best.get('STATION_ID')}, {best.get('PARAM_SELECTED') or 'API'})"
         out.append((slot_of(t), sid, "doe_api", round(float(api)), name))
         if sid == "cheras":  # one raw time in the report, to check the time zone of DOE's DATETIME
-            notes.append(f"sample: {name} DATETIME={when} -> {t.astimezone(TZ).isoformat()} (slot {slot_of(t)})")
+            SAMPLES["doe"] = f"{name} DATETIME={when} -> {t.isoformat()} (slot {slot_of(t)})"
     return out, notes
 
 
@@ -185,6 +186,7 @@ def main() -> int:
         "slots": [s.isoformat() for s in slots],
         "stations": stations, "meta": meta,
     })
+    report["time_samples"] = SAMPLES
     (DATA / "collect_report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False, indent=2))
     return 0
