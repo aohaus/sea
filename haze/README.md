@@ -6,7 +6,7 @@ This dashboard compares air quality and haze in Malaysia (Kuala Lumpur, Penang, 
 
 | | Source | Indices | How data gets to the page |
 |---|---|---|---|
-| A | WAQI / AQICN | US AQI, PM2.5 sub-index | **Collected** every 2 hours (requires the `WAQI_TOKEN` secret). Until collected data exists, a viewer can enter their own token to get the current value only |
+| A | WAQI / AQICN | AQI (Malaysia: DOE's API republished unchanged, the same value as DOE; Singapore: US EPA scale), PM2.5 sub-index (US EPA scale) | **Collected** every 2 hours (requires the `WAQI_TOKEN` secret). Until collected data exists, a viewer can enter their own token to get the current value only |
 | B | Malaysia DOE APIMS | API | **Collected** every 2 hours. A browser cannot fetch it because of CORS |
 | B | Singapore NEA (data.gov.sg v2) | 24-hour PSI, 1-hour PM2.5 | Fetched in the browser (one request per day; central region) |
 | C | Open-Meteo Air Quality (CAMS model) | PM2.5, PM10, US AQI | Fetched in the browser (hourly values at each location's coordinates) |
