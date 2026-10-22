@@ -451,6 +451,8 @@
   };
 
   let trend = null, diur = null;
+  // Legends say when a line is (partly) simulated, so averages of simulated values are not read as measurements.
+  const legendLabel = (l) => l.label + (l.data.mode === 'sim' ? '（模擬）' : l.data.mode === 'mixed' ? '（一部実データ）' : '');
   const axisMax = (ls, kind) => {
     const m = Math.max(0, ...ls.filter((l) => l.def.kind === kind).flatMap((l) => l.data.values.filter((v) => v != null)));
     const step = kind === 'index' ? 50 : 25;
@@ -460,7 +462,7 @@
     const hasIndex = ls.some((l) => l.def.kind === 'index'), hasConc = ls.some((l) => l.def.kind === 'conc');
     const grid = css('--grid'), muted = css('--muted'), fg = css('--fg');
     const datasets = ls.map((l) => ({
-      label: l.label + (l.data.mode === 'sim' ? '（模擬）' : l.data.mode === 'mixed' ? '（一部実データ）' : ''),
+      label: legendLabel(l),
       data: l.data.values, borderColor: l.color, backgroundColor: l.color,
       yAxisID: l.def.kind === 'index' ? 'yIndex' : 'yConc',
       borderWidth: l.data.mode === 'sim' ? 1.6 : 2.2,
@@ -513,7 +515,7 @@
     const muted = css('--muted'), grid = css('--grid'), fg = css('--fg');
     const hasIndex = ls.some((l) => l.def.kind === 'index'), hasConc = ls.some((l) => l.def.kind === 'conc');
     const datasets = ls.map((l) => ({
-      label: l.label, borderColor: l.color, backgroundColor: l.color, tension: 0.3, pointRadius: 2.5,
+      label: legendLabel(l), borderColor: l.color, backgroundColor: l.color, tension: 0.3, pointRadius: 2.5,
       borderDash: l.def.kind === 'conc' ? [6, 3] : [], yAxisID: l.def.kind === 'index' ? 'yIndex' : 'yConc',
       data: hours.map((h) => { const v = l.data.values.filter((x, i) => x != null && slotHour(SLOTS[i]) === h); return v.length ? v.reduce((a, b) => a + b, 0) / v.length : null; }),
       meta: l,
