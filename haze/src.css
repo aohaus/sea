@@ -1,0 +1,64 @@
+/* Haze Monitor styles. Built with Tailwind (see tailwind.config.js); the colour tokens are the
+   same as Sea basic (Campur.ai palette), redefined for dark mode. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f7f5f0; --panel: #ffffff; --fg: #1e1e1c; --muted: #5e5a55; --line: #e4e0d8; --frame: #2b2a27;
+  --accent: #0f5a44; --on-accent: #ffffff; --accent-soft: #e7f4ec; --accent-line: #8fceac; --rust: #b4501c;
+  --mustard-soft: #fdf3c8; --mustard-line: #e6c35c;
+  --grid: #ece9e2; --axis: #bdb8ae;
+  /* Sources: A = WAQI, B = government (DOE APIMS / NEA), C = model (Open-Meteo) */
+  --src-a: #0f5a44; --src-b: #b4501c; --src-c: #2f5fa8; --src-d: #7b4e9a; --src-e: #b8860b; --src-f: #2b8c8c; --src-g: #a33b62;
+  /* Health bands */
+  --band-good: #3f9d5d; --band-moderate: #d9b52c; --band-usg: #e08a2c; --band-unhealthy: #cc4b37; --band-very: #8e4a9c; --band-hazard: #7a2430;
+  --band-alpha: .10;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121411; --panel: #1a1d19; --fg: #ecebe6; --muted: #a3a09a; --line: #2d302b; --frame: #5a5d56;
+    --accent: #5cc79e; --on-accent: #0d1a14; --accent-soft: #15302a; --accent-line: #2f6b55; --rust: #e07a45;
+    --mustard-soft: #3a3214; --mustard-line: #7d6a24;
+    --grid: #252823; --axis: #44473f;
+    --src-a: #5cc79e; --src-b: #e07a45; --src-c: #7fa3ec; --src-d: #c39ad6; --src-e: #e0c056; --src-f: #6fcbd8; --src-g: #e57ea5;
+    --band-good: #5cc98a; --band-moderate: #e3c650; --band-usg: #f0a050; --band-unhealthy: #f2786d; --band-very: #c39ad6; --band-hazard: #d0606e;
+    --band-alpha: .12;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121411; --panel: #1a1d19; --fg: #ecebe6; --muted: #a3a09a; --line: #2d302b; --frame: #5a5d56;
+  --accent: #5cc79e; --on-accent: #0d1a14; --accent-soft: #15302a; --accent-line: #2f6b55; --rust: #e07a45;
+  --mustard-soft: #3a3214; --mustard-line: #7d6a24;
+  --grid: #252823; --axis: #44473f;
+  --src-a: #5cc79e; --src-b: #e07a45; --src-c: #7fa3ec; --src-d: #c39ad6; --src-e: #e0c056; --src-f: #6fcbd8; --src-g: #e57ea5;
+  --band-good: #5cc98a; --band-moderate: #e3c650; --band-usg: #f0a050; --band-unhealthy: #f2786d; --band-very: #c39ad6; --band-hazard: #d0606e;
+  --band-alpha: .12;
+  color-scheme: dark;
+}
+
+@layer components {
+  .card { @apply bg-panel border-[1.5px] border-frame rounded-card p-4 sm:p-5 min-w-0; }
+  /* Section headings carry the short rust bar used on Sea basic. */
+  .card-title { @apply text-[1.05rem] font-black leading-snug pl-3 border-l-4 border-rust; }
+  .en { @apply text-muted text-xs font-normal ml-2; }
+  .note { @apply text-muted text-[.8rem] leading-relaxed; }
+  .chip { @apply text-[.8rem] font-bold rounded px-3 py-1 border border-accent-line bg-accent-soft text-accent cursor-pointer select-none whitespace-nowrap; }
+  .chip[aria-pressed="false"] { @apply bg-panel border-line text-muted font-medium; }
+  .chip:focus-visible, .tab:focus-visible, .ctl:focus-visible { @apply outline outline-2 outline-offset-2 outline-accent; }
+  .tab { @apply text-[.85rem] font-bold px-3 py-1.5 rounded border border-line bg-panel text-muted cursor-pointer whitespace-nowrap; }
+  .tab[aria-selected="true"] { @apply bg-accent text-on-accent border-accent; }
+  .ctl { @apply text-[.85rem] bg-panel text-fg border border-line rounded px-2 py-1.5 max-w-full; }
+  .label { @apply text-[.78rem] font-bold tracking-wide text-fg min-w-[5rem]; }
+  .badge { @apply inline-flex items-center gap-1 text-[.7rem] font-bold rounded px-1.5 py-0.5 border; }
+  .badge-live { @apply border-accent-line bg-accent-soft text-accent; }
+  .badge-sim { @apply border-mustard-line bg-mustard-soft text-fg; }
+  .badge-err { @apply border-rust text-rust; }
+  .swatch { @apply inline-block w-3 h-3 rounded-sm align-[-1px] mr-1; }
+}
+/* Grid containers must let their columns shrink below the content width (long chip rows, tables). */
+.card.grid, main.grid { grid-template-columns: minmax(0, 1fr); }
+body { background: var(--bg); color: var(--fg); font-feature-settings: "palt"; }
+.tnum { font-variant-numeric: tabular-nums; }

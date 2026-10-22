@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ヘイズモニター</title>
+<meta name="description" content="マレーシア（クアラルンプール・ペナン・ジョホール）とシンガポールの大気質・ヘイズ指標を、WAQI・政府公式（DOE／NEA）・モデル（Open-Meteo）の複数の出所で2時間ごと・過去14日分比べるダッシュボード。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="haze.css">
+<script>
+  // Theme before first paint (auto / light / dark; a per-viewer convenience).
+  try { const t = localStorage.getItem('haze-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) { /* storage unavailable */ }
+</script>
+</head>
+<body class="font-sans text-[15px] leading-relaxed">
+<main class="max-w-[1200px] mx-auto px-4 pt-6 pb-12 grid gap-5">
+
+  <header class="grid gap-2">
+    <div class="flex flex-wrap items-start justify-between gap-3">
+      <div>
+        <h1 class="text-[clamp(1.6rem,3vw,2.1rem)] font-black leading-tight">ヘイズモニター<span class="en text-sm">Haze Monitor — Malaysia &amp; Singapore</span></h1>
+        <p class="note mt-1 max-w-[75ch]">クアラルンプール・ペナン・ジョホールとシンガポールの大気質を、3種類の出所（A：WAQI、B：政府公式 DOE／NEA、C：モデル Open-Meteo）で比べます。2時間ごと（1日12回）・過去14日分（168点）の時系列で、ヘイズの日内変化と出所ごとの違いを見ます。</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <label class="label min-w-0" for="theme">表示</label>
+        <select id="theme" class="ctl"><option value="auto">自動</option><option value="light">ライト</option><option value="dark">ダーク</option></select>
+      </div>
+    </div>
+    <div id="status-line" class="flex flex-wrap gap-2 items-center text-[.78rem] text-muted" aria-live="polite"></div>
+  </header>
+
+  <!-- Controls -->
+  <section class="card grid gap-3" aria-label="絞り込み">
+    <div class="flex flex-wrap gap-2 items-center">
+      <span class="label">都市</span>
+      <div id="city-tabs" class="flex flex-wrap gap-2" role="tablist" aria-label="都市"></div>
+    </div>
+    <div class="flex flex-wrap gap-2 items-center">
+      <span class="label">観測地点</span>
+      <div id="station-chips" class="flex flex-wrap gap-2"></div>
+    </div>
+    <div class="flex flex-wrap gap-2 items-center">
+      <span class="label">比べ方</span>
+      <div class="flex flex-wrap gap-2" role="tablist" aria-label="比べ方">
+        <button type="button" class="tab" role="tab" data-mode="indices">この地点の指標を重ねる</button>
+        <button type="button" class="tab" role="tab" data-mode="places">地点どうしを1つの指標で</button>
+      </div>
+    </div>
+    <div id="mode-indices" class="grid gap-3">
+      <div class="flex flex-wrap gap-2 items-center">
+        <span class="label">出所</span>
+        <div id="source-chips" class="flex flex-wrap gap-2"></div>
+      </div>
+      <div class="flex flex-wrap gap-2 items-center">
+        <span class="label">指標の種類</span>
+        <div id="kind-chips" class="flex flex-wrap gap-2"></div>
+      </div>
+      <div class="flex flex-wrap gap-2 items-center">
+        <span class="label">系列</span>
+        <div id="series-chips" class="flex flex-wrap gap-2"></div>
+      </div>
+    </div>
+    <div id="mode-places" class="flex flex-wrap gap-2 items-center hidden">
+      <label class="label" for="metric">指標</label>
+      <select id="metric" class="ctl"></select>
+    </div>
+    <div class="flex flex-wrap gap-2 items-center">
+      <label class="label" for="bands">色帯の基準</label>
+      <select id="bands" class="ctl"></select>
+      <span id="bands-note" class="note"></span>
+    </div>
+  </section>
+
+  <!-- Latest values -->
+  <section class="grid gap-3" aria-label="最新値">
+    <div id="tiles" class="grid gap-3 grid-cols-[repeat(auto-fit,minmax(min(100%,13rem),1fr))]"></div>
+  </section>
+
+  <!-- Main chart -->
+  <section class="card grid gap-3">
+    <h2 class="card-title">過去14日の推移<span class="en">Last 14 days, every 2 hours</span></h2>
+    <p id="chart-note" class="note"></p>
+    <div class="relative h-[min(60vh,440px)] min-h-[300px]"><canvas id="trend" role="img" aria-label="過去14日の大気質指標の推移"></canvas></div>
+    <div id="band-legend" class="flex flex-wrap gap-x-4 gap-y-1 text-[.75rem] text-muted"></div>
+  </section>
+
+  <div class="grid gap-5 lg:grid-cols-2">
+    <!-- Diurnal profile -->
+    <section class="card grid gap-3">
+      <h2 class="card-title">時刻別の平均（日内変化）<span class="en">Diurnal profile</span></h2>
+      <p class="note">14日間の値を2時間の枠ごとに平均しました。朝の通勤時間や夜間の逆転層で上がり、日中の混合で下がる、という形がヘイズの日内変化です。</p>
+      <div class="relative h-[260px]"><canvas id="diurnal" role="img" aria-label="時刻別の平均"></canvas></div>
+    </section>
+
+    <!-- Summary table -->
+    <section class="card grid gap-3 content-start">
+      <h2 class="card-title">14日間のまとめ<span class="en">Summary</span></h2>
+      <div class="overflow-x-auto">
+        <table id="summary" class="w-full text-[.8rem] tnum border-collapse">
+          <thead><tr class="text-left border-b-[1.5px] border-frame">
+            <th class="py-2 pr-3 font-bold">系列</th><th class="py-2 px-2 font-bold text-right">最新</th><th class="py-2 px-2 font-bold text-right">平均</th><th class="py-2 px-2 font-bold text-right">最大</th><th class="py-2 pl-2 font-bold text-right" title="基準の「健康に良くない」以上だった時間の割合">基準超えの割合</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="note" id="summary-note"></p>
+    </section>
+  </div>
+
+  <!-- Sources -->
+  <section class="card grid gap-3">
+    <h2 class="card-title">データの出所と取得状況<span class="en">Sources</span></h2>
+    <div id="sources" class="grid gap-0 border-t-[1.5px] border-frame"></div>
+    <details class="text-[.82rem]">
+      <summary class="cursor-pointer font-bold">WAQI のトークンを入れる（任意）</summary>
+      <div class="grid gap-2 mt-2">
+        <p class="note">WAQI（aqicn.org）の API は個人ごとのトークンが必要です（<a class="underline" href="https://aqicn.org/data-platform/token/" target="_blank" rel="noopener">無料で取得</a>）。入れると、各地点の<strong>現在値</strong>を WAQI から取得して最新の点として重ねます。WAQI の無料 API は過去14日の履歴を返さないため、それ以前は模擬値のままです。トークンはこのブラウザだけに保存されます。</p>
+        <div class="flex flex-wrap gap-2 items-center">
+          <input id="waqi-token" type="password" autocomplete="off" class="ctl w-64" placeholder="WAQI トークン" aria-label="WAQI トークン">
+          <button id="waqi-save" type="button" class="chip">保存して取得</button>
+          <button id="waqi-clear" type="button" class="chip" aria-pressed="false">消す</button>
+        </div>
+      </div>
+    </details>
+    <p class="note">基準の色帯：US AQI は米国環境保護庁（EPA、2024年改定）の区分、API（マレーシア）・PSI（シンガポール）は 0–50 良好／51–100 普通／101–200 健康に良くない／201–300 非常に良くない／301以上 危険、PM2.5 の1時間値は NEA の4段階（0–55／56–150／151–250／251以上 µg/m³）です。時刻はすべてマレーシア・シンガポール時間（UTC+8）です。</p>
+  </section>
+
+  <footer class="note text-center">
+    模擬値は、地域ごとの平常値・日内変化・ヘイズの発生を組み合わせた乱数（再現できる種付き）で作っています。実測と取り違えないよう、グラフと表で「模擬」と表示します。
+    · <a class="underline" href="../basic/index.html">ASEAN データエクスプローラー（Sea basic）</a>
+  </footer>
+</main>
+<script src="vendor/chart-4.4.1.umd.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
