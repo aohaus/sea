@@ -33,8 +33,11 @@
   // ---------- indices and bands ----------
   // kind: index (0–500 scale, left axis) or conc (µg/m³, right axis); bands: which health scale applies.
   const SERIES = [
-    { key: 'waqi_aqi', src: 'A', kind: 'index', ja: 'WAQI AQI', en: 'US-EPA AQI', unit: '', bands: 'usaqi', color: '--src-a', for: ['my', 'sg'] },
-    { key: 'waqi_pm25', src: 'A', kind: 'index', ja: 'WAQI PM2.5 指数', en: 'PM2.5 sub-index', unit: '', bands: 'usaqi', color: '--src-f', for: ['my', 'sg'] },
+    // For Malaysia, WAQI republishes DOE's API as its AQI (the collected values equal DOE's), so the
+    // series is labelled and banded as an API there; Singapore's is on the US EPA scale.
+    { key: 'waqi_aqi', src: 'A', kind: 'index', ja: 'WAQI AQI', en: 'US-EPA AQI', unit: '', bands: 'usaqi', color: '--src-a', for: ['my', 'sg'],
+      byCountry: { my: { ja: 'WAQI AQI（DOE API の転載）', en: 'Malaysian API as republished by WAQI', bands: 'apipsi' } } },
+    { key: 'waqi_pm25', src: 'A', kind: 'index', ja: 'WAQI PM2.5 指数（米国基準）', en: 'PM2.5 sub-index (US EPA)', unit: '', bands: 'usaqi', color: '--src-f', for: ['my', 'sg'] },
     { key: 'doe_api', src: 'B', kind: 'index', ja: 'API（DOE APIMS）', en: 'Malaysia Air Pollutant Index', unit: '', bands: 'apipsi', color: '--src-b', for: ['my'] },
     { key: 'nea_psi', src: 'B', kind: 'index', ja: 'PSI 24時間（NEA）', en: '24-hr PSI', unit: '', bands: 'apipsi', color: '--src-b', for: ['sg'] },
     { key: 'nea_pm25', src: 'B', kind: 'conc', ja: 'PM2.5 1時間値（NEA）', en: '1-hr PM2.5', unit: 'µg/m³', bands: 'pm25', color: '--src-e', for: ['sg'] },
@@ -43,6 +46,8 @@
     { key: 'om_pm10', src: 'C', kind: 'conc', ja: 'PM10（Open-Meteo）', en: 'modelled PM10', unit: 'µg/m³', bands: null, color: '--src-g', for: ['my', 'sg'] },
   ];
   const seriesByKey = new Map(SERIES.map((s) => [s.key, s]));
+  // A series definition as it applies to a station's country.
+  const defFor = (s, country) => (s.byCountry?.[country] ? { ...s, ...s.byCountry[country] } : s);
   const SOURCES = {
     A: { ja: 'A：WAQI', en: 'World Air Quality Index (aqicn.org)', url: 'https://aqicn.org/' },
     B: { ja: 'B：政府公式', en: 'Malaysia DOE APIMS / Singapore NEA', url: 'https://eqms.doe.gov.my/' },
@@ -54,7 +59,7 @@
     { key: 'om_pm25', ja: 'PM2.5（Open-Meteo、µg/m³）' },
     { key: 'om_aqi', ja: 'US AQI（Open-Meteo）' },
     { key: 'official', ja: '政府公式の指数（マレーシア API／シンガポール PSI）' },
-    { key: 'waqi_aqi', ja: 'WAQI AQI' },
+    { key: 'waqi_pm25', ja: 'WAQI PM2.5 指数（米国基準）' },
   ];
 
   const L = (lo, hi, ja, en, tone) => ({ lo, hi, ja, en, tone });
@@ -137,7 +142,7 @@
       om_pm25: cut(model),
       om_pm10: cut(model.map((v, i) => v * (1.38 + 0.06 * Math.sin(i / 5)))),
     };
-    if (st.country === 'my') out.doe_api = cut(r12.map(psiIndex));
+    if (st.country === 'my') { out.doe_api = cut(r12.map(psiIndex)); out.waqi_aqi = out.doe_api.slice(); }
     else { out.nea_psi = cut(r24.map(psiIndex)); out.nea_pm25 = cut(obs); }
     return out;
   }
@@ -285,6 +290,7 @@
   let state = { ...DEFAULT };
   try { state = { ...DEFAULT, ...JSON.parse(localStorage.getItem('haze-ui') || '{}') }; } catch (e) { /* storage unavailable */ }
   if (!stationById.has(state.station)) state.station = DEFAULT.station;
+  if (!METRICS.some((m) => m.key === state.metric)) state.metric = DEFAULT.metric;
   const set = (patch) => { state = { ...state, ...patch }; try { localStorage.setItem('haze-ui', JSON.stringify(state)); } catch (e) { /* storage unavailable */ } render(); };
   const $ = (id) => document.getElementById(id);
   const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
@@ -295,12 +301,12 @@
     if (state.mode === 'indices') {
       const st = stationById.get(state.station);
       return SERIES.filter((s) => s.for.includes(st.country) && state.sources.includes(s.src) && state.kinds.includes(s.kind) && !state.hidden.includes(s.key))
-        .map((s) => ({ id: s.key, def: s, label: s.ja, color: css(s.color), data: DATA[st.id][s.key], station: st }));
+        .map((s) => defFor(s, st.country)).map((s) => ({ id: s.key, def: s, label: s.ja, color: css(s.color), data: DATA[st.id][s.key], station: st }));
     }
     const palette = ['--src-a', '--src-b', '--src-c', '--src-d', '--src-e', '--src-f', '--src-g'];
     return STATIONS.filter((st) => state.places.includes(st.id)).map((st, i) => {
       const key = state.metric === 'official' ? (st.country === 'my' ? 'doe_api' : 'nea_psi') : state.metric;
-      const def = seriesByKey.get(key);
+      const def = defFor(seriesByKey.get(key), st.country);
       return { id: st.id, def, label: st.ja + (state.metric === 'official' ? '（' + (st.country === 'my' ? 'API' : 'PSI') + '）' : ''), color: css(palette[STATIONS.indexOf(st) % palette.length]), data: DATA[st.id][key], station: st };
     }).filter((l) => l.data);
   }
@@ -354,7 +360,7 @@
       return b;
     }));
     const st = stationById.get(state.station);
-    $('series-chips').replaceChildren(...SERIES.filter((s) => s.for.includes(st.country) && state.sources.includes(s.src) && state.kinds.includes(s.kind)).map((s) => {
+    $('series-chips').replaceChildren(...SERIES.filter((s) => s.for.includes(st.country) && state.sources.includes(s.src) && state.kinds.includes(s.kind)).map((s) => defFor(s, st.country)).map((s) => {
       const b = document.createElement('button'); b.type = 'button'; b.className = 'chip';
       const sw = document.createElement('span'); sw.className = 'swatch'; sw.style.background = css(s.color);
       b.append(sw, s.ja); b.setAttribute('aria-pressed', String(!state.hidden.includes(s.key)));
@@ -566,7 +572,7 @@
     };
     const doe = collected(['doe_api']), waqi = collected(['waqi_aqi']);
     const rows = [
-      ['A', 'US AQI、PM2.5 指数', waqi || STATUS.A, 'WAQI（aqicn.org）が各国の観測局を US EPA の AQI にそろえて公開。2時間ごとにサーバー側で現在値を取得して貯めています（トークンはリポジトリのシークレット）。'
+      ['A', 'AQI、PM2.5 指数（米国基準）', waqi || STATUS.A, 'WAQI（aqicn.org）が各国の観測局の値を集めて公開。マレーシアの AQI は DOE の API をそのまま載せたもの（DOE と同じ値）、シンガポールの AQI と各地の PM2.5 指数は米国 EPA の基準です。2時間ごとにサーバー側で現在値を取得して貯めています（トークンはリポジトリのシークレット）。'
         + (waqi ? '' : 'まだ収集データがないため、下でご自身のトークンを入れると現在値だけ取得できます。')],
       ['B', 'マレーシア：API（DOE APIMS）', doe || { state: 'sim', text: '' }, 'マレーシア環境局の API は、ブラウザから他サイトの読み込みを許可していないため、2時間ごとにサーバー側で全観測局の現在値を取得して貯めています。'
         + (doe ? '' : 'まだ収集データがないため模擬値です。')],
