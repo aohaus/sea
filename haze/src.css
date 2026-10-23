@@ -94,6 +94,11 @@ body { padding-bottom: calc(4.2rem + env(safe-area-inset-bottom)); }
 .rb-legend-range { display: inline-block; width: 18px; height: 6px; border-radius: 3px; background: var(--fg); opacity: .45; }
 .rb-legend-avg { display: inline-block; width: 2px; height: 12px; background: var(--fg); }
 .rb-legend-latest { display: inline-block; width: 10px; height: 10px; border-radius: 999px; background: var(--muted); box-shadow: 0 0 0 1px var(--fg); }
+/* News volume (actions.html): one bar per day, the height is the number of articles. */
+.news-volume { display: grid; grid-template-columns: repeat(30, minmax(0, 1fr)); align-items: end; gap: 2px; height: 56px; }
+.news-volume > span { background: var(--rust); border-radius: 2px 2px 0 0; }
+.news-volume > span.zero { background: var(--line); }
+.news-tag { border: 1px solid var(--line); border-radius: 3px; padding: 0 .3rem; }
 /* Touch screens: buttons at least 36px tall. */
 @media (pointer: coarse) { .chip, .tab, .ctl { min-height: 36px; } }
 .settings > summary { list-style: none; }

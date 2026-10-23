@@ -53,7 +53,7 @@ REGION = re.compile(
 # Tags for the page's filter. A story can have several.
 TAGS = [
     ("fire", re.compile(r"fire|hotspot|burn|blaze|火災|火事|ホットスポット|焼|kebakaran|titik panas|peat|泥炭|gambut", re.I)),
-    ("health", re.compile(r"school|health|hospital|mask|asthma|学校|休校|健康|病院|マスク|喘息|sekolah|kesihatan|outdoor|屋外", re.I)),
+    ("health", re.compile(r"school|health|hospital|mask|asthma|respirat|学校|休校|健康|病院|マスク|喘息|呼吸|sekolah|kesihatan|pernafasan|outdoor|屋外", re.I)),
     ("policy", re.compile(r"law|act\b|bill|asean|minister|government|parliament|notice|treaty|agreement|diplomat|法|政府|大臣|議会|協定|通告|外交|首相|kerajaan|menteri|undang", re.I)),
     ("business", re.compile(r"company|companies|firm|plantation|palm|pulp|paper|sgx|bursa|hotel|tourism|airline|flight|economy|企業|会社|プランテーション|パーム|製紙|ホテル|観光|航空|便|経済|株|syarikat", re.I)),
     ("air", re.compile(r"api\b|aqi|psi|air quality|air pollutant|forecast|rain|monsoon|wind|大気|空気|予報|雨|モンスーン|風|udara|cuaca", re.I)),

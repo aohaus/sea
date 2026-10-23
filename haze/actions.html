@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ヘイズにアクションする</title>
+<meta name="description" content="マレーシア・シンガポールのヘイズ（越境煙害）について、直近の関連報道（Campur.ai の蓄積から）、ヘイズをなくすための打ち手、各国政府・ASEAN と主な企業の動き、個人にできることをまとめたページ。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="haze.css?v=20261023c">
+<script>
+  try { const t = localStorage.getItem('haze-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) { /* storage unavailable */ }
+</script>
+</head>
+<body class="font-sans text-[15px] leading-relaxed">
+<main class="max-w-[1200px] mx-auto px-4 pt-6 pb-12 grid gap-5">
+
+  <header class="grid gap-2">
+    <div class="flex flex-wrap items-start justify-between gap-3">
+      <div>
+        <h1 class="text-[clamp(1.6rem,3vw,2.1rem)] font-black leading-tight">ヘイズにアクションする<span class="en text-sm block ml-0 mt-1 sm:inline sm:ml-2 sm:mt-0">Act — news, solutions and who is doing what</span></h1>
+        <p class="note mt-1 max-w-[75ch]">いま何が報じられているか、ヘイズはどうすればなくなるのか、各国と企業は何をしているのか、そして自分には何ができるのかをまとめました。</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <label class="label min-w-0" for="theme">表示</label>
+        <select id="theme" class="ctl"><option value="auto">自動</option><option value="light">ライト</option><option value="dark">ダーク</option></select>
+      </div>
+    </div>
+    <nav class="flex flex-wrap gap-x-4 gap-y-1 text-[.82rem]" aria-label="このページの目次">
+      <a class="underline" href="#news">直近の関連報道</a>
+      <a class="underline" href="#solutions">どうすればなくなる？</a>
+      <a class="underline" href="#countries">各国・ASEAN の動き</a>
+      <a class="underline" href="#companies">企業の動き</a>
+      <a class="underline" href="#you">わたしたちにできること</a>
+      <a class="underline" href="#sources">出典</a>
+    </nav>
+  </header>
+
+  <!-- News -->
+  <section class="card grid gap-3" id="news">
+    <h2 class="card-title">直近の関連報道<span class="en">Recent news, from Campur.ai</span></h2>
+    <p class="note">マレーシアの主要メディアを日本語でまとめている <a class="underline" href="https://campur.ai.studio/" target="_blank" rel="noopener">Campur.ai</a> の蓄積から、ヘイズ・火災・大気に関する記事を3時間ごとに集めています。見出しと要約は Campur.ai の自動翻訳です（「haze」が「霧」と訳されることがあります）。記事の本文は各メディアのリンク先で読めます。</p>
+    <div class="grid gap-1">
+      <div class="flex justify-between items-baseline gap-2"><span class="label">報道の量</span><span id="news-volume-note" class="note"></span></div>
+      <div id="news-volume" class="news-volume" role="img"></div>
+      <div id="news-volume-axis" class="flex justify-between text-[.68rem] text-muted"></div>
+    </div>
+    <div class="flex flex-wrap gap-2 items-center">
+      <div id="news-tags" class="flex flex-wrap gap-2" role="group" aria-label="話題で絞り込む"></div>
+      <label class="sr-only" for="news-q">キーワード</label>
+      <input id="news-q" type="search" class="ctl w-full sm:w-56" placeholder="キーワードで絞り込む（例：学校、Johor）">
+    </div>
+    <ol id="news-list" class="grid gap-0 border-t-[1.5px] border-frame"></ol>
+    <div class="flex flex-wrap items-center gap-3">
+      <button id="news-more" type="button" class="chip">もっと見る</button>
+      <span id="news-status" class="note" aria-live="polite"></span>
+    </div>
+  </section>
+
+  <!-- Solutions -->
+  <section class="card grid gap-3" id="solutions">
+    <h2 class="card-title">どうすればなくなる？<span class="en">What would end the haze</span></h2>
+    <p class="note max-w-[80ch]">マレー半島・シンガポールの深刻なヘイズの多くは、インドネシアの泥炭地・森林の火災の煙です（<a class="underline" href="understand.html#types">②理解する</a>）。雨や風向きの変化で一時的には晴れますが、火の元が変わらなければ毎年のように戻ってきます。なくすには、火の元に効く次の4つを同時に進める必要があります。</p>
+    <div class="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+      <article class="grid gap-2 content-start border border-line rounded-card p-3">
+        <h3 class="font-bold">① 泥炭地を湿らせて守る</h3>
+        <p class="text-[.85rem]">泥炭は水を抜くと乾いて燃えやすくなり、地中でくすぶり続けます。水路をせき止めて泥炭を湿った状態に戻す（再湿潤化）こと、新たに開発しないことが根本の対策です。</p>
+        <p class="text-[.78rem] text-muted"><b class="text-fg">主な担い手</b>：インドネシア政府、農園・植林企業</p>
+      </article>
+      <article class="grid gap-2 content-start border border-line rounded-card p-3">
+        <h3 class="font-bold">② 火を使わない開墾</h3>
+        <p class="text-[.85rem]">火は最も安い整地の手段です。企業には火入れの禁止と供給元までの監視、小規模農家には火を使わない方法への支援（機械・資金・買い取り価格）が要ります。</p>
+        <p class="text-[.78rem] text-muted"><b class="text-fg">主な担い手</b>：農園・製紙企業、買い手の企業、農家、地方政府</p>
+      </article>
+      <article class="grid gap-2 content-start border border-line rounded-card p-3">
+        <h3 class="font-bold">③ 燃やした者に責任を</h3>
+        <p class="text-[.85rem]">国内法での取り締まりに加え、国境を越えて責任を問う法律（シンガポール）、取引・投資を通じた圧力（認証、金融機関、株式市場）があります。課題は、国外での証拠集めと主権の壁です。</p>
+        <p class="text-[.78rem] text-muted"><b class="text-fg">主な担い手</b>：各国政府、ASEAN、取引所・金融機関</p>
+      </article>
+      <article class="grid gap-2 content-start border border-line rounded-card p-3">
+        <h3 class="font-bold">④ 早く見つけて早く消す</h3>
+        <p class="text-[.85rem]">衛星のホットスポット監視、煙の移動予測、早期警報と、国境を越えた消火・人工降雨の協力です。被害を小さくしますが、①〜③がなければ火は繰り返されます。</p>
+        <p class="text-[.78rem] text-muted"><b class="text-fg">主な担い手</b>：ASEAN、各国の気象・環境当局、消防</p>
+      </article>
+    </div>
+    <div class="grid gap-2 sm:grid-cols-3">
+      <div class="border-[1.5px] border-frame rounded-card p-3 grid gap-1 content-start">
+        <div class="text-[1.6rem] font-black leading-none tnum">約10万人</div>
+        <p class="text-[.78rem]">2015年のヘイズによる早期死亡の推計（インドネシア・マレーシア・シンガポール、ハーバード大とコロンビア大の研究）。インドネシア政府は過大だと反論しています。</p>
+      </div>
+      <div class="border-[1.5px] border-frame rounded-card p-3 grid gap-1 content-start">
+        <div class="text-[1.6rem] font-black leading-none tnum">約161億ドル</div>
+        <p class="text-[.78rem]">2015年の火災によるインドネシアの経済損失（世界銀行）。マレーシア・シンガポールの損失は含みません。</p>
+      </div>
+      <div class="border-[1.5px] border-frame rounded-card p-3 grid gap-1 content-start">
+        <div class="text-[1.6rem] font-black leading-none tnum">約200万人</div>
+        <p class="text-[.78rem]">2026年10月9日、ヘイズでクアラルンプール・プトラジャヤと6州の学校が休校になり、影響を受けた児童・生徒の数（Al Jazeera）。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Countries -->
+  <section class="card grid gap-3" id="countries">
+    <h2 class="card-title">各国・ASEAN の動き<span class="en">Governments and ASEAN</span></h2>
+    <p class="note">主な取り組みを古い順に並べました。「状況」は2026年10月時点です。</p>
+    <div class="overflow-x-auto">
+      <table class="w-full text-[.8rem] border-collapse min-w-[40rem]">
+        <thead><tr class="text-left border-b-[1.5px] border-frame">
+          <th class="py-2 pr-3 font-bold whitespace-nowrap">誰が</th><th class="py-2 px-2 font-bold whitespace-nowrap">いつ</th><th class="py-2 px-2 font-bold">何をした</th><th class="py-2 pl-2 font-bold">状況・課題</th>
+        </tr></thead>
+        <tbody id="country-rows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Companies -->
+  <section class="card grid gap-3" id="companies">
+    <h2 class="card-title">企業の動き<span class="en">Companies and certification</span></h2>
+    <p class="note max-w-[80ch]">火の元になりやすいのは、パーム油（アブラヤシ）と製紙原料（アカシアなど）の農園です。大手は2013年ごろから「森林破壊ゼロ・泥炭開発ゼロ・搾取ゼロ（NDPE）」を約束しましたが、供給元や周辺の土地で火災が続き、約束が守られているかが問われています。</p>
+    <div class="overflow-x-auto">
+      <table class="w-full text-[.8rem] border-collapse min-w-[40rem]">
+        <thead><tr class="text-left border-b-[1.5px] border-frame">
+          <th class="py-2 pr-3 font-bold whitespace-nowrap">企業・制度</th><th class="py-2 px-2 font-bold whitespace-nowrap">分野</th><th class="py-2 px-2 font-bold">約束・方針</th><th class="py-2 pl-2 font-bold">見えている課題・最近の動き</th>
+        </tr></thead>
+        <tbody id="company-rows"></tbody>
+      </table>
+    </div>
+    <p class="note">企業名は報道・各社の公表に基づきます。予防措置の通知や照会は、違反の認定ではありません。</p>
+  </section>
+
+  <!-- You -->
+  <section class="card grid gap-3" id="you">
+    <h2 class="card-title">わたしたちにできること<span class="en">What you can do</span></h2>
+    <div class="grid gap-3 md:grid-cols-3">
+      <article class="grid gap-2 content-start border border-line rounded-card p-3">
+        <h3 class="font-bold">身を守る</h3>
+        <ul class="text-[.85rem] list-disc pl-5 grid gap-1">
+          <li>公式の値（マレーシアは API、シンガポールは PSI）を確かめる。<a class="underline" href="index.html">①知る</a>で近くの観測地点を見られます。</li>
+          <li>「健康に良くない」（100超）なら屋外の激しい運動を控え、外では N95 などの密着するマスクを。</li>
+          <li>窓を閉め、空気清浄機（HEPA）を使う。子ども・高齢者・持病のある人は特に早めに。</li>
+        </ul>
+      </article>
+      <article class="grid gap-2 content-start border border-line rounded-card p-3">
+        <h3 class="font-bold">選ぶ</h3>
+        <ul class="text-[.85rem] list-disc pl-5 grid gap-1">
+          <li>パーム油を使う製品は、RSPO などの認証品や、NDPE を掲げて供給元を公表している企業のものを選ぶ。</li>
+          <li>紙・ティッシュは FSC などの認証品を選ぶ。</li>
+          <li>会社や学校の調達でも、取引先の方針と実績を確かめる。</li>
+        </ul>
+      </article>
+      <article class="grid gap-2 content-start border border-line rounded-card p-3">
+        <h3 class="font-bold">知って、伝える</h3>
+        <ul class="text-[.85rem] list-disc pl-5 grid gap-1">
+          <li>晴れた後も問題は続いています。上の報道で、各国と企業の対応を追う。</li>
+          <li>近所の野焼きは、地元の当局（マレーシアは環境局 DOE）に通報できます。</li>
+          <li>家族や職場で、指数の違い（<a class="underline" href="understand.html">②理解する</a>）と身の守り方を共有する。</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- Sources -->
+  <section class="card grid gap-2" id="sources">
+    <h2 class="card-title">出典<span class="en">Sources</span></h2>
+    <ul id="source-list" class="text-[.8rem] grid gap-1 list-disc pl-5"></ul>
+    <p class="note">このページは報道・公表資料をもとにした要約です。健康上の判断は各国の公式発表（DOE・NEA・保健当局）に従ってください。</p>
+  </section>
+
+  <footer class="note text-center">
+    <a class="underline" href="index.html">① 知る（ヘイズモニター）へ</a> · <a class="underline" href="../basic/index.html">ASEAN データエクスプローラー（Sea basic）</a>
+  </footer>
+</main>
+<nav class="steps" aria-label="ヘイズモニターの3つのステップ">
+  <a class="step" href="index.html"><b>1</b>知る<span class="en">Know</span></a>
+  <a class="step" href="understand.html"><b>2</b>理解する<span class="en">Understand</span></a>
+  <a class="step" href="actions.html" aria-current="page"><b>3</b>アクションする<span class="en">Act</span></a>
+</nav>
+<script>
+(() => {
+  'use strict';
+  const $ = (id) => document.getElementById(id);
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+  const link = (href, text) => { const a = el('a', 'underline', text); a.href = href; a.target = '_blank'; a.rel = 'noopener'; return a; };
+
+  // ---------- sources (referenced by key from the tables) ----------
+  const SRC = {
+    aathp: ['Mongabay（2014）インドネシアの ASEAN ヘイズ協定批准', 'https://news.mongabay.com/2014/09/after-12-years-indonesia-finally-ratifies-transboundary-haze-agreement/'],
+    acc23: ['Antara（2023）ACC THPC の発足', 'https://en.antaranews.com/news/292902/asean-inaugurates-acc-thpc-to-combat-haze-pollution'],
+    acc26: ['Antara（2026）ACC THPC 事務局の開設', 'https://en.antaranews.com/news/413276/indonesia-serves-as-asean-haze-control-hub-through-accthpc'],
+    myasean27: ['BERNAMA（2026年10月22日）マレーシア、来年 ASEAN レベルの措置を計画', 'https://news.google.com/rss/articles/CBMiZEFVX3lxTFBFY3JpdDBYVnRGN1hNOXpGdnFiOHQ1aDRaa0Y1MGgwczU5MmEzRXhOT2F1eEc2MlVXam0wZzB0UUJWMzAxZ0lldzFCemlLaE1SZTdLdTh0Q1ByamN2cTZoTGVsd3U?oc=5'],
+    moratorium: ['Climate Change Laws of the World：大統領指示 2019年第5号', 'https://climate-laws.org/document/presidential-instruction-no-5-of-2019-concerning-the-termination-of-the-granting-of-new-permits-and-improvement-of-primary-natural-forest-governance-and-peatlands_2167'],
+    wri19: ['WRI Indonesia（2019）恒久モラトリアムの3つの効果', 'https://wri-indonesia.org/en/insights/three-benefits-jokowis-permanent-ban-forest-clearance-permit-indonesia'],
+    brg: ['The Conversation（2019）森林火災・ヘイズ対策の課題', 'https://theconversation.com/three-things-jokowi-could-do-better-to-stop-forest-fires-and-haze-in-indonesia-120497'],
+    dte26: ['Down To Earth（2026年10月）インドネシアの火災と抗議', 'https://www.downtoearth.org.in/climate-change/indonesia-wildfire-crisis-sparks-protests-as-toxic-haze-spreads-across-southeast-asia'],
+    thpa15: ['シンガポール政府（2015）4社への通知', 'https://www.nas.gov.sg/archivesonline/data/pdfdoc/20151002005.htm'],
+    thpa26: ['Eco-Business（2026年10月）シンガポール、10社に通知', 'https://www.eco-business.com/news/singapore-widens-haze-crackdown-to-kalimantan-targeting-10-indonesian-firms/'],
+    star26: ['The Star（2026年10月19日）3社に追加の通知', 'https://www.thestar.com.my/aseanplus/aseanplus-news/2026/10/19/singapore-issues-notices-to-three-more-companies-in-indonesia-over-haze-role'],
+    my23: ['The Star（2023年12月）越境ヘイズ法はなお選択肢', 'https://www.thestar.com.my/news/nation/2023/12/22/transboundary-haze-law-still-an-option-says-nik-nazmi'],
+    my23b: ['Malay Mail（2023年10月）ASEAN 協定の強化を提案', 'https://www.malaymail.com/news/malaysia/2023/10/18/nik-nazmi-malaysia-proposes-upgrading-2002-asean-pact-to-address-haze-issue/97019'],
+    my26law: ['The Malaysian Reserve（2026年10月21日）法制化を検討', 'https://themalaysianreserve.com/2026/10/21/govt-weighs-legislation-to-tackle-transboundary-haze/'],
+    my26school: ['Al Jazeera（2026年10月9日）マレーシアで休校', 'https://www.aljazeera.com/news/2026/10/9/malaysia-shuts-schools-as-haze-from-indonesian-fires-chokes-southeast-asia'],
+    my26doe: ['The Sun（2026年10月）DOE、野焼きに3,433件の措置', 'https://thesun.my/news/doe-3433-enforcement-actions-open-burning-amid-haze/'],
+    my26forecast: ['週刊MTOWN（2026年10月23日）ヘイズを最大5日前に予測', 'https://www.mtown.my/news/politics/NewSystemtoPredictHaze5daysinAdvance'],
+    app: ['APP：Fire & Haze FAQ（同社の説明）', 'https://app.co.id/-/fire-haze-faq'],
+    app15: ['Mongabay（2016）2015年の火災と APP 供給元の植林地', 'https://news.mongabay.com/2016/02/fires-burned-26-of-forestry-giants-south-sumatra-plantations-in-2015/'],
+    april: ['Eco-Business（2015）APRIL・RGE の森林破壊ゼロ方針', 'https://www.eco-business.com/news/april-rge-finally-commit-to-zero-deforestation/'],
+    wilmar: ['Friends of the Earth（2013）Wilmar の NDPE 方針', 'https://foe.org/news/2013-12-palm-oil-giant-wilmar-international-promises-to-end/'],
+    rspo: ['Mongabay（2018）RSPO の新基準', 'https://news.mongabay.com/2018/11/rspo-adopts-total-ban-on-deforestation-under-sweeping-new-standards/'],
+    deaths: ['Mighty Earth（2016）2015年ヘイズの死者推計（ハーバード大・コロンビア大）', 'https://mightyearth.org/article/2015-haze-death-toll/'],
+    deathsDispute: ['BenarNews（2016）インドネシア政府の反論', 'https://www.benarnews.org/english/news/indonesian/haze-update-09202016165752.html'],
+    wb: ['世界銀行（2015）Indonesia\'s Fire and Haze Crisis', 'https://www.worldbank.org/en/news/feature/2015/12/01/indonesias-fire-and-haze-crisis'],
+    campur: ['Campur.ai（マレーシアのニュースを日本語で）', 'https://campur.ai.studio/'],
+  };
+  const cite = (...keys) => {
+    const s = el('span', 'text-[.72rem] text-muted');
+    keys.forEach((k, i) => { if (i) s.append('・'); s.append(link(SRC[k][1], '出典' + (keys.length > 1 ? i + 1 : ''))); });
+    return s;
+  };
+
+  // ---------- governments and ASEAN ----------
+  const COUNTRY = [
+    ['ASEAN', '2002 / 2014', '越境煙害汚染に関する ASEAN 協定（AATHP）。2002年に署名、2014年にインドネシアが批准して全加盟国がそろった。', '罰則がなく、争いは協議で解決する仕組み。', ['aathp']],
+    ['インドネシア', '2011 / 2019', '原生林と泥炭地での新規の開発許可を停止（モラトリアム）。2019年に恒久化（約6,600万ヘクタール）。', '対象地域の森林減少は減ったが、雨量や取り締まりなど他の要因もあるとされる。', ['moratorium', 'wri19']],
+    ['シンガポール', '2014', '越境煙害汚染法（THPA）。国外の火災でシンガポールにヘイズをもたらした企業に、1日最大10万シンガポールドルの罰金を科せる。2015年に4社へ通知。', '国外での証拠集めが難しく、罰金・訴追の例はまだない。', ['thpa15', 'thpa26']],
+    ['インドネシア', '2016', '泥炭地の復旧を担う機関を設け、約200万ヘクタールの復旧を目標にした。', '排水された泥炭は今も広く残り、乾燥した年に燃える。', ['brg']],
+    ['ASEAN', '2023 / 2026', 'ASEAN 越境煙害汚染管理調整センター（ACC THPC）がジャカルタで発足（2023年9月）。2026年4月に事務局を開設し、監視・技術調整・早期警報を担う。', '本格的な運用は、各国による議定書の批准待ち。', ['acc23', 'acc26']],
+    ['マレーシア', '2023', '越境ヘイズ法の制定をいったん見送り、ASEAN 協定に罰則などを加える強化を提案。', '国外を管轄する法律は難しい、との司法当局の見解。', ['my23', 'my23b']],
+    ['インドネシア', '2026年', '大規模な火災に、航空機47機・約6万人を投入（10月時点）。', '10月20日にはジャカルタで、政府の火災対応への抗議が起きた。', ['dte26']],
+    ['マレーシア', '2026年', '10月9日にクアラルンプール・プトラジャヤと6州で休校。環境局は8〜10月に野焼きへ3,433件の取り締まり。ヘイズを最大5日前に予測する仕組みを導入。', '越境ヘイズを対象にした法律の制定を再び検討中（10月）。', ['my26school', 'my26doe', 'my26forecast', 'my26law']],
+    ['シンガポール', '2026年10月', '越境煙害汚染法にもとづき、インドネシアの10社に予防措置の通知（16日に7社、19日に3社）。9社が製紙原料の植林、1社がパーム油。', '消火の人員配置・火入れの停止・行動計画の提出を求める。違反の認定ではない。', ['thpa26', 'star26']],
+    ['マレーシア', '2027年（予定）', '地域の運営委員会の議長として、ASEAN レベルの新しい対策を提案する計画。', '—', ['myasean27']],
+  ];
+  $('country-rows').replaceChildren(...COUNTRY.map(([who, when, what, status, src]) => {
+    const tr = el('tr', 'border-b border-line align-top');
+    tr.append(el('td', 'py-2 pr-3 font-bold whitespace-nowrap', who), el('td', 'py-2 px-2 whitespace-nowrap tnum', when), el('td', 'py-2 px-2', what));
+    const td = el('td', 'py-2 pl-2 grid gap-0.5'); td.append(el('span', '', status), cite(...src));
+    tr.append(td);
+    return tr;
+  }));
+
+  // ---------- companies ----------
+  const COMPANY = [
+    ['APP（アジア・パルプ・アンド・ペーパー、シナルマス・グループ）', '製紙', '2013年2月「森林保全方針」：天然林の伐採をやめ、植林地だけから調達。火入れの禁止（同社は1996年からとしている）。', '2015年に供給元の植林地で大規模な泥炭火災。2026年10月のシンガポールの通知について「予防措置で、違反の認定ではない」とコメント。', ['app', 'app15', 'thpa26']],
+    ['APRIL（RGE グループ）', '製紙', '2015年「持続可能な森林管理方針 2.0」：森林と、森林のある泥炭地の開発をやめる。', '泥炭地での既存の植林をどう扱うかが問われている。', ['april']],
+    ['Wilmar International', 'パーム油', '2013年12月 NDPE 方針：森林破壊ゼロ・深さを問わず泥炭開発ゼロ・搾取ゼロ。第三者の供給元も対象。', '多数の供給元を通じた監視の実効性。', ['wilmar']],
+    ['RSPO（持続可能なパーム油のための円卓会議）', '認証制度', '2018年の新基準：2018年11月以降、泥炭地への新規植栽を禁止（深さを問わず）、整地での火の使用を禁止、森林破壊を禁止。', '認証を受けていない農園・小規模農家は対象外。', ['rspo']],
+  ];
+  $('company-rows').replaceChildren(...COMPANY.map(([who, field, pledge, issue, src]) => {
+    const tr = el('tr', 'border-b border-line align-top');
+    tr.append(el('td', 'py-2 pr-3 font-bold min-w-[9rem]', who), el('td', 'py-2 px-2 whitespace-nowrap', field), el('td', 'py-2 px-2', pledge));
+    const td = el('td', 'py-2 pl-2 grid gap-0.5'); td.append(el('span', '', issue), cite(...src));
+    tr.append(td);
+    return tr;
+  }));
+
+  $('source-list').replaceChildren(...['campur', 'deaths', 'deathsDispute', 'wb', 'my26school', 'aathp', 'acc23', 'acc26', 'myasean27', 'moratorium', 'wri19', 'brg', 'dte26', 'thpa15', 'thpa26', 'star26', 'my23', 'my23b', 'my26law', 'my26doe', 'my26forecast', 'app', 'app15', 'april', 'wilmar', 'rspo']
+    .map((k) => { const li = el('li'); li.append(link(SRC[k][1], SRC[k][0])); return li; }));
+
+  // ---------- news ----------
+  const TAGS = { all: 'すべて', fire: '火災・ホットスポット', health: '健康・学校', policy: '政策・外交', business: '企業・経済', air: '大気・予報' };
+  const PAGE = 15;
+  let items = [], tag = 'all', query = '', shown = PAGE;
+  const day = (iso) => iso.slice(0, 10);
+  const fmtDate = (iso) => { const [, m, d] = iso.slice(0, 10).split('-'); return Number(m) + '/' + Number(d) + ' ' + iso.slice(11, 16); };
+
+  function renderVolume() {
+    // Articles per day over the last 30 days (UTC+8), to show when the haze was in the news.
+    const end = new Date(Date.now() + 8 * 3600e3);
+    const days = Array.from({ length: 30 }, (_, i) => new Date(end.getTime() - (29 - i) * 86400e3).toISOString().slice(0, 10));
+    const count = Object.fromEntries(days.map((d) => [d, 0]));
+    for (const it of items) if (day(it.date) in count) count[day(it.date)]++;
+    const max = Math.max(1, ...Object.values(count));
+    $('news-volume').replaceChildren(...days.map((d) => {
+      const b = el('span'); b.style.height = Math.max(count[d] ? 6 : 2, (count[d] / max) * 100) + '%';
+      if (!count[d]) b.className = 'zero';
+      b.title = Number(d.slice(5, 7)) + '/' + Number(d.slice(8)) + '：' + count[d] + '件';
+      return b;
+    }));
+    const peak = days.reduce((a, d) => (count[d] > count[a] ? d : a), days[0]);
+    $('news-volume').setAttribute('aria-label', '直近30日の1日あたりの記事数。最多は ' + peak.slice(5) + ' の ' + count[peak] + '件');
+    $('news-volume-note').textContent = '直近30日・1日あたりの記事数（最多 ' + Number(peak.slice(5, 7)) + '/' + Number(peak.slice(8)) + ' の ' + count[peak] + '件）';
+    $('news-volume-axis').replaceChildren(el('span', '', days[0].slice(5).replace('-', '/')), el('span', '', '今日'));
+  }
+
+  function renderTags() {
+    const n = (t) => (t === 'all' ? items.length : items.filter((i) => i.tags.includes(t)).length);
+    $('news-tags').replaceChildren(...Object.entries(TAGS).map(([k, label]) => {
+      const b = el('button', 'chip', label + ' ' + n(k)); b.type = 'button';
+      b.setAttribute('aria-pressed', String(tag === k));
+      b.onclick = () => { tag = k; shown = PAGE; renderList(); renderTags(); };
+      return b;
+    }));
+  }
+
+  function renderList() {
+    const q = query.toLowerCase();
+    const list = items.filter((i) => (tag === 'all' || i.tags.includes(tag))
+      && (!q || (i.title_ja + ' ' + i.title + ' ' + i.summary_ja + ' ' + i.source).toLowerCase().includes(q)));
+    $('news-list').replaceChildren(...list.slice(0, shown).map((i) => {
+      const li = el('li', 'py-2.5 border-b border-line grid gap-0.5');
+      const meta = el('div', 'flex flex-wrap gap-x-2 gap-y-0.5 text-[.72rem] text-muted');
+      meta.append(el('span', 'tnum', fmtDate(i.date)), el('span', 'font-bold', i.source), ...i.tags.map((t) => el('span', 'news-tag', TAGS[t])));
+      const h = el('h3', 'text-[.92rem] font-bold leading-snug'); h.append(link(i.link, i.title_ja));
+      li.append(meta, h);
+      // Some outlets' summaries only repeat the headline.
+      if (i.summary_ja && !i.summary_ja.replace(/\s/g, '').includes(i.title_ja.replace(/\s/g, ''))) li.append(el('p', 'text-[.8rem]', i.summary_ja));
+      if (i.title) li.append(el('p', 'text-[.72rem] text-muted', i.title));
+      return li;
+    }));
+    if (!list.length) $('news-list').replaceChildren(el('li', 'py-3 note', items.length ? '条件に合う記事がありません。' : '記事を読み込めませんでした。'));
+    $('news-more').classList.toggle('hidden', list.length <= shown);
+    $('news-more').textContent = 'もっと見る（残り ' + Math.max(0, list.length - shown) + ' 件）';
+  }
+
+  $('news-more').onclick = () => { shown += PAGE; renderList(); };
+  $('news-q').addEventListener('input', (e) => { query = e.target.value.trim(); shown = PAGE; renderList(); });
+  fetch('data/news.json', { cache: 'no-cache' }).then((r) => (r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)))).then((d) => {
+    items = d.items || [];
+    const t = d.generated_at ? d.generated_at.slice(0, 16).replace('T', ' ') : '—';
+    $('news-status').textContent = items.length + '件（' + (items.length ? fmtDate(items[items.length - 1].date).split(' ')[0] + '〜' : '') + '）・最終更新 ' + t + '（UTC+8）・出典 Campur.ai';
+    renderVolume(); renderTags(); renderList();
+  }).catch((e) => {
+    console.warn('news', e);
+    $('news-status').textContent = '報道データを読み込めませんでした。';
+    renderTags(); renderList();
+  });
+
+  // ---------- theme ----------
+  $('theme').value = document.documentElement.dataset.theme || 'auto';
+  $('theme').onchange = (e) => {
+    const v = e.target.value;
+    if (v === 'auto') delete document.documentElement.dataset.theme; else document.documentElement.dataset.theme = v;
+    try { localStorage.setItem('haze-theme', v); } catch (err) { /* storage unavailable */ }
+  };
+})();
+</script>
+</body>
+</html>
