@@ -1,10 +1,11 @@
 name: Collect haze readings
 
-# Every 2 hours (UTC even hours are also even hours in UTC+8), a few minutes past the hour so the
-# sources have published the hour's reading.
+# Every hour, a few minutes past the hour so the sources have published the hour's reading. The page
+# uses two-hour slots; running hourly means a slot still gets a reading when GitHub delays or skips a
+# scheduled run (which happens under load), and the later reading in a slot replaces the earlier one.
 on:
   schedule:
-    - cron: "7 */2 * * *"
+    - cron: "7 * * * *"
   workflow_dispatch:
   push:
     paths:
