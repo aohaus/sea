@@ -4,9 +4,12 @@ This dashboard compares air quality and haze in Malaysia (Kuala Lumpur, Penang, 
 
 ## Pages
 
-The app has three steps, linked by the tab bar at the top of each page:
+The app has three steps, linked by the bar fixed to the bottom of each page:
 
 1. **知る** (`index.html`): current values and the last 14 days, by station and index.
+   - At the top, 「いまの空気」 shows one station: the one nearest the viewer (📍 button, browser geolocation; the position stays in the browser) or the one they chose. It shows the government index (API / PSI) when it has real readings, otherwise the modelled US AQI. The panel is filled with the colour of the health band, compared with the 14-day average, and the last 24 hours are shown as 12 coloured cells.
+   - Health-band colours, worst to best: black, purple, red, dark orange, light orange, yellow, green (`--band-*` in `src.css`). A category name has the same colour on every scale: 危険 black, 非常に良くない purple, 健康に良くない red, 敏感な人に良くない light orange, 普通 yellow, 良好 green. Dark orange is NEA's PM2.5 band II (上昇).
+   - Station, comparison mode, sources, series and band scale are under 詳細設定 (folded). The page explanation shows on the first visit, then from the 説明 button.
 2. **理解する** (`understand.html`):
    - how the indices differ (purpose, publisher, averaging time, reliability, best use)
    - 「同じ空気、違う数字」: a converter from one PM2.5 concentration to US AQI, PSI, NEA's 1-hour band and multiples of the WHO guideline
