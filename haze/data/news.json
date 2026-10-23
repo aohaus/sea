@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-10-23T15:33:09+08:00",
- "checked_at": "2026-10-23T15:33:09+08:00",
+ "generated_at": "2026-10-23T19:27:47+08:00",
+ "checked_at": "2026-10-23T19:27:47+08:00",
  "source": {
   "name": "Campur.ai",
   "url": "https://campur.ai.studio/"
@@ -10,6 +10,41 @@
   "errors": []
  },
  "items": [
+  {
+   "id": "astroawani-e5ebf2fcee17ef",
+   "date": "2026-10-23T18:40+08:00",
+   "source": "Astro AWANI",
+   "link": "https://www.astroawani.com/berita-malaysia/jerebu-18-stesen-rekod-ipu-tidak-sihat-setakat-6-petang-larkin-catat-lonjakan-tertinggi",
+   "title_ja": "ヘイズ：午後6時時点で18局が不健全なIPUを記録、ラーキンは最高スパイクを記録",
+   "title": "Jerebu: 18 stesen rekod IPU tidak sihat setakat 6 petang, Larkin catat lonjakan tertinggi",
+   "summary_ja": "ジョホール州パシル・グダンは、昨日午後５時のCPIが98ポイントから7ポイント上昇して105ポイントとなり、不健全な数値を記録した最新の地域となった。",
+   "lang": "ms",
+   "tags": []
+  },
+  {
+   "id": "astroawani-f7afe850ea1218",
+   "date": "2026-10-23T18:16+08:00",
+   "source": "Astro AWANI",
+   "link": "https://www.astroawani.com/berita-malaysia/jerebu-asean-perlu-pertimbang-klausa-liabiliti-negara-terjejas-boleh-ambil-tindakan",
+   "title_ja": "ヘイズ氏：ASEANは責任条項を検討する必要がある、影響を受けた国々は行動を起こすことができる",
+   "title": "Jerebu: ASEAN perlu pertimbang klausa liabiliti, negara terjejas boleh ambil tindakan",
+   "summary_ja": "責任条項は、影響を受けた国が汚染の原因となった当事者に対して、被った損失の補償を請求するなどの措置を講じる仕組みを提供することができます。",
+   "lang": "ms",
+   "tags": [
+    "policy"
+   ]
+  },
+  {
+   "id": "astroawani-ee7ca13e00cab6",
+   "date": "2026-10-23T17:30+08:00",
+   "source": "Astro AWANI",
+   "link": "https://www.astroawani.com/berita-malaysia/jerebu-17-kawasan-masih-tidak-sihat-setakat-5-petang-nilai-kekal-tertinggi",
+   "title_ja": "ヘイズ: 午後 5 時の時点で 17 のエリアがまだ健全ではなく、値は最高のままです",
+   "title": "Jerebu: 17 kawasan masih tidak sihat setakat 5 petang, Nilai kekal tertinggi",
+   "summary_ja": "ヌグリ・スンビラン州のニライさんは引き続き159で最高値を記録したが、クアラルンプールのバトゥ・ムダさん、セランゴール州のクランさん、ヌグリ・スンビラン州のスレンバンさんがそれぞれ記録した。",
+   "lang": "ms",
+   "tags": []
+  },
   {
    "id": "nst-f4110fff60b55f",
    "date": "2026-10-23T10:00+08:00",
@@ -90,6 +125,21 @@
    ]
   },
   {
+   "id": "malaymail-6eed35352127b6",
+   "date": "2026-10-23T03:52+08:00",
+   "source": "Malay Mail",
+   "link": "https://www.malaymail.com/news/malaysia/2026/10/23/malaysia-keeps-indonesia-firefighting-aid-offer-open-as-no-local-companies-linked-to-forest-fires/240332",
+   "title_ja": "マレーシア、インドネシアの消防援助オファーを継続、地元企業は森林火災に関与しない",
+   "title": "Malaysia keeps Indonesia firefighting aid offer open, no local companies linked to forest fires",
+   "summary_ja": "国境を越えた煙霧を引き起こす森林火災へのインドネシアの取り組みを支援するというマレーシアの提案は依然としてオープンであり、政府は消火活動を提供する用意がある...",
+   "lang": "en",
+   "tags": [
+    "fire",
+    "policy",
+    "business"
+   ]
+  },
+  {
    "id": "bernama-ace5b1c087cf33",
    "date": "2026-10-23T02:30+08:00",
    "source": "BERNAMA",
@@ -120,9 +170,9 @@
    "date": "2026-10-23T01:00+08:00",
    "source": "The Star",
    "link": "https://www.thestar.com.my/news/nation/2026/10/23/haze-causes-drop-in-hotel-bookings-in-johor",
-   "title_ja": "ジョホール州でヘイズの影響、ホテル予約に減少傾向",
+   "title_ja": "ジョホール州でヘイズの影響、ホテル予約数に減少の兆し",
    "title": "Haze causes drop in hotel bookings in Johor",
-   "summary_ja": "ジョホール州のホテル業界で、深刻化するヘイズ（煙害）の影響により、ここ数週間で宿泊予約が減少しています。",
+   "summary_ja": "ジョホール州のホテル業界で、深刻化するヘイズ（煙害）により宿泊予約が減少傾向にあります。観光業への影響が懸念されています。",
    "lang": "en",
    "tags": [
     "business"
@@ -336,9 +386,9 @@
    "date": "2026-10-22T14:10+08:00",
    "source": "Malay Mail",
    "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQRElDR2Rmb1BDaHVmYXl5M2dDTy1ZVTdad0hGekVvTWNqUzgxdFpQSnRtbXNPSlVuR203N2RtUFZNVkJwcFdFOVFyRi1uZ0w5bWQ0aExNZEt2MVlVNWVQbkJRWFY5TWEzLWF3Nzd5LVk0RFU3djB1alRwdXpYaU1lR1NsUHJEcUd4VWJBMTdiVFUwSElmOVZTSWoyOF9KdDRjWFU4LTVIdFVKN3F4NGpHZTltNWc1VmRoMVpRTzk4TGdyM3BHWkJ0Z25scUJBQVVf0gHQAUFVX3lxTFBESUNHZGZvUENodWZheXkzZ0NPLVlVN1p3SEZ6RW9NY2pTODF0WlBKdG1tc09KVW5HbTc3ZG1QVk1WQnBwV0U5UXJGLW5nTDltZDRoTE1kS3YxWVU1ZVBuQlFYVjlNYTMtYXc3N3ktWTREVTd2MHVqVHB1elhpTWVHU2xQckRxR3hVYkExN2JUVTBISWY5VlNJajI4X0p0NGNYVTgtNUh0VUo3cXg0akdlOW01ZzVWZGgxWlFPOThMZ3IzcEdaQnRnbmxxQkFBVV8?oc=5",
-   "title_ja": "シンガポールのヘイズ状況：PM2.5は正常範囲内",
+   "title_ja": "シンガポールのヘイズ状況：PM2.5は正常範囲内を維持",
    "title": "Singapore haze watch: PM2.5 normal islandwide, PSI moderate in four regions",
-   "summary_ja": "シンガポール全土でPM2.5は正常値を示しており、PSI（大気汚染指数）も4地域で中程度の水準を維持しています。",
+   "summary_ja": "シンガポール全域でPM2.5は正常値ですが、PSI（大気汚染指数）は4地域で中程度の水準です。今後の推移に注意が必要です。",
    "lang": "en",
    "tags": [
     "air"
@@ -403,9 +453,9 @@
    "date": "2026-10-22T06:00+08:00",
    "source": "New Straits Times",
    "link": "https://www.nst.com.my/opinion/columnists/2026/10/1561319/focus-turns-firms-indonesia-fire-haze-worsens",
-   "title_ja": "インドネシアの森林火災、企業責任を問う声が拡大",
+   "title_ja": "インドネシアの森林火災によるヘイズ、企業責任を問う声が拡大",
    "title": "Focus turns to firms as Indonesia fire haze worsens",
-   "summary_ja": "インドネシア発のヘイズが深刻化する中、森林火災の原因に関与した企業への法的責任を追及する動きが強まっています。",
+   "summary_ja": "インドネシアの森林火災による広域ヘイズを受け、火災発生に関与した企業への法的責任を追及する動きが強まっています。",
    "lang": "en",
    "tags": [
     "fire",
@@ -447,9 +497,9 @@
    "date": "2026-10-22T02:01+08:00",
    "source": "New Straits Times",
    "link": "https://www.nst.com.my/news/nation/2026/10/1561220/malaysians-can-check-haze-forecasts-five-days-ahead-using-mycmaq",
-   "title_ja": "大気汚染予測システム「MyCMAQ」で5日先まで確認可能",
+   "title_ja": "大気汚染予測システム「MyCMAQ」で5日先まで確認可能に",
    "title": "Malaysians can check haze forecasts up to five days ahead using MyCMAQ",
-   "summary_ja": "マレーシア天然資源環境省は、大気汚染予測モデル「MyCMAQ」を活用し、最大5日先までのヘイズ予報を確認するよう呼びかけています。",
+   "summary_ja": "マレーシア天然資源環境省は、大気汚染予測モデル「MyCMAQ」を公開しました。市民は最大5日先までのヘイズ予報を確認できます。",
    "lang": "en",
    "tags": [
     "policy",
@@ -461,9 +511,9 @@
    "date": "2026-10-21T23:52+08:00",
    "source": "New Straits Times",
    "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxObW0wMmlFd1pJTHJvSzQyemRLdHlIUVV4Z2duQkk0T19VS1d1UmxjU1hfWmVTc08tS29LenRqa3BPdU9wa2NBdVFMWE8xQXMyQTRCU09XTnRpS2ZpVEtYVWZSNWg4QXVIWjFWSGdyQVE4cWRTdXd4NFdfeVVfN1VUcFN3b0ctbWxKWWxxQVh3Sl83TW0tMUVYMjJoR1RWVXNJbTZoZzFKc1BCc1HSAbABQVVfeXFMT3ZVdXZua1JoN0VCODAyMGRiclNsbjhQS2xPSEJKcDFiR3YyWmprYmFaRjB1Wkx2NURQczFQaDVfN0dFdEJPcktGQWE2TjdTNmswai0tcUluSXJtSmQzVHB6b3MwZWhfWnpuWktRVTRXLVpES0pPU21IM1BHc0dKTjJUWW4ybW0tNVNKaVg3ZnVVMjNucVRGbHlteXBvVTJjbzRuUlJYandPNU4yMDQ1R3Q?oc=5",
-   "title_ja": "ヘイズ問題でサイード・サディク氏「マレーシア対インドネシアの対立ではない」",
+   "title_ja": "サイード・サディク氏、ヘイズ問題での対立激化を戒める",
    "title": "'This is not Malaysia vs Indonesia', Syed Saddiq says amid haze row - NST Online",
-   "summary_ja": "ヘイズ問題を巡る両国の緊張に対し、サイード・サディク氏は国家間の対立ではなく協力が必要であるとの見解を示しました。",
+   "summary_ja": "ヘイズ問題を巡るマレーシアとインドネシアの緊張に対し、サイード・サディク氏は両国の対立構造に陥るべきではないと強調しました。",
    "lang": "en",
    "tags": []
   },
@@ -472,9 +522,9 @@
    "date": "2026-10-21T21:52+08:00",
    "source": "New Straits Times",
    "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPdmJvRUlBWEptV3d5Y1NTRG9tZThsU3J6OU14dFlxalFyanlRZWdfM0oybGRkc2s2cDFFQ1VuSVg4Zi1OWjFmNHg3SFV2WFpFUTRTVmtIYWhBWVkyN2laam5uZ0U5cTU3ellpdlZTQ2dzVDFOR19DT1g4blg1ZG1GYUxnVEZHcFRyRjc2YlZWLThkcnNDZER2S2ttRU42ZERkQVhfZWc2ZnotYnlnZGJaQ2VpNE9Vemo3UVHSAb8BQVVfeXFMT2tYa0JtR3JkeWZIN1hfYXV6X1AyZEpZa1I2YVh5V2RzUVNCTzdSWVNxSWRGajZyTlpQVlNMTmdkRUJyZ29NMkc0OGVvRWZNUHFvaGtaUHRVNy03V2hYX2Nhal9nMGxka2xDZDF0Y3IwNHU1VjRKVlJVajZrSW15UUlTTXJXU09WdVdnR2IyblNyNjZzQ3loWFFGQnVkajQ1cGkyQnotUXBHSnhYRGU4WE5IQXFfM0JsaXI4UklJeG8?oc=5",
-   "title_ja": "プラボウォ氏、森林火災を巡る他国からの批判に反論",
+   "title_ja": "プラボウォ氏、ヘイズ問題でインドネシアを非難する国に反論",
    "title": "Prabowo hits back at countries 'insulting' Indonesia over wildfire haze - NST Online",
-   "summary_ja": "インドネシアのプラボウォ氏は、森林火災によるヘイズ問題で自国を「侮辱」する周辺諸国に対し、強い反論姿勢を見せています。",
+   "summary_ja": "インドネシアのプラボウォ氏は、森林火災によるヘイズを巡り同国を批判する周辺国に対し、不当な侮辱であると強く反論しました。",
    "lang": "en",
    "tags": [
     "fire"
@@ -563,9 +613,9 @@
    "date": "2026-10-21T12:20+08:00",
    "source": "Astro AWANI",
    "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOdC1zSFQ0UkdoTldTUG02SWwxTnNIczJfRjBwMWNJNlphV2dnR0M1bzVYTGQ4T3pqTjZ1c2czN0pqczg4Wm03bnE0Y29BYU93aTZ4dmFJY3BRT2NRUlNORkZNTTVaMks1VU9HR0QxTktaZmZMTTZHWVNhM3N0aTdyU0l0NkFzNEM3cjRNbmU5YTZueUoyREV2MVdnZ2RRaVVfUTRreDBYZi15QS1wdUNvd0pBTVYtRzJWc3FQTi12RlRsSEpEbnZPODdWQQ?oc=5",
-   "title_ja": "JAKIM、ヘイズ収束とアル・アクサ保護を願い祈祷会を開催",
+   "title_ja": "JAKIM anjur solat hajat mohon perlindungan Al-Aqsa, keselamatan Malaysia berkaitan jerebu",
    "title": "JAKIM anjur solat hajat mohon perlindungan Al-Aqsa, keselamatan Malaysia berkaitan jerebu",
-   "summary_ja": "マレーシア・イスラム開発局（JAKIM）は、国内のヘイズ被害の収束と安全、およびアル・アクサの保護を祈る祈祷会を実施しました。",
+   "summary_ja": "JAKIM anjur solat hajat mohon perlindungan Al-Aqsa, keselamatan Malaysia berkaitan jerebu Astro Awani",
    "lang": "ms",
    "tags": []
   },
