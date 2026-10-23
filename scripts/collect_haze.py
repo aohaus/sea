@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Collect current air-quality readings every 2 hours for the Haze Monitor (haze/).
+"""Collect current air-quality readings every hour, into 2-hour slots, for the Haze Monitor (haze/).
 
 Sources that a browser cannot fetch directly are read here, server-side:
   doe_api              Malaysia DOE (APIMS / EQMS) — the public map service lists every station's
