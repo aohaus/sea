@@ -64,7 +64,7 @@ def fetch(query: str) -> list[dict]:
     last = None
     for _ in range(2):
         try:
-            r = requests.get(BASE, params={"q": query, "limit": "500"}, headers=HEADERS, timeout=(15, 60))
+            r = requests.get(BASE, params={"q": query, "limit": "500"}, headers=HEADERS, timeout=(10, 20))
             r.raise_for_status()
             return r.json().get("articles", [])
         except (requests.RequestException, ValueError) as exc:

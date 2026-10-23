@@ -35,8 +35,12 @@ jobs:
         run: python scripts/collect_haze.py
       # Haze news from Campur.ai for the "アクションする" page. The script fetches only when
       # haze/data/news.json is about 3 hours old, so most hourly runs skip it.
+      # It may never hold up the DOE readings: a stalled or failing fetch is stopped after 3 minutes
+      # and the job goes on to commit.
       - name: Collect haze news
         run: python scripts/collect_haze_news.py
+        timeout-minutes: 3
+        continue-on-error: true
       - name: Commit readings
         run: |
           git config user.name "github-actions[bot]"
