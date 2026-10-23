@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
-<link rel="stylesheet" href="haze.css?v=20261023d">
+<link rel="stylesheet" href="haze.css?v=20261023e">
 <script>
   // Theme before first paint (auto / light / dark; a per-viewer convenience).
   try { const t = localStorage.getItem('haze-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) { /* storage unavailable */ }
@@ -20,13 +20,15 @@
 <body class="font-sans text-[15px] leading-relaxed">
 <main class="max-w-[1200px] mx-auto px-4 pt-6 pb-12 grid gap-5">
 
-  <header class="flex items-center justify-between gap-3">
+  <header class="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
     <h1 class="text-[1.3rem] sm:text-[1.6rem] font-black leading-tight">ヘイズモニター<span class="en text-xs hidden sm:inline">Haze Monitor — Malaysia &amp; Singapore</span></h1>
     <div class="flex items-center gap-2">
       <button id="intro-btn" type="button" class="chip" aria-controls="intro" aria-expanded="false" title="このページの説明">？ 説明</button>
       <label class="sr-only" for="theme">表示</label>
       <select id="theme" class="ctl" title="表示"><option value="auto">自動</option><option value="light">ライト</option><option value="dark">ダーク</option></select>
     </div>
+    <!-- Current time in Malaysia / Singapore (UTC+8), and when the collected readings were last updated. -->
+    <p class="w-full text-[.8rem] text-muted tnum"><span>現在</span> <time id="clock" class="font-bold text-fg"></time><span class="hidden sm:inline">（マレーシア・シンガポール時間）</span><span id="data-time"></span></p>
   </header>
 
   <!-- About this page: shown on the first visit, then from the 説明 button. -->
@@ -179,6 +181,6 @@
   <a class="step" href="actions.html"><b>3</b>アクションする<span class="en">Act</span></a>
 </nav>
 <script src="vendor/chart-4.4.1.umd.min.js"></script>
-<script src="app.js?v=20261023d"></script>
+<script src="app.js?v=20261023e"></script>
 </body>
 </html>
