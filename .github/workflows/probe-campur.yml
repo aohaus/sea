@@ -5,13 +5,18 @@ on:
 jobs:
   probe:
     runs-on: ubuntu-latest
+    timeout-minutes: 8
     steps:
       - run: |
           B=https://campur.ai.studio
           curl -sSL -m 30 "$B/" -o page.html || true
           JS=$(grep -oE '/assets/index-[A-Za-z0-9_-]+\.js' page.html | head -1)
           curl -sSL -m 60 "$B$JS" -o app.js || true
-          echo "--- context around archive/articles"; grep -oE '.{0,700}/api/archive/articles\?\$\{q' app.js | head -2
+          python3 -c "
+          s=open('app.js',encoding='utf-8',errors='ignore').read()
+          i=s.find('/api/archive/articles?\${q')
+          print('--- context', s[max(0,i-900):i+80] if i>=0 else 'not found')
+          " || true
           for p in "/api/archive/articles?limit=3" "/api/archive/articles?q=haze&limit=50" "/api/archive/articles?search=haze&limit=50" "/api/archive/articles?keyword=haze&limit=50" "/api/archive/articles?query=haze&limit=50"; do
             echo "===== GET $p"
             curl -sS -m 60 -o out -w "%{http_code} %{size_download}\n" "$B$p" || true
