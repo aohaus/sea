@@ -11,33 +11,23 @@ jobs:
           curl -sSL -m 30 "$B/" -o page.html || true
           JS=$(grep -oE '/assets/index-[A-Za-z0-9_-]+\.js' page.html | head -1)
           curl -sSL -m 60 "$B$JS" -o app.js || true
-          echo "--- template api paths"; grep -oE '`/api/[^`]{0,120}`' app.js | sort -u | head -40
-          echo "--- all /api strings"; grep -oE '/api/[A-Za-z0-9/_-]+' app.js | sort | uniq -c | sort -rn | head -60
-          for p in "/api/rss/feeds" "/api/rss/intelligence" "/api/rss/health" "/api/archive/stats" "/api/archive/category-trends?days=14" "/api/archive/word-cloud" "/api/archive/execution-history"; do
+          echo "--- context around archive/articles"; grep -oE '.{0,700}/api/archive/articles\?\$\{q' app.js | head -2
+          for p in "/api/archive/articles?limit=3" "/api/archive/articles?q=haze&limit=50" "/api/archive/articles?search=haze&limit=50" "/api/archive/articles?keyword=haze&limit=50" "/api/archive/articles?query=haze&limit=50"; do
             echo "===== GET $p"
-            curl -sS -m 60 -H "Origin: https://aohaus.github.io" -D hdr -o out "$B$p" || true
-            grep -iE '^(HTTP|content-type|access-control|cache-control|content-length)' hdr
+            curl -sS -m 60 -o out -w "%{http_code} %{size_download}\n" "$B$p" || true
             python3 - <<'PY'
-          import json
-          raw=open('out','rb').read()
-          print('bytes', len(raw))
-          try:
-              d=json.loads(raw)
-          except Exception as e:
-              print('not json', raw[:300]); raise SystemExit
-          def shape(x, depth=0):
-              if depth>3: return '…'
-              if isinstance(x, dict): return {k: shape(v, depth+1) for k,v in list(x.items())[:25]}
-              if isinstance(x, list): return [len(x), shape(x[0], depth+1) if x else None]
-              if isinstance(x, str): return x[:90]
-              return x
-          print(json.dumps(shape(d), ensure_ascii=False, indent=1)[:3500])
+          import json,re
+          try: d=json.load(open('out'))
+          except Exception as e: print('not json', open('out','rb').read()[:200]); raise SystemExit
+          arts = d.get('articles') if isinstance(d,dict) else d
+          print('keys', list(d.keys())[:15] if isinstance(d,dict) else type(d))
+          for k in ('total','totalCount','page','hasMore','limit'):
+              if isinstance(d,dict) and k in d: print(k, d[k])
+          if arts:
+              print('n', len(arts), 'fields', list(arts[0].keys()))
+              hz=[a for a in arts if re.search(r'(?i)haze|jerebu|ヘイズ|煙霧|kabut asap|hotspot|peat', json.dumps(a,ensure_ascii=False))]
+              print('haze-matching', len(hz))
+              for a in (hz or arts)[:6]:
+                  print(' -', a.get('isoDate') or a.get('pubDate'), a.get('sourceName'), '|', (a.get('titleJa') or a.get('title'))[:80], '|', (a.get('category') or ''))
           PY
           done
-          echo "===== haze in intelligence/feeds"
-          for p in "/api/rss/intelligence" "/api/rss/feeds"; do curl -sS -m 60 "$B$p" -o o.json || true; python3 -c "
-          import json,re
-          d=json.load(open('o.json'))
-          s=json.dumps(d,ensure_ascii=False)
-          print('$p', 'haze hits', len(re.findall(r'(?i)haze|jerebu|ヘイズ|煙霧|asap', s)))
-          " || true; done
