@@ -342,7 +342,7 @@
       b.setAttribute('aria-selected', String(state.city === c.id));
       b.onclick = () => {
         const first = STATIONS.find((s) => s.city === c.id);
-        set(state.mode === 'indices' ? { city: c.id, station: first.id } : { city: c.id });
+        set(state.mode === 'indices' ? { city: c.id, station: first.id, located: false } : { city: c.id });
       };
       return b;
     }));
@@ -352,7 +352,7 @@
       b.type = 'button'; b.className = 'chip'; b.textContent = s.ja;
       if (state.mode === 'indices') {
         b.setAttribute('aria-pressed', String(state.station === s.id));
-        b.onclick = () => set({ station: s.id });
+        b.onclick = () => set({ station: s.id, located: false });
       } else {
         b.setAttribute('aria-pressed', String(state.places.includes(s.id)));
         b.onclick = () => set({ places: state.places.includes(s.id) ? state.places.filter((x) => x !== s.id) : [...state.places, s.id] });
@@ -745,7 +745,7 @@
 
   // ---------- events ----------
   document.querySelectorAll('[data-mode]').forEach((b) => { b.onclick = () => set({ mode: b.dataset.mode }); });
-  $('now-station').onchange = (e) => { const s = stationById.get(e.target.value); set({ city: s.city, station: s.id }); };
+  $('now-station').onchange = (e) => { const s = stationById.get(e.target.value); set({ city: s.city, station: s.id, located: false }); };
   $('locate').onclick = () => locate(true);
   // The explanation shows on the first visit, then only from the 説明 button.
   const showIntro = (open) => { $('intro').classList.toggle('hidden', !open); $('intro-btn').setAttribute('aria-expanded', String(open)); };
@@ -778,9 +778,10 @@
   };
 
   render();
-  // A viewer who allowed location before (and used it last time) gets the nearest station without asking.
+  // A viewer who allowed location and used it last time gets the nearest station without asking;
+  // choosing a station by hand turns this off (located: false).
   if (state.located && navigator.permissions?.query) {
-    navigator.permissions.query({ name: 'geolocation' }).then((p) => { if (p.state === 'granted') locate(false); }).catch(() => {});
+    navigator.permissions.query({ name: 'geolocation' }).then((p) => { if (p.state === 'granted' && state.located) locate(false); }).catch(() => {});
   }
   // Live data: collector first (it may cover DOE), then the browser-callable APIs.
   loadCollector().then(() => Promise.all([loadOpenMeteo(), loadNea(), waqiToken ? loadWaqi(waqiToken) : null])).then(render);
