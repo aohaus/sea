@@ -32,18 +32,20 @@
 
   // ---------- indices and bands ----------
   // kind: index (0–500 scale, left axis) or conc (µg/m³, right axis); bands: which health scale applies.
+  // In the order of how much weight they get on the page: US AQI (the scale most sites show), the
+  // Malaysian API (DOE APIMS), PM2.5 concentration, Singapore's NEA readings, then WAQI.
   const SERIES = [
+    { key: 'om_aqi', src: 'C', kind: 'index', ja: 'US AQI（Open-Meteo）', en: 'modelled US AQI', unit: '', bands: 'usaqi', color: '--src-c', for: ['my', 'sg'] },
+    { key: 'doe_api', src: 'B', kind: 'index', ja: 'API（DOE APIMS）', en: 'Malaysia Air Pollutant Index', unit: '', bands: 'apipsi', color: '--src-b', for: ['my'] },
+    { key: 'om_pm25', src: 'C', kind: 'conc', ja: 'PM2.5（Open-Meteo）', en: 'modelled PM2.5', unit: 'µg/m³', bands: 'pm25', color: '--src-d', for: ['my', 'sg'] },
+    { key: 'om_pm10', src: 'C', kind: 'conc', ja: 'PM10（Open-Meteo）', en: 'modelled PM10', unit: 'µg/m³', bands: null, color: '--src-g', for: ['my', 'sg'] },
+    { key: 'nea_psi', src: 'B', kind: 'index', ja: 'PSI 24時間（NEA）', en: '24-hr PSI', unit: '', bands: 'apipsi', color: '--src-b', for: ['sg'] },
+    { key: 'nea_pm25', src: 'B', kind: 'conc', ja: 'PM2.5 1時間値（NEA）', en: '1-hr PM2.5', unit: 'µg/m³', bands: 'pm25', color: '--src-e', for: ['sg'] },
     // For Malaysia, WAQI republishes DOE's API as its AQI (the collected values equal DOE's), so the
     // series is labelled and banded as an API there; Singapore's is on the US EPA scale.
     { key: 'waqi_aqi', src: 'A', kind: 'index', ja: 'WAQI AQI', en: 'US-EPA AQI', unit: '', bands: 'usaqi', color: '--src-a', for: ['my', 'sg'],
       byCountry: { my: { ja: 'WAQI AQI（DOE API の転載）', en: 'Malaysian API as republished by WAQI', bands: 'apipsi' } } },
     { key: 'waqi_pm25', src: 'A', kind: 'index', ja: 'WAQI PM2.5 指数（米国基準）', en: 'PM2.5 sub-index (US EPA)', unit: '', bands: 'usaqi', color: '--src-f', for: ['my', 'sg'] },
-    { key: 'doe_api', src: 'B', kind: 'index', ja: 'API（DOE APIMS）', en: 'Malaysia Air Pollutant Index', unit: '', bands: 'apipsi', color: '--src-b', for: ['my'] },
-    { key: 'nea_psi', src: 'B', kind: 'index', ja: 'PSI 24時間（NEA）', en: '24-hr PSI', unit: '', bands: 'apipsi', color: '--src-b', for: ['sg'] },
-    { key: 'nea_pm25', src: 'B', kind: 'conc', ja: 'PM2.5 1時間値（NEA）', en: '1-hr PM2.5', unit: 'µg/m³', bands: 'pm25', color: '--src-e', for: ['sg'] },
-    { key: 'om_aqi', src: 'C', kind: 'index', ja: 'US AQI（Open-Meteo）', en: 'modelled US AQI', unit: '', bands: 'usaqi', color: '--src-c', for: ['my', 'sg'] },
-    { key: 'om_pm25', src: 'C', kind: 'conc', ja: 'PM2.5（Open-Meteo）', en: 'modelled PM2.5', unit: 'µg/m³', bands: 'pm25', color: '--src-d', for: ['my', 'sg'] },
-    { key: 'om_pm10', src: 'C', kind: 'conc', ja: 'PM10（Open-Meteo）', en: 'modelled PM10', unit: 'µg/m³', bands: null, color: '--src-g', for: ['my', 'sg'] },
   ];
   const seriesByKey = new Map(SERIES.map((s) => [s.key, s]));
   // A series definition as it applies to a station's country.
@@ -52,12 +54,13 @@
     A: { ja: 'A：WAQI', en: 'World Air Quality Index (aqicn.org)', url: 'https://aqicn.org/' },
     B: { ja: 'B：政府公式', en: 'Malaysia DOE APIMS / Singapore NEA', url: 'https://eqms.doe.gov.my/' },
     C: { ja: 'C：モデル', en: 'Open-Meteo Air Quality (CAMS)', url: 'https://open-meteo.com/en/docs/air-quality-api' },
+    M: { ja: '予報：MyCMAQ', en: 'MetMalaysia air-quality forecast', url: 'https://mycmaq.met.gov.my/' },
   };
   const KINDS = { index: '指数（0–500）', conc: '濃度（µg/m³）' };
   // Places mode: one metric across stations. "official" = API for Malaysia, PSI for Singapore.
   const METRICS = [
-    { key: 'om_pm25', ja: 'PM2.5（Open-Meteo、µg/m³）' },
     { key: 'om_aqi', ja: 'US AQI（Open-Meteo）' },
+    { key: 'om_pm25', ja: 'PM2.5（Open-Meteo、µg/m³）' },
     { key: 'official', ja: '政府公式の指数（マレーシア API／シンガポール PSI）' },
   ];
 
@@ -112,6 +115,10 @@
   const shortLabel = (ms) => { const d = local(ms); return (d.getUTCMonth() + 1) + '/' + d.getUTCDate() + ' ' + pad(d.getUTCHours()) + ':00'; };
   const longLabel = (ms) => { const d = local(ms); return d.getUTCFullYear() + '-' + pad(d.getUTCMonth() + 1) + '-' + pad(d.getUTCDate()) + ' ' + pad(d.getUTCHours()) + ':00（UTC+8）'; };
   const slotIndex = new Map(SLOTS.map((ms, i) => [slotKey(ms), i]));
+  // The 5 days after the latest slot (60 two-hour slots), for the forecast chart.
+  const NF = 60;
+  const FSLOTS = Array.from({ length: NF }, (_, i) => lastSlot + (i + 1) * STEP);
+  const futureIndex = new Map(FSLOTS.map((ms, i) => [slotKey(ms), i]));
 
   // ---------- simulation ----------
   function rng(seedText) {
@@ -163,6 +170,9 @@
     DATA[st.id] = {};
     for (const s of SERIES) if (s.for.includes(st.country)) DATA[st.id][s.key] = { values: sim[s.key], mode: 'sim', note: '模擬値' };
   }
+  // Forecasts: Open-Meteo (CAMS) values for the future slots, and the MyCMAQ PM2.5 ranges.
+  const FUTURE = Object.fromEntries(STATIONS.map((st) => [st.id, { om_pm25: Array(NF).fill(null), om_aqi: Array(NF).fill(null) }]));
+  let MYCMAQ = null;
   const STATUS = {
     A: { state: 'sim', text: 'トークン未設定のため模擬値' },
     B: { state: 'sim', text: '取得前' },
@@ -190,10 +200,12 @@
     await Promise.all(STATIONS.map(async (st) => {
       try {
         const url = 'https://air-quality-api.open-meteo.com/v1/air-quality?latitude=' + st.lat + '&longitude=' + st.lon
-          + '&hourly=pm2_5,pm10,us_aqi&past_days=15&forecast_days=1&timezone=Asia%2FSingapore';
+          + '&hourly=pm2_5,pm10,us_aqi&past_days=15&forecast_days=6&timezone=Asia%2FSingapore';
         const d = await fetchJson(url);
         const h = d.hourly; const vals = { om_pm25: Array(N).fill(null), om_pm10: Array(N).fill(null), om_aqi: Array(N).fill(null) };
         h.time.forEach((t, j) => {
+          const f = futureIndex.get(t.slice(0, 13));
+          if (f != null) { FUTURE[st.id].om_pm25[f] = h.pm2_5[j]; FUTURE[st.id].om_aqi[f] = h.us_aqi[j]; }
           const i = slotIndex.get(t.slice(0, 13));
           if (i == null) return;
           vals.om_pm25[i] = h.pm2_5[j]; vals.om_pm10[i] = h.pm10[j]; vals.om_aqi[i] = h.us_aqi[j];
@@ -269,6 +281,10 @@
 
   // A server-side collector (e.g. a GitHub Actions job every 2 hours) may publish data/series.json:
   //   { "generated_at": ISO, "slots": [ISO, ...], "stations": { "<station>": { "<series>": [values aligned to slots] } } }
+  async function loadMycmaq() {
+    try { MYCMAQ = await fetchJson('data/mycmaq.json', 10000); } catch (e) { MYCMAQ = null; }
+  }
+
   async function loadCollector() {
     try {
       const d = await fetchJson('data/series.json', 10000);
@@ -295,7 +311,7 @@
   const DEFAULT = { city: 'kl', station: 'cheras', mode: 'indices', sources: ['A', 'B', 'C'], kinds: ['index', 'conc'],
     // WAQI is not archived (its terms of use), so without a viewer's token its lines are simulated only:
     // hidden by default, still available from the series chips.
-    hidden: ['waqi_aqi', 'waqi_pm25', 'om_pm10'], metric: 'om_pm25', places: STATIONS.map((s) => s.id), bands: 'auto', located: false };
+    hidden: ['waqi_aqi', 'waqi_pm25', 'om_pm10'], metric: 'om_aqi', places: STATIONS.map((s) => s.id), bands: 'auto', located: false };
   let state = { ...DEFAULT };
   try { state = { ...DEFAULT, ...JSON.parse(localStorage.getItem('haze-ui') || '{}') }; } catch (e) { /* storage unavailable */ }
   if (!stationById.has(state.station)) state.station = DEFAULT.station;
@@ -414,11 +430,11 @@
       render();
     }, { enableHighAccuracy: false, timeout: 15000, maximumAge: 10 * 60e3 });
   }
-  // The headline series: the government index (API / PSI) when it has real readings, else the modelled
-  // US AQI when that is live, else the government index (simulated, and labelled so).
+  // The headline series: US AQI (the scale most sites show) when it is live, else the government index
+  // (API / PSI) when it has real readings, else the government index (simulated, and labelled so).
   function headline(st) {
     const official = st.country === 'my' ? 'doe_api' : 'nea_psi';
-    const key = [official, 'om_aqi'].find((k) => DATA[st.id][k] && DATA[st.id][k].mode !== 'sim') || official;
+    const key = ['om_aqi', official].find((k) => DATA[st.id][k] && DATA[st.id][k].mode !== 'sim') || official;
     const def = defFor(seriesByKey.get(key), st.country);
     return { def, data: DATA[st.id][key] };
   }
@@ -618,6 +634,130 @@
     else trend = new Chart($('trend'), { type: 'line', data: { labels, datasets }, options, plugins: [bandPlugin] });
   }
 
+  // ---------- last 7 days and the 5-day forecast ----------
+  // 2-hour slots from 7 days back to 5 days ahead: the last 84 slots of SLOTS, then FSLOTS.
+  const OSLOTS = [...SLOTS.slice(-84), ...FSLOTS];
+  const NOW_AT = 83; // index of the latest slot in OSLOTS
+  const nowLine = {
+    id: 'nowLine',
+    beforeDatasetsDraw(chart) {
+      const x = chart.scales.x, { ctx, chartArea: a } = chart;
+      const x0 = x.getPixelForValue(NOW_AT);
+      ctx.save();
+      ctx.fillStyle = css('--grid'); ctx.globalAlpha = 0.5;
+      ctx.fillRect(x0, a.top, a.right - x0, a.bottom - a.top);
+      ctx.globalAlpha = 1; ctx.strokeStyle = css('--fg'); ctx.setLineDash([2, 3]);
+      ctx.beginPath(); ctx.moveTo(x0, a.top); ctx.lineTo(x0, a.bottom); ctx.stroke();
+      ctx.fillStyle = css('--muted'); ctx.font = '11px sans-serif'; ctx.textAlign = 'left';
+      ctx.fillText('予報 →', x0 + 4, a.top + 12);
+      ctx.restore();
+    },
+  };
+  let outlook = null;
+  function mycmaqFor(st) {
+    // MyCMAQ ranges aligned to OSLOTS (a range [lo, hi] or null).
+    const lo = Array(OSLOTS.length).fill(null), hi = Array(OSLOTS.length).fill(null);
+    if (!MYCMAQ?.stations?.[st.id]) return null;
+    const at = new Map(OSLOTS.map((ms, i) => [slotKey(ms), i]));
+    MYCMAQ.times.forEach((t, j) => {
+      const i = at.get(slotKey(Date.parse(t))), r = MYCMAQ.stations[st.id][j];
+      if (i != null && r) { lo[i] = r[0]; hi[i] = Math.min(r[1], 600); }
+    });
+    return { lo, hi };
+  }
+  function renderOutlook() {
+    const st = stationById.get(state.station);
+    const muted = css('--muted'), grid = css('--grid'), fg = css('--fg');
+    const pastPm = DATA[st.id].om_pm25.values.slice(-84);
+    const cams = [...pastPm, ...FUTURE[st.id].om_pm25];
+    const camsLive = DATA[st.id].om_pm25.mode !== 'sim';
+    const my = mycmaqFor(st);
+    // Observed: Malaysia's API (real readings only, right axis), Singapore's 1-hr PM2.5 (left axis).
+    const obsKey = st.country === 'my' ? 'doe_api' : 'nea_pm25';
+    const obs = DATA[st.id][obsKey];
+    const obsVals = [...obs.values.slice(-84).map((v, k) => (isReal(obs, SLOTS.length - 84 + k) ? v : null)), ...Array(NF).fill(null)];
+    const hasObs = obsVals.some((v) => v != null);
+    const datasets = [];
+    if (my) {
+      const c = css('--src-b');
+      datasets.push({ label: '_mycmaq_lo', data: my.lo, borderWidth: 0, pointRadius: 0, yAxisID: 'yConc', spanGaps: false, stepped: 'middle' },
+        { label: 'MyCMAQ 予報 PM2.5（範囲）', data: my.hi, borderColor: c, backgroundColor: c + '40', borderWidth: 1, pointRadius: 0, fill: '-1', yAxisID: 'yConc', spanGaps: false, stepped: 'middle' });
+    }
+    if (camsLive) {
+      const c = css('--src-d');
+      datasets.push({ label: 'CAMS PM2.5（Open-Meteo）', data: cams, borderColor: c, backgroundColor: c, borderWidth: 2, pointRadius: 0, tension: 0.25, yAxisID: 'yConc',
+        segment: { borderDash: (ctx) => (ctx.p0DataIndex >= NOW_AT ? [6, 3] : []) } });
+    }
+    if (hasObs) {
+      const def = defFor(seriesByKey.get(obsKey), st.country), c = css(def.color);
+      datasets.push({ label: '実測 ' + def.ja, data: obsVals, borderColor: c, backgroundColor: c, borderWidth: 0, pointRadius: 3, showLine: false,
+        yAxisID: def.kind === 'index' ? 'yIndex' : 'yConc' });
+    }
+    const concMax = Math.max(75, ...[...cams, ...(my ? my.hi : []), ...(obsKey === 'nea_pm25' ? obsVals : [])].filter((v) => v != null && isFinite(v)));
+    const scales = {
+      x: { ticks: { color: muted, maxRotation: 0, autoSkip: false, font: { size: 11 },
+        callback(v, i) { if (slotHour(OSLOTS[i]) !== 0) return ''; const step = this.chart.width >= 600 ? 1 : 2; return Math.floor(i / 12) % step === 0 ? shortLabel(OSLOTS[i]).split(' ')[0] : ''; } },
+        grid: { color: (c) => (c.index != null && slotHour(OSLOTS[c.index]) === 0 ? grid : 'transparent') } },
+      yConc: { position: 'left', min: 0, max: Math.ceil((concMax * 1.08) / 25) * 25, title: { display: true, text: 'PM2.5 µg/m³', color: muted }, ticks: { color: muted }, grid: { color: grid } },
+    };
+    if (hasObs && obsKey === 'doe_api') scales.yIndex = { position: 'right', min: 0, max: axisMax([{ def: { kind: 'index' }, data: { values: obsVals } }], 'index'), title: { display: true, text: 'API', color: muted }, ticks: { color: muted }, grid: { color: 'transparent' } };
+    const options = {
+      responsive: true, maintainAspectRatio: false, animation: { duration: 250 },
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        bands: { key: 'pm25' },
+        legend: { position: 'bottom', labels: { color: fg, usePointStyle: true, boxWidth: 24, font: { size: 12 }, filter: (it) => !it.text.startsWith('_') } },
+        tooltip: { filter: (it) => !it.dataset.label.startsWith('_') && it.parsed.y != null, callbacks: {
+          title: (items) => (items.length ? longLabel(OSLOTS[items[0].dataIndex]) + (items[0].dataIndex > NOW_AT ? '（予報）' : '') : ''),
+          label: (item) => {
+            if (item.dataset.label.startsWith('MyCMAQ')) return ' MyCMAQ：' + fmt(my.lo[item.dataIndex], 'µg') + '〜' + (my.hi[item.dataIndex] >= 500 ? '500 超' : fmt(my.hi[item.dataIndex], 'µg')) + ' µg/m³';
+            return ' ' + item.dataset.label + '：' + fmt(item.parsed.y, item.dataset.yAxisID === 'yConc' ? 'µg' : '');
+          } } },
+      },
+      scales,
+    };
+    const labels = OSLOTS.map(shortLabel);
+    if (outlook) { outlook.data.labels = labels; outlook.data.datasets = datasets; outlook.options = options; outlook.update(); }
+    else outlook = new Chart($('outlook'), { type: 'line', data: { labels, datasets }, options, plugins: [bandPlugin, nowLine] });
+
+    // One tile per day for the next 5 days (today included): the highest MyCMAQ range, and CAMS's highest value.
+    const days = [];
+    for (let i = NOW_AT + 1; i < OSLOTS.length; i++) {
+      const d = slotKey(OSLOTS[i]).slice(0, 10);
+      if (!days.length || days[days.length - 1].d !== d) days.push({ d, idx: [] });
+      days[days.length - 1].idx.push(i);
+    }
+    const wd = ['日', '月', '火', '水', '木', '金', '土'];
+    $('outlook-days').replaceChildren(...days.slice(0, 5).map(({ d, idx }) => {
+      const tile = document.createElement('div'); tile.className = 'card banded grid gap-0.5 content-start !p-2.5';
+      const date = new Date(d + 'T00:00:00Z');
+      const head = document.createElement('div'); head.className = 'text-[.78rem] font-bold'; head.textContent = (date.getUTCMonth() + 1) + '/' + date.getUTCDate() + '（' + wd[date.getUTCDay()] + '）';
+      const top = my ? idx.filter((i) => my.hi[i] != null).sort((a, b) => my.hi[b] - my.hi[a])[0] : undefined;
+      const camsMax = Math.max(...idx.map((i) => cams[i]).filter((v) => v != null && isFinite(v)));
+      const val = document.createElement('div'); val.className = 'text-[1.05rem] font-black leading-tight tnum';
+      const sub = document.createElement('div'); sub.className = 'text-[.72rem] text-muted';
+      let cat = null;
+      if (top != null) {
+        const lo = my.lo[top], hi = my.hi[top];
+        cat = category('pm25', (lo + Math.min(hi, 500)) / 2);
+        val.textContent = '最大 ' + Math.round(lo) + (hi >= 500 ? '+' : '–' + Math.round(hi));
+        sub.textContent = 'MyCMAQ PM2.5 µg/m³' + (camsLive && isFinite(camsMax) ? '・CAMS 最大 ' + Math.round(camsMax) : '');
+      } else if (camsLive && isFinite(camsMax)) {
+        cat = category('pm25', camsMax);
+        val.textContent = '最大 ' + Math.round(camsMax);
+        sub.textContent = 'CAMS PM2.5 µg/m³（MyCMAQ なし）';
+      } else { val.textContent = '—'; sub.textContent = '予報なし'; }
+      if (cat) { tile.style.background = css('--band-' + cat.tone); tile.style.color = css('--on-band-' + cat.tone); }
+      const c = document.createElement('div'); c.className = 'text-[.75rem] font-bold'; c.textContent = cat ? cat.ja : '';
+      tile.append(head, val, c, sub);
+      return tile;
+    }));
+    const init = MYCMAQ?.init ? longLabel(Date.parse(MYCMAQ.init)) : null;
+    $('outlook-note').textContent = st.ja + '（' + st.en + '）。点は政府の実測（' + (obsKey === 'doe_api' ? 'マレーシア API、右の軸' : 'NEA の PM2.5 1時間値') + '）、帯は MyCMAQ、線は CAMS（点線が予報）。'
+      + (init ? 'MyCMAQ は ' + init + ' 開始の予報（地図の色から読み取った範囲）。' : 'MyCMAQ の予報を読み込めていません。')
+      + (camsLive ? '' : 'CAMS（Open-Meteo）を取得できていないため、その線は出していません。');
+  }
+
   function renderDiurnal(ls) {
     const hours = Array.from({ length: 12 }, (_, k) => k * 2);
     const muted = css('--muted'), grid = css('--grid'), fg = css('--fg');
@@ -744,7 +884,9 @@
       ['B', 'マレーシア：API（DOE APIMS）', doe || { state: 'sim', text: '' }, 'マレーシア環境局の API は、ブラウザから他サイトの読み込みを許可していないため、2時間ごとにサーバー側で全観測局の現在値を取得して貯めています。'
         + (doe ? '' : 'まだ収集データがないため模擬値です。')],
       ['B', 'シンガポール：24時間 PSI、PM2.5 1時間値（NEA）', STATUS.B.state === 'mixed' ? { state: 'live' } : STATUS.B, 'シンガポール国家環境庁（NEA）の data.gov.sg v2 API から、中部地域の値を日ごとに取得します。'],
-      ['C', 'PM2.5・PM10（µg/m³）、US AQI', STATUS.C, 'Open-Meteo Air Quality API（欧州 CAMS のモデル）。地点の座標に最も近い格子の1時間値です。実測ではないため、観測値との比較や傾向の確認に使います。'],
+      ['C', 'PM2.5・PM10（µg/m³）、US AQI', STATUS.C, 'Open-Meteo Air Quality API（欧州 CAMS のモデル）。地点の座標に最も近い格子の1時間値です。実測ではないため、観測値との比較や傾向の確認に使います。向こう5日の予報も同じ API から取得します。'],
+      ['M', 'PM2.5 の5日予報（地図）', MYCMAQ?.run ? { state: 'live', text: '' } : { state: 'error', text: '読み込めませんでした' }, 'マレーシア気象局（MetMalaysia）の大気質予報 MyCMAQ（WRF-CMAQ、9 km、1日2回）。公開されているのは地図だけなので、サーバー側で新しい予報が出るたびに PM2.5 の地図を2時間おきに取得し、各地点の位置の色を地図の色の目盛りで PM2.5 の範囲に読み替えています。'
+        + (MYCMAQ?.init ? '現在の予報：' + longLabel(Date.parse(MYCMAQ.init)) + ' 開始。' : '')],
     ];
     // One block per source: name, indices and state on one line, the explanation below (readable on phones).
     $('sources').replaceChildren(...rows.map(([src, what, s, desc]) => {
@@ -781,6 +923,7 @@
       : (METRICS.find((m) => m.key === state.metric)?.ja || '') + 'を、選んだ地点どうしで比べています。';
     renderTiles(ls);
     renderTrend(ls, bandsKey);
+    renderOutlook();
     renderDiurnal(ls);
     renderSummary(ls);
     renderStatus();
@@ -827,5 +970,5 @@
     navigator.permissions.query({ name: 'geolocation' }).then((p) => { if (p.state === 'granted' && state.located) locate(false); }).catch(() => {});
   }
   // Live data: collector first (it may cover DOE), then the browser-callable APIs.
-  loadCollector().then(() => Promise.all([loadOpenMeteo(), loadNea(), waqiToken ? loadWaqi(waqiToken) : null])).then(render);
+  Promise.all([loadCollector(), loadMycmaq()]).then(() => Promise.all([loadOpenMeteo(), loadNea(), waqiToken ? loadWaqi(waqiToken) : null])).then(render);
 })();

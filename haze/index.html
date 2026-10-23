@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
-<link rel="stylesheet" href="haze.css?v=20261023c">
+<link rel="stylesheet" href="haze.css?v=20261023d">
 <script>
   // Theme before first paint (auto / light / dark; a per-viewer convenience).
   try { const t = localStorage.getItem('haze-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) { /* storage unavailable */ }
@@ -113,6 +113,15 @@
     <div id="band-legend" class="flex flex-wrap gap-x-4 gap-y-1 text-[.75rem] text-muted"></div>
   </section>
 
+  <!-- Last 7 days and the 5-day forecast -->
+  <section class="card grid gap-3" id="outlook-card">
+    <h2 class="card-title">過去7日と向こう5日の予報<span class="en">Last 7 days and 5-day forecast (MyCMAQ, CAMS)</span></h2>
+    <p id="outlook-note" class="note"></p>
+    <div id="outlook-days" class="grid gap-2 grid-cols-2 sm:grid-cols-5"></div>
+    <div class="relative h-[min(55vh,380px)] min-h-[280px]"><canvas id="outlook" role="img" aria-label="過去7日の実測と向こう5日の PM2.5 予報"></canvas></div>
+    <p class="note">予報は2つのモデルです。<strong>MyCMAQ</strong> はマレーシア気象局（MetMalaysia）の大気質予報で、1日2回・5日先まで出ます。公開されているのは地図だけなので、地図の色を各地点で読み取り、PM2.5 の<strong>範囲</strong>（帯）で示しています。<strong>CAMS</strong> は欧州のモデル（Open-Meteo 経由）の PM2.5 です。どちらも予報なので、実測（政府の観測値）と大きく違うことがあります。色帯は NEA の PM2.5 1時間値の4段階です。</p>
+  </section>
+
   <div class="grid gap-5 lg:grid-cols-2">
     <!-- Diurnal profile -->
     <section class="card grid gap-3">
@@ -167,6 +176,6 @@
   <a class="step" href="actions.html"><b>3</b>アクションする<span class="en">Act</span></a>
 </nav>
 <script src="vendor/chart-4.4.1.umd.min.js"></script>
-<script src="app.js?v=20261023c"></script>
+<script src="app.js?v=20261023d"></script>
 </body>
 </html>

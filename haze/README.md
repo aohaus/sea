@@ -7,6 +7,8 @@ This dashboard compares air quality and haze in Malaysia (Kuala Lumpur, Penang, 
 The app has three steps, linked by the bar fixed to the bottom of each page:
 
 1. **知る** (`index.html`): current values and the last 14 days, by station and index.
+   - Indices are ordered US AQI, Malaysian API (DOE APIMS), PM2.5, NEA, WAQI; the 「いまの空気」 panel shows US AQI when it is live.
+   - 「過去7日と向こう5日の予報」: the last 7 days of government readings and CAMS PM2.5, and the next 5 days of MyCMAQ (as a range) and CAMS forecasts, with one tile per day.
    - At the top, 「いまの空気」 shows one station: the one nearest the viewer (📍 button, browser geolocation; the position stays in the browser) or the one they chose. It shows the government index (API / PSI) when it has real readings, otherwise the modelled US AQI. The panel is filled with the colour of the health band, compared with the 14-day average, and the last 24 hours are shown as 12 coloured cells.
    - Health-band colours, worst to best: black, purple, red, dark orange, light orange, yellow, green (`--band-*` in `src.css`). A category name has the same colour on every scale: 危険 black, 非常に良くない purple, 健康に良くない red, 敏感な人に良くない light orange, 普通 yellow, 良好 green. Dark orange is NEA's PM2.5 band II (上昇).
    - Station, comparison mode, sources, series and band scale are under 詳細設定 (folded). The page explanation shows on the first visit, then from the 説明 button.
@@ -31,7 +33,8 @@ The app has three steps, linked by the bar fixed to the bottom of each page:
 | A | WAQI / AQICN | AQI (Malaysia: DOE's API republished unchanged, the same value as DOE; Singapore: US EPA scale), PM2.5 sub-index (US EPA scale) **Not collected**: WAQI's terms of use do not allow its API data to be redistributed as cached or archived data. A viewer can enter their own token to get the current value only. Earlier collected values are removed by the collector, and the WAQI lines are hidden by default |
 | B | Malaysia DOE APIMS | API | **Collected** every hour into 2-hour slots. A browser cannot fetch it because of CORS |
 | B | Singapore NEA (data.gov.sg v2) | 24-hour PSI, 1-hour PM2.5 | Fetched in the browser (one request per day; central region) |
-| C | Open-Meteo Air Quality (CAMS model) | PM2.5, PM10, US AQI | Fetched in the browser (hourly values at each location's coordinates) |
+| C | Open-Meteo Air Quality (CAMS model) | PM2.5, PM10, US AQI | Fetched in the browser (hourly values at each location's coordinates; also the 5-day forecast for the forecast chart) |
+| — | MyCMAQ (MetMalaysia, WRF-CMAQ) | 5-day PM2.5 forecast | **Collected** when a new run is published (twice a day) into `data/mycmaq.json`. MyCMAQ publishes maps only, so the collector reads the PM2.5 map (Malaysia domain) every 2 hours of the forecast at each station's position and converts the colour to the PM2.5 range of that colour on the map's scale |
 
 Any slot without a value is filled with **simulated values**. These are seeded random numbers that combine a regional baseline, a daily cycle and haze episodes. Legends, tiles and tables label them "模擬" (simulated) or "一部実データ" (partly real). In a partly real series, real readings are shown as dots and simulated stretches are drawn faded.
 
@@ -41,6 +44,7 @@ Any slot without a value is filled with **simulated values**. These are seeded r
 
 - **DOE**: one request fetches the current reading of every station. Each monitor station is mapped to the nearest DOE station within 20 km.
 - **WAQI**: not collected (see the table above). Each run removes `waqi_*` values stored by earlier versions, so the `WAQI_TOKEN` secret is no longer used.
+- **MyCMAQ** (`scripts/collect_mycmaq.py`): reads the list of runs on mycmaq.met.gov.my and, for a new run, the run's `manifest.json` and its `PM25_TOT_d02_*LST.png` maps (every 2 hours, 60 images). The map axes (110°E at x=574, 115°E at x=783, 4°N at y=452, 2°S at y=703) and the 24 colours of the scale are fixed in the script; if the layout changes, the run is skipped and the problem recorded, and the previous forecast is kept. Needs Pillow.
 - **News** (`scripts/collect_haze_news.py`): reads Campur.ai's archive search (`https://campur.ai.studio/api/archive/articles?q=…`) for haze words in English, Malay and Japanese, keeps articles that are about haze, fires or air quality in the region, tags them (fire, health, policy, business, air) and writes `data/news.json` (the last 90 days, up to 400 articles). The site sends no CORS headers, so the page cannot read it directly. The script fetches only when `news.json` is about 3 hours old, so most hourly runs skip it; a failed fetch keeps the previous articles and is retried the next hour.
 - **Output files**:
   - `data/archive/YYYY-MM.json`: the permanent monthly record, keyed by slot → station → series.
