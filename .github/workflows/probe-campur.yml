@@ -8,31 +8,22 @@ jobs:
     timeout-minutes: 8
     steps:
       - run: |
-          B=https://campur.ai.studio
-          curl -sSL -m 30 "$B/" -o page.html || true
-          JS=$(grep -oE '/assets/index-[A-Za-z0-9_-]+\.js' page.html | head -1)
-          curl -sSL -m 60 "$B$JS" -o app.js || true
-          python3 -c "
-          s=open('app.js',encoding='utf-8',errors='ignore').read()
-          i=s.find('/api/archive/articles?\${q')
-          print('--- context', s[max(0,i-900):i+80] if i>=0 else 'not found')
+          B=https://mycmaq.met.gov.my
+          curl -sSL -m 30 -D h.txt "$B/" -o page.html || true
+          grep -iE '^(HTTP|content-type|access-control|server)' h.txt
+          wc -c page.html
+          echo "--- title/scripts/links"; grep -oiE '<title>[^<]*</title>|(src|href)="[^"]+"' page.html | sort -u | head -80
+          echo "--- text"; sed -e 's/<script.*<\/script>//g; s/<[^>]*>/ /g' page.html | tr -s ' \n' | head -c 2500; echo
+          for js in $(grep -oE '(src)="[^"]+\.js[^"]*"' page.html | sed 's/src="//; s/"$//' | head -8); do
+            case "$js" in http*) u="$js";; /*) u="$B$js";; *) u="$B/$js";; esac
+            echo "===== JS $u"; curl -sSL -m 30 "$u" -o j.js || true; wc -c j.js
+            python3 -c "
+          import re
+          s=open('j.js',encoding='utf-8',errors='ignore').read()
+          for m in sorted(set(re.findall(r'[\"\'\`]((?:https?://[^\"\'\` ]+|/[A-Za-z0-9_./-]*)(?:json|geojson|csv|png|tif|nc|api|forecast|data)[^\"\'\` ]*)[\"\'\`]', s)))[:60]: print(' ', m)
+          for k in ['fetch(','axios','XMLHttpRequest','.json','api/','forecast','AQI','API','pm25','PM2.5','station']:
+              i=s.find(k)
+              if i>=0: print('  ctx', k, '::', s[max(0,i-150):i+150].replace('\n',' '))
           " || true
-          for p in "/api/archive/articles?limit=3" "/api/archive/articles?q=haze&limit=50" "/api/archive/articles?search=haze&limit=50" "/api/archive/articles?keyword=haze&limit=50" "/api/archive/articles?query=haze&limit=50"; do
-            echo "===== GET $p"
-            curl -sS -m 60 -o out -w "%{http_code} %{size_download}\n" "$B$p" || true
-            python3 - <<'PY'
-          import json,re
-          try: d=json.load(open('out'))
-          except Exception as e: print('not json', open('out','rb').read()[:200]); raise SystemExit
-          arts = d.get('articles') if isinstance(d,dict) else d
-          print('keys', list(d.keys())[:15] if isinstance(d,dict) else type(d))
-          for k in ('total','totalCount','page','hasMore','limit'):
-              if isinstance(d,dict) and k in d: print(k, d[k])
-          if arts:
-              print('n', len(arts), 'fields', list(arts[0].keys()))
-              hz=[a for a in arts if re.search(r'(?i)haze|jerebu|ヘイズ|煙霧|kabut asap|hotspot|peat', json.dumps(a,ensure_ascii=False))]
-              print('haze-matching', len(hz))
-              for a in (hz or arts)[:6]:
-                  print(' -', a.get('isoDate') or a.get('pubDate'), a.get('sourceName'), '|', (a.get('titleJa') or a.get('title'))[:80], '|', (a.get('category') or ''))
-          PY
           done
+          for p in /api /api/forecast /data /forecast /api/stations /json /latest; do echo "== $p"; curl -sS -m 15 -o o -w "%{http_code} %{content_type} %{size_download}\n" "$B$p" || true; head -c 300 o; echo; done
