@@ -2,7 +2,7 @@
 // so light and dark themes switch without dark: variants.
 //   npx tailwindcss@3.4.17 -c haze/tailwind.config.js -i haze/src.css -o haze/haze.css --minify
 module.exports = {
-  content: ['./haze/index.html', './haze/app.js'],
+  content: ['./haze/index.html', './haze/app.js', './haze/understand.html'],
   theme: {
     extend: {
       colors: {

@@ -58,6 +58,17 @@
   .badge-err { @apply border-rust text-rust; }
   .swatch { @apply inline-block w-3 h-3 rounded-sm align-[-1px] mr-1; }
 }
+/* Step navigation shared by the haze pages (1 Know / 2 Understand / 3 Act). */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; margin-top: .25rem; }
+.step { display: flex; align-items: baseline; flex-wrap: wrap; gap: .1rem .4rem; padding: .55rem .75rem; border: 1.5px solid var(--line);
+  border-radius: 6px; background: var(--panel); color: var(--muted); font-weight: 700; font-size: .9rem; text-decoration: none; }
+.step b { display: inline-grid; place-items: center; width: 1.4rem; height: 1.4rem; border-radius: 999px; background: var(--line); color: var(--fg); font-size: .75rem; }
+.step .en { margin-left: 0; }
+.step[aria-current="page"] { border-color: var(--frame); color: var(--fg); box-shadow: inset 0 -3px 0 var(--rust); }
+.step[aria-current="page"] b { background: var(--accent); color: var(--on-accent); }
+a.step:hover { border-color: var(--accent-line); color: var(--fg); }
+.step.soon { opacity: .6; border-style: dashed; }
+@media (max-width: 480px) { .step { font-size: .8rem; padding: .45rem .5rem; } .step .en { display: none; } }
 /* Touch screens: buttons at least 36px tall. */
 @media (pointer: coarse) { .chip, .tab, .ctl { min-height: 36px; } }
 .filters > summary { list-style: none; }

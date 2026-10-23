@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ヘイズを理解する</title>
+<meta name="description" content="マレーシア API・シンガポール PSI・US AQI・WAQI・大気モデル（CAMS）など、ヘイズの指標の違い（目的・発表機関・計算方法・信頼性）と、ヘイズの種類・主な原因・季節をまとめたページ。同じ PM2.5 濃度が指標ごとにいくつになるかを試せます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="haze.css">
+<script>
+  try { const t = localStorage.getItem('haze-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) { /* storage unavailable */ }
+</script>
+</head>
+<body class="font-sans text-[15px] leading-relaxed">
+<main class="max-w-[1200px] mx-auto px-4 pt-6 pb-12 grid gap-5">
+
+  <header class="grid gap-2">
+    <div class="flex flex-wrap items-start justify-between gap-3">
+      <div>
+        <h1 class="text-[clamp(1.6rem,3vw,2.1rem)] font-black leading-tight">ヘイズを理解する<span class="en text-sm block ml-0 mt-1 sm:inline sm:ml-2 sm:mt-0">Understand — indices, types and causes</span></h1>
+        <p class="note mt-1 max-w-[75ch]">ニュースやアプリで見る「API 120」「AQI 160」「PSI 95」は、同じ空気を別の物差しで測った数字です。それぞれの指標が何を目的に、誰が、どう計算しているのかと、ヘイズがどこから来るのかをまとめました。</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <label class="label min-w-0" for="theme">表示</label>
+        <select id="theme" class="ctl"><option value="auto">自動</option><option value="light">ライト</option><option value="dark">ダーク</option></select>
+      </div>
+    </div>
+    <nav class="steps" aria-label="ヘイズモニターの3つのステップ">
+      <a class="step" href="index.html"><b>1</b>知る<span class="en">Know</span></a>
+      <a class="step" href="understand.html" aria-current="page"><b>2</b>理解する<span class="en">Understand</span></a>
+      <span class="step soon" aria-disabled="true"><b>3</b>アクションする<span class="en">準備中</span></span>
+    </nav>
+    <nav class="flex flex-wrap gap-x-4 gap-y-1 text-[.82rem]" aria-label="このページの目次">
+      <a class="underline" href="#same-air">同じ空気、違う数字</a>
+      <a class="underline" href="#indices">指標の違い</a>
+      <a class="underline" href="#types">ヘイズの種類と原因</a>
+      <a class="underline" href="#season">季節</a>
+      <a class="underline" href="#sources">出典</a>
+    </nav>
+  </header>
+
+  <!-- Same air, different numbers -->
+  <section class="card grid gap-3" id="same-air">
+    <h2 class="card-title">同じ空気、違う数字<span class="en">One PM2.5 level, four scales</span></h2>
+    <p class="note">ヘイズの主成分は PM2.5（直径2.5µm以下の微粒子）です。同じ PM2.5 濃度でも、指標によって数字と区分が変わります。濃度を動かして比べてください（24時間平均の値として換算します）。</p>
+    <div class="grid gap-2">
+      <div class="flex flex-wrap items-center gap-3">
+        <label class="label" for="pm">PM2.5 濃度</label>
+        <input id="pm" type="range" min="0" max="300" step="1" value="45" class="flex-1 min-w-[12rem] accent-[var(--accent)]" aria-describedby="pm-val">
+        <output id="pm-val" for="pm" class="text-[1.4rem] font-black tnum min-w-[7.5rem] text-right">45 µg/m³</output>
+      </div>
+      <div class="flex flex-wrap gap-2" aria-label="例">
+        <button type="button" class="chip" data-pm="8">きれいな日 8</button>
+        <button type="button" class="chip" data-pm="30">やや悪い 30</button>
+        <button type="button" class="chip" data-pm="80">ヘイズ 80</button>
+        <button type="button" class="chip" data-pm="180">ひどいヘイズ 180</button>
+      </div>
+    </div>
+    <div id="scales" class="grid gap-2 sm:gap-3 grid-cols-2 lg:grid-cols-4"></div>
+    <p class="note" id="scales-note"></p>
+  </section>
+
+  <!-- Indices -->
+  <section class="card grid gap-3" id="indices">
+    <h2 class="card-title">指標の違い<span class="en">What each index is</span></h2>
+    <p class="note">「公式の指数」「国際的な物差し」「集約サイト」「大気モデル」「生の濃度」は、性格がまったく違います。信頼性はどれが上というより、<strong>何に使うか</strong>で選びます。</p>
+    <div class="overflow-x-auto">
+      <table class="w-full text-[.8rem] border-collapse min-w-[40rem]">
+        <thead><tr class="text-left border-b-[1.5px] border-frame">
+          <th class="py-2 pr-3 font-bold whitespace-nowrap">指標</th><th class="py-2 px-2 font-bold">種類</th><th class="py-2 px-2 font-bold">発表</th><th class="py-2 px-2 font-bold">平均の時間</th><th class="py-2 px-2 font-bold">信頼性の目安</th><th class="py-2 pl-2 font-bold">向いている使い方</th>
+        </tr></thead>
+        <tbody id="index-rows"></tbody>
+      </table>
+    </div>
+    <div id="index-cards" class="grid gap-3 md:grid-cols-2"></div>
+  </section>
+
+  <!-- Types and causes -->
+  <section class="card grid gap-3" id="types">
+    <h2 class="card-title">ヘイズの種類と主な原因<span class="en">Types and causes</span></h2>
+    <div class="grid gap-3 md:grid-cols-3">
+      <article class="grid gap-2 content-start border border-line rounded-card p-3">
+        <h3 class="font-bold">① 越境ヘイズ（泥炭・森林火災）</h3>
+        <p class="text-[.85rem]">マレー半島・シンガポールで深刻なヘイズの多くは、インドネシアの<strong>スマトラ島・カリマンタン（ボルネオ島）</strong>の森林・泥炭地の火災の煙です。インドネシア政府も、火災の多くは人為的なものだとしています。</p>
+        <ul class="text-[.82rem] list-disc pl-5 grid gap-1">
+          <li><strong>泥炭火災</strong>：排水されて乾いた泥炭は地中でくすぶり続け、消しにくく、煙を大量に出します。</li>
+          <li><strong>土地の開墾</strong>：農園（アブラヤシ・製紙用の植林など）や農地の開墾・整地で火が使われることが、火災の大きな要因とされます。</li>
+          <li><strong>風</strong>：南西モンスーンの季節は、風がマラッカ海峡を越えて煙を半島側へ運びます。カリマンタンの煙はサラワクにも届きます。</li>
+        </ul>
+      </article>
+      <article class="grid gap-2 content-start border border-line rounded-card p-3">
+        <h3 class="font-bold">② 都市・地域の汚染</h3>
+        <p class="text-[.85rem]">ヘイズの季節でなくても、都市の空気は車・工場・発電所・野焼きなどで汚れます。煙が来ていない日の数値の大部分はこちらです。</p>
+        <ul class="text-[.82rem] list-disc pl-5 grid gap-1">
+          <li><strong>日内変化</strong>：朝の通勤時間に上がり、日中は空気が上下に混ざって下がり、夜は地表近くに溜まって再び上がる形になりやすい（「知る」の時刻別グラフ）。</li>
+          <li><strong>オゾン・NO₂</strong>：日差しの強い日中は、排ガスからオゾンができます。API・PSI は PM2.5 以外のこうした汚染物質も含めて計算します。</li>
+        </ul>
+      </article>
+      <article class="grid gap-2 content-start border border-line rounded-card p-3">
+        <h3 class="font-bold">③ 気象条件</h3>
+        <p class="text-[.85rem]">同じ量の煙でも、天気しだいで濃くも薄くもなります。</p>
+        <ul class="text-[.82rem] list-disc pl-5 grid gap-1">
+          <li><strong>乾季と雨不足</strong>：雨が少ないと火災が増え、空気中の粒子も洗い流されません。</li>
+          <li><strong>エルニーニョ</strong>：東南アジアが乾燥・高温になりやすく、マレーシア気象局によると、エルニーニョと南西モンスーンが重なる年に最悪のヘイズが起きてきました。</li>
+          <li><strong>風が弱い・逆転層</strong>：煙や排ガスが広がらずに地表近くに溜まります。</li>
+        </ul>
+      </article>
+    </div>
+    <p class="note">大陸部の東南アジア（タイ北部・ミャンマー・ラオスなど）では、乾季（おおむね2〜4月）の農地の野焼きや森林火災による別のヘイズがあります。マレー半島・シンガポールへの影響は、スマトラ・カリマンタン由来のものほど大きくありません。</p>
+  </section>
+
+  <!-- Season -->
+  <section class="card grid gap-3" id="season">
+    <h2 class="card-title">ヘイズの季節<span class="en">When it happens (typical)</span></h2>
+    <p class="note">年によって大きく変わるので目安です（濃い色ほど起きやすい時期）。エルニーニョの年は、南部の期間が長く濃くなりがちです。</p>
+    <div class="overflow-x-auto">
+      <table class="w-full text-[.78rem] border-collapse min-w-[34rem] tnum" id="calendar"></table>
+    </div>
+  </section>
+
+  <!-- Sources -->
+  <section class="card grid gap-2" id="sources">
+    <h2 class="card-title">出典<span class="en">Sources</span></h2>
+    <ul class="text-[.8rem] grid gap-1 list-disc pl-5">
+      <li>マレーシア環境局（DOE）APIMS：<a class="underline" href="https://eqms.doe.gov.my/" target="_blank" rel="noopener">eqms.doe.gov.my</a>。API と他の AQI との違いについての DOE の説明（2026年10月8日）：<a class="underline" href="https://www.malaymail.com/news/malaysia/2026/10/08/hazy-math-doe-explains-why-your-aqi-says-250-when-the-official-api-is-175/238237" target="_blank" rel="noopener">Malay Mail</a>、<a class="underline" href="https://www.freemalaysiatoday.com/category/nation/2026/10/08/refer-only-to-apims-for-air-quality-readings-says-govt" target="_blank" rel="noopener">Free Malaysia Today</a>、専門家の解説：<a class="underline" href="https://www.nst.com.my/amp/news/nation/2026/10/1551171/check-malaysias-api-not-aqi-local-air-quality-says-expert" target="_blank" rel="noopener">New Straits Times</a></li>
+      <li>シンガポール国家環境庁（NEA）：<a class="underline" href="https://www.haze.gov.sg/" target="_blank" rel="noopener">haze.gov.sg</a>、<a class="underline" href="https://www.nea.gov.sg/our-services/pollution-control/air-pollution/faqs" target="_blank" rel="noopener">大気汚染 FAQ</a>。PM2.5 1時間値の4段階（2016年6月導入）：<a class="underline" href="https://www.malaymail.com/news/world/2016/06/27/normal-elevated-high-very-high-new-bands-for-one-hour-pm2.5-readings-in-sin/1150147" target="_blank" rel="noopener">Malay Mail（2016）</a></li>
+      <li>米国環境保護庁（EPA）PM2.5 の AQI 区分の改定（2024年）：<a class="underline" href="https://www.epa.gov/system/files/documents/2024-02/pm-naaqs-air-quality-index-fact-sheet.pdf" target="_blank" rel="noopener">EPA fact sheet</a></li>
+      <li>WAQI（World Air Quality Index Project）：<a class="underline" href="https://aqicn.org/publishingdata/" target="_blank" rel="noopener">データ掲載の方針</a>、<a class="underline" href="https://aqicn.org/api/" target="_blank" rel="noopener">API と利用条件</a></li>
+      <li>Copernicus 大気監視サービス（CAMS）全球予報：<a class="underline" href="https://ads.atmosphere.copernicus.eu/datasets/cams-global-atmospheric-composition-forecasts" target="_blank" rel="noopener">データセットの説明</a>、Open-Meteo：<a class="underline" href="https://open-meteo.com/en/docs/air-quality-api" target="_blank" rel="noopener">Air Quality API</a></li>
+      <li>世界保健機関（WHO）大気質ガイドライン（2021年）：<a class="underline" href="https://www.who.int/publications/i/item/9789240034228" target="_blank" rel="noopener">WHO</a></li>
+      <li>越境ヘイズの原因・季節：<a class="underline" href="https://says.com/my/news/malaysia-transboundary-haze-el-nino-preparedness" target="_blank" rel="noopener">SAYS（マレーシア気象局の見通し）</a>、<a class="underline" href="https://www.eco-business.com/news/el-nino-indonesian-peatland-conversion-add-haze-risk/" target="_blank" rel="noopener">Eco-Business</a>、<a class="underline" href="https://www.cnbc.com/2023/10/16/southeast-asia-haze-returns-as-peatland-fires-fan-global-warming-fears.html" target="_blank" rel="noopener">CNBC（2023）</a></li>
+    </ul>
+    <p class="note">換算は公開されている区分表に基づく目安です。マレーシア API の PM2.5 換算表は DOE 独自のもので、ここでは計算していません。健康上の判断は、各国の公式発表（DOE・NEA）に従ってください。</p>
+  </section>
+
+  <footer class="note text-center">
+    <a class="underline" href="index.html">① 知る（ヘイズモニター）へ</a> · <a class="underline" href="../basic/index.html">ASEAN データエクスプローラー（Sea basic）</a>
+  </footer>
+</main>
+<script>
+(() => {
+  'use strict';
+  const $ = (id) => document.getElementById(id);
+  const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+
+  // Same breakpoints as app.js: US EPA AQI for PM2.5 (2024), NEA PSI sub-index for PM2.5 (24-hour).
+  const AQI_PM25 = [[0, 9.0, 0, 50], [9.1, 35.4, 51, 100], [35.5, 55.4, 101, 150], [55.5, 125.4, 151, 200], [125.5, 225.4, 201, 300], [225.5, 325.4, 301, 500]];
+  const PSI_PM25 = [[0, 12, 0, 50], [13, 55, 51, 100], [56, 150, 101, 200], [151, 250, 201, 300], [251, 350, 301, 400], [351, 500, 401, 500]];
+  const interp = (table, c, step) => {
+    const x = Math.max(0, c);
+    // Truncate to the table's precision (EPA: 0.1 µg/m³; PSI: whole µg/m³), then use the band that
+    // contains the value, so a value just above a band's upper bound falls in the next band.
+    // Compared in whole steps (35.4 is 354 tenths), as 354 * 0.1 is not exactly 35.4 in floating point.
+    const n = Math.floor(x / step + 1e-9);
+    for (const [cl, ch, il, ih] of table) {
+      if (n <= Math.round(ch / step)) return Math.round(il + (ih - il) * (n * step - cl) / (ch - cl));
+    }
+    return 500;
+  };
+  const L = (hi, ja, tone) => ({ hi, ja, tone });
+  const CATS = {
+    usaqi: [L(50, '良好', 'good'), L(100, '普通', 'moderate'), L(150, '敏感な人に良くない', 'usg'), L(200, '健康に良くない', 'unhealthy'), L(300, '非常に良くない', 'very'), L(1e9, '危険', 'hazard')],
+    psi: [L(50, '良好', 'good'), L(100, '普通', 'moderate'), L(200, '健康に良くない', 'unhealthy'), L(300, '非常に良くない', 'very'), L(1e9, '危険', 'hazard')],
+    band: [L(55, '通常', 'good'), L(150, '上昇', 'moderate'), L(250, '高い', 'unhealthy'), L(1e9, '非常に高い', 'very')],
+  };
+  const cat = (k, v) => CATS[k].find((c) => v <= c.hi);
+
+  function renderScales() {
+    const pm = Number($('pm').value);
+    $('pm-val').textContent = pm + ' µg/m³';
+    const aqi = interp(AQI_PM25, pm, 0.1), psi = interp(PSI_PM25, pm, 1), who = pm / 15;
+    const tiles = [
+      { name: 'US AQI', who: '米国 EPA（2024年の区分）', value: aqi, c: cat('usaqi', aqi) },
+      { name: 'PSI の PM2.5 指数', who: 'シンガポール NEA（24時間）', value: psi, c: cat('psi', psi) },
+      { name: 'PM2.5 1時間値の段階', who: 'シンガポール NEA（同じ濃度が1時間続いた場合）', value: ['I', 'II', 'III', 'IV'][CATS.band.indexOf(cat('band', pm))], c: cat('band', pm) },
+      { name: 'WHO 指針の何倍か', who: 'WHO 2021（24時間 15 µg/m³）', value: who, c: who <= 1 ? { ja: '指針以内', tone: 'good' } : { ja: '指針の ' + (who < 10 ? who.toFixed(1) : Math.round(who)) + ' 倍', tone: who <= 2.4 ? 'moderate' : who <= 5 ? 'unhealthy' : 'very' } },
+    ];
+    $('scales').replaceChildren(...tiles.map((t) => {
+      const d = el('div', 'grid gap-1 content-start border-[1.5px] border-frame rounded-card p-3');
+      d.style.borderLeft = '6px solid ' + css('--band-' + t.c.tone);
+      d.append(el('div', 'text-[.8rem] font-bold leading-snug', t.name), el('div', 'text-[.7rem] text-muted leading-snug', t.who));
+      const v = el('div', 'text-[1.7rem] font-black leading-none tnum mt-1', typeof t.value === 'string' ? t.value : (t.name.startsWith('WHO') ? '×' + (t.value < 10 ? t.value.toFixed(1) : Math.round(t.value)) : String(t.value)));
+      const c = el('div', 'text-[.8rem] font-bold');
+      const sw = el('span', 'swatch'); sw.style.background = css('--band-' + t.c.tone);
+      c.append(sw, t.c.ja);
+      d.append(v, c);
+      return d;
+    }));
+    // The point of the box: one concentration, different words.
+    const a = cat('usaqi', aqi).ja, p = cat('psi', psi).ja;
+    $('scales-note').textContent = a === p
+      ? 'この濃度では、US AQI と PSI の区分はどちらも「' + a + '」です。数字は US AQI ' + aqi + '、PSI ' + psi + 'と違います。'
+      : 'この濃度では、US AQI は「' + a + '」（' + aqi + '）、PSI は「' + p + '」（' + psi + '）。同じ空気でも、区分の言葉まで変わります。US AQI は PM2.5 の区分が厳しく（2024年改定）、同じ濃度で数字が大きく出やすいためです。マレーシアの API も独自の換算表を使うため、アプリの AQI と公式の API は一致しません。';
+  }
+  $('pm').addEventListener('input', renderScales);
+  document.querySelectorAll('[data-pm]').forEach((b) => b.addEventListener('click', () => { $('pm').value = b.dataset.pm; renderScales(); }));
+
+  // ---------- indices ----------
+  const INDICES = [
+    { name: 'API（マレーシア）', en: 'Air Pollutant Index', kind: '公式の指数', by: 'マレーシア環境局（DOE）。APIMS で公開', avg: 'PM2.5・PM10 は24時間の移動平均',
+      trust: '高い（国の公式測定局）', use: 'マレーシア国内の健康行動・学校の判断の基準',
+      how: 'PM2.5・PM10・オゾン・CO・NO₂・SO₂ の6物質それぞれを指数（サブ指数）に換算し、最も高いものを API とします。PM2.5 は後から加わり、ヘイズのときはたいてい PM2.5 が最も高くなります。区分は 0–50 良好／51–100 普通／101–200 健康に良くない／201–300 非常に良くない／301以上 危険。',
+      note: 'DOE は「アプリの AQI とは尺度・計算方法・区分の境目・平均時間・更新時刻・データ源が違うため一致しない」と説明しています（2026年10月）。安い簡易センサーやモデル、衛星（地表ではなく大気全体の量）を使うアプリもあります。マレーシア国内では APIMS の API を基準にするよう政府・専門家が呼びかけています。' },
+    { name: 'PSI（シンガポール）', en: 'Pollutant Standards Index', kind: '公式の指数', by: 'シンガポール国家環境庁（NEA）', avg: '24時間（健康勧告の基準）',
+      trust: '高い（国の公式測定局）', use: 'シンガポール国内の健康勧告・屋外活動の判断',
+      how: 'PM2.5・PM10・オゾン・CO・NO₂・SO₂ のサブ指数のうち最も高いものが PSI。区分はマレーシアの API と同じ 0–50／51–100／101–200／201–300／301以上。健康勧告は24時間 PSI にもとづきます。',
+      note: 'あわせて「PM2.5 1時間値」を4段階（55以下 通常／56–150 上昇／151–250 高い／251以上 非常に高い、µg/m³、2016年導入）で発表しています。1時間値は「いま外出するか」の目安で、健康勧告には使いません。' },
+    { name: 'US AQI', en: 'U.S. EPA Air Quality Index', kind: '国際的な物差し（換算表）', by: '米国環境保護庁（EPA）', avg: 'PM2.5 は24時間（速報は NowCast）',
+      trust: '物差しとして明確（測定そのものではない）', use: '国をまたいだ比較、海外アプリとの読み合わせ',
+      how: '濃度を米国の健康研究にもとづく区分表で 0–500 に換算します。2024年に PM2.5 の区分が改定され、「良好」は 9.0 µg/m³ 以下と厳しくなりました（以前は 12.0）。',
+      note: '測定網ではなく換算の規則です。同じ PM2.5 濃度でも、API や PSI より数字が大きく出やすい（上の換算で比べてください）。' },
+    { name: 'WAQI（aqicn.org）', en: 'World Air Quality Index Project', kind: '集約サイト', by: '民間のプロジェクト（世界各国の測定局のデータを集約）', avg: '各国のデータに依存（速報）',
+      trust: '中（元データは公式でも、公開時点で未検証の速報値）', use: '世界の状況を同じ画面でざっと見る',
+      how: '各国の公式測定局などのデータをほぼリアルタイムで集め、多くの局を US EPA の基準で指数化して地図にします。',
+      note: '国によって扱いが違い、マレーシアの「AQI」は DOE の API と同じ値でした（このサイトの収集データで確認）。速報値のため、後で公式に修正されることがあります。' },
+    { name: 'CAMS（Open-Meteo）', en: 'Copernicus Atmosphere Monitoring Service model', kind: '大気モデル（予報・推定）', by: '欧州 Copernicus（ECMWF が運用）。Open-Meteo が API で配信', avg: '1時間ごとの推定値',
+      trust: '低〜中（測定ではない。広域の傾向は得意）', use: '煙の広がりの傾向・予報、測定局がない場所の目安',
+      how: '気象と排出・火災の情報から、地球全体の大気をおよそ 40km の格子で計算します。マレー半島など欧州以外はこの全球モデルの値です。',
+      note: '都市の局地的な汚染やピークは外れやすく、実測より低め・なだらかに出ることがあります。「知る」の画面では、実測と比べて傾向を確かめる用途に使っています。' },
+    { name: 'PM2.5／PM10 濃度', en: 'Particulate concentration (µg/m³)', kind: '生の測定値', by: '各国の測定局（DOE・NEA など）、モデル', avg: '1時間・24時間・年平均など',
+      trust: '測定機器しだい（公式局は高い）', use: '指数の違いに左右されない比較、WHO 指針との比較',
+      how: '空気 1m³ に含まれる微粒子の重さ。PM2.5 は肺の奥まで届くため、ヘイズの健康影響の中心です。',
+      note: 'WHO の2021年指針：PM2.5 は24時間 15・年 5、PM10 は24時間 45・年 15 µg/m³（法的な基準ではない）。' },
+  ];
+  $('index-rows').replaceChildren(...INDICES.map((x) => {
+    const tr = el('tr', 'border-b border-line align-top');
+    const name = el('td', 'py-2 pr-3 font-bold whitespace-nowrap'); name.append(x.name, el('div', 'text-[.7rem] text-muted font-normal', x.en));
+    tr.append(name, el('td', 'py-2 px-2', x.kind), el('td', 'py-2 px-2', x.by), el('td', 'py-2 px-2', x.avg), el('td', 'py-2 px-2', x.trust), el('td', 'py-2 pl-2', x.use));
+    return tr;
+  }));
+  $('index-cards').replaceChildren(...INDICES.map((x) => {
+    const d = el('details', 'border border-line rounded-card p-3');
+    const s = el('summary', 'cursor-pointer font-bold'); s.append(x.name, el('span', 'en', x.kind));
+    d.append(s, el('p', 'text-[.85rem] mt-2', x.how), el('p', 'note mt-1', x.note));
+    return d;
+  }));
+
+  // ---------- season calendar ----------
+  // 0 = rare, 1 = possible, 2 = most likely (typical years; El Niño years run longer and stronger).
+  const ROWS = [
+    { name: '越境ヘイズ（スマトラ・カリマンタン → マレー半島・シンガポール・サラワク）', m: [0, 1, 1, 0, 1, 1, 2, 2, 2, 2, 1, 0], note: '南西モンスーンの7〜10月がピーク。2〜3月にスマトラ（リアウ）の小さな乾季で起きる年も' },
+    { name: '大陸部 ASEAN の野焼き（タイ北部・ミャンマー・ラオスなど）', m: [1, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 1], note: '乾季。マレー半島への影響は小さい' },
+  ];
+  function renderCalendar() {
+    const t = $('calendar');
+    const head = el('tr', 'border-b-[1.5px] border-frame');
+    head.append(el('th', 'py-1.5 pr-2 text-left font-bold', ''), ...Array.from({ length: 12 }, (_, i) => el('th', 'py-1.5 font-bold text-center w-[6%]', (i + 1) + '月')));
+    const body = ROWS.map((r) => {
+      const tr = el('tr', 'border-b border-line');
+      const th = el('th', 'py-1.5 pr-2 text-left font-normal align-top min-w-[11rem]'); th.append(r.name, el('div', 'text-[.7rem] text-muted', r.note));
+      tr.append(th, ...r.m.map((v) => {
+        const td = el('td', 'p-0.5');
+        const box = el('div', 'h-6 rounded-sm');
+        const color = css('--band-unhealthy');
+        box.style.background = v ? color : 'transparent';
+        box.style.opacity = v === 2 ? '0.85' : v === 1 ? '0.35' : '1';
+        box.style.border = v ? 'none' : '1px dashed ' + css('--line');
+        box.title = ['まれ', '起きることがある', '起きやすい'][v];
+        td.append(box); return td;
+      }));
+      return tr;
+    });
+    t.replaceChildren(head, ...body);
+  }
+
+  function renderAll() { renderScales(); renderCalendar(); }
+  $('theme').value = document.documentElement.dataset.theme || 'auto';
+  $('theme').onchange = (e) => {
+    const v = e.target.value;
+    if (v === 'auto') delete document.documentElement.dataset.theme; else document.documentElement.dataset.theme = v;
+    try { localStorage.setItem('haze-theme', v); } catch (err) { /* storage unavailable */ }
+    renderAll();
+  };
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', renderAll);
+  renderAll();
+})();
+</script>
+</body>
+</html>

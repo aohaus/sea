@@ -2,6 +2,19 @@
 
 This dashboard compares air quality and haze in Malaysia (Kuala Lumpur, Penang, Johor) and Singapore across several data sources. Data points are every 2 hours (12 a day), 14 days back (168 points per series), in UTC+8. It is separate from Sea basic but uses the same colour tokens (Campur.ai palette).
 
+## Pages
+
+The app has three steps, linked by the tab bar at the top of each page:
+
+1. **知る** (`index.html`): current values and the last 14 days, by station and index.
+2. **理解する** (`understand.html`):
+   - how the indices differ (purpose, publisher, averaging time, reliability, best use)
+   - 「同じ空気、違う数字」: a converter from one PM2.5 concentration to US AQI, PSI, NEA's 1-hour band and multiples of the WHO guideline
+   - types and causes of haze
+   - seasons
+   - sources
+3. **アクションする**: not built yet.
+
 ## Data sources
 
 | | Source | Indices | How data gets to the page |
