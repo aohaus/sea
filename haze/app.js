@@ -61,17 +61,19 @@
     { key: 'official', ja: '政府公式の指数（マレーシア API／シンガポール PSI）' },
   ];
 
+  // tone: the band colour (--band-<tone>), the same for the same words across scales:
+  // green 良好, yellow 普通, lorange 敏感な人に良くない, dorange PM2.5 上昇, red 健康に良くない, purple 非常に良くない, black 危険.
   const L = (lo, hi, ja, en, tone) => ({ lo, hi, ja, en, tone });
   const BANDS = {
     usaqi: { ja: 'US AQI（米国 EPA）', axis: 'index', harmful: 150, levels: [
-      L(0, 50, '良好', 'Good', 'good'), L(50, 100, '普通', 'Moderate', 'moderate'), L(100, 150, '敏感な人に良くない', 'Unhealthy for sensitive groups', 'usg'),
-      L(150, 200, '健康に良くない', 'Unhealthy', 'unhealthy'), L(200, 300, '非常に良くない', 'Very unhealthy', 'very'), L(300, 500, '危険', 'Hazardous', 'hazard')] },
+      L(0, 50, '良好', 'Good', 'green'), L(50, 100, '普通', 'Moderate', 'yellow'), L(100, 150, '敏感な人に良くない', 'Unhealthy for sensitive groups', 'lorange'),
+      L(150, 200, '健康に良くない', 'Unhealthy', 'red'), L(200, 300, '非常に良くない', 'Very unhealthy', 'purple'), L(300, 500, '危険', 'Hazardous', 'black')] },
     apipsi: { ja: 'API・PSI（マレーシア・シンガポール）', axis: 'index', harmful: 100, levels: [
-      L(0, 50, '良好', 'Good', 'good'), L(50, 100, '普通', 'Moderate', 'moderate'), L(100, 200, '健康に良くない', 'Unhealthy', 'unhealthy'),
-      L(200, 300, '非常に良くない', 'Very unhealthy', 'very'), L(300, 500, '危険', 'Hazardous', 'hazard')] },
+      L(0, 50, '良好', 'Good', 'green'), L(50, 100, '普通', 'Moderate', 'yellow'), L(100, 200, '健康に良くない', 'Unhealthy', 'red'),
+      L(200, 300, '非常に良くない', 'Very unhealthy', 'purple'), L(300, 500, '危険', 'Hazardous', 'black')] },
     pm25: { ja: 'PM2.5 1時間値（NEA の4段階）', axis: 'conc', harmful: 55, levels: [
-      L(0, 55, '通常（I）', 'Normal', 'good'), L(55, 150, '上昇（II）', 'Elevated', 'moderate'), L(150, 250, '高い（III）', 'High', 'unhealthy'),
-      L(250, 500, '非常に高い（IV）', 'Very high', 'very')] },
+      L(0, 55, '通常（I）', 'Normal', 'green'), L(55, 150, '上昇（II）', 'Elevated', 'dorange'), L(150, 250, '高い（III）', 'High', 'red'),
+      L(250, 500, '非常に高い（IV）', 'Very high', 'purple')] },
   };
   const category = (bandsKey, v) => {
     const b = BANDS[bandsKey];
@@ -293,7 +295,7 @@
   const DEFAULT = { city: 'kl', station: 'cheras', mode: 'indices', sources: ['A', 'B', 'C'], kinds: ['index', 'conc'],
     // WAQI is not archived (its terms of use), so without a viewer's token its lines are simulated only:
     // hidden by default, still available from the series chips.
-    hidden: ['waqi_aqi', 'waqi_pm25', 'om_pm10'], metric: 'om_pm25', places: STATIONS.map((s) => s.id), bands: 'auto' };
+    hidden: ['waqi_aqi', 'waqi_pm25', 'om_pm10'], metric: 'om_pm25', places: STATIONS.map((s) => s.id), bands: 'auto', located: false };
   let state = { ...DEFAULT };
   try { state = { ...DEFAULT, ...JSON.parse(localStorage.getItem('haze-ui') || '{}') }; } catch (e) { /* storage unavailable */ }
   if (!stationById.has(state.station)) state.station = DEFAULT.station;
@@ -327,7 +329,8 @@
   // What the folded filter panel holds, so a phone shows the selection without opening it.
   function renderFilterSummary(ls, bandsKey) {
     const parts = [];
-    if (state.mode === 'indices') parts.push(ls.length + '系列', '出所 ' + (state.sources.length ? [...state.sources].sort().join('・') : 'なし'));
+    if (state.mode === 'indices') parts.push(stationById.get(state.station).ja, ls.length + '系列', '出所 ' + (state.sources.length ? [...state.sources].sort().join('・') : 'なし'));
+    else parts.push('地点どうしを比較（' + state.places.length + '地点）');
     parts.push('色帯：' + (BANDS[bandsKey]?.ja.replace(/（.*/, '') || 'なし'));
     $('filters-summary').textContent = parts.join('／');
   }
@@ -389,8 +392,105 @@
     $('theme').value = document.documentElement.dataset.theme || 'auto';
   }
 
+  // ---------- now: the nearest (or chosen) station at a glance ----------
+  const km = (lat1, lon1, lat2, lon2) => {
+    const r = Math.PI / 180, h = Math.sin((lat2 - lat1) * r / 2) ** 2 + Math.cos(lat1 * r) * Math.cos(lat2 * r) * Math.sin((lon2 - lon1) * r / 2) ** 2;
+    return 6371 * 2 * Math.asin(Math.sqrt(h));
+  };
+  // here: the station nearest the viewer ({ id, km }) once located; locating: a request is open; locError: why it failed.
+  let here = null, locating = false, locError = '';
+  function locate(fromButton) {
+    if (!navigator.geolocation) { locError = 'このブラウザは位置情報に対応していません'; render(); return; }
+    locating = true; locError = ''; render();
+    navigator.geolocation.getCurrentPosition((pos) => {
+      const { latitude: la, longitude: lo } = pos.coords;
+      const [st, d] = STATIONS.map((s) => [s, km(la, lo, s.lat, s.lon)]).sort((a, b) => a[1] - b[1])[0];
+      here = { id: st.id, km: d }; locating = false;
+      set({ city: st.city, station: st.id, located: true });
+    }, (err) => {
+      locating = false;
+      locError = err.code === err.PERMISSION_DENIED ? '位置情報の利用が許可されていません（ブラウザの設定で許可できます）' : '現在地を取得できませんでした';
+      if (!fromButton) locError = '';
+      render();
+    }, { enableHighAccuracy: false, timeout: 15000, maximumAge: 10 * 60e3 });
+  }
+  // The headline series: the government index (API / PSI) when it has real readings, else the modelled
+  // US AQI when that is live, else the government index (simulated, and labelled so).
+  function headline(st) {
+    const official = st.country === 'my' ? 'doe_api' : 'nea_psi';
+    const key = [official, 'om_aqi'].find((k) => DATA[st.id][k] && DATA[st.id][k].mode !== 'sim') || official;
+    const def = defFor(seriesByKey.get(key), st.country);
+    return { def, data: DATA[st.id][key] };
+  }
+  function renderNow() {
+    const st = stationById.get(state.station);
+    $('now-station').replaceChildren(...CITIES.map((c) => {
+      const g = document.createElement('optgroup'); g.label = c.ja;
+      g.append(...STATIONS.filter((s) => s.city === c.id).map((s) => new Option(s.ja, s.id)));
+      return g;
+    }));
+    $('now-station').value = st.id;
+    $('locate').textContent = locating ? '📍 取得中…' : '📍 現在地から';
+    $('locate').disabled = locating;
+    $('now-loc').textContent = locError || (here
+      ? (here.id === st.id
+        ? (here.km > 150 ? '現在地はこのページの対象地域（KL・ペナン・ジョホール・シンガポール）の外です。いちばん近い観測地点（約' + Math.round(here.km).toLocaleString('ja-JP') + ' km）を表示しています。'
+          : '現在地からいちばん近い観測地点です（約' + Math.max(1, Math.round(here.km)) + ' km）。')
+        : '選んだ地点を表示しています。')
+      : '「📍 現在地から」で近い観測地点に切り替えます（位置はこの端末の中だけで使います）。');
+
+    const { def, data } = headline(st);
+    const vals = data.values, i = latestShown(data), v = i >= 0 ? vals[i] : null;
+    const cat = category(def.bands, v);
+    const panel = $('now-panel');
+    panel.style.background = cat ? css('--band-' + cat.tone) : css('--panel');
+    panel.style.color = cat ? css('--on-band-' + cat.tone) : css('--fg');
+    // Compare with the 14-day average of the same series, from real readings when there are some.
+    const pool = data.mode === 'sim' ? vals.filter((x) => x != null) : vals.filter((x, j) => x != null && isReal(data, j));
+    const avg = pool.length ? pool.reduce((a, b) => a + b, 0) / pool.length : null;
+    let vs = '';
+    if (v != null && avg != null && pool.length >= 6) {
+      const d = v - avg, big = Math.abs(d) >= Math.max(5, avg * 0.2);
+      vs = big ? (d > 0 ? 'いつもより高め' : 'いつもより低め') : 'いつもと同じくらい';
+    }
+    const days = Math.round(pool.length / 12);
+    const el = (tag, cls, text) => { const e = document.createElement(tag); e.className = cls; if (text != null) e.textContent = text; return e; };
+    const top = el('div', 'flex flex-wrap items-baseline gap-x-4 gap-y-1');
+    const num = el('div', 'text-[3.2rem] sm:text-[3.8rem] font-black leading-none tnum', fmt(v, def.unit));
+    const words = el('div', 'grid');
+    words.append(el('div', 'text-[1.5rem] sm:text-[1.8rem] font-black leading-tight', cat ? cat.ja : '—'),
+      el('div', 'text-[.8rem] font-bold', def.ja + (data.mode === 'sim' ? '・模擬値' : '')));
+    top.append(num, words);
+    const cmp = el('div', (vs ? 'text-[.95rem] font-bold' : 'text-[.8rem] font-medium') + ' mt-1', vs
+      ? vs + '（' + (days >= 14 || data.mode === 'live' ? '14日' : days >= 1 ? '直近' + days + '日' : '直近') + '平均 ' + fmt(avg, def.unit) + '）'
+      : 'いつもとの比較は、実データが半日分（6枠）たまってから表示します（いまは' + pool.length + '枠）');
+    panel.replaceChildren(top, cmp);
+
+    // Last 24 hours as 12 coloured cells.
+    const last12 = SLOTS.map((ms, j) => j).slice(-12);
+    $('now-strip').replaceChildren(...last12.map((j) => {
+      const x = vals[j], c = category(def.bands, x), cell = document.createElement('span');
+      // Simulated slots are striped, real readings solid.
+      const col = c && css('--band-' + c.tone);
+      if (x == null || !c) cell.className = 'empty';
+      else cell.style.background = isReal(data, j) || data.mode === 'sim' ? col : 'repeating-linear-gradient(135deg, ' + col + ' 0 3px, transparent 3px 7px)';
+      cell.title = shortLabel(SLOTS[j]) + '：' + fmt(x, def.unit) + (c ? '（' + c.ja + '）' : '') + (x != null && !isReal(data, j) ? ' 模擬' : '');
+      return cell;
+    }));
+    $('now-strip').setAttribute('aria-label', '直近24時間の区分：' + last12.map((j) => category(def.bands, vals[j])?.ja || 'データなし').join('、'));
+    $('now-source').textContent = st.ja + '・' + (i >= 0 ? shortLabel(SLOTS[i]) + ' の値' : 'データなし') + '・' + SOURCES[def.src].ja.replace(/^.：/, '')
+      + (data.mode === 'sim' ? '（実データがないため模擬値）' : data.mode === 'mixed' ? '（しま模様のマスは収集前の模擬値）' : '')
+      + (def.bands ? '・区分は ' + BANDS[def.bands].ja : '');
+  }
+
   // ---------- tiles ----------
   const latestOf = (arr) => { for (let i = arr.length - 1; i >= 0; i--) if (arr[i] != null) return i; return -1; };
+  // The latest reading to show: in a partly real series, the latest real one (not a simulated fill).
+  const latestShown = (data) => {
+    if (data.mode !== 'mixed') return latestOf(data.values);
+    for (let i = data.values.length - 1; i >= 0; i--) if (data.values[i] != null && isReal(data, i)) return i;
+    return -1;
+  };
   const modeBadge = (mode) => {
     const s = document.createElement('span');
     s.className = 'badge ' + (mode === 'live' ? 'badge-live' : mode === 'mixed' ? 'badge-live' : 'badge-sim');
@@ -399,23 +499,24 @@
   };
   function renderTiles(ls) {
     $('tiles').replaceChildren(...ls.map((l) => {
-      const vals = l.data.values, i = latestOf(vals), v = i >= 0 ? vals[i] : null;
+      const vals = l.data.values, i = latestShown(l.data), v = i >= 0 ? vals[i] : null;
       const cat = category(l.def.bands, v);
       const div = document.createElement('div');
       div.className = 'card grid gap-1 content-start !p-3 sm:!p-5';
-      div.style.borderLeft = '6px solid ' + l.color;
+      // The band colour fills the tile; the series' line colour is the small swatch by its name.
+      if (cat) { div.classList.add('banded'); div.style.background = css('--band-' + cat.tone); div.style.color = css('--on-band-' + cat.tone); }
       const head = document.createElement('div'); head.className = 'flex flex-wrap items-start justify-between gap-1';
       const name = document.createElement('div'); name.className = 'text-[.8rem] font-bold leading-snug';
-      name.textContent = state.mode === 'places' ? l.station.ja : l.def.ja;
+      const lsw = document.createElement('span'); lsw.className = 'swatch'; lsw.style.background = l.color; lsw.style.outline = '1.5px solid currentColor';
+      name.append(lsw, state.mode === 'places' ? l.station.ja : l.def.ja);
       head.append(name, modeBadge(l.data.mode));
       const val = document.createElement('div'); val.className = 'text-[1.6rem] sm:text-[1.9rem] font-black leading-none tnum';
       val.textContent = fmt(v, l.def.unit);
       if (l.def.unit) { const u = document.createElement('span'); u.className = 'text-[.8rem] font-medium text-muted ml-1'; u.textContent = l.def.unit; val.append(u); }
       const sub = document.createElement('div'); sub.className = 'text-[.75rem] text-muted';
       if (cat) {
-        const dot = document.createElement('span'); dot.className = 'swatch'; dot.style.background = css('--band-' + cat.tone);
-        const c = document.createElement('span'); c.className = 'font-bold text-fg'; c.textContent = cat.ja;
-        sub.append(dot, c, '・');
+        const c = document.createElement('span'); c.className = 'font-bold'; c.style.color = css('--on-band-' + cat.tone); c.textContent = cat.ja;
+        sub.append(c, '・');
       }
       sub.append(i >= 0 ? shortLabel(SLOTS[i]) : 'データなし');
       const max = Math.max(...vals.filter((x) => x != null));
@@ -450,7 +551,7 @@
       }
       ctx.globalAlpha = 0.55;
       ctx.setLineDash([3, 4]);
-      ctx.strokeStyle = css('--band-unhealthy');
+      ctx.strokeStyle = css('--band-red');
       const yh = scale.getPixelForValue(b.harmful);
       if (yh > a.top && yh < a.bottom) { ctx.beginPath(); ctx.moveTo(a.left, yh); ctx.lineTo(a.right, yh); ctx.stroke(); }
       ctx.restore();
@@ -556,7 +657,7 @@
       const badge = document.createElement('div'); badge.className = 'mt-0.5'; badge.append(modeBadge(l.data.mode));
       name.append(sw, l.label, badge);
       const td = (t) => { const c = document.createElement('td'); c.className = 'py-1.5 px-1.5 sm:px-2 text-right whitespace-nowrap'; c.textContent = t; return c; };
-      const i = latestOf(l.data.values);
+      const i = latestShown(l.data);
       tr.append(name, td(fmt(i >= 0 ? l.data.values[i] : null, l.def.unit)),
         td(fmt(vals.length ? vals.reduce((a, c) => a + c, 0) / vals.length : null, l.def.unit)),
         td(fmt(vals.length ? Math.max(...vals) : null, l.def.unit)),
@@ -621,6 +722,7 @@
   // ---------- render ----------
   function render() {
     renderControls();
+    renderNow();
     const ls = lines();
     const bandsKey = bandsFor(ls);
     renderFilterSummary(ls, bandsKey);
@@ -643,7 +745,13 @@
 
   // ---------- events ----------
   document.querySelectorAll('[data-mode]').forEach((b) => { b.onclick = () => set({ mode: b.dataset.mode }); });
-  $('filters').open = matchMedia('(min-width: 640px)').matches;
+  $('now-station').onchange = (e) => { const s = stationById.get(e.target.value); set({ city: s.city, station: s.id }); };
+  $('locate').onclick = () => locate(true);
+  // The explanation shows on the first visit, then only from the 説明 button.
+  const showIntro = (open) => { $('intro').classList.toggle('hidden', !open); $('intro-btn').setAttribute('aria-expanded', String(open)); };
+  $('intro-btn').onclick = () => showIntro($('intro').classList.contains('hidden'));
+  $('intro-close').onclick = () => showIntro(false);
+  try { if (!localStorage.getItem('haze-intro-seen')) { showIntro(true); localStorage.setItem('haze-intro-seen', '1'); } } catch (e) { /* storage unavailable */ }
   $('metric').onchange = (e) => set({ metric: e.target.value });
   $('bands').onchange = (e) => set({ bands: e.target.value });
   $('theme').onchange = (e) => {
@@ -670,6 +778,10 @@
   };
 
   render();
+  // A viewer who allowed location before (and used it last time) gets the nearest station without asking.
+  if (state.located && navigator.permissions?.query) {
+    navigator.permissions.query({ name: 'geolocation' }).then((p) => { if (p.state === 'granted') locate(false); }).catch(() => {});
+  }
   // Live data: collector first (it may cover DOE), then the browser-callable APIs.
   loadCollector().then(() => Promise.all([loadOpenMeteo(), loadNea(), waqiToken ? loadWaqi(waqiToken) : null])).then(render);
 })();

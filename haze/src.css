@@ -11,8 +11,12 @@
   --grid: #ece9e2; --axis: #bdb8ae;
   /* Sources: A = WAQI, B = government (DOE APIMS / NEA), C = model (Open-Meteo) */
   --src-a: #0f5a44; --src-b: #b4501c; --src-c: #2f5fa8; --src-d: #7b4e9a; --src-e: #b8860b; --src-f: #2b8c8c; --src-g: #a33b62;
-  /* Health bands */
-  --band-good: #3f9d5d; --band-moderate: #d9b52c; --band-usg: #e08a2c; --band-unhealthy: #cc4b37; --band-very: #8e4a9c; --band-hazard: #7a2430;
+  /* Health bands, worst to best: black, purple, red, dark orange, light orange, yellow, green.
+     Tiles use them as solid backgrounds with the matching --on-band text colour. */
+  --band-green: #4caf62; --band-yellow: #f2d33c; --band-lorange: #f8b45a; --band-dorange: #e8742a;
+  --band-red: #d0342c; --band-purple: #7d3c98; --band-black: #161616;
+  --on-band-green: #10230f; --on-band-yellow: #2a2205; --on-band-lorange: #2d1a04; --on-band-dorange: #1f0d02;
+  --on-band-red: #ffffff; --on-band-purple: #ffffff; --on-band-black: #ffffff;
   --band-alpha: .10;
   color-scheme: light;
 }
@@ -23,8 +27,8 @@
     --mustard-soft: #3a3214; --mustard-line: #7d6a24;
     --grid: #252823; --axis: #44473f;
     --src-a: #5cc79e; --src-b: #e07a45; --src-c: #7fa3ec; --src-d: #c39ad6; --src-e: #e0c056; --src-f: #6fcbd8; --src-g: #e57ea5;
-    --band-good: #5cc98a; --band-moderate: #e3c650; --band-usg: #f0a050; --band-unhealthy: #f2786d; --band-very: #c39ad6; --band-hazard: #d0606e;
-    --band-alpha: .12;
+    --band-black: #000000;
+    --band-alpha: .14;
     color-scheme: dark;
   }
 }
@@ -34,8 +38,8 @@
   --mustard-soft: #3a3214; --mustard-line: #7d6a24;
   --grid: #252823; --axis: #44473f;
   --src-a: #5cc79e; --src-b: #e07a45; --src-c: #7fa3ec; --src-d: #c39ad6; --src-e: #e0c056; --src-f: #6fcbd8; --src-g: #e57ea5;
-  --band-good: #5cc98a; --band-moderate: #e3c650; --band-usg: #f0a050; --band-unhealthy: #f2786d; --band-very: #c39ad6; --band-hazard: #d0606e;
-  --band-alpha: .12;
+  --band-black: #000000;
+  --band-alpha: .14;
   color-scheme: dark;
 }
 
@@ -58,23 +62,31 @@
   .badge-err { @apply border-rust text-rust; }
   .swatch { @apply inline-block w-3 h-3 rounded-sm align-[-1px] mr-1; }
 }
-/* Step navigation shared by the haze pages (1 Know / 2 Understand / 3 Act). */
-.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; margin-top: .25rem; }
-.step { display: flex; align-items: baseline; flex-wrap: wrap; gap: .1rem .4rem; padding: .55rem .75rem; border: 1.5px solid var(--line);
-  border-radius: 6px; background: var(--panel); color: var(--muted); font-weight: 700; font-size: .9rem; text-decoration: none; }
-.step b { display: inline-grid; place-items: center; width: 1.4rem; height: 1.4rem; border-radius: 999px; background: var(--line); color: var(--fg); font-size: .75rem; }
-.step .en { margin-left: 0; }
-.step[aria-current="page"] { border-color: var(--frame); color: var(--fg); box-shadow: inset 0 -3px 0 var(--rust); }
+/* Step navigation shared by the haze pages (1 Know / 2 Understand / 3 Act): a bar fixed to the bottom. */
+.steps { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .25rem;
+  padding: .3rem max(.5rem, calc((100% - 1200px) / 2 + 1rem)) calc(.3rem + env(safe-area-inset-bottom));
+  background: var(--panel); border-top: 1.5px solid var(--frame); }
+.step { display: flex; flex-direction: column; align-items: center; gap: .1rem; padding: .3rem .25rem; border-radius: 6px;
+  color: var(--muted); font-weight: 700; font-size: .8rem; line-height: 1.2; text-decoration: none; text-align: center; }
+.step b { display: inline-grid; place-items: center; width: 1.35rem; height: 1.35rem; border-radius: 999px; background: var(--line); color: var(--fg); font-size: .72rem; }
+.step .en { margin-left: 0; font-size: .65rem; }
+.step[aria-current="page"] { color: var(--fg); background: var(--accent-soft); }
 .step[aria-current="page"] b { background: var(--accent); color: var(--on-accent); }
-a.step:hover { border-color: var(--accent-line); color: var(--fg); }
-.step.soon { opacity: .6; border-style: dashed; }
-@media (max-width: 480px) { .step { font-size: .8rem; padding: .45rem .5rem; } .step .en { display: none; } }
+a.step:hover { color: var(--fg); }
+.step.soon { opacity: .55; }
+body { padding-bottom: calc(4.2rem + env(safe-area-inset-bottom)); }
+/* Band-coloured blocks (latest-value tiles, the "now" panel): text follows the band, not the theme. */
+.banded { border-color: var(--frame); }
+.banded .text-muted, .banded .note { color: inherit; opacity: .82; }
+.strip { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 2px; }
+.strip > span { height: 1.4rem; border-radius: 2px; }
+.strip > span.empty { border: 1px dashed var(--line); }
 /* Touch screens: buttons at least 36px tall. */
 @media (pointer: coarse) { .chip, .tab, .ctl { min-height: 36px; } }
-.filters > summary { list-style: none; }
-.filters > summary::-webkit-details-marker { display: none; }
-.filters > summary::before { content: "▸"; color: var(--accent); margin-right: .25rem; }
-.filters[open] > summary::before { content: "▾"; }
+.settings > summary { list-style: none; }
+.settings > summary::-webkit-details-marker { display: none; }
+.settings > summary::before { content: "▸"; color: var(--accent); margin-right: .25rem; }
+.settings[open] > summary::before { content: "▾"; }
 /* Grid containers must let their columns shrink below the content width (long chip rows, tables). */
 .card.grid, main.grid { grid-template-columns: minmax(0, 1fr); }
 body { background: var(--bg); color: var(--fg); font-feature-settings: "palt"; }

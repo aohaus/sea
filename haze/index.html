@@ -17,27 +17,52 @@
 <body class="font-sans text-[15px] leading-relaxed">
 <main class="max-w-[1200px] mx-auto px-4 pt-6 pb-12 grid gap-5">
 
-  <header class="grid gap-2">
-    <div class="flex flex-wrap items-start justify-between gap-3">
-      <div>
-        <h1 class="text-[clamp(1.6rem,3vw,2.1rem)] font-black leading-tight">ヘイズモニター<span class="en text-sm block ml-0 mt-1 sm:inline sm:ml-2 sm:mt-0">Haze Monitor — Malaysia &amp; Singapore</span></h1>
-        <p class="note mt-1 max-w-[75ch]">クアラルンプール・ペナン・ジョホールとシンガポールの大気質を、3種類の出所（A：WAQI、B：政府公式 DOE／NEA、C：モデル Open-Meteo）で比べます。2時間ごと（1日12回）・過去14日分（168点）の時系列で、ヘイズの日内変化と出所ごとの違いを見ます。</p>
-      </div>
-      <div class="flex items-center gap-2">
-        <label class="label min-w-0" for="theme">表示</label>
-        <select id="theme" class="ctl"><option value="auto">自動</option><option value="light">ライト</option><option value="dark">ダーク</option></select>
-      </div>
+  <header class="flex items-center justify-between gap-3">
+    <h1 class="text-[1.3rem] sm:text-[1.6rem] font-black leading-tight">ヘイズモニター<span class="en text-xs hidden sm:inline">Haze Monitor — Malaysia &amp; Singapore</span></h1>
+    <div class="flex items-center gap-2">
+      <button id="intro-btn" type="button" class="chip" aria-controls="intro" aria-expanded="false" title="このページの説明">？ 説明</button>
+      <label class="sr-only" for="theme">表示</label>
+      <select id="theme" class="ctl" title="表示"><option value="auto">自動</option><option value="light">ライト</option><option value="dark">ダーク</option></select>
     </div>
-    <nav class="steps" aria-label="ヘイズモニターの3つのステップ">
-      <a class="step" href="index.html" aria-current="page"><b>1</b>知る<span class="en">Know</span></a>
-      <a class="step" href="understand.html"><b>2</b>理解する<span class="en">Understand</span></a>
-      <span class="step soon" aria-disabled="true"><b>3</b>アクションする<span class="en">準備中</span></span>
-    </nav>
-    <div id="status-line" class="flex flex-wrap gap-2 items-center text-[.78rem] text-muted" aria-live="polite"></div>
   </header>
 
-  <!-- Controls -->
-  <section class="card grid gap-3" aria-label="絞り込み">
+  <!-- About this page: shown on the first visit, then from the 説明 button. -->
+  <section id="intro" class="card grid gap-2 hidden">
+    <div class="flex items-start justify-between gap-3">
+      <h2 class="card-title">このページについて<span class="en">About</span></h2>
+      <button id="intro-close" type="button" class="chip" aria-pressed="false">閉じる</button>
+    </div>
+    <p class="note max-w-[75ch]">クアラルンプール・ペナン・ジョホールとシンガポールの大気質を、3種類の出所（A：WAQI、B：政府公式 DOE／NEA、C：モデル Open-Meteo）で比べます。2時間ごと（1日12回）・過去14日分（168点）の時系列で、ヘイズの日内変化と出所ごとの違いを見ます。</p>
+    <p class="note max-w-[75ch]">いちばん上に、いまいる場所（または選んだ地点）に近い観測地点の値を、健康への影響の色（良い方から 緑・黄・薄いオレンジ・濃いオレンジ・赤・紫・黒）で出します。地点・指標・比べ方は「詳細設定」で変えられます。</p>
+  </section>
+
+  <!-- Now: the value at the nearest (or chosen) station, coloured by its health band. -->
+  <section id="now" class="card !p-0 overflow-hidden grid" aria-label="いまの空気" aria-live="polite">
+    <div id="now-head" class="flex flex-wrap items-center gap-2 px-4 pt-3 pb-2">
+      <label class="sr-only" for="now-station">観測地点</label>
+      <select id="now-station" class="ctl flex-1 min-w-0 sm:flex-none font-bold"></select>
+      <button id="locate" type="button" class="chip" aria-pressed="false">📍 現在地から</button>
+      <span id="now-loc" class="note w-full"></span>
+    </div>
+    <div id="now-panel" class="banded px-4 py-4 grid gap-1 border-y-[1.5px]"></div>
+    <div class="px-4 pt-2 pb-3 grid gap-1">
+      <div class="flex justify-between text-[.7rem] text-muted"><span>24時間前</span><span>直近24時間（2時間ごと）</span><span>いま</span></div>
+      <div id="now-strip" class="strip" role="img"></div>
+      <p id="now-source" class="note"></p>
+    </div>
+  </section>
+
+  <!-- Latest values -->
+  <section class="grid gap-3" aria-label="最新値">
+    <div id="tiles" class="grid gap-2 sm:gap-3 grid-cols-2 sm:grid-cols-[repeat(auto-fit,minmax(13rem,1fr))]"></div>
+  </section>
+
+  <!-- Detailed settings: folded, so the current values come first. -->
+  <details id="settings" class="card settings">
+    <summary class="cursor-pointer select-none flex flex-wrap items-baseline gap-x-2 gap-y-1">
+      <span class="label">詳細設定</span><span id="filters-summary" class="note"></span>
+    </summary>
+    <div class="grid gap-3 mt-3">
     <div class="flex flex-wrap gap-2 items-center">
       <span class="label">都市</span>
       <div id="city-tabs" class="flex flex-wrap gap-2" role="tablist" aria-label="都市"></div>
@@ -57,12 +82,6 @@
       <label class="label" for="metric">指標</label>
       <select id="metric" class="ctl"></select>
     </div>
-    <!-- Index filters: open on wide screens, folded on phones so the data comes first. -->
-    <details id="filters" class="filters">
-      <summary class="cursor-pointer select-none flex flex-wrap items-baseline gap-x-2 gap-y-1">
-        <span class="label">指標を選ぶ</span><span id="filters-summary" class="note"></span>
-      </summary>
-      <div class="grid gap-3 mt-3">
     <div id="mode-indices" class="grid gap-3">
       <div class="flex flex-wrap gap-2 items-center">
         <span class="label">出所</span>
@@ -82,14 +101,8 @@
       <select id="bands" class="ctl"></select>
       <span id="bands-note" class="note"></span>
     </div>
-      </div>
-    </details>
-  </section>
-
-  <!-- Latest values -->
-  <section class="grid gap-3" aria-label="最新値">
-    <div id="tiles" class="grid gap-2 sm:gap-3 grid-cols-2 sm:grid-cols-[repeat(auto-fit,minmax(13rem,1fr))]"></div>
-  </section>
+    </div>
+  </details>
 
   <!-- Main chart -->
   <section class="card grid gap-3">
@@ -125,6 +138,7 @@
   <!-- Sources -->
   <section class="card grid gap-3">
     <h2 class="card-title">データの出所と取得状況<span class="en">Sources</span></h2>
+    <div id="status-line" class="flex flex-wrap gap-2 items-center text-[.78rem] text-muted" aria-live="polite"></div>
     <div id="sources" class="grid gap-0 border-t-[1.5px] border-frame"></div>
     <details class="text-[.82rem]">
       <summary class="cursor-pointer font-bold">WAQI のトークンを入れる（任意）</summary>
@@ -137,7 +151,7 @@
         </div>
       </div>
     </details>
-    <p class="note">基準の色帯：US AQI は米国環境保護庁（EPA、2024年改定）の区分、API（マレーシア）・PSI（シンガポール）は 0–50 良好／51–100 普通／101–200 健康に良くない／201–300 非常に良くない／301以上 危険、PM2.5 の1時間値は NEA の4段階（0–55／56–150／151–250／251以上 µg/m³）です。時刻はすべてマレーシア・シンガポール時間（UTC+8）です。</p>
+    <p class="note">基準の色帯：US AQI は米国環境保護庁（EPA、2024年改定）の区分（良好 緑／普通 黄／敏感な人に良くない 薄いオレンジ／健康に良くない 赤／非常に良くない 紫／危険 黒）、API（マレーシア）・PSI（シンガポール）は 0–50 良好 緑／51–100 普通 黄／101–200 健康に良くない 赤／201–300 非常に良くない 紫／301以上 危険 黒、PM2.5 の1時間値は NEA の4段階（0–55 緑／56–150 濃いオレンジ／151–250 赤／251以上 紫、µg/m³）です。同じ言葉の区分は、指標が違っても同じ色にしています。時刻はすべてマレーシア・シンガポール時間（UTC+8）です。</p>
   </section>
 
   <footer class="note text-center">
@@ -145,6 +159,11 @@
     · <a class="underline" href="../basic/index.html">ASEAN データエクスプローラー（Sea basic）</a>
   </footer>
 </main>
+<nav class="steps" aria-label="ヘイズモニターの3つのステップ">
+  <a class="step" href="index.html" aria-current="page"><b>1</b>知る<span class="en">Know</span></a>
+  <a class="step" href="understand.html"><b>2</b>理解する<span class="en">Understand</span></a>
+  <span class="step soon" aria-disabled="true"><b>3</b>アクションする<span class="en">準備中</span></span>
+</nav>
 <script src="vendor/chart-4.4.1.umd.min.js"></script>
 <script src="app.js"></script>
 </body>
