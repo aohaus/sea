@@ -63,3 +63,5 @@ Format of `data/series.json`:
 ```
 npx tailwindcss@3.4.17 -c haze/tailwind.config.js -i haze/src.css -o haze/haze.css --minify
 ```
+
+- The pages load `haze.css?v=…` and `app.js?v=…`. When you change `app.js` or `haze.css`, change the `v` value in `index.html` and `understand.html` (for example to the date). Otherwise a browser can keep the old file and use it with the new HTML; the old `app.js` then fails on the new page and nothing is drawn.
