@@ -1,0 +1,18 @@
+name: probe-campur
+on:
+  push:
+    branches: [claude/probe-campur]
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          for u in https://campur.ai.studio/ https://campur.ai/ https://www.campur.ai/; do
+            echo "===== $u"
+            curl -sSL -m 30 -D - -o page.html -A "Mozilla/5.0" "$u" | head -30 || true
+            wc -c page.html || true
+            echo "--- title/meta"; grep -oiE '<title>[^<]*</title>|<meta[^>]+(description|og:)[^>]*>' page.html | head -20 || true
+            echo "--- scripts/links"; grep -oiE '(src|href)="[^"]+"' page.html | sort -u | head -80 || true
+            echo "--- api-ish strings"; grep -oiE '(https?:)?//[a-z0-9./_-]*(api|json|rss|feed|supabase|firebase|firestore|sheets|news)[a-z0-9./?=&_-]*' page.html | sort -u | head -40 || true
+            echo "--- text sample"; sed -e 's/<[^>]*>/ /g' page.html | tr -s ' \n' | head -c 3000; echo
+          done
