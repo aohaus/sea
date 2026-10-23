@@ -59,7 +59,6 @@
     { key: 'om_pm25', ja: 'PM2.5（Open-Meteo、µg/m³）' },
     { key: 'om_aqi', ja: 'US AQI（Open-Meteo）' },
     { key: 'official', ja: '政府公式の指数（マレーシア API／シンガポール PSI）' },
-    { key: 'waqi_pm25', ja: 'WAQI PM2.5 指数（米国基準）' },
   ];
 
   const L = (lo, hi, ja, en, tone) => ({ lo, hi, ja, en, tone });
@@ -292,7 +291,9 @@
 
   // ---------- state ----------
   const DEFAULT = { city: 'kl', station: 'cheras', mode: 'indices', sources: ['A', 'B', 'C'], kinds: ['index', 'conc'],
-    hidden: ['waqi_pm25', 'om_pm10'], metric: 'om_pm25', places: STATIONS.map((s) => s.id), bands: 'auto' };
+    // WAQI is not archived (its terms of use), so without a viewer's token its lines are simulated only:
+    // hidden by default, still available from the series chips.
+    hidden: ['waqi_aqi', 'waqi_pm25', 'om_pm10'], metric: 'om_pm25', places: STATIONS.map((s) => s.id), bands: 'auto' };
   let state = { ...DEFAULT };
   try { state = { ...DEFAULT, ...JSON.parse(localStorage.getItem('haze-ui') || '{}') }; } catch (e) { /* storage unavailable */ }
   if (!stationById.has(state.station)) state.station = DEFAULT.station;
@@ -592,10 +593,10 @@
       const share = Math.min(...ds.map((x) => (x.mode === 'live' ? N : x.real.size)));
       return { state: share >= N ? 'live' : 'mixed', text: '2時間ごとの収集データ（14日のうち' + share + '枠以上）。収集前の枠は模擬値' };
     };
-    const doe = collected(['doe_api']), waqi = collected(['waqi_aqi']);
+    const doe = collected(['doe_api']);
     const rows = [
-      ['A', 'AQI、PM2.5 指数（米国基準）', waqi || STATUS.A, 'WAQI（aqicn.org）が各国の観測局の値を集めて公開。マレーシアの AQI は DOE の API をそのまま載せたもの（DOE と同じ値）、シンガポールの AQI と各地の PM2.5 指数は米国 EPA の基準です。2時間ごとにサーバー側で現在値を取得して貯めています（トークンはリポジトリのシークレット）。'
-        + (waqi ? '' : 'まだ収集データがないため、下でご自身のトークンを入れると現在値だけ取得できます。')],
+      ['A', 'AQI、PM2.5 指数（米国基準）', STATUS.A, 'WAQI（aqicn.org）が各国の観測局の値を集めて公開。マレーシアの AQI は DOE の API をそのまま載せたもの（DOE と同じ値）、シンガポールの AQI と各地の PM2.5 指数は米国 EPA の基準です。'
+        + 'WAQI の利用条件はデータを貯めて再配布することを認めていないため、このサイトでは保存していません。下でご自身のトークンを入れると、その場で現在値だけ取得して表示します（グラフでは「系列」から表示できます）。'],
       ['B', 'マレーシア：API（DOE APIMS）', doe || { state: 'sim', text: '' }, 'マレーシア環境局の API は、ブラウザから他サイトの読み込みを許可していないため、2時間ごとにサーバー側で全観測局の現在値を取得して貯めています。'
         + (doe ? '' : 'まだ収集データがないため模擬値です。')],
       ['B', 'シンガポール：24時間 PSI、PM2.5 1時間値（NEA）', STATUS.B.state === 'mixed' ? { state: 'live' } : STATUS.B, 'シンガポール国家環境庁（NEA）の data.gov.sg v2 API から、中部地域の値を日ごとに取得します。'],

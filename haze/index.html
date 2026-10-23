@@ -129,7 +129,7 @@
     <details class="text-[.82rem]">
       <summary class="cursor-pointer font-bold">WAQI のトークンを入れる（任意）</summary>
       <div class="grid gap-2 mt-2">
-        <p class="note">WAQI（aqicn.org）の API は個人ごとのトークンが必要です（<a class="underline" href="https://aqicn.org/data-platform/token/" target="_blank" rel="noopener">無料で取得</a>）。入れると、各地点の<strong>現在値</strong>を WAQI から取得して最新の点として重ねます。WAQI の無料 API は過去14日の履歴を返さないため、それ以前は模擬値のままです。トークンはこのブラウザだけに保存されます。</p>
+        <p class="note">WAQI（aqicn.org）の API は個人ごとのトークンが必要です（<a class="underline" href="https://aqicn.org/data-platform/token/" target="_blank" rel="noopener">無料で取得</a>）。入れると、各地点の<strong>現在値</strong>を WAQI から取得して最新の点として重ねます。WAQI の無料 API は過去の履歴を返さず、利用条件でデータを貯めて再配布することも認められていないため、それ以前は模擬値のままです。トークンはこのブラウザだけに保存されます。</p>
         <div class="flex flex-wrap gap-2 items-center">
           <input id="waqi-token" type="password" autocomplete="off" class="ctl w-64" placeholder="WAQI トークン" aria-label="WAQI トークン">
           <button id="waqi-save" type="button" class="chip">保存して取得</button>
