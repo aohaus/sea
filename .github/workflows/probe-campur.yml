@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          B=https://campur.ai
-          curl -sSL -m 30 "$B/" -o page.html
+          B=https://campur.ai.studio
+          curl -sSL -m 30 "$B/" -o page.html || true
           JS=$(grep -oE '/assets/index-[A-Za-z0-9_-]+\.js' page.html | head -1); echo "JS=$JS"
           curl -sSL -m 60 "$B$JS" -o app.js; wc -c app.js
           echo "--- urls in bundle"; grep -oE 'https?://[A-Za-z0-9./_:-]+' app.js | sort | uniq -c | sort -rn | head -60
