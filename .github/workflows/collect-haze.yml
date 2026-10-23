@@ -10,6 +10,7 @@ on:
   push:
     paths:
       - "scripts/collect_haze.py"
+      - "scripts/collect_haze_news.py"
       - ".github/workflows/collect-haze.yml"
 
 permissions:
@@ -32,6 +33,10 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Collect DOE readings
         run: python scripts/collect_haze.py
+      # Haze news from Campur.ai for the "アクションする" page. The script fetches only when
+      # haze/data/news.json is about 3 hours old, so most hourly runs skip it.
+      - name: Collect haze news
+        run: python scripts/collect_haze_news.py
       - name: Commit readings
         run: |
           git config user.name "github-actions[bot]"
