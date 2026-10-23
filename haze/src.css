@@ -81,6 +81,19 @@ body { padding-bottom: calc(4.2rem + env(safe-area-inset-bottom)); }
 .strip { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 2px; }
 .strip > span { height: 1.4rem; border-radius: 2px; }
 .strip > span.empty { border: 1px dashed var(--line); }
+/* Summary range bars: band colours as a faint track, the 14-day range as a bar, the average as a
+   tick and the latest value as a dot in its band colour. */
+.rb { display: grid; gap: .1rem; }
+.rb-track { position: relative; height: 14px; border-radius: 3px; background: var(--grid); }
+.rb-band { position: absolute; top: 0; bottom: 0; opacity: .28; }
+.rb-band:first-child { border-radius: 3px 0 0 3px; }
+.rb-range { position: absolute; top: 4px; height: 6px; border-radius: 3px; background: var(--fg); opacity: .45; }
+.rb-avg { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: var(--fg); }
+.rb-latest { position: absolute; top: 50%; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 999px; border: 2px solid var(--panel); box-shadow: 0 0 0 1px var(--fg); }
+.rb-scale { display: flex; justify-content: space-between; font-size: .65rem; color: var(--muted); line-height: 1.2; }
+.rb-legend-range { display: inline-block; width: 18px; height: 6px; border-radius: 3px; background: var(--fg); opacity: .45; }
+.rb-legend-avg { display: inline-block; width: 2px; height: 12px; background: var(--fg); }
+.rb-legend-latest { display: inline-block; width: 10px; height: 10px; border-radius: 999px; background: var(--muted); box-shadow: 0 0 0 1px var(--fg); }
 /* Touch screens: buttons at least 36px tall. */
 @media (pointer: coarse) { .chip, .tab, .ctl { min-height: 36px; } }
 .settings > summary { list-style: none; }

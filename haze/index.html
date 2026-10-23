@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
-<link rel="stylesheet" href="haze.css?v=20261023">
+<link rel="stylesheet" href="haze.css?v=20261023b">
 <script>
   // Theme before first paint (auto / light / dark; a per-viewer convenience).
   try { const t = localStorage.getItem('haze-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) { /* storage unavailable */ }
@@ -54,7 +54,8 @@
 
   <!-- Latest values -->
   <section class="grid gap-3" aria-label="最新値">
-    <div id="tiles" class="grid gap-2 sm:gap-3 grid-cols-2 sm:grid-cols-[repeat(auto-fit,minmax(13rem,1fr))]"></div>
+    <!-- Phones 2 per row, tablets 3, wide screens all in one row (e.g. 6 side by side). -->
+    <div id="tiles" class="grid gap-2 sm:gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-none lg:grid-flow-col lg:auto-cols-fr"></div>
   </section>
 
   <!-- Detailed settings: folded, so the current values come first. -->
@@ -123,6 +124,7 @@
     <!-- Summary table -->
     <section class="card grid gap-3 content-start">
       <h2 class="card-title">14日間のまとめ<span class="en">Summary</span></h2>
+      <div id="summary-legend" class="flex flex-wrap gap-x-4 gap-y-1 text-[.72rem] text-muted items-center"></div>
       <div class="overflow-x-auto">
         <table id="summary" class="w-full text-[.8rem] tnum border-collapse">
           <thead><tr class="text-left border-b-[1.5px] border-frame">
@@ -165,6 +167,6 @@
   <span class="step soon" aria-disabled="true"><b>3</b>アクションする<span class="en">準備中</span></span>
 </nav>
 <script src="vendor/chart-4.4.1.umd.min.js"></script>
-<script src="app.js?v=20261023"></script>
+<script src="app.js?v=20261023b"></script>
 </body>
 </html>

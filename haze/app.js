@@ -502,7 +502,7 @@
       const vals = l.data.values, i = latestShown(l.data), v = i >= 0 ? vals[i] : null;
       const cat = category(l.def.bands, v);
       const div = document.createElement('div');
-      div.className = 'card grid gap-1 content-start !p-3 sm:!p-5';
+      div.className = 'card grid gap-1 content-start !p-3 sm:!p-5 lg:!p-3 xl:!p-4';
       // The band colour fills the tile; the series' line colour is the small swatch by its name.
       if (cat) { div.classList.add('banded'); div.style.background = css('--band-' + cat.tone); div.style.color = css('--on-band-' + cat.tone); }
       const head = document.createElement('div'); head.className = 'flex flex-wrap items-start justify-between gap-1';
@@ -645,6 +645,39 @@
   }
 
   // ---------- summary ----------
+  function rangeBar(l, vals, latest, max) {
+    const pct = (v) => Math.max(0, Math.min(100, (v / max) * 100)) + '%';
+    const wrap = document.createElement('div'); wrap.className = 'rb';
+    const track = document.createElement('div'); track.className = 'rb-track';
+    const b = BANDS[l.def.bands];
+    for (const lv of b ? b.levels : []) {
+      if (lv.lo >= max) continue;
+      const seg = document.createElement('span'); seg.className = 'rb-band';
+      seg.style.left = pct(lv.lo); seg.style.width = 'calc(' + pct(Math.min(lv.hi, max)) + ' - ' + pct(lv.lo) + ')';
+      seg.style.background = css('--band-' + lv.tone);
+      track.append(seg);
+    }
+    if (vals.length) {
+      const lo = Math.min(...vals), hi = Math.max(...vals), avg = vals.reduce((a, c) => a + c, 0) / vals.length;
+      const range = document.createElement('span'); range.className = 'rb-range';
+      range.style.left = pct(lo); range.style.width = 'calc(' + pct(hi) + ' - ' + pct(lo) + ')';
+      const tick = document.createElement('span'); tick.className = 'rb-avg'; tick.style.left = pct(avg);
+      track.append(range, tick);
+      if (latest != null) {
+        const dot = document.createElement('span'); dot.className = 'rb-latest'; dot.style.left = pct(latest);
+        const c = category(l.def.bands, latest);
+        dot.style.background = c ? css('--band-' + c.tone) : css('--fg');
+        track.append(dot);
+      }
+      track.title = '最小 ' + fmt(lo, l.def.unit) + '・平均 ' + fmt(avg, l.def.unit) + '・最大 ' + fmt(hi, l.def.unit) + (latest != null ? '・最新 ' + fmt(latest, l.def.unit) : '');
+    }
+    const scale = document.createElement('div'); scale.className = 'rb-scale';
+    scale.append(document.createElement('span'), document.createElement('span'));
+    scale.firstChild.textContent = '0'; scale.lastChild.textContent = max + (l.def.unit ? ' ' + l.def.unit : '');
+    wrap.append(track, scale);
+    return wrap;
+  }
+
   function renderSummary(ls) {
     const rows = ls.map((l) => {
       const vals = l.data.values.filter((v) => v != null);
@@ -658,7 +691,8 @@
       name.append(sw, l.label, badge);
       const td = (t) => { const c = document.createElement('td'); c.className = 'py-1.5 px-1.5 sm:px-2 text-right whitespace-nowrap'; c.textContent = t; return c; };
       const i = latestShown(l.data);
-      tr.append(name, td(fmt(i >= 0 ? l.data.values[i] : null, l.def.unit)),
+      const latest = i >= 0 ? l.data.values[i] : null;
+      tr.append(name, td(fmt(latest, l.def.unit)),
         td(fmt(vals.length ? vals.reduce((a, c) => a + c, 0) / vals.length : null, l.def.unit)),
         td(fmt(vals.length ? Math.max(...vals) : null, l.def.unit)),
         share == null ? td('—') : (() => {
@@ -666,9 +700,18 @@
           const sub = document.createElement('div'); sub.className = 'text-[.7rem] text-muted'; sub.textContent = b.harmful + ' 超';
           c.append(sub); return c;
         })());
-      return tr;
+      tr.className = '';
+      // Under the numbers, one bar: the 14-day range, the average and the latest value on the
+      // band colours of the series' scale (the same axis as the chart, so index rows line up).
+      const bar = document.createElement('tr'); bar.className = 'border-b border-line';
+      const cell = document.createElement('td'); cell.colSpan = 5; cell.className = 'pb-2.5 pt-0.5';
+      cell.append(rangeBar(l, vals, latest, axisMax(ls, l.def.kind)));
+      bar.append(cell);
+      return [tr, bar];
     });
-    $('summary').querySelector('tbody').replaceChildren(...rows);
+    $('summary').querySelector('tbody').replaceChildren(...rows.flat());
+    const key = (cls, text) => { const s = document.createElement('span'); s.className = 'inline-flex items-center gap-1.5'; const m = document.createElement('span'); m.className = cls; s.append(m, text); return s; };
+    $('summary-legend').replaceChildren(key('rb-legend-range', '14日間の幅（最小〜最大）'), key('rb-legend-avg', '平均'), key('rb-legend-latest', '最新'), '背景の色は区分');
     $('summary-note').textContent = '基準超えの割合：その系列の基準で「健康に良くない」の下限（US AQI 150、API・PSI 100、PM2.5 1時間値 55 µg/m³）を超えた2時間枠の割合です。PM10 は基準を設けていません。';
   }
 
