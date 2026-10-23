@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-10-23T19:27:46+08:00",
+  "run_at": "2026-10-24T00:56:13+08:00",
   "sources": {
     "doe": {
       "status": "ok",
@@ -8,6 +8,6 @@
     }
   },
   "time_samples": {
-    "doe": "DOE Cheras, W.P. KUALA LUMPUR (CA16W, PM2.5) DATETIME=1792782000000 -> 2026-10-23T19:00:00+08:00 (slot 2026-10-23T18)"
+    "doe": "DOE Cheras, W.P. KUALA LUMPUR (CA16W, PM2.5) DATETIME=1792800000000 -> 2026-10-24T00:00:00+08:00 (slot 2026-10-24T00)"
   }
 }
