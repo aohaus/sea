@@ -11,6 +11,7 @@ on:
     paths:
       - "scripts/collect_haze.py"
       - "scripts/collect_haze_news.py"
+      - "scripts/collect_mycmaq.py"
       - ".github/workflows/collect-haze.yml"
 
 permissions:
@@ -40,6 +41,12 @@ jobs:
       - name: Collect haze news
         run: python scripts/collect_haze_news.py
         timeout-minutes: 3
+        continue-on-error: true
+      # MyCMAQ (MetMalaysia) 5-day PM2.5 forecast, read from its maps. Only downloads when a new run
+      # is published (twice a day); like the news, it may never hold up the DOE readings.
+      - name: Read MyCMAQ forecast
+        run: python scripts/collect_mycmaq.py
+        timeout-minutes: 5
         continue-on-error: true
       - name: Commit readings
         run: |
