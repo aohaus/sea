@@ -115,6 +115,9 @@
   const shortLabel = (ms) => { const d = local(ms); return (d.getUTCMonth() + 1) + '/' + d.getUTCDate() + ' ' + pad(d.getUTCHours()) + ':00'; };
   const longLabel = (ms) => { const d = local(ms); return d.getUTCFullYear() + '-' + pad(d.getUTCMonth() + 1) + '-' + pad(d.getUTCDate()) + ' ' + pad(d.getUTCHours()) + ':00（UTC+8）'; };
   const slotIndex = new Map(SLOTS.map((ms, i) => [slotKey(ms), i]));
+  const WD = ['日', '月', '火', '水', '木', '金', '土'];
+  // "3時間前", "45分前" (a slot time is the start of its two hours).
+  const ago = (ms) => { const m = Math.max(0, Math.round((Date.now() - ms) / 60e3)); return m < 60 ? m + '分前' : m < 48 * 60 ? Math.floor(m / 60) + '時間前' : Math.floor(m / 1440) + '日前'; };
   // The 5 days after the latest slot (60 two-hour slots), for the forecast chart.
   const NF = 60;
   const FSLOTS = Array.from({ length: NF }, (_, i) => lastSlot + (i + 1) * STEP);
@@ -285,6 +288,7 @@
     try { MYCMAQ = await fetchJson('data/mycmaq.json', 10000); } catch (e) { MYCMAQ = null; }
   }
 
+  let collectedAt = null; // when data/series.json was written (the latest DOE collection)
   async function loadCollector() {
     try {
       const d = await fetchJson('data/series.json', 10000);
@@ -304,6 +308,7 @@
         n++;
       }
       STATUS.collector = n ? { state: 'live', text: n + '系列に収集データ（2時間ごと）' } : { state: 'none', text: '' };
+      collectedAt = Date.parse(d.generated_at) || null;
     } catch (e) { STATUS.collector = { state: 'none', text: '' }; }
   }
 
@@ -480,7 +485,11 @@
     const cmp = el('div', (vs ? 'text-[.95rem] font-bold' : 'text-[.8rem] font-medium') + ' mt-1', vs
       ? vs + '（' + (days >= 14 || data.mode === 'live' ? '14日' : days >= 1 ? '直近' + days + '日' : '直近') + '平均 ' + fmt(avg, def.unit) + '）'
       : 'いつもとの比較は、実データが半日分（6枠）たまってから表示します（いまは' + pool.length + '枠）');
-    panel.replaceChildren(top, cmp);
+    // When the shown value was observed: its 2-hour slot (the header has when the data was updated).
+    const when = el('div', 'text-[.85rem] font-bold tnum', i >= 0
+      ? (() => { const d = local(SLOTS[i]); return (d.getUTCMonth() + 1) + '/' + d.getUTCDate() + '（' + WD[d.getUTCDay()] + '）' + d.getUTCHours() + '〜' + (d.getUTCHours() + 2) + '時の値'; })()
+      : 'データなし');
+    panel.replaceChildren(when, top, cmp);
 
     // Last 24 hours as 12 coloured cells.
     const last12 = SLOTS.map((ms, j) => j).slice(-12);
@@ -963,6 +972,16 @@
     loadWaqi('');
   };
 
+  // Clock (UTC+8) in the header, with the time of the latest collected readings.
+  function tick() {
+    const d = local(Date.now());
+    $('clock').textContent = d.getUTCFullYear() + '/' + (d.getUTCMonth() + 1) + '/' + d.getUTCDate() + '（' + WD[d.getUTCDay()] + '）' + pad(d.getUTCHours()) + ':' + pad(d.getUTCMinutes());
+    $('clock').dateTime = new Date().toISOString();
+    if (collectedAt) { const c = local(collectedAt); $('data-time').textContent = '・データ更新 ' + pad(c.getUTCHours()) + ':' + pad(c.getUTCMinutes()) + '（' + ago(collectedAt) + '）'; }
+  }
+  tick();
+  setInterval(tick, 30e3);
+
   render();
   // A viewer who allowed location and used it last time gets the nearest station without asking;
   // choosing a station by hand turns this off (located: false).
@@ -970,5 +989,5 @@
     navigator.permissions.query({ name: 'geolocation' }).then((p) => { if (p.state === 'granted' && state.located) locate(false); }).catch(() => {});
   }
   // Live data: collector first (it may cover DOE), then the browser-callable APIs.
-  Promise.all([loadCollector(), loadMycmaq()]).then(() => Promise.all([loadOpenMeteo(), loadNea(), waqiToken ? loadWaqi(waqiToken) : null])).then(render);
+  Promise.all([loadCollector(), loadMycmaq()]).then(() => { tick(); return null; }).then(() => Promise.all([loadOpenMeteo(), loadNea(), waqiToken ? loadWaqi(waqiToken) : null])).then(render);
 })();
