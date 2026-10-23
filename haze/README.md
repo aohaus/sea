@@ -16,7 +16,13 @@ The app has three steps, linked by the bar fixed to the bottom of each page:
    - types and causes of haze
    - seasons
    - sources
-3. **アクションする**: not built yet.
+3. **アクションする** (`actions.html`):
+   - recent haze news, collected from Campur.ai every 3 hours (`data/news.json`): articles per day for the last 30 days, a topic filter and keyword search, and each article's Japanese headline and summary (Campur.ai's machine translation) with a link to the outlet
+   - what would end the haze (peat rewetting, burning-free land clearing, accountability, early detection) and key figures
+   - what governments and ASEAN have done (table, with sources)
+   - company pledges and certification (APP, APRIL, Wilmar, RSPO)
+   - what individuals can do
+   - sources
 
 ## Data sources
 
@@ -35,6 +41,7 @@ Any slot without a value is filled with **simulated values**. These are seeded r
 
 - **DOE**: one request fetches the current reading of every station. Each monitor station is mapped to the nearest DOE station within 20 km.
 - **WAQI**: not collected (see the table above). Each run removes `waqi_*` values stored by earlier versions, so the `WAQI_TOKEN` secret is no longer used.
+- **News** (`scripts/collect_haze_news.py`): reads Campur.ai's archive search (`https://campur.ai.studio/api/archive/articles?q=…`) for haze words in English, Malay and Japanese, keeps articles that are about haze, fires or air quality in the region, tags them (fire, health, policy, business, air) and writes `data/news.json` (the last 90 days, up to 400 articles). The site sends no CORS headers, so the page cannot read it directly. The script fetches only when `news.json` is about 3 hours old, so most hourly runs skip it; a failed fetch keeps the previous articles and is retried the next hour.
 - **Output files**:
   - `data/archive/YYYY-MM.json`: the permanent monthly record, keyed by slot → station → series.
   - `data/series.json`: the last 14 days (168 slots), which the page reads in preference to other sources.
