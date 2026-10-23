@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Haze Monitor: rust tile, a pale sun dimmed by haze bands. -->
+  <rect width="64" height="64" rx="14" fill="#b4501c"/>
+  <circle cx="32" cy="26" r="13" fill="#fdf3c8"/>
+  <path d="M10 34h44M14 43h36M20 52h24" stroke="#f7f5f0" stroke-opacity=".85" stroke-width="5" stroke-linecap="round"/>
+</svg>
