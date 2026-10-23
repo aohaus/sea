@@ -7,12 +7,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          for u in https://campur.ai.studio/ https://campur.ai/ https://www.campur.ai/; do
-            echo "===== $u"
-            curl -sSL -m 30 -D - -o page.html -A "Mozilla/5.0" "$u" | head -30 || true
-            wc -c page.html || true
-            echo "--- title/meta"; grep -oiE '<title>[^<]*</title>|<meta[^>]+(description|og:)[^>]*>' page.html | head -20 || true
-            echo "--- scripts/links"; grep -oiE '(src|href)="[^"]+"' page.html | sort -u | head -80 || true
-            echo "--- api-ish strings"; grep -oiE '(https?:)?//[a-z0-9./_-]*(api|json|rss|feed|supabase|firebase|firestore|sheets|news)[a-z0-9./?=&_-]*' page.html | sort -u | head -40 || true
-            echo "--- text sample"; sed -e 's/<[^>]*>/ /g' page.html | tr -s ' \n' | head -c 3000; echo
+          B=https://campur.ai
+          curl -sSL -m 30 "$B/" -o page.html
+          JS=$(grep -oE '/assets/index-[A-Za-z0-9_-]+\.js' page.html | head -1); echo "JS=$JS"
+          curl -sSL -m 60 "$B$JS" -o app.js; wc -c app.js
+          echo "--- urls in bundle"; grep -oE 'https?://[A-Za-z0-9./_:-]+' app.js | sort | uniq -c | sort -rn | head -60
+          echo "--- api paths"; grep -oE '"/(api|rss|feed|data|news)[A-Za-z0-9/_.?=&-]*"' app.js | sort | uniq -c | sort -rn | head -60
+          echo "--- fetch( contexts"; grep -oE 'fetch\([^)]{0,160}' app.js | sort -u | head -40
+          echo "--- firebase/supabase"; grep -oE '(firebaseapp\.com|firestore|supabase\.co|projectId:"[^"]+"|apiKey:"[^"]+"|collection\([^)]{0,60}\))' app.js | sort | uniq -c | head -30
+          echo "--- haze mentions"; grep -oE '.{0,80}(ヘイズ|haze|Haze|jerebu|Jerebu).{0,80}' app.js | head -20
+          for p in /sitemap.xml /robots.txt /rss.xml /feed.xml /api/news /api/articles /news.json /api/haze; do
+            echo "===== $p"; curl -sS -m 20 -o out -w "%{http_code} %{content_type} %{size_download}\n" "$B$p"; head -c 1500 out; echo
           done
