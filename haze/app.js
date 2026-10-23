@@ -84,14 +84,20 @@
   const AQI_PM25 = [[0, 9.0, 0, 50], [9.1, 35.4, 51, 100], [35.5, 55.4, 101, 150], [55.5, 125.4, 151, 200], [125.5, 225.4, 201, 300], [225.5, 325.4, 301, 500]];
   // PSI-style PM2.5 sub-index (NEA), used to approximate the 24-hr PSI and, in the simulation, the DOE API.
   const PSI_PM25 = [[0, 12, 0, 50], [13, 55, 51, 100], [56, 150, 101, 200], [151, 250, 201, 300], [251, 350, 301, 400], [351, 500, 401, 500]];
-  const interp = (table, c) => {
+  const interp = (table, c, step) => {
     if (c == null || !isFinite(c)) return null;
     const x = Math.max(0, c);
-    for (const [cl, ch, il, ih] of table) if (x <= ch + 0.99) return Math.round(il + (ih - il) * Math.min(1, Math.max(0, (x - cl) / (ch - cl))));
+    // Truncate to the table's precision (EPA: 0.1 µg/m³; PSI: whole µg/m³), then use the band that
+    // contains the value, so a value just above a band's upper bound falls in the next band.
+    // Compared in whole steps (35.4 is 354 tenths), as 354 * 0.1 is not exactly 35.4 in floating point.
+    const n = Math.floor(x / step + 1e-9);
+    for (const [cl, ch, il, ih] of table) {
+      if (n <= Math.round(ch / step)) return Math.round(il + (ih - il) * (n * step - cl) / (ch - cl));
+    }
     return 500;
   };
-  const usAqi = (pm) => interp(AQI_PM25, pm);
-  const psiIndex = (pm) => interp(PSI_PM25, pm);
+  const usAqi = (pm) => interp(AQI_PM25, pm, 0.1);
+  const psiIndex = (pm) => interp(PSI_PM25, pm, 1);
 
   // ---------- time slots (UTC+8, every 2 hours) ----------
   const N = 168, STEP = 2 * 3600e3, TZ = 8 * 3600e3;

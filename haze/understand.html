@@ -149,9 +149,15 @@
   // Same breakpoints as app.js: US EPA AQI for PM2.5 (2024), NEA PSI sub-index for PM2.5 (24-hour).
   const AQI_PM25 = [[0, 9.0, 0, 50], [9.1, 35.4, 51, 100], [35.5, 55.4, 101, 150], [55.5, 125.4, 151, 200], [125.5, 225.4, 201, 300], [225.5, 325.4, 301, 500]];
   const PSI_PM25 = [[0, 12, 0, 50], [13, 55, 51, 100], [56, 150, 101, 200], [151, 250, 201, 300], [251, 350, 301, 400], [351, 500, 401, 500]];
-  const interp = (table, c) => {
+  const interp = (table, c, step) => {
     const x = Math.max(0, c);
-    for (const [cl, ch, il, ih] of table) if (x <= ch + 0.99) return Math.round(il + (ih - il) * Math.min(1, Math.max(0, (x - cl) / (ch - cl))));
+    // Truncate to the table's precision (EPA: 0.1 µg/m³; PSI: whole µg/m³), then use the band that
+    // contains the value, so a value just above a band's upper bound falls in the next band.
+    // Compared in whole steps (35.4 is 354 tenths), as 354 * 0.1 is not exactly 35.4 in floating point.
+    const n = Math.floor(x / step + 1e-9);
+    for (const [cl, ch, il, ih] of table) {
+      if (n <= Math.round(ch / step)) return Math.round(il + (ih - il) * (n * step - cl) / (ch - cl));
+    }
     return 500;
   };
   const L = (hi, ja, tone) => ({ hi, ja, tone });
@@ -165,7 +171,7 @@
   function renderScales() {
     const pm = Number($('pm').value);
     $('pm-val').textContent = pm + ' µg/m³';
-    const aqi = interp(AQI_PM25, pm), psi = interp(PSI_PM25, pm), who = pm / 15;
+    const aqi = interp(AQI_PM25, pm, 0.1), psi = interp(PSI_PM25, pm, 1), who = pm / 15;
     const tiles = [
       { name: 'US AQI', who: '米国 EPA（2024年の区分）', value: aqi, c: cat('usaqi', aqi) },
       { name: 'PSI の PM2.5 指数', who: 'シンガポール NEA（24時間）', value: psi, c: cat('psi', psi) },
