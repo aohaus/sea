@@ -19,7 +19,7 @@ The app has three steps, linked by the tab bar at the top of each page:
 
 | | Source | Indices | How data gets to the page |
 |---|---|---|---|
-| A | WAQI / AQICN | AQI (Malaysia: DOE's API republished unchanged, the same value as DOE; Singapore: US EPA scale), PM2.5 sub-index (US EPA scale) | **Collected** every 2 hours (requires the `WAQI_TOKEN` secret). Until collected data exists, a viewer can enter their own token to get the current value only |
+| A | WAQI / AQICN | AQI (Malaysia: DOE's API republished unchanged, the same value as DOE; Singapore: US EPA scale), PM2.5 sub-index (US EPA scale) **Not collected**: WAQI's terms of use do not allow its API data to be redistributed as cached or archived data. A viewer can enter their own token to get the current value only. Earlier collected values are removed by the collector, and the WAQI lines are hidden by default |
 | B | Malaysia DOE APIMS | API | **Collected** every 2 hours. A browser cannot fetch it because of CORS |
 | B | Singapore NEA (data.gov.sg v2) | 24-hour PSI, 1-hour PM2.5 | Fetched in the browser (one request per day; central region) |
 | C | Open-Meteo Air Quality (CAMS model) | PM2.5, PM10, US AQI | Fetched in the browser (hourly values at each location's coordinates) |
@@ -31,13 +31,13 @@ Any slot without a value is filled with **simulated values**. These are seeded r
 `.github/workflows/collect-haze.yml` runs `scripts/collect_haze.py` at minute 7 of every even hour (UTC+8).
 
 - **DOE**: one request fetches the current reading of every station. Each monitor station is mapped to the nearest DOE station within 20 km.
-- **WAQI**: the job fetches the current value nearest to each station. It needs the repository secret `WAQI_TOKEN` (Settings → Secrets and variables → Actions); without it, WAQI is skipped.
+- **WAQI**: not collected (see the table above). Each run removes `waqi_*` values stored by earlier versions, so the `WAQI_TOKEN` secret is no longer used.
 - **Output files**:
   - `data/archive/YYYY-MM.json`: the permanent monthly record, keyed by slot → station → series.
   - `data/series.json`: the last 14 days (168 slots), which the page reads in preference to other sources.
   - `data/collect_report.json`: the result of the latest run.
 - **Commits**: each run commits its readings (`data(haze): readings …`), so up to 12 commits a day.
-- **History**: neither DOE nor WAQI provides past values through the free API, so real data starts from the first collection. A full 14 days of real data takes 14 days to build up.
+- **History**: DOE does not provide past values through its public map service, so real data starts from the first collection. A full 14 days of real data takes 14 days to build up.
 
 Format of `data/series.json`:
 

@@ -5,9 +5,10 @@ Sources that a browser cannot fetch directly are read here, server-side:
   doe_api              Malaysia DOE (APIMS / EQMS) — the public map service lists every station's
                        latest Air Pollutant Index; each Haze Monitor station takes the nearest DOE
                        station (within MAX_KM)
-  waqi_aqi, waqi_pm25  WAQI / AQICN — the current AQI and PM2.5 sub-index near each station; needs
-                       a token in the WAQI_TOKEN environment variable (a repository secret); skipped
-                       without one
+
+WAQI / AQICN is not collected: its terms of use do not allow its API data to be redistributed as
+cached or archived data. The page shows WAQI's current value only to a viewer who enters their
+own token. Each run also removes WAQI values stored by earlier versions (waqi_* series).
 
 Readings are put in two-hour slots (UTC+8, even hours) and kept in
   haze/data/archive/YYYY-MM.json   {"slots": {"2026-10-22T14": {"<station>": {"<series>": value}}},
@@ -26,7 +27,6 @@ from __future__ import annotations
 
 import json
 import math
-import os
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -62,13 +62,6 @@ def slot_of(t: datetime) -> str:
     """The two-hour slot (UTC+8, even hour) a reading time falls in, e.g. '2026-10-22T14'."""
     t = t.astimezone(TZ)
     return t.replace(hour=t.hour - t.hour % 2, minute=0, second=0, microsecond=0).strftime("%Y-%m-%dT%H")
-
-
-def redact(text: str) -> str:
-    """Remove secrets from text that goes into the committed report or the log (an exception from
-    requests includes the full URL, query string and token)."""
-    token = os.environ.get("WAQI_TOKEN")
-    return text.replace(token, "***") if token else text
 
 
 def get_json(url: str) -> dict:
@@ -111,33 +104,6 @@ def fetch_doe() -> tuple[list[tuple], list[str]]:
     return out, notes
 
 
-def fetch_waqi(token: str) -> tuple[list[tuple], list[str]]:
-    out, notes = [], []
-    for sid, (lat, lon, _country) in STATIONS.items():
-        try:
-            d = get_json(f"https://api.waqi.info/feed/geo:{lat};{lon}/?token={token}")
-            if d.get("status") != "ok":
-                raise RuntimeError(str(d.get("data")))
-            data = d["data"]
-            geo = data.get("city", {}).get("geo") or [lat, lon]
-            dist = km((lat, lon), (float(geo[0]), float(geo[1])))
-            if dist > MAX_KM:
-                notes.append(f"{sid}: nearest WAQI station {data['city'].get('name')} is {dist:.0f} km away; skipped")
-                continue
-            t = datetime.fromisoformat(data["time"]["iso"])
-            name = f"WAQI {data['city'].get('name')} (idx {data.get('idx')})"
-            if str(data.get("aqi")).lstrip("-").isdigit():
-                out.append((slot_of(t), sid, "waqi_aqi", int(data["aqi"]), name))
-            pm = (data.get("iaqi") or {}).get("pm25", {}).get("v")
-            if isinstance(pm, (int, float)):
-                out.append((slot_of(t), sid, "waqi_pm25", round(pm), name))
-        except Exception as exc:  # noqa: BLE001 - one station's failure does not stop the others
-            notes.append(redact(f"{sid}: {type(exc).__name__}: {exc}"))
-    if not out and notes:
-        raise RuntimeError("; ".join(notes))
-    return out, notes
-
-
 def load(path: Path, default):
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else default
 
@@ -151,16 +117,30 @@ def main() -> int:
     now = datetime.now(TZ)
     report = {"run_at": now.isoformat(timespec="seconds"), "sources": {}}
     readings = []
-    for name, fn in (("doe", fetch_doe), ("waqi", lambda: fetch_waqi(os.environ["WAQI_TOKEN"]))):
-        if name == "waqi" and not os.environ.get("WAQI_TOKEN"):
-            report["sources"][name] = {"status": "skipped", "detail": "WAQI_TOKEN secret is not set"}
-            continue
+    for name, fn in (("doe", fetch_doe),):
         try:
             got, notes = fn()
             readings += got
             report["sources"][name] = {"status": "ok" if not notes else "partial", "readings": len(got), "notes": notes}
         except Exception as exc:  # noqa: BLE001 - report and keep the other source
-            report["sources"][name] = {"status": "error", "detail": redact(f"{type(exc).__name__}: {exc}")}
+            report["sources"][name] = {"status": "error", "detail": f"{type(exc).__name__}: {exc}"}
+
+    # WAQI data may not be kept as an archive (its terms of use), so remove what earlier runs stored.
+    removed = 0
+    for path in sorted((DATA / "archive").glob("*.json")):
+        arc = load(path, {"slots": {}, "meta": {}})
+        before = json.dumps(arc, sort_keys=True)
+        for by_station in [*arc["slots"].values(), arc["meta"]]:
+            for sid in list(by_station):
+                for key in [k for k in by_station[sid] if k.startswith("waqi_")]:
+                    del by_station[sid][key]
+                    removed += 1
+                if not by_station[sid]:
+                    del by_station[sid]
+        if json.dumps(arc, sort_keys=True) != before:
+            save(path, arc)
+    if removed:
+        report["removed_waqi_values"] = removed
 
     # Add to the monthly archives (a later reading for the same slot replaces an earlier one). A reading
     # dated after the current slot means a time-zone mistake; it is reported, not stored.
@@ -194,7 +174,7 @@ def main() -> int:
         "stations": stations, "meta": meta,
     })
     report["time_samples"] = SAMPLES
-    text = redact(json.dumps(report, ensure_ascii=False, indent=2))  # again over everything, in case
+    text = json.dumps(report, ensure_ascii=False, indent=2)
     (DATA / "collect_report.json").write_text(text + "\n", encoding="utf-8")
     print(text)
     return 0
