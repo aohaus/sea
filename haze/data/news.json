@@ -1,12 +1,12 @@
 {
- "generated_at": "2026-10-24T04:18:03+08:00",
- "checked_at": "2026-10-24T04:18:03+08:00",
+ "generated_at": "2026-10-24T07:49:29+08:00",
+ "checked_at": "2026-10-24T07:49:29+08:00",
  "source": {
   "name": "Campur.ai",
   "url": "https://campur.ai.studio/"
  },
  "status": {
-  "fetched": 391,
+  "fetched": 385,
   "errors": []
  },
  "items": [
@@ -480,9 +480,9 @@
    "date": "2026-10-22T06:00+08:00",
    "source": "New Straits Times",
    "link": "https://www.nst.com.my/opinion/columnists/2026/10/1561319/focus-turns-firms-indonesia-fire-haze-worsens",
-   "title_ja": "インドネシアの森林火災によるヘイズ、企業の責任追及へ",
+   "title_ja": "インドネシアの森林火災、企業責任を問う声が強まる",
    "title": "Focus turns to firms as Indonesia fire haze worsens",
-   "summary_ja": "インドネシアの森林火災に起因する広域ヘイズ問題で、火災に関与した企業への法的責任を問う動きが強まっています。",
+   "summary_ja": "インドネシアの森林火災による広域ヘイズが深刻化し、火災の原因に関与した企業への法的責任を追及する動きが強まっています。",
    "lang": "en",
    "tags": [
     "fire",
@@ -524,9 +524,9 @@
    "date": "2026-10-22T02:01+08:00",
    "source": "New Straits Times",
    "link": "https://www.nst.com.my/news/nation/2026/10/1561220/malaysians-can-check-haze-forecasts-five-days-ahead-using-mycmaq",
-   "title_ja": "大気汚染予測システム「MyCMAQ」で5日先まで確認可能",
+   "title_ja": "マレーシア、大気汚染予測システム「MyCMAQ」を公開",
    "title": "Malaysians can check haze forecasts up to five days ahead using MyCMAQ",
-   "summary_ja": "マレーシア天然資源環境省は、大気汚染予測モデル「MyCMAQ」を公開。市民は最大5日先までのヘイズ予報を確認できます。",
+   "summary_ja": "マレーシア天然資源環境省は、最大5日先までの大気汚染状況を確認できる予測モデル「MyCMAQ」の利用を呼びかけています。",
    "lang": "en",
    "tags": [
     "policy",
@@ -540,11 +540,9 @@
    "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxObW0wMmlFd1pJTHJvSzQyemRLdHlIUVV4Z2duQkk0T19VS1d1UmxjU1hfWmVTc08tS29LenRqa3BPdU9wa2NBdVFMWE8xQXMyQTRCU09XTnRpS2ZpVEtYVWZSNWg4QXVIWjFWSGdyQVE4cWRTdXd4NFdfeVVfN1VUcFN3b0ctbWxKWWxxQVh3Sl83TW0tMUVYMjJoR1RWVXNJbTZoZzFKc1BCc1HSAbABQVVfeXFMT3ZVdXZua1JoN0VCODAyMGRiclNsbjhQS2xPSEJKcDFiR3YyWmprYmFaRjB1Wkx2NURQczFQaDVfN0dFdEJPcktGQWE2TjdTNmswai0tcUluSXJtSmQzVHB6b3MwZWhfWnpuWktRVTRXLVpES0pPU21IM1BHc0dKTjJUWW4ybW0tNVNKaVg3ZnVVMjNucVRGbHlteXBvVTJjbzRuUlJYandPNU4yMDQ1R3Q?oc=5",
    "title_ja": "ヘイズ問題でサイード・サディク氏「マレーシア対インドネシアの対立ではない」",
    "title": "'This is not Malaysia vs Indonesia', Syed Saddiq says amid haze row - NST Online",
-   "summary_ja": "ヘイズを巡る外交的緊張の中、サイード・サディク氏は両国の対立構造を否定し、冷静な対応を呼びかけています。",
+   "summary_ja": "ヘイズ問題を巡る両国の緊張に対し、サイード・サディク氏は国家間の対立ではなく協力して解決すべき課題であると強調しました。",
    "lang": "en",
-   "tags": [
-    "policy"
-   ]
+   "tags": []
   },
   {
    "id": "nst-25e0d689e499b0",
@@ -553,7 +551,7 @@
    "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPdmJvRUlBWEptV3d5Y1NTRG9tZThsU3J6OU14dFlxalFyanlRZWdfM0oybGRkc2s2cDFFQ1VuSVg4Zi1OWjFmNHg3SFV2WFpFUTRTVmtIYWhBWVkyN2laam5uZ0U5cTU3ellpdlZTQ2dzVDFOR19DT1g4blg1ZG1GYUxnVEZHcFRyRjc2YlZWLThkcnNDZER2S2ttRU42ZERkQVhfZWc2ZnotYnlnZGJaQ2VpNE9Vemo3UVHSAb8BQVVfeXFMT2tYa0JtR3JkeWZIN1hfYXV6X1AyZEpZa1I2YVh5V2RzUVNCTzdSWVNxSWRGajZyTlpQVlNMTmdkRUJyZ29NMkc0OGVvRWZNUHFvaGtaUHRVNy03V2hYX2Nhal9nMGxka2xDZDF0Y3IwNHU1VjRKVlJVajZrSW15UUlTTXJXU09WdVdnR2IyblNyNjZzQ3loWFFGQnVkajQ1cGkyQnotUXBHSnhYRGU4WE5IQXFfM0JsaXI4UklJeG8?oc=5",
    "title_ja": "インドネシアのプラボウォ氏、ヘイズ批判国に反論",
    "title": "Prabowo hits back at countries 'insulting' Indonesia over wildfire haze - NST Online",
-   "summary_ja": "インドネシアのプラボウォ氏は、森林火災によるヘイズを巡り同国を非難する周辺国に対し、強い反論を示しました。",
+   "summary_ja": "インドネシアのプラボウォ氏は、森林火災によるヘイズを巡り同国を非難する周辺諸国に対し、強い反論の姿勢を示しました。",
    "lang": "en",
    "tags": [
     "fire"
@@ -564,9 +562,9 @@
    "date": "2026-10-21T21:51+08:00",
    "source": "Free Malaysia Today",
    "link": "https://www.freemalaysiatoday.com/category/nation/2026/10/21/haze-not-about-malaysia-versus-indonesia-says-syed-saddiq",
-   "title_ja": "ヘイズ問題は「マレーシア対インドネシア」ではない、サイ・サディク議員が強調",
+   "title_ja": "ヘイズは「マレーシア対インドネシア」のことではない、とサイード・サディクは言う",
    "title": "Haze not about ‘Malaysia versus Indonesia’, says Syed Saddiq",
-   "summary_ja": "サイ・サディク議員は、ヘイズ（煙害）問題において国籍に関係なく責任企業を処罰すべきであり、両国の対立構造に持ち込むべきではないと主張しました。",
+   "summary_ja": "ムアール議員は、インドネシアの元貿易大臣からの批判を受けて、森林火災に責任のある企業は国籍に関係なく行動に移すべきだと述べた。",
    "lang": "en",
    "tags": [
     "fire",
@@ -642,9 +640,9 @@
    "date": "2026-10-21T12:20+08:00",
    "source": "Astro AWANI",
    "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOdC1zSFQ0UkdoTldTUG02SWwxTnNIczJfRjBwMWNJNlphV2dnR0M1bzVYTGQ4T3pqTjZ1c2czN0pqczg4Wm03bnE0Y29BYU93aTZ4dmFJY3BRT2NRUlNORkZNTTVaMks1VU9HR0QxTktaZmZMTTZHWVNhM3N0aTdyU0l0NkFzNEM3cjRNbmU5YTZueUoyREV2MVdnZ2RRaVVfUTRreDBYZi15QS1wdUNvd0pBTVYtRzJWc3FQTi12RlRsSEpEbnZPODdWQQ?oc=5",
-   "title_ja": "JAKIM、ヘイズ収束とアル・アクサの安全を願い特別礼拝を実施",
+   "title_ja": "JAKIM、ヘイズに関するマレーシアの安全を願うアル・アクサの保護を求める祈りを開催",
    "title": "JAKIM anjur solat hajat mohon perlindungan Al-Aqsa, keselamatan Malaysia berkaitan jerebu",
-   "summary_ja": "マレーシア・イスラム開発局（JAKIM）は、国内のヘイズ被害の沈静化とアル・アクサの安全を祈る特別礼拝を主催しました。",
+   "summary_ja": "JAKIMはアストロ・アワニ煙霧に関するマレーシアの安全とアル・アクサの保護を求める祈りを主催",
    "lang": "ms",
    "tags": []
   },
