@@ -1,12 +1,12 @@
 {
- "generated_at": "2026-10-24T12:23:31+08:00",
- "checked_at": "2026-10-24T12:23:31+08:00",
+ "generated_at": "2026-10-24T17:25:04+08:00",
+ "checked_at": "2026-10-24T17:25:04+08:00",
  "source": {
   "name": "Campur.ai",
   "url": "https://campur.ai.studio/"
  },
  "status": {
-  "fetched": 391,
+  "fetched": 389,
   "errors": []
  },
  "items": [
@@ -172,7 +172,7 @@
    "link": "https://www.thestar.com.my/news/nation/2026/10/23/haze-causes-drop-in-hotel-bookings-in-johor",
    "title_ja": "ジョホール州でヘイズの影響、ホテル予約数に減少傾向",
    "title": "Haze causes drop in hotel bookings in Johor",
-   "summary_ja": "ジョホール州のホテル業界で、深刻化するヘイズ（煙害）の影響により、ここ数週間で宿泊予約が減少しています。",
+   "summary_ja": "ジョホール州のホテル業界で、深刻化するヘイズ（煙害）により宿泊予約が減少しています。観光業への影響が懸念されます。",
    "lang": "en",
    "tags": [
     "business"
@@ -374,7 +374,7 @@
    "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPZF9rWUFOS1kzaTJEamM4R1A2UlRCaVkzWGVobTE4Yzg1X3lCSVVmYWV0bWJyTFBEUDJ5TUVIM3ZTMWd3aVppX1RhLTFSOFV1QlloZ1hRMllDU3RHVXAtT0w0Q1czWnJSQUhILVlmUk1KNmZmeEdRVFdBVTJ1MDJfdE54LWF1bHFJV20zamRBZ0ZuWE14QW1nZExsY2dJUDJQSWJ4c04wZWJtVmwzbXJ6allhSkVWeTdyWjB5UUVIMlpadEFJOHhCNQ?oc=5",
    "title_ja": "マレーシアのヘイズ状況：パシルグダンが改善、ニライは依然として高水準",
    "title": "Jerebu: Pasir Gudang keluar kategori tidak sihat, Nilai kekal tertinggi setakat 2 petang",
-   "summary_ja": "パシルグダンでは大気質が改善し不健康な区分から脱却しましたが、ニライでは依然として高い汚染数値が記録されています。",
+   "summary_ja": "パシルグダンで大気質が改善し不健康レベルを脱した一方、ニライでは依然として高い汚染数値が観測されています。",
    "lang": "ms",
    "tags": [
     "health",
@@ -388,7 +388,7 @@
    "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQRElDR2Rmb1BDaHVmYXl5M2dDTy1ZVTdad0hGekVvTWNqUzgxdFpQSnRtbXNPSlVuR203N2RtUFZNVkJwcFdFOVFyRi1uZ0w5bWQ0aExNZEt2MVlVNWVQbkJRWFY5TWEzLWF3Nzd5LVk0RFU3djB1alRwdXpYaU1lR1NsUHJEcUd4VWJBMTdiVFUwSElmOVZTSWoyOF9KdDRjWFU4LTVIdFVKN3F4NGpHZTltNWc1VmRoMVpRTzk4TGdyM3BHWkJ0Z25scUJBQVVf0gHQAUFVX3lxTFBESUNHZGZvUENodWZheXkzZ0NPLVlVN1p3SEZ6RW9NY2pTODF0WlBKdG1tc09KVW5HbTc3ZG1QVk1WQnBwV0U5UXJGLW5nTDltZDRoTE1kS3YxWVU1ZVBuQlFYVjlNYTMtYXc3N3ktWTREVTd2MHVqVHB1elhpTWVHU2xQckRxR3hVYkExN2JUVTBISWY5VlNJajI4X0p0NGNYVTgtNUh0VUo3cXg0akdlOW01ZzVWZGgxWlFPOThMZ3IzcEdaQnRnbmxxQkFBVV8?oc=5",
    "title_ja": "シンガポールのヘイズ状況：PM2.5は正常範囲内を維持",
    "title": "Singapore haze watch: PM2.5 normal islandwide, PSI moderate in four regions",
-   "summary_ja": "シンガポール全土でPM2.5濃度は正常範囲内ですが、PSI（大気汚染指数）は4つの地域で中程度の水準となっています。",
+   "summary_ja": "シンガポール全域でPM2.5濃度は正常範囲内ですが、PSI（大気汚染指数）は4地域で中程度となっており、今後の推移に注意が必要です。",
    "lang": "en",
    "tags": [
     "air"
@@ -399,9 +399,9 @@
    "date": "2026-10-22T13:20+08:00",
    "source": "Astro AWANI",
    "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPVG5URW5kc0p2STV6d29xMXBodWQwM2ZBaUJBdnVDWjNneW1yd29KRERPQjNqS0VtQ1ZmUVpRX0tMQjQtUkl0TVJOM1pYZzF2YmtzRzZRVkZzeGpOX1ZJQl9vZ0lJaFlxRExpU1J1c3VLdEE5SXloZDNQTUM5NmtyM0FCREFRZzFPRVlOc2lyZ21ORl9WZHNnaXF5ZXVXeE9MenM5clU4MVFfUWFMM1dfSVZ1SXk?oc=5",
-   "title_ja": "マレーシア各地のヘイズ状況：午後1時時点で一部地域の大気質が改善",
+   "title_ja": "マレーシア各地で大気質が改善傾向、ヘイズの影響が一部で緩和",
    "title": "Jerebu: Kualiti udara bertambah baik di beberapa lokasi setakat 1 petang",
-   "summary_ja": "マレーシア国内の複数地点において、ヘイズによる大気汚染状況が午後1時時点で徐々に改善傾向にあります。",
+   "summary_ja": "午後1時時点の観測で、マレーシア国内の複数地点において大気質が改善し、ヘイズの影響が和らいでいます。",
    "lang": "ms",
    "tags": [
     "air"
@@ -425,9 +425,9 @@
    "date": "2026-10-22T11:30+08:00",
    "source": "Astro AWANI",
    "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQSU5jUHpWMFlUem1yS1d4dGpnWTktcW80ejd6QWdzMDV5Tmt5MXJqMXFuR1JYR0ZBczB4eFM2TG5ZZG51blRTWVdaZFdZVXRQZ1cxT052WHNIdE5KRjA1RlEwZlBNaTBJSERzakN5dGtlVVpjclZhbXN5aVVqb3hhc0pTaXpSbUczX1hVdHdhWFFOckYwTmU4VWR1NW15YmNWdjdKR01QTDhueHF4bzVDSHNqQ1FyMTdPLUlUTDVjYTc3bWxF?oc=5",
-   "title_ja": "マレーシアのヘイズ状況：午前11時時点、大気質に大きな変化なし",
+   "title_ja": "マレーシアのヘイズ状況：午前11時時点で大気質に大きな変化なし",
    "title": "Jerebu: Kualiti udara di kebanyakan kawasan tidak banyak berubah setakat 11 pagi ini",
-   "summary_ja": "午前11時現在、マレーシア国内の大部分の地域において大気汚染状況に顕著な変化は見られず、停滞しています。",
+   "summary_ja": "午前11時時点の観測では、マレーシア国内の大部分の地域で大気質に顕著な変化は見られず、停滞が続いています。",
    "lang": "ms",
    "tags": [
     "air"
@@ -438,9 +438,9 @@
    "date": "2026-10-22T11:05+08:00",
    "source": "Astro AWANI",
    "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxOM3Q4enJsbDNyVlBXMFFGSWJfZ29pUmF0N1A4TDlDR3MtZFM2akpscGhuUFBNaHl6cnFfMXZMZWItR19NNEUxZ3VEZzdPZ0Z4TUF2YUVnamNudU1DMjhYbThYUWd2RnlnQUZiOTdmY3ZXSUp1SHQ1cmRvLW1lOUVZSWRrbThRUVFlY1B4bzRFRktHSE5vVEcyZ2NwRE1QZw?oc=5",
-   "title_ja": "マレーシアのヘイズ状況：午前9時時点で15地域が不健康な大気質を記録",
+   "title_ja": "ヘイズ被害：マレーシア国内15地域で大気質が「不健康」レベルに",
    "title": "Jerebu: 15 kawasan catat IPU tidak sihat setakat 9 pagi",
-   "summary_ja": "午前9時時点で、国内15の観測地点において大気汚染指数（IPU）が「不健康」レベルに達しています。",
+   "summary_ja": "午前9時時点で、国内15の観測地点において大気汚染指数（IPU）が「不健康」レベルを記録しました。",
    "lang": "ms",
    "tags": [
     "health",
@@ -482,7 +482,7 @@
    "link": "https://www.nst.com.my/opinion/columnists/2026/10/1561319/focus-turns-firms-indonesia-fire-haze-worsens",
    "title_ja": "インドネシアの森林火災によるヘイズ、企業責任を問う声が拡大",
    "title": "Focus turns to firms as Indonesia fire haze worsens",
-   "summary_ja": "インドネシアの森林火災に起因する広域的なヘイズ被害を受け、火災に関与した企業への法的責任を追及する動きが強まっています。",
+   "summary_ja": "インドネシアの森林火災に起因する広域ヘイズ問題で、火災発生に関与した企業への法的責任追及を求める議論が強まっています。",
    "lang": "en",
    "tags": [
     "fire",
@@ -524,9 +524,9 @@
    "date": "2026-10-22T02:01+08:00",
    "source": "New Straits Times",
    "link": "https://www.nst.com.my/news/nation/2026/10/1561220/malaysians-can-check-haze-forecasts-five-days-ahead-using-mycmaq",
-   "title_ja": "大気汚染予測システム「MyCMAQ」で5日先まで確認可能に",
+   "title_ja": "マレーシア、大気汚染予測システム「MyCMAQ」で5日先まで確認可能",
    "title": "Malaysians can check haze forecasts up to five days ahead using MyCMAQ",
-   "summary_ja": "マレーシア天然資源環境省は、大気汚染予測モデル「MyCMAQ」を活用し、国民が最大5日先までのヘイズ予報を確認できると発表しました。",
+   "summary_ja": "天然資源環境省は、大気汚染予測モデル「MyCMAQ」を公開しました。市民は最大5日先までのヘイズ予報をオンラインで確認できます。",
    "lang": "en",
    "tags": [
     "policy",
@@ -540,7 +540,7 @@
    "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxObW0wMmlFd1pJTHJvSzQyemRLdHlIUVV4Z2duQkk0T19VS1d1UmxjU1hfWmVTc08tS29LenRqa3BPdU9wa2NBdVFMWE8xQXMyQTRCU09XTnRpS2ZpVEtYVWZSNWg4QXVIWjFWSGdyQVE4cWRTdXd4NFdfeVVfN1VUcFN3b0ctbWxKWWxxQVh3Sl83TW0tMUVYMjJoR1RWVXNJbTZoZzFKc1BCc1HSAbABQVVfeXFMT3ZVdXZua1JoN0VCODAyMGRiclNsbjhQS2xPSEJKcDFiR3YyWmprYmFaRjB1Wkx2NURQczFQaDVfN0dFdEJPcktGQWE2TjdTNmswai0tcUluSXJtSmQzVHB6b3MwZWhfWnpuWktRVTRXLVpES0pPU21IM1BHc0dKTjJUWW4ybW0tNVNKaVg3ZnVVMjNucVRGbHlteXBvVTJjbzRuUlJYandPNU4yMDQ1R3Q?oc=5",
    "title_ja": "ヘイズ問題でサイード・サディク氏「マレーシア対インドネシアの対立ではない」",
    "title": "'This is not Malaysia vs Indonesia', Syed Saddiq says amid haze row - NST Online",
-   "summary_ja": "ヘイズ問題を巡る両国の緊張に対し、サイード・サディク氏は国家間の対立ではなく、協力して解決すべき課題であると強調しました。",
+   "summary_ja": "ヘイズ問題を巡る両国の緊張に対し、サイード・サディク氏は二国間の対立構造に持ち込むべきではないと冷静な対応を呼びかけました。",
    "lang": "en",
    "tags": []
   },
@@ -549,7 +549,7 @@
    "date": "2026-10-21T21:52+08:00",
    "source": "New Straits Times",
    "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPdmJvRUlBWEptV3d5Y1NTRG9tZThsU3J6OU14dFlxalFyanlRZWdfM0oybGRkc2s2cDFFQ1VuSVg4Zi1OWjFmNHg3SFV2WFpFUTRTVmtIYWhBWVkyN2laam5uZ0U5cTU3ellpdlZTQ2dzVDFOR19DT1g4blg1ZG1GYUxnVEZHcFRyRjc2YlZWLThkcnNDZER2S2ttRU42ZERkQVhfZWc2ZnotYnlnZGJaQ2VpNE9Vemo3UVHSAb8BQVVfeXFMT2tYa0JtR3JkeWZIN1hfYXV6X1AyZEpZa1I2YVh5V2RzUVNCTzdSWVNxSWRGajZyTlpQVlNMTmdkRUJyZ29NMkc0OGVvRWZNUHFvaGtaUHRVNy03V2hYX2Nhal9nMGxka2xDZDF0Y3IwNHU1VjRKVlJVajZrSW15UUlTTXJXU09WdVdnR2IyblNyNjZzQ3loWFFGQnVkajQ1cGkyQnotUXBHSnhYRGU4WE5IQXFfM0JsaXI4UklJeG8?oc=5",
-   "title_ja": "インドネシアのプラボウォ氏、ヘイズを巡る他国の批判に反論",
+   "title_ja": "インドネシアのプラボウォ氏、森林火災を巡る他国の批判に反論",
    "title": "Prabowo hits back at countries 'insulting' Indonesia over wildfire haze - NST Online",
    "summary_ja": "インドネシアのプラボウォ氏は、森林火災によるヘイズ問題で自国を非難する周辺国に対し、不当な侮辱であると強く反論しました。",
    "lang": "en",
@@ -562,9 +562,9 @@
    "date": "2026-10-21T21:51+08:00",
    "source": "Free Malaysia Today",
    "link": "https://www.freemalaysiatoday.com/category/nation/2026/10/21/haze-not-about-malaysia-versus-indonesia-says-syed-saddiq",
-   "title_ja": "ヘイズ問題は国対立ではない、サイエド・サディク議員が強調",
+   "title_ja": "ヘイズ問題は国対立ではない、サイード・サディク議員が強調",
    "title": "Haze not about ‘Malaysia versus Indonesia’, says Syed Saddiq",
-   "summary_ja": "サイエド・サディク議員は、ヘイズ問題は国籍を問わず責任ある企業が処罰されるべき問題であり、二国間対立にすべきではないと述べた。",
+   "summary_ja": "サイード・サディク議員は、ヘイズ問題は国籍を問わず責任ある企業が処罰されるべき問題であり、二国間の対立ではないと述べた。",
    "lang": "en",
    "tags": [
     "fire",
@@ -640,9 +640,9 @@
    "date": "2026-10-21T12:20+08:00",
    "source": "Astro AWANI",
    "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOdC1zSFQ0UkdoTldTUG02SWwxTnNIczJfRjBwMWNJNlphV2dnR0M1bzVYTGQ4T3pqTjZ1c2czN0pqczg4Wm03bnE0Y29BYU93aTZ4dmFJY3BRT2NRUlNORkZNTTVaMks1VU9HR0QxTktaZmZMTTZHWVNhM3N0aTdyU0l0NkFzNEM3cjRNbmU5YTZueUoyREV2MVdnZ2RRaVVfUTRreDBYZi15QS1wdUNvd0pBTVYtRzJWc3FQTi12RlRsSEpEbnZPODdWQQ?oc=5",
-   "title_ja": "JAKIMが祈祷会を開催：アルアクサの保護とヘイズからの安全を祈願",
+   "title_ja": "JAKIM、ヘイズ収束と国家安全を祈願する特別礼拝を実施へ",
    "title": "JAKIM anjur solat hajat mohon perlindungan Al-Aqsa, keselamatan Malaysia berkaitan jerebu",
-   "summary_ja": "マレーシア・イスラム開発局（JAKIM）は、パレスチナのアルアクサ保護と国内のヘイズ被害収束を願い、祈祷会を実施しました。",
+   "summary_ja": "マレーシア・イスラム開発局（JAKIM）は、ヘイズの早期収束と国家の安全を願い、全国で特別礼拝を行うと発表しました。",
    "lang": "ms",
    "tags": []
   },
