@@ -13,7 +13,7 @@
   --src-a: #0f5a44; --src-b: #b4501c; --src-c: #2f5fa8; --src-d: #7b4e9a; --src-e: #b8860b; --src-f: #2b8c8c; --src-g: #a33b62;
   /* Health bands, worst to best: black, purple, red, dark orange, light orange, yellow, green.
      Tiles use them as solid backgrounds with the matching --on-band text colour. */
-  --band-green: #4caf62; --band-yellow: #f2d33c; --band-lorange: #f8b45a; --band-dorange: #e8742a;
+  --band-green: #4caf62; --band-yellow: #d4dc3c; --band-lorange: #f8b45a; --band-dorange: #e8742a;
   --band-red: #d0342c; --band-purple: #7d3c98; --band-black: #161616;
   --on-band-green: #10230f; --on-band-yellow: #2a2205; --on-band-lorange: #2d1a04; --on-band-dorange: #1f0d02;
   --on-band-red: #ffffff; --on-band-purple: #ffffff; --on-band-black: #ffffff;
