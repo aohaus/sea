@@ -1,23 +1,36 @@
 {
- "generated_at": "2026-10-25T23:59:24+08:00",
- "checked_at": "2026-10-25T23:59:24+08:00",
+ "generated_at": "2026-10-26T02:53:29+08:00",
+ "checked_at": "2026-10-26T02:53:29+08:00",
  "source": {
   "name": "Campur.ai",
   "url": "https://campur.ai.studio/"
  },
  "status": {
-  "fetched": 385,
+  "fetched": 389,
   "errors": []
  },
  "items": [
+  {
+   "id": "astroawani-7b34ee40b52d8d",
+   "date": "2026-10-25T19:25+08:00",
+   "source": "Astro AWANI",
+   "link": "https://www.astroawani.com/berita-malaysia/jerebu-pembukaan-sekolah-di-johor-dilaksana-secara-berfasa-bermula-esok-exco",
+   "title_ja": "ジェレブ：ジョホール州の学校の開校は明日から段階的に実施される - Exco",
+   "title": "Jerebu: Pembukaan sekolah di Johor dilaksana secara berfasa bermula esok - Exco",
+   "summary_ja": "ジョホール州の学校の開校は段階的に実施され、予定表によると、月曜と火曜の第1段階は試験を受ける必要のある生徒に限定される。",
+   "lang": "ms",
+   "tags": [
+    "health"
+   ]
+  },
   {
    "id": "astroawani-a50cc365a0e5b4",
    "date": "2026-10-25T17:30+08:00",
    "source": "Astro AWANI",
    "link": "https://www.astroawani.com/berita-malaysia/jerebu-27-sekolah-di-tebedu-ditutup-sementara-esok-jpn-sarawak",
-   "title_ja": "マレーシア・サラワク州テベドゥ、煙害（ヘイズ）で学校27校が臨時休校へ",
+   "title_ja": "ヘイズ：テベドゥの27の学校が明日臨時休校 - JPN Sarawak",
    "title": "Jerebu: 27 sekolah di Tebedu ditutup sementara esok - JPN Sarawak",
-   "summary_ja": "サラワク州テベドゥ地区にて、大気汚染指数（IPU）の悪化を受け、明日27校が一時休校となります。周辺地域での煙害状況に注意が必要です。",
+   "summary_ja": "大気汚染指数（AIP）測定値の継続的な監視と同省からの報告に基づいて、セリアンのテベドゥ地区の27の学校が明日、霧の状態のため臨時休校となる",
    "lang": "ms",
    "tags": [
     "health",
@@ -526,12 +539,11 @@
    "date": "2026-10-23T23:49+08:00",
    "source": "Astro AWANI",
    "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNWDFvQWtUQjNHREUtdDVFMnFLTktsWWRtcWE3OE9PejlDaE5BQmlFTVdrRWhldzZhTVJXTHZmNTIxdlpDSm1ERnd2VnNRSUJQOFZiZ2dGUm5EdFFrVjEtVDI0QVdMbHBKTTN2V0VrN25wSEJ6TVN1RnVKV2xCRi16TlcwSzM5OUotemMyRl9FWFZycnQzNlRXX040aUpuUHFjeHotRXplcF8tVXp1QjRTRUJrQ2QzM09pbFg0Z1Q0bWxTSDhOVWZmR2t4bHp6SktCNVlMMFctaw?oc=5",
-   "title_ja": "シンガポールNEA、越境煙害に関与の疑いで企業10社に通知書を発行",
+   "title_ja": "NEAシンガポールは国境を越えたヘイズ関連の可能性について10社に通知を発行",
    "title": "NEA Singapura keluarkan notis kepada 10 syarikat berhubung kemungkinan kaitan jerebu rentas sempadan",
-   "summary_ja": "シンガポール環境庁（NEA）は、越境煙害の原因に関与した疑いがあるとして、企業10社に対し法的通知を行いました。今後の規制強化が注目されます。",
+   "summary_ja": "NEAシンガポールはAstro Awaniの国境を越えたヘイズとの関連の可能性に関して10社に通知を発行",
    "lang": "ms",
    "tags": [
-    "policy",
     "business"
    ]
   },
@@ -568,6 +580,19 @@
    "title_ja": "ヘイズ氏：ASEANは責任条項を検討する必要がある、影響を受けた国々は行動を起こすことができる",
    "title": "Jerebu: ASEAN perlu pertimbang klausa liabiliti, negara terjejas boleh ambil tindakan",
    "summary_ja": "責任条項は、影響を受けた国が汚染の原因となった当事者に対して、被った損失の補償を請求するなどの措置を講じる仕組みを提供することができます。",
+   "lang": "ms",
+   "tags": [
+    "policy"
+   ]
+  },
+  {
+   "id": "astroawani-c2c60fc536568f",
+   "date": "2026-10-23T18:16+08:00",
+   "source": "Astro AWANI",
+   "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNNTh0TEVCbktZdzBIRHZQdW95OFdtczVHTWxMNkJka3YwRmltLUJDdGNpX3BPSFY2RVdQYnVkaGRLRm9TeC1RZHZURDRCZHVKREloeElGcTE3NnNmV2d3cEQyODRaeDBpaFItXzQyWE5iUExoa1dLVGZ6Y19TWEhsNmV0OTNzQTZUUWVYZnBqcjZPZGYwblhFY2xKY204TUt6YmFfYmZjRmJ0TkduSmJBTVBiSS1sMDd5R1JZcnB4bWNJZktF?oc=5",
+   "title_ja": "ヘイズ氏：ASEANは賠償責任条項を検討する必要がある、影響を受けた国々は行動を起こすことができる",
+   "title": "Jerebu: ASEAN perlu pertimbang klausa liabiliti, negara terjejas boleh ambil tindakan",
+   "summary_ja": "ヘイズ氏：ASEANは賠償責任条項を検討する必要がある、影響を受けた国々は行動を起こすことができる アストロ・アワニ",
    "lang": "ms",
    "tags": [
     "policy"
@@ -1206,9 +1231,9 @@
    "date": "2026-10-21T12:20+08:00",
    "source": "Astro AWANI",
    "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOdC1zSFQ0UkdoTldTUG02SWwxTnNIczJfRjBwMWNJNlphV2dnR0M1bzVYTGQ4T3pqTjZ1c2czN0pqczg4Wm03bnE0Y29BYU93aTZ4dmFJY3BRT2NRUlNORkZNTTVaMks1VU9HR0QxTktaZmZMTTZHWVNhM3N0aTdyU0l0NkFzNEM3cjRNbmU5YTZueUoyREV2MVdnZ2RRaVVfUTRreDBYZi15QS1wdUNvd0pBTVYtRzJWc3FQTi12RlRsSEpEbnZPODdWQQ?oc=5",
-   "title_ja": "JAKIMがマレーシアのアル・アクサのヘイズに関する安全を求める祈りを主催",
+   "title_ja": "JAKIM anjur solat hajat mohon perlindungan Al-Aqsa, keselamatan Malaysia berkaitan jerebu",
    "title": "JAKIM anjur solat hajat mohon perlindungan Al-Aqsa, keselamatan Malaysia berkaitan jerebu",
-   "summary_ja": "JAKIM、アストロ・アワニのヘイズに関連したマレーシアの安全とアル・アクサの保護を求める祈りを開催",
+   "summary_ja": "JAKIM anjur solat hajat mohon perlindungan Al-Aqsa, keselamatan Malaysia berkaitan jerebu Astro Awani",
    "lang": "ms",
    "tags": []
   },
@@ -5345,33 +5370,6 @@
    "lang": "en",
    "tags": [
     "policy"
-   ]
-  },
-  {
-   "id": "malaymail-2642bba805a5d5",
-   "date": "2026-10-07T16:18+08:00",
-   "source": "Malay Mail",
-   "link": "https://www.malaymail.com/news/what-you-think/2026/10/07/the-monsoon-is-not-the-solution-vasanthi-ramachandran/238111",
-   "title_ja": "ヘイズ（煙害）対策：モンスーン頼みからの脱却を",
-   "title": "The monsoon is not the solution — Vasanthi Ramachandran",
-   "summary_ja": "サラワク州セリアンで記録的な汚染指数を観測。気象条件に依存せず、抜本的なヘイズ対策が求められている。",
-   "lang": "en",
-   "tags": [
-    "air"
-   ]
-  },
-  {
-   "id": "theedge-6dd83244e19132",
-   "date": "2026-10-07T11:52+08:00",
-   "source": "The Edge Malaysia",
-   "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBWVDYxYmJIS0hvb0xUUk12MzVLajB2eGNYQmVndjl1YmV4ZVVvcVUyZmV5bnBZSTJNenRyb0RhZ2pvTGZuYl8ydHN4Zlhoc1JI?oc=5",
-   "title_ja": "森林火災によるヘイズで学校閉鎖、シンガポールF1にも影響懸念",
-   "title": "Wildfire haze shuts Malaysia schools and looms over Singapore F1",
-   "summary_ja": "森林火災による煙害（ヘイズ）が深刻化し、マレーシアでは学校が閉鎖。シンガポールF1開催への影響も懸念されています。",
-   "lang": "en",
-   "tags": [
-    "fire",
-    "health"
    ]
   }
  ]
