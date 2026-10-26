@@ -1,12 +1,12 @@
 {
- "generated_at": "2026-10-26T02:53:29+08:00",
- "checked_at": "2026-10-26T02:53:29+08:00",
+ "generated_at": "2026-10-26T08:05:20+08:00",
+ "checked_at": "2026-10-26T08:05:20+08:00",
  "source": {
   "name": "Campur.ai",
   "url": "https://campur.ai.studio/"
  },
  "status": {
-  "fetched": 389,
+  "fetched": 390,
   "errors": []
  },
  "items": [
@@ -936,9 +936,9 @@
    "date": "2026-10-22T14:20+08:00",
    "source": "Astro AWANI",
    "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPZF9rWUFOS1kzaTJEamM4R1A2UlRCaVkzWGVobTE4Yzg1X3lCSVVmYWV0bWJyTFBEUDJ5TUVIM3ZTMWd3aVppX1RhLTFSOFV1QlloZ1hRMllDU3RHVXAtT0w0Q1czWnJSQUhILVlmUk1KNmZmeEdRVFdBVTJ1MDJfdE54LWF1bHFJV20zamRBZ0ZuWE14QW1nZExsY2dJUDJQSWJ4c04wZWJtVmwzbXJ6allhSkVWeTdyWjB5UUVIMlpadEFJOHhCNQ?oc=5",
-   "title_ja": "マレーシアのヘイズ状況：パシルグダンは改善もニライで大気汚染継続",
+   "title_ja": "マレーシアのヘイズ状況：パシルグダンが改善、ニライは依然として高水準",
    "title": "Jerebu: Pasir Gudang keluar kategori tidak sihat, Nilai kekal tertinggi setakat 2 petang",
-   "summary_ja": "マレーシア国内のヘイズ（煙害）状況。パシルグダンは不健康なレベルから脱しましたが、ニライでは依然として高い汚染数値が続いています。",
+   "summary_ja": "パシルグダンの大気質は改善し不健康カテゴリーを脱しましたが、ニライでは依然として高い汚染数値が記録されています。",
    "lang": "ms",
    "tags": [
     "health",
@@ -963,9 +963,9 @@
    "date": "2026-10-22T13:20+08:00",
    "source": "Astro AWANI",
    "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPVG5URW5kc0p2STV6d29xMXBodWQwM2ZBaUJBdnVDWjNneW1yd29KRERPQjNqS0VtQ1ZmUVpRX0tMQjQtUkl0TVJOM1pYZzF2YmtzRzZRVkZzeGpOX1ZJQl9vZ0lJaFlxRExpU1J1c3VLdEE5SXloZDNQTUM5NmtyM0FCREFRZzFPRVlOc2lyZ21ORl9WZHNnaXF5ZXVXeE9MenM5clU4MVFfUWFMM1dfSVZ1SXk?oc=5",
-   "title_ja": "マレーシア各地の煙害状況、一部地域で大気質が改善傾向に",
+   "title_ja": "マレーシア各地のヘイズ状況：午後1時時点で一部地域の大気質が改善",
    "title": "Jerebu: Kualiti udara bertambah baik di beberapa lokasi setakat 1 petang",
-   "summary_ja": "午後1時時点の観測で、マレーシア国内の複数地点において大気質の改善が確認されました。引き続き最新のIPU（大気汚染指数）情報にご留意ください。",
+   "summary_ja": "マレーシア国内の複数地点において、午後1時時点での大気質が徐々に改善傾向にあることが報告されました。",
    "lang": "ms",
    "tags": [
     "air"
@@ -976,9 +976,9 @@
    "date": "2026-10-22T12:30+08:00",
    "source": "Astro AWANI",
    "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPTDBXd25NX3Q2WWV5bGp2Q3ZEaDdTNDBSdEFyS1Zhdll5dGtSWlhiNUxseldFRzlKelBkYVpjSUpBU3RWcWx1a2VUVENhdkpwa0NjRWlQYUUwbGg3eTE0a3BIdTNCcTNJb2tnX3pBUmlmeUxUaWtDNUJTbDcwa0JVYy1JLW1oT3NVdk5VQUtNRENncFZLQ09XT3dsalhtMkRnWEo3cEh5Y2pSb1dRWkpzanpsbHdJVGNUZl9Xd2JVdUQwNkNmbjltSjBJbzZqTVlB?oc=5",
-   "title_ja": "マレーシアのヘイズ状況、一部で改善もニライは依然として高水準",
+   "title_ja": "マレーシアのヘイズ最新情報：各地で大気質が改善もニライは高水準維持",
    "title": "Jerebu: Kualiti udara bertambah baik di beberapa lokasi tengah hari ini, Nilai kekal tertinggi",
-   "summary_ja": "国内各地で大気質が改善傾向にある一方、ニライ（Nilai）では依然としてヘイズによる高い汚染レベルが記録されています。",
+   "summary_ja": "日中にかけて各地で大気質の改善が見られるものの、ニライ地域では依然として汚染レベルが高い状態が続いています。",
    "lang": "ms",
    "tags": [
     "air"
@@ -989,12 +989,11 @@
    "date": "2026-10-22T11:30+08:00",
    "source": "Astro AWANI",
    "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQSU5jUHpWMFlUem1yS1d4dGpnWTktcW80ejd6QWdzMDV5Tmt5MXJqMXFuR1JYR0ZBczB4eFM2TG5ZZG51blRTWVdaZFdZVXRQZ1cxT052WHNIdE5KRjA1RlEwZlBNaTBJSERzakN5dGtlVVpjclZhbXN5aVVqb3hhc0pTaXpSbUczX1hVdHdhWFFOckYwTmU4VWR1NW15YmNWdjdKR01QTDhueHF4bzVDSHNqQ1FyMTdPLUlUTDVjYTc3bWxF?oc=5",
-   "title_ja": "マレーシアの煙害状況：午前11時時点、大半の地域で大きな変化なし",
+   "title_ja": "マレーシアのヘイズ状況：午前11時時点で大気質に大きな変化なし",
    "title": "Jerebu: Kualiti udara di kebanyakan kawasan tidak banyak berubah setakat 11 pagi ini",
-   "summary_ja": "午前11時時点の観測では、マレーシア国内の多くの地域で大気質に顕著な改善は見られませんでした。屋外活動の際は最新情報をご確認ください。",
+   "summary_ja": "午前11時時点の観測では、マレーシア国内の大部分の地域において大気質の顕著な改善は見られませんでした。",
    "lang": "ms",
    "tags": [
-    "health",
     "air"
    ]
   },
@@ -1003,9 +1002,9 @@
    "date": "2026-10-22T11:05+08:00",
    "source": "Astro AWANI",
    "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxOM3Q4enJsbDNyVlBXMFFGSWJfZ29pUmF0N1A4TDlDR3MtZFM2akpscGhuUFBNaHl6cnFfMXZMZWItR19NNEUxZ3VEZzdPZ0Z4TUF2YUVnamNudU1DMjhYbThYUWd2RnlnQUZiOTdmY3ZXSUp1SHQ1cmRvLW1lOUVZSWRrbThRUVFlY1B4bzRFRktHSE5vVEcyZ2NwRE1QZw?oc=5",
-   "title_ja": "マレーシアの煙害：15地域で空気質指数（IPU）が不健康レベル",
+   "title_ja": "マレーシアのヘイズ状況：午前9時時点で15地域が不健康な大気質を記録",
    "title": "Jerebu: 15 kawasan catat IPU tidak sihat setakat 9 pagi",
-   "summary_ja": "午前9時時点で15地域が不健康な空気質を記録しました。屋外活動の際は健康管理に十分注意してください。",
+   "summary_ja": "午前9時時点で、国内15の観測地点において大気汚染指数（IPU）が「不健康」レベルに達しています。",
    "lang": "ms",
    "tags": [
     "health",
@@ -1127,9 +1126,9 @@
    "date": "2026-10-21T21:51+08:00",
    "source": "Free Malaysia Today",
    "link": "https://www.freemalaysiatoday.com/category/nation/2026/10/21/haze-not-about-malaysia-versus-indonesia-says-syed-saddiq",
-   "title_ja": "ヘイズは「マレーシア対インドネシア」のことではない、とサイード・サディクは言う",
+   "title_ja": "サイード・サディク議員、ヘイズ問題で「国対立」の構図を否定",
    "title": "Haze not about ‘Malaysia versus Indonesia’, says Syed Saddiq",
-   "summary_ja": "ムアール議員は、インドネシアの元貿易大臣からの批判を受けて、森林火災に責任のある企業は国籍に関係なく行動に移すべきだと述べた。",
+   "summary_ja": "サイード・サディク議員は、ヘイズ（煙害）問題について国同士の対立ではなく、国籍を問わず火災責任企業を厳正に処罰すべきと主張しました。",
    "lang": "en",
    "tags": [
     "fire",
@@ -1231,9 +1230,9 @@
    "date": "2026-10-21T12:20+08:00",
    "source": "Astro AWANI",
    "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOdC1zSFQ0UkdoTldTUG02SWwxTnNIczJfRjBwMWNJNlphV2dnR0M1bzVYTGQ4T3pqTjZ1c2czN0pqczg4Wm03bnE0Y29BYU93aTZ4dmFJY3BRT2NRUlNORkZNTTVaMks1VU9HR0QxTktaZmZMTTZHWVNhM3N0aTdyU0l0NkFzNEM3cjRNbmU5YTZueUoyREV2MVdnZ2RRaVVfUTRreDBYZi15QS1wdUNvd0pBTVYtRzJWc3FQTi12RlRsSEpEbnZPODdWQQ?oc=5",
-   "title_ja": "JAKIM anjur solat hajat mohon perlindungan Al-Aqsa, keselamatan Malaysia berkaitan jerebu",
+   "title_ja": "JAKIMが祈祷会を開催：アル・アクサの保護とヘイズからの安全を祈願",
    "title": "JAKIM anjur solat hajat mohon perlindungan Al-Aqsa, keselamatan Malaysia berkaitan jerebu",
-   "summary_ja": "JAKIM anjur solat hajat mohon perlindungan Al-Aqsa, keselamatan Malaysia berkaitan jerebu Astro Awani",
+   "summary_ja": "マレーシア・イスラム開発局（JAKIM）は、ヘイズ被害の収束と国家の安全、およびアル・アクサの保護を願う祈祷会を実施しました。",
    "lang": "ms",
    "tags": []
   },
