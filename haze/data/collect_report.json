@@ -1,18 +1,13 @@
 {
-  "run_at": "2026-10-28T04:00:02+08:00",
+  "run_at": "2026-10-28T07:41:38+08:00",
   "sources": {
     "doe": {
-      "status": "partial",
-      "readings": 0,
-      "notes": [
-        "cheras: no reading at Cheras, W.P. KUALA LUMPUR",
-        "batumuda: no reading at Batu Muda, W.P. KUALA LUMPUR",
-        "minden: no reading at Minden, PULAU PINANG",
-        "sperai: no reading at Seberang Jaya, PULAU PINANG",
-        "larkin: no reading at Larkin, JOHOR",
-        "pgudang: no reading at Pasir Gudang, JOHOR"
-      ]
+      "status": "ok",
+      "readings": 6,
+      "notes": []
     }
   },
-  "time_samples": {}
+  "time_samples": {
+    "doe": "DOE Cheras, W.P. KUALA LUMPUR (CA16W, PM2.5) DATETIME=1793170800000 -> 2026-10-28T07:00:00+08:00 (slot 2026-10-28T06)"
+  }
 }
