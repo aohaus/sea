@@ -583,7 +583,7 @@
     },
   };
 
-  let trend = null, diur = null;
+  let diur = null;
   // Legends say when a line is (partly) simulated, so averages of simulated values are not read as measurements.
   const legendLabel = (l) => l.label + (l.data.mode === 'sim' ? '（模擬）' : l.data.mode === 'mixed' ? '（一部実データ）' : '');
   const axisMax = (ls, kind) => {
@@ -591,18 +591,22 @@
     const step = kind === 'index' ? 50 : 25;
     return Math.max(kind === 'index' ? 150 : 75, Math.ceil((m * 1.08) / step) * step);
   };
-  function renderTrend(ls, bandsKey) {
+  // The trend charts: the whole 14 days, and the last 7 days (from = the first slot shown).
+  const charts = {};
+  function renderTrend(ls, bandsKey, canvasId = 'trend', from = 0) {
+    const at = (i) => i + from; // chart index -> slot index
+    const vals = (l) => l.data.values.slice(from);
     const hasIndex = ls.some((l) => l.def.kind === 'index'), hasConc = ls.some((l) => l.def.kind === 'conc');
     const grid = css('--grid'), muted = css('--muted'), fg = css('--fg');
     const datasets = ls.map((l) => ({
       label: legendLabel(l),
-      data: l.data.values, borderColor: l.color, backgroundColor: l.color,
+      data: vals(l), borderColor: l.color, backgroundColor: l.color,
       yAxisID: l.def.kind === 'index' ? 'yIndex' : 'yConc',
       borderWidth: l.data.mode === 'sim' ? 1.6 : 2.2,
       borderDash: l.def.kind === 'conc' ? [6, 3] : [],
       // In a partly real series, real readings get a dot and the simulated stretches are faded.
-      pointRadius: (ctx) => (l.data.mode === 'mixed' && isReal(l.data, ctx.dataIndex) ? (l.data.real.size === 1 ? 5 : 2.5) : 0),
-      segment: l.data.mode === 'mixed' ? { borderColor: (ctx) => (isReal(l.data, ctx.p0DataIndex) && isReal(l.data, ctx.p1DataIndex) ? l.color : l.color + '55') } : undefined,
+      pointRadius: (ctx) => (l.data.mode === 'mixed' && isReal(l.data, at(ctx.dataIndex)) ? (l.data.real.size === 1 ? 5 : 2.5) : 0),
+      segment: l.data.mode === 'mixed' ? { borderColor: (ctx) => (isReal(l.data, at(ctx.p0DataIndex)) && isReal(l.data, at(ctx.p1DataIndex)) ? l.color : l.color + '55') } : undefined,
       pointHoverRadius: 4, tension: 0.25, spanGaps: false,
       meta: l,
     }));
@@ -610,14 +614,16 @@
       // A date label at midnight; every day on wide screens, every 2nd or 3rd day on narrow ones.
       x: { ticks: { color: muted, maxRotation: 0, autoSkip: false, font: { size: 11 },
         callback(v, i) {
-          if (slotHour(SLOTS[i]) !== 0) return '';
-          const step = this.chart.width >= 700 ? 1 : this.chart.width >= 450 ? 2 : 3;
-          return Math.floor(i / 12) % step === 0 ? shortLabel(SLOTS[i]).split(' ')[0] : '';
+          if (slotHour(SLOTS[at(i)]) !== 0) return '';
+          const days = (N - from) / 12, step = this.chart.width >= days * 50 ? 1 : this.chart.width >= days * 25 ? 2 : 3;
+          return Math.floor(i / 12) % step === 0 ? shortLabel(SLOTS[at(i)]).split(' ')[0] : '';
         } },
-        grid: { color: (c) => (c.index != null && slotHour(SLOTS[c.index]) === 0 ? grid : 'transparent') } },
+        grid: { color: (c) => (c.index != null && slotHour(SLOTS[at(c.index)]) === 0 ? grid : 'transparent') } },
     };
-    if (hasIndex || !hasConc) scales.yIndex = { position: 'left', min: 0, max: axisMax(ls, 'index'), title: { display: true, text: '指数（AQI・API・PSI）', color: muted }, ticks: { color: muted }, grid: { color: grid } };
-    if (hasConc) scales.yConc = { position: hasIndex ? 'right' : 'left', min: 0, max: axisMax(ls, 'conc'), title: { display: true, text: '濃度 µg/m³', color: muted }, ticks: { color: muted }, grid: { color: hasIndex ? 'transparent' : grid } };
+    // Axes fit the period shown.
+    const shown = ls.map((l) => ({ ...l, data: { ...l.data, values: vals(l) } }));
+    if (hasIndex || !hasConc) scales.yIndex = { position: 'left', min: 0, max: axisMax(shown, 'index'), title: { display: true, text: '指数（AQI・API・PSI）', color: muted }, ticks: { color: muted }, grid: { color: grid } };
+    if (hasConc) scales.yConc = { position: hasIndex ? 'right' : 'left', min: 0, max: axisMax(shown, 'conc'), title: { display: true, text: '濃度 µg/m³', color: muted }, ticks: { color: muted }, grid: { color: hasIndex ? 'transparent' : grid } };
     const options = {
       responsive: true, maintainAspectRatio: false, animation: { duration: 250 },
       interaction: { mode: 'index', intersect: false },
@@ -626,11 +632,11 @@
         legend: { position: 'bottom', labels: { color: fg, usePointStyle: true, pointStyle: 'line', boxWidth: 28, font: { size: 12 } } },
         tooltip: {
           callbacks: {
-            title: (items) => (items.length ? longLabel(SLOTS[items[0].dataIndex]) : ''),
+            title: (items) => (items.length ? longLabel(SLOTS[at(items[0].dataIndex)]) : ''),
             label: (item) => {
               const l = item.dataset.meta, v = item.parsed.y;
               const cat = category(l.def.bands, v);
-              const live = isReal(l.data, item.dataIndex);
+              const live = isReal(l.data, at(item.dataIndex));
               return ' ' + l.label + '：' + fmt(v, l.def.unit) + (l.def.unit ? ' ' + l.def.unit : '') + (cat ? '（' + cat.ja + '）' : '') + (live ? '' : ' 模擬');
             },
           },
@@ -638,9 +644,9 @@
       },
       scales,
     };
-    const labels = SLOTS.map(shortLabel);
-    if (trend) { trend.data.labels = labels; trend.data.datasets = datasets; trend.options = options; trend.update(); }
-    else trend = new Chart($('trend'), { type: 'line', data: { labels, datasets }, options, plugins: [bandPlugin] });
+    const labels = SLOTS.slice(from).map(shortLabel), c = charts[canvasId];
+    if (c) { c.data.labels = labels; c.data.datasets = datasets; c.options = options; c.update(); }
+    else charts[canvasId] = new Chart($(canvasId), { type: 'line', data: { labels, datasets }, options, plugins: [bandPlugin] });
   }
 
   // ---------- last 7 days and the 5-day forecast ----------
@@ -926,12 +932,17 @@
       const s = document.createElement('span'); const sw = document.createElement('span'); sw.className = 'swatch'; sw.style.background = css('--band-' + lv.tone);
       s.append(sw, lv.lo + '–' + (lv.hi === 500 ? '' : lv.hi) + ' ' + lv.ja + '（' + lv.en + '）'); return s;
     }) : []));
+    $('band-legend7').replaceChildren(...(b ? b.levels.map((lv) => {
+      const s = document.createElement('span'); const sw = document.createElement('span'); sw.className = 'swatch'; sw.style.background = css('--band-' + lv.tone);
+      s.append(sw, lv.lo + '–' + (lv.hi === 500 ? '' : lv.hi) + ' ' + lv.ja + '（' + lv.en + '）'); return s;
+    }) : []));
     const st = stationById.get(state.station);
     $('chart-note').textContent = state.mode === 'indices'
       ? st.ja + '（' + st.en + '）の指標を重ねています。実線は指数（左の軸）、破線は濃度（' + (ls.some((l) => l.def.kind === 'index') ? '右' : '左') + 'の軸、µg/m³）。模擬値の系列は凡例に「模擬」と付きます。'
       : (METRICS.find((m) => m.key === state.metric)?.ja || '') + 'を、選んだ地点どうしで比べています。';
     renderTiles(ls);
     renderTrend(ls, bandsKey);
+    renderTrend(ls, bandsKey, 'trend7', N - 84);
     renderOutlook();
     renderDiurnal(ls);
     renderSummary(ls);
