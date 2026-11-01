@@ -1,13 +1,10 @@
 {
-  "run_at": "2026-11-01T06:24:42+08:00",
+  "run_at": "2026-11-01T10:04:43+08:00",
   "sources": {
     "doe": {
-      "status": "ok",
-      "readings": 6,
-      "notes": []
+      "status": "error",
+      "detail": "RuntimeError: no features in the DOE response"
     }
   },
-  "time_samples": {
-    "doe": "DOE Cheras, W.P. KUALA LUMPUR (CA16W, PM2.5) DATETIME=1793512800000 -> 2026-11-01T06:00:00+08:00 (slot 2026-11-01T06)"
-  }
+  "time_samples": {}
 }
