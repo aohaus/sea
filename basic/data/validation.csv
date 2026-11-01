@@ -1,5 +1,5 @@
 ﻿reference_id,figure_id,field,year,scope,reference_value,reference_text,reference_cited_source,our_value,our_sources,missing,picked,diff_pct,status
-ajc_at_a_glance,asean_area,area,,"bn,kh,id,la,my,mm,ph,sg,th,vn",4450000.0,約445万km2,ASEAN事務局、総務省,4467216.3,"jetro_basic,mofa_basic",,bn:area=mofa_basic; kh:area=jetro_basic; id:area=jetro_basic; la:area=jetro_basic; my:area=jetro_basic; mm:area=jetro_basic; ph:area=jetro_basic; sg:area=jetro_basic; th:area=jetro_basic; vn:area=jetro_basic,0.39,match
+ajc_at_a_glance,asean_area,area,,"bn,kh,id,la,my,mm,ph,sg,th,vn",4450000.0,約445万km2,ASEAN事務局、総務省,,mofa_basic,"kh,id,la,my,mm,ph,sg,th,vn",bn:area=mofa_basic,,no_data
 ajc_at_a_glance,japan_area,area,,jp,380000.0,約38万km2,ASEAN事務局、総務省,,,jp,,,no_data
 ajc_at_a_glance,asean_population,population,2024,"bn,kh,id,la,my,mm,ph,sg,th,vn",694000000.0,約6億9400万人,世界銀行,693953263.0,worldbank_wdi,,bn:population=worldbank_wdi; kh:population=worldbank_wdi; id:population=worldbank_wdi; la:population=worldbank_wdi; my:population=worldbank_wdi; mm:population=worldbank_wdi; ph:population=worldbank_wdi; sg:population=worldbank_wdi; th:population=worldbank_wdi; vn:population=worldbank_wdi,-0.01,match
 ajc_at_a_glance,japan_population,population,2024,jp,124000000.0,約1億2400万人,世界銀行,123975371.0,worldbank_wdi,,jp:population=worldbank_wdi,-0.02,match

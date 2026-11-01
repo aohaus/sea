@@ -121,22 +121,6 @@
               "value": 71619863
             }
           ]
-        },
-        {
-          "source_id": "jetro_basic",
-          "source_label": "人口",
-          "url": "https://www.jetro.go.jp/world/asia/th/basic_01.html",
-          "retrieved_at": "2026-10-13T01:06:46+00:00",
-          "page_last_updated": "2026-06-30",
-          "retrieval_method": "auto",
-          "observations": [
-            {
-              "year": 2025,
-              "value": 65810000,
-              "value_text": "6,581万人(2025年、出所:内務省)",
-              "original_source": "内務省"
-            }
-          ]
         }
       ]
     },
@@ -377,28 +361,6 @@
               "value": 8056.56359761558
             }
           ]
-        },
-        {
-          "source_id": "jetro_basic",
-          "source_label": "1人当たりGDP",
-          "url": "https://www.jetro.go.jp/world/asia/th/basic_01.html",
-          "retrieved_at": "2026-10-13T01:06:46+00:00",
-          "page_last_updated": "2026-06-30",
-          "retrieval_method": "auto",
-          "observations": [
-            {
-              "year": 2022,
-              "value": 7073
-            },
-            {
-              "year": 2023,
-              "value": 7351
-            },
-            {
-              "year": 2024,
-              "value": 7492
-            }
-          ]
         }
       ]
     },
@@ -517,28 +479,6 @@
             {
               "year": 2025,
               "value": 2.44247444990198
-            }
-          ]
-        },
-        {
-          "source_id": "jetro_basic",
-          "source_label": "実質GDP成長率",
-          "url": "https://www.jetro.go.jp/world/asia/th/basic_01.html",
-          "retrieved_at": "2026-10-13T01:06:46+00:00",
-          "page_last_updated": "2026-06-30",
-          "retrieval_method": "auto",
-          "observations": [
-            {
-              "year": 2022,
-              "value": 2.6
-            },
-            {
-              "year": 2023,
-              "value": 2
-            },
-            {
-              "year": 2024,
-              "value": 2.5
             }
           ]
         }
@@ -661,28 +601,6 @@
               "value": -0.133634356480206
             }
           ]
-        },
-        {
-          "source_id": "jetro_basic",
-          "source_label": "消費者物価上昇率",
-          "url": "https://www.jetro.go.jp/world/asia/th/basic_01.html",
-          "retrieved_at": "2026-10-13T01:06:46+00:00",
-          "page_last_updated": "2026-06-30",
-          "retrieval_method": "auto",
-          "observations": [
-            {
-              "year": 2022,
-              "value": 6.1
-            },
-            {
-              "year": 2023,
-              "value": 1.2
-            },
-            {
-              "year": 2024,
-              "value": 0.4
-            }
-          ]
         }
       ]
     },
@@ -801,28 +719,6 @@
             {
               "year": 2025,
               "value": 0.781
-            }
-          ]
-        },
-        {
-          "source_id": "jetro_basic",
-          "source_label": "失業率",
-          "url": "https://www.jetro.go.jp/world/asia/th/basic_01.html",
-          "retrieved_at": "2026-10-13T01:06:46+00:00",
-          "page_last_updated": "2026-06-30",
-          "retrieval_method": "auto",
-          "observations": [
-            {
-              "year": 2022,
-              "value": 1.3
-            },
-            {
-              "year": 2023,
-              "value": 1
-            },
-            {
-              "year": 2024,
-              "value": 1
             }
           ]
         }
@@ -1063,28 +959,6 @@
             {
               "year": 2025,
               "value": 32.882809252867
-            }
-          ]
-        },
-        {
-          "source_id": "jetro_basic",
-          "source_label": "為替レート",
-          "url": "https://www.jetro.go.jp/world/asia/th/basic_01.html",
-          "retrieved_at": "2026-10-13T01:06:46+00:00",
-          "page_last_updated": "2026-06-30",
-          "retrieval_method": "auto",
-          "observations": [
-            {
-              "year": 2022,
-              "value": 35.1
-            },
-            {
-              "year": 2023,
-              "value": 34.8
-            },
-            {
-              "year": 2024,
-              "value": 35.3
             }
           ]
         }
@@ -2606,108 +2480,19 @@
       "label_ja": "日本の輸出（この国向け）",
       "label_en": "Japan's exports to the country",
       "unit": "USD",
-      "series": [
-        {
-          "source_id": "jetro_basic",
-          "source_label": "日本の輸出（この国向け）",
-          "url": "https://www.jetro.go.jp/world/asia/th/basic_01.html",
-          "retrieved_at": "2026-10-13T01:06:46+00:00",
-          "page_last_updated": "2026-06-30",
-          "retrieval_method": "auto",
-          "observations": [
-            {
-              "year": 2021,
-              "value": 33003000000.0,
-              "original_source": "Global Trade Atlas(GTA)よりジェトロ作成"
-            },
-            {
-              "year": 2022,
-              "value": 32482000000.0,
-              "original_source": "Global Trade Atlas(GTA)よりジェトロ作成"
-            },
-            {
-              "year": 2023,
-              "value": 29342000000.0,
-              "original_source": "Global Trade Atlas(GTA)よりジェトロ作成"
-            },
-            {
-              "year": 2024,
-              "value": 26577000000.0,
-              "original_source": "Global Trade Atlas(GTA)よりジェトロ作成"
-            },
-            {
-              "year": 2025,
-              "value": 28183000000.0,
-              "original_source": "Global Trade Atlas(GTA)よりジェトロ作成"
-            }
-          ]
-        }
-      ]
+      "series": []
     },
     "japan_imports": {
       "label_ja": "日本の輸入（この国から）",
       "label_en": "Japan's imports from the country",
       "unit": "USD",
-      "series": [
-        {
-          "source_id": "jetro_basic",
-          "source_label": "日本の輸入（この国から）",
-          "url": "https://www.jetro.go.jp/world/asia/th/basic_01.html",
-          "retrieved_at": "2026-10-13T01:06:46+00:00",
-          "page_last_updated": "2026-06-30",
-          "retrieval_method": "auto",
-          "observations": [
-            {
-              "year": 2021,
-              "value": 26335000000.0,
-              "original_source": "Global Trade Atlas(GTA)よりジェトロ作成"
-            },
-            {
-              "year": 2022,
-              "value": 26659000000.0,
-              "original_source": "Global Trade Atlas(GTA)よりジェトロ作成"
-            },
-            {
-              "year": 2023,
-              "value": 25719000000.0,
-              "original_source": "Global Trade Atlas(GTA)よりジェトロ作成"
-            },
-            {
-              "year": 2024,
-              "value": 24701000000.0,
-              "original_source": "Global Trade Atlas(GTA)よりジェトロ作成"
-            },
-            {
-              "year": 2025,
-              "value": 25494000000.0,
-              "original_source": "Global Trade Atlas(GTA)よりジェトロ作成"
-            }
-          ]
-        }
-      ]
+      "series": []
     },
     "japanese_residents": {
       "label_ja": "在留邦人数",
       "label_en": "Japanese nationals residing in the country",
       "unit": "persons",
-      "series": [
-        {
-          "source_id": "jetro_basic",
-          "source_label": "在留邦人",
-          "url": "https://www.jetro.go.jp/world/asia/th/basic_01.html",
-          "retrieved_at": "2026-10-13T01:06:46+00:00",
-          "page_last_updated": "2026-06-30",
-          "retrieval_method": "auto",
-          "observations": [
-            {
-              "year": 2025,
-              "value": 72113,
-              "value_text": "7万2,113人(2025年10月1日時点) 出所:外務省「海外在留邦人数調査統計」",
-              "original_source": "外務省「海外在留邦人数調査統計」"
-            }
-          ]
-        }
-      ]
+      "series": []
     },
     "visitors_to_japan": {
       "label_ja": "訪日客数（この国から）",
@@ -2716,8 +2501,8 @@
       "series": [
         {
           "source_id": "jnto_visitors",
-          "url": "https://www.jnto.go.jp/statistics/data/_files/20260916_1615-5.xlsx",
-          "retrieved_at": "2026-10-17T13:17:21+00:00",
+          "url": "https://www.jnto.go.jp/statistics/data/_files/20261021_1615-5.xlsx",
+          "retrieved_at": "2026-11-01T07:01:03+00:00",
           "observations": [
             {
               "year": 2025,

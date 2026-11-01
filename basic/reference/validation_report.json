@@ -25,46 +25,28 @@
       "reference_value": 4450000.0,
       "reference_text": "約445万km2",
       "reference_cited_source": "ASEAN事務局、総務省",
-      "our_value": 4467216.3,
+      "our_value": null,
       "our_sources": [
-        "jetro_basic",
         "mofa_basic"
       ],
-      "missing": [],
+      "missing": [
+        "kh",
+        "id",
+        "la",
+        "my",
+        "mm",
+        "ph",
+        "sg",
+        "th",
+        "vn"
+      ],
       "picked": {
         "bn": {
           "area": "mofa_basic"
-        },
-        "kh": {
-          "area": "jetro_basic"
-        },
-        "id": {
-          "area": "jetro_basic"
-        },
-        "la": {
-          "area": "jetro_basic"
-        },
-        "my": {
-          "area": "jetro_basic"
-        },
-        "mm": {
-          "area": "jetro_basic"
-        },
-        "ph": {
-          "area": "jetro_basic"
-        },
-        "sg": {
-          "area": "jetro_basic"
-        },
-        "th": {
-          "area": "jetro_basic"
-        },
-        "vn": {
-          "area": "jetro_basic"
         }
       },
-      "diff_pct": 0.39,
-      "status": "match"
+      "diff_pct": null,
+      "status": "no_data"
     },
     {
       "reference_id": "ajc_at_a_glance",

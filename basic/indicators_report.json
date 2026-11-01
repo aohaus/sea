@@ -65,34 +65,28 @@
       "code": "kh",
       "coverage": {
         "population": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_nominal": [
           "worldbank_wdi"
         ],
         "gdp_per_capita": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_growth_real": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "inflation_cpi": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "unemployment": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "fdi_inflow": [
           "worldbank_wdi"
         ],
         "exchange_rate": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_per_capita_ppp": [
           "worldbank_wdi"
@@ -112,15 +106,9 @@
         "urban_share": [
           "worldbank_wdi"
         ],
-        "japan_exports": [
-          "jetro_basic"
-        ],
-        "japan_imports": [
-          "jetro_basic"
-        ],
-        "japanese_residents": [
-          "jetro_basic"
-        ],
+        "japan_exports": [],
+        "japan_imports": [],
+        "japanese_residents": [],
         "visitors_to_japan": [],
         "residents_in_japan": [
           "isa_residents"
@@ -132,34 +120,28 @@
       "code": "id",
       "coverage": {
         "population": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_nominal": [
           "worldbank_wdi"
         ],
         "gdp_per_capita": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_growth_real": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "inflation_cpi": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "unemployment": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "fdi_inflow": [
           "worldbank_wdi"
         ],
         "exchange_rate": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_per_capita_ppp": [
           "worldbank_wdi"
@@ -179,15 +161,9 @@
         "urban_share": [
           "worldbank_wdi"
         ],
-        "japan_exports": [
-          "jetro_basic"
-        ],
-        "japan_imports": [
-          "jetro_basic"
-        ],
-        "japanese_residents": [
-          "jetro_basic"
-        ],
+        "japan_exports": [],
+        "japan_imports": [],
+        "japanese_residents": [],
         "visitors_to_japan": [
           "jnto_visitors"
         ],
@@ -203,23 +179,19 @@
       "code": "la",
       "coverage": {
         "population": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_nominal": [
           "worldbank_wdi"
         ],
         "gdp_per_capita": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_growth_real": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "inflation_cpi": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "unemployment": [
           "worldbank_wdi"
@@ -228,8 +200,7 @@
           "worldbank_wdi"
         ],
         "exchange_rate": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_per_capita_ppp": [
           "worldbank_wdi"
@@ -249,15 +220,9 @@
         "urban_share": [
           "worldbank_wdi"
         ],
-        "japan_exports": [
-          "jetro_basic"
-        ],
-        "japan_imports": [
-          "jetro_basic"
-        ],
-        "japanese_residents": [
-          "jetro_basic"
-        ],
+        "japan_exports": [],
+        "japan_imports": [],
+        "japanese_residents": [],
         "visitors_to_japan": [],
         "residents_in_japan": [
           "isa_residents"
@@ -269,34 +234,28 @@
       "code": "my",
       "coverage": {
         "population": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_nominal": [
           "worldbank_wdi"
         ],
         "gdp_per_capita": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_growth_real": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "inflation_cpi": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "unemployment": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "fdi_inflow": [
           "worldbank_wdi"
         ],
         "exchange_rate": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_per_capita_ppp": [
           "worldbank_wdi"
@@ -316,15 +275,9 @@
         "urban_share": [
           "worldbank_wdi"
         ],
-        "japan_exports": [
-          "jetro_basic"
-        ],
-        "japan_imports": [
-          "jetro_basic"
-        ],
-        "japanese_residents": [
-          "jetro_basic"
-        ],
+        "japan_exports": [],
+        "japan_imports": [],
+        "japanese_residents": [],
         "visitors_to_japan": [
           "jnto_visitors"
         ],
@@ -340,23 +293,19 @@
       "code": "mm",
       "coverage": {
         "population": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_nominal": [
           "worldbank_wdi"
         ],
         "gdp_per_capita": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_growth_real": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "inflation_cpi": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "unemployment": [
           "worldbank_wdi"
@@ -365,8 +314,7 @@
           "worldbank_wdi"
         ],
         "exchange_rate": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_per_capita_ppp": [
           "worldbank_wdi"
@@ -386,15 +334,9 @@
         "urban_share": [
           "worldbank_wdi"
         ],
-        "japan_exports": [
-          "jetro_basic"
-        ],
-        "japan_imports": [
-          "jetro_basic"
-        ],
-        "japanese_residents": [
-          "jetro_basic"
-        ],
+        "japan_exports": [],
+        "japan_imports": [],
+        "japanese_residents": [],
         "visitors_to_japan": [],
         "residents_in_japan": [
           "isa_residents"
@@ -406,34 +348,28 @@
       "code": "ph",
       "coverage": {
         "population": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_nominal": [
           "worldbank_wdi"
         ],
         "gdp_per_capita": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_growth_real": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "inflation_cpi": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "unemployment": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "fdi_inflow": [
           "worldbank_wdi"
         ],
         "exchange_rate": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_per_capita_ppp": [
           "worldbank_wdi"
@@ -453,15 +389,9 @@
         "urban_share": [
           "worldbank_wdi"
         ],
-        "japan_exports": [
-          "jetro_basic"
-        ],
-        "japan_imports": [
-          "jetro_basic"
-        ],
-        "japanese_residents": [
-          "jetro_basic"
-        ],
+        "japan_exports": [],
+        "japan_imports": [],
+        "japanese_residents": [],
         "visitors_to_japan": [
           "jnto_visitors"
         ],
@@ -477,34 +407,28 @@
       "code": "sg",
       "coverage": {
         "population": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_nominal": [
           "worldbank_wdi"
         ],
         "gdp_per_capita": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_growth_real": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "inflation_cpi": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "unemployment": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "fdi_inflow": [
           "worldbank_wdi"
         ],
         "exchange_rate": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_per_capita_ppp": [
           "worldbank_wdi"
@@ -524,15 +448,9 @@
         "urban_share": [
           "worldbank_wdi"
         ],
-        "japan_exports": [
-          "jetro_basic"
-        ],
-        "japan_imports": [
-          "jetro_basic"
-        ],
-        "japanese_residents": [
-          "jetro_basic"
-        ],
+        "japan_exports": [],
+        "japan_imports": [],
+        "japanese_residents": [],
         "visitors_to_japan": [
           "jnto_visitors"
         ],
@@ -548,34 +466,28 @@
       "code": "th",
       "coverage": {
         "population": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_nominal": [
           "worldbank_wdi"
         ],
         "gdp_per_capita": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_growth_real": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "inflation_cpi": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "unemployment": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "fdi_inflow": [
           "worldbank_wdi"
         ],
         "exchange_rate": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_per_capita_ppp": [
           "worldbank_wdi"
@@ -595,15 +507,9 @@
         "urban_share": [
           "worldbank_wdi"
         ],
-        "japan_exports": [
-          "jetro_basic"
-        ],
-        "japan_imports": [
-          "jetro_basic"
-        ],
-        "japanese_residents": [
-          "jetro_basic"
-        ],
+        "japan_exports": [],
+        "japan_imports": [],
+        "japanese_residents": [],
         "visitors_to_japan": [
           "jnto_visitors"
         ],
@@ -677,34 +583,28 @@
       "code": "vn",
       "coverage": {
         "population": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_nominal": [
           "worldbank_wdi"
         ],
         "gdp_per_capita": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_growth_real": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "inflation_cpi": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "unemployment": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "fdi_inflow": [
           "worldbank_wdi"
         ],
         "exchange_rate": [
-          "worldbank_wdi",
-          "jetro_basic"
+          "worldbank_wdi"
         ],
         "gdp_per_capita_ppp": [
           "worldbank_wdi"
@@ -724,15 +624,9 @@
         "urban_share": [
           "worldbank_wdi"
         ],
-        "japan_exports": [
-          "jetro_basic"
-        ],
-        "japan_imports": [
-          "jetro_basic"
-        ],
-        "japanese_residents": [
-          "jetro_basic"
-        ],
+        "japan_exports": [],
+        "japan_imports": [],
+        "japanese_residents": [],
         "visitors_to_japan": [
           "jnto_visitors"
         ],

@@ -121,22 +121,6 @@
               "value": 7873046
             }
           ]
-        },
-        {
-          "source_id": "jetro_basic",
-          "source_label": "人口",
-          "url": "https://www.jetro.go.jp/world/asia/la/basic_01.html",
-          "retrieved_at": "2026-10-13T01:06:27+00:00",
-          "page_last_updated": "2026-06-19",
-          "retrieval_method": "auto",
-          "observations": [
-            {
-              "year": 2025,
-              "value": 7750000,
-              "value_text": "775万人(2025年、出所:ラオス統計センター)",
-              "original_source": "ラオス統計センター"
-            }
-          ]
         }
       ]
     },
@@ -377,28 +361,6 @@
               "value": 2324.76353098791
             }
           ]
-        },
-        {
-          "source_id": "jetro_basic",
-          "source_label": "1人当たりGDP",
-          "url": "https://www.jetro.go.jp/world/asia/la/basic_01.html",
-          "retrieved_at": "2026-10-13T01:06:27+00:00",
-          "page_last_updated": "2026-06-19",
-          "retrieval_method": "auto",
-          "observations": [
-            {
-              "year": 2023,
-              "value": 1977
-            },
-            {
-              "year": 2024,
-              "value": 2055
-            },
-            {
-              "year": 2025,
-              "value": 2288
-            }
-          ]
         }
       ]
     },
@@ -519,28 +481,6 @@
               "value": 4.53760564766725
             }
           ]
-        },
-        {
-          "source_id": "jetro_basic",
-          "source_label": "実質GDP成長率",
-          "url": "https://www.jetro.go.jp/world/asia/la/basic_01.html",
-          "retrieved_at": "2026-10-13T01:06:27+00:00",
-          "page_last_updated": "2026-06-19",
-          "retrieval_method": "auto",
-          "observations": [
-            {
-              "year": 2023,
-              "value": 3.7
-            },
-            {
-              "year": 2024,
-              "value": 4
-            },
-            {
-              "year": 2025,
-              "value": 4.4
-            }
-          ]
         }
       ]
     },
@@ -659,28 +599,6 @@
             {
               "year": 2025,
               "value": 7.74226936553694
-            }
-          ]
-        },
-        {
-          "source_id": "jetro_basic",
-          "source_label": "消費者物価上昇率",
-          "url": "https://www.jetro.go.jp/world/asia/la/basic_01.html",
-          "retrieved_at": "2026-10-13T01:06:27+00:00",
-          "page_last_updated": "2026-06-19",
-          "retrieval_method": "auto",
-          "observations": [
-            {
-              "year": 2023,
-              "value": 31.2
-            },
-            {
-              "year": 2024,
-              "value": 23.1
-            },
-            {
-              "year": 2025,
-              "value": 7.7
             }
           ]
         }
@@ -1041,24 +959,6 @@
             {
               "year": 2025,
               "value": 20444.1366516587
-            }
-          ]
-        },
-        {
-          "source_id": "jetro_basic",
-          "source_label": "為替レート",
-          "url": "https://www.jetro.go.jp/world/asia/la/basic_01.html",
-          "retrieved_at": "2026-10-13T01:06:27+00:00",
-          "page_last_updated": "2026-06-19",
-          "retrieval_method": "auto",
-          "observations": [
-            {
-              "year": 2023,
-              "value": 17689
-            },
-            {
-              "year": 2024,
-              "value": 20167
             }
           ]
         }
@@ -2484,108 +2384,19 @@
       "label_ja": "日本の輸出（この国向け）",
       "label_en": "Japan's exports to the country",
       "unit": "USD",
-      "series": [
-        {
-          "source_id": "jetro_basic",
-          "source_label": "日本の輸出（この国向け）",
-          "url": "https://www.jetro.go.jp/world/asia/la/basic_01.html",
-          "retrieved_at": "2026-10-13T01:06:27+00:00",
-          "page_last_updated": "2026-06-19",
-          "retrieval_method": "auto",
-          "observations": [
-            {
-              "year": 2021,
-              "value": 129000000.0,
-              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
-            },
-            {
-              "year": 2022,
-              "value": 102000000.0,
-              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
-            },
-            {
-              "year": 2023,
-              "value": 115000000.0,
-              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
-            },
-            {
-              "year": 2024,
-              "value": 97000000.0,
-              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
-            },
-            {
-              "year": 2025,
-              "value": 117000000.0,
-              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
-            }
-          ]
-        }
-      ]
+      "series": []
     },
     "japan_imports": {
       "label_ja": "日本の輸入（この国から）",
       "label_en": "Japan's imports from the country",
       "unit": "USD",
-      "series": [
-        {
-          "source_id": "jetro_basic",
-          "source_label": "日本の輸入（この国から）",
-          "url": "https://www.jetro.go.jp/world/asia/la/basic_01.html",
-          "retrieved_at": "2026-10-13T01:06:27+00:00",
-          "page_last_updated": "2026-06-19",
-          "retrieval_method": "auto",
-          "observations": [
-            {
-              "year": 2021,
-              "value": 130000000.0,
-              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
-            },
-            {
-              "year": 2022,
-              "value": 189000000.0,
-              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
-            },
-            {
-              "year": 2023,
-              "value": 165000000.0,
-              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
-            },
-            {
-              "year": 2024,
-              "value": 159000000.0,
-              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
-            },
-            {
-              "year": 2025,
-              "value": 172000000.0,
-              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
-            }
-          ]
-        }
-      ]
+      "series": []
     },
     "japanese_residents": {
       "label_ja": "在留邦人数",
       "label_en": "Japanese nationals residing in the country",
       "unit": "persons",
-      "series": [
-        {
-          "source_id": "jetro_basic",
-          "source_label": "在留邦人",
-          "url": "https://www.jetro.go.jp/world/asia/la/basic_01.html",
-          "retrieved_at": "2026-10-13T01:06:27+00:00",
-          "page_last_updated": "2026-06-19",
-          "retrieval_method": "auto",
-          "observations": [
-            {
-              "year": 2025,
-              "value": 621,
-              "value_text": "621人(2025年10月1日現在) 出所:外務省「海外在留邦人数調査統計」",
-              "original_source": "外務省「海外在留邦人数調査統計」"
-            }
-          ]
-        }
-      ]
+      "series": []
     },
     "visitors_to_japan": {
       "label_ja": "訪日客数（この国から）",
