@@ -1,9 +1,15 @@
 {
-  "run_at": "2026-11-01T10:04:43+08:00",
+  "run_at": "2026-11-01T17:06:15+08:00",
   "sources": {
     "doe": {
-      "status": "error",
-      "detail": "RuntimeError: no features in the DOE response"
+      "status": "partial",
+      "readings": 2,
+      "notes": [
+        "cheras: no reading at Cheras, W.P. KUALA LUMPUR",
+        "minden: no reading at Minden, PULAU PINANG",
+        "sperai: no reading at Seberang Jaya, PULAU PINANG",
+        "larkin: no reading at Larkin, JOHOR"
+      ]
     }
   },
   "time_samples": {}
