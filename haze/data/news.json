@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-02T04:26:29+08:00",
- "checked_at": "2026-11-02T04:26:29+08:00",
+ "generated_at": "2026-11-02T08:31:38+08:00",
+ "checked_at": "2026-11-02T08:31:38+08:00",
  "source": {
   "name": "Campur.ai",
   "url": "https://campur.ai.studio/"
@@ -15,9 +15,9 @@
    "date": "2026-11-01T20:50+08:00",
    "source": "The Star",
    "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPZHBtenUtRldCRFd4TlVkUm9NTnQxUlVIOV8yUDlGRHlORVpoa1FoSDNzZ1R0RHNtRU84TmlGOFNLbXNwTld4VFFXWWVzbmR6clB3Z0FtWXhncURFSC1fTmU1Wk9mdUdUVS1IMFlHelppS3V5ZUV1WWJ3RFNiWi1vNldqQWllZU1ZUE1vSzZxSjJ3NWwzcTR3MFc1Wmo5WE82U1UxVU45TnhwM0JzVE5jd1NfM3hMWFhGZ210QVdsRk5UWnMxVENvTjRNZVJCVlNXMmc?oc=5",
-   "title_ja": "インドネシアの森林火災ホットスポットが96件に減少、泥炭火災の懸念は継続",
+   "title_ja": "インドネシアの森林火災ホットスポットは96に減少、しかし泥炭火災の危険は依然として残る",
    "title": "Indonesia's forest fire hotspots fall to 96, but peat fire risks persist",
-   "summary_ja": "インドネシアの森林火災は減少傾向にあるものの、泥炭地での火災リスクは依然として高く、警戒が続いています。",
+   "summary_ja": "インドネシアの森林火災ホットスポットは96に減少、しかし泥炭火災の危険は依然として残る",
    "lang": "en",
    "tags": [
     "fire"
@@ -277,9 +277,9 @@
    "date": "2026-10-28T20:05+08:00",
    "source": "Astro AWANI",
    "link": "https://international.astroawani.com/global-news/indonesian-students-protest-over-forest-fires-prabowo-policies",
-   "title_ja": "インドネシアで森林火災とプラボウォ政権の政策に抗議する学生デモが発生",
+   "title_ja": "インドネシアの学生が森林火災とプラボウォの政策をめぐり抗議",
    "title": "Indonesian students protest over forest fires, Prabowo policies",
-   "summary_ja": "森林火災の悪化とヘイズ（煙害）に対し、学生らがプラボウォ政権に国家非常事態宣言を求める抗議活動を行っています。",
+   "summary_ja": "プラボウォ大統領に対して国家的災害を宣言するよう圧力が高まる中、インドネシア国民は森林火災と煙霧の悪化に抗議している。",
    "lang": "ms",
    "tags": [
     "fire"
@@ -637,9 +637,9 @@
    "date": "2026-10-27T09:29+08:00",
    "source": "Free Malaysia Today",
    "link": "https://www.freemalaysiatoday.com/category/nation/2026/10/27/unhealthy-air-quality-in-just-1-area-as-haze-situation-improves",
-   "title_ja": "マレーシアのヘイズ状況が改善、不健康な空気質はサラワク州サマラジュのみに",
+   "title_ja": "マレーシアのヘイズ状況が改善、不健康な空気質はサラワク州サマラジュの1地域のみ",
    "title": "Unhealthy air quality in just 1 area as haze situation improves",
-   "summary_ja": "マレーシア国内のヘイズ状況は改善傾向にあり、大気汚染指数（API）で「不健康」な数値が観測されたのはサラワク州サマラジュの1地点のみとなりました。",
+   "summary_ja": "マレーシア国内の空気質指数（API）は改善傾向にあり、現在「不健康」レベルなのはサラワク州サマラジュの1地点のみとなっています。",
    "lang": "en",
    "tags": [
     "health",
@@ -651,9 +651,9 @@
    "date": "2026-10-27T07:30+08:00",
    "source": "The Star",
    "link": "https://www.thestar.com.my/aseanplus/aseanplus-news/2026/10/27/indonesian-singapore-foreign-ministers-meet-amid-spat-over-haze-gas",
-   "title_ja": "インドネシアとシンガポール、ヘイズ問題解決に向けた合同タスクフォース設置へ",
+   "title_ja": "インドネシアとシンガポール、越境ヘイズ問題で共同タスクフォース設置へ",
    "title": "Indonesian, Singapore foreign ministers meet amid spat over haze, gas",
-   "summary_ja": "インドネシアとシンガポールの外相が会談し、森林火災によるヘイズ問題に関与する企業への責任追及を強化するタスクフォースの設置で合意しました。",
+   "summary_ja": "森林火災によるヘイズ被害を受け、両国は原因企業への責任追及を強化するため、共同で対策チームを立ち上げる方針を固めました。",
    "lang": "en",
    "tags": [
     "fire",
@@ -694,11 +694,14 @@
    "date": "2026-10-26T17:20+08:00",
    "source": "Astro AWANI",
    "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPQzNLVVF6ZXFOWThTRGVCa1FYZUl0YXZINGN4VUJRb090LVZDM3A5Q2h5dlI1UTk3eFRhMU05WXJnbFFVOHBVbjJtMnZtQ0JFbW1LZVZlbXZCNzZ1UnR0Slk0ZEVrdmUxQXp2LWozRDlNZEdfMFpSMVJMd1ZPVlBfOUJFdWprWVpDZ3l0em5wQmZISWowVkhXeVdpcWl0a29DZ1h2QUVEZmdoWUdlVHFUNldZQ0l4bTNGQnhISzNOQmhWZw?oc=5",
-   "title_ja": "サラワク州の霧は和らぎつつあり、午後5時現在、異常な状態が続いているのは3局だけだ",
+   "title_ja": "マレーシア・サラワク州のヘイズ状況が改善、不健康な観測地点は3カ所に減少",
    "title": "Jerebu di Sarawak makin reda, hanya tiga stesen kekal tidak sihat setakat 5 petang",
-   "summary_ja": "サラワク州の霧は和らぎつつあり、午後5時の時点で異常が残っているのは3局のみ Astro Awani",
+   "summary_ja": "サラワク州で続いていたヘイズ（煙害）が徐々に収束に向かっています。午後5時時点で大気質指数（IPU）が不健康なレベルにあるのは3地点のみとなりました。",
    "lang": "ms",
-   "tags": []
+   "tags": [
+    "health",
+    "air"
+   ]
   },
   {
    "id": "nst-4205f2db957aa3",
@@ -707,7 +710,7 @@
    "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNcnVYUFg3bWxpZHVEaWNGZjRYV0hwVG4wbnR0M2NJa3RWZGU3akQ3aUFPMEdzclVSMEd3eEVhakMxUjMxdWpRT3BJdGtNTkNLRHZYZ25Qc3daWmwzM0FUcERoLVkyb3dGOUJJQ05uNDJ6Z1dmeXlSSjdrSzY3V2dxNVpPdnJKR1h4dW51Y01CM1Y4d0HSAZgBQVVfeXFMTVlTTVZmOTQxbkNhX3cyc2NGZmhPRFJDTFlfSUlaRS00ZnJTZ19uLXVxSDJkdlZldzFVOVEwS1BwM3pEQ2tHdU5hNDRSTHM3R25nSEEwNUFNa3ROYXRZU0tqdURGVWY5NEgwMnktQ0dWMEY3cTQtY2pqbW1WVktsaVJUVDQ4NjM1Nk00XzM0SWZPS3NlX1lWbmI?oc=5",
    "title_ja": "北東モンスーンの到来によりマレーシアのヘイズ状況が緩和へ",
    "title": "Haze eases as Northeast Monsoon set to begin - NST Online",
-   "summary_ja": "北東モンスーンの季節が到来することで、長引いていたヘイズ（煙害）の状況が緩和に向かう見通しです。",
+   "summary_ja": "季節風である北東モンスーンの開始に伴い、国内を覆っていたヘイズの状況が緩和に向かう見通しです。",
    "lang": "en",
    "tags": [
     "air"
@@ -720,7 +723,7 @@
    "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOc1I0Q28wM2Z1d2JFTmptTHVjYTNOMVZueXdDU0UwRXBmcU9DWm9vZmh0WUdUeEZnVVVYc19rYkpRVjBpdlVMOVpBdlFsZHJZb09lQU9kdkowT1RuWWZ1WWF3LXI2bnJlQ0hPUEN1YkpHQnZhUk12eVpLQ0lkeGxweWRfWkZDd1hHc1RDZDNmVmpTYWNRa0Jtc0QyTzJmZHBOc1FPLUVTd3FLQ2VQYUg2YnBjY2ZkZGJlNVdmSzEwYld6SFlWOGc?oc=5",
    "title_ja": "インドネシアNGO、森林火災に関与したマレーシア関連企業21社を特定",
    "title": "Indonesian NGO identifies 21 Malaysian-linked firms in forest fires behind haze crisis",
-   "summary_ja": "インドネシアのNGOが、地域的なヘイズ危機を引き起こした森林火災に関与したとして、マレーシアに関連する21社を特定し公表しました。",
+   "summary_ja": "インドネシアのNGOが、地域的なヘイズ危機を引き起こした森林火災に関与したとして、マレーシア関連企業21社を名指しで公表しました。",
    "lang": "en",
    "tags": [
     "fire",
@@ -732,11 +735,14 @@
    "date": "2026-10-26T16:30+08:00",
    "source": "Astro AWANI",
    "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPb3FEanlfdjd3aVdWZHFDNmF4UC05SjVFY0pGT2t6TFBtbUhZTVN4TktJenF3bmhJVnNvZE5oR3BuU3FmNGRkbi0yMS10T0dVNFhQaVd0ZURIbUg4OE1SMm9lVEN0X3hOOVFMcF9sQkxTUFBrMUpJZ2s1ZjNvOHFYOFVOcGRLMlJqU2dLZnBZTmNrbkxqNk5MOENLZEZ2MTJDNlB4cGV5RjhlVWcyQkxFTnZER3FDWTFGSWtJ?oc=5",
-   "title_ja": "ヘイズ氏：サラワク州のIPUステーションは健全ではなく、午後4時時点で4か所に減少",
+   "title_ja": "サラワク州のヘイズ状況、不健康な大気質観測地点が4カ所に減少",
    "title": "Jerebu: Stesen IPU tidak sihat di Sarawak susut kepada empat setakat 4 petang",
-   "summary_ja": "ヘイズ：サラワク州の不健全な IPU ステーションは午後 4 時現在 4 か所に減少 Astro Awani",
+   "summary_ja": "サラワク州におけるヘイズの影響が緩和傾向にあります。午後4時時点で大気質指数が不健康なレベルを示す観測地点は4カ所まで減少しました。",
    "lang": "ms",
-   "tags": []
+   "tags": [
+    "health",
+    "air"
+   ]
   },
   {
    "id": "fmt-c856c773dec69c",
@@ -771,11 +777,14 @@
    "date": "2026-10-26T11:30+08:00",
    "source": "Astro AWANI",
    "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOUlZENkg3eFluWE9KV21MWW1VYmVyNGoyM3IyVFBqZDVTSTlqVmJvLWRLZ1ZyQjFHSjZlZWkwYXFOODZraENSY29yalBPQTZpVHZYYm1heHZUV2VDc2tDdDYyWGlNblllQmhpRHZ5d0JsX3Mtcjc5c3E1eFlxTWlPZ0xUUzNKNGN1Z2ZQaGo3eDZJVnR6X0JtUnVkUXJhX1hGOGJBdTNydWFhWVlJVjdNRlNMVkhYS0tlOXgwd1BoUGN4SG1QRlA5M0JkdHdOQmc?oc=5",
-   "title_ja": "ヘイズ：サラワク州の6局は午前11時現在、セリアン最高水準の不健全なレベルのまま。",
+   "title_ja": "サラワク州でヘイズ続く、セリアン地区で大気質が最も悪化",
    "title": "Jerebu: Enam stesen di Sarawak kekal pada tahap tidak sihat setakat 11 pagi, Serian tertinggi",
-   "summary_ja": "ヘイズ：サラワク州の6つの放送局は午前11時の時点で不健全なレベルに留まり、アストロ・アワニの連続放送最高記録となった。",
+   "summary_ja": "サラワク州の6地点で大気質が不健康なレベルを維持しています。特にセリアン（Serian）地区の数値が最も高く、引き続き警戒が必要です。",
    "lang": "ms",
-   "tags": []
+   "tags": [
+    "health",
+    "air"
+   ]
   },
   {
    "id": "nst-efa953bcbb83a4",
@@ -784,7 +793,7 @@
    "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNR1RoSW1oTUhhSTR2MXZVZ2I3V0VZTEpkYWttWGJNdkMwcDN6VTlRSDNsci12bGsxbnE2clpwWW41TVI3X05fUzJRZTRPYkVITXczMWUzc3ZaRG85X0NZVzVyaVVLbjlCalhCajNOQkkxekZQMEhMTVNTOHgzZHJrR3B2R2FoS2xKazNhcWVhTHFWNmt1d2RqZnNvdEVHck9mNUVtSjlvV0lBb1pXWFZZM0lsVUpBaVdmczJRR2FB0gHDAUFVX3lxTE5DdFhCVUxKTUtHSTlaRzlPeW5ObkhuOUg3Rlo3WjdHcVhEV2tMZFprUnY3Mm5lbnRrUlNDdGNnYi1BT19KRk4xS3puOFdEc3JseURHZGpaT21xUXotLXctMFRxWEJJeGxMcmliWXY4VlJSZ1VvY0taaWxBMEJmeEJsWVhPV0FwNlBxRFJIVzU4YmRLTU9NMC1NQWZiUk4xd1kxRXZjQmdGczFkd3EyUFJPSnVQSXNCYnVTTTVHYXJ5YXRxQQ?oc=5",
    "title_ja": "シンガポール当局、ヘイズ汚染に関与したTSHリソーシズ傘下2社に通知",
    "title": "Singapore issues haze pollution notices to two TSH Resources units - NST Online",
-   "summary_ja": "シンガポール当局は、ヘイズ汚染を引き起こした疑いがあるとして、マレーシアのパーム油大手TSHリソーシズの傘下2社に対し通知を発出しました。",
+   "summary_ja": "シンガポール当局は、ヘイズ汚染を引き起こしたとして、マレーシアのパーム油大手TSHリソーシズの傘下2社に対し法的通知を行いました。",
    "lang": "en",
    "tags": [
     "policy",
@@ -836,9 +845,9 @@
    "date": "2026-10-26T07:02+08:00",
    "source": "Malay Mail",
    "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPa3h5c0h2TVV1azB2Y1JXS2lXcjJRZUNNcTFiUFN4elFJV192d2RCMjZld19Vcl9mMC1uNXpaWFFMUkdFRE8yWkV0a1JzQ2ZIcDdZZnQ3eEU2QnF6bkVfRThvcmswYzJvcE9WbTY5djdIUllBX3hfd2ZLRVBnX290Qm1YRFhpTTlfSlZjeFhlUXdYQS1ZdFhHNDhsNWVoSE9xdzRmVzBjaTUtb0lqRzd4cGgtaWVBaVdoSkx0UVhMUmFXZVVFS3ZQTkszemx5ZzYtOXFySV9YTWxzMFB4YWdB0gHkAUFVX3lxTE84MUdhbmNTR3c2THZMTWVuQTV4UjhaOU1wdGJFUmd6OEM2WFc1YjN6OFlYVC1OYmFkWGpIOW11UkxiRVR0MXBCMVFldXZGeHpzZkt3cEVxZlo2cFVYaG0ycDQyNTN0bXJmMk93TEM2TzYwd1pRSnZlNFpCVDN6Y0QzVEhVamFjYzctcUVacTlWdG93OC12ZXRTeGx2NU1fOTRDaEZKamNnamdTSnhqeVVXb1c1Yi16aV9zNUV5VTVzWHEwRlRxTk1DTjBLLWsybEV4MzQ4LUg4M0EzMVcteVl5VnpDSw?oc=5",
-   "title_ja": "ヘイズ対策の誤解：エアコンや水ボウルでは室内空気は浄化されない",
+   "title_ja": "室内でも注意が必要なヘイズ対策、エアコンや水ボウルでは不十分",
    "title": "Your aircon isn’t cleaning your air, and bowls of water won’t either: What haze does indoors",
-   "summary_ja": "ヘイズ発生時の室内対策として、エアコンや水ボウルを置くことは空気浄化に効果がないと専門家が指摘。適切な空気清浄機の使用を推奨しています。",
+   "summary_ja": "ヘイズ発生時の室内環境について、一般的なエアコンや水ボウルでは空気清浄効果が期待できないため、適切な対策が必要と専門家が指摘しています。",
    "lang": "en",
    "tags": [
     "air"
@@ -851,7 +860,7 @@
    "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPV1BSOG5sWXp3UGhxRDQwUDNNNU14X0k5NmpDTzJwcGJOOEtTbkZRVjZXa2M2M0ptdTd6djlpbGlTMldFaHVvTktqZklHVVN2NG5VOVJnR2lORENOX0JtSG5QNGtyZGY1aHVTZXRHaGM1WFY5dlBqNEhJSGp5VjBzQ09zRnJ2eG5NMFl3d3gybmxlWWhzQkNESXVJcU1DV3BNQ0RRdXgwLXZEUQ?oc=5",
    "title_ja": "東南アジアの恒例ヘイズ問題、インドネシアに責任ある対応を求める声",
    "title": "Southeast Asia’s annual haze: Indonesia must accept responsibility - Borneo Post",
-   "summary_ja": "毎年繰り返される東南アジアのヘイズ問題に対し、発生源とされるインドネシア政府に対し、より強い責任と抜本的な対策を求める論調が強まっています。",
+   "summary_ja": "毎年繰り返されるヘイズ被害に対し、発生源とされるインドネシア政府に対し、より強い責任と抜本的な解決策を求める論調が強まっています。",
    "lang": "en",
    "tags": [
     "policy"
@@ -893,6 +902,19 @@
    "tags": [
     "health",
     "air"
+   ]
+  },
+  {
+   "id": "astroawani-d517e623190ee8",
+   "date": "2026-10-25T17:30+08:00",
+   "source": "Astro AWANI",
+   "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOSmhIWG8tNjY5VW1yRk5LUzVKdDVBNDhLenphclNaRWdSNGZVZHJxRzFGYzd2ems3UnFZLVIwdFZFMXJBcm9tLUJybmRvNFpLZ3BPQVlqOE9PNWRZLTBjQ2VCRHhxMDhhNzQyQzRkLVYzWWJ0U0ZVNDRPYjNNTUo1Skl3clFjWTdVaDVLY3VIenExZks1WUdIaXhiWjA5ZjNVamgwN0xmREk?oc=5",
+   "title_ja": "ヘイズ悪化によりサラワク州テベドゥ地区の学校27校が臨時休校へ",
+   "title": "Jerebu: 27 sekolah di Tebedu ditutup sementara esok - JPN Sarawak",
+   "summary_ja": "ヘイズの影響を受け、サラワク州教育局はテベドゥ（Tebedu）地区の学校27校を翌日臨時休校とすることを決定しました。",
+   "lang": "ms",
+   "tags": [
+    "health"
    ]
   },
   {
@@ -1152,7 +1174,7 @@
    "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOS1phRkgyZzBXWDd1ZThiZWx0eEZGTGpGMGNQWmxiQWRGQnpHdjZkeGtjcklNQWVrNGhOLXFQcXlwRGI3bWU0eXJ6Y1pZN2tjTFhGTHM5S1VHYmtzT0JBM1JUVm93bVZJOTdJRHJHSVVST1lpY0NxVVBUWndJYi16WUVKLTU2QU9zeU8xUGdaellIM2MxNFVHdjZnTWJQbzFjRXpDadIBqgFBVV95cUxQMkZET19VZ3F6ZmZiUFdrdVhkVUdrcXBwdVZEMFZQVmhyZEJmOUIycWhBUHdkQ3FMUk9PRm9JWHZWTTZQMzhVRUdVLWdlbnB5djh2V2FqajJnbGtJcmN0cWI5WDRnLWllX2poMkduaXYtT3lRamFPaWQxMTZjN3ZsRlZCRU81LXdGR3NhNVBRVkZJdS1mVDg0eGdlbm5iRFQtMENmZF9oT1J6QQ?oc=5",
    "title_ja": "セランゴール州ジョハン・セティアで野焼きが継続、ヘイズ発生の主因に",
    "title": "Open burning fuel persistent Johan Setia haze [WATCH] - NST Online",
-   "summary_ja": "セランゴール州ジョハン・セティアでの野焼きが止まらず、大気汚染（ヘイズ）の深刻な原因となっています。周辺住民は健康被害に注意が必要です。",
+   "summary_ja": "セランゴール州ジョハン・セティアでの野焼きが止まらず、大気汚染（ヘイズ）が深刻化しています。周辺住民は健康被害への警戒が必要です。",
    "lang": "en",
    "tags": [
     "fire",
@@ -2085,9 +2107,9 @@
    "date": "2026-10-21T21:51+08:00",
    "source": "Free Malaysia Today",
    "link": "https://www.freemalaysiatoday.com/category/nation/2026/10/21/haze-not-about-malaysia-versus-indonesia-says-syed-saddiq",
-   "title_ja": "ヘイズ問題は「マレーシア対インドネシア」ではない、サイ・サディク議員が強調",
+   "title_ja": "ヘイズは「マレーシア対インドネシア」のことではない、とサイード・サディクは言う",
    "title": "Haze not about ‘Malaysia versus Indonesia’, says Syed Saddiq",
-   "summary_ja": "サイ・サディク議員は、火災の原因企業は国籍を問わず厳正に処罰されるべきであり、二国間対立にすべきではないと主張しました。",
+   "summary_ja": "ムアール議員は、インドネシアの元貿易大臣からの批判を受けて、森林火災に責任のある企業は国籍に関係なく行動に移すべきだと述べた。",
    "lang": "en",
    "tags": [
     "fire",
@@ -5344,19 +5366,6 @@
    "tags": [
     "health",
     "air"
-   ]
-  },
-  {
-   "id": "borneopost-1e4ad61b3a1fc7",
-   "date": "2026-10-10T15:46+08:00",
-   "source": "The Borneo Post",
-   "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOT19xdUJQa1dMTjV1NHpQSjRNNTVOdmx0czVzTlRhZS1wWkFoaUowemJHWDdaTzl3T2NQUC05aGxPakFGQzlyTWpFb2dIWHdtRHpVRFJaWlZHWXNjeWxBeHNqOTh5M3RzWi1RUFJtd1pNT2RaMnZMa3dfei11QjRmbW1qWi1PUEdwWDFfZXU1WkVSQWJWSmlIcGI0WWtBLTdCVEI4b0JtSjQ0UWpLaXc3Zlc5dlA?oc=5",
-   "title_ja": "ヘイズ悪化で呼吸器疾患10％増、結膜炎は26％増",
-   "title": "Respiratory infections rise 10.43 pct, conjunctivitis 26.47 pct amid haze - Borneo Post",
-   "summary_ja": "ヘイズの影響により、呼吸器系疾患や結膜炎の患者数が急増しており、当局は健康管理への注意を呼びかけています。",
-   "lang": "en",
-   "tags": [
-    "health"
    ]
   }
  ]
