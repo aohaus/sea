@@ -104,7 +104,9 @@
   const psiIndex = (pm) => interp(PSI_PM25, pm, 1);
 
   // ---------- time slots (UTC+8, every 2 hours) ----------
-  const N = 168, STEP = 2 * 3600e3, TZ = 8 * 3600e3;
+  // N: 30 days of 2-hour slots (the 30-day chart); W: the last 14 days, which the summary, the diurnal
+  // profile, the tiles' maximum and the comparison with "usual" use.
+  const N = 360, W = 168, STEP = 2 * 3600e3, TZ = 8 * 3600e3;
   const nowMs = Date.now();
   const lastSlot = Math.floor((nowMs + TZ) / STEP) * STEP - TZ;            // latest even hour (UTC+8) not in the future
   const SLOTS = Array.from({ length: N }, (_, i) => lastSlot - (N - 1 - i) * STEP);
@@ -143,7 +145,7 @@
     const truth = [];
     for (let i = 0; i < M; i++) {
       const ms = lastSlot - (M - 1 - i) * STEP;
-      const day = (i - EXTRA) / 12;
+      const day = (i - EXTRA - (N - W)) / 12; // days into the last 14 days (episodes are placed there)
       ar = 0.82 * ar + 0.18 * gauss(rand);
       const smoke = st.haze.reduce((s, [c, w, amp]) => s + amp * Math.exp(-((day - c) ** 2) / (2 * w * w)), 0);
       truth.push(Math.max(3, (st.base * diurnal(slotHour(ms)) + smoke * (0.85 + 0.3 * diurnal(slotHour(ms)) - 0.3)) * (1 + 0.22 * ar)));
@@ -203,7 +205,7 @@
     await Promise.all(STATIONS.map(async (st) => {
       try {
         const url = 'https://air-quality-api.open-meteo.com/v1/air-quality?latitude=' + st.lat + '&longitude=' + st.lon
-          + '&hourly=pm2_5,pm10,us_aqi&past_days=15&forecast_days=6&timezone=Asia%2FSingapore';
+          + '&hourly=pm2_5,pm10,us_aqi&past_days=31&forecast_days=6&timezone=Asia%2FSingapore';
         const d = await fetchJson(url);
         const h = d.hourly; const vals = { om_pm25: Array(N).fill(null), om_pm10: Array(N).fill(null), om_aqi: Array(N).fill(null) };
         h.time.forEach((t, j) => {
@@ -213,7 +215,7 @@
           if (i == null) return;
           vals.om_pm25[i] = h.pm2_5[j]; vals.om_pm10[i] = h.pm10[j]; vals.om_aqi[i] = h.us_aqi[j];
         });
-        if (vals.om_pm25.filter((v) => v != null).length < N / 2) throw new Error('too few values');
+        if (vals.om_pm25.slice(-W).filter((v) => v != null).length < W / 2) throw new Error('too few values');
         for (const k of Object.keys(vals)) setLive(st.id, k, vals[k], 'live', 'Open-Meteo（CAMS モデル、格子 ' + d.latitude.toFixed(2) + ', ' + d.longitude.toFixed(2) + '）');
         ok++;
       } catch (e) { console.warn('Open-Meteo', st.id, e); }
@@ -226,7 +228,8 @@
 
   async function loadNea() {
     STATUS.B = { state: 'loading', text: 'NEA 取得中…' }; renderStatus();
-    const days = [...new Set(SLOTS.map((ms) => slotKey(ms).slice(0, 10)))];
+    // The last 15 days only (one request per day and endpoint); older slots stay simulated.
+    const days = [...new Set(SLOTS.slice(-W - 12).map((ms) => slotKey(ms).slice(0, 10)))];
     const pm = Array(N).fill(null), psi = Array(N).fill(null);
     let okDays = 0;
     // A few requests at a time (one per day and endpoint).
@@ -247,10 +250,10 @@
       }
     };
     await Promise.all([worker(), worker(), worker()]);
-    const have = (a) => a.filter((v) => v != null).length;
-    if (have(pm) >= N / 2) setLive('sgcentral', 'nea_pm25', pm, 'live', 'NEA（data.gov.sg）中部地域の1時間値');
-    if (have(psi) >= N / 2) setLive('sgcentral', 'nea_psi', psi, 'live', 'NEA（data.gov.sg）中部地域の24時間 PSI');
-    const live = have(pm) >= N / 2 && have(psi) >= N / 2;
+    const have = (a) => a.slice(-W).filter((v) => v != null).length;
+    if (have(pm) >= W / 2) setLive('sgcentral', 'nea_pm25', pm, 'live', 'NEA（data.gov.sg）中部地域の1時間値');
+    if (have(psi) >= W / 2) setLive('sgcentral', 'nea_psi', psi, 'live', 'NEA（data.gov.sg）中部地域の24時間 PSI');
+    const live = have(pm) >= W / 2 && have(psi) >= W / 2;
     STATUS.B = live ? { state: 'mixed', text: 'NEA は実データ、DOE（マレーシア）は模擬値' }
       : { state: 'error', text: 'NEA を取得できなかったため模擬値。DOE も模擬値' };
     render();
@@ -292,14 +295,25 @@
   async function loadCollector() {
     try {
       const d = await fetchJson('data/series.json', 10000);
+      // series.json has the last 14 days; the monthly archives (data/archive/YYYY-MM.json) the older slots.
+      const got = {}; // got[station][series] = Map(slot index -> value)
+      const put = (st, key, i, v) => { if (i != null && v != null && isFinite(v)) ((got[st] ||= {})[key] ||= new Map()).set(i, v); };
+      const months = [...new Set(SLOTS.map((ms) => slotKey(ms).slice(0, 7)))];
+      await Promise.all(months.map(async (m) => {
+        try {
+          const a = await fetchJson('data/archive/' + m + '.json', 10000);
+          for (const [k, byStation] of Object.entries(a.slots || {})) for (const [st, byKey] of Object.entries(byStation)) for (const [key, v] of Object.entries(byKey)) put(st, key, slotIndex.get(k), v);
+        } catch (e) { /* no archive for that month */ }
+      }));
       const idx = (d.slots || []).map((t) => slotIndex.get(slotKey(Date.parse(t))));
+      for (const [st, byKey] of Object.entries(d.stations || {})) for (const [key, arr] of Object.entries(byKey)) arr.forEach((v, j) => put(st, key, idx[j], v));
       let n = 0;
-      // Collected readings replace the simulated values slot by slot; until 14 days have been collected
+      // Collected readings replace the simulated values slot by slot; until 30 days have been collected
       // the older slots stay simulated (mode 'mixed').
-      for (const [st, byKey] of Object.entries(d.stations || {})) for (const [key, arr] of Object.entries(byKey)) {
+      for (const [st, byKey] of Object.entries(got)) for (const [key, map] of Object.entries(byKey)) {
         if (!DATA[st]?.[key]) continue;
-        const values = DATA[st][key].values.slice(), real = new Set();
-        arr.forEach((v, j) => { if (idx[j] != null && v != null && isFinite(v)) { values[idx[j]] = v; real.add(idx[j]); } });
+        const values = DATA[st][key].values.slice(), real = new Set(map.keys());
+        for (const [i, v] of map) values[i] = v;
         if (!real.size) continue;
         const source = d.meta?.[st]?.[key] || '';
         setLive(st, key, values, real.size === N ? 'live' : 'mixed',
@@ -467,7 +481,7 @@
     panel.style.background = cat ? css('--band-' + cat.tone) : css('--panel');
     panel.style.color = cat ? css('--on-band-' + cat.tone) : css('--fg');
     // Compare with the 14-day average of the same series, from real readings when there are some.
-    const pool = data.mode === 'sim' ? vals.filter((x) => x != null) : vals.filter((x, j) => x != null && isReal(data, j));
+    const pool = vals.filter((x, j) => j >= N - W && x != null && (data.mode === 'sim' || isReal(data, j)));
     const avg = pool.length ? pool.reduce((a, b) => a + b, 0) / pool.length : null;
     let vs = '';
     if (v != null && avg != null && pool.length >= 6) {
@@ -544,7 +558,7 @@
         sub.append(c, '・');
       }
       sub.append(i >= 0 ? shortLabel(SLOTS[i]) : 'データなし');
-      const max = Math.max(...vals.filter((x) => x != null));
+      const max = Math.max(...vals.slice(-W).filter((x) => x != null));
       const foot = document.createElement('div'); foot.className = 'text-[.72rem] text-muted';
       foot.textContent = (state.mode === 'places' ? l.def.ja + '・' : SOURCES[l.def.src].ja + '・') + '14日間の最大 ' + fmt(isFinite(max) ? max : null, l.def.unit);
       div.append(head, val, sub, foot);
@@ -591,7 +605,7 @@
     const step = kind === 'index' ? 50 : 25;
     return Math.max(kind === 'index' ? 150 : 75, Math.ceil((m * 1.08) / step) * step);
   };
-  // The trend charts: the whole 14 days, and the last 7 days (from = the first slot shown).
+  // The trend charts: 30, 14 and 7 days (from = the first slot shown).
   const charts = {};
   function renderTrend(ls, bandsKey, canvasId = 'trend', from = 0) {
     const at = (i) => i + from; // chart index -> slot index
@@ -780,7 +794,7 @@
     const datasets = ls.map((l) => ({
       label: legendLabel(l), borderColor: l.color, backgroundColor: l.color, tension: 0.3, pointRadius: 2.5,
       borderDash: l.def.kind === 'conc' ? [6, 3] : [], yAxisID: l.def.kind === 'index' ? 'yIndex' : 'yConc',
-      data: hours.map((h) => { const v = l.data.values.filter((x, i) => x != null && slotHour(SLOTS[i]) === h); return v.length ? v.reduce((a, b) => a + b, 0) / v.length : null; }),
+      data: hours.map((h) => { const v = l.data.values.filter((x, i) => i >= N - W && x != null && slotHour(SLOTS[i]) === h); return v.length ? v.reduce((a, b) => a + b, 0) / v.length : null; }),
       meta: l,
     }));
     const scales = { x: { ticks: { color: muted, maxRotation: 0, autoSkip: true, autoSkipPadding: 8 }, grid: { display: false } } };
@@ -835,7 +849,7 @@
 
   function renderSummary(ls) {
     const rows = ls.map((l) => {
-      const vals = l.data.values.filter((v) => v != null);
+      const vals = l.data.values.slice(-W).filter((v) => v != null);
       const b = BANDS[l.def.bands];
       const share = b && vals.length ? vals.filter((v) => v > b.harmful).length / vals.length : null;
       const tr = document.createElement('tr'); tr.className = 'border-b border-line';
@@ -890,7 +904,7 @@
       const ds = STATIONS.flatMap((st) => keys.map((k) => DATA[st.id][k])).filter((x) => x?.collected);
       if (!ds.length) return null;
       const share = Math.min(...ds.map((x) => (x.mode === 'live' ? N : x.real.size)));
-      return { state: share >= N ? 'live' : 'mixed', text: '2時間ごとの収集データ（14日のうち' + share + '枠以上）。収集前の枠は模擬値' };
+      return { state: share >= N ? 'live' : 'mixed', text: '2時間ごとの収集データ（30日のうち' + share + '枠以上）。収集前の枠は模擬値' };
     };
     const doe = collected(['doe_api']);
     const rows = [
@@ -936,12 +950,17 @@
       const s = document.createElement('span'); const sw = document.createElement('span'); sw.className = 'swatch'; sw.style.background = css('--band-' + lv.tone);
       s.append(sw, lv.lo + '–' + (lv.hi === 500 ? '' : lv.hi) + ' ' + lv.ja + '（' + lv.en + '）'); return s;
     }) : []));
+    $('band-legend30').replaceChildren(...(b ? b.levels.map((lv) => {
+      const s = document.createElement('span'); const sw = document.createElement('span'); sw.className = 'swatch'; sw.style.background = css('--band-' + lv.tone);
+      s.append(sw, lv.lo + '–' + (lv.hi === 500 ? '' : lv.hi) + ' ' + lv.ja + '（' + lv.en + '）'); return s;
+    }) : []));
     const st = stationById.get(state.station);
     $('chart-note').textContent = state.mode === 'indices'
       ? st.ja + '（' + st.en + '）の指標を重ねています。実線は指数（左の軸）、破線は濃度（' + (ls.some((l) => l.def.kind === 'index') ? '右' : '左') + 'の軸、µg/m³）。模擬値の系列は凡例に「模擬」と付きます。'
       : (METRICS.find((m) => m.key === state.metric)?.ja || '') + 'を、選んだ地点どうしで比べています。';
     renderTiles(ls);
-    renderTrend(ls, bandsKey);
+    renderTrend(ls, bandsKey, 'trend30', 0);
+    renderTrend(ls, bandsKey, 'trend', N - W);
     renderTrend(ls, bandsKey, 'trend7', N - 84);
     renderOutlook();
     renderDiurnal(ls);

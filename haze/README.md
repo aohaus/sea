@@ -1,6 +1,6 @@
 # haze/ — ヘイズモニター / Haze Monitor
 
-This dashboard compares air quality and haze in Malaysia (Kuala Lumpur, Penang, Johor) and Singapore across several data sources. Data points are every 2 hours (12 a day), 14 days back (168 points per series), in UTC+8. It is separate from Sea basic but uses the same colour tokens (Campur.ai palette).
+This dashboard compares air quality and haze in Malaysia (Kuala Lumpur, Penang, Johor) and Singapore across several data sources. Data points are every 2 hours (12 a day), 30 days back (360 points per series), in UTC+8. The charts show the last 30, 14 and 7 days; the summary, the diurnal profile, the tiles' maximum and the comparison with the usual level use the last 14 days. It is separate from Sea basic but uses the same colour tokens (Campur.ai palette).
 
 ## Pages
 
@@ -48,7 +48,7 @@ Any slot without a value is filled with **simulated values**. These are seeded r
 - **News** (`scripts/collect_haze_news.py`): reads Campur.ai's archive search (`https://campur.ai.studio/api/archive/articles?q=…`) for haze words in English, Malay and Japanese, keeps articles that are about haze, fires or air quality in the region, tags them (fire, health, policy, business, air) and writes `data/news.json` (the last 90 days, up to 400 articles). The site sends no CORS headers, so the page cannot read it directly. The script fetches only when `news.json` is about 3 hours old, so most hourly runs skip it; a failed fetch keeps the previous articles and is retried the next hour.
 - **Output files**:
   - `data/archive/YYYY-MM.json`: the permanent monthly record, keyed by slot → station → series.
-  - `data/series.json`: the last 14 days (168 slots), which the page reads in preference to other sources.
+  - `data/series.json`: the last 14 days (168 slots), which the page reads in preference to other sources. For the older slots of the 30-day chart, the page also reads the monthly archives.
   - `data/collect_report.json`: the result of the latest run.
 - **Commits**: each run commits its readings (`data(haze): readings …`), so up to 24 commits a day.
 - **History**: DOE does not provide past values through its public map service, so real data starts from the first collection. A full 14 days of real data takes 14 days to build up.
