@@ -251,8 +251,15 @@
     };
     await Promise.all([worker(), worker(), worker()]);
     const have = (a) => a.slice(-W).filter((v) => v != null).length;
-    if (have(pm) >= W / 2) setLive('sgcentral', 'nea_pm25', pm, 'live', 'NEA（data.gov.sg）中部地域の1時間値');
-    if (have(psi) >= W / 2) setLive('sgcentral', 'nea_psi', psi, 'live', 'NEA（data.gov.sg）中部地域の24時間 PSI');
+    // Only the last 15 days are fetched: the readings go over the simulated series, and the older slots
+    // stay simulated (mode 'mixed', with the real slots marked).
+    const overlay = (key, arr, note) => {
+      const cur = DATA.sgcentral[key], values = cur.values.slice(), real = new Set();
+      arr.forEach((v, i) => { if (v != null) { values[i] = v; real.add(i); } });
+      setLive('sgcentral', key, values, real.size === N ? 'live' : 'mixed', note + (real.size < N ? '。それより前は模擬値' : ''), false, real);
+    };
+    if (have(pm) >= W / 2) overlay('nea_pm25', pm, 'NEA（data.gov.sg）中部地域の1時間値');
+    if (have(psi) >= W / 2) overlay('nea_psi', psi, 'NEA（data.gov.sg）中部地域の24時間 PSI');
     const live = have(pm) >= W / 2 && have(psi) >= W / 2;
     STATUS.B = live ? { state: 'mixed', text: 'NEA は実データ、DOE（マレーシア）は模擬値' }
       : { state: 'error', text: 'NEA を取得できなかったため模擬値。DOE も模擬値' };
