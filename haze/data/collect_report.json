@@ -1,10 +1,13 @@
 {
-  "run_at": "2026-11-07T08:50:37+08:00",
+  "run_at": "2026-11-07T14:59:39+08:00",
   "sources": {
     "doe": {
-      "status": "error",
-      "detail": "RuntimeError: JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+      "status": "ok",
+      "readings": 6,
+      "notes": []
     }
   },
-  "time_samples": {}
+  "time_samples": {
+    "doe": "DOE Cheras, W.P. KUALA LUMPUR (CA16W, PM2.5) DATETIME=1794060000000 -> 2026-11-07T14:00:00+08:00 (slot 2026-11-07T14)"
+  }
 }
