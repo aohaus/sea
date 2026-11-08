@@ -1,14 +1,13 @@
 {
-  "run_at": "2026-11-08T18:08:30+08:00",
+  "run_at": "2026-11-09T01:00:08+08:00",
   "sources": {
     "doe": {
-      "status": "partial",
-      "readings": 4,
-      "notes": [
-        "cheras: no reading at Cheras, W.P. KUALA LUMPUR",
-        "minden: no reading at Minden, PULAU PINANG"
-      ]
+      "status": "ok",
+      "readings": 6,
+      "notes": []
     }
   },
-  "time_samples": {}
+  "time_samples": {
+    "doe": "DOE Cheras, W.P. KUALA LUMPUR (CA16W, PM2.5) DATETIME=1794182400000 -> 2026-11-09T00:00:00+08:00 (slot 2026-11-09T00)"
+  }
 }
