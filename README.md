@@ -105,3 +105,19 @@ echo $?                          # 0 = 全件成功, 1 = 失敗あり
 
 > 注意: 一部のニュースサイト（Sin Chew Daily、The Borneo Post など）は GitHub Actions ランナーのデータセンター IP を WAF でブロックする場合があります。
 > 特定ソースのみ継続的に `403` となる場合は、URL の変更やセルフホストランナーの利用を検討してください。
+
+## 日系ビジネス・シグナル（`signals/`）
+
+マレーシアの報道から、日本企業の名前が出た記事と、日本に関わるビジネス記事（投資・AI・サプライチェーン・
+人件費・税制・M&A など）を集めて、企業・業種・話題・期間で絞り込めるページです。
+
+- ページ: `signals/index.html`（データは `signals/data/signals.json`）
+- 収集: `scripts/collect_signals.py` が Campur.ai の記事アーカイブを検索し、`config/signals_watchlist.json` の
+  企業名・話題と照合します。`.github/workflows/collect-signals.yml` が1日4回実行します。
+- 企業の追加・変更は `config/signals_watchlist.json` を編集してください（`aliases` は英語の単語単位で照合、
+  `ja` は日本語の部分一致）。一般語と紛らわしい名前（Sharp、Canon など）は `case_sensitive: true` にします。
+- ウォッチリストは公開情報の企業名だけを置きます。営業先・目標・面談メモなどの非公開情報はこのリポジトリに
+  置かないでください（リポジトリは公開です）。
+
+`.claude/skills/` には、このデータを使う Claude Code 用のスキル（`/desk-brief`、`/desk-outreach`、
+`/desk-weekly`）があります。

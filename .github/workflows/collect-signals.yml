@@ -1,0 +1,49 @@
+name: Collect Japan business signals
+
+# Four times a day. The script itself skips a run when signals/data/signals.json is under about
+# 6 hours old, so a manual run or a push shortly after a scheduled one does nothing.
+on:
+  schedule:
+    - cron: "23 */6 * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/collect_signals.py"
+      - "config/signals_watchlist.json"
+      - ".github/workflows/collect-signals.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: collect-signals-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Collect signals
+        run: python scripts/collect_signals.py
+      - name: Commit signals
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add signals/data/
+          if git diff --cached --quiet; then
+            echo "No new signals."
+          else
+            git commit -m "data(signals): $(TZ=Asia/Kuala_Lumpur date +%Y-%m-%dT%H:%M)"
+            for attempt in 1 2 3; do
+              if git push; then break; fi
+              if [ "$attempt" = 3 ]; then exit 1; fi
+              git pull --rebase origin "${GITHUB_REF_NAME}" || { git rebase --abort; echo "rebase conflict; the next run will add the signals"; exit 1; }
+            done
+          fi

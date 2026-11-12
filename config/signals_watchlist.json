@@ -1,0 +1,782 @@
+{
+ "_comment": "Watchlist for the Japan business signals page (signals/). Names of Japanese companies that appear in Malaysian news; being listed says nothing about a company's presence or plans. 'aliases' are matched as whole words in English text (case-sensitive when case_sensitive is true); 'ja' is matched as a substring in Japanese text. 'queries' are sent to the Campur.ai archive search in addition to each company's first alias.",
+ "sectors": {
+  "manufacturing": "製造",
+  "semiconductor": "半導体・電子部品",
+  "finance": "金融",
+  "trading": "商社",
+  "tmt": "通信・IT",
+  "retail": "小売・不動産",
+  "energy_infra": "エネルギー・インフラ",
+  "logistics": "物流・航空"
+ },
+ "queries": [
+  "Japan",
+  "Japanese",
+  "Jepun",
+  "日本",
+  "日系",
+  "JETRO",
+  "JACTIM",
+  "JICA",
+  "JBIC"
+ ],
+ "companies": [
+  {
+   "name": "Panasonic",
+   "ja": "パナソニック",
+   "sector": "manufacturing",
+   "aliases": [
+    "Panasonic"
+   ]
+  },
+  {
+   "name": "Sony",
+   "ja": "ソニー",
+   "sector": "manufacturing",
+   "aliases": [
+    "Sony"
+   ],
+   "case_sensitive": true
+  },
+  {
+   "name": "Toyota",
+   "ja": "トヨタ",
+   "sector": "manufacturing",
+   "aliases": [
+    "Toyota",
+    "UMW Toyota"
+   ]
+  },
+  {
+   "name": "Honda",
+   "ja": "ホンダ",
+   "sector": "manufacturing",
+   "aliases": [
+    "Honda"
+   ]
+  },
+  {
+   "name": "Daihatsu / Perodua",
+   "ja": "ダイハツ",
+   "sector": "manufacturing",
+   "aliases": [
+    "Daihatsu",
+    "Perodua"
+   ]
+  },
+  {
+   "name": "Nissan",
+   "ja": "日産",
+   "sector": "manufacturing",
+   "aliases": [
+    "Nissan"
+   ],
+   "case_sensitive": true
+  },
+  {
+   "name": "Mazda",
+   "ja": "マツダ",
+   "sector": "manufacturing",
+   "aliases": [
+    "Mazda"
+   ]
+  },
+  {
+   "name": "Mitsubishi Motors",
+   "ja": "三菱自動車",
+   "sector": "manufacturing",
+   "aliases": [
+    "Mitsubishi Motors"
+   ]
+  },
+  {
+   "name": "Isuzu",
+   "ja": "いすゞ",
+   "sector": "manufacturing",
+   "aliases": [
+    "Isuzu"
+   ]
+  },
+  {
+   "name": "Yamaha",
+   "ja": "ヤマハ",
+   "sector": "manufacturing",
+   "aliases": [
+    "Yamaha"
+   ]
+  },
+  {
+   "name": "Denso",
+   "ja": "デンソー",
+   "sector": "manufacturing",
+   "aliases": [
+    "Denso"
+   ]
+  },
+  {
+   "name": "Daikin",
+   "ja": "ダイキン",
+   "sector": "manufacturing",
+   "aliases": [
+    "Daikin"
+   ]
+  },
+  {
+   "name": "Hitachi",
+   "ja": "日立",
+   "sector": "manufacturing",
+   "aliases": [
+    "Hitachi"
+   ]
+  },
+  {
+   "name": "Toshiba",
+   "ja": "東芝",
+   "sector": "manufacturing",
+   "aliases": [
+    "Toshiba"
+   ]
+  },
+  {
+   "name": "Mitsubishi Electric",
+   "ja": "三菱電機",
+   "sector": "manufacturing",
+   "aliases": [
+    "Mitsubishi Electric"
+   ]
+  },
+  {
+   "name": "Sharp",
+   "ja": "シャープ",
+   "sector": "manufacturing",
+   "aliases": [
+    "Sharp Corp",
+    "Sharp Electronics",
+    "Sharp Malaysia"
+   ],
+   "case_sensitive": true
+  },
+  {
+   "name": "Canon",
+   "ja": "キヤノン",
+   "sector": "manufacturing",
+   "aliases": [
+    "Canon"
+   ],
+   "case_sensitive": true
+  },
+  {
+   "name": "Toray",
+   "ja": "東レ",
+   "sector": "manufacturing",
+   "aliases": [
+    "Toray",
+    "Penfibre"
+   ]
+  },
+  {
+   "name": "Kaneka",
+   "ja": "カネカ",
+   "sector": "manufacturing",
+   "aliases": [
+    "Kaneka"
+   ]
+  },
+  {
+   "name": "Ajinomoto",
+   "ja": "味の素",
+   "sector": "manufacturing",
+   "aliases": [
+    "Ajinomoto"
+   ]
+  },
+  {
+   "name": "Yakult",
+   "ja": "ヤクルト",
+   "sector": "manufacturing",
+   "aliases": [
+    "Yakult"
+   ]
+  },
+  {
+   "name": "Nippon Paint",
+   "ja": "日本ペイント",
+   "sector": "manufacturing",
+   "aliases": [
+    "Nippon Paint"
+   ]
+  },
+  {
+   "name": "Shimano",
+   "ja": "シマノ",
+   "sector": "manufacturing",
+   "aliases": [
+    "Shimano"
+   ]
+  },
+  {
+   "name": "Sekisui",
+   "ja": "積水",
+   "sector": "manufacturing",
+   "aliases": [
+    "Sekisui"
+   ]
+  },
+  {
+   "name": "Kao",
+   "ja": "花王",
+   "sector": "manufacturing",
+   "aliases": [
+    "Kao Corp",
+    "Kao Malaysia"
+   ],
+   "case_sensitive": true
+  },
+  {
+   "name": "Nippon Electric Glass",
+   "ja": "日本電気硝子",
+   "sector": "manufacturing",
+   "aliases": [
+    "Nippon Electric Glass"
+   ]
+  },
+  {
+   "name": "Renesas",
+   "ja": "ルネサス",
+   "sector": "semiconductor",
+   "aliases": [
+    "Renesas"
+   ]
+  },
+  {
+   "name": "Rohm",
+   "ja": "ローム",
+   "sector": "semiconductor",
+   "aliases": [
+    "Rohm"
+   ],
+   "case_sensitive": true
+  },
+  {
+   "name": "Murata",
+   "ja": "村田製作所",
+   "sector": "semiconductor",
+   "aliases": [
+    "Murata"
+   ]
+  },
+  {
+   "name": "TDK",
+   "ja": "TDK",
+   "sector": "semiconductor",
+   "aliases": [
+    "TDK"
+   ],
+   "case_sensitive": true
+  },
+  {
+   "name": "Ibiden",
+   "ja": "イビデン",
+   "sector": "semiconductor",
+   "aliases": [
+    "Ibiden"
+   ]
+  },
+  {
+   "name": "Nidec",
+   "ja": "ニデック",
+   "sector": "semiconductor",
+   "aliases": [
+    "Nidec"
+   ]
+  },
+  {
+   "name": "Taiyo Yuden",
+   "ja": "太陽誘電",
+   "sector": "semiconductor",
+   "aliases": [
+    "Taiyo Yuden"
+   ]
+  },
+  {
+   "name": "Ferrotec",
+   "ja": "フェローテック",
+   "sector": "semiconductor",
+   "aliases": [
+    "Ferrotec"
+   ]
+  },
+  {
+   "name": "Tokyo Electron",
+   "ja": "東京エレクトロン",
+   "sector": "semiconductor",
+   "aliases": [
+    "Tokyo Electron"
+   ]
+  },
+  {
+   "name": "Shin-Etsu",
+   "ja": "信越化学",
+   "sector": "semiconductor",
+   "aliases": [
+    "Shin-Etsu",
+    "Shin Etsu"
+   ]
+  },
+  {
+   "name": "Sumco",
+   "ja": "SUMCO",
+   "sector": "semiconductor",
+   "aliases": [
+    "Sumco"
+   ]
+  },
+  {
+   "name": "Kyocera",
+   "ja": "京セラ",
+   "sector": "semiconductor",
+   "aliases": [
+    "Kyocera"
+   ]
+  },
+  {
+   "name": "Fuji Electric",
+   "ja": "富士電機",
+   "sector": "semiconductor",
+   "aliases": [
+    "Fuji Electric"
+   ]
+  },
+  {
+   "name": "MUFG",
+   "ja": "三菱UFJ",
+   "sector": "finance",
+   "aliases": [
+    "MUFG",
+    "Mitsubishi UFJ"
+   ]
+  },
+  {
+   "name": "SMBC",
+   "ja": "三井住友銀行",
+   "sector": "finance",
+   "aliases": [
+    "SMBC",
+    "Sumitomo Mitsui"
+   ]
+  },
+  {
+   "name": "Mizuho",
+   "ja": "みずほ",
+   "sector": "finance",
+   "aliases": [
+    "Mizuho"
+   ]
+  },
+  {
+   "name": "Tokio Marine",
+   "ja": "東京海上",
+   "sector": "finance",
+   "aliases": [
+    "Tokio Marine"
+   ]
+  },
+  {
+   "name": "MS&AD",
+   "ja": "MS&AD",
+   "sector": "finance",
+   "aliases": [
+    "MS&AD",
+    "MSIG"
+   ]
+  },
+  {
+   "name": "Sompo",
+   "ja": "SOMPO",
+   "sector": "finance",
+   "aliases": [
+    "Sompo"
+   ]
+  },
+  {
+   "name": "Nomura",
+   "ja": "野村",
+   "sector": "finance",
+   "aliases": [
+    "Nomura"
+   ]
+  },
+  {
+   "name": "AEON Credit",
+   "ja": "イオンクレジット",
+   "sector": "finance",
+   "aliases": [
+    "AEON Credit",
+    "AEON Bank"
+   ]
+  },
+  {
+   "name": "ORIX",
+   "ja": "オリックス",
+   "sector": "finance",
+   "aliases": [
+    "ORIX"
+   ],
+   "case_sensitive": true
+  },
+  {
+   "name": "Mitsui & Co",
+   "ja": "三井物産",
+   "sector": "trading",
+   "aliases": [
+    "Mitsui & Co",
+    "Mitsui and Co"
+   ]
+  },
+  {
+   "name": "Mitsubishi Corp",
+   "ja": "三菱商事",
+   "sector": "trading",
+   "aliases": [
+    "Mitsubishi Corp"
+   ]
+  },
+  {
+   "name": "Sumitomo Corp",
+   "ja": "住友商事",
+   "sector": "trading",
+   "aliases": [
+    "Sumitomo Corp"
+   ]
+  },
+  {
+   "name": "Itochu",
+   "ja": "伊藤忠",
+   "sector": "trading",
+   "aliases": [
+    "Itochu"
+   ]
+  },
+  {
+   "name": "Marubeni",
+   "ja": "丸紅",
+   "sector": "trading",
+   "aliases": [
+    "Marubeni"
+   ]
+  },
+  {
+   "name": "Sojitz",
+   "ja": "双日",
+   "sector": "trading",
+   "aliases": [
+    "Sojitz"
+   ]
+  },
+  {
+   "name": "Toyota Tsusho",
+   "ja": "豊田通商",
+   "sector": "trading",
+   "aliases": [
+    "Toyota Tsusho"
+   ]
+  },
+  {
+   "name": "NTT",
+   "ja": "NTT",
+   "sector": "tmt",
+   "aliases": [
+    "NTT"
+   ],
+   "case_sensitive": true
+  },
+  {
+   "name": "NEC",
+   "ja": "NEC",
+   "sector": "tmt",
+   "aliases": [
+    "NEC"
+   ],
+   "case_sensitive": true
+  },
+  {
+   "name": "Fujitsu",
+   "ja": "富士通",
+   "sector": "tmt",
+   "aliases": [
+    "Fujitsu"
+   ]
+  },
+  {
+   "name": "SoftBank",
+   "ja": "ソフトバンク",
+   "sector": "tmt",
+   "aliases": [
+    "SoftBank"
+   ]
+  },
+  {
+   "name": "Rakuten",
+   "ja": "楽天",
+   "sector": "tmt",
+   "aliases": [
+    "Rakuten"
+   ]
+  },
+  {
+   "name": "KDDI",
+   "ja": "KDDI",
+   "sector": "tmt",
+   "aliases": [
+    "KDDI"
+   ],
+   "case_sensitive": true
+  },
+  {
+   "name": "Sakura Internet",
+   "ja": "さくらインターネット",
+   "sector": "tmt",
+   "aliases": [
+    "Sakura Internet"
+   ]
+  },
+  {
+   "name": "LINE Yahoo",
+   "ja": "LINEヤフー",
+   "sector": "tmt",
+   "aliases": [
+    "LY Corp",
+    "LINE Yahoo"
+   ]
+  },
+  {
+   "name": "AEON",
+   "ja": "イオン",
+   "sector": "retail",
+   "aliases": [
+    "AEON Co",
+    "AEON Mall",
+    "AEON Big",
+    "Aeon Co (M)",
+    "AEON Malaysia"
+   ]
+  },
+  {
+   "name": "Uniqlo",
+   "ja": "ユニクロ",
+   "sector": "retail",
+   "aliases": [
+    "Uniqlo",
+    "Fast Retailing"
+   ]
+  },
+  {
+   "name": "Muji",
+   "ja": "無印良品",
+   "sector": "retail",
+   "aliases": [
+    "Muji"
+   ],
+   "case_sensitive": true
+  },
+  {
+   "name": "Don Don Donki",
+   "ja": "ドン・キホーテ",
+   "sector": "retail",
+   "aliases": [
+    "Don Don Donki",
+    "Pan Pacific International"
+   ]
+  },
+  {
+   "name": "Nitori",
+   "ja": "ニトリ",
+   "sector": "retail",
+   "aliases": [
+    "Nitori"
+   ]
+  },
+  {
+   "name": "Isetan",
+   "ja": "伊勢丹",
+   "sector": "retail",
+   "aliases": [
+    "Isetan"
+   ]
+  },
+  {
+   "name": "Mitsui Fudosan",
+   "ja": "三井不動産",
+   "sector": "retail",
+   "aliases": [
+    "Mitsui Fudosan",
+    "LaLaport"
+   ]
+  },
+  {
+   "name": "Daiwa House",
+   "ja": "大和ハウス",
+   "sector": "retail",
+   "aliases": [
+    "Daiwa House"
+   ]
+  },
+  {
+   "name": "Family Mart",
+   "ja": "ファミリーマート",
+   "sector": "retail",
+   "aliases": [
+    "FamilyMart",
+    "Family Mart"
+   ]
+  },
+  {
+   "name": "7-Eleven Japan",
+   "ja": "セブン＆アイ",
+   "sector": "retail",
+   "aliases": [
+    "Seven & i"
+   ]
+  },
+  {
+   "name": "ENEOS",
+   "ja": "ENEOS",
+   "sector": "energy_infra",
+   "aliases": [
+    "ENEOS"
+   ],
+   "case_sensitive": true
+  },
+  {
+   "name": "JERA",
+   "ja": "JERA",
+   "sector": "energy_infra",
+   "aliases": [
+    "JERA"
+   ],
+   "case_sensitive": true
+  },
+  {
+   "name": "JGC",
+   "ja": "日揮",
+   "sector": "energy_infra",
+   "aliases": [
+    "JGC"
+   ],
+   "case_sensitive": true
+  },
+  {
+   "name": "Chiyoda",
+   "ja": "千代田化工",
+   "sector": "energy_infra",
+   "aliases": [
+    "Chiyoda Corp"
+   ]
+  },
+  {
+   "name": "IHI",
+   "ja": "IHI",
+   "sector": "energy_infra",
+   "aliases": [
+    "IHI"
+   ],
+   "case_sensitive": true
+  },
+  {
+   "name": "Kawasaki Heavy",
+   "ja": "川崎重工",
+   "sector": "energy_infra",
+   "aliases": [
+    "Kawasaki Heavy"
+   ]
+  },
+  {
+   "name": "Mitsubishi Heavy",
+   "ja": "三菱重工",
+   "sector": "energy_infra",
+   "aliases": [
+    "Mitsubishi Heavy",
+    "MHI"
+   ],
+   "case_sensitive": true
+  },
+  {
+   "name": "Sumitomo Electric",
+   "ja": "住友電工",
+   "sector": "energy_infra",
+   "aliases": [
+    "Sumitomo Electric"
+   ]
+  },
+  {
+   "name": "Tokyo Gas",
+   "ja": "東京ガス",
+   "sector": "energy_infra",
+   "aliases": [
+    "Tokyo Gas"
+   ]
+  },
+  {
+   "name": "Osaka Gas",
+   "ja": "大阪ガス",
+   "sector": "energy_infra",
+   "aliases": [
+    "Osaka Gas"
+   ]
+  },
+  {
+   "name": "Nippon Express",
+   "ja": "日本通運",
+   "sector": "logistics",
+   "aliases": [
+    "Nippon Express",
+    "NX Group"
+   ]
+  },
+  {
+   "name": "Yamato",
+   "ja": "ヤマト運輸",
+   "sector": "logistics",
+   "aliases": [
+    "Yamato Transport",
+    "Ta-Q-Bin"
+   ]
+  },
+  {
+   "name": "Sagawa",
+   "ja": "佐川",
+   "sector": "logistics",
+   "aliases": [
+    "Sagawa",
+    "SG Holdings"
+   ]
+  },
+  {
+   "name": "Kintetsu World Express",
+   "ja": "近鉄エクスプレス",
+   "sector": "logistics",
+   "aliases": [
+    "Kintetsu World Express"
+   ]
+  },
+  {
+   "name": "Japan Airlines",
+   "ja": "日本航空",
+   "sector": "logistics",
+   "aliases": [
+    "Japan Airlines",
+    "JAL"
+   ],
+   "case_sensitive": true
+  },
+  {
+   "name": "ANA",
+   "ja": "全日空",
+   "sector": "logistics",
+   "aliases": [
+    "All Nippon Airways"
+   ]
+  }
+ ]
+}
