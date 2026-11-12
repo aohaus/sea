@@ -1,14 +1,1605 @@
 {
- "generated_at": null,
- "checked_at": null,
+ "generated_at": "2026-11-13T00:29:25+08:00",
+ "checked_at": "2026-11-13T00:29:25+08:00",
  "source": {
   "name": "Campur.ai",
   "url": "https://campur.ai.studio/"
  },
  "status": {
-  "searches": 0,
-  "matched": 0,
+  "searches": 98,
+  "matched": 94,
   "errors": []
  },
- "items": []
+ "items": [
+  {
+   "id": "nikkei_asia-8214025f7bf4c1",
+   "date": "2026-11-10T18:07+08:00",
+   "source": "Nikkei Asia",
+   "link": "https://asia.nikkei.com/spotlight/supply-chain/integration-among-asean-china-japan-south-korea-boosted-by-ai-boom",
+   "title_ja": "AIブームが後押し、ASEAN・中日韓の経済統合が加速",
+   "title": "Integration among ASEAN, China, Japan, South Korea boosted by AI boom",
+   "summary_ja": "AI技術の普及とサプライチェーンの再編により、ASEANと中日韓の経済的な結びつきが強まっています。地域的な連携が新たな段階へ。",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "ai_digital",
+    "supply_chain",
+    "deal_restructure"
+   ]
+  },
+  {
+   "id": "nikkei_asia-0409095386f0ce",
+   "date": "2026-11-10T18:07+08:00",
+   "source": "Nikkei Asia",
+   "link": "https://asia.nikkei.com/spotlight/environment/japan-asean-to-jointly-report-progress-on-greenhouse-gas-reductions",
+   "title_ja": "日本とASEAN、温室効果ガス削減の進捗状況を共同報告へ",
+   "title": "Japan, ASEAN to jointly report progress on greenhouse gas reductions",
+   "summary_ja": "日本とASEAN諸国は、脱炭素化に向けた取り組みの進捗を可視化し、共同で報告する枠組みを構築します。",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "energy_esg"
+   ]
+  },
+  {
+   "id": "nikkei_asia-7952d2b74ee282",
+   "date": "2026-11-10T18:07+08:00",
+   "source": "Nikkei Asia",
+   "link": "https://asia.nikkei.com/business/technology/artificial-intelligence/grab-softbank-to-invest-1.85bn-in-malaysia-ai-infrastructure",
+   "title_ja": "Grabとソフトバンク、マレーシアのAIインフラに約2800億円を投資",
+   "title": "Grab, SoftBank to invest $1.85bn in Malaysia AI infrastructure",
+   "summary_ja": "Grabとソフトバンクは、マレーシアのAIインフラ構築に向け18.5億ドルを投資します。東南アジアのデジタル経済成長を加速させる狙いです。",
+   "lang": "en",
+   "companies": [
+    "SoftBank"
+   ],
+   "sectors": [
+    "tmt"
+   ],
+   "topics": [
+    "investment",
+    "ai_digital"
+   ]
+  },
+  {
+   "id": "fmt-a9fa40919cb9a5",
+   "date": "2026-11-10T16:10+08:00",
+   "source": "Free Malaysia Today",
+   "link": "https://www.freemalaysiatoday.com/category/highlight/2026/11/10/2-malaysian-men-s-pairs-reach-2nd-round-of-japan-masters",
+   "title_ja": "バドミントン・ジャパンマスターズ：マレーシア男子ダブルス2組が2回戦進出",
+   "title": "2 Malaysian men’s pairs reach 2nd round of Japan Masters",
+   "summary_ja": "熊本で開催中のバドミントン・ジャパンマスターズにて、マレーシア勢が男子ダブルスで2回戦へ駒を進め、チームの士気を高めています。",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "investment"
+   ]
+  },
+  {
+   "id": "bernama-f7712d2280796d",
+   "date": "2026-11-10T12:00+08:00",
+   "source": "BERNAMA",
+   "link": "http://www.bernama.com/en/news.php?id=2632415",
+   "title_ja": "Hologenとシスメックス、AIを活用した血液検査データ分析で合弁会社を設立",
+   "title": "Business : Hologen, Sysmex Form AI Venture To Analyse Blood Test Data",
+   "summary_ja": "AI企業のHologenと日本のシスメックスが提携し、血液検査データの分析を行う合弁会社を設立しました。医療DXの推進が期待されます。",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "ai_digital",
+    "deal_restructure"
+   ]
+  },
+  {
+   "id": "borneopost-7d2b765b53d4ae",
+   "date": "2026-11-10T11:53+08:00",
+   "source": "The Borneo Post",
+   "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQdy12UGFfdTk1UjBXaWV0Y0xTX1JWNDFfVjJ2UHJDaUNIOEs5QWhhRm4yMUt6SWREd1J3WklHZU13d29mSjViY0NOc0FfV1FKVkVyX3JvNHR5R1RYQ2xVT0NNUXkyZFB3RDRudXh1bnd6R2JYYnZEa0h5SXpLLXF1MWdWMUFOZDJZMGt3RzltZzM5SW9OdlBfYVg5aEZjY2wyeEhKTklqeVRoZmcxUFhsQ3JYLTVyU1NJbXJQNUtobFBmc0VOZTF3?oc=5",
+   "title_ja": "ソフトバンクとGrab、マレーシアのAIインフラ構築へ18.5億ドルを投資",
+   "title": "Softbank, Grab announce US$1.85 bln initial seed capital for Malaysia’s AI infrastructure - Borneo Post",
+   "summary_ja": "ソフトバンクとGrabがマレーシアのAIインフラ整備に向け、初期シード資金として18.5億ドルを投じることを発表しました。",
+   "lang": "en",
+   "companies": [
+    "SoftBank"
+   ],
+   "sectors": [
+    "tmt"
+   ],
+   "topics": [
+    "investment",
+    "ai_digital"
+   ]
+  },
+  {
+   "id": "borneopost-ef67bc0ed63a9c",
+   "date": "2026-11-10T10:15+08:00",
+   "source": "The Borneo Post",
+   "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPZnBCcWNQUk5RSW1QVzI5cWl6TDFPYlpLUUxvMFQtV04yX1Zqbnp4RDNEdmNkaXJ0T3BWeHV4am8tRHB3UkhoWTNEakxVdlZwQXBYdjJSQkg1NnVsUF9Ma2pWRWhKdnVfREUyUHRjSTJGX2Z0X1BzZGljejkycTJZY1k3LWJHUUtHaDFTUzk1SnNhb041RUx4U3VNS3REZU5XTDdmRDhIbkVTMWFHblI4RG00aERVcm5oT2JNbDRtVQ?oc=5",
+   "title_ja": "ソフトバンク・Grab・Petros、サラワク州のAIインフラに10億ドル投資",
+   "title": "SoftBank-Grab-Petros tie-up earmarks US$1 bln to build Sarawak’s AI infrastructure - Borneo Post",
+   "summary_ja": "ソフトバンク、Grab、Petrosの3社が提携し、サラワク州におけるAIインフラ構築へ10億ドルを割り当てる計画です。",
+   "lang": "en",
+   "companies": [
+    "SoftBank"
+   ],
+   "sectors": [
+    "tmt"
+   ],
+   "topics": [
+    "investment",
+    "ai_digital",
+    "deal_restructure"
+   ]
+  },
+  {
+   "id": "malaymail-fa0448aefd60e5",
+   "date": "2026-11-10T09:51+08:00",
+   "source": "Malay Mail",
+   "link": "https://www.malaymail.com/news/malaysia/2026/11/10/factory-worker-killed-after-motorcycle-crashes-into-proton-that-veered-into-his-path-in-kluang/242650",
+   "title_ja": "ジョホール州クルアンでバイクと乗用車が衝突、工場勤務の男性が死亡",
+   "title": "Factory worker killed after motorcycle crashes into Proton that veered into his path in Kluang",
+   "summary_ja": "ジョホール州クルアンにて、進路を塞いだ乗用車にバイクが衝突し、運転していた工場勤務の男性が死亡する事故が発生しました。",
+   "lang": "en",
+   "companies": [
+    "Yamaha"
+   ],
+   "sectors": [
+    "manufacturing"
+   ],
+   "topics": []
+  },
+  {
+   "id": "bernama-b90cfb9d1ebc18",
+   "date": "2026-11-10T09:49+08:00",
+   "source": "BERNAMA",
+   "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5RN3locHMwWnJPMm9HcmVxOVcxMFZ1OUxuTVR4YnNkZGdRRTF2QmNQMXpvR0poSTdLRS1pc0FTLU1NZXp3ZVNZV0tubm03ei13XzlBNGZidldESUpGRENxWWtR?oc=5",
+   "title_ja": "ソフトバンクとGrab、マレーシアのAIインフラ構築へ18.5億ドルを投資",
+   "title": "Softbank, Grab Announce US$1.85 Bln Initial Seed Capital For Malaysia's AI Infrastructure",
+   "summary_ja": "マレーシアのAI基盤強化を目指し、ソフトバンクとGrabが大規模な初期投資を行うことがベルナマ通信により報じられました。",
+   "lang": "en",
+   "companies": [
+    "SoftBank"
+   ],
+   "sectors": [
+    "tmt"
+   ],
+   "topics": [
+    "investment",
+    "ai_digital"
+   ]
+  },
+  {
+   "id": "malaymail-bee2afd4f32f9c",
+   "date": "2026-11-10T09:29+08:00",
+   "source": "Malay Mail",
+   "link": "https://www.malaymail.com/news/money/2026/11/10/softbank-grab-and-petros-to-build-among-asias-largest-ai-facilities-in-malaysia-with-us185b-seed-capital/242645",
+   "title_ja": "ソフトバンク・Grab・Petros、マレーシアにアジア最大級のAI施設を建設",
+   "title": "SoftBank, Grab and Petros to build ‘among Asia’s largest’ AI facilities in Malaysia with US$1.85b seed capital",
+   "summary_ja": "18.5億ドルのシード資金を投じ、マレーシア国内にアジア最大級のAI施設を建設する共同開発契約が締結されました。",
+   "lang": "en",
+   "companies": [
+    "SoftBank"
+   ],
+   "sectors": [
+    "tmt"
+   ],
+   "topics": [
+    "ai_digital"
+   ]
+  },
+  {
+   "id": "mtown-fcb806f8e76bfe",
+   "date": "2026-11-10T09:00+08:00",
+   "source": "週刊MTOWN",
+   "link": "https://www.mtown.my/news/economic/ECRLAimstoStartSerivcefrom12Dec",
+   "title_ja": "東海岸鉄道ECRL、最終試験運転を開始　12月12日の開業目指す",
+   "title": "",
+   "summary_ja": "【経済・現地企業】東海岸鉄道ECRL、最終試験運転を開始 12月12日の開業目指す（週刊MTOWN マレーシア日本語ニュース配信）",
+   "lang": "ja",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "investment"
+   ]
+  },
+  {
+   "id": "malaymail-585b8801df6134",
+   "date": "2026-11-10T08:54+08:00",
+   "source": "Malay Mail",
+   "link": "https://www.malaymail.com/news/malaysia/2026/11/10/anwar-says-softbank-led-ai-investment-signals-global-confidence-in-malaysia/242635",
+   "title_ja": "アンワル首相、ソフトバンク主導のAI投資をマレーシアへの信頼の証と評価",
+   "title": "Anwar says SoftBank-led AI investment signals global confidence in Malaysia",
+   "summary_ja": "ソフトバンク主導のAIプラットフォーム投資について、アンワル首相はマレーシアの経済成長と国際的な信頼を示すものと歓迎しています。",
+   "lang": "en",
+   "companies": [
+    "SoftBank"
+   ],
+   "sectors": [
+    "tmt"
+   ],
+   "topics": [
+    "investment",
+    "ai_digital"
+   ]
+  },
+  {
+   "id": "thestar-08992a6c0edf4e",
+   "date": "2026-11-10T07:29+08:00",
+   "source": "The Star",
+   "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOU29BQlAwVVMza1Q4TkVHN0REbXZCTldnc1pnNmE4SVR5T0tXN29neGFlc3hWRkxPQlIyXzNINHg0cW9PREtoVWxlekRWVDJZaDkwcElQSVpMSnkxZHhaWGdLeTE1UkZDMkdvc1RQVVNoNTFYNDlmNEEzaXNsbWd5anpnNnJrRzJhbkZxN0NKUjdzV0NkTGRIZnZtaWE5U0ZJTXVxdEtKdmtwbmxud2dROXZOc2ZPeDFF?oc=5",
+   "title_ja": "バドミントン・ジャパンマスターズ：パン・ロン＆ペイ・ジン組が好調を維持",
+   "title": "Badminton: Pang Ron-Pei Jing eager to keep momentum going at Japan Masters",
+   "summary_ja": "ジャパンマスターズに出場中のマレーシアの混合ダブルス、パン・ロン＆ペイ・ジン組が、勢いを維持しさらなる上位進出を目指します。",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "investment"
+   ]
+  },
+  {
+   "id": "astroawani-926b1bee5c6697",
+   "date": "2026-11-10T07:10+08:00",
+   "source": "Astro AWANI",
+   "link": "https://www.astroawani.com/berita-bisnes/softbank-grab-umum-modal-permulaan-as185-bilion-bangunkan-infrastruktur-ai-malaysia",
+   "title_ja": "ソフトバンクとGrab、マレーシアのAIインフラに18.5億ドル投資",
+   "title": "Softbank, Grab umum modal permulaan AS$1.85 bilion bangunkan infrastruktur AI Malaysia",
+   "summary_ja": "ソフトバンクとGrabは、サラワク州のPetrosと提携し、マレーシア国内のAIインフラ構築に向けて18.5億ドルの投資を行うと発表しました。",
+   "lang": "ms",
+   "companies": [
+    "SoftBank"
+   ],
+   "sectors": [
+    "tmt"
+   ],
+   "topics": [
+    "investment",
+    "ai_digital",
+    "deal_restructure"
+   ]
+  },
+  {
+   "id": "bernama-b83104b948d008",
+   "date": "2026-11-10T05:40+08:00",
+   "source": "BERNAMA",
+   "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAtdEx5eVJvWWFXTUhVM3JIcEVrSTZhZEdSRVRSajl4T2FiNFBTNmtwSlNyTTFXVC1vVUl0RjlibWRvX3FsQ1FTVUtkTXdFbW1UUUFYUUdZU20wUQ?oc=5",
+   "title_ja": "アンワル首相、ソフトバンクのAI投資はマレーシアへの国際的信頼の証",
+   "title": "Softbank-led Consortium’s AI Investment Reflects Global Confidence In Malaysia -- PM Anwar",
+   "summary_ja": "ソフトバンク主導のコンソーシアムによるAI投資が、マレーシアの投資先としての魅力を世界に証明したと首相が強調しました。",
+   "lang": "en",
+   "companies": [
+    "SoftBank"
+   ],
+   "sectors": [
+    "tmt"
+   ],
+   "topics": [
+    "investment",
+    "ai_digital"
+   ]
+  },
+  {
+   "id": "nikkei_asia-e717b16f99090e",
+   "date": "2026-11-10T00:57+08:00",
+   "source": "Nikkei Asia",
+   "link": "https://asia.nikkei.com/politics/international-relations/malaysia-taiwan-fraying-ties-threaten-future-chip-investments",
+   "title_ja": "マレーシアと台湾の関係悪化、半導体投資に懸念",
+   "title": "Malaysia-Taiwan fraying ties threaten future chip investments",
+   "summary_ja": "両国間の外交的緊張が、今後の半導体産業における新規投資やサプライチェーンに悪影響を及ぼすリスクを指摘。",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "investment",
+    "supply_chain"
+   ]
+  },
+  {
+   "id": "nikkei_asia-1ee4371caaa7dc",
+   "date": "2026-11-10T00:57+08:00",
+   "source": "Nikkei Asia",
+   "link": "https://asia.nikkei.com/spotlight/your-week-in-asia/cop31-climate-summit-in-turkey-asean-summit-sri-lanka-budget",
+   "title_ja": "COP31トルコ開催やASEAN首脳会議など重要日程",
+   "title": "COP31 climate summit in Turkey, ASEAN Summit, Sri Lanka budget",
+   "summary_ja": "トルコでのCOP31開催、ASEAN首脳会議、スリランカの予算案など、今後のアジア・国際情勢を左右する重要イベントを概観。",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "tax_regulation"
+   ]
+  },
+  {
+   "id": "astroawani-adad6c51f1c66d",
+   "date": "2026-11-09T23:30+08:00",
+   "source": "Astro AWANI",
+   "link": "https://www.astroawani.com/berita-bisnes/pelaburan-ai-oleh-konsortium-diketuai-softbank-mencerminkan-keyakinan-global-terhadap-malaysia-pm",
+   "title_ja": "ソフトバンク主導のAI投資、マレーシアへの国際的信頼を反映",
+   "title": "Pelaburan AI oleh konsortium diketuai Softbank mencerminkan keyakinan global terhadap Malaysia - PM Anwar",
+   "summary_ja": "アンワル首相は、ソフトバンク主導のコンソーシアムによるマレーシアのAIプラットフォームへの投資を歓迎し、国際的な信頼の証と評価しました。",
+   "lang": "ms",
+   "companies": [
+    "SoftBank"
+   ],
+   "sectors": [
+    "tmt"
+   ],
+   "topics": [
+    "investment",
+    "ai_digital"
+   ]
+  },
+  {
+   "id": "theedge-127acfd4119f0f",
+   "date": "2026-11-09T21:59+08:00",
+   "source": "The Edge Malaysia",
+   "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1YcHhhQ3dQZzBYN090VmxIR3I5ZVJ5b3Zlbm1weGEtWDJwVGpHZUdBT0RycklmQ0k3ZFFpNVgxVG91bjc3OG8wWG9JYUx5cnlK?oc=5",
+   "title_ja": "サラワク州のAIインフラ構築へ、ソフトバンク等10億ドル投資",
+   "title": "PETROS, Softbank and Grab lock in US$1 bil seed capital for Sarawak's AI infrastructure",
+   "summary_ja": "PETROS、ソフトバンク、Grabがサラワク州のAIインフラ開発に向け、10億ドルのシード資金を確保しました。",
+   "lang": "en",
+   "companies": [
+    "SoftBank"
+   ],
+   "sectors": [
+    "tmt"
+   ],
+   "topics": [
+    "investment",
+    "ai_digital"
+   ]
+  },
+  {
+   "id": "borneopost-2643fce397d2a0",
+   "date": "2026-11-09T20:15+08:00",
+   "source": "The Borneo Post",
+   "link": "https://www.theborneopost.com/2026/11/10/softbank-grab-petros-tie-up-earmarks-us1-bln-to-build-sarawaks-ai-infrastructure",
+   "title_ja": "ソフトバンク・Grab・Petros、サラワク州のAIインフラへ10億ドル投資",
+   "title": "SoftBank-Grab-Petros tie-up earmarks US$1 bln to build Sarawak’s AI infrastructure",
+   "summary_ja": "ソフトバンク、Grab、Petros（サラワク州石油会社）が、州内のAIインフラ開発に向け約40.7億リンギットを投資する計画です。",
+   "lang": "en",
+   "companies": [
+    "SoftBank"
+   ],
+   "sectors": [
+    "tmt"
+   ],
+   "topics": [
+    "investment",
+    "ai_digital"
+   ]
+  },
+  {
+   "id": "fmt-1399d92d143a9f",
+   "date": "2026-11-09T19:45+08:00",
+   "source": "Free Malaysia Today",
+   "link": "https://www.freemalaysiatoday.com/category/nation/2026/11/09/man-charged-with-dui-causes-another-crash-while-high-on-drugs",
+   "title_ja": "薬物影響下で飲酒運転の男が追突事故、マレーシアで再犯",
+   "title": "Man charged with DUI causes another crash while high on drugs",
+   "summary_ja": "飲酒運転で起訴中の39歳の男が、薬物使用状態でトヨタ・ヴィオスを運転し追突事故を起こしました。",
+   "lang": "en",
+   "companies": [
+    "Toyota"
+   ],
+   "sectors": [
+    "manufacturing"
+   ],
+   "topics": []
+  },
+  {
+   "id": "malaymail-104e5d0cd8a6a7",
+   "date": "2026-11-09T17:03+08:00",
+   "source": "Malay Mail",
+   "link": "https://www.malaymail.com/news/tech-gadgets/2026/11/09/the-80s-called-and-sony-answered-retro-walkman-headphones-land-in-malaysia-with-usb-c-for-rm259/242600",
+   "title_ja": "ソニー、80年代風レトロヘッドホン「MDR-3R」をマレーシアで発売。USB-C対応で259リンギット",
+   "title": "The ’80s called, and Sony answered: Retro Walkman headphones land in Malaysia with USB-C for RM259",
+   "summary_ja": "ソニーが80年代のウォークマンを彷彿とさせる軽量有線ヘッドホン「MDR-3R」をマレーシアで発売。USB-C接続に対応し、価格は259リンギットです。",
+   "lang": "en",
+   "companies": [
+    "Sony"
+   ],
+   "sectors": [
+    "manufacturing"
+   ],
+   "topics": []
+  },
+  {
+   "id": "mtown-96ea329b0b256a",
+   "date": "2026-11-06T09:00+08:00",
+   "source": "週刊MTOWN",
+   "link": "https://www.mtown.my/news/nikkei/DAISOsDistributionCenter",
+   "title_ja": "ダイソー、セランゴール州に世界最大の物流拠点を開設",
+   "title": "",
+   "summary_ja": "【日系企業動向】ダイソー、セランゴール州に世界最大の物流拠点を開設（週刊MTOWN マレーシア日本語ニュース配信）",
+   "lang": "ja",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "investment",
+    "supply_chain"
+   ]
+  },
+  {
+   "id": "theedge-190c340bd85a16",
+   "date": "2026-11-05T14:32+08:00",
+   "source": "The Edge Malaysia",
+   "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBTUGFLZERJS28xYl90YmhKSkR5enBBbFN1STNDbm9GWjJnSmJ3UHVtX1pjTXNCQVhETXhud0pXSlY0VFgtZXIwbl9KTUZVZWpD?oc=5",
+   "title_ja": "Japan's Daiso opens its largest ever logistics hub in Pulau Indah",
+   "title": "Japan's Daiso opens its largest ever logistics hub in Pulau Indah",
+   "summary_ja": "Japan's Daiso opens its largest ever logistics hub in Pulau Indah The Edge Malaysia",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "supply_chain"
+   ]
+  },
+  {
+   "id": "theedge-db938ca6780e61",
+   "date": "2026-11-05T11:48+08:00",
+   "source": "The Edge Malaysia",
+   "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBEUWlKZzNvSmxXSmI4MmNFd1FMNXV1Nmp1OG81MXFmU3F4cXg5VG52eWF1cEFWOW1WczRLeXQxVFA0am50VlhLckZVNkVUR04x?oc=5",
+   "title_ja": "中国当局、ソフトバンクのABBロボティクス部門買収計画を阻止",
+   "title": "China blocks SoftBank’s US$5.4 bil takeover of ABB robotics unit",
+   "summary_ja": "54億ドル規模の買収案件に対し、中国の規制当局が禁止通知を出したことで、ソフトバンクの戦略に影響が出ています。",
+   "lang": "en",
+   "companies": [
+    "SoftBank"
+   ],
+   "sectors": [
+    "tmt"
+   ],
+   "topics": [
+    "ai_digital",
+    "tax_regulation",
+    "deal_restructure"
+   ]
+  },
+  {
+   "id": "mtown-e2e56aaa600e74",
+   "date": "2026-11-05T09:00+08:00",
+   "source": "週刊MTOWN",
+   "link": "https://www.mtown.my/news/economic/GoogleInveststoExpandDataCenter",
+   "title_ja": "Google、マレーシアに150億米ドルを追加投資　データセンター拡張へ",
+   "title": "",
+   "summary_ja": "【経済・現地企業】Google、マレーシアに150億米ドルを追加投資 データセンター拡張へ（週刊MTOWN マレーシア日本語ニュース配信）",
+   "lang": "ja",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "investment",
+    "ai_digital"
+   ]
+  },
+  {
+   "id": "theedge-91cdc0e717dd96",
+   "date": "2026-11-04T14:27+08:00",
+   "source": "The Edge Malaysia",
+   "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBQRFN5WW0xNkcxQ1FfdjVpYlBxLUY4UTRTVGxMWFd1bUlBYVJPeDVISUxia2s5MDZYdEtTUWc0TC13emtuamYxNnhLb1dWUlQt?oc=5",
+   "title_ja": "パラマウント、三井不動産と提携して13億リンギの住宅プロジェクト開発、初年度に60%の受注を目指す",
+   "title": "Paramount partners Mitsui Fudosan to develop RM1.3 bil residential project, targets 60% take-up in first year",
+   "summary_ja": "パラマウント、三井不動産と提携して13億リンギの住宅プロジェクト開発、初年度60%の受注を目指す The Edge Malaysia",
+   "lang": "en",
+   "companies": [
+    "Mitsui Fudosan"
+   ],
+   "sectors": [
+    "retail"
+   ],
+   "topics": [
+    "deal_restructure"
+   ]
+  },
+  {
+   "id": "thestar-228af92c1390d0",
+   "date": "2026-11-04T13:10+08:00",
+   "source": "The Star",
+   "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQOE9HYTh3NjV4WEl0cUlZbjc4MzdlcS1PM05WQW1ZMFpOOXVGOXRDTjJGWEx2RDU1QUJmQ1RaZ1RqckRybzBxdXo5Z2lhMWc1R2JISlVyQTQ2T19waDBtVFJUVWVTRnpXWjFqX3ZFTWFJR3ZDaGhyZmlXRVBwSlVQaDRRamF2eU9fQnJLa1dWVzJObjNYV25qemw4LUVLOV9TNzdMd0NqS2JKZjE1MTcwa0xmOXhxSzF5SjdTNk5nejBZUnJMellLd0VkZ1pTWkFHcmhUbmRn?oc=5",
+   "title_ja": "パラマウントと三井不動産が共同で13億リンギットのGDV住宅プロジェクト開発へ",
+   "title": "Paramount, Mitsui Fudosan in JV to develop RM1.3bil GDV residential project",
+   "summary_ja": "パラマウントと三井不動産がJVで13億リンギットのGDV住宅プロジェクト「ザ・スター」開発へ",
+   "lang": "en",
+   "companies": [
+    "Mitsui Fudosan"
+   ],
+   "sectors": [
+    "retail"
+   ],
+   "topics": [
+    "deal_restructure"
+   ]
+  },
+  {
+   "id": "mtown-1588891306b263",
+   "date": "2026-11-04T09:00+08:00",
+   "source": "週刊MTOWN",
+   "link": "https://www.mtown.my/news/politics/CyberSecurityLevelUp",
+   "title_ja": "マレーシア政府、サイバー攻撃への警戒強化　首相が緊急対策会議を指示",
+   "title": "",
+   "summary_ja": "【政治・社会】マレーシア政府、サイバー攻撃への警戒強化 首相が緊急対策会議を指示（週刊MTOWN マレーシア日本語ニュース配信）",
+   "lang": "ja",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "ai_digital"
+   ]
+  },
+  {
+   "id": "hellomalaysia-2b6919deb89e01",
+   "date": "2026-11-03T10:00+08:00",
+   "source": "Hello Malaysia",
+   "link": "https://hellomalaysia.com.my/261103001-2",
+   "title_ja": "日本産牛内臓がマレーシアに輸出可能に、農水省が取扱要綱改正",
+   "title": "",
+   "summary_ja": "農林水産省はこのほど、マレーシア向け輸出牛肉の取扱要綱を改正し、牛内臓を輸出可能品目として追加した。 2026年11月3日 【マレーシア最新ニュース】 日本産牛内臓がマレーシアに輸出可能に、農水省が取扱要綱改正 農林水産省はこのほど、マレーシア向け輸出牛肉の取扱要綱を改正し、牛内臓を輸出可能品目として追加した。 日本…",
+   "lang": "ja",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "supply_chain"
+   ]
+  },
+  {
+   "id": "theedge-13fe239cd85628",
+   "date": "2026-11-02T16:23+08:00",
+   "source": "The Edge Malaysia",
+   "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9NQWFkRTlHcmNIb29IdXZVYWF1Q3poOUlBSFJpNTVEbWtDUy1WV2xuekhtLS1PUFNFckttVU5aeVlyQm1yalFMc2c3RHpFdmhy?oc=5",
+   "title_ja": "双日、マレーシアからレアアース「イットリウム」を輸入へ",
+   "title": "Japan's Sojitz to import rare earth yttrium from Malaysia — report",
+   "summary_ja": "双日がマレーシアからレアアースの一種であるイットリウムを調達する方針を固めました。脱中国依存を目指す日本のサプライチェーン強化の一環として注目されます。",
+   "lang": "en",
+   "companies": [
+    "Sojitz"
+   ],
+   "sectors": [
+    "trading"
+   ],
+   "topics": [
+    "supply_chain"
+   ]
+  },
+  {
+   "id": "mtown-67adef1da94bc1",
+   "date": "2026-11-02T09:00+08:00",
+   "source": "週刊MTOWN",
+   "link": "https://www.mtown.my/news/economic/118MallOpensinKL",
+   "title_ja": "KLに新たな大型商業施設「118 Mall」開業　世界第2位の高層ビル足元に",
+   "title": "",
+   "summary_ja": "【経済・現地企業】KLに新たな大型商業施設「118 Mall」開業 世界第2位の高層ビル足元に（週刊MTOWN マレーシア日本語ニュース配信）",
+   "lang": "ja",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "investment"
+   ]
+  },
+  {
+   "id": "hellomalaysia-ac05b01cdb608a",
+   "date": "2026-11-01T02:20+08:00",
+   "source": "Hello Malaysia",
+   "link": "https://hellomalaysia.com.my/2611-toshiba",
+   "title_ja": "美しく、心地よい毎日のためにデザインされた冷蔵庫",
+   "title": "",
+   "summary_ja": "pradcol美しくデザインされた東芝のJAPANDi冷蔵庫シリーズ。日本らしいシンプルさ 美しく、心地よい毎日のためにデザインされた冷蔵庫 美しくデザインされた東芝のJAPANDi冷蔵庫シリーズ。日本らしいシンプルさと現代的な機能性を融合し、毎日のキッチンに心地よさと調和をもたらします。",
+   "lang": "ja",
+   "companies": [
+    "Toshiba"
+   ],
+   "sectors": [
+    "manufacturing"
+   ],
+   "topics": []
+  },
+  {
+   "id": "theedge-2026-10-30-3-i4ch",
+   "date": "2026-10-30T11:25+08:00",
+   "source": "The Edge Malaysia",
+   "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBsSVg4TUo0UUZjS1IzOTdxOHJoTU54WVVncHVvaUhEeFVGT0xJMHdMSmx4Q1FxMzIwcmhZTHNNTzFUaUFHRFJaZ1g2NGtWT2xE?oc=5",
+   "title_ja": "楽天トレードのブルサ取引はサイバー攻撃を受けて1週間以上停止、再開日は未定",
+   "title": "Rakuten Trade’s Bursa trading has been down for over a week following cyberattack, with no restart date",
+   "summary_ja": "<a href=\"https://news.google.com/rss/articles/CBMiUEFVX3lxTFBsSVg4TUo0UUZjS1IzOTdxOHJoTU54WVVncHVvaUhEeFVGT0xJMHdMSmx4Q1FxMzIwcmhZTHNNTzFUaUFHRFJaZ1g2NGtWT2xE?…",
+   "lang": "en",
+   "companies": [
+    "Rakuten"
+   ],
+   "sectors": [
+    "tmt"
+   ],
+   "topics": [
+    "ai_digital"
+   ]
+  },
+  {
+   "id": "mtown-15991a7e248a77",
+   "date": "2026-10-28T09:00+08:00",
+   "source": "週刊MTOWN",
+   "link": "https://www.mtown.my/news/politics/GovtTerminatesBUDIAbusers",
+   "title_ja": "ペナン州の給油所で燃料補助金の不正利用疑惑　政府が販売停止措置",
+   "title": "",
+   "summary_ja": "【政治・社会】ペナン州の給油所で燃料補助金の不正利用疑惑 政府が販売停止措置（週刊MTOWN マレーシア日本語ニュース配信）",
+   "lang": "ja",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "tax_regulation"
+   ]
+  },
+  {
+   "id": "nikkei_asia-78caf1e974e5b2",
+   "date": "2026-10-27T21:07+08:00",
+   "source": "Nikkei Asia",
+   "link": "https://asia.nikkei.com/business/softbank/softbank-plans-50bn-ai-investment-in-malaysia-pm-says",
+   "title_ja": "ソフトバンク、マレーシアに500億ドルのAI投資を計画",
+   "title": "SoftBank plans $50bn AI investment in Malaysia, PM says",
+   "summary_ja": "マレーシア首相によると、ソフトバンクが同国のAIインフラ整備に向け、500億ドル規模の巨額投資を計画していることが判明しました。",
+   "lang": "en",
+   "companies": [
+    "SoftBank"
+   ],
+   "sectors": [
+    "tmt"
+   ],
+   "topics": [
+    "investment",
+    "ai_digital"
+   ]
+  },
+  {
+   "id": "malaymail-922474d32ccff6",
+   "date": "2026-10-27T12:07+08:00",
+   "source": "Malay Mail",
+   "link": "https://www.malaymail.com/news/malaysia/2026/10/27/fake-hospital-calls-bogus-investments-and-loan-scams-police-arrest-36-in-perak/240759",
+   "title_ja": "ペラ州で詐欺グループ摘発、日本人含む被害者狙う36人を逮捕",
+   "title": "Fake hospital calls, bogus investments and loan scams: Police arrest 36 in Perak",
+   "summary_ja": "ペラ州警察が病院や投資を装う詐欺グループを摘発。日本人を含む外国人被害者を標的にしており、注意が必要です。",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "investment"
+   ]
+  },
+  {
+   "id": "mtown-8e1194fc26df80",
+   "date": "2026-10-27T09:00+08:00",
+   "source": "週刊MTOWN",
+   "link": "https://www.mtown.my/news/economic/DataCenterInvestment",
+   "title_ja": "サラワク州、AI・データセンターへの大型投資計画　500億米ドル規模の一部を誘致へ",
+   "title": "",
+   "summary_ja": "【経済・現地企業】サラワク州、AI・データセンターへの大型投資計画 500億米ドル規模の一部を誘致へ（週刊MTOWN マレーシア日本語ニュース配信）",
+   "lang": "ja",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "investment",
+    "ai_digital"
+   ]
+  },
+  {
+   "id": "mtown-337d54c6c816bb",
+   "date": "2026-10-27T09:00+08:00",
+   "source": "週刊MTOWN",
+   "link": "https://www.mtown.my/news/economic/LankawiTaxFreeRegulation",
+   "title_ja": "ランカウイ島、免税制度を見直し　観光客の購入上限を1万リンギに引き上げ",
+   "title": "",
+   "summary_ja": "【経済・現地企業】ランカウイ島、免税制度を見直し 観光客の購入上限を1万リンギに引き上げ（週刊MTOWN マレーシア日本語ニュース配信）",
+   "lang": "ja",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "tax_regulation"
+   ]
+  },
+  {
+   "id": "astroawani-c6c4fa86ce541f",
+   "date": "2026-10-27T04:45+08:00",
+   "source": "Astro AWANI",
+   "link": "https://www.astroawani.com/berita-bisnes/eksport-makanan-laut-jepun-ke-malaysia-melonjak-40-peratus",
+   "title_ja": "マレーシアへの日本の水産物輸出は40%増加",
+   "title": "Eksport makanan laut Jepun ke Malaysia melonjak 40 peratus",
+   "summary_ja": "今年１～８月の水産物輸出額は２０２５年の同時期と比べて約５０億円に達した。",
+   "lang": "ms",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "supply_chain"
+   ]
+  },
+  {
+   "id": "nna-f3bc3feb3bf41b",
+   "date": "2026-10-26T23:00+08:00",
+   "source": "NNA ASIA マレーシア",
+   "link": "https://www.nna.jp/news/2981294",
+   "title_ja": "ジェトロ、日本産水産物の商談会を開催",
+   "title": "",
+   "summary_ja": "日本貿易振興機構（ジェトロ）クアラルンプール事務所は26日、首都クアラルンプールで、日本産水産物の商談会を開催した。マレーシア農林水産物・食品輸出支援プ…",
+   "lang": "ja",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "supply_chain"
+   ]
+  },
+  {
+   "id": "malaymail-8b54fd182282a7",
+   "date": "2026-10-26T19:30+08:00",
+   "source": "Malay Mail",
+   "link": "https://www.malaymail.com/news/money/2026/10/26/japanese-seafood-exports-to-malaysia-jump-40pc-to-rm130m-as-demand-grows/240702",
+   "title_ja": "Japanese seafood exports to Malaysia jump 40pc to RM130m as demand grows",
+   "title": "Japanese seafood exports to Malaysia jump 40pc to RM130m as demand grows",
+   "summary_ja": "KUALA LUMPUR, Oct 26 &mdash; Japanese seafood exports to Malaysia rose by about 40 per cent in the first eight months of...",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "supply_chain"
+   ]
+  },
+  {
+   "id": "theedge-d469d0a22c719e",
+   "date": "2026-10-26T16:22+08:00",
+   "source": "The Edge Malaysia",
+   "link": "https://theedgemalaysia.com/edge-tv-detail?id=node%2F823302",
+   "title_ja": "ソフトバンク孫正義氏、マレーシアに500億ドルの技術投資を計画か",
+   "title": "SoftBank’s Son reportedly planning US$50b M’sia tech outlay",
+   "summary_ja": "ソフトバンクの孫正義氏が、マレー半島およびクチンでの技術投資に向け、総額500億ドル規模の投資先を選定中であると報じられています。",
+   "lang": "en",
+   "companies": [
+    "SoftBank"
+   ],
+   "sectors": [
+    "tmt"
+   ],
+   "topics": [
+    "investment"
+   ]
+  },
+  {
+   "id": "theedge-789a477d3cc66f",
+   "date": "2026-10-26T07:22+08:00",
+   "source": "The Edge Malaysia",
+   "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBQQ19KWkZrTnZTSFpiRzM4bjRwam42OERKNVNjTHU5UmhOa2VZYUJHVm1hV2p6T3dQalJqLUY3dlZ6QXVrQmM3Y2RJU2MyZ24t?oc=5",
+   "title_ja": "ソフトバンク孫正義氏、マレーシアへ500億ドルの技術投資を計画",
+   "title": "SoftBank’s Son plans US$50 bil Malaysia tech outlay, PM says",
+   "summary_ja": "ソフトバンクによるマレーシアへの巨額投資計画が浮上しており、政府関係者との協議を通じて実現に向けた動きが加速しています。",
+   "lang": "en",
+   "companies": [
+    "SoftBank"
+   ],
+   "sectors": [
+    "tmt"
+   ],
+   "topics": [
+    "investment"
+   ]
+  },
+  {
+   "id": "nna-7fe5277a1bcf16",
+   "date": "2026-10-25T23:00+08:00",
+   "source": "NNA ASIA マレーシア",
+   "link": "https://www.nna.jp/news/2978341",
+   "title_ja": "日本企業はデータ活用で参入を＝野口聡一氏",
+   "title": "",
+   "summary_ja": "「サラワク州国際デジタル経済会議（ＩＤＥＣＳ）2026」で基調講演した元宇宙飛行士で研究者・実業家の野口聡一氏は、東マレーシア・サラワク州が取り組む宇宙産…",
+   "lang": "ja",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "ai_digital"
+   ]
+  },
+  {
+   "id": "nikkei_asia-b76b768689c8b4",
+   "date": "2026-10-22T18:15+08:00",
+   "source": "Nikkei Asia",
+   "link": "https://asia.nikkei.com/business/tech/semiconductors/malaysia-s-skyechip-joins-softbank-backed-ai-memory-project-in-japan",
+   "title_ja": "マレーシアのSkyeChipがソフトバンク支援の日本のAIメモリプロジェクトに参加",
+   "title": "Malaysia's SkyeChip joins SoftBank-backed AI memory project in Japan",
+   "summary_ja": "Nikkei Asia（日本経済新聞社 アジア国際英文報道）: Malaysia's SkyeChip joins SoftBank-backed AI memory project in Japan",
+   "lang": "en",
+   "companies": [
+    "SoftBank"
+   ],
+   "sectors": [
+    "tmt"
+   ],
+   "topics": [
+    "ai_digital",
+    "supply_chain"
+   ]
+  },
+  {
+   "id": "nikkei_asia-c4881f31e4785a",
+   "date": "2026-10-22T18:15+08:00",
+   "source": "Nikkei Asia",
+   "link": "https://asia.nikkei.com/business/technology/artificial-intelligence/ai-monetization-in-asean-nascent-but-usage-boosts-e-commerce-report2",
+   "title_ja": "ASEANのAI活用は初期段階も、EC分野で成長の兆し",
+   "title": "AI monetization in ASEAN 'nascent' but usage boosts e-commerce: report",
+   "summary_ja": "ASEAN地域におけるAIの収益化はまだ途上ですが、Eコマース分野での導入が消費者の利便性と売上向上に寄与しています。",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "ai_digital",
+    "results"
+   ]
+  },
+  {
+   "id": "astroawani-2026-10-22-3-lnz6",
+   "date": "2026-10-22T15:00+08:00",
+   "source": "Astro AWANI",
+   "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQYTRsSWFCM0VnYXFDZDhLcGs0YXI1S0ZVdm56TXNua1dfYXdXbThfc3ZaVkNCY0ZfX0ZzRjNvSHQ5VkluUE1vaTNNUXRXTnhPbkhCODl6ZUFKWXRkZHVqQWg4ZzNhOVAxVlBXaXFNYWxEVHpMNjhhNXBSbl8ycUVhb19oenJFRGFHZXUwWGxNWEV2TTNISVdHcnlVRGZTb0E0dm9jQzlObEI0REFPRVBjaHlPMFJvcklJY1dVWkZfVTdqWllNMXBMZmEyVmdPb2JpbEE?oc=5",
+   "title_ja": "米国が支援する新しい東南アジアデータケーブル、サプライヤーとしてNECかアルカテルを選ぶと開発者が語る",
+   "title": "New US-backed Southeast Asia data cable to pick NEC or Alcatel as supplier, developer says",
+   "summary_ja": "ハノイ：マレーシア、ベトナム、シンガポール、タイを結ぶ米国が支援する新しい海底データケーブルの開発者は今月、日本のNECとフランスのNECの間のケーブルサプライヤーを選定する予定だ。",
+   "lang": "ms",
+   "companies": [
+    "NEC"
+   ],
+   "sectors": [
+    "tmt"
+   ],
+   "topics": []
+  },
+  {
+   "id": "theedge-2be15e122da6f5",
+   "date": "2026-10-22T13:52+08:00",
+   "source": "The Edge Malaysia",
+   "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE91QmhiaC1GOWw5b2g5SU9JdzJ2VkpCQjhXa00yd3NxMW5ibmdZQldPNGxZQzc5UFMxWDVmZWJFVktVVng4REFJcXRrLXRkdXY0?oc=5",
+   "title_ja": "マレーシアと他の東南アジア諸国を結ぶ米国支援の新しいデータケーブル、供給者としてNECかアルカテルを選ぶと開発者が語る",
+   "title": "New US-backed data cable linking Malaysia to other Southeast Asian nations to pick NEC or Alcatel as supplier, developer says",
+   "summary_ja": "マレーシアと他の東南アジア諸国を結ぶ米国支援の新しいデータケーブル、サプライヤーとしてNECかアルカテルを選ぶと開発者が語る The Edge Malaysia",
+   "lang": "en",
+   "companies": [
+    "NEC"
+   ],
+   "sectors": [
+    "tmt"
+   ],
+   "topics": []
+  },
+  {
+   "id": "nna-e2cee8816468b6",
+   "date": "2026-10-22T11:24+08:00",
+   "source": "NNA ASIA マレーシア",
+   "link": "https://www.nna.jp/news/2980206",
+   "title_ja": "日・マ技術学院に半導体アカデミー設立へ＝政府",
+   "title": "",
+   "summary_ja": "マレーシア政府は、ペナン州の日本・マレーシア技術学院（ＪＭＴＩ）に「人的資源省半導体アカデミー」を設立する準備を進めている。今年は500万リンギ（約１億9…",
+   "lang": "ja",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "supply_chain"
+   ]
+  },
+  {
+   "id": "mtown-6b501bcbfd63b7",
+   "date": "2026-10-22T09:00+08:00",
+   "source": "週刊MTOWN",
+   "link": "https://www.mtown.my/news/economic/FuelPricefor22Oct2026",
+   "title_ja": "マレーシア燃料価格、RON97と補助金なしRON95が30セン値下げ　22日から適用",
+   "title": "",
+   "summary_ja": "【経済・現地企業】マレーシア燃料価格、RON97と補助金なしRON95が30セン値下げ 22日から適用（週刊MTOWN マレーシア日本語ニュース配信）",
+   "lang": "ja",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "tax_regulation"
+   ]
+  },
+  {
+   "id": "theedge-a07573e1e5af8c",
+   "date": "2026-10-22T08:56+08:00",
+   "source": "The Edge Malaysia",
+   "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE44Tkh3WVJHcmpVMHNsZmlXM1ZVWVRYN01fM05qdHlyVmJTYmpkblM4aW5JeGx5QTFZQWF4RGhTbmk1T3VtLUJUZEY3RG96Z0xo?oc=5",
+   "title_ja": "Zetrix AI が RM2b スクーク規約違反を修正する日が来る",
+   "title": "D-day for Zetrix AI to fix RM2b sukuk covenant breach",
+   "summary_ja": "Zetrix AIがRM2bスクーク規約違反を修正する日が来る The Edge Japan",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "ai_digital"
+   ]
+  },
+  {
+   "id": "nst-8a5af8e11ef019",
+   "date": "2026-10-22T06:00+08:00",
+   "source": "New Straits Times",
+   "link": "https://www.nst.com.my/business/corporate/2026/10/1561290/new-us-backed-southeast-asia-data-cable-pick-nec-or-alcatel",
+   "title_ja": "米国が支援する新しい東南アジアデータケーブル、サプライヤーとしてNECかアルカテルを選ぶと開発者が語る",
+   "title": "New US-backed Southeast Asia data cable to pick NEC or Alcatel as supplier, developer says",
+   "summary_ja": "ハノイ：マレーシア、ベトナム、シンガポール、タイを結ぶ米国が支援する新しい海底データケーブルの開発者は今月、日本のNECとフランスのNECの間のケーブルサプライヤーを選定する予定だ。",
+   "lang": "en",
+   "companies": [
+    "NEC"
+   ],
+   "sectors": [
+    "tmt"
+   ],
+   "topics": []
+  },
+  {
+   "id": "fmt-e6077ed1ca644c",
+   "date": "2026-10-22T02:12+08:00",
+   "source": "Free Malaysia Today",
+   "link": "https://www.freemalaysiatoday.com/category/business/2026/10/22/new-us-backed-southeast-asia-data-cable-to-select-nec-or-alcatel-as-supplier",
+   "title_ja": "米国が支援する新しい東南アジアデータケーブル、サプライヤーとしてNECかアルカテルを選択",
+   "title": "New US-backed Southeast Asia data cable to select NEC or Alcatel as supplier",
+   "summary_ja": "全長2,500kmの海底データケーブルはマレーシア、ベトナム、シンガポール、タイを結び、4億ドルを投じたプロジェクトは2028年末に運用開始される予定だ。",
+   "lang": "en",
+   "companies": [
+    "NEC"
+   ],
+   "sectors": [
+    "tmt"
+   ],
+   "topics": []
+  },
+  {
+   "id": "nna-5e9a9b8cbd14f4",
+   "date": "2026-10-21T23:00+08:00",
+   "source": "NNA ASIA マレーシア",
+   "link": "https://www.nna.jp/news/2979636",
+   "title_ja": "クアラルンプール線初就航、成田発着ジップエア",
+   "title": "",
+   "summary_ja": "【共同】日本航空傘下で国際線を専門とする成田空港発着の格安航空会社（ＬＣＣ）「ジップエア トーキョー」は20日、成田とマレーシアの首都クアラルンプールを…",
+   "lang": "ja",
+   "companies": [
+    "Japan Airlines"
+   ],
+   "sectors": [
+    "logistics"
+   ],
+   "topics": []
+  },
+  {
+   "id": "astroawani-3705a803fd7d82",
+   "date": "2026-10-21T04:00+08:00",
+   "source": "Astro AWANI",
+   "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQNlAxMFFobm5uOW9LTzVtZzc5R09NS3hkZXJYNzlnN3Z1eEhCd1I5SVlSNDZzS18wZHNQa1V4c1RmM0RMWEZ3eFZpQ09IOTdMS0M1WXo3R3NXNVlRemlzZEg5TUhYWWNIQmR2dk9lY1VNT1NrUzMtM0oyS21MY3FNSV9wZ1ZhRW5tZXNBbDNkUzNXakhBbkt1X2hDSDVDajNxVVpQSThhcDFqQ1Nm?oc=5",
+   "title_ja": "日本政府、マレーシアとの教育交流プログラム拡大へ意欲",
+   "title": "Jepun mahu perluas pertukaran pendidikan dua hala dengan Malaysia",
+   "summary_ja": "日本政府は、マレーシアとの間で二国間の教育交流をさらに拡大する方針を示しました。人材育成を通じた両国の友好関係深化が期待されます。",
+   "lang": "ms",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "people_cost"
+   ]
+  },
+  {
+   "id": "nna-f0957028d37a15",
+   "date": "2026-10-19T23:00+08:00",
+   "source": "NNA ASIA マレーシア",
+   "link": "https://www.nna.jp/news/2978021",
+   "title_ja": "【アジアで会う】正永龍一郎さん　野村総合研究所マニラ支店事業開発リード — 第613回　フェンシングが結んだ縁、新たな道開く（フィリピン）",
+   "title": "",
+   "summary_ja": "まさなが・りゅういちろう 1998年生まれ、東京都八王子市出身。日系メガバンクでのフィリピン駐在を経て、2025年から現職。今年１月にフィリピン人の妻と結婚し…",
+   "lang": "ja",
+   "companies": [
+    "Nomura"
+   ],
+   "sectors": [
+    "finance"
+   ],
+   "topics": []
+  },
+  {
+   "id": "theedge-23dbf7ead2f07b",
+   "date": "2026-10-19T10:49+08:00",
+   "source": "The Edge Malaysia",
+   "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5wSml4UnlsUGRGblo5cGFKNklwakhkM0xOUnEyaDgzMDdNczhpMnBHTXY5WVdER0RHdVB3SlAtTW5wa015LW1CQW80VXIwZGEt?oc=5",
+   "title_ja": "日本のMS&AD、マレーシアのLPIキャピタルとの取引を検討すると発表 — ブルームバーグ",
+   "title": "Japan’s MS&AD said to consider deal for Malaysia’s LPI Capital — Bloomberg",
+   "summary_ja": "日本のMS&AD、マレーシアのLPIキャピタルとの取引を検討すると — Bloomberg The Edge Malaysia",
+   "lang": "en",
+   "companies": [
+    "MS&AD"
+   ],
+   "sectors": [
+    "finance"
+   ],
+   "topics": []
+  },
+  {
+   "id": "fmt-348c6cf6b631da",
+   "date": "2026-10-14T10:14+08:00",
+   "source": "Free Malaysia Today",
+   "link": "https://www.freemalaysiatoday.com/category/nation/2026/10/14/bukit-aman-to-send-officers-to-japan-after-m-sians-nabbed-with-cocaine",
+   "title_ja": "Bukit Aman to send officers to Japan after M’sians nabbed with cocaine",
+   "title": "Bukit Aman to send officers to Japan after M’sians nabbed with cocaine",
+   "summary_ja": "Federal police say the officers will investigate whether the Malaysians have ties to local or international drug syndicates.",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "investment"
+   ]
+  },
+  {
+   "id": "hellomalaysia-7087c8cf113447",
+   "date": "2026-10-14T10:00+08:00",
+   "source": "Hello Malaysia",
+   "link": "https://hellomalaysia.com.my/261014001-2",
+   "title_ja": "カンパーで日本の警察官装う詐欺拠点摘発、日本人9人逮捕",
+   "title": "",
+   "summary_ja": "JPJは、中国自動車大手、チェリーのSUV「オモダ5」の車両型式認可（VTA）を停止し、新規登録を中止した 2026年11月2日 【マレーシア最新ニュース】 奇瑞「オモダ5」で後輪車軸脱落、認可停止で再リコール 道路交通局（JPJ）は、走行中に後輪車軸が脱落する事故が発生したことを受け、中国自動車大手、奇瑞汽車（チェ…",
+   "lang": "ja",
+   "companies": [
+    "AEON"
+   ],
+   "sectors": [
+    "retail"
+   ],
+   "topics": []
+  },
+  {
+   "id": "nst-da24760c7273c0",
+   "date": "2026-10-14T09:29+08:00",
+   "source": "New Straits Times",
+   "link": "https://www.nst.com.my/news/nation/2026/10/1554959/police-send-team-japan-over-5kg-cocaine-seizure",
+   "title_ja": "羽田空港でのコカイン密輸事件、マレーシア警察が捜査チーム派遣へ",
+   "title": "Police to send team to Japan over 5kg cocaine seizure",
+   "summary_ja": "東京・羽田空港でマレーシア人5名が5kgのコカイン所持で逮捕された事件を受け、マレーシア警察は詳細な調査のため捜査チームを日本へ派遣します。",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "investment"
+   ]
+  },
+  {
+   "id": "nst-32939cc68d6731",
+   "date": "2026-10-14T07:53+08:00",
+   "source": "New Straits Times",
+   "link": "https://www.nst.com.my/sports/badminton/2026/10/1554903/aaron-wooi-yik-launch-la-2028-mission-winning-reunion",
+   "title_ja": "バドミントン男子ダブルス：アーロン・チア＆ソー・ウーイック組が復帰戦で日本ペアを撃破",
+   "title": "Aaron-Wooi Yik launch LA 2028 mission with winning reunion",
+   "summary_ja": "2028年ロサンゼルス五輪を見据え再結成したマレーシアのアーロン・チア＆ソー・ウーイック組が、復帰初戦で日本の保木卓朗・小林優吾組に勝利し、好スタートを切りました。",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "deal_restructure"
+   ]
+  },
+  {
+   "id": "nikkei_asia-b0c3df26337cc2",
+   "date": "2026-10-14T07:37+08:00",
+   "source": "Nikkei Asia",
+   "link": "https://asia.nikkei.com/economy/trade/malaysia-targets-june-2027-signing-of-eu-trade-deal",
+   "title_ja": "マレーシア、EUとの自由貿易協定を2027年6月に締結へ",
+   "title": "Malaysia targets June 2027 signing of EU trade deal",
+   "summary_ja": "マレーシア政府は欧州連合（EU）との自由貿易協定（FTA）締結に向けた交渉を加速させ、2027年6月の署名を目標に掲げています。",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "supply_chain"
+   ]
+  },
+  {
+   "id": "fmt-67be9cb802d3e7",
+   "date": "2026-10-14T07:24+08:00",
+   "source": "Free Malaysia Today",
+   "link": "https://www.freemalaysiatoday.com/category/nation/2026/10/14/reunited-aaron-wooi-yik-clear-1st-round-at-denmark-open",
+   "title_ja": "バドミントン・デンマークOP、再結成のアーロン＆ウーイ・イク組が初戦突破",
+   "title": "Reunited Aaron-Wooi Yik clear 1st round at Denmark Open",
+   "summary_ja": "世界ランク4位のマレーシアペアが、日本の保木・小林組を破り、デンマークオープン2回戦へ進出しました。",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "investment"
+   ]
+  },
+  {
+   "id": "nna-2fe7953a43e0ff",
+   "date": "2026-10-13T23:00+08:00",
+   "source": "NNA ASIA マレーシア",
+   "link": "https://www.nna.jp/news/2976656",
+   "title_ja": "日本郵船とＭＩＳＣの合弁、ＬＮＧ船の用船契約",
+   "title": "",
+   "summary_ja": "日本郵船は13日、マレーシアの海運大手ＭＩＳＣとの合弁会社アジアＬＮＧトランスポートが、国営石油ペトロナスの子会社で液化天然ガス（ＬＮＧ）の製造・販売…",
+   "lang": "ja",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "deal_restructure"
+   ]
+  },
+  {
+   "id": "theedge-62670290ef1430",
+   "date": "2026-10-13T22:18+08:00",
+   "source": "The Edge Malaysia",
+   "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9hd0Y5azZ1ZjBmSlA3UXJnejFyYjBYZGJUY1Vjb0g1VWVZSjd6eXdZWDcwTDVaMWZqSnRyZ1JMYWQ2NDFvTVVXZU9uZlYxQUI3?oc=5",
+   "title_ja": "予算案2027の賃金対策で銀行預金が100億リンギ増加の可能性（野村証券）",
+   "title": "Malaysian banks could see RM10b deposit spike due to Budget 2027 wage measures — Nomura",
+   "summary_ja": "野村証券は、2027年度予算案に含まれる賃金引き上げ策により、国内銀行の預金が約100億リンギ増加すると予測しています。",
+   "lang": "en",
+   "companies": [
+    "Nomura"
+   ],
+   "sectors": [
+    "finance"
+   ],
+   "topics": [
+    "people_cost",
+    "tax_regulation"
+   ]
+  },
+  {
+   "id": "fmt-6616265dd5c624",
+   "date": "2026-10-13T17:23+08:00",
+   "source": "Free Malaysia Today",
+   "link": "https://www.freemalaysiatoday.com/category/highlight/2026/10/13/jun-hao-suffers-8th-first-round-exit-this-year",
+   "title_ja": "バドミントン・ジュンハオ選手、デンマークOPで初戦敗退　今年8度目",
+   "title": "Jun Hao suffers 8th first-round exit this year",
+   "summary_ja": "マレーシアの男子シングルス選手ジュンハオが、デンマークオープンで日本の渡邉航貴に敗れ、今年8度目の初戦敗退となった。",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "deal_restructure"
+   ]
+  },
+  {
+   "id": "mtown-52b6ae7fb48cf6",
+   "date": "2026-10-13T09:00+08:00",
+   "source": "週刊MTOWN",
+   "link": "https://www.mtown.my/news/politics/japan-beef-offal-exports-malaysia-2026",
+   "title_ja": "日本産牛内臓、マレーシアへの輸出が可能に　牛タンやほほ肉なども対象",
+   "title": "",
+   "summary_ja": "【政治・社会】日本産牛内臓、マレーシアへの輸出が可能に 牛タンやほほ肉なども対象（週刊MTOWN マレーシア日本語ニュース配信）",
+   "lang": "ja",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "supply_chain"
+   ]
+  },
+  {
+   "id": "nst-d5cb3544bf19e8",
+   "date": "2026-10-12T20:39+08:00",
+   "source": "New Straits Times",
+   "link": "https://www.nst.com.my/business/corporate/2026/10/1553930/infomina-clinches-rm221mil-panasonic-deal",
+   "title_ja": "インフォミナ、パナソニックと2,210万リンギットの契約締結",
+   "title": "Infomina clinches RM22.1mil Panasonic deal",
+   "summary_ja": "インフォミナはパナソニック・デジタルと5年間のソフトウェア保守・サブスクリプション契約を締結しました。契約額は2,210万リンギットに上ります。",
+   "lang": "en",
+   "companies": [
+    "Panasonic"
+   ],
+   "sectors": [
+    "manufacturing"
+   ],
+   "topics": [
+    "ai_digital"
+   ]
+  },
+  {
+   "id": "theedge-57ec7b70ce064c",
+   "date": "2026-10-12T20:02+08:00",
+   "source": "The Edge Malaysia",
+   "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1tUXg3Y1JadUdOYjFZNTdra1lPZHU2MzZiSF81OG01RElJWlhjQkJ6cHMyNWxuV3Q1ajN6OE5hbWdhQ2JHOVRfSERFM1pnNzBL?oc=5",
+   "title_ja": "Infomina、パナソニック・デジタルとの契約を2,210万リンギットで更新",
+   "title": "Infomina renews RM22.1 mil contract with Panasonic Digital",
+   "summary_ja": "ITソリューション企業のInfominaは、パナソニック・デジタルとの既存契約を2,210万リンギットで更新しました。",
+   "lang": "en",
+   "companies": [
+    "Panasonic"
+   ],
+   "sectors": [
+    "manufacturing"
+   ],
+   "topics": [
+    "ai_digital"
+   ]
+  },
+  {
+   "id": "nna-606bcfb31c3e5e",
+   "date": "2026-10-12T13:36+08:00",
+   "source": "NNA ASIA マレーシア",
+   "link": "https://www.nna.jp/news/2976025",
+   "title_ja": "牛内臓、日本からマレーシアへの輸出可能に",
+   "title": "",
+   "summary_ja": "日本の農林水産省はこのほど、日本からマレーシアへの牛内臓（頰肉、舌、牛脂を含む）の輸出が制度上可能になったと明らかにした。10月２日以降に日本で発行され…",
+   "lang": "ja",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "supply_chain"
+   ]
+  },
+  {
+   "id": "mtown-423d0834b5fc07",
+   "date": "2026-10-12T09:00+08:00",
+   "source": "週刊MTOWN",
+   "link": "https://www.mtown.my/news/83844",
+   "title_ja": "ランカウイ・ラブアン、免税購入枠を1万リンギに拡大へ",
+   "title": "",
+   "summary_ja": "【政治・社会】ランカウイ・ラブアン、免税購入枠を1万リンギに拡大へ（週刊MTOWN マレーシア日本語ニュース配信）",
+   "lang": "ja",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "tax_regulation"
+   ]
+  },
+  {
+   "id": "mtown-98cc727c65c0c3",
+   "date": "2026-10-12T09:00+08:00",
+   "source": "週刊MTOWN",
+   "link": "https://www.mtown.my/news/economic/MinimumWageIncreasedto2000RM",
+   "title_ja": "最低賃金、2027年6月から月額2,000リンギに引き上げ",
+   "title": "",
+   "summary_ja": "【経済・現地企業】最低賃金、2027年6月から月額2,000リンギに引き上げ（週刊MTOWN マレーシア日本語ニュース配信）",
+   "lang": "ja",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "people_cost"
+   ]
+  },
+  {
+   "id": "thestar-7e7b843b98d3bc",
+   "date": "2026-10-12T06:03+08:00",
+   "source": "The Star",
+   "link": "https://www.thestar.com.my/business/business-news/2026/10/12/infomina-secures-rm22mil-five-year-contract-from-panasonic-digital",
+   "title_ja": "インフォミナ、パナソニック デジタルからRM2200万の5年契約を獲得",
+   "title": "Infomina secures RM22mil five-year contract from Panasonic Digital",
+   "summary_ja": "Infomina Bhd の完全子会社である Infomina Japan KK は、ソフトウェア ライセンスとサポート サービスを提供するために 8 億 5,500 万円 (RM2,205 百万) 相当の 5年契約を締​​結しました。",
+   "lang": "en",
+   "companies": [
+    "Panasonic"
+   ],
+   "sectors": [
+    "manufacturing"
+   ],
+   "topics": [
+    "ai_digital",
+    "tax_regulation"
+   ]
+  },
+  {
+   "id": "nna-2ced798a9c25b5",
+   "date": "2026-10-11T23:00+08:00",
+   "source": "NNA ASIA マレーシア",
+   "link": "https://www.nna.jp/news/2973914",
+   "title_ja": "【法務のポイント】マレーシアにおけるフランチャイズ展開（２）",
+   "title": "",
+   "summary_ja": "本稿では、日系企業のマレーシア進出を支援する立場から、外国企業が海外進出の手段としてフランチャイズを活用する際に直面する課題について検討します。 ２…",
+   "lang": "ja",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "investment"
+   ]
+  },
+  {
+   "id": "theedge-ec35363b21562c",
+   "date": "2026-10-11T11:14+08:00",
+   "source": "The Edge Malaysia",
+   "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFA1ZmI4Sy01N2EzOEJNZEhUSGF0alZKelVleEwzZEdTLU1LX1VBWjJ2RmtUeEk3elByenhjRnZKLWVNUk9SZ3JKYWNFX2xvV1A5?oc=5",
+   "title_ja": "マイクロソフト CEO ナデラ氏、先進 AI に対する「緊急ブレーキ」を呼びかけ",
+   "title": "Microsoft CEO Nadella calls for ‘emergency brake’ on advanced AI",
+   "summary_ja": "マイクロソフト CEO ナデラ氏、先進 AI に「緊急ブレーキ」を要請 The Edge Japan",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "ai_digital"
+   ]
+  },
+  {
+   "id": "mtown-15a1ca7323bc60",
+   "date": "2026-10-11T09:00+08:00",
+   "source": "週刊MTOWN",
+   "link": "https://www.mtown.my/news/news/malaysia-digital-nomad-pass-extended-2027",
+   "title_ja": "デジタルノマドの滞在期間を最大4年に延長へ",
+   "title": "",
+   "summary_ja": "【マレーシアニュース】デジタルノマドの滞在期間を最大4年に延長へ（週刊MTOWN マレーシア日本語ニュース配信）",
+   "lang": "ja",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "ai_digital"
+   ]
+  },
+  {
+   "id": "bernama-5acd116599a5b4",
+   "date": "2026-10-11T07:18+08:00",
+   "source": "BERNAMA",
+   "link": "http://www.bernama.com/en/news.php?id=2618412",
+   "title_ja": "ガムダランド、ガムダコーブにASAIブランド最大級のホテルを開業",
+   "title": "Business : Gamuda Land Makes History, Launches Largest Hotel Under ASAI Brand",
+   "summary_ja": "不動産大手ガムダランドが初の自社ホテル「ASAI Gamuda Cove」を開業。同社にとって不動産開発の新たなマイルストーンとなる。",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "investment"
+   ]
+  },
+  {
+   "id": "fmt-b3cd1f88cb5c24",
+   "date": "2026-10-10T20:07+08:00",
+   "source": "Free Malaysia Today",
+   "link": "https://www.freemalaysiatoday.com/category/nation/2026/10/10/thai-japanese-investors-keen-on-sarawak-petrochemical-production",
+   "title_ja": "サラワク州の石油化学産業、日本・タイの投資家が関心示す",
+   "title": "Thai, Japanese investors keen on Sarawak petrochemical production",
+   "summary_ja": "サラワク州のアバン・ジョハリ州首相は、低炭素エネルギーや石油・ガス分野における同州の強みが、日本やタイの投資家から高く評価されていると述べました。",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "investment",
+    "energy_esg"
+   ]
+  },
+  {
+   "id": "mtown-f218194497b9df",
+   "date": "2026-10-09T09:00+08:00",
+   "source": "週刊MTOWN",
+   "link": "https://www.mtown.my/news/economic/RTStoStartServiceinFeb2027",
+   "title_ja": "ジョホール・シンガポール間RTS、2027年2月開業へ",
+   "title": "",
+   "summary_ja": "【経済・現地企業】ジョホール・シンガポール間RTS、2027年2月開業へ（週刊MTOWN マレーシア日本語ニュース配信）",
+   "lang": "ja",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "investment"
+   ]
+  },
+  {
+   "id": "mtown-6e96bfc037d5d2",
+   "date": "2026-10-09T09:00+08:00",
+   "source": "週刊MTOWN",
+   "link": "https://www.mtown.my/news/politics/Budget2027tobeSubmittedToday",
+   "title_ja": "2027年度予算案、9日に発表　生活費対策が焦点",
+   "title": "",
+   "summary_ja": "【政治・社会】2027年度予算案、9日に発表 生活費対策が焦点（週刊MTOWN マレーシア日本語ニュース配信）",
+   "lang": "ja",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "tax_regulation"
+   ]
+  },
+  {
+   "id": "borneopost-3af185ce42cc65",
+   "date": "2026-10-08T19:09+08:00",
+   "source": "The Borneo Post",
+   "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPU0FtWmJWSEFibDRzakk4cWVlZTRySFhOTFNscFZubnJJdWpJNlVSZkJmeHNmMHBGQXA0Zm45SkhxZUQzNzlNdUNaVkpsUWF1STgtdzB5NGFCbWNjUXVDUE9GaHlwR21vTnp1WVUwR21ZRDZvTFh6MFNEWncyeTllek96NWNIcWxRalNuOXV1enpfX3M1Qnhiank4MG10NWpLbXJqaExtUzdJaTZSQmJxQ1RDaFlqUzlNWW9JQ2lnSTQwTDJCblE?oc=5",
+   "title_ja": "ソフトバンク、グラブ、ペトロスが提携し、サラワク州でAI、デジタルインフラストラクチャプラットフォームを探索",
+   "title": "SoftBank, Grab, Petros team up to explore AI, digital infrastructure platform in Sarawak - Borneo Post",
+   "summary_ja": "ソフトバンク、グラブ、ペトロスが協力し、サラワク州でAI、デジタルインフラストラクチャプラットフォームを探索 ボルネオポスト",
+   "lang": "en",
+   "companies": [
+    "SoftBank"
+   ],
+   "sectors": [
+    "tmt"
+   ],
+   "topics": [
+    "ai_digital",
+    "deal_restructure"
+   ]
+  },
+  {
+   "id": "theedge-ac2b6f5f6ca0fe",
+   "date": "2026-10-08T18:49+08:00",
+   "source": "The Edge Malaysia",
+   "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1uN2kxb0xtM2NySUk3NWk4dVBubGdGdGZkbXNlU2ZXNW1ueW9zeFdnS0l1Xy1RcGJOZk1IcjFfejNRM2M1STVYa3RCY1YteGpX?oc=5",
+   "title_ja": "ソフトバンク・Grab・Petros、サラワク州でAI開発へ提携",
+   "title": "SoftBank, Grab and Petros ink pact to explore development of AI and ecosystem infrastructure in Sarawak",
+   "summary_ja": "ソフトバンク、Grab、Petrosの3社が、サラワク州におけるAIおよびエコシステムインフラの開発に向けた覚書を締結しました。",
+   "lang": "en",
+   "companies": [
+    "SoftBank"
+   ],
+   "sectors": [
+    "tmt"
+   ],
+   "topics": [
+    "ai_digital",
+    "deal_restructure"
+   ]
+  },
+  {
+   "id": "hellomalaysia-9ffe3f36151443",
+   "date": "2026-10-08T10:00+08:00",
+   "source": "Hello Malaysia",
+   "link": "https://hellomalaysia.com.my/261008001-2",
+   "title_ja": "年商300万リンギ未満の零細中小企業、電子インボイス義務を免除",
+   "title": "",
+   "summary_ja": "ペラ州警察は、日本人を狙った特殊詐欺に関与したとみられる日本人男性6人を逮捕したと発表した。 2026年10月8日 【マレーシア最新ニュース】 年商300万リンギ未満の零細中小企業、電子インボイス義務を免除 内国歳入庁（IRB）は、9月1日から年間売上高が300万リンギ未満の零細・中小企業（MSME）について、電子イ…",
+   "lang": "ja",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "tax_regulation",
+    "results"
+   ]
+  },
+  {
+   "id": "mtown-44e829136db1ff",
+   "date": "2026-10-08T09:00+08:00",
+   "source": "週刊MTOWN",
+   "link": "https://www.mtown.my/news/politics/MinimumWageDebate",
+   "title_ja": "最低賃金引き上げめぐり労使対立　2027年度予算案に注目",
+   "title": "",
+   "summary_ja": "【政治・社会】最低賃金引き上げめぐり労使対立 2027年度予算案に注目（週刊MTOWN マレーシア日本語ニュース配信）",
+   "lang": "ja",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "people_cost",
+    "tax_regulation"
+   ]
+  },
+  {
+   "id": "nna-15673b441cb529",
+   "date": "2026-10-07T23:00+08:00",
+   "source": "NNA ASIA マレーシア",
+   "link": "https://www.nna.jp/news/2974723",
+   "title_ja": "脱炭素支援で日本勢が提案、環境展示会",
+   "title": "",
+   "summary_ja": "マレーシアで企業の脱炭素化に向けた取り組みが広がる中、日本企業が関連サービスや技術の提案を強化している。マレーシアの首都クアラルンプールで７日に開幕し…",
+   "lang": "ja",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "energy_esg"
+   ]
+  },
+  {
+   "id": "malaymail-5a714c2dbb224c",
+   "date": "2026-10-07T12:42+08:00",
+   "source": "Malay Mail",
+   "link": "https://www.malaymail.com/news/money/2026/10/07/japanese-seafood-giant-umios-bets-bigger-on-malaysia-after-taking-51pc-stake-in-pet-world/238057",
+   "title_ja": "日本の海産物大手・海王、マレーシアのペットワールド株51％取得",
+   "title": "Japanese seafood giant Umios bets bigger on Malaysia after taking 51pc stake in Pet World",
+   "summary_ja": "水産・食品大手の海王（Umios）がマレーシアのペットフード企業を買収し、同国での事業拡大を加速させます。",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "deal_restructure"
+   ]
+  },
+  {
+   "id": "hellomalaysia-7839d1552264a2",
+   "date": "2026-10-01T02:25+08:00",
+   "source": "Hello Malaysia",
+   "link": "https://hellomalaysia.com.my/2610-toshiba",
+   "title_ja": "毎日の洗濯がもっと心地よくなる",
+   "title": "",
+   "summary_ja": "pradcolお気に入りの服や仕事着、シーツやタオルまで。洗濯は、毎日の暮らしに欠か 毎日の洗濯がもっと心地よくなる お気に入りの服や仕事着、シーツやタオルまで。洗濯は、毎日の暮らしに欠かせないものです。Toshiba T37 Seriesは、洗練されたデザインと先進のテクノロジー、衣類をいたわるやさしいケアをひとつ…",
+   "lang": "ja",
+   "companies": [
+    "Toshiba"
+   ],
+   "sectors": [
+    "manufacturing"
+   ],
+   "topics": []
+  },
+  {
+   "id": "theedge-1fe2748d03b723",
+   "date": "2026-09-30T10:58+08:00",
+   "source": "The Edge Malaysia",
+   "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBqVHFnRzAzTzZFN3pPb0NLbW5EbXNDWVJxQmhQZEd6bnZYV1ZOUjA2Z1lqcS1EeFVjUmJGa0V4Zk5PNENOb3lFM0xtQlRZOXNm?oc=5",
+   "title_ja": "AEON Credit株が10ヶ月ぶり安値、第2四半期決算が市場期待を下回る",
+   "title": "AEON Credit falls to 10-month low as 2Q results underwhelm investors, analysts",
+   "summary_ja": "AEON Creditの第2四半期決算がアナリストの予想を下回ったことを受け、投資家心理が悪化し株価が急落しました。",
+   "lang": "en",
+   "companies": [
+    "AEON Credit"
+   ],
+   "sectors": [
+    "finance"
+   ],
+   "topics": [
+    "investment",
+    "results"
+   ]
+  },
+  {
+   "id": "malaymail-50032bc0c7a68d",
+   "date": "2026-09-30T09:30+08:00",
+   "source": "Malay Mail",
+   "link": "https://www.malaymail.com/news/showbiz/2026/09/30/sony-drops-poster-for-hindi-epic-ramayana-rise-of-a-legend-ahead-of-november-release-video/237065",
+   "title_ja": "ソニー、ヒンディー語大作『Ramayana: Rise of a Legend』のポスター公開",
+   "title": "Sony drops poster for Hindi epic ‘Ramayana: Rise of a Legend’ ahead of November release (VIDEO)",
+   "summary_ja": "ソニー・ピクチャーズが11月公開予定のヒンディー語映画『Ramayana: Rise of a Legend』の公式ポスターを解禁しました。",
+   "lang": "en",
+   "companies": [
+    "Sony"
+   ],
+   "sectors": [
+    "manufacturing"
+   ],
+   "topics": []
+  },
+  {
+   "id": "theedge-845143e0d3bf10",
+   "date": "2026-09-29T23:46+08:00",
+   "source": "The Edge Malaysia",
+   "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFA4OE9RUThJVkY2SXRFNkVqZmp3SWhOeHZFSjZhQXlESnpYZzVsMWd5TkY4UGNSdmQzUERTM3VtX1VCY2l4dnhKSG5UeVV0WGt0?oc=5",
+   "title_ja": "インソン、ガムダ、SD ガスリー、イオン クレジット、UMS インテグレーション、ケリントン、ヴァントリス、スーパーマックス、アポロ、VS インダストリー、サーン コウ",
+   "title": "Yinson, Gamuda, SD Guthrie, AEON Credit, UMS Integration, Kelington, Vantris, Supermax, Apollo, VS Industry, Sern Kou",
+   "summary_ja": "インソン、ガムダ、SD ガスリー、イオン クレジット、UMS インテグレーション、ケリントン、ヴァントリス、スーパーマックス、アポロ、VS インダストリー、サーン コウ ザ エッジ マレーシア",
+   "lang": "en",
+   "companies": [
+    "AEON Credit",
+    "AEON"
+   ],
+   "sectors": [
+    "finance",
+    "retail"
+   ],
+   "topics": []
+  },
+  {
+   "id": "theedge-4211f217375610",
+   "date": "2026-09-29T18:58+08:00",
+   "source": "The Edge Malaysia",
+   "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9oUEQ2RjRmblk1SXhveG85d2V1elEzMGx6NS11OE5yWEkxOW9xVUJrUUtvNDFDZ2hacnRjdGZNNjUzcTVNRzlIVk9RSjBnNGNi?oc=5",
+   "title_ja": "イオンクレジット第2四半期純利益は減損損失増加で18%減",
+   "title": "AEON Credit 2Q net profit drops 18% on higher impairment losses",
+   "summary_ja": "イオンクレジット、減損損失増加で第2四半期純利益18%減 The Edge Malaysia",
+   "lang": "en",
+   "companies": [
+    "AEON Credit",
+    "AEON"
+   ],
+   "sectors": [
+    "finance",
+    "retail"
+   ],
+   "topics": [
+    "results"
+   ]
+  },
+  {
+   "id": "malaymail-814ed3c9e7a9ed",
+   "date": "2026-09-29T16:07+08:00",
+   "source": "Malay Mail",
+   "link": "https://www.malaymail.com/news/life/2026/09/29/from-kuching-to-subang-jaya-toyotas-pickleball-tour-brings-malaysians-together/236997",
+   "title_ja": "クチンからスバン・ジャヤまで、トヨタのピックルボールツアーでマレーシア人が集まる",
+   "title": "From Kuching to Subang Jaya, Toyota’s pickleball tour brings Malaysians together",
+   "summary_ja": "スバンジャヤ、9月28日 — トヨタ・マレーシア・ピクルツアー2026が5都市での開催を終え、ピックルボールをもたらした。",
+   "lang": "en",
+   "companies": [
+    "Toyota"
+   ],
+   "sectors": [
+    "manufacturing"
+   ],
+   "topics": []
+  },
+  {
+   "id": "malaymail-339151f480c281",
+   "date": "2026-09-24T15:00+08:00",
+   "source": "Malay Mail",
+   "link": "https://www.malaymail.com/news/tech-gadgets/2026/09/24/capcom-launches-third-malaysia-pop-up-store-in-kl-amid-momentum-from-resident-evil-and-street-fighter-films/236334",
+   "title_ja": "カプコン、クアラルンプールに3店舗目のポップアップ店",
+   "title": "Capcom launches third Malaysia pop-up store in KL amid momentum from ‘Resident Evil’ and ‘Street Fighter’ films",
+   "summary_ja": "『バイオハザード』や『ストリートファイター』の人気を受け、カプコンがマレーシアのKLに3店舗目となる公式ポップアップストアを開設しました。",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "investment"
+   ]
+  }
+ ]
 }
