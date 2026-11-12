@@ -6,8 +6,9 @@ Japanese outlets and adds Japanese titles and summaries. Its archive search is r
 (the site sends no CORS headers), the same way scripts/collect_haze_news.py reads it.
 
 An article is kept when
-  - it names a company on the watchlist (config/signals_watchlist.json), or
-  - it is about Japan (Japan, 日系, JETRO, ...) and about a business topic (investment, plants, AI, ...).
+  - its headline names a company on the watchlist (config/signals_watchlist.json), or
+  - its summary names one and it is about a business topic (investment, plants, AI, ...), or
+  - its headline is about Japan (Japan, 日系, JETRO, ...) and it is about a business topic.
 Each kept article is tagged with the companies, their sectors and the topics it touches, so the page
 can answer "what happened this week at the companies and topics I follow?".
 
@@ -53,7 +54,7 @@ MALAYSIA = re.compile(
     r"|bursa|ringgit|リンギ|\bMIDA\b|\bMITI\b|\bBNM\b|\bLHDN\b|ASEAN|\bBhd\b|\bBerhad\b|\(M\)|shah alam|bangi|pasir gudang|batu kawan|bayan lepas|ipoh|kuantan|kuching|kota kinabalu", re.I)
 # Business topics. A story can have several; one that names no watchlist company needs at least one.
 TOPICS = [
-    ("investment", re.compile(r"invest|expan[ds]|new plant|new factory|groundbreak|capex|\bFDI\b|sets? up|open(s|ed|ing) (a |its )?(new )?(plant|factory|office|hub|centre|center|store|outlet|mall)|投資|進出|新工場|増産|拡張|開設|開業|出店|pelaburan|kilang baharu", re.I)),
+    ("investment", re.compile(r"invest|expan[ds]|new plant|new factory|groundbreak|capex|\bFDI\b|open(s|ed|ing) (a |its )?(new )?(plant|factory|office|hub|centre|center|store|outlet|mall)|投資|進出|新工場|増産|拡張|開設|開業|出店|pelaburan|kilang baharu", re.I)),
     ("ai_digital", re.compile(r"\bAI\b|artificial intelligence|generative|data cent(re|er)|cloud|digital|automation|robot|cyber|5G|smart factory|人工知能|生成AI|データセンター|クラウド|デジタル|自動化|ロボット|サイバー|スマート工場|pusat data|kecerdasan buatan", re.I)),
     ("supply_chain", re.compile(r"supply chain|semiconductor|chip|tariff|export|import|reshor|relocat|china ?\+ ?1|trade deal|logistic|\bports?\b|サプライチェーン|半導体|関税|輸出|輸入|移管|物流|rantaian bekalan|tarif|eksport", re.I)),
     ("people_cost", re.compile(r"minimum wage|foreign worker|labou?r shortage|levy|retrench|layoff|lay off|job cuts?|jobs (affected|lost)|workers affected|wage|salary|talent|\bEPF\b|\bTVET\b|upskill|最低賃金|外国人労働者|人手不足|解雇|賃金|人材|gaji minimum|pekerja asing", re.I)),
@@ -98,9 +99,17 @@ def to_item(a: dict, companies: list[dict]) -> dict | None:
     text = " ".join([title, title_ja, summary, a.get("snippet") or ""])
     if not a.get("link") or not (title or title_ja):
         return None
-    hits = [c for c in companies if c["rx"].search(text) or (c["ja"] and not c["ja"].isascii() and c["ja"] in text)]
+    headline = title + " " + title_ja
+
+    def named(c: dict, where: str) -> bool:
+        return bool(c["rx"].search(where)) or (bool(c["ja"]) and not c["ja"].isascii() and c["ja"] in where)
+
+    hits = [c for c in companies if named(c, text)]
     topics = [name for name, rx in TOPICS if rx.search(text)]
-    if not hits and not (JAPAN.search(text) and topics):
+    # A company named only in the summary (the car in a crash report, an advertiser) needs a business
+    # topic; a story with no company needs Japan in its headline as well as a topic.
+    in_headline = any(named(c, headline) for c in hits)
+    if not in_headline and not (hits and topics) and not (JAPAN.search(headline) and topics):
         return None
     # Outlets in Japanese (週刊MTOWN, NNA) write about Malaysia already; others must name the country,
     # so that a company's news from elsewhere in the world is left out.

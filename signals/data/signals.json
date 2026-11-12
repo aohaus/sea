@@ -7,7 +7,7 @@
  },
  "status": {
   "searches": 98,
-  "matched": 94,
+  "matched": 54,
   "errors": []
  },
  "items": [
@@ -79,22 +79,6 @@
    ]
   },
   {
-   "id": "bernama-f7712d2280796d",
-   "date": "2026-11-10T12:00+08:00",
-   "source": "BERNAMA",
-   "link": "http://www.bernama.com/en/news.php?id=2632415",
-   "title_ja": "Hologenとシスメックス、AIを活用した血液検査データ分析で合弁会社を設立",
-   "title": "Business : Hologen, Sysmex Form AI Venture To Analyse Blood Test Data",
-   "summary_ja": "AI企業のHologenと日本のシスメックスが提携し、血液検査データの分析を行う合弁会社を設立しました。医療DXの推進が期待されます。",
-   "lang": "en",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "ai_digital",
-    "deal_restructure"
-   ]
-  },
-  {
    "id": "borneopost-7d2b765b53d4ae",
    "date": "2026-11-10T11:53+08:00",
    "source": "The Borneo Post",
@@ -136,23 +120,6 @@
    ]
   },
   {
-   "id": "malaymail-fa0448aefd60e5",
-   "date": "2026-11-10T09:51+08:00",
-   "source": "Malay Mail",
-   "link": "https://www.malaymail.com/news/malaysia/2026/11/10/factory-worker-killed-after-motorcycle-crashes-into-proton-that-veered-into-his-path-in-kluang/242650",
-   "title_ja": "ジョホール州クルアンでバイクと乗用車が衝突、工場勤務の男性が死亡",
-   "title": "Factory worker killed after motorcycle crashes into Proton that veered into his path in Kluang",
-   "summary_ja": "ジョホール州クルアンにて、進路を塞いだ乗用車にバイクが衝突し、運転していた工場勤務の男性が死亡する事故が発生しました。",
-   "lang": "en",
-   "companies": [
-    "Yamaha"
-   ],
-   "sectors": [
-    "manufacturing"
-   ],
-   "topics": []
-  },
-  {
    "id": "bernama-b90cfb9d1ebc18",
    "date": "2026-11-10T09:49+08:00",
    "source": "BERNAMA",
@@ -189,21 +156,6 @@
    ],
    "topics": [
     "ai_digital"
-   ]
-  },
-  {
-   "id": "mtown-fcb806f8e76bfe",
-   "date": "2026-11-10T09:00+08:00",
-   "source": "週刊MTOWN",
-   "link": "https://www.mtown.my/news/economic/ECRLAimstoStartSerivcefrom12Dec",
-   "title_ja": "東海岸鉄道ECRL、最終試験運転を開始　12月12日の開業目指す",
-   "title": "",
-   "summary_ja": "【経済・現地企業】東海岸鉄道ECRL、最終試験運転を開始 12月12日の開業目指す（週刊MTOWN マレーシア日本語ニュース配信）",
-   "lang": "ja",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "investment"
    ]
   },
   {
@@ -283,37 +235,6 @@
    ]
   },
   {
-   "id": "nikkei_asia-e717b16f99090e",
-   "date": "2026-11-10T00:57+08:00",
-   "source": "Nikkei Asia",
-   "link": "https://asia.nikkei.com/politics/international-relations/malaysia-taiwan-fraying-ties-threaten-future-chip-investments",
-   "title_ja": "マレーシアと台湾の関係悪化、半導体投資に懸念",
-   "title": "Malaysia-Taiwan fraying ties threaten future chip investments",
-   "summary_ja": "両国間の外交的緊張が、今後の半導体産業における新規投資やサプライチェーンに悪影響を及ぼすリスクを指摘。",
-   "lang": "en",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "investment",
-    "supply_chain"
-   ]
-  },
-  {
-   "id": "nikkei_asia-1ee4371caaa7dc",
-   "date": "2026-11-10T00:57+08:00",
-   "source": "Nikkei Asia",
-   "link": "https://asia.nikkei.com/spotlight/your-week-in-asia/cop31-climate-summit-in-turkey-asean-summit-sri-lanka-budget",
-   "title_ja": "COP31トルコ開催やASEAN首脳会議など重要日程",
-   "title": "COP31 climate summit in Turkey, ASEAN Summit, Sri Lanka budget",
-   "summary_ja": "トルコでのCOP31開催、ASEAN首脳会議、スリランカの予算案など、今後のアジア・国際情勢を左右する重要イベントを概観。",
-   "lang": "en",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "tax_regulation"
-   ]
-  },
-  {
    "id": "astroawani-adad6c51f1c66d",
    "date": "2026-11-09T23:30+08:00",
    "source": "Astro AWANI",
@@ -374,23 +295,6 @@
    ]
   },
   {
-   "id": "fmt-1399d92d143a9f",
-   "date": "2026-11-09T19:45+08:00",
-   "source": "Free Malaysia Today",
-   "link": "https://www.freemalaysiatoday.com/category/nation/2026/11/09/man-charged-with-dui-causes-another-crash-while-high-on-drugs",
-   "title_ja": "薬物影響下で飲酒運転の男が追突事故、マレーシアで再犯",
-   "title": "Man charged with DUI causes another crash while high on drugs",
-   "summary_ja": "飲酒運転で起訴中の39歳の男が、薬物使用状態でトヨタ・ヴィオスを運転し追突事故を起こしました。",
-   "lang": "en",
-   "companies": [
-    "Toyota"
-   ],
-   "sectors": [
-    "manufacturing"
-   ],
-   "topics": []
-  },
-  {
    "id": "malaymail-104e5d0cd8a6a7",
    "date": "2026-11-09T17:03+08:00",
    "source": "Malay Mail",
@@ -408,71 +312,18 @@
    "topics": []
   },
   {
-   "id": "mtown-96ea329b0b256a",
-   "date": "2026-11-06T09:00+08:00",
-   "source": "週刊MTOWN",
-   "link": "https://www.mtown.my/news/nikkei/DAISOsDistributionCenter",
-   "title_ja": "ダイソー、セランゴール州に世界最大の物流拠点を開設",
-   "title": "",
-   "summary_ja": "【日系企業動向】ダイソー、セランゴール州に世界最大の物流拠点を開設（週刊MTOWN マレーシア日本語ニュース配信）",
-   "lang": "ja",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "investment",
-    "supply_chain"
-   ]
-  },
-  {
    "id": "theedge-190c340bd85a16",
    "date": "2026-11-05T14:32+08:00",
    "source": "The Edge Malaysia",
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBTUGFLZERJS28xYl90YmhKSkR5enBBbFN1STNDbm9GWjJnSmJ3UHVtX1pjTXNCQVhETXhud0pXSlY0VFgtZXIwbl9KTUZVZWpD?oc=5",
    "title_ja": "Japan's Daiso opens its largest ever logistics hub in Pulau Indah",
-   "title": "Japan's Daiso opens its largest ever logistics hub in Pulau Indah",
+   "title": "",
    "summary_ja": "Japan's Daiso opens its largest ever logistics hub in Pulau Indah The Edge Malaysia",
    "lang": "en",
    "companies": [],
    "sectors": [],
    "topics": [
     "supply_chain"
-   ]
-  },
-  {
-   "id": "theedge-db938ca6780e61",
-   "date": "2026-11-05T11:48+08:00",
-   "source": "The Edge Malaysia",
-   "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBEUWlKZzNvSmxXSmI4MmNFd1FMNXV1Nmp1OG81MXFmU3F4cXg5VG52eWF1cEFWOW1WczRLeXQxVFA0am50VlhLckZVNkVUR04x?oc=5",
-   "title_ja": "中国当局、ソフトバンクのABBロボティクス部門買収計画を阻止",
-   "title": "China blocks SoftBank’s US$5.4 bil takeover of ABB robotics unit",
-   "summary_ja": "54億ドル規模の買収案件に対し、中国の規制当局が禁止通知を出したことで、ソフトバンクの戦略に影響が出ています。",
-   "lang": "en",
-   "companies": [
-    "SoftBank"
-   ],
-   "sectors": [
-    "tmt"
-   ],
-   "topics": [
-    "ai_digital",
-    "tax_regulation",
-    "deal_restructure"
-   ]
-  },
-  {
-   "id": "mtown-e2e56aaa600e74",
-   "date": "2026-11-05T09:00+08:00",
-   "source": "週刊MTOWN",
-   "link": "https://www.mtown.my/news/economic/GoogleInveststoExpandDataCenter",
-   "title_ja": "Google、マレーシアに150億米ドルを追加投資　データセンター拡張へ",
-   "title": "",
-   "summary_ja": "【経済・現地企業】Google、マレーシアに150億米ドルを追加投資 データセンター拡張へ（週刊MTOWN マレーシア日本語ニュース配信）",
-   "lang": "ja",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "investment",
-    "ai_digital"
    ]
   },
   {
@@ -514,21 +365,6 @@
    ]
   },
   {
-   "id": "mtown-1588891306b263",
-   "date": "2026-11-04T09:00+08:00",
-   "source": "週刊MTOWN",
-   "link": "https://www.mtown.my/news/politics/CyberSecurityLevelUp",
-   "title_ja": "マレーシア政府、サイバー攻撃への警戒強化　首相が緊急対策会議を指示",
-   "title": "",
-   "summary_ja": "【政治・社会】マレーシア政府、サイバー攻撃への警戒強化 首相が緊急対策会議を指示（週刊MTOWN マレーシア日本語ニュース配信）",
-   "lang": "ja",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "ai_digital"
-   ]
-  },
-  {
    "id": "hellomalaysia-2b6919deb89e01",
    "date": "2026-11-03T10:00+08:00",
    "source": "Hello Malaysia",
@@ -563,38 +399,6 @@
    ]
   },
   {
-   "id": "mtown-67adef1da94bc1",
-   "date": "2026-11-02T09:00+08:00",
-   "source": "週刊MTOWN",
-   "link": "https://www.mtown.my/news/economic/118MallOpensinKL",
-   "title_ja": "KLに新たな大型商業施設「118 Mall」開業　世界第2位の高層ビル足元に",
-   "title": "",
-   "summary_ja": "【経済・現地企業】KLに新たな大型商業施設「118 Mall」開業 世界第2位の高層ビル足元に（週刊MTOWN マレーシア日本語ニュース配信）",
-   "lang": "ja",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "investment"
-   ]
-  },
-  {
-   "id": "hellomalaysia-ac05b01cdb608a",
-   "date": "2026-11-01T02:20+08:00",
-   "source": "Hello Malaysia",
-   "link": "https://hellomalaysia.com.my/2611-toshiba",
-   "title_ja": "美しく、心地よい毎日のためにデザインされた冷蔵庫",
-   "title": "",
-   "summary_ja": "pradcol美しくデザインされた東芝のJAPANDi冷蔵庫シリーズ。日本らしいシンプルさ 美しく、心地よい毎日のためにデザインされた冷蔵庫 美しくデザインされた東芝のJAPANDi冷蔵庫シリーズ。日本らしいシンプルさと現代的な機能性を融合し、毎日のキッチンに心地よさと調和をもたらします。",
-   "lang": "ja",
-   "companies": [
-    "Toshiba"
-   ],
-   "sectors": [
-    "manufacturing"
-   ],
-   "topics": []
-  },
-  {
    "id": "theedge-2026-10-30-3-i4ch",
    "date": "2026-10-30T11:25+08:00",
    "source": "The Edge Malaysia",
@@ -611,21 +415,6 @@
    ],
    "topics": [
     "ai_digital"
-   ]
-  },
-  {
-   "id": "mtown-15991a7e248a77",
-   "date": "2026-10-28T09:00+08:00",
-   "source": "週刊MTOWN",
-   "link": "https://www.mtown.my/news/politics/GovtTerminatesBUDIAbusers",
-   "title_ja": "ペナン州の給油所で燃料補助金の不正利用疑惑　政府が販売停止措置",
-   "title": "",
-   "summary_ja": "【政治・社会】ペナン州の給油所で燃料補助金の不正利用疑惑 政府が販売停止措置（週刊MTOWN マレーシア日本語ニュース配信）",
-   "lang": "ja",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "tax_regulation"
    ]
   },
   {
@@ -664,37 +453,6 @@
    ]
   },
   {
-   "id": "mtown-8e1194fc26df80",
-   "date": "2026-10-27T09:00+08:00",
-   "source": "週刊MTOWN",
-   "link": "https://www.mtown.my/news/economic/DataCenterInvestment",
-   "title_ja": "サラワク州、AI・データセンターへの大型投資計画　500億米ドル規模の一部を誘致へ",
-   "title": "",
-   "summary_ja": "【経済・現地企業】サラワク州、AI・データセンターへの大型投資計画 500億米ドル規模の一部を誘致へ（週刊MTOWN マレーシア日本語ニュース配信）",
-   "lang": "ja",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "investment",
-    "ai_digital"
-   ]
-  },
-  {
-   "id": "mtown-337d54c6c816bb",
-   "date": "2026-10-27T09:00+08:00",
-   "source": "週刊MTOWN",
-   "link": "https://www.mtown.my/news/economic/LankawiTaxFreeRegulation",
-   "title_ja": "ランカウイ島、免税制度を見直し　観光客の購入上限を1万リンギに引き上げ",
-   "title": "",
-   "summary_ja": "【経済・現地企業】ランカウイ島、免税制度を見直し 観光客の購入上限を1万リンギに引き上げ（週刊MTOWN マレーシア日本語ニュース配信）",
-   "lang": "ja",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "tax_regulation"
-   ]
-  },
-  {
    "id": "astroawani-c6c4fa86ce541f",
    "date": "2026-10-27T04:45+08:00",
    "source": "Astro AWANI",
@@ -730,7 +488,7 @@
    "source": "Malay Mail",
    "link": "https://www.malaymail.com/news/money/2026/10/26/japanese-seafood-exports-to-malaysia-jump-40pc-to-rm130m-as-demand-grows/240702",
    "title_ja": "Japanese seafood exports to Malaysia jump 40pc to RM130m as demand grows",
-   "title": "Japanese seafood exports to Malaysia jump 40pc to RM130m as demand grows",
+   "title": "",
    "summary_ja": "KUALA LUMPUR, Oct 26 &mdash; Japanese seafood exports to Malaysia rose by about 40 per cent in the first eight months of...",
    "lang": "en",
    "companies": [],
@@ -813,22 +571,6 @@
    ]
   },
   {
-   "id": "nikkei_asia-c4881f31e4785a",
-   "date": "2026-10-22T18:15+08:00",
-   "source": "Nikkei Asia",
-   "link": "https://asia.nikkei.com/business/technology/artificial-intelligence/ai-monetization-in-asean-nascent-but-usage-boosts-e-commerce-report2",
-   "title_ja": "ASEANのAI活用は初期段階も、EC分野で成長の兆し",
-   "title": "AI monetization in ASEAN 'nascent' but usage boosts e-commerce: report",
-   "summary_ja": "ASEAN地域におけるAIの収益化はまだ途上ですが、Eコマース分野での導入が消費者の利便性と売上向上に寄与しています。",
-   "lang": "en",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "ai_digital",
-    "results"
-   ]
-  },
-  {
    "id": "astroawani-2026-10-22-3-lnz6",
    "date": "2026-10-22T15:00+08:00",
    "source": "Astro AWANI",
@@ -863,51 +605,6 @@
    "topics": []
   },
   {
-   "id": "nna-e2cee8816468b6",
-   "date": "2026-10-22T11:24+08:00",
-   "source": "NNA ASIA マレーシア",
-   "link": "https://www.nna.jp/news/2980206",
-   "title_ja": "日・マ技術学院に半導体アカデミー設立へ＝政府",
-   "title": "",
-   "summary_ja": "マレーシア政府は、ペナン州の日本・マレーシア技術学院（ＪＭＴＩ）に「人的資源省半導体アカデミー」を設立する準備を進めている。今年は500万リンギ（約１億9…",
-   "lang": "ja",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "supply_chain"
-   ]
-  },
-  {
-   "id": "mtown-6b501bcbfd63b7",
-   "date": "2026-10-22T09:00+08:00",
-   "source": "週刊MTOWN",
-   "link": "https://www.mtown.my/news/economic/FuelPricefor22Oct2026",
-   "title_ja": "マレーシア燃料価格、RON97と補助金なしRON95が30セン値下げ　22日から適用",
-   "title": "",
-   "summary_ja": "【経済・現地企業】マレーシア燃料価格、RON97と補助金なしRON95が30セン値下げ 22日から適用（週刊MTOWN マレーシア日本語ニュース配信）",
-   "lang": "ja",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "tax_regulation"
-   ]
-  },
-  {
-   "id": "theedge-a07573e1e5af8c",
-   "date": "2026-10-22T08:56+08:00",
-   "source": "The Edge Malaysia",
-   "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE44Tkh3WVJHcmpVMHNsZmlXM1ZVWVRYN01fM05qdHlyVmJTYmpkblM4aW5JeGx5QTFZQWF4RGhTbmk1T3VtLUJUZEY3RG96Z0xo?oc=5",
-   "title_ja": "Zetrix AI が RM2b スクーク規約違反を修正する日が来る",
-   "title": "D-day for Zetrix AI to fix RM2b sukuk covenant breach",
-   "summary_ja": "Zetrix AIがRM2bスクーク規約違反を修正する日が来る The Edge Japan",
-   "lang": "en",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "ai_digital"
-   ]
-  },
-  {
    "id": "nst-8a5af8e11ef019",
    "date": "2026-10-22T06:00+08:00",
    "source": "New Straits Times",
@@ -938,23 +635,6 @@
    ],
    "sectors": [
     "tmt"
-   ],
-   "topics": []
-  },
-  {
-   "id": "nna-5e9a9b8cbd14f4",
-   "date": "2026-10-21T23:00+08:00",
-   "source": "NNA ASIA マレーシア",
-   "link": "https://www.nna.jp/news/2979636",
-   "title_ja": "クアラルンプール線初就航、成田発着ジップエア",
-   "title": "",
-   "summary_ja": "【共同】日本航空傘下で国際線を専門とする成田空港発着の格安航空会社（ＬＣＣ）「ジップエア トーキョー」は20日、成田とマレーシアの首都クアラルンプールを…",
-   "lang": "ja",
-   "companies": [
-    "Japan Airlines"
-   ],
-   "sectors": [
-    "logistics"
    ],
    "topics": []
   },
@@ -1013,85 +693,8 @@
    "source": "Free Malaysia Today",
    "link": "https://www.freemalaysiatoday.com/category/nation/2026/10/14/bukit-aman-to-send-officers-to-japan-after-m-sians-nabbed-with-cocaine",
    "title_ja": "Bukit Aman to send officers to Japan after M’sians nabbed with cocaine",
-   "title": "Bukit Aman to send officers to Japan after M’sians nabbed with cocaine",
-   "summary_ja": "Federal police say the officers will investigate whether the Malaysians have ties to local or international drug syndicates.",
-   "lang": "en",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "investment"
-   ]
-  },
-  {
-   "id": "hellomalaysia-7087c8cf113447",
-   "date": "2026-10-14T10:00+08:00",
-   "source": "Hello Malaysia",
-   "link": "https://hellomalaysia.com.my/261014001-2",
-   "title_ja": "カンパーで日本の警察官装う詐欺拠点摘発、日本人9人逮捕",
    "title": "",
-   "summary_ja": "JPJは、中国自動車大手、チェリーのSUV「オモダ5」の車両型式認可（VTA）を停止し、新規登録を中止した 2026年11月2日 【マレーシア最新ニュース】 奇瑞「オモダ5」で後輪車軸脱落、認可停止で再リコール 道路交通局（JPJ）は、走行中に後輪車軸が脱落する事故が発生したことを受け、中国自動車大手、奇瑞汽車（チェ…",
-   "lang": "ja",
-   "companies": [
-    "AEON"
-   ],
-   "sectors": [
-    "retail"
-   ],
-   "topics": []
-  },
-  {
-   "id": "nst-da24760c7273c0",
-   "date": "2026-10-14T09:29+08:00",
-   "source": "New Straits Times",
-   "link": "https://www.nst.com.my/news/nation/2026/10/1554959/police-send-team-japan-over-5kg-cocaine-seizure",
-   "title_ja": "羽田空港でのコカイン密輸事件、マレーシア警察が捜査チーム派遣へ",
-   "title": "Police to send team to Japan over 5kg cocaine seizure",
-   "summary_ja": "東京・羽田空港でマレーシア人5名が5kgのコカイン所持で逮捕された事件を受け、マレーシア警察は詳細な調査のため捜査チームを日本へ派遣します。",
-   "lang": "en",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "investment"
-   ]
-  },
-  {
-   "id": "nst-32939cc68d6731",
-   "date": "2026-10-14T07:53+08:00",
-   "source": "New Straits Times",
-   "link": "https://www.nst.com.my/sports/badminton/2026/10/1554903/aaron-wooi-yik-launch-la-2028-mission-winning-reunion",
-   "title_ja": "バドミントン男子ダブルス：アーロン・チア＆ソー・ウーイック組が復帰戦で日本ペアを撃破",
-   "title": "Aaron-Wooi Yik launch LA 2028 mission with winning reunion",
-   "summary_ja": "2028年ロサンゼルス五輪を見据え再結成したマレーシアのアーロン・チア＆ソー・ウーイック組が、復帰初戦で日本の保木卓朗・小林優吾組に勝利し、好スタートを切りました。",
-   "lang": "en",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "deal_restructure"
-   ]
-  },
-  {
-   "id": "nikkei_asia-b0c3df26337cc2",
-   "date": "2026-10-14T07:37+08:00",
-   "source": "Nikkei Asia",
-   "link": "https://asia.nikkei.com/economy/trade/malaysia-targets-june-2027-signing-of-eu-trade-deal",
-   "title_ja": "マレーシア、EUとの自由貿易協定を2027年6月に締結へ",
-   "title": "Malaysia targets June 2027 signing of EU trade deal",
-   "summary_ja": "マレーシア政府は欧州連合（EU）との自由貿易協定（FTA）締結に向けた交渉を加速させ、2027年6月の署名を目標に掲げています。",
-   "lang": "en",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "supply_chain"
-   ]
-  },
-  {
-   "id": "fmt-67be9cb802d3e7",
-   "date": "2026-10-14T07:24+08:00",
-   "source": "Free Malaysia Today",
-   "link": "https://www.freemalaysiatoday.com/category/nation/2026/10/14/reunited-aaron-wooi-yik-clear-1st-round-at-denmark-open",
-   "title_ja": "バドミントン・デンマークOP、再結成のアーロン＆ウーイ・イク組が初戦突破",
-   "title": "Reunited Aaron-Wooi Yik clear 1st round at Denmark Open",
-   "summary_ja": "世界ランク4位のマレーシアペアが、日本の保木・小林組を破り、デンマークオープン2回戦へ進出しました。",
+   "summary_ja": "Federal police say the officers will investigate whether the Malaysians have ties to local or international drug syndicates.",
    "lang": "en",
    "companies": [],
    "sectors": [],
@@ -1132,21 +735,6 @@
    "topics": [
     "people_cost",
     "tax_regulation"
-   ]
-  },
-  {
-   "id": "fmt-6616265dd5c624",
-   "date": "2026-10-13T17:23+08:00",
-   "source": "Free Malaysia Today",
-   "link": "https://www.freemalaysiatoday.com/category/highlight/2026/10/13/jun-hao-suffers-8th-first-round-exit-this-year",
-   "title_ja": "バドミントン・ジュンハオ選手、デンマークOPで初戦敗退　今年8度目",
-   "title": "Jun Hao suffers 8th first-round exit this year",
-   "summary_ja": "マレーシアの男子シングルス選手ジュンハオが、デンマークオープンで日本の渡邉航貴に敗れ、今年8度目の初戦敗退となった。",
-   "lang": "en",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "deal_restructure"
    ]
   },
   {
@@ -1218,36 +806,6 @@
    ]
   },
   {
-   "id": "mtown-423d0834b5fc07",
-   "date": "2026-10-12T09:00+08:00",
-   "source": "週刊MTOWN",
-   "link": "https://www.mtown.my/news/83844",
-   "title_ja": "ランカウイ・ラブアン、免税購入枠を1万リンギに拡大へ",
-   "title": "",
-   "summary_ja": "【政治・社会】ランカウイ・ラブアン、免税購入枠を1万リンギに拡大へ（週刊MTOWN マレーシア日本語ニュース配信）",
-   "lang": "ja",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "tax_regulation"
-   ]
-  },
-  {
-   "id": "mtown-98cc727c65c0c3",
-   "date": "2026-10-12T09:00+08:00",
-   "source": "週刊MTOWN",
-   "link": "https://www.mtown.my/news/economic/MinimumWageIncreasedto2000RM",
-   "title_ja": "最低賃金、2027年6月から月額2,000リンギに引き上げ",
-   "title": "",
-   "summary_ja": "【経済・現地企業】最低賃金、2027年6月から月額2,000リンギに引き上げ（週刊MTOWN マレーシア日本語ニュース配信）",
-   "lang": "ja",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "people_cost"
-   ]
-  },
-  {
    "id": "thestar-7e7b843b98d3bc",
    "date": "2026-10-12T06:03+08:00",
    "source": "The Star",
@@ -1263,68 +821,7 @@
     "manufacturing"
    ],
    "topics": [
-    "ai_digital",
-    "tax_regulation"
-   ]
-  },
-  {
-   "id": "nna-2ced798a9c25b5",
-   "date": "2026-10-11T23:00+08:00",
-   "source": "NNA ASIA マレーシア",
-   "link": "https://www.nna.jp/news/2973914",
-   "title_ja": "【法務のポイント】マレーシアにおけるフランチャイズ展開（２）",
-   "title": "",
-   "summary_ja": "本稿では、日系企業のマレーシア進出を支援する立場から、外国企業が海外進出の手段としてフランチャイズを活用する際に直面する課題について検討します。 ２…",
-   "lang": "ja",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "investment"
-   ]
-  },
-  {
-   "id": "theedge-ec35363b21562c",
-   "date": "2026-10-11T11:14+08:00",
-   "source": "The Edge Malaysia",
-   "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFA1ZmI4Sy01N2EzOEJNZEhUSGF0alZKelVleEwzZEdTLU1LX1VBWjJ2RmtUeEk3elByenhjRnZKLWVNUk9SZ3JKYWNFX2xvV1A5?oc=5",
-   "title_ja": "マイクロソフト CEO ナデラ氏、先進 AI に対する「緊急ブレーキ」を呼びかけ",
-   "title": "Microsoft CEO Nadella calls for ‘emergency brake’ on advanced AI",
-   "summary_ja": "マイクロソフト CEO ナデラ氏、先進 AI に「緊急ブレーキ」を要請 The Edge Japan",
-   "lang": "en",
-   "companies": [],
-   "sectors": [],
-   "topics": [
     "ai_digital"
-   ]
-  },
-  {
-   "id": "mtown-15a1ca7323bc60",
-   "date": "2026-10-11T09:00+08:00",
-   "source": "週刊MTOWN",
-   "link": "https://www.mtown.my/news/news/malaysia-digital-nomad-pass-extended-2027",
-   "title_ja": "デジタルノマドの滞在期間を最大4年に延長へ",
-   "title": "",
-   "summary_ja": "【マレーシアニュース】デジタルノマドの滞在期間を最大4年に延長へ（週刊MTOWN マレーシア日本語ニュース配信）",
-   "lang": "ja",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "ai_digital"
-   ]
-  },
-  {
-   "id": "bernama-5acd116599a5b4",
-   "date": "2026-10-11T07:18+08:00",
-   "source": "BERNAMA",
-   "link": "http://www.bernama.com/en/news.php?id=2618412",
-   "title_ja": "ガムダランド、ガムダコーブにASAIブランド最大級のホテルを開業",
-   "title": "Business : Gamuda Land Makes History, Launches Largest Hotel Under ASAI Brand",
-   "summary_ja": "不動産大手ガムダランドが初の自社ホテル「ASAI Gamuda Cove」を開業。同社にとって不動産開発の新たなマイルストーンとなる。",
-   "lang": "en",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "investment"
    ]
   },
   {
@@ -1341,36 +838,6 @@
    "topics": [
     "investment",
     "energy_esg"
-   ]
-  },
-  {
-   "id": "mtown-f218194497b9df",
-   "date": "2026-10-09T09:00+08:00",
-   "source": "週刊MTOWN",
-   "link": "https://www.mtown.my/news/economic/RTStoStartServiceinFeb2027",
-   "title_ja": "ジョホール・シンガポール間RTS、2027年2月開業へ",
-   "title": "",
-   "summary_ja": "【経済・現地企業】ジョホール・シンガポール間RTS、2027年2月開業へ（週刊MTOWN マレーシア日本語ニュース配信）",
-   "lang": "ja",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "investment"
-   ]
-  },
-  {
-   "id": "mtown-6e96bfc037d5d2",
-   "date": "2026-10-09T09:00+08:00",
-   "source": "週刊MTOWN",
-   "link": "https://www.mtown.my/news/politics/Budget2027tobeSubmittedToday",
-   "title_ja": "2027年度予算案、9日に発表　生活費対策が焦点",
-   "title": "",
-   "summary_ja": "【政治・社会】2027年度予算案、9日に発表 生活費対策が焦点（週刊MTOWN マレーシア日本語ニュース配信）",
-   "lang": "ja",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "tax_regulation"
    ]
   },
   {
@@ -1414,38 +881,6 @@
    ]
   },
   {
-   "id": "hellomalaysia-9ffe3f36151443",
-   "date": "2026-10-08T10:00+08:00",
-   "source": "Hello Malaysia",
-   "link": "https://hellomalaysia.com.my/261008001-2",
-   "title_ja": "年商300万リンギ未満の零細中小企業、電子インボイス義務を免除",
-   "title": "",
-   "summary_ja": "ペラ州警察は、日本人を狙った特殊詐欺に関与したとみられる日本人男性6人を逮捕したと発表した。 2026年10月8日 【マレーシア最新ニュース】 年商300万リンギ未満の零細中小企業、電子インボイス義務を免除 内国歳入庁（IRB）は、9月1日から年間売上高が300万リンギ未満の零細・中小企業（MSME）について、電子イ…",
-   "lang": "ja",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "tax_regulation",
-    "results"
-   ]
-  },
-  {
-   "id": "mtown-44e829136db1ff",
-   "date": "2026-10-08T09:00+08:00",
-   "source": "週刊MTOWN",
-   "link": "https://www.mtown.my/news/politics/MinimumWageDebate",
-   "title_ja": "最低賃金引き上げめぐり労使対立　2027年度予算案に注目",
-   "title": "",
-   "summary_ja": "【政治・社会】最低賃金引き上げめぐり労使対立 2027年度予算案に注目（週刊MTOWN マレーシア日本語ニュース配信）",
-   "lang": "ja",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "people_cost",
-    "tax_regulation"
-   ]
-  },
-  {
    "id": "nna-15673b441cb529",
    "date": "2026-10-07T23:00+08:00",
    "source": "NNA ASIA マレーシア",
@@ -1474,60 +909,6 @@
    "topics": [
     "deal_restructure"
    ]
-  },
-  {
-   "id": "hellomalaysia-7839d1552264a2",
-   "date": "2026-10-01T02:25+08:00",
-   "source": "Hello Malaysia",
-   "link": "https://hellomalaysia.com.my/2610-toshiba",
-   "title_ja": "毎日の洗濯がもっと心地よくなる",
-   "title": "",
-   "summary_ja": "pradcolお気に入りの服や仕事着、シーツやタオルまで。洗濯は、毎日の暮らしに欠か 毎日の洗濯がもっと心地よくなる お気に入りの服や仕事着、シーツやタオルまで。洗濯は、毎日の暮らしに欠かせないものです。Toshiba T37 Seriesは、洗練されたデザインと先進のテクノロジー、衣類をいたわるやさしいケアをひとつ…",
-   "lang": "ja",
-   "companies": [
-    "Toshiba"
-   ],
-   "sectors": [
-    "manufacturing"
-   ],
-   "topics": []
-  },
-  {
-   "id": "theedge-1fe2748d03b723",
-   "date": "2026-09-30T10:58+08:00",
-   "source": "The Edge Malaysia",
-   "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBqVHFnRzAzTzZFN3pPb0NLbW5EbXNDWVJxQmhQZEd6bnZYV1ZOUjA2Z1lqcS1EeFVjUmJGa0V4Zk5PNENOb3lFM0xtQlRZOXNm?oc=5",
-   "title_ja": "AEON Credit株が10ヶ月ぶり安値、第2四半期決算が市場期待を下回る",
-   "title": "AEON Credit falls to 10-month low as 2Q results underwhelm investors, analysts",
-   "summary_ja": "AEON Creditの第2四半期決算がアナリストの予想を下回ったことを受け、投資家心理が悪化し株価が急落しました。",
-   "lang": "en",
-   "companies": [
-    "AEON Credit"
-   ],
-   "sectors": [
-    "finance"
-   ],
-   "topics": [
-    "investment",
-    "results"
-   ]
-  },
-  {
-   "id": "malaymail-50032bc0c7a68d",
-   "date": "2026-09-30T09:30+08:00",
-   "source": "Malay Mail",
-   "link": "https://www.malaymail.com/news/showbiz/2026/09/30/sony-drops-poster-for-hindi-epic-ramayana-rise-of-a-legend-ahead-of-november-release-video/237065",
-   "title_ja": "ソニー、ヒンディー語大作『Ramayana: Rise of a Legend』のポスター公開",
-   "title": "Sony drops poster for Hindi epic ‘Ramayana: Rise of a Legend’ ahead of November release (VIDEO)",
-   "summary_ja": "ソニー・ピクチャーズが11月公開予定のヒンディー語映画『Ramayana: Rise of a Legend』の公式ポスターを解禁しました。",
-   "lang": "en",
-   "companies": [
-    "Sony"
-   ],
-   "sectors": [
-    "manufacturing"
-   ],
-   "topics": []
   },
   {
    "id": "theedge-845143e0d3bf10",
@@ -1585,21 +966,6 @@
     "manufacturing"
    ],
    "topics": []
-  },
-  {
-   "id": "malaymail-339151f480c281",
-   "date": "2026-09-24T15:00+08:00",
-   "source": "Malay Mail",
-   "link": "https://www.malaymail.com/news/tech-gadgets/2026/09/24/capcom-launches-third-malaysia-pop-up-store-in-kl-amid-momentum-from-resident-evil-and-street-fighter-films/236334",
-   "title_ja": "カプコン、クアラルンプールに3店舗目のポップアップ店",
-   "title": "Capcom launches third Malaysia pop-up store in KL amid momentum from ‘Resident Evil’ and ‘Street Fighter’ films",
-   "summary_ja": "『バイオハザード』や『ストリートファイター』の人気を受け、カプコンがマレーシアのKLに3店舗目となる公式ポップアップストアを開設しました。",
-   "lang": "en",
-   "companies": [],
-   "sectors": [],
-   "topics": [
-    "investment"
-   ]
   }
  ]
 }
