@@ -1,12 +1,12 @@
 {
- "generated_at": "2026-11-13T14:30:04+08:00",
- "checked_at": "2026-11-13T14:30:04+08:00",
+ "generated_at": "2026-11-13T23:16:48+08:00",
+ "checked_at": "2026-11-13T23:16:48+08:00",
  "source": {
   "name": "Campur.ai",
   "url": "https://campur.ai.studio/"
  },
  "status": {
-  "fetched": 440,
+  "fetched": 442,
   "errors": []
  },
  "items": [
@@ -47,6 +47,20 @@
    "tags": [
     "policy",
     "business",
+    "air"
+   ]
+  },
+  {
+   "id": "malaysiakini-d3aa152d513cf7",
+   "date": "2026-11-12T19:06+08:00",
+   "source": "Malaysiakini",
+   "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNbUkwRVctZWxzM290M01WT1ltLTRLRGhTQzFrWGpKWEN0bmFBYlFQQjF5RVJTNWd4UUprNVhqNE9qZnVFbnFjWFJOUFBxZy1lZTVhN2FPZExCOHFweG1kVUEtdXIxTUZhbTRBZUp0dU85T0xJUjR5UEpSWWx5c0duZUI4NXFqbWZxclllSWZwa3RZZWVncXpfaDJXOUxUenI1d3RNRUNLZGdQekIx?oc=5",
+   "title_ja": "グリーンピース、越境ヘイズ対策に「大気浄化法」の制定を強く要求",
+   "title": "'Diplomacy alone won't solve haze': Greenpeace pushes for Clean Air Act",
+   "summary_ja": "外交交渉だけでは解決困難なヘイズ問題に対し、法的拘束力を持つ国内法の整備を求める声が高まっています。",
+   "lang": "en",
+   "tags": [
+    "policy",
     "air"
    ]
   },
@@ -336,9 +350,9 @@
    "date": "2026-11-01T20:50+08:00",
    "source": "The Star",
    "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPZHBtenUtRldCRFd4TlVkUm9NTnQxUlVIOV8yUDlGRHlORVpoa1FoSDNzZ1R0RHNtRU84TmlGOFNLbXNwTld4VFFXWWVzbmR6clB3Z0FtWXhncURFSC1fTmU1Wk9mdUdUVS1IMFlHelppS3V5ZUV1WWJ3RFNiWi1vNldqQWllZU1ZUE1vSzZxSjJ3NWwzcTR3MFc1Wmo5WE82U1UxVU45TnhwM0JzVE5jd1NfM3hMWFhGZ210QVdsRk5UWnMxVENvTjRNZVJCVlNXMmc?oc=5",
-   "title_ja": "インドネシアの森林火災ホットスポットは96に減少、しかし泥炭火災の危険は依然として残る",
+   "title_ja": "インドネシアの森林火災、ホットスポットは減少も泥炭火災のリスク継続",
    "title": "Indonesia's forest fire hotspots fall to 96, but peat fire risks persist",
-   "summary_ja": "インドネシアの森林火災ホットスポットは96に減少、しかし泥炭火災の危険は依然として残る（The Star報道）",
+   "summary_ja": "森林火災の発生地点は96カ所まで減少しましたが、依然として泥炭地での火災再燃リスクが懸念されています。",
    "lang": "en",
    "tags": [
     "fire"
@@ -667,7 +681,7 @@
    "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPcHdoZlVWZEpyamMtOHdwemhZMUpna3FSa0pnRHQ2UVlyaEZlckNKbVJIcS0zRkh1ZFBZT0ZZamdmQ244X2RwLXlMYW5pdGpEZHdsOXdsRnlYQldkaTlVVFhoY0pvRFNpSjl2Vlo3ZDc1WjBGVldaSElleWZjTDFZZFhZQlY4UE9PRDhpbUI3OGZfd3Z5NFA3Ni11UURLdExpeTlPWHA5TXhVcUhVV3N5bU0xTHk5aU1nR2c?oc=5",
    "title_ja": "シンガポール、ヘイズ関連企業の幹部らに電話、協力するよう警告",
    "title": "S'pore calls up top officials of firms with haze links, warns them to cooperate",
-   "summary_ja": "シンガポール、ヘイズ関連企業の幹部らに電話、協力するよう警告（Malaysiakini報道）",
+   "summary_ja": "シンガポール当局はヘイズの原因企業に対し、越境汚染防止に向けた積極的な協力と対策を強く求めています。",
    "lang": "en",
    "tags": [
     "business"
@@ -802,9 +816,9 @@
    "date": "2026-10-28T09:26+08:00",
    "source": "Malay Mail",
    "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNaU9TazNZNkdZMUdxeDhrQ0RxS01GVWFBLTVEcEtnVV9DX0lkVVdmVk1vU0J1ZlYyMVZXUGxJOGFEZmw1MklrbDRRMU9Ramt1b2lHdUhWd0RkclY5MFhMRTdRUGxOUy1pRURKSHNTd3BOa0ZqVUFOWjlmRHFhWWUtaWpXSXNnV3lPLVBWNi13NUNSaU9aSFNmdXV1bm9adi1IMG1kRU9ENHNNeFhUQm9GNU9sUmxzeWFVZE9OUXVxa1B0Tk4zZ2czUlllLTdaX0dKTzZUaDRSS2xoMTVS0gHiAUFVX3lxTE5xTkMzMUFhenVJLVRPb2x3XzlFTkhTWlNpQkRPelUyQ1I5OVAtMzFReVNCWUJXdkxBejZWYVpLdlZBaDllejYtSmhOUkpjT051dS1qQTFwV3hvMGVsdy1pcDdLQ2E2WlRqcFlOOFVqX0hYOTgyUHBEVWxPaHNVUXB3VHlLOXpqQ3pzYW9Zb0hSSGpvcUEwMmI5VDdBZGsyMmpnQjBoRFNIeXQxYVdMZXVrNU54T1BaUWg5eXB6MU1GbEtCc0k5Q1AtaUFFS09SRlVlQThqSFZrQVUxV0QybHBJVHc?oc=5",
-   "title_ja": "シンガポールとインドネシア、森林火災関与企業対策で共同組織を設立",
+   "title_ja": "シンガポール・インドネシア、森林火災関与企業への対策で合同チーム結成",
    "title": "Singapore, Indonesia to set up joint task force to tackle firms linked to forest fires",
-   "summary_ja": "両国は森林火災を引き起こす企業への対策を強化するため、共同タスクフォースを設立。越境ヘイズ問題の解決に向けた協力体制を構築します。",
+   "summary_ja": "越境ヘイズ問題を受け、シンガポールとインドネシアは森林火災に関与する企業を特定・処罰するための合同チームを結成します。",
    "lang": "en",
    "tags": [
     "fire",
@@ -1221,9 +1235,9 @@
    "date": "2026-10-26T16:38+08:00",
    "source": "Malaysiakini",
    "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOc1I0Q28wM2Z1d2JFTmptTHVjYTNOMVZueXdDU0UwRXBmcU9DWm9vZmh0WUdUeEZnVVVYc19rYkpRVjBpdlVMOVpBdlFsZHJZb09lQU9kdkowT1RuWWZ1WWF3LXI2bnJlQ0hPUEN1YkpHQnZhUk12eVpLQ0lkeGxweWRfWkZDd1hHc1RDZDNmVmpTYWNRa0Jtc0QyTzJmZHBOc1FPLUVTd3FLQ2VQYUg2YnBjY2ZkZGJlNVdmSzEwYld6SFlWOGc?oc=5",
-   "title_ja": "インドネシアのNGO、ヘイズ危機の背後にある森林火災でマレーシア関連企業21社を特定",
+   "title_ja": "NGOが森林火災関与の21社を特定、ヘイズ危機の背景にマレーシア系企業か",
    "title": "Indonesian NGO identifies 21 Malaysian-linked firms in forest fires behind haze crisis",
-   "summary_ja": "インドネシアのNGO、ヘイズ危機の背後にある森林火災でマレーシア関連企業21社を特定（Malaysiakini報道）",
+   "summary_ja": "インドネシアのNGOが、ヘイズ（煙害）を引き起こした森林火災に関与するマレーシア関連企業21社を特定したと発表しました。",
    "lang": "en",
    "tags": [
     "fire",
@@ -1648,12 +1662,14 @@
    "date": "2026-10-25T07:00+08:00",
    "source": "New Straits Times",
    "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOS1phRkgyZzBXWDd1ZThiZWx0eEZGTGpGMGNQWmxiQWRGQnpHdjZkeGtjcklNQWVrNGhOLXFQcXlwRGI3bWU0eXJ6Y1pZN2tjTFhGTHM5S1VHYmtzT0JBM1JUVm93bVZJOTdJRHJHSVVST1lpY0NxVVBUWndJYi16WUVKLTU2QU9zeU8xUGdaellIM2MxNFVHdjZnTWJQbzFjRXpDadIBqgFBVV95cUxQMkZET19VZ3F6ZmZiUFdrdVhkVUdrcXBwdVZEMFZQVmhyZEJmOUIycWhBUHdkQ3FMUk9PRm9JWHZWTTZQMzhVRUdVLWdlbnB5djh2V2FqajJnbGtJcmN0cWI5WDRnLWllX2poMkduaXYtT3lRamFPaWQxMTZjN3ZsRlZCRU81LXdGR3NhNVBRVkZJdS1mVDg0eGdlbm5iRFQtMENmZF9oT1J6QQ?oc=5",
-   "title_ja": "セランゴール州ジョハン・セティアで野焼きによるヘイズが悪化",
+   "title_ja": "セランゴール州ジョハン・セティアで野焼きが継続、ヘイズ発生の主因に",
    "title": "Open burning fuel persistent Johan Setia haze [WATCH] - NST Online",
-   "summary_ja": "セランゴール州ジョハン・セティア地区で野焼きが続き、ヘイズ（煙害）が発生しています。周辺での活動には注意が必要です。",
+   "summary_ja": "セランゴール州ジョハン・セティア地区での野焼きが止まらず、大気汚染（ヘイズ）の深刻な原因となっています。周辺住民は健康被害への警戒が必要です。",
    "lang": "en",
    "tags": [
-    "fire"
+    "fire",
+    "health",
+    "air"
    ]
   },
   {
@@ -2592,9 +2608,9 @@
    "date": "2026-10-21T21:51+08:00",
    "source": "Free Malaysia Today",
    "link": "https://www.freemalaysiatoday.com/category/nation/2026/10/21/haze-not-about-malaysia-versus-indonesia-says-syed-saddiq",
-   "title_ja": "ヘイズは「マレーシア対インドネシア」のことではない、とサイード・サディクは言う",
+   "title_ja": "サイエド・サディク議員「ヘイズ問題はマレーシア対インドネシアの対立ではない」",
    "title": "Haze not about ‘Malaysia versus Indonesia’, says Syed Saddiq",
-   "summary_ja": "ムアール議員は、インドネシアの元貿易大臣からの批判を受けて、森林火災に責任のある企業は国籍に関係なく行動に移すべきだと述べた。",
+   "summary_ja": "サイエド・サディク議員は、国籍を問わず森林火災の責任企業を厳しく処罰すべきであり、二国間対立にすべきではないと主張しました。",
    "lang": "en",
    "tags": [
     "fire",
@@ -5310,19 +5326,6 @@
    "lang": "ms",
    "tags": [
     "health",
-    "air"
-   ]
-  },
-  {
-   "id": "astroawani-894205a167f2a0",
-   "date": "2026-10-11T15:30+08:00",
-   "source": "Astro AWANI",
-   "link": "https://www.astroawani.com/berita-malaysia/jerebu-kualiti-udara-lembah-klang-bertambah-baik-setakat-3-petang-cheras-catat-penurunan-ketara",
-   "title_ja": "クランバレーの空気質が改善、チェラス地区で汚染数値が大幅低下",
-   "title": "Jerebu: Kualiti udara Lembah Klang bertambah baik setakat 3 petang, Cheras catat penurunan ketara",
-   "summary_ja": "ヘイズの影響を受けていたクランバレー周辺の大気質が改善し、特にチェラス地区で汚染指数（IPU）が低下しました。",
-   "lang": "ms",
-   "tags": [
     "air"
    ]
   }
