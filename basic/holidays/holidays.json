@@ -1,11 +1,85 @@
 {
- "generated_at": "2026-11-13T08:05:16+08:00",
+ "generated_at": "2026-11-13T08:06:10+08:00",
  "through": 2032,
  "sources": {
   "JP": {
    "official": "https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv",
-   "official_years": [],
-   "official_error": "ProxyError: HTTPSConnectionPool(host='www8.cao.go.jp', port=443): Max retries exceeded with url: /chosei/shukujitsu/syukujitsu.csv (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))",
+   "official_years": [
+    "1955",
+    "1956",
+    "1957",
+    "1958",
+    "1959",
+    "1960",
+    "1961",
+    "1962",
+    "1963",
+    "1964",
+    "1965",
+    "1966",
+    "1967",
+    "1968",
+    "1969",
+    "1970",
+    "1971",
+    "1972",
+    "1973",
+    "1974",
+    "1975",
+    "1976",
+    "1977",
+    "1978",
+    "1979",
+    "1980",
+    "1981",
+    "1982",
+    "1983",
+    "1984",
+    "1985",
+    "1986",
+    "1987",
+    "1988",
+    "1989",
+    "1990",
+    "1991",
+    "1992",
+    "1993",
+    "1994",
+    "1995",
+    "1996",
+    "1997",
+    "1998",
+    "1999",
+    "2000",
+    "2001",
+    "2002",
+    "2003",
+    "2004",
+    "2005",
+    "2006",
+    "2007",
+    "2008",
+    "2009",
+    "2010",
+    "2011",
+    "2012",
+    "2013",
+    "2014",
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026",
+    "2027"
+   ],
+   "official_error": null,
    "computed": "holidays 0.108 (https://github.com/vacanza/holidays)"
   },
   "MY": {
@@ -18,177 +92,177 @@
    {
     "date": "2026-01-01",
     "name": "元日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2026-01-12",
     "name": "成人の日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2026-02-11",
     "name": "建国記念の日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2026-02-23",
     "name": "天皇誕生日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2026-03-20",
     "name": "春分の日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2026-04-29",
     "name": "昭和の日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2026-05-03",
     "name": "憲法記念日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2026-05-04",
     "name": "みどりの日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2026-05-05",
     "name": "こどもの日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2026-05-06",
-    "name": "振替休日",
-    "status": "computed"
+    "name": "休日",
+    "status": "official"
    },
    {
     "date": "2026-07-20",
     "name": "海の日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2026-08-11",
     "name": "山の日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2026-09-21",
     "name": "敬老の日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2026-09-22",
-    "name": "国民の休日",
-    "status": "computed"
+    "name": "休日",
+    "status": "official"
    },
    {
     "date": "2026-09-23",
     "name": "秋分の日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2026-10-12",
     "name": "スポーツの日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2026-11-03",
     "name": "文化の日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2026-11-23",
     "name": "勤労感謝の日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2027-01-01",
     "name": "元日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2027-01-11",
     "name": "成人の日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2027-02-11",
     "name": "建国記念の日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2027-02-23",
     "name": "天皇誕生日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2027-03-21",
     "name": "春分の日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2027-03-22",
-    "name": "振替休日",
-    "status": "computed"
+    "name": "休日",
+    "status": "official"
    },
    {
     "date": "2027-04-29",
     "name": "昭和の日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2027-05-03",
     "name": "憲法記念日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2027-05-04",
     "name": "みどりの日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2027-05-05",
     "name": "こどもの日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2027-07-19",
     "name": "海の日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2027-08-11",
     "name": "山の日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2027-09-20",
     "name": "敬老の日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2027-09-23",
     "name": "秋分の日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2027-10-11",
     "name": "スポーツの日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2027-11-03",
     "name": "文化の日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2027-11-23",
     "name": "勤労感謝の日",
-    "status": "computed"
+    "status": "official"
    },
    {
     "date": "2028-01-01",
