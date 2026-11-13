@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Collect business news about Japanese companies in Malaysia for the signals page (signals/index.html).
+"""Collect business news about Japanese companies in Malaysia (signals/data/signals.json).
 
 The articles come from Campur.ai (https://campur.ai.studio), which archives the news of Malaysian and
 Japanese outlets and adds Japanese titles and summaries. Its archive search is read here, server-side
@@ -9,7 +9,7 @@ An article is kept when
   - its headline names a company on the watchlist (config/signals_watchlist.json), or
   - its summary names one and it is about a business topic (investment, plants, AI, ...), or
   - its headline is about Japan (Japan, 日系, JETRO, ...) and it is about a business topic.
-Each kept article is tagged with the companies, their sectors and the topics it touches, so the page
+Each kept article is tagged with the companies, their sectors and the topics it touches, so a reader
 can answer "what happened this week at the companies and topics I follow?".
 
 Writes

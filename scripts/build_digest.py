@@ -2,13 +2,16 @@
 """Build a small Japan-Malaysia digest from data already in this repository.
 
 Reads
-  basic/my/indicators.json       trend series (Japan's direct investment, FDI inflow, GDP growth, FX)
+  basic/my/indicators.json       trend series (Japan's direct investment, FDI inflow, GDP growth)
+  basic/fx/latest.json           recent USD/MYR/JPY rates (annual averages are used when it is missing)
   signals/data/signals.json      news about Japanese companies in Malaysia
   basic/holidays/holidays.json   public holidays of Japan and Malaysia
 
 Writes three JSON files into the directory given with --out (nothing in the repository changes):
   digest.json        {"generated_at", "trends": [{id, label, unit, change, source, as_of, series}],
+                      "fx": {kind, date, usd_myr, usd_jpy, myr_jpy, prev, series, source},
                       "news": [{date, source, link, title, companies, topics}]}  (the three top stories)
+  signals.json       {"generated_at", "items": [...]}  the newest 250 stories, trimmed
   holidays-JP.json   {"generated_at", "through", "days": [{d, n, s}]}
   holidays-MY.json   the same, with "scope" on each day
 
@@ -35,7 +38,6 @@ TRENDS = [
     ("fdi_from_japan", "fdi_from_japan", "日本からマレーシアへの直接投資", "億円", 1e8, 0, "pct"),
     ("fdi_inflow", "fdi_inflow", "マレーシアの対内直接投資（全世界）", "億ドル", 1e8, 0, "pct"),
     ("gdp_growth", "gdp_growth_real", "実質GDP成長率", "%", 1, 1, "pt"),
-    ("fx", "exchange_rate", "為替（1米ドル＝リンギ、年平均）", "RM", 1, 2, "pct"),
 ]
 
 
@@ -51,6 +53,42 @@ def trends() -> list[dict]:
         out.append({"id": tid, "label": label, "unit": unit, "change": change, "series": obs,
                     "source": s.get("source_id", ""), "as_of": (s.get("retrieved_at") or "")[:10]})
     return out
+
+
+def fx() -> dict | None:
+    """USD, MYR and JPY side by side: recent daily rates when basic/fx/latest.json exists, else annual averages."""
+    latest = ROOT / "basic" / "fx" / "latest.json"
+    if latest.exists():
+        d = json.loads(latest.read_text(encoding="utf-8"))
+        s = d.get("series") or []
+        return {"kind": "daily", "date": d["date"], "usd_myr": d["usd_myr"], "usd_jpy": d["usd_jpy"], "myr_jpy": d["myr_jpy"],
+                "prev": {"date": s[0][0], "usd_myr": s[0][1], "usd_jpy": s[0][2], "myr_jpy": s[0][3]} if len(s) > 1 else None,
+                "series": [[x[0], x[3]] for x in s], "source": (d.get("source") or {}).get("name", "")}
+
+    def annual(code: str) -> dict[int, float]:
+        ind = json.loads((ROOT / "basic" / code / "indicators.json").read_text(encoding="utf-8"))["indicators"]
+        series = (ind.get("exchange_rate") or {}).get("series") or []
+        return {o["year"]: o["value"] for o in series[0]["observations"] if o.get("value")} if series else {}
+
+    my, jp = annual("my"), annual("jp")
+    years = sorted(set(my) & set(jp))
+    if not years:
+        return None
+
+    def at(y: int) -> dict:
+        return {"date": str(y), "usd_myr": round(my[y], 2), "usd_jpy": round(jp[y], 1), "myr_jpy": round(jp[y] / my[y], 2)}
+
+    return {"kind": "annual", **at(years[-1]), "prev": at(years[-2]) if len(years) > 1 else None,
+            "series": [[str(y), round(jp[y] / my[y], 2)] for y in years[-12:]], "source": "World Bank WDI (annual average)"}
+
+
+def signals(limit: int = 250) -> dict:
+    path = ROOT / "signals" / "data" / "signals.json"
+    if not path.exists():
+        return {"generated_at": None, "items": []}
+    d = json.loads(path.read_text(encoding="utf-8"))
+    keep = ("date", "source", "link", "title_ja", "title", "summary_ja", "companies", "topics")
+    return {"generated_at": d.get("generated_at"), "items": [{k: i.get(k) for k in keep} for i in d.get("items", [])[:limit]]}
 
 
 def news() -> list[dict]:
@@ -79,8 +117,10 @@ def main() -> int:
     out.mkdir(parents=True, exist_ok=True)
     now = datetime.now(TZ).isoformat(timespec="seconds")
 
-    digest = {"generated_at": now, "trends": trends(), "news": news()}
+    digest = {"generated_at": now, "trends": trends(), "fx": fx(), "news": news()}
     (out / "digest.json").write_text(json.dumps(digest, ensure_ascii=False), encoding="utf-8")
+    sig = signals()
+    (out / "signals.json").write_text(json.dumps(sig, ensure_ascii=False), encoding="utf-8")
 
     hol = ROOT / "basic" / "holidays" / "holidays.json"
     counts = {}
@@ -91,7 +131,7 @@ def main() -> int:
                    "days": [{"d": x["date"], "n": x["name"], "s": x["status"], **({"scope": x["scope"]} if "scope" in x else {})} for x in days]}
             (out / f"holidays-{c}.json").write_text(json.dumps(doc, ensure_ascii=False), encoding="utf-8")
             counts[c] = len(days)
-    print(json.dumps({"trends": len(digest["trends"]), "news": len(digest["news"]), "holidays": counts}, ensure_ascii=False))
+    print(json.dumps({"trends": len(digest["trends"]), "fx": (digest["fx"] or {}).get("kind"), "news": len(digest["news"]), "signals": len(sig["items"]), "holidays": counts}, ensure_ascii=False))
     return 0
 
 

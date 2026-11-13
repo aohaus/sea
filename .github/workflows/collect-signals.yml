@@ -9,6 +9,7 @@ on:
   push:
     paths:
       - "scripts/collect_signals.py"
+      - "scripts/fetch_fx.py"
       - "config/signals_watchlist.json"
       - ".github/workflows/collect-signals.yml"
 
@@ -32,11 +33,16 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Collect signals
         run: python scripts/collect_signals.py
+      # Exchange rates for the same readers. A failed fetch keeps the previous file.
+      - name: Fetch exchange rates
+        run: python scripts/fetch_fx.py
+        timeout-minutes: 2
+        continue-on-error: true
       - name: Commit signals
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add signals/data/
+          git add signals/data/ basic/fx/
           if git diff --cached --quiet; then
             echo "No new signals."
           else
