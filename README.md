@@ -105,3 +105,29 @@ echo $?                          # 0 = 全件成功, 1 = 失敗あり
 
 > 注意: 一部のニュースサイト（Sin Chew Daily、The Borneo Post など）は GitHub Actions ランナーのデータセンター IP を WAF でブロックする場合があります。
 > 特定ソースのみ継続的に `403` となる場合は、URL の変更やセルフホストランナーの利用を検討してください。
+
+## 日系ビジネス・シグナルのデータ（`signals/data/`）
+
+マレーシアの報道から、日本企業の名前が出た記事と、日本に関わるビジネス記事（投資・AI・サプライチェーン・
+人件費・税制・M&A など）を集めたデータです。閲覧用の公開ページはありません。
+
+- データ: `signals/data/signals.json`
+- 収集: `scripts/collect_signals.py` が Campur.ai の記事アーカイブを検索し、`config/signals_watchlist.json` の
+  企業名・話題と照合します。`.github/workflows/collect-signals.yml` が1日4回実行します。
+- 為替: 同じワークフローで `scripts/fetch_fx.py` が米ドル・リンギ・円の直近レートを `basic/fx/latest.json` に
+  書き出します。
+- 企業の追加・変更は `config/signals_watchlist.json` を編集してください（`aliases` は英語の単語単位で照合、
+  `ja` は日本語の部分一致）。一般語と紛らわしい名前（Sharp、Canon など）は `case_sensitive: true` にします。
+- 営業先・目標・面談メモなどの非公開情報はこのリポジトリに置かないでください（リポジトリは公開です）。
+
+`.claude/skills/` には、このデータを使う Claude Code 用のスキル（`/desk-brief`、`/desk-outreach`、
+`/desk-weekly`）があります。
+
+## 祝日テーブル（`basic/holidays/`）とダイジェスト
+
+- `scripts/build_holidays.py` が、日本とマレーシア（全国＋クアラルンプール）の休祝日を今年から2032年末まで
+  `basic/holidays/holidays.json` に書き出します。日本は内閣府の CSV（公式、翌年分まで）を優先し、それより先は
+  祝日法に基づく計算です。マレーシアは公式の機械可読データがないため `holidays` ライブラリの計算で、月の観測で
+  決まる祝日は `estimated`（予定）と記録します。`.github/workflows/build-holidays.yml` が月1回更新します。
+- `scripts/build_digest.py --out <dir>` は、指標の推移・直近の主要ニュース3件・祝日を、1画面用の JSON に
+  まとめて `<dir>` に書き出します（リポジトリは変更しません）。直近の記事一覧（`signals.json`）と為替も含みます。
