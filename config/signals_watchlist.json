@@ -1,5 +1,5 @@
 {
- "_comment": "Watchlist for the Japan business signals page (signals/). Names of Japanese companies that appear in Malaysian news; being listed says nothing about a company's presence or plans. 'aliases' are matched as whole words in English text (case-sensitive when case_sensitive is true); 'ja' is matched as a substring in Japanese text. 'queries' are sent to the Campur.ai archive search in addition to each company's first alias.",
+ "_comment": "Watchlist for the Japan business signals page (signals/). Names of Japanese companies that appear in Malaysian news; being listed says nothing about a company's presence or plans. 'aliases' are matched as whole words in English text (case-sensitive when case_sensitive is true); 'ja' is matched as a substring in Japanese text. 'queries' (including the names of national policies such as NIMP 2030 and NETR, to find stories that tie a company to them) are sent to the Campur.ai archive search in addition to each company's first alias.",
  "sectors": {
   "manufacturing": "製造",
   "semiconductor": "半導体・電子部品",
@@ -8,7 +8,9 @@
   "tmt": "通信・IT",
   "retail": "小売・不動産",
   "energy_infra": "エネルギー・インフラ",
-  "logistics": "物流・航空"
+  "logistics": "物流・航空",
+  "chemical": "化学・素材",
+  "consumer": "食品・日用品"
  },
  "queries": [
   "Japan",
@@ -19,7 +21,18 @@
   "JETRO",
   "JACTIM",
   "JICA",
-  "JBIC"
+  "JBIC",
+  "NIMP 2030",
+  "New Industrial Master Plan",
+  "National Semiconductor Strategy",
+  "NETR",
+  "National Energy Transition Roadmap",
+  "13th Malaysia Plan",
+  "RMK13",
+  "Ekonomi MADANI",
+  "National AI Office",
+  "国家半導体戦略",
+  "第13次マレーシア計画"
  ],
  "companies": [
   {
@@ -777,6 +790,232 @@
    "aliases": [
     "All Nippon Airways"
    ]
+  },
+  {
+   "name": "Brother",
+   "ja": "ブラザー工業",
+   "sector": "manufacturing",
+   "aliases": [
+    "Brother Industries",
+    "Brother International"
+   ]
+  },
+  {
+   "name": "Konica Minolta",
+   "ja": "コニカミノルタ",
+   "sector": "manufacturing",
+   "aliases": [
+    "Konica Minolta"
+   ]
+  },
+  {
+   "name": "Hino",
+   "ja": "日野自動車",
+   "sector": "manufacturing",
+   "aliases": [
+    "Hino Motors",
+    "Hino Malaysia"
+   ]
+  },
+  {
+   "name": "NSK",
+   "ja": "日本精工",
+   "sector": "manufacturing",
+   "aliases": [
+    "NSK Bearings",
+    "NSK Ltd",
+    "Nippon Seiko"
+   ]
+  },
+  {
+   "name": "Toyo Tire",
+   "ja": "TOYO TIRE",
+   "sector": "manufacturing",
+   "aliases": [
+    "Toyo Tire",
+    "Toyo Tyre",
+    "Toyo Tires"
+   ]
+  },
+  {
+   "name": "Hoya",
+   "ja": "HOYA",
+   "sector": "semiconductor",
+   "aliases": [
+    "HOYA",
+    "Hoya Corp",
+    "Hoya Electronics"
+   ],
+   "case_sensitive": true
+  },
+  {
+   "name": "Alps Alpine",
+   "ja": "アルプスアルパイン",
+   "sector": "semiconductor",
+   "aliases": [
+    "Alps Alpine",
+    "Alps Electric",
+    "Alpine Electronics"
+   ]
+  },
+  {
+   "name": "Nichicon",
+   "ja": "ニチコン",
+   "sector": "semiconductor",
+   "aliases": [
+    "Nichicon"
+   ]
+  },
+  {
+   "name": "KOA",
+   "ja": "KOA",
+   "sector": "semiconductor",
+   "aliases": [
+    "KOA Corp",
+    "Koa Denko",
+    "KOA Speer"
+   ]
+  },
+  {
+   "name": "Mitsui Kinzoku",
+   "ja": "三井金属",
+   "sector": "semiconductor",
+   "aliases": [
+    "Mitsui Kinzoku",
+    "Mitsui Mining & Smelting",
+    "Mitsui Copper Foil"
+   ]
+  },
+  {
+   "name": "Nitto Denko",
+   "ja": "日東電工",
+   "sector": "semiconductor",
+   "aliases": [
+    "Nitto Denko"
+   ]
+  },
+  {
+   "name": "Polyplastics",
+   "ja": "ポリプラスチックス",
+   "sector": "chemical",
+   "aliases": [
+    "Polyplastics"
+   ]
+  },
+  {
+   "name": "NSG",
+   "ja": "日本板硝子",
+   "sector": "chemical",
+   "aliases": [
+    "Nippon Sheet Glass",
+    "Malaysian Sheet Glass",
+    "NSG Group"
+   ]
+  },
+  {
+   "name": "Idemitsu",
+   "ja": "出光",
+   "sector": "chemical",
+   "aliases": [
+    "Idemitsu"
+   ]
+  },
+  {
+   "name": "Kansai Paint",
+   "ja": "関西ペイント",
+   "sector": "chemical",
+   "aliases": [
+    "Kansai Paint",
+    "Sime Kansai"
+   ]
+  },
+  {
+   "name": "Lion",
+   "ja": "サザンライオン",
+   "sector": "chemical",
+   "aliases": [
+    "Southern Lion",
+    "Lion Corporation"
+   ],
+   "case_sensitive": true
+  },
+  {
+   "name": "Kewpie",
+   "ja": "キユーピー",
+   "sector": "consumer",
+   "aliases": [
+    "Kewpie"
+   ]
+  },
+  {
+   "name": "Suntory",
+   "ja": "サントリー",
+   "sector": "consumer",
+   "aliases": [
+    "Suntory"
+   ]
+  },
+  {
+   "name": "Fujifilm",
+   "ja": "富士フイルム",
+   "sector": "tmt",
+   "aliases": [
+    "Fujifilm",
+    "Fuji Film"
+   ]
+  },
+  {
+   "name": "Daiso",
+   "ja": "ダイソー",
+   "sector": "retail",
+   "aliases": [
+    "Daiso"
+   ]
+  },
+  {
+   "name": "Toyo Engineering",
+   "ja": "東洋エンジニアリング",
+   "sector": "energy_infra",
+   "aliases": [
+    "Toyo Engineering"
+   ]
+  },
+  {
+   "name": "Kajima",
+   "ja": "鹿島建設",
+   "sector": "energy_infra",
+   "aliases": [
+    "Kajima"
+   ]
+  },
+  {
+   "name": "Taisei",
+   "ja": "大成建設",
+   "sector": "energy_infra",
+   "aliases": [
+    "Taisei Corp",
+    "Taisei Corporation"
+   ]
+  },
+  {
+   "name": "Takenaka",
+   "ja": "竹中工務店",
+   "sector": "energy_infra",
+   "aliases": [
+    "Takenaka"
+   ]
+  },
+  {
+   "name": "Yusen Logistics (NYK)",
+   "ja": "郵船",
+   "sector": "logistics",
+   "aliases": [
+    "Yusen Logistics",
+    "NYK Line",
+    "Nippon Yusen",
+    "NYK"
+   ],
+   "case_sensitive": true
   }
  ]
 }
