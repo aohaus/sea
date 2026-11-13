@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- MJ Compass: charcoal tile, a yellow compass ring with a two-tone needle pointing north-east. -->
+  <rect width="64" height="64" rx="14" fill="#2e2e38"/>
+  <circle cx="32" cy="32" r="20" fill="none" stroke="#ffe600" stroke-width="5"/>
+  <path d="M43 21 35.5 35.5 28.5 28.5Z" fill="#ffe600"/>
+  <path d="M21 43 28.5 28.5 35.5 35.5Z" fill="#f6f6fa"/>
+  <circle cx="32" cy="32" r="2.6" fill="#2e2e38"/>
+</svg>
