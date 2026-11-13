@@ -1,12 +1,12 @@
 {
- "generated_at": "2026-11-13T08:06:31+08:00",
- "checked_at": "2026-11-13T08:06:31+08:00",
+ "generated_at": "2026-11-13T14:30:04+08:00",
+ "checked_at": "2026-11-13T14:30:04+08:00",
  "source": {
   "name": "Campur.ai",
   "url": "https://campur.ai.studio/"
  },
  "status": {
-  "fetched": 442,
+  "fetched": 440,
   "errors": []
  },
  "items": [
@@ -40,9 +40,9 @@
    "date": "2026-11-12T19:06+08:00",
    "source": "Malaysiakini",
    "link": "https://www.malaysiakini.com/news/888979-diplomacy-alone-wont-solve-haze-greenpeace-pushes-for-clean-air-act",
-   "title_ja": "グリーンピース、ヘイズ対策で「大気浄化法」制定を政府に要求",
+   "title_ja": "「外交だけでは霧は解決しない」：グリーンピースが大気浄化法を推進",
    "title": "'Diplomacy alone won't solve haze': Greenpeace pushes for Clean Air Act",
-   "summary_ja": "外交努力だけでは不十分として、ヘイズの原因となる企業や個人に法的責任を問う「大気浄化法」の制定を求めています。",
+   "summary_ja": "グリーンピースはマレーシア政府に対し、海外でのヘイズ汚染に貢献した場合に現地の個人や企業に責任を問うことを目的とした大気浄化法を起草するよう求めた。の",
    "lang": "en",
    "tags": [
     "policy",
@@ -654,13 +654,11 @@
    "date": "2026-10-29T07:00+08:00",
    "source": "Malay Mail",
    "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxPeUZYZlFfNXNQb3BhNXV1bmFOSHJEaHYxWkZOUVg2TVpXd0FISUJHQ2ZLRlFPM01nQzhKV2xhMEFmbFVEeGo4aFRuaHNiVnFpT0dna05DZnJ2T2NDT2NUaGN1ZVdBR2d1S0tuZ1JiR3BzRXdNRFlTVmhfS1BIQnZRdERiVVlvNzR5Qy1nYUl3X2lhYjhtajJMRmFOY3RoX0lUQm1RbVVXUzJYVFJ3LVVrWG9ab0E4dWNqZjdmVU5vV2pRbFBMOE1jWG4xbEJVZTFjSWw0Vzh5dmZwU2tSNE1vemhR0gHnAUFVX3lxTE1la0FxTndXM0tKanVRdzUtUHNyek5JWFFsT1lVYjI4RU1wWXlkQnJTcUU5Sy1qOExhUGY5VklXVEk4TklNQlRTTnhKNEh2T2ZUbXBnZ0g2LXVnd1M0YkFHeEpnakRpcG1zWGVzTjRhS3hmYkI2OEJGUlg1Nkx4amczNGRzWU1tb2VUVlBLdlpja2pEY0FLRy1zbGJocmtTU0oyZ0M4bGJOQlg5UFdIbUhhMkhlbG9xNVhGclE1ajgwR3oycTlueU4yTXNkanQyVWlvMnpmWC1kVkYtNXlLM3V6WWNhSjQ2SQ?oc=5",
-   "title_ja": "最新のヘイズ被害、経済損失80億リンギと死者1700人の可能性",
+   "title_ja": "マレーシアの最近の煙霧による福祉損失は80億リンギットで、1,700人の死亡につながった可能性があることが報告書で判明",
    "title": "Malaysia’s latest haze cost RM8b in welfare losses, may have led to 1,700 deaths, report finds",
    "summary_ja": "マレーシアの最近の煙霧による福祉損失は80億リンギットで、1,700人の死亡につながった可能性があることが報告書で判明（Malay Mail報道）",
    "lang": "en",
-   "tags": [
-    "business"
-   ]
+   "tags": []
   },
   {
    "id": "malaysiakini-2026-10-28-97-06dc",
