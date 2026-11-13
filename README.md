@@ -121,3 +121,12 @@ echo $?                          # 0 = 全件成功, 1 = 失敗あり
 
 `.claude/skills/` には、このデータを使う Claude Code 用のスキル（`/desk-brief`、`/desk-outreach`、
 `/desk-weekly`）があります。
+
+## 祝日テーブル（`basic/holidays/`）とダイジェスト
+
+- `scripts/build_holidays.py` が、日本とマレーシア（全国＋クアラルンプール）の休祝日を今年から2032年末まで
+  `basic/holidays/holidays.json` に書き出します。日本は内閣府の CSV（公式、翌年分まで）を優先し、それより先は
+  祝日法に基づく計算です。マレーシアは公式の機械可読データがないため `holidays` ライブラリの計算で、月の観測で
+  決まる祝日は `estimated`（予定）と記録します。`.github/workflows/build-holidays.yml` が月1回更新します。
+- `scripts/build_digest.py --out <dir>` は、指標の推移・直近の主要ニュース3件・祝日を、1画面用の JSON に
+  まとめて `<dir>` に書き出します（リポジトリは変更しません）。

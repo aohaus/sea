@@ -1,0 +1,49 @@
+name: Build holiday table
+
+# Once a month (the 3rd, 10:17 in Malaysia). Japan's official list for the next year appears each
+# February; the monthly run picks it up and also takes in updates of the holidays library.
+on:
+  schedule:
+    - cron: "17 2 3 * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/build_holidays.py"
+      - ".github/workflows/build-holidays.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-holidays-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: pip install --upgrade holidays
+      - name: Build holiday table
+        run: python scripts/build_holidays.py
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add basic/holidays/
+          if git diff --cached --quiet; then
+            echo "No change."
+          else
+            git commit -m "data(holidays): $(TZ=Asia/Kuala_Lumpur date +%Y-%m-%d)"
+            for attempt in 1 2 3; do
+              if git push; then break; fi
+              if [ "$attempt" = 3 ]; then exit 1; fi
+              git pull --rebase origin "${GITHUB_REF_NAME}" || { git rebase --abort; exit 1; }
+            done
+          fi
