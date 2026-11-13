@@ -1,5 +1,5 @@
 {
- "_comment": "Watchlist for the Japan business signals page (signals/). Names of Japanese companies that appear in Malaysian news; being listed says nothing about a company's presence or plans. 'aliases' are matched as whole words in English text (case-sensitive when case_sensitive is true); 'ja' is matched as a substring in Japanese text. 'queries' are sent to the Campur.ai archive search in addition to each company's first alias.",
+ "_comment": "Watchlist for the Japan business signals page (signals/). Names of Japanese companies that appear in Malaysian news; being listed says nothing about a company's presence or plans. 'aliases' are matched as whole words in English text (case-sensitive when case_sensitive is true); 'ja' is matched as a substring in Japanese text. 'queries' (including the names of national policies such as NIMP 2030 and NETR, to find stories that tie a company to them) are sent to the Campur.ai archive search in addition to each company's first alias.",
  "sectors": {
   "manufacturing": "製造",
   "semiconductor": "半導体・電子部品",
@@ -21,7 +21,18 @@
   "JETRO",
   "JACTIM",
   "JICA",
-  "JBIC"
+  "JBIC",
+  "NIMP 2030",
+  "New Industrial Master Plan",
+  "National Semiconductor Strategy",
+  "NETR",
+  "National Energy Transition Roadmap",
+  "13th Malaysia Plan",
+  "RMK13",
+  "Ekonomi MADANI",
+  "National AI Office",
+  "国家半導体戦略",
+  "第13次マレーシア計画"
  ],
  "companies": [
   {
