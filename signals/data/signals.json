@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-15T14:48:01+08:00",
- "checked_at": "2026-11-15T14:48:01+08:00",
+ "generated_at": "2026-11-16T02:57:51+08:00",
+ "checked_at": "2026-11-16T02:57:51+08:00",
  "source": {
   "name": "Campur.ai",
   "url": "https://campur.ai.studio/"
@@ -11,6 +11,21 @@
   "errors": []
  },
  "items": [
+  {
+   "id": "astroawani-5ce2b7cb7be49a",
+   "date": "2026-11-15T22:03+08:00",
+   "source": "Astro AWANI",
+   "link": "https://www.astroawani.com/berita-sukan-terkini/masters-jepun-komunikasi-titik-tolak-detik-manis-aaron-tai-yap-roy-king",
+   "title_ja": "バドミントン・ジャパンマスターズ：アーロン・タイ＆ヤップ・ロイキング組が決勝進出",
+   "title": "Masters Jepun: Komunikasi titik tolak detik manis Aaron Tai-Yap Roy King",
+   "summary_ja": "バドミントン・ジャパンマスターズにて、マレーシアのアーロン・タイとヤップ・ロイキングのペアが好調を維持し、決勝への切符を手にしました。",
+   "lang": "ms",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "investment"
+   ]
+  },
   {
    "id": "nna-3456e644aa5d88",
    "date": "2026-11-13T12:41+08:00",
@@ -191,9 +206,9 @@
    "date": "2026-11-10T11:53+08:00",
    "source": "The Borneo Post",
    "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQdy12UGFfdTk1UjBXaWV0Y0xTX1JWNDFfVjJ2UHJDaUNIOEs5QWhhRm4yMUt6SWREd1J3WklHZU13d29mSjViY0NOc0FfV1FKVkVyX3JvNHR5R1RYQ2xVT0NNUXkyZFB3RDRudXh1bnd6R2JYYnZEa0h5SXpLLXF1MWdWMUFOZDJZMGt3RzltZzM5SW9OdlBfYVg5aEZjY2wyeEhKTklqeVRoZmcxUFhsQ3JYLTVyU1NJbXJQNUtobFBmc0VOZTF3?oc=5",
-   "title_ja": "ソフトバンクとGrab、マレーシアのAIインフラ構築へ18.5億ドルを投資",
+   "title_ja": "ソフトバンクとGrab、マレーシアのAIインフラ構築へ18.5億ドルの初期投資",
    "title": "Softbank, Grab announce US$1.85 bln initial seed capital for Malaysia’s AI infrastructure - Borneo Post",
-   "summary_ja": "ソフトバンクとGrabがマレーシアのAI基盤整備に向け、初期シード資金として18.5億ドルを投じると発表しました。",
+   "summary_ja": "ソフトバンクとGrabがマレーシアのAIインフラ整備に向け、18.5億ドルのシード資金を投入すると発表しました。",
    "lang": "en",
    "companies": [
     "SoftBank"
@@ -232,7 +247,7 @@
    "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPZnBCcWNQUk5RSW1QVzI5cWl6TDFPYlpLUUxvMFQtV04yX1Zqbnp4RDNEdmNkaXJ0T3BWeHV4am8tRHB3UkhoWTNEakxVdlZwQXBYdjJSQkg1NnVsUF9Ma2pWRWhKdnVfREUyUHRjSTJGX2Z0X1BzZGljejkycTJZY1k3LWJHUUtHaDFTUzk1SnNhb041RUx4U3VNS3REZU5XTDdmRDhIbkVTMWFHblI4RG00aERVcm5oT2JNbDRtVQ?oc=5",
    "title_ja": "ソフトバンク・Grab・Petros、サラワク州のAIインフラに10億ドル投資",
    "title": "SoftBank-Grab-Petros tie-up earmarks US$1 bln to build Sarawak’s AI infrastructure - Borneo Post",
-   "summary_ja": "3社連合がマレーシア・サラワク州におけるAIインフラ構築のため、10億ドルの投資枠を確保しました。",
+   "summary_ja": "ソフトバンク、Grab、サラワク州石油会社Petrosの3社が連携し、サラワク州でのAIインフラ構築に10億ドルを投じます。",
    "lang": "en",
    "companies": [
     "SoftBank"
@@ -250,9 +265,9 @@
    "date": "2026-11-10T09:49+08:00",
    "source": "BERNAMA",
    "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5RN3locHMwWnJPMm9HcmVxOVcxMFZ1OUxuTVR4YnNkZGdRRTF2QmNQMXpvR0poSTdLRS1pc0FTLU1NZXp3ZVNZV0tubm03ei13XzlBNGZidldESUpGRENxWWtR?oc=5",
-   "title_ja": "ソフトバンクとGrab、マレーシアAIインフラへ18.5億ドルの初期投資",
+   "title_ja": "ソフトバンクとGrab、マレーシアのAIインフラ構築へ18.5億ドルの初期投資",
    "title": "Softbank, Grab Announce US$1.85 Bln Initial Seed Capital For Malaysia's AI Infrastructure",
-   "summary_ja": "マレーシアのデジタル経済強化を目指し、ソフトバンクとGrabが大規模なAIインフラ投資計画を公表しました。",
+   "summary_ja": "マレーシアのAI基盤強化を目指し、ソフトバンクとGrabが18.5億ドルの初期投資を行うことを正式に発表しました。",
    "lang": "en",
    "companies": [
     "SoftBank"
@@ -272,7 +287,7 @@
    "link": "https://www.malaymail.com/news/money/2026/11/10/softbank-grab-and-petros-to-build-among-asias-largest-ai-facilities-in-malaysia-with-us185b-seed-capital/242645",
    "title_ja": "ソフトバンクら、マレーシアにアジア最大級のAI施設を建設へ",
    "title": "SoftBank, Grab and Petros to build ‘among Asia’s largest’ AI facilities in Malaysia with US$1.85b seed capital",
-   "summary_ja": "ソフトバンク、Grab、Petrosの3社が18.5億ドルの資金を投じ、マレーシアにアジア有数のAI拠点を整備します。",
+   "summary_ja": "ソフトバンク、Grab、Petrosの3社が共同で18.5億ドルを投じ、マレーシア国内にアジア最大級のAI施設を建設する計画です。",
    "lang": "en",
    "companies": [
     "SoftBank"
@@ -289,9 +304,9 @@
    "date": "2026-11-10T08:54+08:00",
    "source": "Malay Mail",
    "link": "https://www.malaymail.com/news/malaysia/2026/11/10/anwar-says-softbank-led-ai-investment-signals-global-confidence-in-malaysia/242635",
-   "title_ja": "アンワル首相、ソフトバンク主導のAI投資をマレーシアへの信頼と評価",
+   "title_ja": "アンワル首相、ソフトバンク主導のAI投資はマレーシアへの信頼の証と評価",
    "title": "Anwar says SoftBank-led AI investment signals global confidence in Malaysia",
-   "summary_ja": "アンワル首相は、今回のAIプラットフォーム投資がマレーシアの成長性に対する国際的な信頼の証であると歓迎しました。",
+   "summary_ja": "アンワル首相は、ソフトバンク主導のAIプラットフォーム投資について、マレーシアの成長性に対する国際的な信頼の表れだと歓迎しました。",
    "lang": "en",
    "companies": [
     "SoftBank"
@@ -347,7 +362,7 @@
    "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAtdEx5eVJvWWFXTUhVM3JIcEVrSTZhZEdSRVRSajl4T2FiNFBTNmtwSlNyTTFXVC1vVUl0RjlibWRvX3FsQ1FTVUtkTXdFbW1UUUFYUUdZU20wUQ?oc=5",
    "title_ja": "アンワル首相、ソフトバンクのAI投資はマレーシアへの国際的信頼の証",
    "title": "Softbank-led Consortium’s AI Investment Reflects Global Confidence In Malaysia -- PM Anwar",
-   "summary_ja": "ソフトバンク主導のAI投資プロジェクトに対し、アンワル首相はマレーシアの経済的地位向上への期待を表明しました。",
+   "summary_ja": "ソフトバンク主導のコンソーシアムによるAI投資計画を受け、アンワル首相はマレーシアの投資環境に対する世界的な信頼が高まっていると強調しました。",
    "lang": "en",
    "companies": [
     "SoftBank"
@@ -464,9 +479,9 @@
    "date": "2026-11-09T17:03+08:00",
    "source": "Malay Mail",
    "link": "https://www.malaymail.com/news/tech-gadgets/2026/11/09/the-80s-called-and-sony-answered-retro-walkman-headphones-land-in-malaysia-with-usb-c-for-rm259/242600",
-   "title_ja": "80年代が呼びかけ、ソニーが答えた：USB-C搭載のレトロウォークマンヘッドフォンが259リンギットでマレーシアに上陸",
+   "title_ja": "ソニー、80年代風レトロヘッドホン「MDR-3R」をマレーシアで発売。USB-C対応で259リンギット",
    "title": "The ’80s called, and Sony answered: Retro Walkman headphones land in Malaysia with USB-C for RM259",
-   "summary_ja": "クアラルンプール、11月 9日 — ソニーは、MDR-3R を正式に発表しました。MDR-3R は、...",
+   "summary_ja": "ソニーが80年代のウォークマンを彷彿とさせる軽量有線ヘッドホン「MDR-3R」をマレーシアで発売。USB-C接続に対応し、レトロなデザインと現代的な利便性を両立しています。",
    "lang": "en",
    "companies": [
     "Sony"
@@ -539,9 +554,9 @@
    "date": "2026-11-05T14:32+08:00",
    "source": "The Edge Malaysia",
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBTUGFLZERJS28xYl90YmhKSkR5enBBbFN1STNDbm9GWjJnSmJ3UHVtX1pjTXNCQVhETXhud0pXSlY0VFgtZXIwbl9KTUZVZWpD?oc=5",
-   "title_ja": "ダイソー、マレーシア・プーラウインダーに史上最大の物流拠点を新設",
+   "title_ja": "ダイソー、マレーシア・プーラウインダに史上最大の物流拠点を新設",
    "title": "Japan's Daiso opens its largest ever logistics hub in Pulau Indah",
-   "summary_ja": "ダイソーがマレーシアのプーラウインダーに同社史上最大規模の物流ハブを開設しました。東南アジアにおける供給網の強化と物流効率の向上が期待されます。",
+   "summary_ja": "ダイソーがマレーシアのプーラウインダに同社史上最大規模の物流センターを開設しました。物流網の強化により、東南アジア市場での供給体制をさらに拡充します。",
    "lang": "en",
    "companies": [
     "Daiso"
@@ -559,9 +574,9 @@
    "date": "2026-11-05T11:48+08:00",
    "source": "The Edge Malaysia",
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBEUWlKZzNvSmxXSmI4MmNFd1FMNXV1Nmp1OG81MXFmU3F4cXg5VG52eWF1cEFWOW1WczRLeXQxVFA0am50VlhLckZVNkVUR04x?oc=5",
-   "title_ja": "中国当局、ソフトバンクのABBロボティクス部門買収を差し止め",
+   "title_ja": "中国当局、ソフトバンクによるABBロボティクス部門の買収を不許可",
    "title": "China blocks SoftBank’s US$5.4 bil takeover of ABB robotics unit",
-   "summary_ja": "54億ドル規模の買収計画が中国の規制当局により阻止され、ソフトバンクの戦略に影響が出ています。",
+   "summary_ja": "ソフトバンクが推進していた54億ドル規模のABBロボティクス事業買収案件について、中国の規制当局が承認を拒否しました。",
    "lang": "en",
    "companies": [
     "SoftBank"
@@ -582,7 +597,7 @@
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBQRFN5WW0xNkcxQ1FfdjVpYlBxLUY4UTRTVGxMWFd1bUlBYVJPeDVISUxia2s5MDZYdEtTUWc0TC13emtuamYxNnhLb1dWUlQt?oc=5",
    "title_ja": "パラマウントと三井不動産、マレーシアで13億リンギット規模の住宅開発へ",
    "title": "Paramount partners Mitsui Fudosan to develop RM1.3 bil residential project, targets 60% take-up in first year",
-   "summary_ja": "パラマウント・コーポレーションと三井不動産が合弁で住宅開発に着手。総開発価値13億リンギットを掲げ、初年度60%の成約を目指す。",
+   "summary_ja": "パラマウント・コーポレーションと三井不動産が合弁で住宅開発に着手。総開発価値13億リンギットを見込み、初年度60%の成約を目指す。",
    "lang": "en",
    "companies": [
     "Mitsui Fudosan"
@@ -599,9 +614,9 @@
    "date": "2026-11-04T13:10+08:00",
    "source": "The Star",
    "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQOE9HYTh3NjV4WEl0cUlZbjc4MzdlcS1PM05WQW1ZMFpOOXVGOXRDTjJGWEx2RDU1QUJmQ1RaZ1RqckRybzBxdXo5Z2lhMWc1R2JISlVyQTQ2T19waDBtVFJUVWVTRnpXWjFqX3ZFTWFJR3ZDaGhyZmlXRVBwSlVQaDRRamF2eU9fQnJLa1dWVzJObjNYV25qemw4LUVLOV9TNzdMd0NqS2JKZjE1MTcwa0xmOXhxSzF5SjdTNk5nejBZUnJMellLd0VkZ1pTWkFHcmhUbmRn?oc=5",
-   "title_ja": "三井不動産とパラマウント、総額13億リンギットの住宅共同開発を発表",
+   "title_ja": "三井不動産とパラマウント、13億リンギットの住宅開発プロジェクトで提携",
    "title": "Paramount, Mitsui Fudosan in JV to develop RM1.3bil GDV residential project",
-   "summary_ja": "両社による合弁事業（JV）が始動。マレーシア国内での住宅開発を通じ、高付加価値な住環境の提供と早期の販売目標達成を目指す。",
+   "summary_ja": "両社が合弁事業（JV）を設立し、大規模住宅開発プロジェクトを推進。日系デベロッパーの知見を活かし、現地市場でのシェア拡大を図る。",
    "lang": "en",
    "companies": [
     "Mitsui Fudosan"
@@ -710,9 +725,9 @@
    "date": "2026-10-30T11:25+08:00",
    "source": "The Edge Malaysia",
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBsSVg4TUo0UUZjS1IzOTdxOHJoTU54WVVncHVvaUhEeFVGT0xJMHdMSmx4Q1FxMzIwcmhZTHNNTzFUaUFHRFJaZ1g2NGtWT2xE?oc=5",
-   "title_ja": "楽天トレード、サイバー攻撃で取引停止が1週間超に　再開目処は未定",
+   "title_ja": "楽天トレード、サイバー攻撃でマレーシア証券取引所への接続が1週間以上停止",
    "title": "Rakuten Trade’s Bursa trading has been down for over a week following cyberattack, with no restart date",
-   "summary_ja": "楽天トレードの取引システムがサイバー攻撃の影響で1週間以上停止しています。現時点でサービス再開の目処は立っておらず、利用者は注意が必要です。",
+   "summary_ja": "楽天トレードで発生したサイバー攻撃の影響により、マレーシア証券取引所（Bursa Malaysia）での取引が1週間以上停止しています。復旧の目処は立っておらず、利用者は注意が必要です。",
    "lang": "en",
    "companies": [
     "Rakuten"
@@ -890,9 +905,9 @@
    "date": "2026-10-26T19:30+08:00",
    "source": "Malay Mail",
    "link": "https://www.malaymail.com/news/money/2026/10/26/japanese-seafood-exports-to-malaysia-jump-40pc-to-rm130m-as-demand-grows/240702",
-   "title_ja": "Japanese seafood exports to Malaysia jump 40pc to RM130m as demand grows",
+   "title_ja": "対マレーシア日本産水産物輸出が40％増、1.3億リンギットに拡大",
    "title": "Japanese seafood exports to Malaysia jump 40pc to RM130m as demand grows",
-   "summary_ja": "KUALA LUMPUR, Oct 26 &mdash; Japanese seafood exports to Malaysia rose by about 40 per cent in the first eight months of...",
+   "summary_ja": "今年1〜8月の対マレーシア日本産水産物輸出額が前年比約4割増の1.3億リンギットに達しました。現地での日本食人気を背景に、需要が着実に拡大しています。",
    "lang": "en",
    "companies": [],
    "sectors": [],
@@ -907,7 +922,7 @@
    "link": "https://theedgemalaysia.com/edge-tv-detail?id=node%2F823302",
    "title_ja": "ソフトバンク孫正義氏、マレーシアに500億ドルの技術投資を計画か",
    "title": "SoftBank’s Son reportedly planning US$50b M’sia tech outlay",
-   "summary_ja": "孫正義氏がマレー半島およびクチンを候補地に、総額500億ドル規模の技術投資を検討していると報じられました。",
+   "summary_ja": "ソフトバンクの孫正義氏が、マレー半島およびクチンを候補地として、総額500億ドル規模の技術投資を検討していると報じられました。",
    "lang": "en",
    "companies": [
     "SoftBank"
@@ -924,9 +939,9 @@
    "date": "2026-10-26T07:22+08:00",
    "source": "The Edge Malaysia",
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBQQ19KWkZrTnZTSFpiRzM4bjRwam42OERKNVNjTHU5UmhOa2VZYUJHVm1hV2p6T3dQalJqLUY3dlZ6QXVrQmM3Y2RJU2MyZ24t?oc=5",
-   "title_ja": "ソフトバンク孫氏、マレーシアに500億ドルの技術投資を計画と首相",
+   "title_ja": "ソフトバンク孫正義氏、マレーシアに500億ドルの技術投資を計画",
    "title": "SoftBank’s Son plans US$50 bil Malaysia tech outlay, PM says",
-   "summary_ja": "アンワル首相は、ソフトバンクによるマレーシアへの500億ドル規模の技術投資計画について言及しました。",
+   "summary_ja": "ソフトバンクがマレーシアで500億ドル規模の技術投資を計画していることが、首相の発言等により明らかになりました。",
    "lang": "en",
    "companies": [
     "SoftBank"
@@ -1213,9 +1228,9 @@
    "date": "2026-10-19T10:49+08:00",
    "source": "The Edge Malaysia",
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5wSml4UnlsUGRGblo5cGFKNklwakhkM0xOUnEyaDgzMDdNczhpMnBHTXY5WVdER0RHdVB3SlAtTW5wa015LW1CQW80VXIwZGEt?oc=5",
-   "title_ja": "MS&AD、マレーシアのLPIキャピタル買収を検討か　ブルームバーグ報道",
+   "title_ja": "日本のMS&AD、マレーシアのLPIキャピタルとの取引を検討すると発表 — ブルームバーグ",
    "title": "Japan’s MS&AD said to consider deal for Malaysia’s LPI Capital — Bloomberg",
-   "summary_ja": "日本のMS&ADインシュアランスグループが、マレーシアの保険大手LPIキャピタルの買収を検討していると報じられました。東南アジアでの事業拡大に向けた動きとして注目されます。",
+   "summary_ja": "日本のMS&AD、マレーシアのLPIキャピタルとの取引を検討すると — Bloomberg The Edge Malaysia",
    "lang": "en",
    "companies": [
     "MS&AD"
@@ -1223,9 +1238,7 @@
    "sectors": [
     "finance"
    ],
-   "topics": [
-    "deal_restructure"
-   ]
+   "topics": []
   },
   {
    "id": "malaymail-cb37351ca6e5a6",
@@ -1726,17 +1739,15 @@
    "date": "2026-09-29T23:46+08:00",
    "source": "The Edge Malaysia",
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFA4OE9RUThJVkY2SXRFNkVqZmp3SWhOeHZFSjZhQXlESnpYZzVsMWd5TkY4UGNSdmQzUERTM3VtX1VCY2l4dnhKSG5UeVV0WGt0?oc=5",
-   "title_ja": "インソン、ガムダ、SD ガスリー、イオン クレジット、UMS インテグレーション、ケリントン、ヴァントリス、スーパーマックス、アポロ、VS インダストリー、サーン コウ",
+   "title_ja": "マレーシア主要企業11社の最新動向：Yinson、Gamuda、SD Guthrie等",
    "title": "Yinson, Gamuda, SD Guthrie, AEON Credit, UMS Integration, Kelington, Vantris, Supermax, Apollo, VS Industry, Sern Kou",
-   "summary_ja": "インソン、ガムダ、SD ガスリー、イオン クレジット、UMS インテグレーション、ケリントン、ヴァントリス、スーパーマックス、アポロ、VS インダストリー、サーン コウ ザ エッジ マレーシア",
+   "summary_ja": "Yinson、Gamuda、SD Guthrie、AEON Creditなど、マレーシア証券取引所に上場する主要11社の最新の企業ニュースや市場動向をまとめてお伝えします。",
    "lang": "en",
    "companies": [
-    "AEON Credit",
-    "AEON"
+    "AEON Credit"
    ],
    "sectors": [
-    "finance",
-    "retail"
+    "finance"
    ],
    "topics": []
   },
@@ -1745,17 +1756,15 @@
    "date": "2026-09-29T18:58+08:00",
    "source": "The Edge Malaysia",
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9oUEQ2RjRmblk1SXhveG85d2V1elEzMGx6NS11OE5yWEkxOW9xVUJrUUtvNDFDZ2hacnRjdGZNNjUzcTVNRzlIVk9RSjBnNGNi?oc=5",
-   "title_ja": "イオンクレジット第2四半期純利益は減損損失増加で18%減",
+   "title_ja": "AEON Credit第2四半期決算、減損損失増により純利益18%減",
    "title": "AEON Credit 2Q net profit drops 18% on higher impairment losses",
-   "summary_ja": "イオンクレジット、減損損失増加で第2四半期純利益18%減 The Edge Malaysia",
+   "summary_ja": "AEON Creditの第2四半期決算は、減損損失の増加が響き、前年同期比で18%の減益となりました。金融セクターの与信コスト管理が今後の注目点です。",
    "lang": "en",
    "companies": [
-    "AEON Credit",
-    "AEON"
+    "AEON Credit"
    ],
    "sectors": [
-    "finance",
-    "retail"
+    "finance"
    ],
    "topics": [
     "results"
