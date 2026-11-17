@@ -116,8 +116,6 @@ def shorten(text: str, n: int) -> str:
     return text if len(text) <= n else text[: n - 1].rstrip() + "…"
 
 
-# A headline about the region, for the rule on global companies in to_item.
-SEA = re.compile(r"Southeast Asia|South-East Asia|東南アジア|Asia Tenggara", re.I)
 # Outlet names that contain "Malaysia" and are often appended to a snippet; they say nothing about
 # what the story is about, so they are taken out before the region check.
 OUTLETS = re.compile(r"The Edge Malaysia|Free Malaysia Today|Malaysiakini|Malay Mail|Sin Chew|Borneo Post", re.I)
@@ -144,11 +142,6 @@ def to_item(a: dict, companies: list[dict]) -> dict | None:
     # topic; a story with no company needs Japan in its headline as well as a topic.
     in_headline = any(named(c, headline) for c in hits)
     if not in_headline and not (hits and topics) and not (JAPAN.search(headline) and topics):
-        return None
-    # Global companies (Sony, SoftBank) make news everywhere: a product launch or a film can mention
-    # a Malaysian price and pass the region check below. Outside the Japanese-language outlets, which
-    # cover Malaysia only, a company story also needs a business topic or Malaysia in its headline.
-    if hits and not local_outlet and not topics and not (MALAYSIA.search(headline) or SEA.search(headline)):
         return None
     # Outlets in Japanese (週刊MTOWN, NNA) write about Malaysia already; others must name the country,
     # so that a company's news from elsewhere in the world is left out.
@@ -188,8 +181,6 @@ def refilter(items: list[dict], companies: list[dict]) -> list[dict]:
         headline = " ".join([i.get("title") or "", i.get("title_ja") or ""])
         text, headline = unicodedata.normalize("NFKC", text), unicodedata.normalize("NFKC", headline)
         hits = [c for c in companies if named(c, text)]
-        if hits and i.get("lang") != "ja" and not i.get("topics") and not (MALAYSIA.search(headline) or SEA.search(headline)):
-            hits = []  # a global company's story from elsewhere (see to_item)
         if not hits and not (JAPAN.search(headline) and i.get("topics")):
             continue
         # Malaysia only in an outlet name ("... The Edge Malaysia"): a story from elsewhere.
