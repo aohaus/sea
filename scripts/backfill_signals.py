@@ -64,7 +64,7 @@ def main() -> int:
 
     old = json.loads(cs.OUT.read_text(encoding="utf-8")) if cs.OUT.exists() else {"items": []}
     cutoff = (now - timedelta(days=cs.KEEP_DAYS)).isoformat()
-    merged = {i["link"]: i for i in old.get("items", [])}
+    merged = {i["link"]: i for i in cs.refilter(old.get("items", []), companies)}
     merged.update(found)
     seen, items = set(), []
     for i in sorted(merged.values(), key=lambda i: i["date"], reverse=True):
