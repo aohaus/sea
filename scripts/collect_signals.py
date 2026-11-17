@@ -30,6 +30,7 @@ import json
 import re
 import sys
 import time
+import unicodedata
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -65,13 +66,35 @@ TOPICS = [
 ]
 
 
+KATAKANA = "ァ-ヺー"
+KANJI = "一-龯々"
+
+
+def ja_pattern(ja: str) -> re.Pattern | None:
+    """The Japanese name as a pattern that does not match inside a longer word.
+
+    Japanese has no spaces, so a plain substring test finds "ソニー" in "アンソニー" (Anthony) and
+    "イオン" in "ライオン". A katakana name must not follow another katakana character, and a short
+    kanji name (two characters or fewer) must not follow another kanji ("東レ" in "関東レ...").
+    """
+    if not ja or ja.isascii():
+        return None
+    first = ja[0]
+    if re.match(f"[{KATAKANA}]", first):
+        return re.compile(f"(?<![{KATAKANA}])" + re.escape(ja))
+    if re.match(f"[{KANJI}]", first) and len(ja) <= 2:
+        return re.compile(f"(?<![{KANJI}])" + re.escape(ja))
+    return re.compile(re.escape(ja))
+
+
 def load_watchlist() -> tuple[list[dict], list[str]]:
     cfg = json.loads(WATCHLIST.read_text(encoding="utf-8"))
     companies = []
     for c in cfg["companies"]:
         flags = 0 if c.get("case_sensitive") else re.I
         en = re.compile(r"(?<![A-Za-z0-9])(" + "|".join(re.escape(a) for a in c["aliases"]) + r")(?![A-Za-z0-9])", flags)
-        companies.append({**c, "rx": en})
+        ja = [p for p in (ja_pattern(x) for x in [c.get("ja") or "", *c.get("ja_aliases", [])]) if p]
+        companies.append({**c, "rx": en, "ja_rx": re.compile("|".join(f"(?:{p.pattern})" for p in ja)) if ja else None})
     queries = list(cfg["queries"]) + [c["aliases"][0] for c in cfg["companies"]]
     return companies, queries
 
@@ -93,16 +116,27 @@ def shorten(text: str, n: int) -> str:
     return text if len(text) <= n else text[: n - 1].rstrip() + "…"
 
 
+# A headline about the region, for the rule on global companies in to_item.
+SEA = re.compile(r"Southeast Asia|South-East Asia|東南アジア|Asia Tenggara", re.I)
+# Outlet names that contain "Malaysia" and are often appended to a snippet; they say nothing about
+# what the story is about, so they are taken out before the region check.
+OUTLETS = re.compile(r"The Edge Malaysia|Free Malaysia Today|Malaysiakini|Malay Mail|Sin Chew|Borneo Post", re.I)
+
+
+def named(c: dict, where: str) -> bool:
+    """Whether the company's English aliases or Japanese name appear in the text."""
+    return bool(c["rx"].search(where)) or bool(c["ja_rx"] and c["ja_rx"].search(where))
+
+
 def to_item(a: dict, companies: list[dict]) -> dict | None:
     title, title_ja = (a.get("title") or "").strip(), (a.get("titleJa") or "").strip()
     summary = a.get("summaryJa") or a.get("snippet") or ""
-    text = " ".join([title, title_ja, summary, a.get("snippet") or ""])
+    # NFKC turns full-width letters (ＫＬ, ＬＮＧ, common in Japanese outlets) into plain ones.
+    text = unicodedata.normalize("NFKC", " ".join([title, title_ja, summary, a.get("snippet") or ""]))
     if not a.get("link") or not (title or title_ja):
         return None
-    headline = title + " " + title_ja
-
-    def named(c: dict, where: str) -> bool:
-        return bool(c["rx"].search(where)) or (bool(c["ja"]) and not c["ja"].isascii() and c["ja"] in where)
+    headline = unicodedata.normalize("NFKC", title + " " + title_ja)
+    local_outlet = a.get("language") == "ja"
 
     hits = [c for c in companies if named(c, text)]
     topics = [name for name, rx in TOPICS if rx.search(text)]
@@ -111,9 +145,14 @@ def to_item(a: dict, companies: list[dict]) -> dict | None:
     in_headline = any(named(c, headline) for c in hits)
     if not in_headline and not (hits and topics) and not (JAPAN.search(headline) and topics):
         return None
+    # Global companies (Sony, SoftBank) make news everywhere: a product launch or a film can mention
+    # a Malaysian price and pass the region check below. Outside the Japanese-language outlets, which
+    # cover Malaysia only, a company story also needs a business topic or Malaysia in its headline.
+    if hits and not local_outlet and not topics and not (MALAYSIA.search(headline) or SEA.search(headline)):
+        return None
     # Outlets in Japanese (週刊MTOWN, NNA) write about Malaysia already; others must name the country,
     # so that a company's news from elsewhere in the world is left out.
-    if a.get("language") != "ja" and not MALAYSIA.search(text):
+    if not local_outlet and not MALAYSIA.search(OUTLETS.sub(" ", text)):
         return None
     when = a.get("isoDate") or a.get("pubDate")
     try:
@@ -133,6 +172,31 @@ def to_item(a: dict, companies: list[dict]) -> dict | None:
         "sectors": sorted({c["sector"] for c in hits}),
         "topics": topics,
     }
+
+
+def refilter(items: list[dict], companies: list[dict]) -> list[dict]:
+    """Check the company names of stored items again with the current watchlist and rules.
+
+    A company that is no longer found in the stored titles and summary is removed from the item. An
+    item left with no company is kept only if its headline is about Japan and it has a business
+    topic, as for a new item. The other checks (region, date) were passed when the item was first
+    collected from the full article text, which is not stored, so they are not repeated here.
+    """
+    out = []
+    for i in items:
+        text = " ".join([i.get("title") or "", i.get("title_ja") or "", i.get("summary_ja") or ""])
+        headline = " ".join([i.get("title") or "", i.get("title_ja") or ""])
+        text, headline = unicodedata.normalize("NFKC", text), unicodedata.normalize("NFKC", headline)
+        hits = [c for c in companies if named(c, text)]
+        if hits and i.get("lang") != "ja" and not i.get("topics") and not (MALAYSIA.search(headline) or SEA.search(headline)):
+            hits = []  # a global company's story from elsewhere (see to_item)
+        if not hits and not (JAPAN.search(headline) and i.get("topics")):
+            continue
+        # Malaysia only in an outlet name ("... The Edge Malaysia"): a story from elsewhere.
+        if i.get("lang") != "ja" and MALAYSIA.search(text) and OUTLETS.search(text) and not MALAYSIA.search(OUTLETS.sub(" ", text)):
+            continue
+        out.append({**i, "companies": [c["name"] for c in hits], "sectors": sorted({c["sector"] for c in hits})})
+    return out
 
 
 def main() -> int:
@@ -160,7 +224,7 @@ def main() -> int:
         time.sleep(PAUSE)
 
     cutoff = (now - timedelta(days=KEEP_DAYS)).isoformat()
-    merged = {i["link"]: i for i in old.get("items", [])}
+    merged = {i["link"]: i for i in refilter(old.get("items", []), companies)}
     merged.update(found)
     seen, items = set(), []
     for i in sorted(merged.values(), key=lambda i: i["date"], reverse=True):
