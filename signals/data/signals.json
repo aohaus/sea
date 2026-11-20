@@ -1,16 +1,51 @@
 {
- "generated_at": "2026-11-20T15:29:01+08:00",
- "checked_at": "2026-11-20T15:29:01+08:00",
+ "generated_at": "2026-11-21T04:31:45+08:00",
+ "checked_at": "2026-11-21T04:31:45+08:00",
  "source": {
   "name": "Campur.ai",
   "url": "https://campur.ai.studio/"
  },
  "status": {
   "searches": 134,
-  "matched": 60,
+  "matched": 51,
   "errors": []
  },
  "items": [
+  {
+   "id": "nikkei_asia-8522edf25fe64b",
+   "date": "2026-11-20T21:25+08:00",
+   "source": "Nikkei Asia",
+   "link": "https://asia.nikkei.com/business/telecommunication/vietnam-s-new-asean-internet-cable-part-of-1bn-japan-partnership",
+   "title_ja": "ベトナムの新しいASEANインターネットケーブルが10億ドル規模の日本との提携の一部に",
+   "title": "Vietnam's new ASEAN internet cable part of $1bn Japan partnership",
+   "summary_ja": "Nikkei Asia（日本経済新聞社 アジア国際英文報道）: Vietnam's new ASEAN internet cable part of $1bn Japan partnership",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "deal_restructure"
+   ]
+  },
+  {
+   "id": "nst-e9d53ea0b1808d",
+   "date": "2026-11-20T18:28+08:00",
+   "source": "New Straits Times",
+   "link": "https://www.nst.com.my/business/corporate/2026/11/1582083/aeons-q3-earnings-fall-36pct-higher-tax-expenses",
+   "title_ja": "イオンの第 3 四半期利益は税金費用の増加により 36% 減少",
+   "title": "Aeon's Q3 earnings fall 36pct on higher tax expenses",
+   "summary_ja": "クアラルンプール：Aeon Co (M) Bhdの純利益は、2026年9月30日に終了した第3四半期に、急激な増加に引きずられて、前年同期の1,460万リンギから36.30%減少し、930万リンギとなった。",
+   "lang": "en",
+   "companies": [
+    "AEON"
+   ],
+   "sectors": [
+    "retail"
+   ],
+   "topics": [
+    "tax_regulation",
+    "results"
+   ]
+  },
   {
    "id": "astroawani-9a627e2db0de2a",
    "date": "2026-11-19T22:40+08:00",
@@ -31,9 +66,9 @@
    "date": "2026-11-19T04:30+08:00",
    "source": "Astro AWANI",
    "link": "https://www.astroawani.com/berita-bisnes/sarawak-bakal-jadi-hab-cip-termaju-di-asia-dijangka-beroperasi-2028-abang-johari",
-   "title_ja": "サラワク州、2028年稼働のAIチップ製造拠点へ。ソフトバンク等が10億ドル投資",
+   "title_ja": "サラワク州はアジアで最も先進的なチップハブとなり、2028年に稼働予定 - アバン・ジョハリ",
    "title": "Sarawak bakal jadi hab cip termaju di Asia, dijangka beroperasi 2028 - Abang Johari",
-   "summary_ja": "サラワク州のアバン・ジョハリ首相は、ソフトバンクやGrabと連携し、サマジャヤに10億ドル規模のAIチップ製造施設を建設すると発表しました。",
+   "summary_ja": "サラワク州は、ソフトバンク、グラブ、ペトロスの協力の結果、サマジャヤに10億米ドルをかけてAIチップ製造施設が建設され、2028年までにアジアで最も先進的なチップハブとなる予定だ。",
    "lang": "ms",
    "companies": [
     "SoftBank"
@@ -42,7 +77,6 @@
     "tmt"
    ],
    "topics": [
-    "investment",
     "ai_digital"
    ]
   },
@@ -71,9 +105,9 @@
    "date": "2026-11-18T12:25+08:00",
    "source": "The Borneo Post",
    "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQQ21JQ3oyOVptOWRSWUlRVkhLbzFIbXZ4UXlEUDVyUFBpZ1Bkd0pOY1R6VXFLQldITG9ycXF4MDdBNTJ3NS1XVGhOcmRZdWJ6OFluVDd2QkpHRGRzeWUxYmRwZDlNWVM4UDlPYTVzSTdzN1Jwakh5Vy1FUzZwU1loVUk1VXV4cEQtUmIxY2dnYUtWOTlERVk0RWUwbmg3QWlBZUo1ckdaWmNyREMxc0VxckY2TVhQRjhkZ1RGRDNraTdhRFNPV0NzQg?oc=5",
-   "title_ja": "サラワク州首相、東京でソフトバンク首脳と会談。AIインフラ整備を加速",
+   "title_ja": "アバン・ジョハリがサラワクAIインフラプロジェクト推進のため東京でソフトバンク社長と会談",
    "title": "Abang Johari meets SoftBank chief in Tokyo to advance Sarawak AI infrastructure project - Borneo Post",
-   "summary_ja": "アバン・ジョハリ州首相は東京を訪問し、ソフトバンク首脳とAIインフラプロジェクトの推進に向けた協議を行いました。",
+   "summary_ja": "アバン・ジョハリが東京でソフトバンク社長と会談、サラワクAIインフラプロジェクト推進へ ボルネオポスト",
    "lang": "en",
    "companies": [
     "SoftBank"
@@ -301,12 +335,12 @@
   },
   {
    "id": "theedge-8907225370e1fe",
-   "date": "2026-11-11T09:50+08:00",
+   "date": "2026-11-11T16:00+08:00",
    "source": "The Edge Malaysia",
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFByUl9yUVVTZ29HZ1N6M0xZOGpiOEpaSHFyX2h4cHktYzRBQXFVX2w0Q3pWenEycGJLRTR6eGNqa1h0NHl3TkIySTMzVmw3NC15?oc=5",
-   "title_ja": "三井金属、マレーシアに銅箔の新工場を建設へ　投資額は約48.7億リンギット",
+   "title_ja": "三井金属、マレーシアの新銅箔工場に48億7000万リンギを投資 - 報道",
    "title": "Mitsui Kinzoku to invest RM4.87 bil in new copper foil plant in Malaysia — report",
-   "summary_ja": "三井金属がマレーシアで銅箔製造の新工場に約48.7億リンギットを投資する見通しです。EV向け需要の拡大を見据えた戦略的な生産拠点強化として注目されます。",
+   "summary_ja": "三井金属、マレーシアの銅箔新工場に48億7000万リンギを投資 - レポート The Edge Malaysia",
    "lang": "en",
    "companies": [
     "Mitsui Kinzoku"
@@ -386,6 +420,25 @@
    ]
   },
   {
+   "id": "nst-42e8825a46476e",
+   "date": "2026-11-10T16:00+08:00",
+   "source": "New Straits Times",
+   "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNU1JPZlBNNFBMRmY3QUptWVowUXBrdVBzdUdXS0tGV1NMXzk0d0hMRjkwOGZqTi1BQ3l5S0oxYXVBYWV5Vm5EeWk0Y3Y5cTc1OG8tNmhRaklyOFFkR2tBU3hzZ0o3MndSLVdKWUJPYlBYZldhalA5dW9NbnpHems5SXVreXpoWFNwUDVCbnVTWWgyeWxvTzFjUllEOUN1eFdlSEFfWVBzQjJqWk4wRW5ZdkRxZ2swLXBPZFVz0gHAAUFVX3lxTE5OTlEycjhyV1JYNmpraXVwMzYyLXA5blYySFB6Umh0cDgxcU1GMlR4Q05lY3pTUWoxVWdpSTlfZy1KaWJYc1dRVzJCZlV5VS04TUpvVi1Ub25kQzR2dEZwYzJmR3lRVDEtblJqOFlYN3N4aFBEcmp3bk5rQ0lrUk5hMVVmeHQzbmRzMVluY0lxTkJFMXV3eEtwdHNHTFFXRXgxUm5CNXFDZjFZZWRnVllvV1ZFS2xNTXpHdmgwNWVrUg?oc=5",
+   "title_ja": "三井金属、マレーシアの銅箔工場新設に48億7000万リンギを投資",
+   "title": "Mitsui Kinzoku to invest RM4.87bil in new copper foil plant in Malaysia - NST Online",
+   "summary_ja": "三井金属、マレーシアの銅箔新工場に48億7000万リンギを投資 NSTオンライン",
+   "lang": "en",
+   "companies": [
+    "Mitsui Kinzoku"
+   ],
+   "sectors": [
+    "semiconductor"
+   ],
+   "topics": [
+    "investment"
+   ]
+  },
+  {
    "id": "borneopost-7d2b765b53d4ae",
    "date": "2026-11-10T11:53+08:00",
    "source": "The Borneo Post",
@@ -449,9 +502,9 @@
    "date": "2026-11-10T09:49+08:00",
    "source": "BERNAMA",
    "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5RN3locHMwWnJPMm9HcmVxOVcxMFZ1OUxuTVR4YnNkZGdRRTF2QmNQMXpvR0poSTdLRS1pc0FTLU1NZXp3ZVNZV0tubm03ei13XzlBNGZidldESUpGRENxWWtR?oc=5",
-   "title_ja": "ソフトバンクとGrab、マレーシアのAIインフラ構築へ18.5億ドルの初期投資",
+   "title_ja": "ソフトバンクとGrab、マレーシアのAIインフラストラクチャーに18億5000万米ドルの初期シード資本を発表",
    "title": "Softbank, Grab Announce US$1.85 Bln Initial Seed Capital For Malaysia's AI Infrastructure",
-   "summary_ja": "ソフトバンクとGrabは、マレーシアのAIインフラ基盤強化に向け、18.5億ドルの初期投資を行うことを正式に発表しました。",
+   "summary_ja": "ソフトバンクとGrab、マレーシアのAIインフラストラクチャーに18億5000万米ドルの初期シード資本を発表",
    "lang": "en",
    "companies": [
     "SoftBank"
@@ -460,7 +513,6 @@
     "tmt"
    ],
    "topics": [
-    "investment",
     "ai_digital"
    ]
   },
@@ -544,9 +596,9 @@
    "date": "2026-11-10T05:40+08:00",
    "source": "BERNAMA",
    "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAtdEx5eVJvWWFXTUhVM3JIcEVrSTZhZEdSRVRSajl4T2FiNFBTNmtwSlNyTTFXVC1vVUl0RjlibWRvX3FsQ1FTVUtkTXdFbW1UUUFYUUdZU20wUQ?oc=5",
-   "title_ja": "アンワル首相、ソフトバンクのAI投資はマレーシアへの国際的信頼を反映",
+   "title_ja": "ソフトバンク主導コンソーシアムの AI 投資はマレーシアに対する世界的な信頼を反映 -- アンワル首相",
    "title": "Softbank-led Consortium’s AI Investment Reflects Global Confidence In Malaysia -- PM Anwar",
-   "summary_ja": "アンワル首相は、ソフトバンク主導のコンソーシアムによるAI投資が、マレーシアに対する世界的な信頼を裏付けるものであると強調しました。",
+   "summary_ja": "ソフトバンク主導コンソーシアムの AI 投資はマレーシアにおける世界的な信頼を反映 -- アンワル・バーナマ首相",
    "lang": "en",
    "companies": [
     "SoftBank"
@@ -683,9 +735,9 @@
    "date": "2026-11-09T17:03+08:00",
    "source": "Malay Mail",
    "link": "https://www.malaymail.com/news/tech-gadgets/2026/11/09/the-80s-called-and-sony-answered-retro-walkman-headphones-land-in-malaysia-with-usb-c-for-rm259/242600",
-   "title_ja": "ソニー、80年代風レトロヘッドホン「MDR-3R」をマレーシアで発売。USB-C対応で259リンギット",
+   "title_ja": "80年代が呼びかけ、ソニーが答えた：USB-C搭載のレトロウォークマンヘッドフォンが259リンギットでマレーシアに上陸",
    "title": "The ’80s called, and Sony answered: Retro Walkman headphones land in Malaysia with USB-C for RM259",
-   "summary_ja": "ソニーが80年代のウォークマンを彷彿とさせる軽量有線ヘッドホン「MDR-3R」をマレーシアで発売。USB-C接続に対応し、レトロなデザインと現代的な利便性を両立させています。",
+   "summary_ja": "クアラルンプール、11月 9日 — ソニーは、MDR-3R を正式に発表しました。MDR-3R は、...",
    "lang": "en",
    "companies": [
     "Sony"
@@ -795,13 +847,47 @@
    ]
   },
   {
+   "id": "theedge-819d5e5b2f31f8",
+   "date": "2026-11-04T16:00+08:00",
+   "source": "The Edge Malaysia",
+   "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE16anhROWdPT205WnV2d2I2aVZGZVcwRFg1RmlwVDJOQU5aWkVIYlZNb1JOTWtPenZhZEtXSm1Sb2NTaTU2Y1VEcXlzX1JvQ3Vi?oc=5",
+   "title_ja": "楽天、iSPEED.myアプリでのブルサ取引を再開、ウェブプラットフォームは停止のまま",
+   "title": "Rakuten restores Bursa trading on iSPEED.my app, web platform remains suspended",
+   "summary_ja": "楽天、iSPEED.myアプリでブルサ取引を再開、ウェブプラットフォームは停止のまま The Edge Malaysia",
+   "lang": "en",
+   "companies": [
+    "Rakuten"
+   ],
+   "sectors": [
+    "tmt"
+   ],
+   "topics": []
+  },
+  {
+   "id": "nst-8ba1c1b3a1041e",
+   "date": "2026-11-04T16:00+08:00",
+   "source": "New Straits Times",
+   "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOSUViTTNIZ3EyaHNpQkVmNmxfV0ZtVDRGY2Z0S2tIQkdZeXM0bmJyMkRkb1dyVXAzUDFxLV9mM3phZThnQ1hvLU85N1lCVUFqSGVuMENzMVFDRXhPc19ENXRiRnZXM2FYNmtydXJYdDR3ZmZ3c1hyeGMtZnUwWkFGaTVZVzFnUVpJOTZIZUtnd1VHaE9yMklnMEFIbVpzOEtZLXdUTFVtdFVXTGFSdlVWelpaY9IBuAFBVV95cUxOUHZTZmttZWI5Z1RxWFdLRjhIcEZoZmROc1J5SGhlOUJTOXhYR1N0S0JCVXV1c2phWjVQWThuRTRydXducTdwNVpoQTh5bTVkNHNueVEycjBNUFBXeE5nRV9vMFhNUlFrc0p5eEMzMUVIbG0zQmswTEUtbkJHS2lUWWF5cTR6VHFnc3BpZ0doWTQtb05NTko0dmpQMVBmek9LZVFIaUx1bzRKc1JlYlJSV1hOZGxsaVlB?oc=5",
+   "title_ja": "[更新] アンワル氏は世界中のダイソーの棚にもっとマレーシア製の製品を並べたいと考えている",
+   "title": "[UPDATED] Anwar wants more Malaysian-made products on Daiso shelves worldwide - NST Online",
+   "summary_ja": "[更新]アンワル氏、世界中のダイソーの棚にもっとマレーシア製の製品を並べたいと考えている NSTオンライン",
+   "lang": "en",
+   "companies": [
+    "Daiso"
+   ],
+   "sectors": [
+    "retail"
+   ],
+   "topics": []
+  },
+  {
    "id": "theedge-91cdc0e717dd96",
    "date": "2026-11-04T14:27+08:00",
    "source": "The Edge Malaysia",
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBQRFN5WW0xNkcxQ1FfdjVpYlBxLUY4UTRTVGxMWFd1bUlBYVJPeDVISUxia2s5MDZYdEtTUWc0TC13emtuamYxNnhLb1dWUlQt?oc=5",
-   "title_ja": "パラマウントと三井不動産、マレーシアで13億リンギット規模の住宅開発へ",
+   "title_ja": "パラマウント、三井不動産と提携して13億リンギの住宅プロジェクト開発、初年度に60%の受注を目指す",
    "title": "Paramount partners Mitsui Fudosan to develop RM1.3 bil residential project, targets 60% take-up in first year",
-   "summary_ja": "パラマウント・コーポレーションと三井不動産が合弁で住宅開発に着手。総開発価値13億リンギットを掲げ、初年度60%の販売成約を目指す。",
+   "summary_ja": "パラマウント、三井不動産と提携して13億リンギの住宅プロジェクト開発、初年度60%の受注を目指す The Edge Malaysia",
    "lang": "en",
    "companies": [
     "Mitsui Fudosan"
@@ -818,9 +904,9 @@
    "date": "2026-11-04T13:10+08:00",
    "source": "The Star",
    "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQOE9HYTh3NjV4WEl0cUlZbjc4MzdlcS1PM05WQW1ZMFpOOXVGOXRDTjJGWEx2RDU1QUJmQ1RaZ1RqckRybzBxdXo5Z2lhMWc1R2JISlVyQTQ2T19waDBtVFJUVWVTRnpXWjFqX3ZFTWFJR3ZDaGhyZmlXRVBwSlVQaDRRamF2eU9fQnJLa1dWVzJObjNYV25qemw4LUVLOV9TNzdMd0NqS2JKZjE1MTcwa0xmOXhxSzF5SjdTNk5nejBZUnJMellLd0VkZ1pTWkFHcmhUbmRn?oc=5",
-   "title_ja": "三井不動産とパラマウント、13億リンギットの住宅開発合弁事業を発表",
+   "title_ja": "パラマウントと三井不動産が共同で13億リンギットのGDV住宅プロジェクト開発へ",
    "title": "Paramount, Mitsui Fudosan in JV to develop RM1.3bil GDV residential project",
-   "summary_ja": "両社は総開発価値（GDV）13億リンギットの住宅プロジェクトに向け合弁会社を設立。日系デベロッパーのノウハウを活かした高品質な住宅供給が期待される。",
+   "summary_ja": "パラマウントと三井不動産がJVで13億リンギットのGDV住宅プロジェクト「ザ・スター」開発へ",
    "lang": "en",
    "companies": [
     "Mitsui Fudosan"
@@ -890,9 +976,9 @@
    "date": "2026-11-02T16:23+08:00",
    "source": "The Edge Malaysia",
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9NQWFkRTlHcmNIb29IdXZVYWF1Q3poOUlBSFJpNTVEbWtDUy1WV2xuekhtLS1PUFNFckttVU5aeVlyQm1yalFMc2c3RHpFdmhy?oc=5",
-   "title_ja": "双日、マレーシアからレアアース「イットリウム」を輸入へ",
+   "title_ja": "日本の双日、マレーシアからレアアースイットリウムを輸入へ - レポート",
    "title": "Japan's Sojitz to import rare earth yttrium from Malaysia — report",
-   "summary_ja": "双日がマレーシアからレアアースの一種であるイットリウムを調達する方針を固めました。脱中国依存を目指す日本のサプライチェーン強化の一環として注目されます。",
+   "summary_ja": "日本の双日、マレーシアからレアアースイットリウムを輸入へ - レポート（The Edge Malaysia報道）",
    "lang": "en",
    "companies": [
     "Sojitz"
@@ -929,9 +1015,9 @@
    "date": "2026-10-30T11:25+08:00",
    "source": "The Edge Malaysia",
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBsSVg4TUo0UUZjS1IzOTdxOHJoTU54WVVncHVvaUhEeFVGT0xJMHdMSmx4Q1FxMzIwcmhZTHNNTzFUaUFHRFJaZ1g2NGtWT2xE?oc=5",
-   "title_ja": "楽天トレード、サイバー攻撃でマレーシア証券取引所への接続が1週間以上停止",
+   "title_ja": "楽天トレードのブルサ取引はサイバー攻撃を受けて1週間以上停止、再開日は未定",
    "title": "Rakuten Trade’s Bursa trading has been down for over a week following cyberattack, with no restart date",
-   "summary_ja": "楽天トレードで発生したサイバー攻撃の影響により、マレーシア証券取引所（Bursa）の取引機能が1週間以上停止しています。現在も復旧の目処は立っておらず、利用者は注意が必要です。",
+   "summary_ja": "<a href=\"https://news.google.com/rss/articles/CBMiUEFVX3lxTFBsSVg4TUo0UUZjS1IzOTdxOHJoTU54WVVncHVvaUhEeFVGT0xJMHdMSmx4Q1FxMzIwcmhZTHNNTzFUaUFHRFJaZ1g2NGtWT2xE?…",
    "lang": "en",
    "companies": [
     "Rakuten"
@@ -1071,9 +1157,9 @@
    "date": "2026-10-26T19:30+08:00",
    "source": "Malay Mail",
    "link": "https://www.malaymail.com/news/money/2026/10/26/japanese-seafood-exports-to-malaysia-jump-40pc-to-rm130m-as-demand-grows/240702",
-   "title_ja": "対マレーシア日本産水産物輸出が40％増、需要拡大で1.3億リンギに",
+   "title_ja": "Japanese seafood exports to Malaysia jump 40pc to RM130m as demand grows",
    "title": "Japanese seafood exports to Malaysia jump 40pc to RM130m as demand grows",
-   "summary_ja": "今年1月から8月までの日本からマレーシアへの水産物輸出額が、前年同期比で約40％増の1億3000万リンギットに達しました。現地での日本食人気が背景にあります。",
+   "summary_ja": "KUALA LUMPUR, Oct 26 &mdash; Japanese seafood exports to Malaysia rose by about 40 per cent in the first eight months of...",
    "lang": "en",
    "companies": [],
    "sectors": [],
@@ -1086,9 +1172,9 @@
    "date": "2026-10-26T16:22+08:00",
    "source": "The Edge Malaysia",
    "link": "https://theedgemalaysia.com/edge-tv-detail?id=node%2F823302",
-   "title_ja": "ソフトバンク孫正義氏、マレーシアに500億ドルの技術投資を計画か",
+   "title_ja": "ソフトバンクの孫氏は500億米ドルのM’sia技術支出を計画していると報じられている",
    "title": "SoftBank’s Son reportedly planning US$50b M’sia tech outlay",
-   "summary_ja": "ソフトバンクの孫正義氏が、マレーシア半島およびクチンでの技術投資に向け、総額500億ドル規模の投資を検討していると報じられました。",
+   "summary_ja": "ソフトバンクグループの創設者は、500億米ドルのテクノロジー投資のためにマレー半島とクチンの拠点を選択したと言われている。詳細については、今日の B の簡単なまとめをご覧ください。",
    "lang": "en",
    "companies": [
     "SoftBank"
@@ -1105,9 +1191,9 @@
    "date": "2026-10-26T07:22+08:00",
    "source": "The Edge Malaysia",
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBQQ19KWkZrTnZTSFpiRzM4bjRwam42OERKNVNjTHU5UmhOa2VZYUJHVm1hV2p6T3dQalJqLUY3dlZ6QXVrQmM3Y2RJU2MyZ24t?oc=5",
-   "title_ja": "ソフトバンク孫氏、マレーシアに500億ドルの技術投資を計画と首相が言及",
+   "title_ja": "ソフトバンクの孫氏、マレーシアに500億ドルのテクノロジー支出を計画、首相が発言",
    "title": "SoftBank’s Son plans US$50 bil Malaysia tech outlay, PM says",
-   "summary_ja": "アンワル首相は、ソフトバンクの孫正義氏がマレーシアに対して500億ドル規模の技術投資を計画していることを明らかにしました。",
+   "summary_ja": "<a href=\"https://news.google.com/rss/articles/CBMiUEFVX3lxTFBQQ19KWkZrTnZTSFpiRzM4bjRwam42OERKNVNjTHU5UmhOa2VZYUJHVm1hV2p6T3dQalJqLUY3dlZ6QXVrQmM3Y2RJU2MyZ24t?…",
    "lang": "en",
    "companies": [
     "SoftBank"
@@ -1115,9 +1201,7 @@
    "sectors": [
     "tmt"
    ],
-   "topics": [
-    "investment"
-   ]
+   "topics": []
   },
   {
    "id": "nna-7fe5277a1bcf16",
