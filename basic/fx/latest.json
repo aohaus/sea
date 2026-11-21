@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-21T15:28:30+08:00",
+ "generated_at": "2026-11-22T03:30:57+08:00",
  "source": {
   "name": "Frankfurter (ECB reference rates)",
   "url": "https://api.frankfurter.dev/v1"
@@ -9,12 +9,6 @@
  "usd_jpy": 158.64,
  "myr_jpy": 38.575,
  "series": [
-  [
-   "2026-08-21",
-   4.0385,
-   158.7,
-   39.297
-  ],
   [
    "2026-08-24",
    4.0425,

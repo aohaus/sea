@@ -1,13 +1,13 @@
 {
- "generated_at": "2026-11-21T15:24:56+08:00",
- "checked_at": "2026-11-21T15:24:56+08:00",
+ "generated_at": "2026-11-22T03:27:48+08:00",
+ "checked_at": "2026-11-22T03:27:48+08:00",
  "source": {
   "name": "Campur.ai",
   "url": "https://campur.ai.studio/"
  },
  "status": {
   "searches": 134,
-  "matched": 51,
+  "matched": 55,
   "errors": []
  },
  "items": [
@@ -228,6 +228,22 @@
    ]
   },
   {
+   "id": "bernama-3a9ec0c33fc34c",
+   "date": "2026-11-16T16:00+08:00",
+   "source": "BERNAMA",
+   "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9nM3h4dm1RV3JibWdWUnJrNnpYQi1PbFNzSWRGaWk1ellUaHJsbl90Uk5MOHM4enNqQl83aUZON2FwTnlyMkNtZ2NOaGgzdHRfR1RjYUpUZkVKT3M?oc=5",
+   "title_ja": "マレーシア・トレンガヌ大学卒業生、日本産からし菜でシンガポール市場へ進出",
+   "title": "UMT Graduate's Japanese Mustard Greens Penetrate Singapore Market",
+   "summary_ja": "UMT（マレーシア・トレンガヌ大学）の卒業生が生産する日本産からし菜が、シンガポール市場への輸出を開始し、農業ビジネスの成功例として注目されています。",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "investment",
+    "supply_chain"
+   ]
+  },
+  {
    "id": "malaymail-a555ab2c1c9c12",
    "date": "2026-11-16T12:55+08:00",
    "source": "Malay Mail",
@@ -279,6 +295,21 @@
    ]
   },
   {
+   "id": "astroawani-70e64161609333",
+   "date": "2026-11-13T15:30+08:00",
+   "source": "Astro AWANI",
+   "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQcF9RcDd3OTBCak9ZOVBTRVlWOG1XOEtYZG9EQ3NYMDRYM011eUJnN1FQaWkzZFpKRlZVcUR3VU50SlQ0SFVCTHd4b1ZoeU5DVW1wN2ZtVEZDTFpFMDl6MlZhTndVQ0ZUUzV3Y0kwLUtWMlY4allmdkh4UHBqeUx1dXdodHh0M1c2Nk1CaTY4cU1lQUxPMTNBeEZfZW1ZRUM4aVdTRzhQU0RlaXNIQ1pFVU02OTlzVkotRlE?oc=5",
+   "title_ja": "バドミントン熊本マスターズ：アーロン・ロイキング組が決勝進出へ王手",
+   "title": "Selangkah ke final Masters Jepun, Aaron-Roy King dicabar beregu Denmark",
+   "summary_ja": "バドミントン熊本マスターズで、マレーシアのアーロン・チア／ロイ・キング組が準決勝へ進出。決勝進出をかけデンマークペアと対戦します。",
+   "lang": "ms",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "investment"
+   ]
+  },
+  {
    "id": "nna-3456e644aa5d88",
    "date": "2026-11-13T12:41+08:00",
    "source": "NNA ASIA マレーシア",
@@ -322,6 +353,25 @@
    "title_ja": "E5: Mitsui Kinzoku to invest RM4.87 bil in new copper plant",
    "title": "E5: Mitsui Kinzoku to invest RM4.87 bil in new copper plant",
    "summary_ja": "Japan’s Mitsui Kinzoku is investing almost RM5 billion in a new copper plant in Malaysia. This and more in our quick round-up of today’s biggest stories on the…",
+   "lang": "en",
+   "companies": [
+    "Mitsui Kinzoku"
+   ],
+   "sectors": [
+    "semiconductor"
+   ],
+   "topics": [
+    "investment"
+   ]
+  },
+  {
+   "id": "theedge-d674206bb396dc",
+   "date": "2026-11-11T21:35+08:00",
+   "source": "The Edge Malaysia",
+   "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBmQl9RVHRfcV9oMjFPRUp5WlgwNmVwdm1vc1ZsN2dEUi1STENyQTA1VEhxbWlEYnBBMjdIYTlkbGJqeEZNaE1tMWZsVTBWd3d3OW9tNm5Pb1h2cEVSUnhuNHB4cndJaWR0?oc=5",
+   "title_ja": "E5: 三井金属、新しい銅工場に48億7000万リンギを投資",
+   "title": "E5: Mitsui Kinzoku to invest RM4.87 bil in new copper plant",
+   "summary_ja": "E5: 三井金属、新銅工場に48億7000万リンギを投資 The Edge Malaysia",
    "lang": "en",
    "companies": [
     "Mitsui Kinzoku"
@@ -1420,9 +1470,9 @@
    "date": "2026-10-19T10:49+08:00",
    "source": "The Edge Malaysia",
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5wSml4UnlsUGRGblo5cGFKNklwakhkM0xOUnEyaDgzMDdNczhpMnBHTXY5WVdER0RHdVB3SlAtTW5wa015LW1CQW80VXIwZGEt?oc=5",
-   "title_ja": "日本のMS&AD、マレーシアのLPIキャピタルとの取引を検討すると発表 — ブルームバーグ",
+   "title_ja": "MS&AD、マレーシアのLPIキャピタル買収を検討か　ブルームバーグ報道",
    "title": "Japan’s MS&AD said to consider deal for Malaysia’s LPI Capital — Bloomberg",
-   "summary_ja": "日本のMS&AD、マレーシアのLPIキャピタルとの取引を検討すると — Bloomberg The Edge Malaysia",
+   "summary_ja": "日本のMS&ADインシュアランスグループが、マレーシアの保険大手LPIキャピタルの買収を検討していると報じられました。東南アジアでの事業拡大に向けた動きとして注目されます。",
    "lang": "en",
    "companies": [
     "MS&AD"
@@ -1430,7 +1480,9 @@
    "sectors": [
     "finance"
    ],
-   "topics": []
+   "topics": [
+    "deal_restructure"
+   ]
   },
   {
    "id": "fmt-348c6cf6b631da",
