@@ -8,22 +8,20 @@ jobs:
     timeout-minutes: 8
     steps:
       - run: |
-          for u in https://aohaus.github.io/sea/ https://aohaus.github.io/sea/index.html https://aohaus.github.io/sea/basic/index.html https://aohaus.github.io/sea/haze/ https://aohaus.github.io/sea/haze/app.js?v=20261023e https://aohaus.github.io/sea/haze/haze.css?v=20261023e; do
-            curl -sS -m 20 -o o -w "%{http_code} %{size_download} $u\n" "$u"; done
-          curl -sS https://aohaus.github.io/sea/haze/ | grep -n 'clock\|v=2026' | head
-          cat > t.js <<'JS'
-          const { chromium } = require('playwright');
-          (async () => {
-            const b = await chromium.launch();
-            for (const u of ['https://aohaus.github.io/sea/index.html','https://aohaus.github.io/sea/basic/index.html','https://aohaus.github.io/sea/haze/','https://aohaus.github.io/sea/haze/understand.html','https://aohaus.github.io/sea/haze/actions.html']) {
-              const p = await b.newPage({ viewport: { width: 1200, height: 900 } }); const errs = [];
-              p.on('pageerror', e => errs.push('pageerror ' + e.message)); p.on('console', m => m.type() === 'error' && errs.push('console ' + m.text()));
-              await p.goto(u, { waitUntil: 'load', timeout: 60000 }); await p.waitForTimeout(6000);
-              const info = await p.evaluate(() => ({ title: document.title, textLen: document.body ? document.body.innerText.length : 0, clock: document.getElementById('clock')?.textContent, now: document.getElementById('now-panel')?.innerText.slice(0, 80) }));
-              console.log(u, JSON.stringify(info), errs.slice(0, 8));
-              await p.close();
-            }
-            await b.close();
-          })();
-          JS
-          npm i -s playwright@1.48.2 >/dev/null 2>&1 && npx -y playwright@1.48.2 install chromium >/dev/null 2>&1 && node t.js
+          for B in https://eqms.doe.gov.my https://apims.doe.gov.my; do
+            echo "======== $B"; curl -sSL -m 30 -o p.html -w "%{http_code} %{url_effective}\n" "$B/" || true
+            grep -oiE '(src|href)="[^"]+\.js[^"]*"' p.html | head -20
+            for js in $(grep -oiE 'src="[^"]+\.js[^"]*"' p.html | sed 's/src="//I; s/"$//' | head -12); do
+              case "$js" in http*) u="$js";; /*) u="$B$js";; *) u="$B/$js";; esac
+              curl -sSL -m 30 "$u" -o j.js || continue
+              python3 -c "
+          import re
+          s=open('j.js',encoding='utf-8',errors='ignore').read()
+          found=sorted(set(re.findall(r'[\"\'\`]((?:https?://[^\"\'\` ]*)?/api[0-9]?/[A-Za-z0-9_./\-]+)', s)))
+          if found: print('JS', '$u', len(s)); [print('   ', f) for f in found[:80]]
+          "
+            done
+          done
+          echo "======== guesses"
+          for u in "https://eqms.doe.gov.my/api3/publicportalapims/apitablehourly" "https://eqms.doe.gov.my/api3/publicportalapims/apitable" "https://eqms.doe.gov.my/api3/publicportalapims/stations" "https://eqms.doe.gov.my/api3/publicportalapims/latest"; do
+            echo "== $u"; curl -sS -m 20 -o o -w "%{http_code} %{content_type} %{size_download}\n" "$u" || true; head -c 400 o; echo; done
