@@ -13,8 +13,8 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "SP.POP.TOTL",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/SP.POP.TOTL?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-16T12:57:13+00:00",
-          "source_last_updated": "2026-10-08",
+          "retrieved_at": "2026-11-22T00:08:20+00:00",
+          "source_last_updated": "2026-11-11",
           "observations": [
             {
               "year": 2000,
@@ -121,6 +121,22 @@
               "value": 7873046
             }
           ]
+        },
+        {
+          "source_id": "jetro_basic",
+          "source_label": "人口",
+          "url": "https://www.jetro.go.jp/world/asia/la/basic_01.html",
+          "retrieved_at": "2026-11-22T00:07:39+00:00",
+          "page_last_updated": "2026-06-19",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2025,
+              "value": 7750000,
+              "value_text": "775万人(2025年、出所:ラオス統計センター)",
+              "original_source": "ラオス統計センター"
+            }
+          ]
         }
       ]
     },
@@ -133,8 +149,8 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "NY.GDP.MKTP.CD",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/NY.GDP.MKTP.CD?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-16T12:57:13+00:00",
-          "source_last_updated": "2026-10-08",
+          "retrieved_at": "2026-11-22T00:08:20+00:00",
+          "source_last_updated": "2026-11-11",
           "observations": [
             {
               "year": 2000,
@@ -253,8 +269,8 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "NY.GDP.PCAP.CD",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/NY.GDP.PCAP.CD?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-16T12:57:13+00:00",
-          "source_last_updated": "2026-10-08",
+          "retrieved_at": "2026-11-22T00:08:20+00:00",
+          "source_last_updated": "2026-11-11",
           "observations": [
             {
               "year": 2000,
@@ -361,6 +377,28 @@
               "value": 2324.76353098791
             }
           ]
+        },
+        {
+          "source_id": "jetro_basic",
+          "source_label": "1人当たりGDP",
+          "url": "https://www.jetro.go.jp/world/asia/la/basic_01.html",
+          "retrieved_at": "2026-11-22T00:07:39+00:00",
+          "page_last_updated": "2026-06-19",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 1977
+            },
+            {
+              "year": 2024,
+              "value": 2055
+            },
+            {
+              "year": 2025,
+              "value": 2288
+            }
+          ]
         }
       ]
     },
@@ -373,8 +411,8 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "NY.GDP.MKTP.KD.ZG",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-16T12:57:13+00:00",
-          "source_last_updated": "2026-10-08",
+          "retrieved_at": "2026-11-22T00:08:20+00:00",
+          "source_last_updated": "2026-11-11",
           "observations": [
             {
               "year": 2000,
@@ -481,6 +519,28 @@
               "value": 4.53760564766725
             }
           ]
+        },
+        {
+          "source_id": "jetro_basic",
+          "source_label": "実質GDP成長率",
+          "url": "https://www.jetro.go.jp/world/asia/la/basic_01.html",
+          "retrieved_at": "2026-11-22T00:07:39+00:00",
+          "page_last_updated": "2026-06-19",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 3.7
+            },
+            {
+              "year": 2024,
+              "value": 4
+            },
+            {
+              "year": 2025,
+              "value": 4.4
+            }
+          ]
         }
       ]
     },
@@ -493,8 +553,8 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "FP.CPI.TOTL.ZG",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/FP.CPI.TOTL.ZG?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-16T12:57:13+00:00",
-          "source_last_updated": "2026-10-08",
+          "retrieved_at": "2026-11-22T00:08:20+00:00",
+          "source_last_updated": "2026-11-11",
           "observations": [
             {
               "year": 2000,
@@ -601,6 +661,28 @@
               "value": 7.74226936553694
             }
           ]
+        },
+        {
+          "source_id": "jetro_basic",
+          "source_label": "消費者物価上昇率",
+          "url": "https://www.jetro.go.jp/world/asia/la/basic_01.html",
+          "retrieved_at": "2026-11-22T00:07:39+00:00",
+          "page_last_updated": "2026-06-19",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 31.2
+            },
+            {
+              "year": 2024,
+              "value": 23.1
+            },
+            {
+              "year": 2025,
+              "value": 7.7
+            }
+          ]
         }
       ]
     },
@@ -613,8 +695,8 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "SL.UEM.TOTL.ZS",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/SL.UEM.TOTL.ZS?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-16T12:57:13+00:00",
-          "source_last_updated": "2026-10-08",
+          "retrieved_at": "2026-11-22T00:08:20+00:00",
+          "source_last_updated": "2026-11-11",
           "observations": [
             {
               "year": 2000,
@@ -733,8 +815,8 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "BX.KLT.DINV.CD.WD",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/BX.KLT.DINV.CD.WD?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-16T12:57:13+00:00",
-          "source_last_updated": "2026-10-08",
+          "retrieved_at": "2026-11-22T00:08:20+00:00",
+          "source_last_updated": "2026-11-11",
           "observations": [
             {
               "year": 2000,
@@ -853,8 +935,8 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "PA.NUS.FCRF",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/PA.NUS.FCRF?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-16T12:57:13+00:00",
-          "source_last_updated": "2026-10-08",
+          "retrieved_at": "2026-11-22T00:08:20+00:00",
+          "source_last_updated": "2026-11-11",
           "observations": [
             {
               "year": 2000,
@@ -961,6 +1043,28 @@
               "value": 20444.1366516587
             }
           ]
+        },
+        {
+          "source_id": "jetro_basic",
+          "source_label": "為替レート",
+          "url": "https://www.jetro.go.jp/world/asia/la/basic_01.html",
+          "retrieved_at": "2026-11-22T00:07:39+00:00",
+          "page_last_updated": "2026-06-19",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2023,
+              "value": 17689
+            },
+            {
+              "year": 2024,
+              "value": 20167
+            },
+            {
+              "year": 2025,
+              "value": 20444
+            }
+          ]
         }
       ]
     },
@@ -973,8 +1077,8 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "NY.GDP.PCAP.PP.CD",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/NY.GDP.PCAP.PP.CD?format=json&per_page=20000&date=2000:2031",
-          "retrieved_at": "2026-10-16T12:57:13+00:00",
-          "source_last_updated": "2026-10-08",
+          "retrieved_at": "2026-11-22T00:08:20+00:00",
+          "source_last_updated": "2026-11-11",
           "observations": [
             {
               "year": 2000,
@@ -1093,8 +1197,8 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "NY.GDP.PCAP.KD",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/NY.GDP.PCAP.KD?format=json&per_page=20000&date=1960:2031",
-          "retrieved_at": "2026-10-16T12:57:13+00:00",
-          "source_last_updated": "2026-10-08",
+          "retrieved_at": "2026-11-22T00:08:20+00:00",
+          "source_last_updated": "2026-11-11",
           "observations": [
             {
               "year": 1984,
@@ -1277,8 +1381,8 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "SP.POP.65UP.TO.ZS",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/SP.POP.65UP.TO.ZS?format=json&per_page=20000&date=1960:2031",
-          "retrieved_at": "2026-10-16T12:57:13+00:00",
-          "source_last_updated": "2026-10-08",
+          "retrieved_at": "2026-11-22T00:08:20+00:00",
+          "source_last_updated": "2026-11-11",
           "observations": [
             {
               "year": 1960,
@@ -1557,8 +1661,8 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "SP.DYN.LE00.IN",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/SP.DYN.LE00.IN?format=json&per_page=20000&date=1960:2031",
-          "retrieved_at": "2026-10-16T12:57:13+00:00",
-          "source_last_updated": "2026-10-08",
+          "retrieved_at": "2026-11-22T00:08:20+00:00",
+          "source_last_updated": "2026-11-11",
           "observations": [
             {
               "year": 1960,
@@ -1833,8 +1937,8 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "SP.DYN.TFRT.IN",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/SP.DYN.TFRT.IN?format=json&per_page=20000&date=1960:2031",
-          "retrieved_at": "2026-10-16T12:57:13+00:00",
-          "source_last_updated": "2026-10-08",
+          "retrieved_at": "2026-11-22T00:08:20+00:00",
+          "source_last_updated": "2026-11-11",
           "observations": [
             {
               "year": 1960,
@@ -2109,8 +2213,8 @@
           "source_id": "worldbank_wdi",
           "indicator_code": "SP.URB.TOTL.IN.ZS",
           "url": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/SP.URB.TOTL.IN.ZS?format=json&per_page=20000&date=1960:2031",
-          "retrieved_at": "2026-10-16T12:57:13+00:00",
-          "source_last_updated": "2026-10-08",
+          "retrieved_at": "2026-11-22T00:08:20+00:00",
+          "source_last_updated": "2026-11-11",
           "observations": [
             {
               "year": 1960,
@@ -2384,19 +2488,108 @@
       "label_ja": "日本の輸出（この国向け）",
       "label_en": "Japan's exports to the country",
       "unit": "USD",
-      "series": []
+      "series": [
+        {
+          "source_id": "jetro_basic",
+          "source_label": "日本の輸出（この国向け）",
+          "url": "https://www.jetro.go.jp/world/asia/la/basic_01.html",
+          "retrieved_at": "2026-11-22T00:07:39+00:00",
+          "page_last_updated": "2026-06-19",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2021,
+              "value": 129000000.0,
+              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
+            },
+            {
+              "year": 2022,
+              "value": 102000000.0,
+              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
+            },
+            {
+              "year": 2023,
+              "value": 115000000.0,
+              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
+            },
+            {
+              "year": 2024,
+              "value": 97000000.0,
+              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
+            },
+            {
+              "year": 2025,
+              "value": 117000000.0,
+              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
+            }
+          ]
+        }
+      ]
     },
     "japan_imports": {
       "label_ja": "日本の輸入（この国から）",
       "label_en": "Japan's imports from the country",
       "unit": "USD",
-      "series": []
+      "series": [
+        {
+          "source_id": "jetro_basic",
+          "source_label": "日本の輸入（この国から）",
+          "url": "https://www.jetro.go.jp/world/asia/la/basic_01.html",
+          "retrieved_at": "2026-11-22T00:07:39+00:00",
+          "page_last_updated": "2026-06-19",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2021,
+              "value": 130000000.0,
+              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
+            },
+            {
+              "year": 2022,
+              "value": 189000000.0,
+              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
+            },
+            {
+              "year": 2023,
+              "value": 165000000.0,
+              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
+            },
+            {
+              "year": 2024,
+              "value": 159000000.0,
+              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
+            },
+            {
+              "year": 2025,
+              "value": 172000000.0,
+              "original_source": "Global Trade Atlas(GTA)からジェトロ作成"
+            }
+          ]
+        }
+      ]
     },
     "japanese_residents": {
       "label_ja": "在留邦人数",
       "label_en": "Japanese nationals residing in the country",
       "unit": "persons",
-      "series": []
+      "series": [
+        {
+          "source_id": "jetro_basic",
+          "source_label": "在留邦人",
+          "url": "https://www.jetro.go.jp/world/asia/la/basic_01.html",
+          "retrieved_at": "2026-11-22T00:07:39+00:00",
+          "page_last_updated": "2026-06-19",
+          "retrieval_method": "auto",
+          "observations": [
+            {
+              "year": 2025,
+              "value": 621,
+              "value_text": "621人(2025年10月1日現在) 出所:外務省「海外在留邦人数調査統計」",
+              "original_source": "外務省「海外在留邦人数調査統計」"
+            }
+          ]
+        }
+      ]
     },
     "visitors_to_japan": {
       "label_ja": "訪日客数（この国から）",

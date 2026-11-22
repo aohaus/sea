@@ -1,6 +1,6 @@
 {
   "source_id": "worldbank_wdi",
-  "retrieved_at": "2026-10-16T12:57:13+00:00",
+  "retrieved_at": "2026-11-22T00:08:20+00:00",
   "series": {
     "SP.POP.TOTL": [
       {
@@ -2200,19 +2200,19 @@
     "SP.URB.TOTL.IN.ZS": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM;JPN/indicator/SP.URB.TOTL.IN.ZS?format=json&per_page=20000&date=1960:2031"
   },
   "source_last_updated": {
-    "SP.POP.TOTL": "2026-10-08",
-    "NY.GDP.MKTP.CD": "2026-10-08",
-    "NY.GDP.PCAP.CD": "2026-10-08",
-    "NY.GDP.MKTP.KD.ZG": "2026-10-08",
-    "FP.CPI.TOTL.ZG": "2026-10-08",
-    "SL.UEM.TOTL.ZS": "2026-10-08",
-    "BX.KLT.DINV.CD.WD": "2026-10-08",
-    "PA.NUS.FCRF": "2026-10-08",
-    "NY.GDP.PCAP.PP.CD": "2026-10-08",
-    "NY.GDP.PCAP.KD": "2026-10-08",
-    "SP.POP.65UP.TO.ZS": "2026-10-08",
-    "SP.DYN.LE00.IN": "2026-10-08",
-    "SP.DYN.TFRT.IN": "2026-10-08",
-    "SP.URB.TOTL.IN.ZS": "2026-10-08"
+    "SP.POP.TOTL": "2026-11-11",
+    "NY.GDP.MKTP.CD": "2026-11-11",
+    "NY.GDP.PCAP.CD": "2026-11-11",
+    "NY.GDP.MKTP.KD.ZG": "2026-11-11",
+    "FP.CPI.TOTL.ZG": "2026-11-11",
+    "SL.UEM.TOTL.ZS": "2026-11-11",
+    "BX.KLT.DINV.CD.WD": "2026-11-11",
+    "PA.NUS.FCRF": "2026-11-11",
+    "NY.GDP.PCAP.PP.CD": "2026-11-11",
+    "NY.GDP.PCAP.KD": "2026-11-11",
+    "SP.POP.65UP.TO.ZS": "2026-11-11",
+    "SP.DYN.LE00.IN": "2026-11-11",
+    "SP.DYN.TFRT.IN": "2026-11-11",
+    "SP.URB.TOTL.IN.ZS": "2026-11-11"
   }
 }
