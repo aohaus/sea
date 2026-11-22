@@ -8,20 +8,31 @@ jobs:
     timeout-minutes: 8
     steps:
       - run: |
-          for B in https://eqms.doe.gov.my https://apims.doe.gov.my; do
-            echo "======== $B"; curl -sSL -m 30 -o p.html -w "%{http_code} %{url_effective}\n" "$B/" || true
-            grep -oiE '(src|href)="[^"]+\.js[^"]*"' p.html | head -20
-            for js in $(grep -oiE 'src="[^"]+\.js[^"]*"' p.html | sed 's/src="//I; s/"$//' | head -12); do
-              case "$js" in http*) u="$js";; /*) u="$B$js";; *) u="$B/$js";; esac
-              curl -sSL -m 30 "$u" -o j.js || continue
-              python3 -c "
-          import re
-          s=open('j.js',encoding='utf-8',errors='ignore').read()
-          found=sorted(set(re.findall(r'[\"\'\`]((?:https?://[^\"\'\` ]*)?/api[0-9]?/[A-Za-z0-9_./\-]+)', s)))
-          if found: print('JS', '$u', len(s)); [print('   ', f) for f in found[:80]]
-          "
-            done
-          done
-          echo "======== guesses"
-          for u in "https://eqms.doe.gov.my/api3/publicportalapims/apitablehourly" "https://eqms.doe.gov.my/api3/publicportalapims/apitable" "https://eqms.doe.gov.my/api3/publicportalapims/stations" "https://eqms.doe.gov.my/api3/publicportalapims/latest"; do
-            echo "== $u"; curl -sS -m 20 -o o -w "%{http_code} %{content_type} %{size_download}\n" "$u" || true; head -c 400 o; echo; done
+          B=https://eqms.doe.gov.my/api3/publicportalapims/apitablehourly
+          curl -sS -m 30 -D h "$B" -o a.json; grep -iE '^(HTTP|access-control|cache-control)' h
+          python3 - <<'PY'
+          import json,collections
+          d=json.load(open('a.json'))
+          print('keys', list(d.keys()))
+          rows=d['api_table_hourly']
+          print('rows', len(rows), 'fields', list(rows[0].keys()))
+          ts=sorted({r['DATETIME'] for r in rows}); print('times', ts[0], '..', ts[-1], len(ts))
+          st={(r['STATION_ID'],r['STATION_LOCATION'],r['LATITUDE'],r['LONGITUDE']) for r in rows}
+          print('stations', len(st))
+          for s in sorted(st):
+            if any(k in s[1] for k in ['Cheras','Batu Muda','Minden','Seberang','Perai','Larkin','Pasir Gudang','Johor']): print('  ', s)
+          print('param symbols', collections.Counter(r['PARAM_SYMBOL'] for r in rows))
+          print('api min/max', min(r['API'] for r in rows if r['API'] is not None), max(r['API'] for r in rows if r['API'] is not None), 'nulls', sum(r['API'] is None for r in rows))
+          ch=[r for r in rows if 'Cheras' in r['STATION_LOCATION']]; print('cheras', [(r['DATETIME'][11:16], r['API'], r['PARAM_SYMBOL']) for r in ch])
+          PY
+          for q in "?date=2026-11-15" "?datetime=2026-11-15" "?from=2026-11-15&to=2026-11-16" "?date=15/11/2026"; do
+            curl -sS -m 30 "$B$q" -o q.json; python3 -c "
+          import json
+          try:
+            r=json.load(open('q.json'))['api_table_hourly']; ts=sorted({x['DATETIME'] for x in r}); print('$q', len(r), ts[0] if ts else None, ts[-1] if ts else None)
+          except Exception as e: print('$q', 'err', open('q.json').read()[:150])"; done
+          echo "--- map service for comparison (Cheras)"
+          curl -sS -m 30 "https://eqms.doe.gov.my/api3/publicmapproxy/PUBLIC_DISPLAY/CAQM_MCAQM_Current_Reading/MapServer/0/query?where=1%3D1&outFields=*&f=json" -o m.json
+          python3 -c "
+          import json; f=[x['attributes'] for x in json.load(open('m.json'))['features']]
+          print([ (a.get('STATION_ID'),a.get('STATION_LOCATION'),a.get('API'),a.get('DATETIME')) for a in f if 'Cheras' in str(a.get('STATION_LOCATION'))])"
