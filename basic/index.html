@@ -124,6 +124,29 @@
   .notes li { display: grid; grid-template-columns: 2.2rem 1fr; }
   .notes .mk { color: var(--accent); font-weight: 500; }
   .notes a { color: var(--accent); }
+  /* JETRO 「概況・基本統計」 side by side: one column per country, items down the left. */
+  .tablebox.jetro-box { max-height: 40rem; }
+  table.jetro { font-size: .8rem; }
+  table.jetro th, table.jetro td { vertical-align: top; }
+  table.jetro thead th:not(:first-child) { min-width: 14em; }
+  table.jetro thead th a { color: inherit; }
+  table.jetro thead th .src { display: block; font-weight: 400; font-size: .7rem; }
+  table.jetro td { white-space: normal; min-width: 14em; max-width: 20em; line-height: 1.5; }
+  table.jetro td:first-child { min-width: 7em; max-width: 12em; font-weight: 500; white-space: normal; }
+  @media (min-width: 641px) { table.jetro td:first-child { min-width: 11em; } }
+  @media (max-width: 640px) { table.jetro td:first-child { min-width: 6.5em; max-width: 8em; } table.jetro td { min-width: 12em; } }
+  table.jetro tr.sec th { position: sticky; left: 0; text-align: left; background: var(--panel); color: var(--accent); font-size: .78rem; padding-top: .8rem; border-bottom: 1px solid var(--line); }
+  table.jetro td.none { color: var(--muted); }
+  table.jetro table.sub { font-size: .74rem; border-collapse: collapse; margin: 0; }
+  table.jetro td:has(> table.sub), table.jetro td:has(> details > table.sub) { max-width: none; width: max-content; }
+  table.jetro table.sub th, table.jetro table.sub td { position: static; padding: .1rem .5rem .1rem 0; min-width: 0; max-width: none; border: none; white-space: nowrap; font-weight: 400; background: none; box-shadow: none; }
+  table.jetro table.sub th { color: var(--muted); }
+  table.jetro details summary { cursor: pointer; color: var(--fg); }
+  table.jetro details summary .more { color: var(--accent); font-size: .72rem; }
+  table.jetro details[open] summary .more { display: none; }
+  table.jetro .yrs { display: grid; grid-template-columns: auto 1fr; gap: 0 .6rem; }
+  table.jetro .yrs .y { color: var(--muted); }
+  table.jetro .unit { color: var(--muted); font-size: .72rem; }
   .pill { display: inline-block; border-radius: 999px; padding: .05rem .55rem; font-size: .75rem; border: 1px solid currentColor; white-space: nowrap; }
   .pill.match { color: var(--ok); } .pill.close { color: var(--warn); } .pill.differs { color: var(--bad); } .pill.no_data { color: var(--muted); }
   .downloads { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -266,6 +289,16 @@
       </table>
     </div>
     <ol class="notes" id="profile-notes" aria-label="備考"></ol>
+  </section>
+
+  <section class="card" id="jetro">
+    <h2>JETRO「概況・基本統計」<span class="en">JETRO country overviews, side by side</span></h2>
+    <p class="note">ジェトロの「国・地域別に見る」の各国ページ「概況・基本統計」を、6か国並べました。値と表記はジェトロのページのまま（毎月1日に取り直し）。国名の下のリンクから元のページを開けます。</p>
+    <p class="scroll-hint" aria-hidden="true">← 表は横にスクロールできます →</p>
+    <div class="tablebox cards-box matrix-box jetro-box">
+      <table id="jetro-table" class="cards matrix jetro"><thead></thead><tbody></tbody></table>
+    </div>
+    <p class="note" id="jetro-note"></p>
   </section>
 
   <section class="card">
@@ -1506,6 +1539,115 @@
   let resizeTimer;
   window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(render, 150); });
   matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', render);
+})();
+</script>
+<script>
+// JETRO 「概況・基本統計」 side by side (basic/<country>/jetro_basic.json, written by scripts/fetch_basic.py).
+// Each page has an outer table per section; a row whose cells hold a whole table (the cabinet, trade and
+// investment by year) is followed by that table's rows, and the same table also comes again on its own.
+(() => {
+  const COUNTRIES = [['my', 'マレーシア'], ['sg', 'シンガポール'], ['vn', 'ベトナム'], ['th', 'タイ'], ['id', 'インドネシア'], ['ph', 'フィリピン']];
+  const SECTIONS = ['一般的事項', '政治体制', '基礎的経済指標', '日本との関係'];
+  // Rows that say the same thing under slightly different labels on different country pages.
+  // The first label that starts with the left side gives the row; the right side is its name in the table.
+  const ALIAS = [['日本との貿易', '日本との貿易（通関ベース、100万ドル）'], ['日本企業の投資', '日本からの投資'], ['日本からの投資', '日本からの投資'],
+    ['経済団体', '経済団体'], ['投資(進出)に関連', '投資（進出）に関連した特長、問題点'], ['議会概要', '議会概要'],
+    ['外貨準備高', '外貨準備高'], ['対外債務残高', '対外債務残高']];
+  const keyOf = (label) => { const a = ALIAS.find(([p]) => label.replace(/[（(]/g, '(').startsWith(p)); return a ? a[1] : label.replace(/\s+/g, ''); };
+  const nameOf = (label) => { const a = ALIAS.find(([p]) => label.replace(/[（(]/g, '(').startsWith(p)); return a ? a[1] : label; };
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+
+  // One page -> { section: [{ key, label, kind, ... }] }
+  function parse(page) {
+    const out = {};
+    for (const sec of SECTIONS) {
+      const tables = page.tables.filter((t) => t.section === sec);
+      if (!tables.length) continue;
+      const outer = tables[0], nested = tables.slice(1), rows = [];
+      for (let i = 0; i < outer.rows.length; i++) {
+        const r = outer.rows[i];
+        if (r.cells.length > 1 && sec !== '基礎的経済指標') {
+          // A table inside the cell: use the matching table that follows, and skip its rows here.
+          const t = nested.find((n) => n.rows.length && n.rows[0].label === (outer.rows[i + 1] || {}).label) || nested[0];
+          if (t) { nested.splice(nested.indexOf(t), 1); i += t.rows.length; }
+          rows.push({ key: keyOf(r.label), label: nameOf(r.label), kind: 'table', header: t ? t.header : [], rows: t ? t.rows : [] });
+        } else if (sec === '基礎的経済指標') {
+          rows.push({ key: keyOf(r.label), label: nameOf(r.label), kind: 'years', unit: r.cells[0], years: outer.header.slice(2), values: r.cells.slice(1) });
+        } else {
+          rows.push({ key: keyOf(r.label), label: nameOf(r.label), kind: 'text', text: r.cells.join(' ') });
+        }
+      }
+      out[sec] = rows;
+    }
+    return out;
+  }
+
+  function cellContent(item) {
+    if (!item) return el('span', null, '—');
+    if (item.kind === 'years') {
+      const box = el('div');
+      const g = el('div', 'yrs');
+      item.years.forEach((y, k) => { g.append(el('span', 'y', y), el('span', null, item.values[k] ?? '—')); });
+      box.append(g, el('div', 'unit', item.unit));
+      return box;
+    }
+    if (item.kind === 'table') {
+      const t = el('table', 'sub');
+      if (item.header.length) { const tr = el('tr'); item.header.forEach((h) => tr.append(el('th', null, h))); t.append(tr); }
+      for (const r of item.rows) { const tr = el('tr'); tr.append(el('td', null, r.label)); r.cells.forEach((c) => tr.append(el('td', null, c))); t.append(tr); }
+      if (item.rows.length <= 6) return t;
+      const d = el('details'), s = el('summary');
+      s.append((item.rows[0] ? item.rows[0].label + '：' + item.rows[0].cells.join(' ') + ' ほか' : ''), ' ', el('span', 'more', '全' + item.rows.length + '件を見る'));
+      d.append(s, t);
+      return d;
+    }
+    const text = item.text || '—';
+    if (text.length <= 90) return el('span', null, text);
+    const d = el('details'), s = el('summary');
+    s.append(text.slice(0, 60) + '…', ' ', el('span', 'more', '続きを見る'));
+    d.append(s, el('div', null, text));
+    return d;
+  }
+
+  Promise.all(COUNTRIES.map(([c]) => fetch(c + '/jetro_basic.json', { cache: 'no-cache' }).then((r) => (r.ok ? r.json() : null)).catch(() => null))).then((pages) => {
+    const parsed = pages.map((p) => (p && p.status === 'ok' ? parse(p) : null));
+    const table = document.getElementById('jetro-table');
+    // Header: country, link to the JETRO page, JETRO's last-updated date.
+    const hr = el('tr'); hr.append(el('th', null, '項目'));
+    COUNTRIES.forEach(([c, ja], k) => {
+      const th = el('th'), p = pages[k];
+      if (p && p.url) { const a = el('a', null, ja); a.href = p.url; a.target = '_blank'; a.rel = 'noopener'; th.append(a); } else th.append(ja);
+      th.append(el('span', 'src', p && p.status === 'ok' ? (p.page_last_updated ? '更新 ' + p.page_last_updated : '') : '取得できませんでした'));
+      hr.append(th);
+    });
+    table.tHead.replaceChildren(hr);
+    const body = [];
+    for (const sec of SECTIONS) {
+      // Row order: the first country's order, with rows only other countries have put after the row before them.
+      const order = [];
+      parsed.forEach((pc) => {
+        let last = -1;
+        for (const it of (pc && pc[sec]) || []) {
+          const at = order.findIndex((o) => o.key === it.key);
+          if (at >= 0) { last = at; continue; }
+          order.splice(last + 1, 0, { key: it.key, label: it.label }); last += 1;
+        }
+      });
+      if (!order.length) continue;
+      const tr = el('tr', 'sec'); const th = el('th', null, sec); th.colSpan = COUNTRIES.length + 1; tr.append(th); body.push(tr);
+      for (const o of order) {
+        const row = el('tr'); row.append(el('td', null, o.label));
+        parsed.forEach((pc) => {
+          const item = pc && (pc[sec] || []).find((it) => it.key === o.key);
+          const td = el('td', item ? null : 'none'); td.append(cellContent(item)); row.append(td);
+        });
+        body.push(row);
+      }
+    }
+    table.tBodies[0].replaceChildren(...body);
+    const got = pages.filter((p) => p && p.retrieved_at).map((p) => p.retrieved_at.slice(0, 10)).sort();
+    document.getElementById('jetro-note').textContent = '出所：日本貿易振興機構（ジェトロ）「国・地域別に見る」各国の「概況・基本統計」' + (got.length ? '（' + got[got.length - 1] + ' 取得）' : '') + '。「—」はその国のページにない項目です。';
+  });
 })();
 </script>
 </body>
