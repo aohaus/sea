@@ -1,17 +1,13 @@
 {
-  "run_at": "2026-11-22T07:01:43+08:00",
+  "run_at": "2026-11-22T09:26:03+08:00",
   "sources": {
     "doe": {
-      "status": "partial",
-      "readings": 1,
-      "notes": [
-        "cheras: no reading at Cheras, W.P. KUALA LUMPUR",
-        "minden: no reading at Minden, PULAU PINANG",
-        "sperai: no reading at Seberang Jaya, PULAU PINANG",
-        "larkin: no reading at Larkin, JOHOR",
-        "pgudang: no reading at Pasir Gudang, JOHOR"
-      ]
+      "status": "ok",
+      "readings": 72,
+      "notes": []
     }
   },
-  "time_samples": {}
+  "time_samples": {
+    "doe_hourly": "DOE Cheras, W.P. KUALA LUMPUR (CA16W, API): 12 slots, latest 2026-11-22T08 = 69 (hour 2026-11-22T09:00:00+08:00)"
+  }
 }
