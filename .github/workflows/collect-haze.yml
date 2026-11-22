@@ -1,8 +1,7 @@
 name: Collect haze readings
 
-# Every hour, a few minutes past the hour so the sources have published the hour's reading. The page
-# uses two-hour slots; running hourly means a slot still gets a reading when GitHub delays or skips a
-# scheduled run (which happens under load), and the later reading in a slot replaces the earlier one.
+# Every hour, a few minutes past the hour. GitHub starts only some scheduled runs (3 or 4 a day in
+# November 2026); each run reads DOE's last 24 hours, so the 2-hour slots are filled all the same.
 on:
   schedule:
     - cron: "7 * * * *"

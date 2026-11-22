@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
-"""Collect current air-quality readings every hour, into 2-hour slots, for the Haze Monitor (haze/).
+"""Collect air-quality readings into 2-hour slots for the Haze Monitor (haze/).
 
 Sources that a browser cannot fetch directly are read here, server-side:
-  doe_api              Malaysia DOE (APIMS / EQMS) — the public map service lists every station's
-                       latest Air Pollutant Index; each Haze Monitor station takes the nearest DOE
-                       station (within MAX_KM)
+  doe_api              Malaysia DOE (APIMS / EQMS) — the public portal's hourly table lists every
+                       station's Air Pollutant Index for the last 24 hours; each Haze Monitor station
+                       takes the nearest DOE station (within MAX_KM). The slot gets the slot's later
+                       hour. If the table fails, the map service's current reading is used instead.
+
+The workflow is scheduled hourly, but GitHub starts only some scheduled runs (3 or 4 a day in
+November 2026). Reading the last 24 hours on every run fills the slots that runs were skipped for.
 
 WAQI / AQICN is not collected: its terms of use do not allow its API data to be redistributed as
 cached or archived data. The page shows WAQI's current value only to a viewer who enters their
@@ -40,6 +44,7 @@ SLOTS_SHOWN = 168
 MAX_KM = 20
 SAMPLES: dict[str, str] = {}  # one raw reading time per source, written to the report
 HEADERS = {"User-Agent": "sea-haze-collector/0.1 (+https://github.com/aohaus/sea)"}
+DOE_HOURLY_URL = "https://eqms.doe.gov.my/api3/publicportalapims/apitablehourly"
 DOE_URL = ("https://eqms.doe.gov.my/api3/publicmapproxy/PUBLIC_DISPLAY/CAQM_MCAQM_Current_Reading/MapServer/0/query"
            "?where=1%3D1&outFields=*&f=json")
 
@@ -104,6 +109,53 @@ def fetch_doe() -> tuple[list[tuple], list[str]]:
     return out, notes
 
 
+def fetch_doe_hourly() -> tuple[list[tuple], list[str]]:
+    """(slot, station, 'doe_api', value, source name) for every 2-hour slot in the last 24 hours.
+
+    DATETIME is local (UTC+8) time without a zone. Rows without a number (PARAM_SYMBOL 'N/A') are skipped.
+    Each slot takes its later hour when there is one, like the current reading would on an hourly run."""
+    rows = get_json(DOE_HOURLY_URL).get("api_table_hourly") or []
+    if not rows:
+        raise RuntimeError("no rows in the DOE hourly table")
+    stations = {}
+    for r in rows:
+        stations.setdefault(r.get("STATION_ID"), r)
+    out, notes = [], []
+    for sid, (lat, lon, country) in STATIONS.items():
+        if country != "my":
+            continue
+        best = min(stations.values(), key=lambda a: km((lat, lon), (float(a.get("LATITUDE") or 0), float(a.get("LONGITUDE") or 0))))
+        dist = km((lat, lon), (float(best.get("LATITUDE") or 0), float(best.get("LONGITUDE") or 0)))
+        if dist > MAX_KM:
+            notes.append(f"{sid}: nearest DOE station {best.get('STATION_LOCATION')} is {dist:.0f} km away; skipped")
+            continue
+        name = f"DOE {best.get('STATION_LOCATION')} ({best.get('STATION_ID')}, API)"
+        latest: dict[str, tuple[datetime, int]] = {}
+        for r in rows:
+            if r.get("STATION_ID") != best.get("STATION_ID") or r.get("API") is None or float(r["API"]) < 0:
+                continue
+            t = datetime.fromisoformat(str(r["DATETIME"])[:19]).replace(tzinfo=TZ)
+            slot = slot_of(t)
+            if slot not in latest or t > latest[slot][0]:
+                latest[slot] = (t, round(float(r["API"])))
+        if not latest:
+            notes.append(f"{sid}: no readings at {best.get('STATION_LOCATION')}")
+        out += [(slot, sid, "doe_api", v, name) for slot, (_, v) in sorted(latest.items())]
+        if sid == "cheras" and latest:
+            last = max(latest)
+            SAMPLES["doe_hourly"] = f"{name}: {len(latest)} slots, latest {last} = {latest[last][1]} (hour {latest[last][0].isoformat()})"
+    return out, notes
+
+
+def fetch_doe_any() -> tuple[list[tuple], list[str]]:
+    """The hourly table, or the current reading when the table is not available."""
+    try:
+        return fetch_doe_hourly()
+    except Exception as exc:  # noqa: BLE001 - fall back to the current reading
+        got, notes = fetch_doe()
+        return got, [f"hourly table failed ({type(exc).__name__}: {exc}); used the current reading"] + notes
+
+
 def load(path: Path, default):
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else default
 
@@ -117,7 +169,7 @@ def main() -> int:
     now = datetime.now(TZ)
     report = {"run_at": now.isoformat(timespec="seconds"), "sources": {}}
     readings = []
-    for name, fn in (("doe", fetch_doe),):
+    for name, fn in (("doe", fetch_doe_any),):
         try:
             got, notes = fn()
             readings += got
