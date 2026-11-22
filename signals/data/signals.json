@@ -1,16 +1,65 @@
 {
- "generated_at": "2026-11-22T15:04:36+08:00",
- "checked_at": "2026-11-22T15:04:36+08:00",
+ "generated_at": "2026-11-23T03:49:57+08:00",
+ "checked_at": "2026-11-23T03:49:57+08:00",
  "source": {
   "name": "Campur.ai",
   "url": "https://campur.ai.studio/"
  },
  "status": {
   "searches": 134,
-  "matched": 51,
+  "matched": 53,
   "errors": []
  },
  "items": [
+  {
+   "id": "nst-2795e9dd0922db",
+   "date": "2026-11-22T15:05+08:00",
+   "source": "New Straits Times",
+   "link": "https://www.nst.com.my/sports/motor-sports/2026/11/1583230/honda-malaysia-recaptures-sepang-1000km-crown",
+   "title_ja": "ホンダ・マレーシア、セパン1,000km耐久レースで11年ぶり優勝",
+   "title": "Honda Malaysia recaptures Sepang 1,000km crown",
+   "summary_ja": "ホンダ・マレーシア・レーシングチーム（HMRT）が、セパン1000km耐久レース（S1K）で11年ぶりとなる悲願の優勝を果たしました。",
+   "lang": "en",
+   "companies": [
+    "Honda"
+   ],
+   "sectors": [
+    "manufacturing"
+   ],
+   "topics": []
+  },
+  {
+   "id": "nst-c3f9f4af685fe8",
+   "date": "2026-11-22T15:05+08:00",
+   "source": "New Straits Times",
+   "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPUU5fenMyb0Y5UmI5Rjl4SVZIQlotWGNEQUNsZTB0NGM5RHUwSWd3bGgybnlGVTFBOGtFeHlzZVVjZzNxWHRVai1LUmpSX09EWHkydF9HUGk2V01jcUVwaVNidGtTTUxMTVVhWTJEaktpU0toWGlZMXFwU1pzMVMyR2pDc0FCSDRNUjA2c3BJS25QSDVCRFdJYWN0V1pjWUxRWGpCNHRlMNIBrAFBVV95cUxPUzZuQldUd0RnUmxCU1RmNnlyNXRLQlV6V1V6M21OZUUyWF9LbkpCNzVkWkFFNkFsTmZrVkNURmNwWnFZTkI5cjNvSzNUcUZtNzg5NUUwc2xibFhESnloZEJZcnZjTkRjbTVTclZ1S1RySmdnNFhXNTRSSXgzcGFWaGtxVVd5aE1qaWprQmcwLVA4M0t0T1g3N0hDcWRDckctQkl2RlQ1ek5wYmdl?oc=5",
+   "title_ja": "ホンダ・マレーシア、セパン1000km耐久レースで11年ぶりの優勝",
+   "title": "Honda Malaysia recaptures Sepang 1,000km crown - NST Online",
+   "summary_ja": "ホンダ・マレーシア・レーシングチーム（HMRT）が、セパン1000km耐久レース（S1K）で11年ぶりとなる悲願の優勝を果たしました。",
+   "lang": "en",
+   "companies": [
+    "Honda"
+   ],
+   "sectors": [
+    "manufacturing"
+   ],
+   "topics": []
+  },
+  {
+   "id": "malaymail-7e42eb0161338a",
+   "date": "2026-11-22T10:31+08:00",
+   "source": "Malay Mail",
+   "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQTjRrNEd3QTBoUXBfZTZ6V3Y3TTFSeTBWbXV1N2VLTTM0dHI1ZzZUdzZyQy1PTmF5aWZpRGJNcDNmaXdyTmZIUmN1OW9RZGRHUC16OHk5dzdFRUpueTM2Wk5sWjROTVl6THF6SHhWaDBrZkR4bndVdDJjYThDRDlGZzJOczBVcF9DZWtMYTA0N3I3TFR4c0dEdnRkLUU3dWdHUTFOSlJ1Y1RxY1loTnhac2ZZS1hCc2RoVS1OS2F1MWs5WE12NVpvRkN2UHFDV1HSAdQBQVVfeXFMTTdmVWxOUklMSmtnSW83amlpQ3RyLW1sNEprUGhnZm9JRzhSeGt6ZTJOOTVVZlNZYVBVZ3FyVW5Pc3NFLWNCNEpCck1mR0NrODNyWTR5UER1NTNOWTdaaktnaGxxb0U2WUFRU09NekV6cG12Zi1zd1hiZHpBZ1NiaDJYcGdNa2ZRUE1nRFZMQldLSUM1RDZFN2tsQk84S1lsS1FSa2ZESFRDNzJhdlltc2hQUTk2eWxQanB1eWZZcUs3UnZYYzlxT1pVYllwN0txVjgtYWM?oc=5",
+   "title_ja": "バドミントン香港OP、タン・ティナ組が決勝で日本ペアと対戦へ",
+   "title": "Pearly Tan-Thinaah set up Hong Kong Open final against Japan’s Nakade-Takahashi",
+   "summary_ja": "バドミントンの香港オープン女子ダブルスで、マレーシアのタン・ティナ組が決勝に進出し、日本の仲道・高橋ペアと対戦することが決まりました。",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "investment"
+   ]
+  },
   {
    "id": "nikkei_asia-8522edf25fe64b",
    "date": "2026-11-20T21:25+08:00",
@@ -66,9 +115,9 @@
    "date": "2026-11-19T04:30+08:00",
    "source": "Astro AWANI",
    "link": "https://www.astroawani.com/berita-bisnes/sarawak-bakal-jadi-hab-cip-termaju-di-asia-dijangka-beroperasi-2028-abang-johari",
-   "title_ja": "サラワク州はアジアで最も先進的なチップハブとなり、2028年に稼働予定 - アバン・ジョハリ",
+   "title_ja": "サラワク州、2028年までにアジアのAIチップ製造ハブへ転換",
    "title": "Sarawak bakal jadi hab cip termaju di Asia, dijangka beroperasi 2028 - Abang Johari",
-   "summary_ja": "サラワク州は、ソフトバンク、グラブ、ペトロスの協力の結果、サマジャヤに10億米ドルをかけてAIチップ製造施設が建設され、2028年までにアジアで最も先進的なチップハブとなる予定だ。",
+   "summary_ja": "サラワク州は、ソフトバンクやGrab等と連携し、10億米ドル規模のAIチップ製造施設を建設。2028年の稼働を目指し、アジアの拠点化を図ります。",
    "lang": "ms",
    "companies": [
     "SoftBank"
@@ -105,7 +154,7 @@
    "date": "2026-11-18T12:25+08:00",
    "source": "The Borneo Post",
    "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQQ21JQ3oyOVptOWRSWUlRVkhLbzFIbXZ4UXlEUDVyUFBpZ1Bkd0pOY1R6VXFLQldITG9ycXF4MDdBNTJ3NS1XVGhOcmRZdWJ6OFluVDd2QkpHRGRzeWUxYmRwZDlNWVM4UDlPYTVzSTdzN1Jwakh5Vy1FUzZwU1loVUk1VXV4cEQtUmIxY2dnYUtWOTlERVk0RWUwbmg3QWlBZUo1ckdaWmNyREMxc0VxckY2TVhQRjhkZ1RGRDNraTdhRFNPV0NzQg?oc=5",
-   "title_ja": "アバン・ジョハリがサラワクAIインフラプロジェクト推進のため東京でソフトバンク社長と会談",
+   "title_ja": "アバン・ジョハリが東京でソフトバンクのトップと会談、サラワクAIインフラプロジェクト推進へ",
    "title": "Abang Johari meets SoftBank chief in Tokyo to advance Sarawak AI infrastructure project - Borneo Post",
    "summary_ja": "アバン・ジョハリが東京でソフトバンク社長と会談、サラワクAIインフラプロジェクト推進へ ボルネオポスト",
    "lang": "en",
@@ -369,7 +418,7 @@
    "date": "2026-11-11T21:35+08:00",
    "source": "The Edge Malaysia",
    "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBmQl9RVHRfcV9oMjFPRUp5WlgwNmVwdm1vc1ZsN2dEUi1STENyQTA1VEhxbWlEYnBBMjdIYTlkbGJqeEZNaE1tMWZsVTBWd3d3OW9tNm5Pb1h2cEVSUnhuNHB4cndJaWR0?oc=5",
-   "title_ja": "E5: 三井金属、新しい銅工場に48億7000万リンギを投資",
+   "title_ja": "E5: 三井金属、新銅工場に48億7000万リンギを投資",
    "title": "E5: Mitsui Kinzoku to invest RM4.87 bil in new copper plant",
    "summary_ja": "E5: 三井金属、新銅工場に48億7000万リンギを投資 The Edge Malaysia",
    "lang": "en",
@@ -646,7 +695,7 @@
    "date": "2026-11-10T05:40+08:00",
    "source": "BERNAMA",
    "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAtdEx5eVJvWWFXTUhVM3JIcEVrSTZhZEdSRVRSajl4T2FiNFBTNmtwSlNyTTFXVC1vVUl0RjlibWRvX3FsQ1FTVUtkTXdFbW1UUUFYUUdZU20wUQ?oc=5",
-   "title_ja": "ソフトバンク主導コンソーシアムの AI 投資はマレーシアに対する世界的な信頼を反映 -- アンワル首相",
+   "title_ja": "ソフトバンク主導コンソーシアムの AI 投資はマレーシアにおける世界的な信頼を反映 -- アンワル首相",
    "title": "Softbank-led Consortium’s AI Investment Reflects Global Confidence In Malaysia -- PM Anwar",
    "summary_ja": "ソフトバンク主導コンソーシアムの AI 投資はマレーシアにおける世界的な信頼を反映 -- アンワル・バーナマ首相",
    "lang": "en",
