@@ -1,7 +1,7 @@
 {
   "source_id": "esri_kenmin",
   "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/main_2023.html",
-  "retrieved_at": "2026-10-14T13:29:44+00:00",
+  "retrieved_at": "2026-11-22T00:10:01+00:00",
   "currency": "JPY",
   "basis": "current",
   "release": "2023年度版",
@@ -17,6 +17,188 @@
   },
   "rows": {
     "gdp_million_yen": [
+      {
+        "unit": "全県計",
+        "year": 2011,
+        "value": 524206428,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "全県計",
+        "year": 2012,
+        "value": 522454182,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "全県計",
+        "year": 2013,
+        "value": 537003432,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "全県計",
+        "year": 2014,
+        "value": 542499790,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "全県計",
+        "year": 2015,
+        "value": 563478428,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "全県計",
+        "year": 2016,
+        "value": 567362828,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "全県計",
+        "year": 2017,
+        "value": 581430184,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "全県計",
+        "year": 2018,
+        "value": 585477375,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "全県計",
+        "year": 2019,
+        "value": 580558009,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "全県計",
+        "year": 2020,
+        "value": 560786231,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "全県計",
+        "year": 2021,
+        "value": 581105240,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "全県計",
+        "year": 2022,
+        "value": 596532704,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "全県計",
+        "year": 2023,
+        "value": 621662801,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "札幌市",
+        "year": 2011,
+        "value": 6741467,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "札幌市",
+        "year": 2012,
+        "value": 6741878,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "札幌市",
+        "year": 2013,
+        "value": 6909423,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "札幌市",
+        "year": 2014,
+        "value": 7031724,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "札幌市",
+        "year": 2015,
+        "value": 7237255,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "札幌市",
+        "year": 2016,
+        "value": 7292541,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "札幌市",
+        "year": 2017,
+        "value": 7455824,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "札幌市",
+        "year": 2018,
+        "value": 7537697,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "札幌市",
+        "year": 2019,
+        "value": 7628440,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "札幌市",
+        "year": 2020,
+        "value": 7301021,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "札幌市",
+        "year": 2021,
+        "value": 7528118,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "札幌市",
+        "year": 2022,
+        "value": 7743689,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "札幌市",
+        "year": 2023,
+        "value": 7955474,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
       {
         "unit": "仙台市",
         "year": 2011,
@@ -200,6 +382,97 @@
         "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
       },
       {
+        "unit": "川崎市",
+        "year": 2011,
+        "value": 5785576,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "川崎市",
+        "year": 2012,
+        "value": 5643446,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "川崎市",
+        "year": 2013,
+        "value": 5853607,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "川崎市",
+        "year": 2014,
+        "value": 5935206,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "川崎市",
+        "year": 2015,
+        "value": 6156302,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "川崎市",
+        "year": 2016,
+        "value": 6215081,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "川崎市",
+        "year": 2017,
+        "value": 6388852,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "川崎市",
+        "year": 2018,
+        "value": 6403234,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "川崎市",
+        "year": 2019,
+        "value": 6139327,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "川崎市",
+        "year": 2020,
+        "value": 5987837,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "川崎市",
+        "year": 2021,
+        "value": 6205392,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "川崎市",
+        "year": 2022,
+        "value": 5879866,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "川崎市",
+        "year": 2023,
+        "value": 6369864,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
         "unit": "名古屋市",
         "year": 2011,
         "value": 12895800,
@@ -287,6 +560,97 @@
         "unit": "名古屋市",
         "year": 2023,
         "value": 15021657,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "広島市",
+        "year": 2011,
+        "value": 4971529,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "広島市",
+        "year": 2012,
+        "value": 4902888,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "広島市",
+        "year": 2013,
+        "value": 4968171,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "広島市",
+        "year": 2014,
+        "value": 5202451,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "広島市",
+        "year": 2015,
+        "value": 5388056,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "広島市",
+        "year": 2016,
+        "value": 5503772,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "広島市",
+        "year": 2017,
+        "value": 5656139,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "広島市",
+        "year": 2018,
+        "value": 5492664,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "広島市",
+        "year": 2019,
+        "value": 5379151,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "広島市",
+        "year": 2020,
+        "value": 5209257,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "広島市",
+        "year": 2021,
+        "value": 5196801,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "広島市",
+        "year": 2022,
+        "value": 5402949,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
+      },
+      {
+        "unit": "広島市",
+        "year": 2023,
+        "value": 5270908,
         "release": 2023,
         "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu1.xlsx"
       },
@@ -4311,6 +4675,97 @@
         "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
       },
       {
+        "unit": "札幌市",
+        "year": 2011,
+        "value": 1922729,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "札幌市",
+        "year": 2012,
+        "value": 1930207,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "札幌市",
+        "year": 2013,
+        "value": 1938331,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "札幌市",
+        "year": 2014,
+        "value": 1945504,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "札幌市",
+        "year": 2015,
+        "value": 1952356,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "札幌市",
+        "year": 2016,
+        "value": 1958491,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "札幌市",
+        "year": 2017,
+        "value": 1963093,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "札幌市",
+        "year": 2018,
+        "value": 1966200,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "札幌市",
+        "year": 2019,
+        "value": 1970401,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "札幌市",
+        "year": 2020,
+        "value": 1973395,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "札幌市",
+        "year": 2021,
+        "value": 1973331,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "札幌市",
+        "year": 2022,
+        "value": 1973011,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "札幌市",
+        "year": 2023,
+        "value": 1969912,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
         "unit": "仙台市",
         "year": 2011,
         "value": 1049493,
@@ -4493,6 +4948,97 @@
         "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
       },
       {
+        "unit": "川崎市",
+        "year": 2011,
+        "value": 1430773,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "川崎市",
+        "year": 2012,
+        "value": 1439164,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "川崎市",
+        "year": 2013,
+        "value": 1448196,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "川崎市",
+        "year": 2014,
+        "value": 1461043,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "川崎市",
+        "year": 2015,
+        "value": 1475213,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "川崎市",
+        "year": 2016,
+        "value": 1489477,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "川崎市",
+        "year": 2017,
+        "value": 1503690,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "川崎市",
+        "year": 2018,
+        "value": 1516483,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "川崎市",
+        "year": 2019,
+        "value": 1530457,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "川崎市",
+        "year": 2020,
+        "value": 1538262,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "川崎市",
+        "year": 2021,
+        "value": 1540340,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "川崎市",
+        "year": 2022,
+        "value": 1540890,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "川崎市",
+        "year": 2023,
+        "value": 1545604,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
         "unit": "名古屋市",
         "year": 2011,
         "value": 2266517,
@@ -4580,6 +5126,97 @@
         "unit": "名古屋市",
         "year": 2023,
         "value": 2326683,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "広島市",
+        "year": 2011,
+        "value": 1178924,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "広島市",
+        "year": 2012,
+        "value": 1183838,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "広島市",
+        "year": 2013,
+        "value": 1186792,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "広島市",
+        "year": 2014,
+        "value": 1190507,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "広島市",
+        "year": 2015,
+        "value": 1194034,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "広島市",
+        "year": 2016,
+        "value": 1196800,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "広島市",
+        "year": 2017,
+        "value": 1199390,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "広島市",
+        "year": 2018,
+        "value": 1200497,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "広島市",
+        "year": 2019,
+        "value": 1201035,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "広島市",
+        "year": 2020,
+        "value": 1200754,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "広島市",
+        "year": 2021,
+        "value": 1196230,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "広島市",
+        "year": 2022,
+        "value": 1191447,
+        "release": 2023,
+        "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
+      },
+      {
+        "unit": "広島市",
+        "year": 2023,
+        "value": 1185498,
         "release": 2023,
         "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kenmin/files/contents/tables/2023/soukatu9.xlsx"
       },
@@ -8515,12 +9152,12 @@
   "missing_units": [],
   "diagnostics": {
     "2023/soukatu1": {
-      "rows": 39,
-      "non_numeric_cells": 169
+      "rows": 91,
+      "non_numeric_cells": 117
     },
     "2023/soukatu9": {
-      "rows": 52,
-      "non_numeric_cells": 156
+      "rows": 91,
+      "non_numeric_cells": 117
     },
     "2022/soukatu1": {
       "rows": 204,

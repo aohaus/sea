@@ -5,9 +5,8 @@
     "missing_units": []
   },
   "nso_th_gpp": {
-    "fetch_status": "ok",
-    "rows": 12,
-    "missing_units": []
+    "fetch_status": "error",
+    "fetch_error": "RuntimeError: no yearbook found: 2027: 403 Client Error: Forbidden for url: https://www.nso.go.th/public/e-book/Statistical-Yearbook/SYB-2027_webPage/File%20SYB/2027/10/T%2010.14%202027.pdf; 2026: 403 Client Error: Forbidden for url: https://www.nso.go.th/public/e-book/Statistical-Yearbook/SYB-2026_webPage/File%20SYB/2026/10/T%2010.14%202026.pdf; 2025: 403 Client Error: Forbidden for url: https://www.nso.go.th/public/e-book/Statistical-Yearbook/SYB-2025_webPage/File%20SYB/2025/10/T%2010.14%202025.pdf; 2024: 403 Client Error: Forbidden for url: https://www.nso.go.th/public/e-book/Statistical-Yearbook/SYB-2024_webPage/File%20SYB/2024/10/T%2010.14%202024.pdf; 2023: 403 Client Error: Forbidden for url: https://www.nso.go.th/public/e-book/Statistical-Yearbook/SYB-2023_webPage/File%20SYB/2023/10/T%2010.14%202023.pdf"
   },
   "dosm_state_gdp": {
     "fetch_status": "ok",
@@ -174,19 +173,19 @@
   "esri_kenmin": {
     "fetch_status": "ok",
     "rows": {
-      "gdp_million_yen": 600,
-      "population": 613
+      "gdp_million_yen": 652,
+      "population": 652
     },
     "missing_units": [],
     "release": "2023年度版",
     "diagnostics": {
       "2023/soukatu1": {
-        "rows": 39,
-        "non_numeric_cells": 169
+        "rows": 91,
+        "non_numeric_cells": 117
       },
       "2023/soukatu9": {
-        "rows": 52,
-        "non_numeric_cells": 156
+        "rows": 91,
+        "non_numeric_cells": 117
       },
       "2022/soukatu1": {
         "rows": 204,

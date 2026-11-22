@@ -1,20 +1,7 @@
 {
   "jnto_visitors": {
-    "fetch_status": "ok",
-    "fetch_error": null,
-    "url": "https://www.jnto.go.jp/statistics/data/_files/20261021_1615-5.xlsx",
-    "countries": [
-      "id",
-      "my",
-      "ph",
-      "sg",
-      "th",
-      "vn"
-    ],
-    "years": [
-      2003,
-      2025
-    ]
+    "fetch_status": "error",
+    "fetch_error": "HTTPError: 403 Client Error: Forbidden for url: https://www.jnto.go.jp/statistics/data/visitors-statistics/"
   },
   "isa_residents": {
     "fetch_status": "ok",

@@ -28,11 +28,20 @@
       "url": "https://www.jetro.go.jp/world/asia/kh/basic_01.html",
       "status": "ok",
       "error": null,
-      "page_last_updated": null,
+      "page_last_updated": "2026-07-07",
       "retrieval_method": "auto",
       "fetch_status": "ok",
       "fetch_error": null,
-      "fields_filled": []
+      "fields_filled": [
+        "area",
+        "capital",
+        "head_of_state",
+        "language",
+        "official_language",
+        "official_name",
+        "political_system",
+        "religion"
+      ]
     },
     {
       "code": "id",
@@ -40,11 +49,19 @@
       "url": "https://www.jetro.go.jp/world/asia/idn/basic_01.html",
       "status": "ok",
       "error": null,
-      "page_last_updated": null,
+      "page_last_updated": "2026-07-01",
       "retrieval_method": "auto",
       "fetch_status": "ok",
       "fetch_error": null,
-      "fields_filled": []
+      "fields_filled": [
+        "area",
+        "capital",
+        "head_of_state",
+        "language",
+        "official_name",
+        "political_system",
+        "religion"
+      ]
     },
     {
       "code": "la",
@@ -52,11 +69,21 @@
       "url": "https://www.jetro.go.jp/world/asia/la/basic_01.html",
       "status": "ok",
       "error": null,
-      "page_last_updated": null,
+      "page_last_updated": "2026-06-19",
       "retrieval_method": "auto",
       "fetch_status": "ok",
       "fetch_error": null,
-      "fields_filled": []
+      "fields_filled": [
+        "area",
+        "capital",
+        "ethnic_groups",
+        "head_of_state",
+        "language",
+        "official_language",
+        "official_name",
+        "political_system",
+        "religion"
+      ]
     },
     {
       "code": "my",
@@ -64,11 +91,20 @@
       "url": "https://www.jetro.go.jp/world/asia/my/basic_01.html",
       "status": "ok",
       "error": null,
-      "page_last_updated": null,
+      "page_last_updated": "2026-08-19",
       "retrieval_method": "auto",
       "fetch_status": "ok",
       "fetch_error": null,
-      "fields_filled": []
+      "fields_filled": [
+        "area",
+        "capital",
+        "head_of_state",
+        "language",
+        "official_language",
+        "official_name",
+        "political_system",
+        "religion"
+      ]
     },
     {
       "code": "mm",
@@ -76,11 +112,17 @@
       "url": "https://www.jetro.go.jp/world/asia/mm/basic_01.html",
       "status": "ok",
       "error": null,
-      "page_last_updated": null,
+      "page_last_updated": "2026-07-08",
       "retrieval_method": "auto",
       "fetch_status": "ok",
       "fetch_error": null,
-      "fields_filled": []
+      "fields_filled": [
+        "area",
+        "capital",
+        "language",
+        "official_name",
+        "religion"
+      ]
     },
     {
       "code": "ph",
@@ -88,11 +130,20 @@
       "url": "https://www.jetro.go.jp/world/asia/ph/basic_01.html",
       "status": "ok",
       "error": null,
-      "page_last_updated": null,
+      "page_last_updated": "2026-07-02",
       "retrieval_method": "auto",
       "fetch_status": "ok",
       "fetch_error": null,
-      "fields_filled": []
+      "fields_filled": [
+        "area",
+        "capital",
+        "head_of_state",
+        "language",
+        "official_language",
+        "official_name",
+        "political_system",
+        "religion"
+      ]
     },
     {
       "code": "sg",
@@ -100,11 +151,19 @@
       "url": "https://www.jetro.go.jp/world/asia/sg/basic_01.html",
       "status": "ok",
       "error": null,
-      "page_last_updated": null,
+      "page_last_updated": "2026-06-18",
       "retrieval_method": "auto",
       "fetch_status": "ok",
       "fetch_error": null,
-      "fields_filled": []
+      "fields_filled": [
+        "area",
+        "ethnic_groups",
+        "head_of_state",
+        "official_language",
+        "official_name",
+        "political_system",
+        "religion"
+      ]
     },
     {
       "code": "th",
@@ -112,11 +171,19 @@
       "url": "https://www.jetro.go.jp/world/asia/th/basic_01.html",
       "status": "ok",
       "error": null,
-      "page_last_updated": null,
+      "page_last_updated": "2026-06-30",
       "retrieval_method": "auto",
       "fetch_status": "ok",
       "fetch_error": null,
-      "fields_filled": []
+      "fields_filled": [
+        "area",
+        "capital",
+        "head_of_state",
+        "language",
+        "official_name",
+        "political_system",
+        "religion"
+      ]
     },
     {
       "code": "tl",
@@ -146,11 +213,20 @@
       "url": "https://www.jetro.go.jp/world/asia/vn/basic_01.html",
       "status": "ok",
       "error": null,
-      "page_last_updated": null,
+      "page_last_updated": "2026-07-01",
       "retrieval_method": "auto",
       "fetch_status": "ok",
       "fetch_error": null,
-      "fields_filled": []
+      "fields_filled": [
+        "area",
+        "capital",
+        "head_of_state",
+        "language",
+        "official_language",
+        "official_name",
+        "political_system",
+        "religion"
+      ]
     }
   ]
 }

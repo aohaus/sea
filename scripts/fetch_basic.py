@@ -199,8 +199,12 @@ def fetch(country: dict, source: dict, session: requests.Session) -> dict:
     result["final_url"] = resp.url
     if resp.status_code != 200:
         return {**result, "status": "error", "error": f"HTTP {resp.status_code}"}
-    resp.encoding = resp.apparent_encoding if not resp.encoding else resp.encoding
-    soup = BeautifulSoup(resp.text, "html.parser")
+    # requests falls back to ISO-8859-1 when the Content-Type header has no charset (JETRO's pages),
+    # which garbles Japanese. Then let BeautifulSoup decode the bytes from the page's own <meta charset>.
+    if "charset=" in resp.headers.get("Content-Type", "").lower():
+        soup = BeautifulSoup(resp.text, "html.parser")
+    else:
+        soup = BeautifulSoup(resp.content, "html.parser")
     title = soup.find("title")
     tables = PARSERS[source["parser"]](soup)
     return {
