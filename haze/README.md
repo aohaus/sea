@@ -42,7 +42,7 @@ Any slot without a value is filled with **simulated values**. These are seeded r
 
 `.github/workflows/collect-haze.yml` runs `scripts/collect_haze.py` at minute 7 of every hour. GitHub sometimes delays or skips scheduled runs under load. Running hourly means each 2-hour slot still gets a reading when one run is missed; the later reading in a slot replaces the earlier one.
 
-- **DOE**: one request fetches the current reading of every station. Each monitor station is mapped to the nearest DOE station within 20 km.
+- **DOE**: one request (`/api3/publicportalapims/apitablehourly`) returns every station's hourly API for the last 24 hours; each slot takes its later hour. Each monitor station is mapped to the nearest DOE station within 20 km. If that table fails, the map service's current reading is used. GitHub starts only some of the hourly scheduled runs (3 or 4 a day in November 2026), so reading 24 hours on every run is what keeps the slots filled: a gap appears only if no run starts for about a day. Slots missed before 2026-11-22 cannot be filled (the table has no older data).
 - **WAQI**: not collected (see the table above). Each run removes `waqi_*` values stored by earlier versions, so the `WAQI_TOKEN` secret is no longer used.
 - **MyCMAQ** (`scripts/collect_mycmaq.py`): reads the list of runs on mycmaq.met.gov.my and, for a new run, the run's `manifest.json` and its `PM25_TOT_d02_*LST.png` maps (every 2 hours, 60 images). The map axes (110°E at x=574, 115°E at x=783, 4°N at y=452, 2°S at y=703) and the 24 colours of the scale are fixed in the script; if the layout changes, the run is skipped and the problem recorded, and the previous forecast is kept. Needs Pillow.
 - **News** (`scripts/collect_haze_news.py`): reads Campur.ai's archive search (`https://campur.ai.studio/api/archive/articles?q=…`) for haze words in English, Malay and Japanese, keeps articles that are about haze, fires or air quality in the region, tags them (fire, health, policy, business, air) and writes `data/news.json` (the last 90 days, up to 400 articles). The site sends no CORS headers, so the page cannot read it directly. The script fetches only when `news.json` is about 3 hours old, so most hourly runs skip it; a failed fetch keeps the previous articles and is retried the next hour.
@@ -51,7 +51,7 @@ Any slot without a value is filled with **simulated values**. These are seeded r
   - `data/series.json`: the last 14 days (168 slots), which the page reads in preference to other sources. For the older slots of the 30-day chart, the page also reads the monthly archives.
   - `data/collect_report.json`: the result of the latest run.
 - **Commits**: each run commits its readings (`data(haze): readings …`), so up to 24 commits a day.
-- **History**: DOE does not provide past values through its public map service, so real data starts from the first collection. A full 14 days of real data takes 14 days to build up.
+- **History**: DOE provides only the last 24 hours, so real data starts from the first collection. A full 14 days of real data takes 14 days to build up.
 
 Format of `data/series.json`:
 
