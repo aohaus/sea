@@ -1,16 +1,52 @@
 {
- "generated_at": "2026-11-23T03:49:57+08:00",
- "checked_at": "2026-11-23T03:49:57+08:00",
+ "generated_at": "2026-11-23T15:53:27+08:00",
+ "checked_at": "2026-11-23T15:53:27+08:00",
  "source": {
   "name": "Campur.ai",
   "url": "https://campur.ai.studio/"
  },
  "status": {
   "searches": 134,
-  "matched": 53,
+  "matched": 58,
   "errors": []
  },
  "items": [
+  {
+   "id": "nst-fcf0b9ba66280a",
+   "date": "2026-11-23T14:20+08:00",
+   "source": "New Straits Times",
+   "link": "https://www.nst.com.my/business/corporate/2026/11/1583864/aeons-earnings-growth-be-driven-property-management-segment",
+   "title_ja": "イオンの収益成長は不動産管理事業が牽引",
+   "title": "Aeon's earnings growth to be driven by property management segment",
+   "summary_ja": "クアラルンプール：Aeon Co (M) Bhd は、不動産管理サービス (PMS) の貢献により、今後 2 会計年度にわたって利益成長を維持すると予想されています。",
+   "lang": "en",
+   "companies": [
+    "AEON"
+   ],
+   "sectors": [
+    "retail"
+   ],
+   "topics": [
+    "results"
+   ]
+  },
+  {
+   "id": "nst-a0daf136a1e9fd",
+   "date": "2026-11-23T13:24+08:00",
+   "source": "New Straits Times",
+   "link": "https://www.nst.com.my/news-cars-bikes-trucks/2026/11/1583834/toyota-showcases-diverse-powertrain-options-meet-malaysian",
+   "title_ja": "トヨタ、マレーシアの運転ニーズを満たす多様なパワートレインオプションを紹介",
+   "title": "Toyota showcases diverse powertrain options to meet Malaysian driving needs",
+   "summary_ja": "クアラルンプール: マレーシアのドライバーにとって、自動車の所有権が単一の運転環境を中心に展開されることはほとんどありません。",
+   "lang": "en",
+   "companies": [
+    "Toyota"
+   ],
+   "sectors": [
+    "manufacturing"
+   ],
+   "topics": []
+  },
   {
    "id": "nst-2795e9dd0922db",
    "date": "2026-11-22T15:05+08:00",
@@ -44,6 +80,21 @@
     "manufacturing"
    ],
    "topics": []
+  },
+  {
+   "id": "malaymail-d822886dabbaff",
+   "date": "2026-11-22T10:36+08:00",
+   "source": "Malay Mail",
+   "link": "https://www.malaymail.com/news/tech-gadgets/2026/11/22/no-naked-showers-in-japan-how-gta-6-is-being-censored-around-the-world/244267",
+   "title_ja": "ゲーム『GTA 6』の検閲、日本でのシャワーシーン修正などが話題に",
+   "title": "No naked showers in Japan: How ‘GTA 6’ is being censored around the world",
+   "summary_ja": "世界的に注目されるゲーム『GTA 6』において、各国での規制や検閲により、日本版などで表現の修正が行われていることが報じられています。",
+   "lang": "en",
+   "companies": [],
+   "sectors": [],
+   "topics": [
+    "tax_regulation"
+   ]
   },
   {
    "id": "malaymail-7e42eb0161338a",
@@ -281,9 +332,9 @@
    "date": "2026-11-16T16:00+08:00",
    "source": "BERNAMA",
    "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9nM3h4dm1RV3JibWdWUnJrNnpYQi1PbFNzSWRGaWk1ellUaHJsbl90Uk5MOHM4enNqQl83aUZON2FwTnlyMkNtZ2NOaGgzdHRfR1RjYUpUZkVKT3M?oc=5",
-   "title_ja": "マレーシア・トレンガヌ大学卒業生、日本産からし菜でシンガポール市場へ進出",
+   "title_ja": "マレーシアUMT卒業生、日本産からし菜でシンガポール進出",
    "title": "UMT Graduate's Japanese Mustard Greens Penetrate Singapore Market",
-   "summary_ja": "UMT（マレーシア・トレンガヌ大学）の卒業生が生産する日本産からし菜が、シンガポール市場への輸出を開始し、農業ビジネスの成功例として注目されています。",
+   "summary_ja": "トレンガヌ大学（UMT）の卒業生が生産する日本産からし菜が、シンガポール市場への輸出を開始し販路を拡大しています。",
    "lang": "en",
    "companies": [],
    "sectors": [],
@@ -969,7 +1020,7 @@
    "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOSUViTTNIZ3EyaHNpQkVmNmxfV0ZtVDRGY2Z0S2tIQkdZeXM0bmJyMkRkb1dyVXAzUDFxLV9mM3phZThnQ1hvLU85N1lCVUFqSGVuMENzMVFDRXhPc19ENXRiRnZXM2FYNmtydXJYdDR3ZmZ3c1hyeGMtZnUwWkFGaTVZVzFnUVpJOTZIZUtnd1VHaE9yMklnMEFIbVpzOEtZLXdUTFVtdFVXTGFSdlVWelpaY9IBuAFBVV95cUxOUHZTZmttZWI5Z1RxWFdLRjhIcEZoZmROc1J5SGhlOUJTOXhYR1N0S0JCVXV1c2phWjVQWThuRTRydXducTdwNVpoQTh5bTVkNHNueVEycjBNUFBXeE5nRV9vMFhNUlFrc0p5eEMzMUVIbG0zQmswTEUtbkJHS2lUWWF5cTR6VHFnc3BpZ0doWTQtb05NTko0dmpQMVBmek9LZVFIaUx1bzRKc1JlYlJSV1hOZGxsaVlB?oc=5",
    "title_ja": "[更新] アンワル氏は世界中のダイソーの棚にもっとマレーシア製の製品を並べたいと考えている",
    "title": "[UPDATED] Anwar wants more Malaysian-made products on Daiso shelves worldwide - NST Online",
-   "summary_ja": "[更新]アンワル氏、世界中のダイソーの棚にもっとマレーシア製の製品を並べたいと考えている NSTオンライン",
+   "summary_ja": "[更新]アンワル氏は世界中のダイソーの棚にもっとマレーシア製の製品を置きたいと考えている NSTオンライン",
    "lang": "en",
    "companies": [
     "Daiso"
