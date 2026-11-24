@@ -1,16 +1,35 @@
 {
- "generated_at": "2026-11-24T08:02:11+08:00",
- "checked_at": "2026-11-24T08:02:11+08:00",
+ "generated_at": "2026-11-24T18:04:43+08:00",
+ "checked_at": "2026-11-24T18:04:43+08:00",
  "source": {
   "name": "Campur.ai",
   "url": "https://campur.ai.studio/"
  },
  "status": {
   "searches": 134,
-  "matched": 63,
+  "matched": 59,
   "errors": []
  },
  "items": [
+  {
+   "id": "bernama-90317ccf805ac8",
+   "date": "2026-11-24T12:00+08:00",
+   "source": "BERNAMA",
+   "link": "http://www.bernama.com/en/news.php?id=2638809",
+   "title_ja": "事業内容 : モータ駆動システム用アイソレーションアンプを発売",
+   "title": "Business : Toshiba Launches Isolation Amplifiers For Motor Drive Systems",
+   "summary_ja": "クアラルンプール、11月24日（ベルナマ） -- 東芝デバイス＆ストレージ株式会社（東芝）は、アナログ出力アイソレーションアンプ「DCA121x02シリーズ」を発売しました。",
+   "lang": "en",
+   "companies": [
+    "Toshiba"
+   ],
+   "sectors": [
+    "manufacturing"
+   ],
+   "topics": [
+    "ai_digital"
+   ]
+  },
   {
    "id": "nst-fcf0b9ba66280a",
    "date": "2026-11-23T14:20+08:00",
@@ -38,6 +57,23 @@
    "title_ja": "トヨタ、マレーシアの運転ニーズを満たす多様なパワートレインオプションを紹介",
    "title": "Toyota showcases diverse powertrain options to meet Malaysian driving needs",
    "summary_ja": "クアラルンプール: マレーシアのドライバーにとって、自動車の所有権が単一の運転環境を中心に展開されることはほとんどありません。",
+   "lang": "en",
+   "companies": [
+    "Toyota"
+   ],
+   "sectors": [
+    "manufacturing"
+   ],
+   "topics": []
+  },
+  {
+   "id": "nst-434c2437505e9b",
+   "date": "2026-11-23T13:24+08:00",
+   "source": "New Straits Times",
+   "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQeXlkV1BnTFZGX1V6N2ZoSFpOZmstR0hiSnYzcjFIaTd1Tjc1UWI2QVJfMklIcXBqOXYycENfMTZlRkRWUWRjQlJ1VnVNQVNJNVdiQTUtNmlxanZEbnk2d0pDdE9yQzdzdU1QakJFTUFBN0VkX216MjJzemxfVExaS2NKekQ2VnExUUxOWjVHNFlhNEpUdTRrT2NIeUl3U25paUpZZ1lVTlhzN3Q5bWx1V3hjamNZQlk3cVZfS9IBwgFBVV95cUxNejZiRHc3TUE4LUdjejRvLXBZS0sybnZFTEExR1FTQnowaGFvYTQydV9RbTZTVkREbXV2U1ZoQy1iaFFDd3pyN3NPTmRXVzljc3ZwQXBGNEt5MTVyYVdOQjlZa0NkaDFzcUVlWW1XU1ZuOXRGZHl4V1BFWmRHMENCeW5lOXdKVWpYSHR1eml6cU4zU1A2a3VBalJOZ19ldDVpZ0dWLTR0TmQ2RS11MjZVU09iRmd6a2Rla2I3ODVONEdoZw?oc=5",
+   "title_ja": "トヨタ、マレーシアの多様なニーズに応えるマルチパスウェイ戦略を提示",
+   "title": "Toyota showcases diverse powertrain options to meet Malaysian driving needs - NST Online",
+   "summary_ja": "トヨタ自動車は、マレーシアの市場環境や走行ニーズに合わせ、ハイブリッド車を含む多様なパワートレインの選択肢を提案しています。",
    "lang": "en",
    "companies": [
     "Toyota"
@@ -151,9 +187,9 @@
    "date": "2026-11-20T18:23+08:00",
    "source": "The Edge Malaysia",
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFA3cTFhN3JNY3pCQTNUYm5lY2x2VGlHc0VTdTB6YmZyODhhOXlPdXMzT1N1aFc3YmJhQ1ZIQ2EzWXpNWjltRDZHejIwYnRpZ0kw?oc=5",
-   "title_ja": "マレーシア・イオン、第3四半期は増収も法人税増で純利益が減少",
+   "title_ja": "イオン・マレーシア、第3四半期は増収も税負担増で純利益が減少",
    "title": "Aeon Co’s 3Q net profit drops despite higher revenue as tax bill jumps",
-   "summary_ja": "イオン（マレーシア）の第3四半期決算は、売上高は増加したものの、法人税負担の急増が響き純利益は減益となりました。",
+   "summary_ja": "イオン・マレーシアの第3四半期決算は、売上高は増加したものの、法人税負担の急増が響き純利益が減少しました。コスト管理と税務影響が今後の業績の焦点となります。",
    "lang": "en",
    "companies": [
     "AEON"
@@ -247,7 +283,7 @@
    "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQQ21JQ3oyOVptOWRSWUlRVkhLbzFIbXZ4UXlEUDVyUFBpZ1Bkd0pOY1R6VXFLQldITG9ycXF4MDdBNTJ3NS1XVGhOcmRZdWJ6OFluVDd2QkpHRGRzeWUxYmRwZDlNWVM4UDlPYTVzSTdzN1Jwakh5Vy1FUzZwU1loVUk1VXV4cEQtUmIxY2dnYUtWOTlERVk0RWUwbmg3QWlBZUo1ckdaWmNyREMxc0VxckY2TVhQRjhkZ1RGRDNraTdhRFNPV0NzQg?oc=5",
    "title_ja": "サラワク州首相、ソフトバンクとAIインフラ整備で協議",
    "title": "Abang Johari meets SoftBank chief in Tokyo to advance Sarawak AI infrastructure project - Borneo Post",
-   "summary_ja": "サラワク州のアバン・ジョハリ首相が東京でソフトバンク幹部と会談し、州内のAIインフラ構築に向けた協力を推進します。",
+   "summary_ja": "アバン・ジョハリ・サラワク州首相が東京でソフトバンク幹部と会談し、州内のAIインフラ構築に向けた協力を進めています。",
    "lang": "en",
    "companies": [
     "SoftBank"
@@ -387,9 +423,9 @@
    "date": "2026-11-16T12:55+08:00",
    "source": "Malay Mail",
    "link": "https://www.malaymail.com/news/tech-gadgets/2026/11/16/toyota-unveils-its-2027-yaris-with-sportier-look-parking-aids-and-more-safety-features/243461",
-   "title_ja": "Toyota unveils its 2027 Yaris with sportier look, parking aids and more safety features",
+   "title_ja": "UMWトヨタ、2027年型「ヤリス」を発表。安全性能とデザインを刷新",
    "title": "Toyota unveils its 2027 Yaris with sportier look, parking aids and more safety features",
-   "summary_ja": "KUALA LUMPUR, Nov 16 &mdash; UMW Toyota Motor has unveiled its refreshed Yaris hatchback for 2027, giving the compact ca...",
+   "summary_ja": "UMWトヨタ・モーターは、スポーティな外観と最新の駐車支援システム、強化された安全機能を備えた新型ヤリスを発表しました。",
    "lang": "en",
    "companies": [
     "Toyota"
@@ -820,9 +856,9 @@
    "date": "2026-11-10T05:40+08:00",
    "source": "BERNAMA",
    "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAtdEx5eVJvWWFXTUhVM3JIcEVrSTZhZEdSRVRSajl4T2FiNFBTNmtwSlNyTTFXVC1vVUl0RjlibWRvX3FsQ1FTVUtkTXdFbW1UUUFYUUdZU20wUQ?oc=5",
-   "title_ja": "アンワル首相、ソフトバンクのAI投資をマレーシアへの信頼と評価",
+   "title_ja": "アンワル首相、ソフトバンク主導のAI投資を歓迎",
    "title": "Softbank-led Consortium’s AI Investment Reflects Global Confidence In Malaysia -- PM Anwar",
-   "summary_ja": "アンワル首相は、ソフトバンク主導のコンソーシアムによるAI投資は、マレーシアの成長性に対する国際的な信頼の証だと歓迎しました。",
+   "summary_ja": "アンワル首相は、ソフトバンク主導のAI投資はマレーシアの経済成長に対する国際的な信頼の証であると評価しました。",
    "lang": "en",
    "companies": [
     "SoftBank"
@@ -1036,7 +1072,7 @@
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBTUGFLZERJS28xYl90YmhKSkR5enBBbFN1STNDbm9GWjJnSmJ3UHVtX1pjTXNCQVhETXhud0pXSlY0VFgtZXIwbl9KTUZVZWpD?oc=5",
    "title_ja": "ダイソー、マレーシア・プラウインダーに世界最大級の物流拠点を新設",
    "title": "Japan's Daiso opens its largest ever logistics hub in Pulau Indah",
-   "summary_ja": "ダイソーがプラウインダーに同社最大規模の物流ハブを開設。東南アジアにおける供給網の強化と物流効率の向上が期待されます。",
+   "summary_ja": "ダイソーがプラウインダーに過去最大規模の物流ハブを開設。東南アジアにおける供給網の強化と物流効率化を図る狙いがあります。",
    "lang": "en",
    "companies": [
     "Daiso"
@@ -1075,9 +1111,9 @@
    "date": "2026-11-04T16:00+08:00",
    "source": "The Edge Malaysia",
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE16anhROWdPT205WnV2d2I2aVZGZVcwRFg1RmlwVDJOQU5aWkVIYlZNb1JOTWtPenZhZEtXSm1Sb2NTaTU2Y1VEcXlzX1JvQ3Vi?oc=5",
-   "title_ja": "楽天トレード、iSPEEDアプリでのマレーシア株取引を再開",
+   "title_ja": "楽天、iSPEED.myアプリでのブルサ取引を再開、ウェブプラットフォームは停止のまま",
    "title": "Rakuten restores Bursa trading on iSPEED.my app, web platform remains suspended",
-   "summary_ja": "サイバー攻撃の影響で停止していた楽天トレードの取引機能が、iSPEEDアプリで一部復旧しました。ウェブ版は引き続き停止中です。",
+   "summary_ja": "楽天、iSPEED.myアプリでブルサ取引を再開、ウェブプラットフォームは停止のまま The Edge Malaysia",
    "lang": "en",
    "companies": [
     "Rakuten"
@@ -1085,9 +1121,7 @@
    "sectors": [
     "tmt"
    ],
-   "topics": [
-    "ai_digital"
-   ]
+   "topics": []
   },
   {
    "id": "nst-8ba1c1b3a1041e",
@@ -1096,7 +1130,7 @@
    "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOSUViTTNIZ3EyaHNpQkVmNmxfV0ZtVDRGY2Z0S2tIQkdZeXM0bmJyMkRkb1dyVXAzUDFxLV9mM3phZThnQ1hvLU85N1lCVUFqSGVuMENzMVFDRXhPc19ENXRiRnZXM2FYNmtydXJYdDR3ZmZ3c1hyeGMtZnUwWkFGaTVZVzFnUVpJOTZIZUtnd1VHaE9yMklnMEFIbVpzOEtZLXdUTFVtdFVXTGFSdlVWelpaY9IBuAFBVV95cUxOUHZTZmttZWI5Z1RxWFdLRjhIcEZoZmROc1J5SGhlOUJTOXhYR1N0S0JCVXV1c2phWjVQWThuRTRydXducTdwNVpoQTh5bTVkNHNueVEycjBNUFBXeE5nRV9vMFhNUlFrc0p5eEMzMUVIbG0zQmswTEUtbkJHS2lUWWF5cTR6VHFnc3BpZ0doWTQtb05NTko0dmpQMVBmek9LZVFIaUx1bzRKc1JlYlJSV1hOZGxsaVlB?oc=5",
    "title_ja": "アンワル首相、ダイソーの世界店舗でマレーシア製品の取り扱い拡大を要請",
    "title": "[UPDATED] Anwar wants more Malaysian-made products on Daiso shelves worldwide - NST Online",
-   "summary_ja": "アンワル首相はダイソーに対し、同社のグローバルな販路を活用したマレーシア製品の輸出拡大を要請。現地企業の国際展開を後押しする狙いです。",
+   "summary_ja": "アンワル首相はダイソーに対し、マレーシア産品のグローバル展開支援を要請。現地製造業の輸出拡大と経済活性化を狙う政府方針を示しました。",
    "lang": "en",
    "companies": [
     "Daiso"
@@ -1113,9 +1147,9 @@
    "date": "2026-11-04T14:27+08:00",
    "source": "The Edge Malaysia",
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBQRFN5WW0xNkcxQ1FfdjVpYlBxLUY4UTRTVGxMWFd1bUlBYVJPeDVISUxia2s5MDZYdEtTUWc0TC13emtuamYxNnhLb1dWUlQt?oc=5",
-   "title_ja": "パラマウントと三井不動産、マレーシアで13億リンギット規模の住宅開発へ",
+   "title_ja": "パラマウント、三井不動産と提携して13億リンギの住宅プロジェクト開発、初年度に60%の受注を目指す",
    "title": "Paramount partners Mitsui Fudosan to develop RM1.3 bil residential project, targets 60% take-up in first year",
-   "summary_ja": "パラマウント・コーポレーションと三井不動産が合弁で住宅開発に着手。総開発価値13億リンギットを掲げ、初年度60%の成約を目指す。",
+   "summary_ja": "パラマウント、三井不動産と提携して13億リンギの住宅プロジェクト開発、初年度60%の受注を目指す The Edge Malaysia",
    "lang": "en",
    "companies": [
     "Mitsui Fudosan"
@@ -1132,9 +1166,9 @@
    "date": "2026-11-04T13:10+08:00",
    "source": "The Star",
    "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQOE9HYTh3NjV4WEl0cUlZbjc4MzdlcS1PM05WQW1ZMFpOOXVGOXRDTjJGWEx2RDU1QUJmQ1RaZ1RqckRybzBxdXo5Z2lhMWc1R2JISlVyQTQ2T19waDBtVFJUVWVTRnpXWjFqX3ZFTWFJR3ZDaGhyZmlXRVBwSlVQaDRRamF2eU9fQnJLa1dWVzJObjNYV25qemw4LUVLOV9TNzdMd0NqS2JKZjE1MTcwa0xmOXhxSzF5SjdTNk5nejBZUnJMellLd0VkZ1pTWkFHcmhUbmRn?oc=5",
-   "title_ja": "三井不動産とパラマウント、総額13億リンギットの住宅共同開発を発表",
+   "title_ja": "パラマウントと三井不動産が共同で13億リンギットのGDV住宅プロジェクト開発へ",
    "title": "Paramount, Mitsui Fudosan in JV to develop RM1.3bil GDV residential project",
-   "summary_ja": "両社による合弁事業（JV）が始動。マレーシア国内での住宅供給を強化し、総開発価値（GDV）13億リンギット規模のプロジェクトを推進する。",
+   "summary_ja": "パラマウントと三井不動産がJVで13億リンギットのGDV住宅プロジェクト「ザ・スター」開発へ",
    "lang": "en",
    "companies": [
     "Mitsui Fudosan"
@@ -1243,9 +1277,9 @@
    "date": "2026-10-30T11:25+08:00",
    "source": "The Edge Malaysia",
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBsSVg4TUo0UUZjS1IzOTdxOHJoTU54WVVncHVvaUhEeFVGT0xJMHdMSmx4Q1FxMzIwcmhZTHNNTzFUaUFHRFJaZ1g2NGtWT2xE?oc=5",
-   "title_ja": "楽天トレード、サイバー攻撃でマレーシア株取引が1週間以上停止",
+   "title_ja": "楽天トレードのブルサ取引はサイバー攻撃を受けて1週間以上停止、再開日は未定",
    "title": "Rakuten Trade’s Bursa trading has been down for over a week following cyberattack, with no restart date",
-   "summary_ja": "サイバー攻撃を受け、楽天トレードの取引システムが1週間以上停止する事態が発生。復旧の目処が立たない状況が続いていました。",
+   "summary_ja": "<a href=\"https://news.google.com/rss/articles/CBMiUEFVX3lxTFBsSVg4TUo0UUZjS1IzOTdxOHJoTU54WVVncHVvaUhEeFVGT0xJMHdMSmx4Q1FxMzIwcmhZTHNNTzFUaUFHRFJaZ1g2NGtWT2xE?…",
    "lang": "en",
    "companies": [
     "Rakuten"
@@ -1400,9 +1434,9 @@
    "date": "2026-10-26T16:22+08:00",
    "source": "The Edge Malaysia",
    "link": "https://theedgemalaysia.com/edge-tv-detail?id=node%2F823302",
-   "title_ja": "ソフトバンク孫氏、マレーシアに500億ドルの技術投資を計画か",
+   "title_ja": "ソフトバンク孫氏、マレーシアに500億ドルの技術投資を計画",
    "title": "SoftBank’s Son reportedly planning US$50b M’sia tech outlay",
-   "summary_ja": "ソフトバンクの孫正義氏が、マレーシア半島およびクチンでのデータセンター等を含む500億ドル規模の投資を検討していると報じられました。",
+   "summary_ja": "孫正義氏がマレーシア国内の複数拠点に総額500億ドル規模の技術投資を検討していると報じられました。",
    "lang": "en",
    "companies": [
     "SoftBank"
@@ -1411,8 +1445,7 @@
     "tmt"
    ],
    "topics": [
-    "investment",
-    "ai_digital"
+    "investment"
    ]
   },
   {
@@ -1420,9 +1453,9 @@
    "date": "2026-10-26T07:22+08:00",
    "source": "The Edge Malaysia",
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBQQ19KWkZrTnZTSFpiRzM4bjRwam42OERKNVNjTHU5UmhOa2VZYUJHVm1hV2p6T3dQalJqLUY3dlZ6QXVrQmM3Y2RJU2MyZ24t?oc=5",
-   "title_ja": "マレーシア首相、ソフトバンクによる500億ドルの投資計画を認める",
+   "title_ja": "マレーシア首相、ソフトバンクの500億ドル投資計画を確認",
    "title": "SoftBank’s Son plans US$50 bil Malaysia tech outlay, PM says",
-   "summary_ja": "アンワル首相は、ソフトバンクによるマレーシアへの500億ドル規模の技術投資計画について言及し、期待を寄せています。",
+   "summary_ja": "アンワル首相は、ソフトバンクによるマレーシアへの500億ドル規模の技術投資計画について言及しました。",
    "lang": "en",
    "companies": [
     "SoftBank"
@@ -1651,9 +1684,9 @@
    "date": "2026-10-19T10:49+08:00",
    "source": "The Edge Malaysia",
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5wSml4UnlsUGRGblo5cGFKNklwakhkM0xOUnEyaDgzMDdNczhpMnBHTXY5WVdER0RHdVB3SlAtTW5wa015LW1CQW80VXIwZGEt?oc=5",
-   "title_ja": "日本のMS&AD、マレーシアのLPIキャピタルとの取引を検討すると発表 — ブルームバーグ",
+   "title_ja": "MS&AD、マレーシアのLPIキャピタル買収を検討か　ブルームバーグ報道",
    "title": "Japan’s MS&AD said to consider deal for Malaysia’s LPI Capital — Bloomberg",
-   "summary_ja": "日本のMS&AD、マレーシアのLPIキャピタルとの取引を検討すると — Bloomberg The Edge Malaysia",
+   "summary_ja": "日本のMS&ADインシュアランスグループが、マレーシアの保険大手LPIキャピタルの買収を検討していると報じられました。東南アジアでの事業拡大に向けた動きとして注目されます。",
    "lang": "en",
    "companies": [
     "MS&AD"
@@ -1661,7 +1694,9 @@
    "sectors": [
     "finance"
    ],
-   "topics": []
+   "topics": [
+    "deal_restructure"
+   ]
   },
   {
    "id": "fmt-348c6cf6b631da",
@@ -2133,9 +2168,9 @@
    "date": "2026-09-29T16:07+08:00",
    "source": "Malay Mail",
    "link": "https://www.malaymail.com/news/life/2026/09/29/from-kuching-to-subang-jaya-toyotas-pickleball-tour-brings-malaysians-together/236997",
-   "title_ja": "From Kuching to Subang Jaya, Toyota’s pickleball tour brings Malaysians together",
+   "title_ja": "トヨタ主催のピックルボールツアー、クチンからスバンジャヤまで全5都市で盛況",
    "title": "From Kuching to Subang Jaya, Toyota’s pickleball tour brings Malaysians together",
-   "summary_ja": "SUBANG JAYA, Sept 28 &mdash; The Toyota Malaysia Pickle Tour 2026 has wrapped up its five-city run, bringing pickleball...",
+   "summary_ja": "マレーシア全土5都市で開催された「トヨタ・マレーシア・ピックルボール・ツアー2026」が閉幕。スポーツを通じた地域コミュニティの交流を促進しました。",
    "lang": "en",
    "companies": [
     "Toyota"
