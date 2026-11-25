@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-25T06:35:53+08:00",
- "checked_at": "2026-11-25T06:35:53+08:00",
+ "generated_at": "2026-11-25T16:49:49+08:00",
+ "checked_at": "2026-11-25T16:49:49+08:00",
  "source": {
   "name": "Campur.ai",
   "url": "https://campur.ai.studio/"
@@ -11,6 +11,26 @@
   "errors": []
  },
  "items": [
+  {
+   "id": "theedge-f7bc798558c2c8",
+   "date": "2026-11-24T19:35+08:00",
+   "source": "The Edge Malaysia",
+   "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBWMlRCdHByRzRlZko3VEc3bDF5czl0UnN3ZWJzN3pNSlVLMUoyczg5dXcyLTF5R1pYcnltRXhvWnNQSWFsQy1peHhDQ2VFMUh4?oc=5",
+   "title_ja": "パナソニック・マレーシア、輸出減で第2四半期純利益20%減も15セント配当へ",
+   "title": "Panasonic Manufacturing 2Q net profit falls 20% due lower export sales, declares 15 sen dividend",
+   "summary_ja": "輸出販売の低迷により第2四半期の純利益は前年同期比20%減となりましたが、株主還元として1株あたり15セントの配当実施を発表しました。",
+   "lang": "en",
+   "companies": [
+    "Panasonic"
+   ],
+   "sectors": [
+    "manufacturing"
+   ],
+   "topics": [
+    "supply_chain",
+    "results"
+   ]
+  },
   {
    "id": "bernama-90317ccf805ac8",
    "date": "2026-11-24T12:00+08:00",
@@ -73,7 +93,7 @@
    "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQeXlkV1BnTFZGX1V6N2ZoSFpOZmstR0hiSnYzcjFIaTd1Tjc1UWI2QVJfMklIcXBqOXYycENfMTZlRkRWUWRjQlJ1VnVNQVNJNVdiQTUtNmlxanZEbnk2d0pDdE9yQzdzdU1QakJFTUFBN0VkX216MjJzemxfVExaS2NKekQ2VnExUUxOWjVHNFlhNEpUdTRrT2NIeUl3U25paUpZZ1lVTlhzN3Q5bWx1V3hjamNZQlk3cVZfS9IBwgFBVV95cUxNejZiRHc3TUE4LUdjejRvLXBZS0sybnZFTEExR1FTQnowaGFvYTQydV9RbTZTVkREbXV2U1ZoQy1iaFFDd3pyN3NPTmRXVzljc3ZwQXBGNEt5MTVyYVdOQjlZa0NkaDFzcUVlWW1XU1ZuOXRGZHl4V1BFWmRHMENCeW5lOXdKVWpYSHR1eml6cU4zU1A2a3VBalJOZ19ldDVpZ0dWLTR0TmQ2RS11MjZVU09iRmd6a2Rla2I3ODVONEdoZw?oc=5",
    "title_ja": "トヨタ、マレーシアの多様なニーズに応えるマルチパスウェイ戦略を提示",
    "title": "Toyota showcases diverse powertrain options to meet Malaysian driving needs - NST Online",
-   "summary_ja": "トヨタ自動車は、マレーシアの市場環境や走行ニーズに合わせ、ハイブリッド車を含む多様なパワートレインの選択肢を提案しています。",
+   "summary_ja": "トヨタ自動車がマレーシア市場の特性に合わせ、ハイブリッド車を含む多様なパワートレインの選択肢を提案し、脱炭素化と利便性の両立を目指す。",
    "lang": "en",
    "companies": [
     "Toyota"
@@ -81,7 +101,9 @@
    "sectors": [
     "manufacturing"
    ],
-   "topics": []
+   "topics": [
+    "energy_esg"
+   ]
   },
   {
    "id": "nst-2795e9dd0922db",
@@ -209,7 +231,7 @@
    "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9IVXRncS0xRDZUZFZZdlliNFRFQTU2bFYyS2RXX3VCdERWNVlqeEVXWjlMRTFSY0d6cm43OExPWXpuenVvMVJlMWRrWFR4dVI3ejNfNWZnN1dCU1FVVXc?oc=5",
    "title_ja": "マレーシアのファミリーマート、AI搭載の飲料補充ロボットを導入へ",
    "title": "Nam News Network (NNN) - FamilyMart To Introduce AI-powered Drink Restocking Robots",
-   "summary_ja": "マレーシアのファミリーマートが、店舗業務の効率化と人手不足解消を目指し、AIを活用した飲料自動補充ロボットの導入を開始します。",
+   "summary_ja": "マレーシアのファミリーマートが、店舗業務の効率化を目指しAIを活用した飲料補充ロボットを導入します。人手不足の解消と店舗運営の自動化に向けた先進的な取り組みです。",
    "lang": "en",
    "companies": [
     "Family Mart"
@@ -281,9 +303,9 @@
    "date": "2026-11-18T12:25+08:00",
    "source": "The Borneo Post",
    "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQQ21JQ3oyOVptOWRSWUlRVkhLbzFIbXZ4UXlEUDVyUFBpZ1Bkd0pOY1R6VXFLQldITG9ycXF4MDdBNTJ3NS1XVGhOcmRZdWJ6OFluVDd2QkpHRGRzeWUxYmRwZDlNWVM4UDlPYTVzSTdzN1Jwakh5Vy1FUzZwU1loVUk1VXV4cEQtUmIxY2dnYUtWOTlERVk0RWUwbmg3QWlBZUo1ckdaWmNyREMxc0VxckY2TVhQRjhkZ1RGRDNraTdhRFNPV0NzQg?oc=5",
-   "title_ja": "サラワク州アバン・ジョハリ首相、ソフトバンクとAIインフラで協議",
+   "title_ja": "サラワク州首相、ソフトバンクとAIインフラ整備で協議",
    "title": "Abang Johari meets SoftBank chief in Tokyo to advance Sarawak AI infrastructure project - Borneo Post",
-   "summary_ja": "サラワク州のアバン・ジョハリ首相が東京でソフトバンク幹部と会談し、州内のAIインフラ整備に向けた協力を推進します。",
+   "summary_ja": "アバン・ジョハリ・サラワク州首相が東京でソフトバンク幹部と会談し、州内のAIインフラ構築に向けた協力を進めています。",
    "lang": "en",
    "companies": [
     "SoftBank"
@@ -423,9 +445,9 @@
    "date": "2026-11-16T12:55+08:00",
    "source": "Malay Mail",
    "link": "https://www.malaymail.com/news/tech-gadgets/2026/11/16/toyota-unveils-its-2027-yaris-with-sportier-look-parking-aids-and-more-safety-features/243461",
-   "title_ja": "トヨタ、2027年型ヤリスを発表。スポーティな外観と安全機能を強化",
+   "title_ja": "UMWトヨタ、2027年型「ヤリス」を発表。安全性能とデザインを刷新",
    "title": "Toyota unveils its 2027 Yaris with sportier look, parking aids and more safety features",
-   "summary_ja": "UMWトヨタ・モーターが新型ヤリスを発表。デザイン刷新に加え、駐車支援システムや安全装備を拡充し、コンパクトカー市場での競争力を高めています。",
+   "summary_ja": "UMWトヨタ・モーターは、スポーティな外観と最新の駐車支援システム、強化された安全機能を備えた2027年型ヤリスを発表した。",
    "lang": "en",
    "companies": [
     "Toyota"
@@ -474,9 +496,9 @@
    "date": "2026-11-13T15:30+08:00",
    "source": "Astro AWANI",
    "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQcF9RcDd3OTBCak9ZOVBTRVlWOG1XOEtYZG9EQ3NYMDRYM011eUJnN1FQaWkzZFpKRlZVcUR3VU50SlQ0SFVCTHd4b1ZoeU5DVW1wN2ZtVEZDTFpFMDl6MlZhTndVQ0ZUUzV3Y0kwLUtWMlY4allmdkh4UHBqeUx1dXdodHh0M1c2Nk1CaTY4cU1lQUxPMTNBeEZfZW1ZRUM4aVdTRzhQU0RlaXNIQ1pFVU02OTlzVkotRlE?oc=5",
-   "title_ja": "バドミントン熊本マスターズ：アーロン・ロイキング組が決勝進出へ",
+   "title_ja": "バドミントン熊本マスターズ：アーロン・ロイキング組が決勝進出へ王手",
    "title": "Selangkah ke final Masters Jepun, Aaron-Roy King dicabar beregu Denmark",
-   "summary_ja": "熊本マスターズジャパンにて、マレーシアのアーロン・チア＆ロイ・キング組がデンマークのペアと準決勝で対戦します。",
+   "summary_ja": "バドミントン熊本マスターズで、マレーシアのアーロン・チア／ロイ・キング組が準決勝へ進出。決勝進出をかけデンマークペアと対戦します。",
    "lang": "ms",
    "companies": [],
    "sectors": [],
@@ -561,7 +583,7 @@
    "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBmQl9RVHRfcV9oMjFPRUp5WlgwNmVwdm1vc1ZsN2dEUi1STENyQTA1VEhxbWlEYnBBMjdIYTlkbGJqeEZNaE1tMWZsVTBWd3d3OW9tNm5Pb1h2cEVSUnhuNHB4cndJaWR0?oc=5",
    "title_ja": "三井金属、マレーシアに約48.7億リンギット投じ銅箔新工場を建設へ",
    "title": "E5: Mitsui Kinzoku to invest RM4.87 bil in new copper plant",
-   "summary_ja": "三井金属鉱業がマレーシアで銅箔製造の新工場建設に約48.7億リンギットを投資する計画が報じられました。EV向け需要拡大を見据えた大型投資となります。",
+   "summary_ja": "三井金属鉱業がマレーシアで約48.7億リンギット（約1,600億円規模）を投じ、銅箔の新規製造拠点を設立する計画が報じられました。",
    "lang": "en",
    "companies": [
     "Mitsui Kinzoku"
@@ -647,7 +669,7 @@
    "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNU1JPZlBNNFBMRmY3QUptWVowUXBrdVBzdUdXS0tGV1NMXzk0d0hMRjkwOGZqTi1BQ3l5S0oxYXVBYWV5Vm5EeWk0Y3Y5cTc1OG8tNmhRaklyOFFkR2tBU3hzZ0o3MndSLVdKWUJPYlBYZldhalA5dW9NbnpHems5SXVreXpoWFNwUDVCbnVTWWgyeWxvTzFjUllEOUN1eFdlSEFfWVBzQjJqWk4wRW5ZdkRxZ2swLXBPZFVz0gHAAUFVX3lxTE5OTlEycjhyV1JYNmpraXVwMzYyLXA5blYySFB6Umh0cDgxcU1GMlR4Q05lY3pTUWoxVWdpSTlfZy1KaWJYc1dRVzJCZlV5VS04TUpvVi1Ub25kQzR2dEZwYzJmR3lRVDEtblJqOFlYN3N4aFBEcmp3bk5rQ0lrUk5hMVVmeHQzbmRzMVluY0lxTkJFMXV3eEtwdHNHTFFXRXgxUm5CNXFDZjFZZWRnVllvV1ZFS2xNTXpHdmgwNWVrUg?oc=5",
    "title_ja": "三井金属、マレーシアに約48.7億リンギット投じ銅箔新工場を建設へ",
    "title": "Mitsui Kinzoku to invest RM4.87bil in new copper foil plant in Malaysia - NST Online",
-   "summary_ja": "三井金属鉱業がマレーシアで銅箔製造の新工場建設に約48.7億リンギットを投資する計画が報じられました。EV向け需要拡大を見据えた大型投資となります。",
+   "summary_ja": "三井金属鉱業がマレーシアで約48.7億リンギット（約1,600億円規模）を投じ、銅箔の新規製造拠点を設立する計画が報じられました。",
    "lang": "en",
    "companies": [
     "Mitsui Kinzoku"
@@ -742,9 +764,9 @@
    "date": "2026-11-10T09:49+08:00",
    "source": "BERNAMA",
    "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5RN3locHMwWnJPMm9HcmVxOVcxMFZ1OUxuTVR4YnNkZGdRRTF2QmNQMXpvR0poSTdLRS1pc0FTLU1NZXp3ZVNZV0tubm03ei13XzlBNGZidldESUpGRENxWWtR?oc=5",
-   "title_ja": "ソフトバンクとGrab、マレーシアのAIインフラに18.5億ドル投資",
+   "title_ja": "ソフトバンクとGrab、マレーシアAIインフラに18.5億ドル投資",
    "title": "Softbank, Grab Announce US$1.85 Bln Initial Seed Capital For Malaysia's AI Infrastructure",
-   "summary_ja": "ソフトバンクとGrabは、マレーシアのAIインフラ構築に向け、初期シード資金として18.5億ドルを投じると発表しました。",
+   "summary_ja": "ソフトバンクとGrabは、マレーシアのAIインフラ構築に向け、18.5億ドルの初期シード資金を投入すると発表しました。",
    "lang": "en",
    "companies": [
     "SoftBank"
@@ -837,9 +859,9 @@
    "date": "2026-11-10T05:40+08:00",
    "source": "BERNAMA",
    "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAtdEx5eVJvWWFXTUhVM3JIcEVrSTZhZEdSRVRSajl4T2FiNFBTNmtwSlNyTTFXVC1vVUl0RjlibWRvX3FsQ1FTVUtkTXdFbW1UUUFYUUdZU20wUQ?oc=5",
-   "title_ja": "アンワル首相、ソフトバンク主導のAI投資をマレーシアへの信頼と評価",
+   "title_ja": "アンワル首相、ソフトバンクのAI投資をマレーシアへの信頼と評価",
    "title": "Softbank-led Consortium’s AI Investment Reflects Global Confidence In Malaysia -- PM Anwar",
-   "summary_ja": "アンワル首相は、ソフトバンク主導のAI投資が、マレーシアの経済成長と技術革新に対する世界的な信頼の証であると歓迎しました。",
+   "summary_ja": "アンワル首相は、ソフトバンク主導のコンソーシアムによるAI投資は、マレーシアの成長性に対する世界的な信頼の証であると述べました。",
    "lang": "en",
    "companies": [
     "SoftBank"
@@ -1092,9 +1114,9 @@
    "date": "2026-11-04T16:00+08:00",
    "source": "The Edge Malaysia",
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE16anhROWdPT205WnV2d2I2aVZGZVcwRFg1RmlwVDJOQU5aWkVIYlZNb1JOTWtPenZhZEtXSm1Sb2NTaTU2Y1VEcXlzX1JvQ3Vi?oc=5",
-   "title_ja": "楽天トレード、マレーシア証券取引アプリ「iSPEED.my」の取引機能を復旧",
+   "title_ja": "楽天トレード、iSPEED.myアプリでのブルサ取引を復旧もウェブ版は停止継続",
    "title": "Rakuten restores Bursa trading on iSPEED.my app, web platform remains suspended",
-   "summary_ja": "サイバー攻撃の影響で停止していた楽天トレードのアプリ版取引機能が復旧しました。なお、ウェブプラットフォームは引き続き利用停止中です。",
+   "summary_ja": "システム障害が発生していた楽天トレードは、モバイルアプリでの取引を再開しました。ただし、ウェブプラットフォームは依然として利用停止が続いています。",
    "lang": "en",
    "companies": [
     "Rakuten"
@@ -1102,18 +1124,16 @@
    "sectors": [
     "tmt"
    ],
-   "topics": [
-    "ai_digital"
-   ]
+   "topics": []
   },
   {
    "id": "nst-8ba1c1b3a1041e",
    "date": "2026-11-04T16:00+08:00",
    "source": "New Straits Times",
    "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOSUViTTNIZ3EyaHNpQkVmNmxfV0ZtVDRGY2Z0S2tIQkdZeXM0bmJyMkRkb1dyVXAzUDFxLV9mM3phZThnQ1hvLU85N1lCVUFqSGVuMENzMVFDRXhPc19ENXRiRnZXM2FYNmtydXJYdDR3ZmZ3c1hyeGMtZnUwWkFGaTVZVzFnUVpJOTZIZUtnd1VHaE9yMklnMEFIbVpzOEtZLXdUTFVtdFVXTGFSdlVWelpaY9IBuAFBVV95cUxOUHZTZmttZWI5Z1RxWFdLRjhIcEZoZmROc1J5SGhlOUJTOXhYR1N0S0JCVXV1c2phWjVQWThuRTRydXducTdwNVpoQTh5bTVkNHNueVEycjBNUFBXeE5nRV9vMFhNUlFrc0p5eEMzMUVIbG0zQmswTEUtbkJHS2lUWWF5cTR6VHFnc3BpZ0doWTQtb05NTko0dmpQMVBmek9LZVFIaUx1bzRKc1JlYlJSV1hOZGxsaVlB?oc=5",
-   "title_ja": "アンワル首相、ダイソー世界店舗でのマレーシア製品取り扱い拡大を要請",
+   "title_ja": "[更新] アンワル氏は世界中のダイソーの棚にもっとマレーシア製の製品を並べたいと考えている",
    "title": "[UPDATED] Anwar wants more Malaysian-made products on Daiso shelves worldwide - NST Online",
-   "summary_ja": "アンワル首相はダイソーに対し、マレーシア産品のグローバル展開を強化するよう要請しました。現地製造業の輸出促進と経済活性化を狙います。",
+   "summary_ja": "[更新]アンワル氏、世界中のダイソーの棚にもっとマレーシア製の商品を並べたいと考えている NSTオンライン",
    "lang": "en",
    "companies": [
     "Daiso"
@@ -1121,9 +1141,7 @@
    "sectors": [
     "retail"
    ],
-   "topics": [
-    "supply_chain"
-   ]
+   "topics": []
   },
   {
    "id": "theedge-91cdc0e717dd96",
@@ -1151,7 +1169,7 @@
    "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQOE9HYTh3NjV4WEl0cUlZbjc4MzdlcS1PM05WQW1ZMFpOOXVGOXRDTjJGWEx2RDU1QUJmQ1RaZ1RqckRybzBxdXo5Z2lhMWc1R2JISlVyQTQ2T19waDBtVFJUVWVTRnpXWjFqX3ZFTWFJR3ZDaGhyZmlXRVBwSlVQaDRRamF2eU9fQnJLa1dWVzJObjNYV25qemw4LUVLOV9TNzdMd0NqS2JKZjE1MTcwa0xmOXhxSzF5SjdTNk5nejBZUnJMellLd0VkZ1pTWkFHcmhUbmRn?oc=5",
    "title_ja": "三井不動産とパラマウント、13億リンギットの住宅開発プロジェクトで提携",
    "title": "Paramount, Mitsui Fudosan in JV to develop RM1.3bil GDV residential project",
-   "summary_ja": "両社が合弁事業（JV）を設立し、大規模住宅開発プロジェクトを推進。マレーシアの不動産市場における日系デベロッパーの存在感が高まっています。",
+   "summary_ja": "両社による合弁事業として、総開発価値13億リンギットの住宅プロジェクトが始動。日系デベロッパーの参画により、現地の不動産市場の活性化が期待される。",
    "lang": "en",
    "companies": [
     "Mitsui Fudosan"
@@ -1223,7 +1241,7 @@
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9NQWFkRTlHcmNIb29IdXZVYWF1Q3poOUlBSFJpNTVEbWtDUy1WV2xuekhtLS1PUFNFckttVU5aeVlyQm1yalFMc2c3RHpFdmhy?oc=5",
    "title_ja": "双日、マレーシアからレアアース「イットリウム」を輸入へ",
    "title": "Japan's Sojitz to import rare earth yttrium from Malaysia — report",
-   "summary_ja": "双日がマレーシアからレアアースの一種であるイットリウムを調達する方針を固めました。脱中国依存を目指す日本のサプライチェーン強化の一環として注目されます。",
+   "summary_ja": "日本の双日がマレーシアからレアアースの一種であるイットリウムを調達する方針を固めました。サプライチェーンの強靭化と脱中国依存に向けた戦略的な動きとして注目されます。",
    "lang": "en",
    "companies": [
     "Sojitz"
@@ -1260,9 +1278,9 @@
    "date": "2026-10-30T11:25+08:00",
    "source": "The Edge Malaysia",
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBsSVg4TUo0UUZjS1IzOTdxOHJoTU54WVVncHVvaUhEeFVGT0xJMHdMSmx4Q1FxMzIwcmhZTHNNTzFUaUFHRFJaZ1g2NGtWT2xE?oc=5",
-   "title_ja": "楽天トレード、サイバー攻撃による証券取引停止が1週間以上継続",
+   "title_ja": "楽天トレード、サイバー攻撃によるブルサ取引停止が1週間超え、復旧目処は未定",
    "title": "Rakuten Trade’s Bursa trading has been down for over a week following cyberattack, with no restart date",
-   "summary_ja": "サイバー攻撃を受け、楽天トレードの証券取引機能が1週間以上停止しています。ウェブ版の再開時期は依然として未定の状態です。",
+   "summary_ja": "サイバー攻撃の影響により、楽天トレードのブルサ・マレーシア向け取引機能が1週間以上停止しています。現在も全面的な復旧の目処は立っていません。",
    "lang": "en",
    "companies": [
     "Rakuten"
@@ -1417,9 +1435,9 @@
    "date": "2026-10-26T16:22+08:00",
    "source": "The Edge Malaysia",
    "link": "https://theedgemalaysia.com/edge-tv-detail?id=node%2F823302",
-   "title_ja": "ソフトバンク孫氏、マレーシアに500億ドルの技術投資を計画か",
+   "title_ja": "ソフトバンク孫氏、マレーシアに500億ドルの技術投資を計画",
    "title": "SoftBank’s Son reportedly planning US$50b M’sia tech outlay",
-   "summary_ja": "ソフトバンクの孫正義氏が、マレーシア半島およびクチンでのデータセンター等を含む500億ドル規模の技術投資を検討していると報じられました。",
+   "summary_ja": "ソフトバンクの孫正義氏が、マレーシア半島およびクチンでのデータセンター等を含む500億ドル規模の技術投資を計画していると報じられました。",
    "lang": "en",
    "companies": [
     "SoftBank"
@@ -1439,7 +1457,7 @@
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBQQ19KWkZrTnZTSFpiRzM4bjRwam42OERKNVNjTHU5UmhOa2VZYUJHVm1hV2p6T3dQalJqLUY3dlZ6QXVrQmM3Y2RJU2MyZ24t?oc=5",
    "title_ja": "マレーシア首相、ソフトバンクによる500億ドルの投資計画を確認",
    "title": "SoftBank’s Son plans US$50 bil Malaysia tech outlay, PM says",
-   "summary_ja": "アンワル首相は、ソフトバンクがマレーシア国内で500億ドル規模の技術投資を計画していることを認め、期待を寄せています。",
+   "summary_ja": "アンワル首相は、ソフトバンクによるマレーシアへの500億ドル規模の技術投資計画について、同社側と協議が進んでいることを明らかにしました。",
    "lang": "en",
    "companies": [
     "SoftBank"
@@ -1493,7 +1511,7 @@
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBHRlN1WHNHa0U2RlQ3ZnZrdVp0aXRzNkh0LWNxYmJTZmMxY05UdUYzdEkxNXEwYXp6U3diTUNrN0MwdDF2aHdpam53QUVnZWRa?oc=5",
    "title_ja": "JERA、マレーシアのガス供給・インフラ・発電の統合的発展を提言",
    "title": "Gas supply, infrastructure and power generation must advance together, says Jera",
-   "summary_ja": "日本のJERAは、エネルギー安定供給のためにはガス供給網と発電インフラの同時整備が不可欠であると強調しました。マレーシアのエネルギー転換戦略における重要な視点です。",
+   "summary_ja": "日本のJERAは、エネルギー安定供給のためにはガス供給網と発電インフラの同時開発が不可欠であると強調しました。マレーシアのエネルギー転換戦略に影響を与える見通しです。",
    "lang": "en",
    "companies": [
     "JERA"
@@ -2112,9 +2130,9 @@
    "date": "2026-09-29T23:46+08:00",
    "source": "The Edge Malaysia",
    "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFA4OE9RUThJVkY2SXRFNkVqZmp3SWhOeHZFSjZhQXlESnpYZzVsMWd5TkY4UGNSdmQzUERTM3VtX1VCY2l4dnhKSG5UeVV0WGt0?oc=5",
-   "title_ja": "マレーシア証券取引所：Yinson、Gamuda、SD Guthrieなど注目銘柄の動向",
+   "title_ja": "マレーシア証券取引所：Yinson、Gamuda、SD Guthrieなど主要銘柄の動向",
    "title": "Yinson, Gamuda, SD Guthrie, AEON Credit, UMS Integration, Kelington, Vantris, Supermax, Apollo, VS Industry, Sern Kou",
-   "summary_ja": "マレーシア証券取引所（Bursa Malaysia）で注目される主要企業の最新動向をまとめました。投資家が注視すべき個別銘柄のニュースフローです。",
+   "summary_ja": "マレーシア証券取引所（Bursa Malaysia）に上場するYinson、Gamuda、SD Guthrieら主要企業の最新動向を網羅。投資家が注目すべき市場の主要銘柄リストです。",
    "lang": "en",
    "companies": [
     "AEON Credit"
@@ -2152,9 +2170,9 @@
    "date": "2026-09-29T16:07+08:00",
    "source": "Malay Mail",
    "link": "https://www.malaymail.com/news/life/2026/09/29/from-kuching-to-subang-jaya-toyotas-pickleball-tour-brings-malaysians-together/236997",
-   "title_ja": "トヨタ主催のピックルボールツアーが閉幕。クチンからスバンジャヤまで盛況",
+   "title_ja": "トヨタ主催のピックルボールツアー、クチンからスバンジャヤまで盛況",
    "title": "From Kuching to Subang Jaya, Toyota’s pickleball tour brings Malaysians together",
-   "summary_ja": "マレーシア国内5都市を巡った「トヨタ・ピックルボール・ツアー2026」が終了しました。スポーツを通じた地域コミュニティの活性化とブランド認知向上に寄与しました。",
+   "summary_ja": "マレーシア国内5都市で開催された「トヨタ・マレーシア・ピックルボール・ツアー2026」が閉幕。スポーツを通じた地域コミュニティの活性化に貢献した。",
    "lang": "en",
    "companies": [
     "Toyota"
