@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>マレーシアのエルニーニョ監視 ｜ Sea</title>
+<meta name="description" content="マレーシアのエルニーニョと、暑熱・ヘイズ・給水停止に備えるための情報。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="favicon.png" type="image/png" sizes="64x64">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+<body>
+<header class="top"><div><a href="../">Sea</a><span>エルニーニョモニター</span><a class="haze-link" href="../haze/">ヘイズモニター ↗</a></div></header>
+<main>
+<section class="hero">
+  <p class="scope">マレーシア ／ クランバレー</p>
+  <h1>エルニーニョ<br>モニター</h1>
+  <p class="lead">広域のENSOから、事業所周辺の雨・暑さ・空気・給水まで。今週の状況と、これからの備えを確認できます。</p>
+  <a class="button" href="actions.html">事業所の対応計画を作る →</a>
+</section>
+<section aria-labelledby="outlook">
+  <h2 id="outlook">観測と見通し</h2>
+  <p class="muted">発表日と対象期間を確認して、今週の判断と来月の準備に使います。</p>
+  <div class="grid" id="monitor">
+    <article class="card" data-series="enso"><p class="scope">東南アジア・熱帯太平洋</p><h3>ENSOの状況</h3><p class="bulletin">確認済みの記録はまだありません。</p><a href="https://asmc.asean.org/asmc-el-nino/">ASMCのENSO情報 ↗</a></article>
+    <article class="card" data-series="rain"><p class="scope">マレーシア・対象州</p><h3>降雨の観測・季節見通し</h3><p class="bulletin">確認済みの記録はまだありません。</p><a href="https://www.met.gov.my/">MET Malaysiaの季節見通し ↗</a></article>
+    <article class="card" data-series="heat"><p class="scope">事業所のある地区</p><h3>今週の天気・暑熱</h3><p class="bulletin">確認済みの記録はまだありません。</p><a href="https://www.met.gov.my/">MET Malaysiaの予報・警報 ↗</a></article>
+    <article class="card"><p class="scope">最寄りの観測局・事業所の住所</p><h3>大気質・給水通知</h3><p>大気質は観測局、給水停止は対象地区と時間を確認します。</p><div class="links"><a href="../haze/">ヘイズモニター →</a><a href="https://apims.doe.gov.my/">APIMS ↗</a><a href="https://www.airselangor.com/">Air Selangor ↗</a></div></article>
+  </div>
+</section>
+<section id="history" hidden><h2>過去の記録</h2><div id="history-list" class="stack"></div></section>
+<a class="next" href="understand.html">次へ ／ 2 理解する <span aria-hidden="true">→</span></a>
+<script src="monitor.js" defer></script>
+</main>
+<nav class="steps" aria-label="エルニーニョモニターのステップ">
+  <a href="./" aria-current="page"><span>1</span>知る</a>
+  <a href="understand.html"><span>2</span>理解する</a>
+  <a href="actions.html"><span>3</span>アクションする</a>
+</nav>
+</body>
+</html>

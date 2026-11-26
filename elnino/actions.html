@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>事業所のエルニーニョ対応計画 ｜ Sea</title>
+<meta name="description" content="マレーシアのエルニーニョと、暑熱・ヘイズ・給水停止に備えるための情報。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="favicon.png" type="image/png" sizes="64x64">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+<body>
+<header class="top"><div><a href="../">Sea</a><span>エルニーニョモニター</span><a class="haze-link" href="../haze/">ヘイズモニター ↗</a></div></header>
+<main>
+<section class="hero compact">
+  <p class="scope">事業所向けチェックリスト</p>
+  <h1>来月の対応を決める</h1>
+  <p class="lead">暑熱・ヘイズ・給水停止に備え、業務を変える条件、最初に動く人、再開の条件を記入します。</p>
+</section>
+<form id="plan" class="stack">
+  <section class="card">
+    <h2>事業所と対象月</h2>
+    <div class="fields">
+      <label>事業所・地区 <input name="site" placeholder="例：ペタリンジャヤ事業所"></label>
+      <label>対象月 <input type="month" name="month"></label>
+    </div>
+  </section>
+  <section class="card" id="heat"><h2>暑熱</h2><div class="fields">
+  <label>事前準備<textarea name="heat-prepare" rows="2" placeholder="屋外工程、日陰の休憩場所、給水を確認"></textarea></label>
+  <label>対応を始める条件と最初の措置<textarea name="heat-trigger" rows="2" placeholder="対象地区の暑熱情報と現場の測定値を確認し、時間帯を変更"></textarea></label>
+  <label>判断者と代理<textarea name="heat-owner" rows="2" placeholder="現場責任者／副責任者"></textarea></label>
+  <label>通知先と連絡手段<textarea name="heat-notify" rows="2" placeholder="現場班と委託先へ始業前に連絡"></textarea></label>
+  <label>再開条件と承認者<textarea name="heat-resume" rows="2" placeholder="現場の環境と休憩・給水体制を確認し、現場責任者が承認"></textarea></label>
+</div></section>
+<section class="card" id="haze"><h2>ヘイズ</h2><div class="fields">
+  <label>事前準備<textarea name="haze-prepare" rows="2" placeholder="最寄りのAPIMS観測局と代替の屋内作業を確認"></textarea></label>
+  <label>対応を始める条件と最初の措置<textarea name="haze-trigger" rows="2" placeholder="観測局のAPIが事業所の基準に達したら屋外作業を変更"></textarea></label>
+  <label>判断者と代理<textarea name="haze-owner" rows="2" placeholder="現場責任者／副責任者"></textarea></label>
+  <label>通知先と連絡手段<textarea name="haze-notify" rows="2" placeholder="従業員と委託先へ業務変更を通知"></textarea></label>
+  <label>再開条件と承認者<textarea name="haze-resume" rows="2" placeholder="APIと現場状況を再確認し、現場責任者が承認"></textarea></label>
+</div></section>
+<section class="card" id="water"><h2>給水停止</h2><div class="fields">
+  <label>事前準備<textarea name="water-prepare" rows="2" placeholder="水を使う設備、貯水、代替手段を確認"></textarea></label>
+  <label>対応を始める条件と最初の措置<textarea name="water-trigger" rows="2" placeholder="住所が給水停止の対象なら、維持できる時間を確認して縮小・停止を判断"></textarea></label>
+  <label>判断者と代理<textarea name="water-owner" rows="2" placeholder="事業所責任者／設備担当"></textarea></label>
+  <label>通知先と連絡手段<textarea name="water-notify" rows="2" placeholder="従業員・委託先・必要に応じて顧客へ連絡"></textarea></label>
+  <label>再開条件と承認者<textarea name="water-resume" rows="2" placeholder="給水復旧と設備の安全を確認し、事業所責任者が承認"></textarea></label>
+</div></section>
+  <section class="card controls" aria-label="計画の保存と印刷">
+    <p class="muted">入力内容はこのブラウザーに保存されます。共有用には印刷画面からPDFを保存できます。</p>
+    <button class="button" type="button" id="print">印刷・PDF保存</button>
+    <p id="save-status" role="status"></p>
+    <noscript><p>自動保存にはJavaScriptが必要です。</p></noscript>
+  </section>
+</form>
+<script src="plan.js" defer></script>
+</main>
+<nav class="steps" aria-label="エルニーニョモニターのステップ">
+  <a href="./"><span>1</span>知る</a>
+  <a href="understand.html"><span>2</span>理解する</a>
+  <a href="actions.html" aria-current="page"><span>3</span>アクションする</a>
+</nav>
+</body>
+</html>

@@ -1,0 +1,79 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f7f5f0;
+  --panel: #fff;
+  --ink: #242622;
+  --muted: #575d53;
+  --line: #d8dbd0;
+  --accent: #0f5a44;
+  --hero: #e6ede3;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141713;
+    --panel: #1c211b;
+    --ink: #f0f0e8;
+    --muted: #b6c0b2;
+    --line: #414c40;
+    --accent: #87d9b1;
+    --hero: #233428;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.7 "Noto Sans JP", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+}
+a { color: var(--accent); text-underline-offset: .2em; }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.top { border-bottom: 1px solid var(--line); }
+.top div, main { max-width: 1000px; margin-inline: auto; }
+.top div { display: flex; flex-wrap: wrap; gap: .4rem 1rem; padding: .75rem 1rem; align-items: baseline; }
+.top a { font-weight: 750; }
+.top .haze-link { margin-left: auto; font-size: .85rem; }
+main { display: grid; gap: 1.6rem; padding: 1.25rem 1rem 7rem; }
+.hero { background: var(--hero); border: 1px solid var(--line); border-radius: 1rem; padding: clamp(1.35rem, 5vw, 3.25rem); }
+h1, h2, h3, p { margin: 0; }
+h1 { font-size: clamp(2.1rem, 7vw, 4.2rem); line-height: 1.12; letter-spacing: -.035em; margin: .45rem 0 .9rem; }
+.compact h1 { font-size: clamp(1.9rem, 5vw, 3.2rem); }
+h2 { font-size: clamp(1.25rem, 3vw, 1.5rem); line-height: 1.35; }
+h3 { font-size: 1.12rem; line-height: 1.45; }
+.lead { max-width: 42em; }
+.scope { color: var(--accent); font-size: .84rem; font-weight: 750; }
+.muted { color: var(--muted); }
+.grid, .fields { display: grid; gap: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid { margin-top: .8rem; }
+.stack { display: grid; gap: 1rem; }
+.card { display: grid; align-content: start; gap: .55rem; padding: 1.15rem; background: var(--panel); border: 1px solid var(--line); border-radius: .75rem; scroll-margin-top: 1rem; }
+.links { display: flex; gap: .35rem 1rem; flex-wrap: wrap; }
+.button, .next { min-height: 44px; font: inherit; font-weight: 750; }
+.button { display: inline-flex; align-items: center; width: fit-content; border: 1px solid var(--accent); border-radius: .5rem; background: var(--accent); color: var(--panel); padding: .5rem .9rem; text-decoration: none; cursor: pointer; }
+.hero .button { margin-top: 1rem; }
+.next { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); padding-top: .7rem; }
+.steps { position: fixed; inset: auto 0 0; display: flex; justify-content: center; background: var(--panel); border-top: 1px solid var(--line); padding: .4rem .35rem calc(.4rem + env(safe-area-inset-bottom)); }
+.steps a { display: flex; justify-content: center; align-items: center; gap: .4rem; min-height: 44px; padding: .35rem; width: min(33.33%, 180px); color: var(--ink); font-size: clamp(.75rem, 3vw, .95rem); font-weight: 750; text-decoration: none; border-radius: .5rem; }
+.steps [aria-current] { background: var(--hero); color: var(--accent); }
+.steps span { font-variant-numeric: tabular-nums; }
+label { display: grid; align-content: start; gap: .3rem; font-weight: 700; }
+input, textarea { width: 100%; padding: .55rem; border: 1px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; font-weight: 400; }
+textarea { resize: vertical; }
+.print-value { display: none; }
+#save-status:empty { display: none; }
+@media (max-width: 600px) {
+  .grid, .fields { grid-template-columns: 1fr; }
+}
+@media print {
+  :root { color-scheme: light; --ink: #000; --bg: #fff; --panel: #fff; --hero: #fff; --line: #aaa; --accent: #000; }
+  .top, .steps, .controls { display: none; }
+  main { padding: 0; gap: .75rem; }
+  .hero, .card { padding: .65rem; }
+  h1 { font-size: 1.7rem; }
+  label { break-inside: avoid; }
+  .print-ready input, .print-ready textarea { display: none; }
+  .print-value { display: block; min-height: 1.2em; font-weight: 400; white-space: pre-wrap; overflow-wrap: anywhere; }
+}
