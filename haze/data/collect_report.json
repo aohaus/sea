@@ -1,13 +1,13 @@
 {
-  "run_at": "2026-11-26T22:57:17+08:00",
+  "run_at": "2026-11-27T07:41:43+08:00",
   "sources": {
     "doe": {
       "status": "ok",
-      "readings": 78,
+      "readings": 72,
       "notes": []
     }
   },
   "time_samples": {
-    "doe_hourly": "DOE Cheras, W.P. KUALA LUMPUR (CA16W, API): 13 slots, latest 2026-11-26T22 = 62 (hour 2026-11-26T22:00:00+08:00)"
+    "doe_hourly": "DOE Cheras, W.P. KUALA LUMPUR (CA16W, API): 12 slots, latest 2026-11-27T06 = 59 (hour 2026-11-27T07:00:00+08:00)"
   }
 }
